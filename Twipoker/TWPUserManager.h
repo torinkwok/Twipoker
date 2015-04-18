@@ -50,6 +50,8 @@
 
 // ======================================================================================== //
 
+@protocol TWPUserManagerDelegate;
+
 // User Defauls Keys
 NSString extern* const TWPUserDefaultsKeyCurrentUser;
 NSString extern* const TWPUserDefaultsKeyAllUsers;
@@ -63,6 +65,8 @@ NSString extern* const TWPNewUserUserInfoKey;
 /** The `TWPUserManager` class enables us to manage all of the Twipoker users.
   */
 @interface TWPUserManager : NSObject
+
+@property ( weak, readwrite ) IBOutlet id <TWPUserManagerDelegate> delegate;
 
 @property ( strong, readonly ) NSArray* users;
 @property ( strong ) TWPUser* currentUser;
@@ -83,6 +87,17 @@ NSString extern* const TWPNewUserUserInfoKey;
 
 - ( NSArray* ) allUsers;
 - ( void ) removeAllUsers;
+
+@end
+
+@protocol TWPUserManagerDelegate
+
+@optional
+// Sent by the default notification center immediately after a successful login
+- ( void ) twipokerDidFinishLogin: ( NSNotification* )_Notif;
+
+- ( void )        userManager: ( TWPUserManager* )_UserManager
+    didFinishLoginWithNewUser: ( TWPUser* )_NewUser;
 
 @end
 

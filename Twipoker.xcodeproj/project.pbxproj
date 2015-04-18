@@ -248,7 +248,6 @@
 		83D3FF3A1ACB144B009D40EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		83D3FF3C1ACB144B009D40EE /* TwipokerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwipokerTests.m; sourceTree = "<group>"; };
 		83D3FF461ACB145B009D40EE /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		83D623D61AE2C258001197AF /* TWPUserManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPUserManagerDelegate.h; sourceTree = "<group>"; };
 		83F231AF1AE1147A00A05D1D /* TWPMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPMainWindow.h; path = Twipoker/TWPMainWindow.h; sourceTree = "<group>"; };
 		83F231B01AE1147A00A05D1D /* TWPMainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPMainWindow.m; path = Twipoker/TWPMainWindow.m; sourceTree = "<group>"; };
 		83F231B11AE1147A00A05D1D /* TWPMainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPMainWindow.xib; path = Twipoker/TWPMainWindow.xib; sourceTree = "<group>"; };
@@ -618,7 +617,6 @@
 				83D3FF251ACB144B009D40EE /* TWPAppDelegate.m */,
 				83F232151AE130A900A05D1D /* TWPUserManager.h */,
 				83F232161AE130A900A05D1D /* TWPUserManager.m */,
-				83D623D61AE2C258001197AF /* TWPUserManagerDelegate.h */,
 				83D3FF1E1ACB144B009D40EE /* main.m */,
 				83D3FF191ACB144B009D40EE /* Supporting Files */,
 			);
