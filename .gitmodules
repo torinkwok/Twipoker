@@ -1,3 +1,6 @@
 [submodule "Twipoker/Vendor/Objectwitter-C"]
 	path = Twipoker/Vendor/Objectwitter-C
 	url = https://github.com/Twipoker-Project/Objectwitter-C
+[submodule "Twipoker/Vendor/KVOController"]
+	path = Twipoker/Vendor/KVOController
+	url = https://github.com/Twipoker-Project/KVOController
