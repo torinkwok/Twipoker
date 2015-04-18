@@ -4,3 +4,6 @@
 [submodule "Twipoker/Vendor/KVOController"]
 	path = Twipoker/Vendor/KVOController
 	url = https://github.com/Twipoker-Project/KVOController
+[submodule "Twipoker/Vendor/INAppStoreWindow"]
+	path = Twipoker/Vendor/INAppStoreWindow
+	url = https://github.com/Twipoker-Project/INAppStoreWindow
