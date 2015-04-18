@@ -122,8 +122,15 @@
 
 // ======================================================================================== //
 
+// User Defauls Keys
 NSString* const TWPUserDefaultsKeyCurrentUser = @"home.bedroom.TongGuo.Twipoker.UserDefaults.CurrentUser";
 NSString* const TWPUserDefaultsKeyAllUsers = @"home.bedroom.TongGuo.Twipoker.UserDefaults.AllUsers";
+
+// Notification Names
+NSString* const TWPTwipokerDidFinishLoginNotification = @"home.bedroom.TongGuo.Twipoker.Notif.DidFinishLogin";
+
+// Notification User Info Keys
+NSString extern* const TWPNewUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.NewUser";
 
 @implementation TWPUserManager
     {

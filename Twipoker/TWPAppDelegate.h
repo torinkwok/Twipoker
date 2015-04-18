@@ -24,10 +24,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "TWPUserManagerDelegate.h"
+
 @class TWPLoginPanelController;
 @class TWPMainWindowController;
 
-@interface TWPAppDelegate : NSObject <NSApplicationDelegate>
+@interface TWPAppDelegate : NSObject <NSApplicationDelegate, TWPUserManagerDelegate>
 
 @property ( strong ) TWPLoginPanelController* loginPanelController;
 @property ( strong ) TWPMainWindowController* mainWindowController;

@@ -94,14 +94,13 @@
                                      successBlock:
         ^( NSString* _OAuthToken, NSString* _OAuthTokenSecret, NSString* _UserID, NSString* _ScreenName )
             {
-            NSLog( @"OAuth Token: %@", _OAuthToken );
-            NSLog( @"OAuth Token Secret: %@", _OAuthTokenSecret );
-            TWPUser* user = [ [ TWPUserManager sharedManager ] createUserWithUserName: _ScreenName
-                                                                               userID: _UserID
-                                                                           OAuthToken: _OAuthToken
-                                                                     OAuthTokenSecret: _OAuthTokenSecret ];
+            TWPUser* newUser = [ [ TWPUserManager sharedManager ]
+                createUserWithUserName: _ScreenName userID: _UserID OAuthToken: _OAuthToken OAuthTokenSecret: _OAuthTokenSecret ];
 
-            TWPUser* fuckingUser = [ [ TWPUserManager sharedManager ] retrieveUserWithUserID: @"2314211198" ];
+            if ( newUser )
+                [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerDidFinishLoginNotification
+                                                                       object: nil
+                                                                     userInfo: @{ TWPNewUserUserInfoKey : newUser } ];
             }
                                             errorBlock: ^( NSError* _Error ){ NSLog( @"%@", _Error ); } ];
     }
