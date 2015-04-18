@@ -27,7 +27,6 @@
 
     #import "TWPGeneral.h"
     #import "Objectwitter-C.h"
-    #import "WaxSealCore/WaxSealCore.h"
     #import "FBKVOController.h"
 #endif
 
