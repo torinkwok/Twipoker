@@ -1,0 +1,1112 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		831447D21ACFF19300BFECE4 /* TWPDebugLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */; };
+		831447D51ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */; };
+		831447D91AD0008E00BFECE4 /* TWPDebugLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D81AD0008E00BFECE4 /* TWPDebugLoginView.m */; };
+		831447DC1AD0046800BFECE4 /* TWPDebugConsoleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447DB1AD0046800BFECE4 /* TWPDebugConsoleController.m */; };
+		8349A6441AD2263C00487896 /* NSActionCell+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A6431AD2263C00487896 /* NSActionCell+TwipokerDrawing.m */; };
+		8349A6471AD24C9700487896 /* NSControl+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A6461AD24C9700487896 /* NSControl+TwipokerDrawing.m */; };
+		8349A64C1AD2D30100487896 /* TWPWhyNotPasswordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A64B1AD2D30100487896 /* TWPWhyNotPasswordButton.m */; };
+		83924D921AE1030B00C25895 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = 83924D871AE1030B00C25895 /* INAppStoreWindowSwizzling.c */; };
+		83924D931AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924D8A1AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.m */; };
+		83924D941AE1030B00C25895 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924D8C1AE1030B00C25895 /* NSDocument+INAppStoreWindowFixes.m */; };
+		83924D951AE1030B00C25895 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924D8E1AE1030B00C25895 /* INAppStoreWindow.m */; };
+		83924D961AE1030B00C25895 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924D911AE1030B00C25895 /* INWindowButton.m */; };
+		83924DA91AE1033700C25895 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83924DA21AE1033700C25895 /* MASPreferencesWindow.xib */; };
+		83924DAA1AE1033700C25895 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DA41AE1033700C25895 /* MASPreferencesWindowController.m */; };
+		83924DC21AE104A900C25895 /* _OTCGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DAE1AE104A900C25895 /* _OTCGeneral.m */; };
+		83924DC31AE104A900C25895 /* OTCEmbeddedURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DB11AE104A900C25895 /* OTCEmbeddedURL.m */; };
+		83924DC41AE104A900C25895 /* OTCFinancialSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DB31AE104A900C25895 /* OTCFinancialSymbol.m */; };
+		83924DC51AE104A900C25895 /* OTCHashtag.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DB51AE104A900C25895 /* OTCHashtag.m */; };
+		83924DC61AE104A900C25895 /* OTCMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DB71AE104A900C25895 /* OTCMedia.m */; };
+		83924DC71AE104A900C25895 /* OTCPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DB91AE104A900C25895 /* OTCPlace.m */; };
+		83924DC81AE104A900C25895 /* OTCResolvedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DBB1AE104A900C25895 /* OTCResolvedObject.m */; };
+		83924DC91AE104A900C25895 /* OTCTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DBD1AE104A900C25895 /* OTCTweet.m */; };
+		83924DCA1AE104A900C25895 /* OTCTwitterUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DBF1AE104A900C25895 /* OTCTwitterUser.m */; };
+		83924DCB1AE104A900C25895 /* OTCUserMention.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DC11AE104A900C25895 /* OTCUserMention.m */; };
+		83924DD21AE105AB00C25895 /* NSColor+Objectwitter-C.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DCF1AE105AB00C25895 /* NSColor+Objectwitter-C.m */; };
+		83924DD31AE105AB00C25895 /* NSDate+WSCCocoaDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DD11AE105AB00C25895 /* NSDate+WSCCocoaDate.m */; };
+		83924DF51AE105E600C25895 /* NSDateFormatter+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DD61AE105E600C25895 /* NSDateFormatter+STTwitter.m */; };
+		83924DF61AE105E600C25895 /* NSError+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DD81AE105E600C25895 /* NSError+STTwitter.m */; };
+		83924DF71AE105E600C25895 /* NSString+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DDA1AE105E600C25895 /* NSString+STTwitter.m */; };
+		83924DF81AE105E600C25895 /* STHTTPRequest+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DDC1AE105E600C25895 /* STHTTPRequest+STTwitter.m */; };
+		83924DF91AE105E600C25895 /* STTwitterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DDF1AE105E600C25895 /* STTwitterAPI.m */; };
+		83924DFA1AE105E600C25895 /* STTwitterAppOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DE11AE105E600C25895 /* STTwitterAppOnly.m */; };
+		83924DFB1AE105E600C25895 /* STTwitterHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DE31AE105E600C25895 /* STTwitterHTML.m */; };
+		83924DFC1AE105E600C25895 /* STTwitterOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DE51AE105E600C25895 /* STTwitterOAuth.m */; };
+		83924DFD1AE105E600C25895 /* STTwitterOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DE71AE105E600C25895 /* STTwitterOS.m */; };
+		83924DFE1AE105E600C25895 /* STTwitterOSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DE91AE105E600C25895 /* STTwitterOSRequest.m */; };
+		83924DFF1AE105E600C25895 /* STTwitterStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DED1AE105E600C25895 /* STTwitterStreamParser.m */; };
+		83924E001AE105E600C25895 /* BAVPlistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF01AE105E600C25895 /* BAVPlistNode.m */; };
+		83924E011AE105E600C25895 /* JSONSyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF21AE105E600C25895 /* JSONSyntaxHighlight.m */; };
+		83924E021AE105E600C25895 /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF41AE105E600C25895 /* STHTTPRequest.m */; };
+		83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8381ACF1C820062D73D /* TWPDebug.m */; };
+		83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84C1ACF1C820062D73D /* TWPButton.m */; };
+		83CFD86E1ACF1C820062D73D /* TWPButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84E1ACF1C820062D73D /* TWPButtonCell.m */; };
+		83CFD86F1ACF1C820062D73D /* TWPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8501ACF1C820062D73D /* TWPTextField.m */; };
+		83CFD8701ACF1C820062D73D /* TWPTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8521ACF1C820062D73D /* TWPTextFieldCell.m */; };
+		83CFD8711ACF1C820062D73D /* TWPGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8541ACF1C820062D73D /* TWPGeneral.m */; };
+		83CFD8721ACF1C820062D73D /* TWPLoginPanel-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8551ACF1C820062D73D /* TWPLoginPanel-Info.plist */; };
+		83CFD8731ACF1C820062D73D /* TWPLoginPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8581ACF1C820062D73D /* TWPLoginPanel.m */; };
+		83CFD8741ACF1C820062D73D /* TWPLoginPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8591ACF1C820062D73D /* TWPLoginPanel.xib */; };
+		83CFD8751ACF1C820062D73D /* TWPLoginPanelContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD85B1ACF1C820062D73D /* TWPLoginPanelContentView.m */; };
+		83CFD8761ACF1C820062D73D /* TWPLoginPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD85D1ACF1C820062D73D /* TWPLoginPanelController.m */; };
+		83CFD8771ACF1C820062D73D /* TWPTwipokerLogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD85F1ACF1C820062D73D /* TWPTwipokerLogoView.m */; };
+		83CFD8781ACF1C820062D73D /* TWPWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8611ACF1C820062D73D /* TWPWindow.m */; };
+		83CFD8851ACF1F070062D73D /* NSAffineTransform+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8821ACF1F070062D73D /* NSAffineTransform+TwipokerDrawing.m */; };
+		83CFD8861ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8841ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.m */; };
+		83CFD8961ACF1FFD0062D73D /* icon_16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD88C1ACF1FFD0062D73D /* icon_16x16.png */; };
+		83CFD8971ACF1FFD0062D73D /* icon_16x16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD88D1ACF1FFD0062D73D /* icon_16x16@2x.png */; };
+		83CFD8981ACF1FFD0062D73D /* icon_32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD88E1ACF1FFD0062D73D /* icon_32x32.png */; };
+		83CFD8991ACF1FFD0062D73D /* icon_32x32@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD88F1ACF1FFD0062D73D /* icon_32x32@2x.png */; };
+		83CFD89A1ACF1FFD0062D73D /* icon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8901ACF1FFD0062D73D /* icon_128x128.png */; };
+		83CFD89B1ACF1FFD0062D73D /* icon_128x128@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8911ACF1FFD0062D73D /* icon_128x128@2x.png */; };
+		83CFD89C1ACF1FFD0062D73D /* icon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8921ACF1FFD0062D73D /* icon_256x256.png */; };
+		83CFD89D1ACF1FFD0062D73D /* icon_256x256@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8931ACF1FFD0062D73D /* icon_256x256@2x.png */; };
+		83CFD89E1ACF1FFD0062D73D /* logo_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8941ACF1FFD0062D73D /* logo_512x512.png */; };
+		83CFD89F1ACF1FFD0062D73D /* logo_512x512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8951ACF1FFD0062D73D /* logo_512x512@2x.png */; };
+		83D3FF131ACB144B009D40EE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D3FF121ACB144B009D40EE /* Cocoa.framework */; };
+		83D3FF1D1ACB144B009D40EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D3FF1B1ACB144B009D40EE /* InfoPlist.strings */; };
+		83D3FF1F1ACB144B009D40EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D3FF1E1ACB144B009D40EE /* main.m */; };
+		83D3FF231ACB144B009D40EE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 83D3FF211ACB144B009D40EE /* Credits.rtf */; };
+		83D3FF261ACB144B009D40EE /* TWPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D3FF251ACB144B009D40EE /* TWPAppDelegate.m */; };
+		83D3FF291ACB144B009D40EE /* TWPMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D3FF271ACB144B009D40EE /* TWPMainMenu.xib */; };
+		83D3FF2B1ACB144B009D40EE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83D3FF2A1ACB144B009D40EE /* Images.xcassets */; };
+		83D3FF321ACB144B009D40EE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D3FF311ACB144B009D40EE /* XCTest.framework */; };
+		83D3FF331ACB144B009D40EE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D3FF121ACB144B009D40EE /* Cocoa.framework */; };
+		83D3FF3B1ACB144B009D40EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D3FF391ACB144B009D40EE /* InfoPlist.strings */; };
+		83D3FF3D1ACB144B009D40EE /* TwipokerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D3FF3C1ACB144B009D40EE /* TwipokerTests.m */; };
+		83D3FF471ACB145B009D40EE /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D3FF461ACB145B009D40EE /* Carbon.framework */; };
+		83F231B41AE1147A00A05D1D /* TWPMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231B01AE1147A00A05D1D /* TWPMainWindow.m */; };
+		83F231B51AE1147A00A05D1D /* TWPMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83F231B11AE1147A00A05D1D /* TWPMainWindow.xib */; };
+		83F231B61AE1147A00A05D1D /* TWPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */; };
+		83F231BD1AE114A600A05D1D /* FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231BA1AE114A600A05D1D /* FBKVOController.m */; };
+		83F231BE1AE114A600A05D1D /* NSObject+FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231BC1AE114A600A05D1D /* NSObject+FBKVOController.m */; };
+		83F232171AE130A900A05D1D /* TWPUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F232161AE130A900A05D1D /* TWPUserManager.m */; };
+		83F2321A1AE15BC200A05D1D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F232191AE15BC200A05D1D /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		83D3FF341ACB144B009D40EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83D3FF071ACB144B009D40EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83D3FF0E1ACB144B009D40EE;
+			remoteInfo = Twipoker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TWPDebugLoginView.xib; sourceTree = "<group>"; };
+		831447D31ACFF1AD00BFECE4 /* TWPDebugLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugLoginViewController.h; sourceTree = "<group>"; };
+		831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginViewController.m; sourceTree = "<group>"; };
+		831447D71AD0008E00BFECE4 /* TWPDebugLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugLoginView.h; sourceTree = "<group>"; };
+		831447D81AD0008E00BFECE4 /* TWPDebugLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginView.m; sourceTree = "<group>"; };
+		831447DA1AD0046800BFECE4 /* TWPDebugConsoleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugConsoleController.h; sourceTree = "<group>"; };
+		831447DB1AD0046800BFECE4 /* TWPDebugConsoleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugConsoleController.m; sourceTree = "<group>"; };
+		8349A6421AD2263C00487896 /* NSActionCell+TwipokerDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSActionCell+TwipokerDrawing.h"; path = "Twipoker/NSActionCell+TwipokerDrawing.h"; sourceTree = "<group>"; };
+		8349A6431AD2263C00487896 /* NSActionCell+TwipokerDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSActionCell+TwipokerDrawing.m"; path = "Twipoker/NSActionCell+TwipokerDrawing.m"; sourceTree = "<group>"; };
+		8349A6451AD24C9700487896 /* NSControl+TwipokerDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSControl+TwipokerDrawing.h"; path = "Twipoker/NSControl+TwipokerDrawing.h"; sourceTree = "<group>"; };
+		8349A6461AD24C9700487896 /* NSControl+TwipokerDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSControl+TwipokerDrawing.m"; path = "Twipoker/NSControl+TwipokerDrawing.m"; sourceTree = "<group>"; };
+		8349A64A1AD2D30100487896 /* TWPWhyNotPasswordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPWhyNotPasswordButton.h; path = Twipoker/TWPWhyNotPasswordButton.h; sourceTree = "<group>"; };
+		8349A64B1AD2D30100487896 /* TWPWhyNotPasswordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPWhyNotPasswordButton.m; path = Twipoker/TWPWhyNotPasswordButton.m; sourceTree = "<group>"; };
+		83924D871AE1030B00C25895 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
+		83924D881AE1030B00C25895 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
+		83924D891AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
+		83924D8A1AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "INWindowBackgroundView+CoreUIRendering.m"; sourceTree = "<group>"; };
+		83924D8B1AE1030B00C25895 /* NSDocument+INAppStoreWindowFixes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDocument+INAppStoreWindowFixes.h"; sourceTree = "<group>"; };
+		83924D8C1AE1030B00C25895 /* NSDocument+INAppStoreWindowFixes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDocument+INAppStoreWindowFixes.m"; sourceTree = "<group>"; };
+		83924D8D1AE1030B00C25895 /* INAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindow.h; sourceTree = "<group>"; };
+		83924D8E1AE1030B00C25895 /* INAppStoreWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INAppStoreWindow.m; sourceTree = "<group>"; };
+		83924D8F1AE1030B00C25895 /* INAppStoreWindowCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowCompatibility.h; sourceTree = "<group>"; };
+		83924D901AE1030B00C25895 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
+		83924D911AE1030B00C25895 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
+		83924D9E1AE1033700C25895 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		83924D9F1AE1033700C25895 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.md; sourceTree = "<group>"; };
+		83924DA01AE1033700C25895 /* MASPreferences.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MASPreferences.podspec; sourceTree = "<group>"; };
+		83924DA11AE1033700C25895 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
+		83924DA21AE1033700C25895 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
+		83924DA31AE1033700C25895 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
+		83924DA41AE1033700C25895 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
+		83924DA51AE1033700C25895 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		83924DAD1AE104A900C25895 /* _OTCGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _OTCGeneral.h; sourceTree = "<group>"; };
+		83924DAE1AE104A900C25895 /* _OTCGeneral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _OTCGeneral.m; sourceTree = "<group>"; };
+		83924DB01AE104A900C25895 /* OTCEmbeddedURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCEmbeddedURL.h; sourceTree = "<group>"; };
+		83924DB11AE104A900C25895 /* OTCEmbeddedURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCEmbeddedURL.m; sourceTree = "<group>"; };
+		83924DB21AE104A900C25895 /* OTCFinancialSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCFinancialSymbol.h; sourceTree = "<group>"; };
+		83924DB31AE104A900C25895 /* OTCFinancialSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCFinancialSymbol.m; sourceTree = "<group>"; };
+		83924DB41AE104A900C25895 /* OTCHashtag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCHashtag.h; sourceTree = "<group>"; };
+		83924DB51AE104A900C25895 /* OTCHashtag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCHashtag.m; sourceTree = "<group>"; };
+		83924DB61AE104A900C25895 /* OTCMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCMedia.h; sourceTree = "<group>"; };
+		83924DB71AE104A900C25895 /* OTCMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCMedia.m; sourceTree = "<group>"; };
+		83924DB81AE104A900C25895 /* OTCPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCPlace.h; sourceTree = "<group>"; };
+		83924DB91AE104A900C25895 /* OTCPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCPlace.m; sourceTree = "<group>"; };
+		83924DBA1AE104A900C25895 /* OTCResolvedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCResolvedObject.h; sourceTree = "<group>"; };
+		83924DBB1AE104A900C25895 /* OTCResolvedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCResolvedObject.m; sourceTree = "<group>"; };
+		83924DBC1AE104A900C25895 /* OTCTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCTweet.h; sourceTree = "<group>"; };
+		83924DBD1AE104A900C25895 /* OTCTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCTweet.m; sourceTree = "<group>"; };
+		83924DBE1AE104A900C25895 /* OTCTwitterUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCTwitterUser.h; sourceTree = "<group>"; };
+		83924DBF1AE104A900C25895 /* OTCTwitterUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCTwitterUser.m; sourceTree = "<group>"; };
+		83924DC01AE104A900C25895 /* OTCUserMention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCUserMention.h; sourceTree = "<group>"; };
+		83924DC11AE104A900C25895 /* OTCUserMention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCUserMention.m; sourceTree = "<group>"; };
+		83924DCD1AE1057300C25895 /* Objectwitter-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Objectwitter-C.h"; sourceTree = "<group>"; };
+		83924DCE1AE105AB00C25895 /* NSColor+Objectwitter-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+Objectwitter-C.h"; sourceTree = "<group>"; };
+		83924DCF1AE105AB00C25895 /* NSColor+Objectwitter-C.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+Objectwitter-C.m"; sourceTree = "<group>"; };
+		83924DD01AE105AB00C25895 /* NSDate+WSCCocoaDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+WSCCocoaDate.h"; sourceTree = "<group>"; };
+		83924DD11AE105AB00C25895 /* NSDate+WSCCocoaDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WSCCocoaDate.m"; sourceTree = "<group>"; };
+		83924DD51AE105E600C25895 /* NSDateFormatter+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+STTwitter.h"; sourceTree = "<group>"; };
+		83924DD61AE105E600C25895 /* NSDateFormatter+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+STTwitter.m"; sourceTree = "<group>"; };
+		83924DD71AE105E600C25895 /* NSError+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+STTwitter.h"; sourceTree = "<group>"; };
+		83924DD81AE105E600C25895 /* NSError+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+STTwitter.m"; sourceTree = "<group>"; };
+		83924DD91AE105E600C25895 /* NSString+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+STTwitter.h"; sourceTree = "<group>"; };
+		83924DDA1AE105E600C25895 /* NSString+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+STTwitter.m"; sourceTree = "<group>"; };
+		83924DDB1AE105E600C25895 /* STHTTPRequest+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STHTTPRequest+STTwitter.h"; sourceTree = "<group>"; };
+		83924DDC1AE105E600C25895 /* STHTTPRequest+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STHTTPRequest+STTwitter.m"; sourceTree = "<group>"; };
+		83924DDD1AE105E600C25895 /* STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitter.h; sourceTree = "<group>"; };
+		83924DDE1AE105E600C25895 /* STTwitterAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterAPI.h; sourceTree = "<group>"; };
+		83924DDF1AE105E600C25895 /* STTwitterAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterAPI.m; sourceTree = "<group>"; };
+		83924DE01AE105E600C25895 /* STTwitterAppOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterAppOnly.h; sourceTree = "<group>"; };
+		83924DE11AE105E600C25895 /* STTwitterAppOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterAppOnly.m; sourceTree = "<group>"; };
+		83924DE21AE105E600C25895 /* STTwitterHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterHTML.h; sourceTree = "<group>"; };
+		83924DE31AE105E600C25895 /* STTwitterHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterHTML.m; sourceTree = "<group>"; };
+		83924DE41AE105E600C25895 /* STTwitterOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOAuth.h; sourceTree = "<group>"; };
+		83924DE51AE105E600C25895 /* STTwitterOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOAuth.m; sourceTree = "<group>"; };
+		83924DE61AE105E600C25895 /* STTwitterOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOS.h; sourceTree = "<group>"; };
+		83924DE71AE105E600C25895 /* STTwitterOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOS.m; sourceTree = "<group>"; };
+		83924DE81AE105E600C25895 /* STTwitterOSRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterOSRequest.h; sourceTree = "<group>"; };
+		83924DE91AE105E600C25895 /* STTwitterOSRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterOSRequest.m; sourceTree = "<group>"; };
+		83924DEA1AE105E600C25895 /* STTwitterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterProtocol.h; sourceTree = "<group>"; };
+		83924DEB1AE105E600C25895 /* STTwitterRequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterRequestProtocol.h; sourceTree = "<group>"; };
+		83924DEC1AE105E600C25895 /* STTwitterStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTwitterStreamParser.h; sourceTree = "<group>"; };
+		83924DED1AE105E600C25895 /* STTwitterStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTwitterStreamParser.m; sourceTree = "<group>"; };
+		83924DEF1AE105E600C25895 /* BAVPlistNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAVPlistNode.h; sourceTree = "<group>"; };
+		83924DF01AE105E600C25895 /* BAVPlistNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAVPlistNode.m; sourceTree = "<group>"; };
+		83924DF11AE105E600C25895 /* JSONSyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSyntaxHighlight.h; sourceTree = "<group>"; };
+		83924DF21AE105E600C25895 /* JSONSyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONSyntaxHighlight.m; sourceTree = "<group>"; };
+		83924DF31AE105E600C25895 /* STHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHTTPRequest.h; sourceTree = "<group>"; };
+		83924DF41AE105E600C25895 /* STHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHTTPRequest.m; sourceTree = "<group>"; };
+		83CFD8311ACF1BCE0062D73D /* Twipoker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Twipoker.entitlements; sourceTree = "<group>"; };
+		83CFD8321ACF1C820062D73D /* _TWPButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TWPButtonCell.h; path = Twipoker/_TWPButtonCell.h; sourceTree = "<group>"; };
+		83CFD8371ACF1C820062D73D /* TWPDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebug.h; sourceTree = "<group>"; };
+		83CFD8381ACF1C820062D73D /* TWPDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebug.m; sourceTree = "<group>"; };
+		83CFD84B1ACF1C820062D73D /* TWPButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPButton.h; path = Twipoker/TWPButton.h; sourceTree = "<group>"; };
+		83CFD84C1ACF1C820062D73D /* TWPButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPButton.m; path = Twipoker/TWPButton.m; sourceTree = "<group>"; };
+		83CFD84D1ACF1C820062D73D /* TWPButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPButtonCell.h; path = Twipoker/TWPButtonCell.h; sourceTree = "<group>"; };
+		83CFD84E1ACF1C820062D73D /* TWPButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPButtonCell.m; path = Twipoker/TWPButtonCell.m; sourceTree = "<group>"; };
+		83CFD84F1ACF1C820062D73D /* TWPTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTextField.h; path = Twipoker/TWPTextField.h; sourceTree = "<group>"; };
+		83CFD8501ACF1C820062D73D /* TWPTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTextField.m; path = Twipoker/TWPTextField.m; sourceTree = "<group>"; };
+		83CFD8511ACF1C820062D73D /* TWPTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTextFieldCell.h; path = Twipoker/TWPTextFieldCell.h; sourceTree = "<group>"; };
+		83CFD8521ACF1C820062D73D /* TWPTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTextFieldCell.m; path = Twipoker/TWPTextFieldCell.m; sourceTree = "<group>"; };
+		83CFD8531ACF1C820062D73D /* TWPGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPGeneral.h; sourceTree = "<group>"; };
+		83CFD8541ACF1C820062D73D /* TWPGeneral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPGeneral.m; sourceTree = "<group>"; };
+		83CFD8551ACF1C820062D73D /* TWPLoginPanel-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TWPLoginPanel-Info.plist"; sourceTree = "<group>"; };
+		83CFD8571ACF1C820062D73D /* TWPLoginPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPLoginPanel.h; path = Twipoker/TWPLoginPanel.h; sourceTree = "<group>"; };
+		83CFD8581ACF1C820062D73D /* TWPLoginPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPLoginPanel.m; path = Twipoker/TWPLoginPanel.m; sourceTree = "<group>"; };
+		83CFD8591ACF1C820062D73D /* TWPLoginPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPLoginPanel.xib; path = Twipoker/TWPLoginPanel.xib; sourceTree = "<group>"; };
+		83CFD85A1ACF1C820062D73D /* TWPLoginPanelContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPLoginPanelContentView.h; path = Twipoker/TWPLoginPanelContentView.h; sourceTree = "<group>"; };
+		83CFD85B1ACF1C820062D73D /* TWPLoginPanelContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPLoginPanelContentView.m; path = Twipoker/TWPLoginPanelContentView.m; sourceTree = "<group>"; };
+		83CFD85C1ACF1C820062D73D /* TWPLoginPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPLoginPanelController.h; path = Twipoker/TWPLoginPanelController.h; sourceTree = "<group>"; };
+		83CFD85D1ACF1C820062D73D /* TWPLoginPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPLoginPanelController.m; path = Twipoker/TWPLoginPanelController.m; sourceTree = "<group>"; };
+		83CFD85E1ACF1C820062D73D /* TWPTwipokerLogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTwipokerLogoView.h; path = Twipoker/TWPTwipokerLogoView.h; sourceTree = "<group>"; };
+		83CFD85F1ACF1C820062D73D /* TWPTwipokerLogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTwipokerLogoView.m; path = Twipoker/TWPTwipokerLogoView.m; sourceTree = "<group>"; };
+		83CFD8601ACF1C820062D73D /* TWPWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPWindow.h; path = Twipoker/TWPWindow.h; sourceTree = "<group>"; };
+		83CFD8611ACF1C820062D73D /* TWPWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPWindow.m; path = Twipoker/TWPWindow.m; sourceTree = "<group>"; };
+		83CFD8811ACF1F070062D73D /* NSAffineTransform+TwipokerDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAffineTransform+TwipokerDrawing.h"; path = "Twipoker/NSAffineTransform+TwipokerDrawing.h"; sourceTree = "<group>"; };
+		83CFD8821ACF1F070062D73D /* NSAffineTransform+TwipokerDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAffineTransform+TwipokerDrawing.m"; path = "Twipoker/NSAffineTransform+TwipokerDrawing.m"; sourceTree = "<group>"; };
+		83CFD8831ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+TwipokerDrawing.h"; path = "Twipoker/NSBezierPath+TwipokerDrawing.h"; sourceTree = "<group>"; };
+		83CFD8841ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+TwipokerDrawing.m"; path = "Twipoker/NSBezierPath+TwipokerDrawing.m"; sourceTree = "<group>"; };
+		83CFD88C1ACF1FFD0062D73D /* icon_16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_16x16.png; sourceTree = "<group>"; };
+		83CFD88D1ACF1FFD0062D73D /* icon_16x16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_16x16@2x.png"; sourceTree = "<group>"; };
+		83CFD88E1ACF1FFD0062D73D /* icon_32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_32x32.png; sourceTree = "<group>"; };
+		83CFD88F1ACF1FFD0062D73D /* icon_32x32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_32x32@2x.png"; sourceTree = "<group>"; };
+		83CFD8901ACF1FFD0062D73D /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_128x128.png; sourceTree = "<group>"; };
+		83CFD8911ACF1FFD0062D73D /* icon_128x128@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_128x128@2x.png"; sourceTree = "<group>"; };
+		83CFD8921ACF1FFD0062D73D /* icon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_256x256.png; sourceTree = "<group>"; };
+		83CFD8931ACF1FFD0062D73D /* icon_256x256@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_256x256@2x.png"; sourceTree = "<group>"; };
+		83CFD8941ACF1FFD0062D73D /* logo_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_512x512.png; sourceTree = "<group>"; };
+		83CFD8951ACF1FFD0062D73D /* logo_512x512@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_512x512@2x.png"; sourceTree = "<group>"; };
+		83D3FF0F1ACB144B009D40EE /* Twipoker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twipoker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		83D3FF121ACB144B009D40EE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		83D3FF151ACB144B009D40EE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		83D3FF161ACB144B009D40EE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		83D3FF171ACB144B009D40EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		83D3FF1A1ACB144B009D40EE /* Twipoker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Twipoker-Info.plist"; sourceTree = "<group>"; };
+		83D3FF1C1ACB144B009D40EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		83D3FF1E1ACB144B009D40EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		83D3FF201ACB144B009D40EE /* Twipoker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Twipoker-Prefix.pch"; sourceTree = "<group>"; };
+		83D3FF221ACB144B009D40EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		83D3FF241ACB144B009D40EE /* TWPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWPAppDelegate.h; sourceTree = "<group>"; };
+		83D3FF251ACB144B009D40EE /* TWPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TWPAppDelegate.m; sourceTree = "<group>"; };
+		83D3FF281ACB144B009D40EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TWPMainMenu.xib; sourceTree = "<group>"; };
+		83D3FF2A1ACB144B009D40EE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
+		83D3FF301ACB144B009D40EE /* TwipokerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwipokerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		83D3FF311ACB144B009D40EE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		83D3FF381ACB144B009D40EE /* TwipokerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TwipokerTests-Info.plist"; sourceTree = "<group>"; };
+		83D3FF3A1ACB144B009D40EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		83D3FF3C1ACB144B009D40EE /* TwipokerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwipokerTests.m; sourceTree = "<group>"; };
+		83D3FF461ACB145B009D40EE /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		83F231AF1AE1147A00A05D1D /* TWPMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPMainWindow.h; path = Twipoker/TWPMainWindow.h; sourceTree = "<group>"; };
+		83F231B01AE1147A00A05D1D /* TWPMainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPMainWindow.m; path = Twipoker/TWPMainWindow.m; sourceTree = "<group>"; };
+		83F231B11AE1147A00A05D1D /* TWPMainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPMainWindow.xib; path = Twipoker/TWPMainWindow.xib; sourceTree = "<group>"; };
+		83F231B21AE1147A00A05D1D /* TWPMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPMainWindowController.h; path = Twipoker/TWPMainWindowController.h; sourceTree = "<group>"; };
+		83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPMainWindowController.m; path = Twipoker/TWPMainWindowController.m; sourceTree = "<group>"; };
+		83F231B91AE114A600A05D1D /* FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBKVOController.h; sourceTree = "<group>"; };
+		83F231BA1AE114A600A05D1D /* FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBKVOController.m; sourceTree = "<group>"; };
+		83F231BB1AE114A600A05D1D /* NSObject+FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FBKVOController.h"; sourceTree = "<group>"; };
+		83F231BC1AE114A600A05D1D /* NSObject+FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FBKVOController.m"; sourceTree = "<group>"; };
+		83F232151AE130A900A05D1D /* TWPUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPUserManager.h; sourceTree = "<group>"; };
+		83F232161AE130A900A05D1D /* TWPUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPUserManager.m; sourceTree = "<group>"; };
+		83F232191AE15BC200A05D1D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		83D3FF0C1ACB144B009D40EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83F2321A1AE15BC200A05D1D /* Security.framework in Frameworks */,
+				83D3FF471ACB145B009D40EE /* Carbon.framework in Frameworks */,
+				83D3FF131ACB144B009D40EE /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83D3FF2D1ACB144B009D40EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D3FF331ACB144B009D40EE /* Cocoa.framework in Frameworks */,
+				83D3FF321ACB144B009D40EE /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		83924D271AE0FC6300C25895 /* Main Window */ = {
+			isa = PBXGroup;
+			children = (
+				83924D281AE0FC6F00C25895 /* xib */,
+				83F231B21AE1147A00A05D1D /* TWPMainWindowController.h */,
+				83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */,
+				83F231AF1AE1147A00A05D1D /* TWPMainWindow.h */,
+				83F231B01AE1147A00A05D1D /* TWPMainWindow.m */,
+			);
+			name = "Main Window";
+			sourceTree = "<group>";
+		};
+		83924D281AE0FC6F00C25895 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				83F231B11AE1147A00A05D1D /* TWPMainWindow.xib */,
+			);
+			name = xib;
+			sourceTree = "<group>";
+		};
+		83924D851AE1030B00C25895 /* INAppStoreWindow */ = {
+			isa = PBXGroup;
+			children = (
+				83924D861AE1030B00C25895 /* Extensions */,
+				83924D8D1AE1030B00C25895 /* INAppStoreWindow.h */,
+				83924D8E1AE1030B00C25895 /* INAppStoreWindow.m */,
+				83924D8F1AE1030B00C25895 /* INAppStoreWindowCompatibility.h */,
+				83924D901AE1030B00C25895 /* INWindowButton.h */,
+				83924D911AE1030B00C25895 /* INWindowButton.m */,
+			);
+			name = INAppStoreWindow;
+			path = INAppStoreWindow/INAppStoreWindow;
+			sourceTree = "<group>";
+		};
+		83924D861AE1030B00C25895 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				83924D871AE1030B00C25895 /* INAppStoreWindowSwizzling.c */,
+				83924D881AE1030B00C25895 /* INAppStoreWindowSwizzling.h */,
+				83924D891AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.h */,
+				83924D8A1AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.m */,
+				83924D8B1AE1030B00C25895 /* NSDocument+INAppStoreWindowFixes.h */,
+				83924D8C1AE1030B00C25895 /* NSDocument+INAppStoreWindowFixes.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		83924D9D1AE1033700C25895 /* TGForkedMASPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				83924D9E1AE1033700C25895 /* .gitignore */,
+				83924D9F1AE1033700C25895 /* LICENSE.md */,
+				83924DA01AE1033700C25895 /* MASPreferences.podspec */,
+				83924DA11AE1033700C25895 /* MASPreferencesViewController.h */,
+				83924DA21AE1033700C25895 /* MASPreferencesWindow.xib */,
+				83924DA31AE1033700C25895 /* MASPreferencesWindowController.h */,
+				83924DA41AE1033700C25895 /* MASPreferencesWindowController.m */,
+				83924DA51AE1033700C25895 /* README.md */,
+			);
+			path = TGForkedMASPreferences;
+			sourceTree = "<group>";
+		};
+		83924DAC1AE104A900C25895 /* Objectwitter-C */ = {
+			isa = PBXGroup;
+			children = (
+				83924DD41AE105E600C25895 /* STTwitter */,
+				83924DCD1AE1057300C25895 /* Objectwitter-C.h */,
+				83924DAD1AE104A900C25895 /* _OTCGeneral.h */,
+				83924DAE1AE104A900C25895 /* _OTCGeneral.m */,
+				83924DB01AE104A900C25895 /* OTCEmbeddedURL.h */,
+				83924DB11AE104A900C25895 /* OTCEmbeddedURL.m */,
+				83924DB21AE104A900C25895 /* OTCFinancialSymbol.h */,
+				83924DB31AE104A900C25895 /* OTCFinancialSymbol.m */,
+				83924DB41AE104A900C25895 /* OTCHashtag.h */,
+				83924DB51AE104A900C25895 /* OTCHashtag.m */,
+				83924DB61AE104A900C25895 /* OTCMedia.h */,
+				83924DB71AE104A900C25895 /* OTCMedia.m */,
+				83924DB81AE104A900C25895 /* OTCPlace.h */,
+				83924DB91AE104A900C25895 /* OTCPlace.m */,
+				83924DBA1AE104A900C25895 /* OTCResolvedObject.h */,
+				83924DBB1AE104A900C25895 /* OTCResolvedObject.m */,
+				83924DBC1AE104A900C25895 /* OTCTweet.h */,
+				83924DBD1AE104A900C25895 /* OTCTweet.m */,
+				83924DBE1AE104A900C25895 /* OTCTwitterUser.h */,
+				83924DBF1AE104A900C25895 /* OTCTwitterUser.m */,
+				83924DC01AE104A900C25895 /* OTCUserMention.h */,
+				83924DC11AE104A900C25895 /* OTCUserMention.m */,
+				83924DCE1AE105AB00C25895 /* NSColor+Objectwitter-C.h */,
+				83924DCF1AE105AB00C25895 /* NSColor+Objectwitter-C.m */,
+				83924DD01AE105AB00C25895 /* NSDate+WSCCocoaDate.h */,
+				83924DD11AE105AB00C25895 /* NSDate+WSCCocoaDate.m */,
+			);
+			name = "Objectwitter-C";
+			path = "Objectwitter-C/Objectwitter-C";
+			sourceTree = "<group>";
+		};
+		83924DD41AE105E600C25895 /* STTwitter */ = {
+			isa = PBXGroup;
+			children = (
+				83924DD51AE105E600C25895 /* NSDateFormatter+STTwitter.h */,
+				83924DD61AE105E600C25895 /* NSDateFormatter+STTwitter.m */,
+				83924DD71AE105E600C25895 /* NSError+STTwitter.h */,
+				83924DD81AE105E600C25895 /* NSError+STTwitter.m */,
+				83924DD91AE105E600C25895 /* NSString+STTwitter.h */,
+				83924DDA1AE105E600C25895 /* NSString+STTwitter.m */,
+				83924DDB1AE105E600C25895 /* STHTTPRequest+STTwitter.h */,
+				83924DDC1AE105E600C25895 /* STHTTPRequest+STTwitter.m */,
+				83924DDD1AE105E600C25895 /* STTwitter.h */,
+				83924DDE1AE105E600C25895 /* STTwitterAPI.h */,
+				83924DDF1AE105E600C25895 /* STTwitterAPI.m */,
+				83924DE01AE105E600C25895 /* STTwitterAppOnly.h */,
+				83924DE11AE105E600C25895 /* STTwitterAppOnly.m */,
+				83924DE21AE105E600C25895 /* STTwitterHTML.h */,
+				83924DE31AE105E600C25895 /* STTwitterHTML.m */,
+				83924DE41AE105E600C25895 /* STTwitterOAuth.h */,
+				83924DE51AE105E600C25895 /* STTwitterOAuth.m */,
+				83924DE61AE105E600C25895 /* STTwitterOS.h */,
+				83924DE71AE105E600C25895 /* STTwitterOS.m */,
+				83924DE81AE105E600C25895 /* STTwitterOSRequest.h */,
+				83924DE91AE105E600C25895 /* STTwitterOSRequest.m */,
+				83924DEA1AE105E600C25895 /* STTwitterProtocol.h */,
+				83924DEB1AE105E600C25895 /* STTwitterRequestProtocol.h */,
+				83924DEC1AE105E600C25895 /* STTwitterStreamParser.h */,
+				83924DED1AE105E600C25895 /* STTwitterStreamParser.m */,
+				83924DEE1AE105E600C25895 /* Vendor */,
+			);
+			path = STTwitter;
+			sourceTree = "<group>";
+		};
+		83924DEE1AE105E600C25895 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				83924DEF1AE105E600C25895 /* BAVPlistNode.h */,
+				83924DF01AE105E600C25895 /* BAVPlistNode.m */,
+				83924DF11AE105E600C25895 /* JSONSyntaxHighlight.h */,
+				83924DF21AE105E600C25895 /* JSONSyntaxHighlight.m */,
+				83924DF31AE105E600C25895 /* STHTTPRequest.h */,
+				83924DF41AE105E600C25895 /* STHTTPRequest.m */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		83CFD8361ACF1C820062D73D /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				83CFD8A01ACF207C0062D73D /* xib */,
+				83CFD8371ACF1C820062D73D /* TWPDebug.h */,
+				83CFD8381ACF1C820062D73D /* TWPDebug.m */,
+				831447DA1AD0046800BFECE4 /* TWPDebugConsoleController.h */,
+				831447DB1AD0046800BFECE4 /* TWPDebugConsoleController.m */,
+				831447D31ACFF1AD00BFECE4 /* TWPDebugLoginViewController.h */,
+				831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */,
+				831447D71AD0008E00BFECE4 /* TWPDebugLoginView.h */,
+				831447D81AD0008E00BFECE4 /* TWPDebugLoginView.m */,
+			);
+			name = Debug;
+			path = Twipoker/Debug;
+			sourceTree = "<group>";
+		};
+		83CFD87A1ACF1CCA0062D73D /* Login Panel */ = {
+			isa = PBXGroup;
+			children = (
+				83CFD87B1ACF1CF60062D73D /* xib */,
+				83CFD85C1ACF1C820062D73D /* TWPLoginPanelController.h */,
+				83CFD85D1ACF1C820062D73D /* TWPLoginPanelController.m */,
+				83CFD8571ACF1C820062D73D /* TWPLoginPanel.h */,
+				83CFD8581ACF1C820062D73D /* TWPLoginPanel.m */,
+				83CFD85A1ACF1C820062D73D /* TWPLoginPanelContentView.h */,
+				83CFD85B1ACF1C820062D73D /* TWPLoginPanelContentView.m */,
+				8349A64A1AD2D30100487896 /* TWPWhyNotPasswordButton.h */,
+				8349A64B1AD2D30100487896 /* TWPWhyNotPasswordButton.m */,
+				83CFD85E1ACF1C820062D73D /* TWPTwipokerLogoView.h */,
+				83CFD85F1ACF1C820062D73D /* TWPTwipokerLogoView.m */,
+			);
+			name = "Login Panel";
+			sourceTree = "<group>";
+		};
+		83CFD87B1ACF1CF60062D73D /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				83CFD8591ACF1C820062D73D /* TWPLoginPanel.xib */,
+			);
+			name = xib;
+			sourceTree = "<group>";
+		};
+		83CFD87D1ACF1D690062D73D /* General UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				83CFD87E1ACF1D9A0062D73D /* Public */,
+				83CFD87F1ACF1DAD0062D73D /* Private */,
+			);
+			name = "General UI Components";
+			sourceTree = "<group>";
+		};
+		83CFD87E1ACF1D9A0062D73D /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				83CFD84B1ACF1C820062D73D /* TWPButton.h */,
+				83CFD84C1ACF1C820062D73D /* TWPButton.m */,
+				83CFD84D1ACF1C820062D73D /* TWPButtonCell.h */,
+				83CFD84E1ACF1C820062D73D /* TWPButtonCell.m */,
+				83CFD84F1ACF1C820062D73D /* TWPTextField.h */,
+				83CFD8501ACF1C820062D73D /* TWPTextField.m */,
+				83CFD8511ACF1C820062D73D /* TWPTextFieldCell.h */,
+				83CFD8521ACF1C820062D73D /* TWPTextFieldCell.m */,
+				83CFD8601ACF1C820062D73D /* TWPWindow.h */,
+				83CFD8611ACF1C820062D73D /* TWPWindow.m */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
+		83CFD87F1ACF1DAD0062D73D /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				83CFD8321ACF1C820062D73D /* _TWPButtonCell.h */,
+			);
+			name = Private;
+			sourceTree = "<group>";
+		};
+		83CFD8801ACF1E4B0062D73D /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				83D3FF271ACB144B009D40EE /* TWPMainMenu.xib */,
+			);
+			name = xib;
+			sourceTree = "<group>";
+		};
+		83CFD8871ACF1FB80062D73D /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				83D3FF2A1ACB144B009D40EE /* Images.xcassets */,
+				83CFD88C1ACF1FFD0062D73D /* icon_16x16.png */,
+				83CFD88D1ACF1FFD0062D73D /* icon_16x16@2x.png */,
+				83CFD88E1ACF1FFD0062D73D /* icon_32x32.png */,
+				83CFD88F1ACF1FFD0062D73D /* icon_32x32@2x.png */,
+				83CFD8901ACF1FFD0062D73D /* icon_128x128.png */,
+				83CFD8911ACF1FFD0062D73D /* icon_128x128@2x.png */,
+				83CFD8921ACF1FFD0062D73D /* icon_256x256.png */,
+				83CFD8931ACF1FFD0062D73D /* icon_256x256@2x.png */,
+				83CFD8941ACF1FFD0062D73D /* logo_512x512.png */,
+				83CFD8951ACF1FFD0062D73D /* logo_512x512@2x.png */,
+			);
+			name = Artwork;
+			path = Twipoker/Artwork;
+			sourceTree = "<group>";
+		};
+		83CFD8A01ACF207C0062D73D /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */,
+			);
+			name = xib;
+			sourceTree = "<group>";
+		};
+		83CFD8A11ACF22700062D73D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				83CFD8811ACF1F070062D73D /* NSAffineTransform+TwipokerDrawing.h */,
+				83CFD8821ACF1F070062D73D /* NSAffineTransform+TwipokerDrawing.m */,
+				83CFD8831ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.h */,
+				83CFD8841ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.m */,
+				8349A6451AD24C9700487896 /* NSControl+TwipokerDrawing.h */,
+				8349A6461AD24C9700487896 /* NSControl+TwipokerDrawing.m */,
+				8349A6421AD2263C00487896 /* NSActionCell+TwipokerDrawing.h */,
+				8349A6431AD2263C00487896 /* NSActionCell+TwipokerDrawing.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		83CFD8A21ACF22A90062D73D /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				83CFD8801ACF1E4B0062D73D /* xib */,
+			);
+			name = "Main Menu";
+			path = Twipoker;
+			sourceTree = "<group>";
+		};
+		83D3FF061ACB144B009D40EE = {
+			isa = PBXGroup;
+			children = (
+				83924D271AE0FC6300C25895 /* Main Window */,
+				83CFD8A11ACF22700062D73D /* Categories */,
+				83CFD8A21ACF22A90062D73D /* Main Menu */,
+				83CFD87D1ACF1D690062D73D /* General UI Components */,
+				83CFD87A1ACF1CCA0062D73D /* Login Panel */,
+				83CFD8361ACF1C820062D73D /* Debug */,
+				83D3FF181ACB144B009D40EE /* Whole App */,
+				83CFD8871ACF1FB80062D73D /* Artwork */,
+				83D749D81ACF265D00788683 /* Vendor */,
+				83D3FF361ACB144B009D40EE /* TwipokerTests */,
+				83D3FF111ACB144B009D40EE /* Frameworks */,
+				83D3FF101ACB144B009D40EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		83D3FF101ACB144B009D40EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				83D3FF0F1ACB144B009D40EE /* Twipoker.app */,
+				83D3FF301ACB144B009D40EE /* TwipokerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		83D3FF111ACB144B009D40EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83F232191AE15BC200A05D1D /* Security.framework */,
+				83D3FF461ACB145B009D40EE /* Carbon.framework */,
+				83D3FF121ACB144B009D40EE /* Cocoa.framework */,
+				83D3FF311ACB144B009D40EE /* XCTest.framework */,
+				83D3FF141ACB144B009D40EE /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83D3FF141ACB144B009D40EE /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83D3FF151ACB144B009D40EE /* AppKit.framework */,
+				83D3FF161ACB144B009D40EE /* CoreData.framework */,
+				83D3FF171ACB144B009D40EE /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		83D3FF181ACB144B009D40EE /* Whole App */ = {
+			isa = PBXGroup;
+			children = (
+				83CFD8531ACF1C820062D73D /* TWPGeneral.h */,
+				83CFD8541ACF1C820062D73D /* TWPGeneral.m */,
+				83D3FF241ACB144B009D40EE /* TWPAppDelegate.h */,
+				83D3FF251ACB144B009D40EE /* TWPAppDelegate.m */,
+				83F232151AE130A900A05D1D /* TWPUserManager.h */,
+				83F232161AE130A900A05D1D /* TWPUserManager.m */,
+				83D3FF1E1ACB144B009D40EE /* main.m */,
+				83D3FF191ACB144B009D40EE /* Supporting Files */,
+			);
+			name = "Whole App";
+			path = Twipoker;
+			sourceTree = "<group>";
+		};
+		83D3FF191ACB144B009D40EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83CFD8311ACF1BCE0062D73D /* Twipoker.entitlements */,
+				83CFD8551ACF1C820062D73D /* TWPLoginPanel-Info.plist */,
+				83D3FF1A1ACB144B009D40EE /* Twipoker-Info.plist */,
+				83D3FF1B1ACB144B009D40EE /* InfoPlist.strings */,
+				83D3FF201ACB144B009D40EE /* Twipoker-Prefix.pch */,
+				83D3FF211ACB144B009D40EE /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		83D3FF361ACB144B009D40EE /* TwipokerTests */ = {
+			isa = PBXGroup;
+			children = (
+				83D3FF3C1ACB144B009D40EE /* TwipokerTests.m */,
+				83D3FF371ACB144B009D40EE /* Supporting Files */,
+			);
+			path = TwipokerTests;
+			sourceTree = "<group>";
+		};
+		83D3FF371ACB144B009D40EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83D3FF381ACB144B009D40EE /* TwipokerTests-Info.plist */,
+				83D3FF391ACB144B009D40EE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		83D749D81ACF265D00788683 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				83F231B71AE114A600A05D1D /* FBKVOController */,
+				83924DAC1AE104A900C25895 /* Objectwitter-C */,
+				83924D9D1AE1033700C25895 /* TGForkedMASPreferences */,
+				83924D851AE1030B00C25895 /* INAppStoreWindow */,
+			);
+			name = Vendor;
+			path = Twipoker/Vendor;
+			sourceTree = "<group>";
+		};
+		83F231B71AE114A600A05D1D /* FBKVOController */ = {
+			isa = PBXGroup;
+			children = (
+				83F231B91AE114A600A05D1D /* FBKVOController.h */,
+				83F231BA1AE114A600A05D1D /* FBKVOController.m */,
+				83F231BB1AE114A600A05D1D /* NSObject+FBKVOController.h */,
+				83F231BC1AE114A600A05D1D /* NSObject+FBKVOController.m */,
+			);
+			name = FBKVOController;
+			path = KVOController/FBKVOController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		83D3FF0E1ACB144B009D40EE /* Twipoker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83D3FF401ACB144B009D40EE /* Build configuration list for PBXNativeTarget "Twipoker" */;
+			buildPhases = (
+				83D3FF0B1ACB144B009D40EE /* Sources */,
+				83D3FF0C1ACB144B009D40EE /* Frameworks */,
+				83D3FF0D1ACB144B009D40EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Twipoker;
+			productName = Twipoker;
+			productReference = 83D3FF0F1ACB144B009D40EE /* Twipoker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		83D3FF2F1ACB144B009D40EE /* TwipokerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83D3FF431ACB144B009D40EE /* Build configuration list for PBXNativeTarget "TwipokerTests" */;
+			buildPhases = (
+				83D3FF2C1ACB144B009D40EE /* Sources */,
+				83D3FF2D1ACB144B009D40EE /* Frameworks */,
+				83D3FF2E1ACB144B009D40EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83D3FF351ACB144B009D40EE /* PBXTargetDependency */,
+			);
+			name = TwipokerTests;
+			productName = TwipokerTests;
+			productReference = 83D3FF301ACB144B009D40EE /* TwipokerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83D3FF071ACB144B009D40EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TWP;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Tong Guo";
+				TargetAttributes = {
+					83D3FF0E1ACB144B009D40EE = {
+						DevelopmentTeam = 89BSC2UYH8;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					83D3FF2F1ACB144B009D40EE = {
+						TestTargetID = 83D3FF0E1ACB144B009D40EE;
+					};
+				};
+			};
+			buildConfigurationList = 83D3FF0A1ACB144B009D40EE /* Build configuration list for PBXProject "Twipoker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83D3FF061ACB144B009D40EE;
+			productRefGroup = 83D3FF101ACB144B009D40EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				83D3FF0E1ACB144B009D40EE /* Twipoker */,
+				83D3FF2F1ACB144B009D40EE /* TwipokerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		83D3FF0D1ACB144B009D40EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83CFD8971ACF1FFD0062D73D /* icon_16x16@2x.png in Resources */,
+				83D3FF1D1ACB144B009D40EE /* InfoPlist.strings in Resources */,
+				831447D21ACFF19300BFECE4 /* TWPDebugLoginView.xib in Resources */,
+				83D3FF2B1ACB144B009D40EE /* Images.xcassets in Resources */,
+				83D3FF231ACB144B009D40EE /* Credits.rtf in Resources */,
+				83CFD89A1ACF1FFD0062D73D /* icon_128x128.png in Resources */,
+				83CFD8741ACF1C820062D73D /* TWPLoginPanel.xib in Resources */,
+				83D3FF291ACB144B009D40EE /* TWPMainMenu.xib in Resources */,
+				83CFD89F1ACF1FFD0062D73D /* logo_512x512@2x.png in Resources */,
+				83CFD89D1ACF1FFD0062D73D /* icon_256x256@2x.png in Resources */,
+				83924DA91AE1033700C25895 /* MASPreferencesWindow.xib in Resources */,
+				83CFD8981ACF1FFD0062D73D /* icon_32x32.png in Resources */,
+				83CFD8721ACF1C820062D73D /* TWPLoginPanel-Info.plist in Resources */,
+				83F231B51AE1147A00A05D1D /* TWPMainWindow.xib in Resources */,
+				83CFD89E1ACF1FFD0062D73D /* logo_512x512.png in Resources */,
+				83CFD8991ACF1FFD0062D73D /* icon_32x32@2x.png in Resources */,
+				83CFD8961ACF1FFD0062D73D /* icon_16x16.png in Resources */,
+				83CFD89B1ACF1FFD0062D73D /* icon_128x128@2x.png in Resources */,
+				83CFD89C1ACF1FFD0062D73D /* icon_256x256.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83D3FF2E1ACB144B009D40EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D3FF3B1ACB144B009D40EE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		83D3FF0B1ACB144B009D40EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83924D941AE1030B00C25895 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
+				83924DC61AE104A900C25895 /* OTCMedia.m in Sources */,
+				83F231B41AE1147A00A05D1D /* TWPMainWindow.m in Sources */,
+				83CFD8861ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.m in Sources */,
+				83924DC81AE104A900C25895 /* OTCResolvedObject.m in Sources */,
+				83924E011AE105E600C25895 /* JSONSyntaxHighlight.m in Sources */,
+				83D3FF261ACB144B009D40EE /* TWPAppDelegate.m in Sources */,
+				83924DC51AE104A900C25895 /* OTCHashtag.m in Sources */,
+				83924D921AE1030B00C25895 /* INAppStoreWindowSwizzling.c in Sources */,
+				83924DFD1AE105E600C25895 /* STTwitterOS.m in Sources */,
+				83CFD8751ACF1C820062D73D /* TWPLoginPanelContentView.m in Sources */,
+				83924DFB1AE105E600C25895 /* STTwitterHTML.m in Sources */,
+				83924DFA1AE105E600C25895 /* STTwitterAppOnly.m in Sources */,
+				83CFD8701ACF1C820062D73D /* TWPTextFieldCell.m in Sources */,
+				83924DC21AE104A900C25895 /* _OTCGeneral.m in Sources */,
+				83924D951AE1030B00C25895 /* INAppStoreWindow.m in Sources */,
+				83F231BD1AE114A600A05D1D /* FBKVOController.m in Sources */,
+				83CFD8761ACF1C820062D73D /* TWPLoginPanelController.m in Sources */,
+				83924E021AE105E600C25895 /* STHTTPRequest.m in Sources */,
+				83924DF81AE105E600C25895 /* STHTTPRequest+STTwitter.m in Sources */,
+				83CFD8851ACF1F070062D73D /* NSAffineTransform+TwipokerDrawing.m in Sources */,
+				83924DFE1AE105E600C25895 /* STTwitterOSRequest.m in Sources */,
+				83CFD86E1ACF1C820062D73D /* TWPButtonCell.m in Sources */,
+				8349A6441AD2263C00487896 /* NSActionCell+TwipokerDrawing.m in Sources */,
+				8349A6471AD24C9700487896 /* NSControl+TwipokerDrawing.m in Sources */,
+				83924D931AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
+				83924DC41AE104A900C25895 /* OTCFinancialSymbol.m in Sources */,
+				83F231BE1AE114A600A05D1D /* NSObject+FBKVOController.m in Sources */,
+				83CFD8781ACF1C820062D73D /* TWPWindow.m in Sources */,
+				83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */,
+				83924DAA1AE1033700C25895 /* MASPreferencesWindowController.m in Sources */,
+				83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */,
+				831447D91AD0008E00BFECE4 /* TWPDebugLoginView.m in Sources */,
+				83924DC71AE104A900C25895 /* OTCPlace.m in Sources */,
+				8349A64C1AD2D30100487896 /* TWPWhyNotPasswordButton.m in Sources */,
+				83F231B61AE1147A00A05D1D /* TWPMainWindowController.m in Sources */,
+				83F232171AE130A900A05D1D /* TWPUserManager.m in Sources */,
+				83924DC91AE104A900C25895 /* OTCTweet.m in Sources */,
+				83924DFF1AE105E600C25895 /* STTwitterStreamParser.m in Sources */,
+				83CFD86F1ACF1C820062D73D /* TWPTextField.m in Sources */,
+				83924DCB1AE104A900C25895 /* OTCUserMention.m in Sources */,
+				83D3FF1F1ACB144B009D40EE /* main.m in Sources */,
+				83924DC31AE104A900C25895 /* OTCEmbeddedURL.m in Sources */,
+				83924DFC1AE105E600C25895 /* STTwitterOAuth.m in Sources */,
+				83924DF71AE105E600C25895 /* NSString+STTwitter.m in Sources */,
+				83924E001AE105E600C25895 /* BAVPlistNode.m in Sources */,
+				83CFD8731ACF1C820062D73D /* TWPLoginPanel.m in Sources */,
+				83924D961AE1030B00C25895 /* INWindowButton.m in Sources */,
+				83924DCA1AE104A900C25895 /* OTCTwitterUser.m in Sources */,
+				83924DD31AE105AB00C25895 /* NSDate+WSCCocoaDate.m in Sources */,
+				83CFD8711ACF1C820062D73D /* TWPGeneral.m in Sources */,
+				83924DF91AE105E600C25895 /* STTwitterAPI.m in Sources */,
+				83924DD21AE105AB00C25895 /* NSColor+Objectwitter-C.m in Sources */,
+				83924DF51AE105E600C25895 /* NSDateFormatter+STTwitter.m in Sources */,
+				831447D51ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m in Sources */,
+				83924DF61AE105E600C25895 /* NSError+STTwitter.m in Sources */,
+				83CFD8771ACF1C820062D73D /* TWPTwipokerLogoView.m in Sources */,
+				831447DC1AD0046800BFECE4 /* TWPDebugConsoleController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83D3FF2C1ACB144B009D40EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D3FF3D1ACB144B009D40EE /* TwipokerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		83D3FF351ACB144B009D40EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83D3FF0E1ACB144B009D40EE /* Twipoker */;
+			targetProxy = 83D3FF341ACB144B009D40EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		83D3FF1B1ACB144B009D40EE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83D3FF1C1ACB144B009D40EE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		83D3FF211ACB144B009D40EE /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83D3FF221ACB144B009D40EE /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		83D3FF271ACB144B009D40EE /* TWPMainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83D3FF281ACB144B009D40EE /* Base */,
+			);
+			name = TWPMainMenu.xib;
+			sourceTree = "<group>";
+		};
+		83D3FF391ACB144B009D40EE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83D3FF3A1ACB144B009D40EE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		83D3FF3E1ACB144B009D40EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		83D3FF3F1ACB144B009D40EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		83D3FF411ACB144B009D40EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Twipoker/Twipoker.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/EsquireTongG/Desktop,
+					"$(PROJECT_DIR)/Twipoker/Vendor",
+					"$(PROJECT_DIR)/Twipoker/Vendor/WaxSealCore",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Twipoker/Twipoker-Prefix.pch";
+				INFOPLIST_FILE = "Twipoker/Twipoker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		83D3FF421ACB144B009D40EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Twipoker/Twipoker.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/EsquireTongG/Desktop,
+					"$(PROJECT_DIR)/Twipoker/Vendor",
+					"$(PROJECT_DIR)/Twipoker/Vendor/WaxSealCore",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Twipoker/Twipoker-Prefix.pch";
+				INFOPLIST_FILE = "Twipoker/Twipoker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		83D3FF441ACB144B009D40EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Twipoker.app/Contents/MacOS/Twipoker";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Twipoker/Twipoker-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TwipokerTests/TwipokerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		83D3FF451ACB144B009D40EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Twipoker.app/Contents/MacOS/Twipoker";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Twipoker/Twipoker-Prefix.pch";
+				INFOPLIST_FILE = "TwipokerTests/TwipokerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		83D3FF0A1ACB144B009D40EE /* Build configuration list for PBXProject "Twipoker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83D3FF3E1ACB144B009D40EE /* Debug */,
+				83D3FF3F1ACB144B009D40EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83D3FF401ACB144B009D40EE /* Build configuration list for PBXNativeTarget "Twipoker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83D3FF411ACB144B009D40EE /* Debug */,
+				83D3FF421ACB144B009D40EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83D3FF431ACB144B009D40EE /* Build configuration list for PBXNativeTarget "TwipokerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83D3FF441ACB144B009D40EE /* Debug */,
+				83D3FF451ACB144B009D40EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83D3FF071ACB144B009D40EE /* Project object */;
+}
