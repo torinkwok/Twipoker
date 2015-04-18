@@ -1,0 +1,3 @@
+[submodule "Twipoker/Vendor/Objectwitter-C"]
+	path = Twipoker/Vendor/Objectwitter-C
+	url = https://github.com/Twipoker-Project/Objectwitter-C
