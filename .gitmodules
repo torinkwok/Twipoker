@@ -7,3 +7,6 @@
 [submodule "Twipoker/Vendor/INAppStoreWindow"]
 	path = Twipoker/Vendor/INAppStoreWindow
 	url = https://github.com/Twipoker-Project/INAppStoreWindow
+[submodule "Twipoker/Vendor/TGForkedMASPreferences"]
+	path = Twipoker/Vendor/TGForkedMASPreferences
+	url = https://github.com/Twipoker-Project/TGForkedMASPreferences
