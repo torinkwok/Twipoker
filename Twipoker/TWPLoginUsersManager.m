@@ -185,7 +185,14 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
 
 - ( NSArray* ) allUsers
     {
-    return [ self->_currentLoginUser copy ];
+    NSMutableArray* copiedAllUsers = [ NSMutableArray array ];
+
+    TWPLoginUser* copy = nil;
+    for ( TWPLoginUser* _LoginUser in self->_allLoginUsers )
+        if ( ( copy = [ _LoginUser copy ] ) )
+            [ copiedAllUsers addObject: copy ];
+
+    return [ copiedAllUsers copy ];
     }
 
 - ( void ) removeAllUsers

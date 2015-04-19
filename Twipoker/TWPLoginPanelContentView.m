@@ -101,6 +101,19 @@
                 [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerDidFinishLoginNotification
                                                                        object: nil
                                                                      userInfo: @{ TWPNewLoginUserUserInfoKey : newUser } ];
+
+            NSString* userID1 = @"3107332168";
+            NSString* userName1 = @"BotOfNSTongG";
+            NSString* OAuthToken1 = @"3107332168-i30uOENyMLIi9an1F4Hafr9VV2V9e2Xz41Kyc1o";
+            NSString* OAuthTokenSecret = @"54xnRZO5AUYcMhtVTr6G9HRV7T9BbwEWnNuOLIxELnNGL";
+            TWPLoginUser* newUser1 = [ [ TWPLoginUsersManager sharedManager ]
+                createUserWithUserID: userID1 userName: userName1 OAuthToken: OAuthToken1 OAuthTokenSecret: OAuthTokenSecret ];
+
+            [ [ TWPLoginUsersManager sharedManager ] setCurrentLoginUser: newUser1 ];
+
+            NSArray* allUsers0 = [ [ TWPLoginUsersManager sharedManager ] allUsers ];
+            NSArray* allUsers1 = [ allUsers0 copy ];
+            NSArray* allUsers2 = [ [ TWPLoginUsersManager sharedManager ] allUsers ];
             }
                                             errorBlock: ^( NSError* _Error ){ NSLog( @"%@", _Error ); } ];
     }
