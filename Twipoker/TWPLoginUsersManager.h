@@ -30,7 +30,7 @@
 @protocol TWPUserManagerDelegate;
 
 // User Defauls Keys
-NSString extern* const TWPUserDefaultsKeyCurrentUser;
+NSString extern* const TWPUserDefaultsKeyCurrentLoginUser;
 NSString extern* const TWPUserDefaultsKeyAllUsers;
 
 // Notification Names

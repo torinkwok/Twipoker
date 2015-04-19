@@ -28,7 +28,7 @@
 #import "TWPLogin+TWPLoginUsersManager.h"
 
 // User Defauls Keys
-NSString* const TWPUserDefaultsKeyCurrentUser = @"home.bedroom.TongGuo.Twipoker.UserDefaults.CurrentUser";
+NSString* const TWPUserDefaultsKeyCurrentLoginUser = @"home.bedroom.TongGuo.Twipoker.UserDefaults.CurrentLoginUser";
 NSString* const TWPUserDefaultsKeyAllUsers = @"home.bedroom.TongGuo.Twipoker.UserDefaults.AllUsers";
 
 // Notification Names
@@ -73,14 +73,14 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
             if ( !( self->_usersIDsInMemory = [ [ [ NSUserDefaults standardUserDefaults ] objectForKey: TWPUserDefaultsKeyAllUsers ] mutableCopy ] ) )
                 self->_usersIDsInMemory = [ NSMutableArray array ];
 
-            self->_userIDInMemoryOfCurrentUser = [ [ NSUserDefaults standardUserDefaults ] objectForKey: TWPUserDefaultsKeyCurrentUser ];
+            self->_userIDInMemoryOfCurrentUser = [ [ NSUserDefaults standardUserDefaults ] objectForKey: TWPUserDefaultsKeyCurrentLoginUser ];
 
             if ( self->_userIDInMemoryOfCurrentUser )
                 {
                 if ( !( self->_currentUser = [ self retrieveUserWithUserID: self->_userIDInMemoryOfCurrentUser ] ) )
                     {
                     self->_userIDInMemoryOfCurrentUser = nil;
-                    [ [ NSUserDefaults standardUserDefaults ] removeObjectForKey: TWPUserDefaultsKeyCurrentUser ];
+                    [ [ NSUserDefaults standardUserDefaults ] removeObjectForKey: TWPUserDefaultsKeyCurrentLoginUser ];
                     }
                 }
 
