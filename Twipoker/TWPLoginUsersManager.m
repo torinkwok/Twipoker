@@ -24,18 +24,33 @@
 
 #import <objc/message.h>
 
-#import "TWPUserManager.h"
+#import "TWPLoginUsersManager.h"
 
 @interface TWPLoginUser ()
 
-- ( instancetype ) initWithUserName: ( NSString* )_UserName
-                             userID: ( NSString* )_UserID
-                         OAuthToken: ( NSString* )_OAuthTokenString
-                   OAuthTokenSecret: ( NSString* )_OAuthTokenSecretString;
++ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID error: ( NSError** )_Error;
+
++ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID
+                               userName: ( NSString* )_UserName
+                       OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+                 OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
+
++ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID
+                       OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+                 OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
+
+- ( instancetype ) initWithUserID: ( NSString* )_UserID error: ( NSError** )_Error;
 
 - ( instancetype ) initWithUserID: ( NSString* )_UserID
-                       OAuthToken: ( NSString* )_OAuthTokenString
-                 OAuthTokenSecret: ( NSString* )_OAuthTokenSecretString;
+                         userName: ( NSString* )_UserName
+                 OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+           OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
+
+- ( instancetype ) initWithUserID: ( NSString* )_UserID
+                 OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+           OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
+
+- ( BOOL ) _permanentSecret: ( NSError** )_Error;
 
 @end // TWPLoginUser + Private
 
@@ -60,12 +75,66 @@
     }
 
 #pragma mark Initialization
-- ( instancetype ) initWithUserName: ( NSString* )_UserName
-                             userID: ( NSString* )_UserID
-                         OAuthToken: ( NSString* )_OAuthTokenString
-                   OAuthTokenSecret: ( NSString* )_OAuthTokenSecretString;
++ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID
+                                  error: ( NSError** )_Error;
     {
-    if ( !( _UserID.length > 0 && _OAuthTokenString.length > 0 && _OAuthTokenSecretString.length > 0 ) )
+    return [ [ [ self class ] alloc ] initWithUserID: _UserID error: _Error ];
+    }
+
++ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID
+                               userName: ( NSString* )_UserName
+                       OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+                 OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString
+    {
+    return [ [ [ self class ] alloc ] initWithUserID: _UserID
+                                            userName: _UserName
+                                    OAuthAccessToken: _OAuthAccessTokenString
+                              OAuthAccessTokenSecret: _OAuthAccessTokenSecretString ];
+    }
+
++ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID
+                       OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+                 OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString
+    {
+    return [ [ [ self class ] alloc ] initWithUserID: _UserID
+                                    OAuthAccessToken: _OAuthAccessTokenString
+                              OAuthAccessTokenSecret: _OAuthAccessTokenSecretString ];
+    }
+
+- ( instancetype ) initWithUserID: ( NSString* )_UserID
+                            error: ( NSError** )_Error
+    {
+    TWPLoginUser* newLoginUser = nil;
+
+    SecKeychainItemRef applicationPassphraseForGivenUserID =
+        TWPFindApplicationPassphraseInDefaultKeychain( TwipokerAppID, _UserID, _Error );
+
+    if ( applicationPassphraseForGivenUserID )
+        {
+        NSData* cocoaDataWrappingOAuthTokenPair = TWPGetPassphrase( applicationPassphraseForGivenUserID );
+        if ( cocoaDataWrappingOAuthTokenPair )
+            {
+            NSString* OAuthTokenPair = [ [ NSString alloc ] initWithData: cocoaDataWrappingOAuthTokenPair encoding: NSUTF8StringEncoding ];
+            NSArray* components = [ OAuthTokenPair componentsSeparatedByString: @"_" ];
+
+            if ( components.count == 2 )
+                newLoginUser = [ [ [ self class ] alloc ] initWithUserID: _UserID
+                                                        OAuthAccessToken: components.firstObject
+                                                  OAuthAccessTokenSecret: components.lastObject ];
+            }
+
+        CFRelease( applicationPassphraseForGivenUserID );
+        }
+
+    return newLoginUser;
+    }
+
+- ( instancetype ) initWithUserID: ( NSString* )_UserID
+                         userName: ( NSString* )_UserName
+                 OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+           OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString
+    {
+    if ( !( _UserID.length > 0 && _OAuthAccessTokenString.length > 0 && _OAuthAccessTokenSecretString.length > 0 ) )
         return nil;
 
     if ( self = [ super init ] )
@@ -73,8 +142,8 @@
         STTwitterAPI* newAPI = [ STTwitterAPI twitterAPIWithOAuthConsumerName: TWPConsumerName
                                                                   consumerKey: TWPConsumerKey
                                                                consumerSecret: TWPConsumerSecret
-                                                                   oauthToken: _OAuthTokenString
-                                                             oauthTokenSecret: _OAuthTokenSecretString ];
+                                                                   oauthToken: _OAuthAccessTokenString
+                                                             oauthTokenSecret: _OAuthAccessTokenSecretString ];
         self->_twitterAPI = newAPI;
         self->_twitterAPI.userName = _UserName;
         self->_twitterAPI.userID = _UserID;
@@ -84,13 +153,32 @@
     }
 
 - ( instancetype ) initWithUserID: ( NSString* )_UserID
-                       OAuthToken: ( NSString* )_OAuthTokenString
-                 OAuthTokenSecret: ( NSString* )_OAuthTokenSecretString
+                 OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+           OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
     {
-    return [ self initWithUserName: nil
-                            userID: _UserID
-                        OAuthToken: _OAuthTokenString
-                  OAuthTokenSecret: _OAuthTokenSecretString ];
+    return [ self initWithUserID: _UserID
+                        userName: nil
+                OAuthAccessToken: _OAuthAccessTokenString
+          OAuthAccessTokenSecret: _OAuthAccessTokenSecretString ];
+    }
+
+- ( BOOL ) _permanentSecret: ( NSError** )_Error
+    {
+    BOOL isSuccess = NO;
+
+    SecKeychainItemRef secKeychainItem = NULL;
+    if ( ( secKeychainItem = TWPAddApplicationPassphraseToDefaultKeychain
+            ( TwipokerAppID
+            , self.userID
+            , [ NSString stringWithFormat: @"%@_%@", self.OAuthToken, self.OAuthTokenSecret ]
+            , _Error
+            ) ) )
+        {
+        CFRelease( secKeychainItem );
+        isSuccess = YES;
+        }
+
+    return isSuccess;
     }
 
 #pragma mark Accessors
@@ -132,7 +220,7 @@ NSString* const TWPTwipokerDidFinishLoginNotification = @"home.bedroom.TongGuo.T
 // Notification User Info Keys
 NSString* const TWPNewUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.NewUser";
 
-@implementation TWPUserManager
+@implementation TWPLoginUsersManager
     {
     NSMutableDictionary* _loginUsers;
 
@@ -154,7 +242,7 @@ NSString* const TWPNewUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfo
     return [ [ [ self class ] alloc ] init ];
     }
 
-TWPUserManager static __strong* sSharedManager = nil;
+TWPLoginUsersManager static __strong* sSharedManager = nil;
 - ( instancetype ) init
     {
     if ( !sSharedManager )
@@ -194,59 +282,16 @@ TWPUserManager static __strong* sSharedManager = nil;
 
 - ( void ) setCurrentUser: ( TWPLoginUser* )_User
     {
-    if ( _User )
-        {
-        [ self _appendUserToUserDefaults: _User ];
-
-        self->_userIDInMemoryOfCurrentUser = [ _User.userID copy ];
-        [ [ NSUserDefaults standardUserDefaults ] setObject: self->_userIDInMemoryOfCurrentUser forKey: TWPUserDefaultsKeyCurrentUser ];
-
-        self->_currentUser = _User;
-        }
-    else
-        NSLog( @"The `TWPLoginUser` parameters (%@) passed to the method was not valid", _User );
+    // TODO;
     }
 
 - ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID
     {
-    NSError* error = nil;
-    TWPLoginUser* user = nil;
+    TWPLoginUser* loginUser = nil;
 
-    for ( NSString* userIDElem in self->_usersIDsInMemory )
-        {
-        if ( [ userIDElem isEqualToString: _UserID ] )
-            {
-            SecKeychainItemRef applicationPassphraseForGivenUserID =
-                TWPFindApplicationPassphraseInDefaultKeychain( TwipokerAppID, _UserID, &error );
+    // TODO:
 
-            if ( applicationPassphraseForGivenUserID )
-                {
-                NSData* cocoaDataWrappingOAuthTokenPair = TWPGetPassphrase( applicationPassphraseForGivenUserID );
-                if ( cocoaDataWrappingOAuthTokenPair )
-                    {
-                    NSString* OAuthTokenPair = [ [ NSString alloc ] initWithData: cocoaDataWrappingOAuthTokenPair encoding: NSUTF8StringEncoding ];
-                    NSArray* components = [ OAuthTokenPair componentsSeparatedByString: @"_" ];
-
-                    if ( components.count == 2 )
-                        user = [ [ TWPLoginUser alloc ] initWithUserID: userIDElem
-                                                       OAuthToken: components.firstObject
-                                                 OAuthTokenSecret: components.lastObject ];
-                    }
-
-                CFRelease( applicationPassphraseForGivenUserID );
-                }
-            else
-                {
-                // If there is not a matched passphrase item (perhaps it has been deleted, moved or renamed)
-                [ self->_usersIDsInMemory removeObject: userIDElem ];
-                [ [ NSUserDefaults standardUserDefaults ] setObject: self->_usersIDsInMemory forKey: TWPUserDefaultsKeyAllUsers ];
-                }
-
-            break;
-            }
-        }
-
-    return user;
+    return loginUser;
     }
 
 - ( TWPLoginUser* ) createUserWithUserName: ( NSString* )_UserName
@@ -254,54 +299,18 @@ TWPUserManager static __strong* sSharedManager = nil;
                            OAuthToken: ( NSString* )_OAuthToken
                      OAuthTokenSecret: ( NSString* )_OAuthTokenSecret
     {
-    TWPLoginUser* newUser = nil;
+    TWPLoginUser* loginUser = nil;
 
-    if ( ( newUser = [ [ TWPLoginUser alloc ] initWithUserName: _UserName
-                                                   userID: _UserID
-                                               OAuthToken: _OAuthToken
-                                         OAuthTokenSecret: _OAuthTokenSecret ] ) )
-        {
-        if ( ![ self _appendUserToUserDefaults: newUser ] )
-            NSLog( @"Failed to store new user into user defaults" );
+    // TODO:
 
-        if ( !self.currentUser )
-            self.currentUser = newUser;
-        }
-
-    return newUser;
+    return loginUser;
     }
 
 - ( BOOL ) _appendUserToUserDefaults: ( TWPLoginUser* )_User
     {
     BOOL isSuccess = NO;
 
-    if ( _User && _User.userID )
-        {
-        if ( ![ self->_usersIDsInMemory containsObject: _User.userID ] )
-            {
-            [ self->_usersIDsInMemory addObject: _User.userID ];
-            [ [ NSUserDefaults standardUserDefaults ] setObject: self->_usersIDsInMemory forKey: TWPUserDefaultsKeyAllUsers ];
-
-            NSError* error = nil;
-            SecKeychainItemRef secKeychainItem = NULL;
-            if ( ( secKeychainItem = TWPAddApplicationPassphraseToDefaultKeychain
-                    ( TwipokerAppID
-                    , _User.userID
-                    , [ NSString stringWithFormat: @"%@_%@", _User.OAuthToken, _User.OAuthTokenSecret ]
-                    , &error
-                    ) ) )
-                {
-                CFRelease( secKeychainItem );
-                isSuccess = YES;
-                }
-            else
-                // If the error domain and error code is NSOSStatusErrorDomain errSecDuplicateItem respectively,
-                // we will still log this error, but it's generally safe to ignore it.
-                TWPPrintNSErrorForLog( error );
-            }
-        else
-            isSuccess = YES;
-        }
+    // TODO:
 
     return isSuccess;
     }

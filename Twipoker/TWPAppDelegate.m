@@ -26,7 +26,7 @@
 #import "TWPLoginPanel.h"
 #import "TWPLoginPanelController.h"
 #import "TWPMainWindowController.h"
-#import "TWPUserManager.h"
+#import "TWPLoginUsersManager.h"
 
 @implementation TWPAppDelegate
 
@@ -45,7 +45,7 @@ STTwitterAPI __strong* TWPTwitterAPI;
 
 - ( void ) applicationWillFinishLaunching: ( NSNotification* )_Notif
     {
-    TWPLoginUser* currentUser = [ [ TWPUserManager sharedManager ] currentUser ];
+    TWPLoginUser* currentUser = [ [ TWPLoginUsersManager sharedManager ] currentUser ];
 
     if ( currentUser )
         [ self.mainWindowController showWindow: self ];

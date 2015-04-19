@@ -18,7 +18,7 @@
                 <outlet property="appDelegate" destination="Voe-Tx-rLC" id="f46-Et-ZwQ"/>
             </connections>
         </customObject>
-        <customObject id="nXo-2H-eBh" customClass="TWPUserManager">
+        <customObject id="nXo-2H-eBh" customClass="TWPLoginUsersManager">
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="3r6-vp-dQf"/>
             </connections>

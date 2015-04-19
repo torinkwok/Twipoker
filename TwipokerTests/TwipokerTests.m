@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "TWPUserManager.h"
+#import "TWPLoginUsersManager.h"
 
 @interface TwipokerTests : XCTestCase
 

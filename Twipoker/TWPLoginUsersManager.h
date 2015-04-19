@@ -62,9 +62,9 @@ NSString extern* const TWPTwipokerDidFinishLoginNotification;
 // Notification User Info Keys
 NSString extern* const TWPNewUserUserInfoKey;
 
-/** The `TWPUserManager` class enables us to manage all of the Twipoker users.
+/** The `TWPLoginUsersManager` class enables us to manage all of the Twipoker users.
   */
-@interface TWPUserManager : NSObject
+@interface TWPLoginUsersManager : NSObject
 
 @property ( weak, readwrite ) IBOutlet id <TWPUserManagerDelegate> delegate;
 
@@ -96,7 +96,7 @@ NSString extern* const TWPNewUserUserInfoKey;
 // Sent by the default notification center immediately after a successful login
 - ( void ) twipokerDidFinishLogin: ( NSNotification* )_Notif;
 
-- ( void )        userManager: ( TWPUserManager* )_UserManager
+- ( void )        userManager: ( TWPLoginUsersManager* )_UserManager
     didFinishLoginWithNewUser: ( TWPLoginUser* )_NewUser;
 
 @end

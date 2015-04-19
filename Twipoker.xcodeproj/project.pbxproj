@@ -89,7 +89,7 @@
 		83F231B61AE1147A00A05D1D /* TWPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */; };
 		83F231BD1AE114A600A05D1D /* FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231BA1AE114A600A05D1D /* FBKVOController.m */; };
 		83F231BE1AE114A600A05D1D /* NSObject+FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231BC1AE114A600A05D1D /* NSObject+FBKVOController.m */; };
-		83F232171AE130A900A05D1D /* TWPUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F232161AE130A900A05D1D /* TWPUserManager.m */; };
+		83F232171AE130A900A05D1D /* TWPLoginUsersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F232161AE130A900A05D1D /* TWPLoginUsersManager.m */; };
 		83F2321A1AE15BC200A05D1D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F232191AE15BC200A05D1D /* Security.framework */; };
 /* End PBXBuildFile section */
 
@@ -257,8 +257,8 @@
 		83F231BA1AE114A600A05D1D /* FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBKVOController.m; sourceTree = "<group>"; };
 		83F231BB1AE114A600A05D1D /* NSObject+FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FBKVOController.h"; sourceTree = "<group>"; };
 		83F231BC1AE114A600A05D1D /* NSObject+FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FBKVOController.m"; sourceTree = "<group>"; };
-		83F232151AE130A900A05D1D /* TWPUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPUserManager.h; sourceTree = "<group>"; };
-		83F232161AE130A900A05D1D /* TWPUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPUserManager.m; sourceTree = "<group>"; };
+		83F232151AE130A900A05D1D /* TWPLoginUsersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPLoginUsersManager.h; sourceTree = "<group>"; };
+		83F232161AE130A900A05D1D /* TWPLoginUsersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPLoginUsersManager.m; sourceTree = "<group>"; };
 		83F232191AE15BC200A05D1D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -615,8 +615,8 @@
 				83CFD8541ACF1C820062D73D /* TWPGeneral.m */,
 				83D3FF241ACB144B009D40EE /* TWPAppDelegate.h */,
 				83D3FF251ACB144B009D40EE /* TWPAppDelegate.m */,
-				83F232151AE130A900A05D1D /* TWPUserManager.h */,
-				83F232161AE130A900A05D1D /* TWPUserManager.m */,
+				83F232151AE130A900A05D1D /* TWPLoginUsersManager.h */,
+				83F232161AE130A900A05D1D /* TWPLoginUsersManager.m */,
 				83D3FF1E1ACB144B009D40EE /* main.m */,
 				83D3FF191ACB144B009D40EE /* Supporting Files */,
 			);
@@ -837,7 +837,7 @@
 				83924DC71AE104A900C25895 /* OTCPlace.m in Sources */,
 				8349A64C1AD2D30100487896 /* TWPWhyNotPasswordButton.m in Sources */,
 				83F231B61AE1147A00A05D1D /* TWPMainWindowController.m in Sources */,
-				83F232171AE130A900A05D1D /* TWPUserManager.m in Sources */,
+				83F232171AE130A900A05D1D /* TWPLoginUsersManager.m in Sources */,
 				83924DC91AE104A900C25895 /* OTCTweet.m in Sources */,
 				83924DFF1AE105E600C25895 /* STTwitterStreamParser.m in Sources */,
 				83CFD86F1ACF1C820062D73D /* TWPTextField.m in Sources */,
