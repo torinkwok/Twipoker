@@ -25,6 +25,7 @@
 #import "TWPDebug.h"
 #import "TWPDebugConsoleController.h"
 #import "TWPDebugLoginViewController.h"
+#import "TWPLoginUsersManager.h"
 
 @implementation TWPDebug
 
@@ -49,6 +50,11 @@ TWPDebug static __strong* g_globalDebug;
         self.debugConsoleController = [ TWPDebugConsoleController debugConsoleController ];
 
     [ self.debugConsoleController showWindow: self ];
+    }
+
+- ( IBAction ) removeAllLoginUsers: ( id )_Sender
+    {
+    [ [ TWPLoginUsersManager sharedManager ] removeAllLoginUsers ];
     }
 
 @end

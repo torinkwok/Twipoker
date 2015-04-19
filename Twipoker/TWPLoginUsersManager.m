@@ -197,13 +197,13 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
 
 - ( void ) removeAllLoginUsers
     {
+    [ self->_allLoginUsers removeAllObjects ];
+    [ self->_allLoginUserIDs removeAllObjects ];
+    [ [ NSUserDefaults standardUserDefaults ] setObject: self->_allLoginUserIDs forKey: TWPUserDefaultsKeyAllLoginUsers ];
+
     self->_currentLoginUser = nil;
     self->_currentLoginUserID = nil;
     [ [ NSUserDefaults standardUserDefaults ] removeObjectForKey: TWPUserDefaultsKeyCurrentLoginUser ];
-
-    [ self->_allLoginUsers removeAllObjects ];
-    [ self->_allLoginUserIDs removeAllObjects ];
-    [ [ NSUserDefaults standardUserDefaults ] removeObjectForKey: TWPUserDefaultsKeyAllLoginUsers ];
     }
 
 @end
