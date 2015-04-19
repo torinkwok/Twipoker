@@ -24,32 +24,9 @@
 
 #import <Foundation/Foundation.h>
 
-/** `TWPLoginUser` represents an Twipoker user.
-  */
-@interface TWPLoginUser : NSObject
-    {
-@private
-    STTwitterAPI __strong* _twitterAPI;
-    }
+#import "TWPLoginUser.h"
 
-// Screen name of current user, '@' has been excluded.
-@property ( copy, readwrite ) NSString* userName;
-
-// The string representation of unique identifier for this user.
-@property ( copy, readonly ) NSString* userID;
-
-// OAuth access token of this user. (Used for creating `twitterAPI`)
-@property ( copy, readonly ) NSString* OAuthToken;
-
-// OAuth access token secret of this user. (Used for creating `twitterAPI`)
-@property ( copy, readonly ) NSString* OAuthTokenSecret;
-
-@property ( strong, readonly ) STTwitterAPI* twitterAPI;
-
-@end // TWPLoginUser class
-
-// ======================================================================================== //
-
+@class TWPLoginUser;
 @protocol TWPUserManagerDelegate;
 
 // User Defauls Keys
@@ -117,6 +94,35 @@ SecKeychainItemRef TWPFindApplicationPassphraseInDefaultKeychain( NSString* _Ser
                                                                 , NSError** _Error );
 
 NSData* TWPGetPassphrase( SecKeychainItemRef _KeychainItemRef );
+
+#pragma mark TWPLoginUser + TWPLoginUsersManager
+@interface TWPLoginUser ( TWPLoginUsersManager )
+
++ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID error: ( NSError** )_Error;
+
++ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID
+                               userName: ( NSString* )_UserName
+                       OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+                 OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
+
++ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID
+                       OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+                 OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
+
+- ( instancetype ) initWithUserID: ( NSString* )_UserID error: ( NSError** )_Error;
+
+- ( instancetype ) initWithUserID: ( NSString* )_UserID
+                         userName: ( NSString* )_UserName
+                 OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+           OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
+
+- ( instancetype ) initWithUserID: ( NSString* )_UserID
+                 OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
+           OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
+
+- ( BOOL ) _permanentSecret: ( NSError** )_Error;
+
+@end // TWPLoginUser + TWPLoginUsersManager
 
 /*=============================================================================┐
 |                                                                              |
