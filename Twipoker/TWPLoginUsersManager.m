@@ -67,10 +67,14 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
             // Awake from user defaults database
             [ [ NSUserDefaults standardUserDefaults ] synchronize ];
 
+            // Retrieve the IDs of all login users.
             if ( !( self->_allLoginUserIDs = [ [ [ NSUserDefaults standardUserDefaults ] objectForKey: TWPUserDefaultsKeyAllLoginUsers ] mutableCopy ] ) )
+                // self->_allLoginUserIDs should not be nil
                 self->_allLoginUserIDs = [ NSMutableArray array ];
 
+            // self->_allLoginUsers should not be nil, either
             self->_allLoginUsers = [ NSMutableArray array ];
+            NSMutableArray* invalidIDs = [ NSMutableArray array ];
             for ( NSString* _UserID in self->_allLoginUserIDs )
                 {
                 NSError* error = nil;
@@ -80,11 +84,15 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
                     [ self->_allLoginUsers addObject: loginUser ];
                 else
                     {
-                    [ self->_allLoginUserIDs removeObject: _UserID ];
-                    [ [ NSUserDefaults standardUserDefaults ] setObject: self->_allLoginUserIDs forKey: TWPUserDefaultsKeyAllLoginUsers ];
-
+                    [ invalidIDs addObject: _UserID ];
                     TWPPrintNSErrorForLog( error );
                     }
+                }
+
+            if ( invalidIDs.count > 0 )
+                {
+                [ self->_allLoginUserIDs removeObjectsInArray: invalidIDs ];
+                [ [ NSUserDefaults standardUserDefaults ] setObject: self->_allLoginUserIDs forKey: TWPUserDefaultsKeyAllLoginUsers ];
                 }
 
             if ( ( self->_currentLoginUserID = [ [ NSUserDefaults standardUserDefaults ] objectForKey: TWPUserDefaultsKeyCurrentLoginUser ] ) )
