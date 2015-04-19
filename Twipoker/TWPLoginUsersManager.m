@@ -39,17 +39,9 @@ NSString* const TWPNewLoginUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.Use
 
 @implementation TWPLoginUsersManager
     {
-    NSMutableDictionary* _loginUsers;
-
-    // An array of `NSDictionary` objects
-    // @[ ID, ID, ID, ID, ... ]
-    NSMutableArray __strong* _usersIDsInMemory;
-
-    NSString __strong* _userIDInMemoryOfCurrentUser;
-    TWPLoginUser __strong* _currentUser;
     }
 
-@dynamic currentUser;
+@dynamic currentLoginUser;
 
 #pragma mark Initialization
 // Returns the shared user manager object for the process.
@@ -66,24 +58,7 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
         {
         if ( self = [ super init ] )
             {
-            [ [ NSUserDefaults standardUserDefaults ] synchronize ];
-
-            // Instantiate self->_usersInMemory from user defaults.
-            // Create an empty array for it if the contents stored in user defaults can't be parsed into an mutable array
-            if ( !( self->_usersIDsInMemory = [ [ [ NSUserDefaults standardUserDefaults ] objectForKey: TWPUserDefaultsKeyAllLoginUsers ] mutableCopy ] ) )
-                self->_usersIDsInMemory = [ NSMutableArray array ];
-
-            self->_userIDInMemoryOfCurrentUser = [ [ NSUserDefaults standardUserDefaults ] objectForKey: TWPUserDefaultsKeyCurrentLoginUser ];
-
-            if ( self->_userIDInMemoryOfCurrentUser )
-                {
-                if ( !( self->_currentUser = [ self retrieveUserWithUserID: self->_userIDInMemoryOfCurrentUser ] ) )
-                    {
-                    self->_userIDInMemoryOfCurrentUser = nil;
-                    [ [ NSUserDefaults standardUserDefaults ] removeObjectForKey: TWPUserDefaultsKeyCurrentLoginUser ];
-                    }
-                }
-
+            // TODO:
             sSharedManager = self;
             }
         }
