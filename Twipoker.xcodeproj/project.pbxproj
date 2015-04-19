@@ -12,6 +12,8 @@
 		831447D91AD0008E00BFECE4 /* TWPDebugLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D81AD0008E00BFECE4 /* TWPDebugLoginView.m */; };
 		831447DC1AD0046800BFECE4 /* TWPDebugConsoleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447DB1AD0046800BFECE4 /* TWPDebugConsoleController.m */; };
 		8338CD7D1AE3C5E800370C10 /* TWPLoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338CD7C1AE3C5E800370C10 /* TWPLoginUser.m */; };
+		8338CD801AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338CD7F1AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m */; };
+		8338CD831AE3C8F900370C10 /* TWPKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338CD821AE3C8F900370C10 /* TWPKeychain.m */; };
 		8349A6441AD2263C00487896 /* NSActionCell+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A6431AD2263C00487896 /* NSActionCell+TwipokerDrawing.m */; };
 		8349A6471AD24C9700487896 /* NSControl+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A6461AD24C9700487896 /* NSControl+TwipokerDrawing.m */; };
 		8349A64C1AD2D30100487896 /* TWPWhyNotPasswordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A64B1AD2D30100487896 /* TWPWhyNotPasswordButton.m */; };
@@ -114,6 +116,10 @@
 		831447DB1AD0046800BFECE4 /* TWPDebugConsoleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugConsoleController.m; sourceTree = "<group>"; };
 		8338CD7B1AE3C5E800370C10 /* TWPLoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPLoginUser.h; sourceTree = "<group>"; };
 		8338CD7C1AE3C5E800370C10 /* TWPLoginUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPLoginUser.m; sourceTree = "<group>"; };
+		8338CD7E1AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TWPLogin+TWPLoginUsersManager.h"; sourceTree = "<group>"; };
+		8338CD7F1AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWPLogin+TWPLoginUsersManager.m"; sourceTree = "<group>"; };
+		8338CD811AE3C8F900370C10 /* TWPKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPKeychain.h; sourceTree = "<group>"; };
+		8338CD821AE3C8F900370C10 /* TWPKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPKeychain.m; sourceTree = "<group>"; };
 		8349A6421AD2263C00487896 /* NSActionCell+TwipokerDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSActionCell+TwipokerDrawing.h"; path = "Twipoker/NSActionCell+TwipokerDrawing.h"; sourceTree = "<group>"; };
 		8349A6431AD2263C00487896 /* NSActionCell+TwipokerDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSActionCell+TwipokerDrawing.m"; path = "Twipoker/NSActionCell+TwipokerDrawing.m"; sourceTree = "<group>"; };
 		8349A6451AD24C9700487896 /* NSControl+TwipokerDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSControl+TwipokerDrawing.h"; path = "Twipoker/NSControl+TwipokerDrawing.h"; sourceTree = "<group>"; };
@@ -618,10 +624,14 @@
 				83CFD8541ACF1C820062D73D /* TWPGeneral.m */,
 				83D3FF241ACB144B009D40EE /* TWPAppDelegate.h */,
 				83D3FF251ACB144B009D40EE /* TWPAppDelegate.m */,
+				8338CD811AE3C8F900370C10 /* TWPKeychain.h */,
+				8338CD821AE3C8F900370C10 /* TWPKeychain.m */,
 				8338CD7B1AE3C5E800370C10 /* TWPLoginUser.h */,
 				8338CD7C1AE3C5E800370C10 /* TWPLoginUser.m */,
 				83F232151AE130A900A05D1D /* TWPLoginUsersManager.h */,
 				83F232161AE130A900A05D1D /* TWPLoginUsersManager.m */,
+				8338CD7E1AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.h */,
+				8338CD7F1AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m */,
 				83D3FF1E1ACB144B009D40EE /* main.m */,
 				83D3FF191ACB144B009D40EE /* Supporting Files */,
 			);
@@ -812,6 +822,7 @@
 				83CFD8861ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.m in Sources */,
 				83924DC81AE104A900C25895 /* OTCResolvedObject.m in Sources */,
 				83924E011AE105E600C25895 /* JSONSyntaxHighlight.m in Sources */,
+				8338CD801AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m in Sources */,
 				83D3FF261ACB144B009D40EE /* TWPAppDelegate.m in Sources */,
 				83924DC51AE104A900C25895 /* OTCHashtag.m in Sources */,
 				83924D921AE1030B00C25895 /* INAppStoreWindowSwizzling.c in Sources */,
@@ -861,6 +872,7 @@
 				8338CD7D1AE3C5E800370C10 /* TWPLoginUser.m in Sources */,
 				83924DD21AE105AB00C25895 /* NSColor+Objectwitter-C.m in Sources */,
 				83924DF51AE105E600C25895 /* NSDateFormatter+STTwitter.m in Sources */,
+				8338CD831AE3C8F900370C10 /* TWPKeychain.m in Sources */,
 				831447D51ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m in Sources */,
 				83924DF61AE105E600C25895 /* NSError+STTwitter.m in Sources */,
 				83CFD8771ACF1C820062D73D /* TWPTwipokerLogoView.m in Sources */,

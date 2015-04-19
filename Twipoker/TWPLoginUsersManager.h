@@ -78,52 +78,6 @@ NSString extern* const TWPNewUserUserInfoKey;
 
 @end
 
-void TWPFillErrorParamWithSecErrorCode( OSStatus _ResultCode, NSError** _ErrorParam );
-
-// Retrieves a SecKeychainRef represented the current default keychain.
-SecKeychainRef TWPCurrentDefaultKeychain( NSError** _Error );
-
-// Adds a new generic passphrase to the keychain represented by receiver.
-SecKeychainItemRef TWPAddApplicationPassphraseToDefaultKeychain( NSString* _ServiceName
-                                                               , NSString* _AccountName
-                                                               , NSString* _Passphrase
-                                                               , NSError** _Error );
-
-SecKeychainItemRef TWPFindApplicationPassphraseInDefaultKeychain( NSString* _ServiceName
-                                                                , NSString* _AccountName
-                                                                , NSError** _Error );
-
-NSData* TWPGetPassphrase( SecKeychainItemRef _KeychainItemRef );
-
-#pragma mark TWPLoginUser + TWPLoginUsersManager
-@interface TWPLoginUser ( TWPLoginUsersManager )
-
-+ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID error: ( NSError** )_Error;
-
-+ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID
-                               userName: ( NSString* )_UserName
-                       OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
-                 OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
-
-+ ( instancetype ) _loginUserWithUserID: ( NSString* )_UserID
-                       OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
-                 OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
-
-- ( instancetype ) initWithUserID: ( NSString* )_UserID error: ( NSError** )_Error;
-
-- ( instancetype ) initWithUserID: ( NSString* )_UserID
-                         userName: ( NSString* )_UserName
-                 OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
-           OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
-
-- ( instancetype ) initWithUserID: ( NSString* )_UserID
-                 OAuthAccessToken: ( NSString* )_OAuthAccessTokenString
-           OAuthAccessTokenSecret: ( NSString* )_OAuthAccessTokenSecretString;
-
-- ( BOOL ) _permanentSecret: ( NSError** )_Error;
-
-@end // TWPLoginUser + TWPLoginUsersManager
-
 /*=============================================================================┐
 |                                                                              |
 |                                        `-://++/:-`    ..                     |

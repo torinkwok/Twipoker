@@ -1,0 +1,104 @@
+#import <Security/Security.h>
+
+void TWPFillErrorParamWithSecErrorCode( OSStatus _ResultCode, NSError** _ErrorParam )
+    {
+    if ( _ErrorParam )
+        {
+        CFStringRef cfErrorDesc = SecCopyErrorMessageString( _ResultCode, NULL );
+        *_ErrorParam = [ [ NSError errorWithDomain: NSOSStatusErrorDomain
+                                              code: _ResultCode
+                                          userInfo: @{ NSLocalizedDescriptionKey : [ ( __bridge NSString* )cfErrorDesc copy ] }
+                                                  ] copy ];
+        CFRelease( cfErrorDesc );
+        }
+    }
+
+// Retrieves a SecKeychainRef represented the current default keychain.
+SecKeychainRef TWPCurrentDefaultKeychain( NSError** _Error )
+    {
+    OSStatus resultCode = errSecSuccess;
+
+    SecKeychainRef secCurrentDefaultKeychain = NULL;
+
+    if ( ( resultCode = SecKeychainCopyDefault( &secCurrentDefaultKeychain ) ) != errSecSuccess )
+        TWPFillErrorParamWithSecErrorCode( resultCode, _Error );
+
+    return secCurrentDefaultKeychain;
+    }
+
+// Adds a new generic passphrase to the keychain represented by receiver.
+SecKeychainItemRef TWPAddApplicationPassphraseToDefaultKeychain( NSString* _ServiceName
+                                                               , NSString* _AccountName
+                                                               , NSString* _Passphrase
+                                                               , NSError** _Error
+                                                               )
+    {
+    OSStatus resultCode = errSecSuccess;
+
+    SecKeychainItemRef secKeychainItem = NULL;
+    SecKeychainRef secDefaultKeychain = TWPCurrentDefaultKeychain( _Error );
+    if ( secDefaultKeychain )
+        {
+        // As described in documentation:
+        // SecKeychainAddGenericPassword() function automatically calls the SecKeychainUnlock () function
+        // to display the Unlock Keychain dialog box if the keychain is currently locked.
+        // Adding.... Beep Beep Beep...
+        if ( ( resultCode = SecKeychainAddGenericPassword( secDefaultKeychain
+                                                         , ( UInt32 )_ServiceName.length, _ServiceName.UTF8String
+                                                         , ( UInt32 )_AccountName.length, _AccountName.UTF8String
+                                                         , ( UInt32 )_Passphrase.length, _Passphrase.UTF8String
+                                                         , &secKeychainItem
+                                                         ) ) != errSecSuccess )
+            TWPFillErrorParamWithSecErrorCode( resultCode, _Error );
+
+        CFRelease( secDefaultKeychain );
+        }
+
+    return secKeychainItem;
+    }
+
+SecKeychainItemRef TWPFindApplicationPassphraseInDefaultKeychain( NSString* _ServiceName
+                                                                , NSString* _AccountName
+                                                                , NSError** _Error )
+    {
+    SecKeychainRef secDefaultKeychain = TWPCurrentDefaultKeychain( _Error );
+
+    OSStatus resultCode = errSecSuccess;
+    NSMutableDictionary* finalQueryDictionary =
+        [ NSMutableDictionary dictionaryWithObjectsAndKeys:
+              ( __bridge id )kSecClassGenericPassword, ( __bridge id )kSecClass
+            , _ServiceName, ( __bridge id )kSecAttrService
+            , _AccountName , ( __bridge id )kSecAttrAccount
+            , ( __bridge id )kSecMatchLimitOne, ( __bridge id )kSecMatchLimit
+            , @[ ( __bridge id )secDefaultKeychain ], ( __bridge id )kSecMatchSearchList
+            , ( __bridge id )kCFBooleanTrue, ( __bridge id )kSecReturnRef
+            , nil ];
+
+    CFTypeRef secMatchedItem = NULL;
+    if ( ( resultCode = SecItemCopyMatching( ( __bridge CFDictionaryRef )finalQueryDictionary
+                                           , &secMatchedItem ) ) != errSecSuccess )
+        if ( resultCode != errSecItemNotFound )
+            TWPFillErrorParamWithSecErrorCode( resultCode, _Error );
+
+    return ( SecKeychainItemRef )secMatchedItem;
+    }
+
+NSData* TWPGetPassphrase( SecKeychainItemRef _KeychainItemRef )
+    {
+    OSStatus resultCode = errSecSuccess;
+    NSData* passphraseData = nil;
+
+    UInt32 lengthOfSecretData = 0;
+    void* secretData = NULL;
+
+    // Get the secret data
+    resultCode = SecKeychainItemCopyAttributesAndData( _KeychainItemRef, NULL, NULL, NULL
+                                                     , &lengthOfSecretData, &secretData );
+    if ( resultCode == errSecSuccess )
+        {
+        passphraseData = [ NSData dataWithBytes: secretData length: lengthOfSecretData ];
+        SecKeychainItemFreeAttributesAndData( NULL, secretData );
+        }
+
+    return passphraseData;
+    }
