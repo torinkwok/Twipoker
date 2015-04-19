@@ -68,8 +68,8 @@ NSString extern* const TWPNewUserUserInfoKey;
 
 @property ( weak, readwrite ) IBOutlet id <TWPUserManagerDelegate> delegate;
 
-@property ( strong, readonly ) NSArray* users;
-@property ( strong ) TWPUser* currentUser;
+@property ( strong, readonly ) NSDictionary* loginUsers;
+@property ( strong, readwrite ) TWPUser* currentUser;
 
 #pragma mark Initialization
 // Returns the shared user manager object for the process.

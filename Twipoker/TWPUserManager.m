@@ -134,6 +134,8 @@ NSString* const TWPNewUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfo
 
 @implementation TWPUserManager
     {
+    NSMutableDictionary* _loginUsers;
+
     // An array of `NSDictionary` objects
     // @[ @{ID, name}, @{ID, name}, @{ID, name} ... ]
     NSMutableArray __strong* _usersIDsInMemory;

@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "TWPUserManager.h"
 
 @interface TwipokerTests : XCTestCase
 
@@ -28,7 +29,6 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end
