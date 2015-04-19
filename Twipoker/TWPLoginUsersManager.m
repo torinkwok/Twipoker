@@ -195,7 +195,7 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     return [ copiedAllUsers copy ];
     }
 
-- ( void ) removeAllUsers
+- ( void ) removeAllLoginUsers
     {
     self->_currentLoginUser = nil;
     self->_currentLoginUserID = nil;
