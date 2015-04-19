@@ -26,7 +26,7 @@
 
 #import "TWPUserManager.h"
 
-@interface TWPUser ()
+@interface TWPLoginUser ()
 
 - ( instancetype ) initWithUserName: ( NSString* )_UserName
                              userID: ( NSString* )_UserID
@@ -37,10 +37,10 @@
                        OAuthToken: ( NSString* )_OAuthTokenString
                  OAuthTokenSecret: ( NSString* )_OAuthTokenSecretString;
 
-@end // TWPUser + Private
+@end // TWPLoginUser + Private
 
-#pragma mark TWPUser class
-@implementation TWPUser : NSObject
+#pragma mark TWPLoginUser class
+@implementation TWPLoginUser : NSObject
 
 @dynamic userName;
 @dynamic userID;
@@ -118,7 +118,7 @@
     return self->_twitterAPI.oauthAccessTokenSecret;
     }
 
-@end // TWPUser class
+@end // TWPLoginUser class
 
 // ======================================================================================== //
 
@@ -141,7 +141,7 @@ NSString* const TWPNewUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfo
     NSMutableArray __strong* _usersIDsInMemory;
 
     NSString __strong* _userIDInMemoryOfCurrentUser;
-    TWPUser __strong* _currentUser;
+    TWPLoginUser __strong* _currentUser;
     }
 
 @dynamic currentUser;
@@ -187,12 +187,12 @@ TWPUserManager static __strong* sSharedManager = nil;
     }
 
 #pragma mark Handling Users
-- ( TWPUser* ) currentUser
+- ( TWPLoginUser* ) currentUser
     {
     return self->_currentUser;
     }
 
-- ( void ) setCurrentUser: ( TWPUser* )_User
+- ( void ) setCurrentUser: ( TWPLoginUser* )_User
     {
     if ( _User )
         {
@@ -204,13 +204,13 @@ TWPUserManager static __strong* sSharedManager = nil;
         self->_currentUser = _User;
         }
     else
-        NSLog( @"The `TWPUser` parameters (%@) passed to the method was not valid", _User );
+        NSLog( @"The `TWPLoginUser` parameters (%@) passed to the method was not valid", _User );
     }
 
-- ( TWPUser* ) retrieveUserWithUserID: ( NSString* )_UserID
+- ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID
     {
     NSError* error = nil;
-    TWPUser* user = nil;
+    TWPLoginUser* user = nil;
 
     for ( NSString* userIDElem in self->_usersIDsInMemory )
         {
@@ -228,7 +228,7 @@ TWPUserManager static __strong* sSharedManager = nil;
                     NSArray* components = [ OAuthTokenPair componentsSeparatedByString: @"_" ];
 
                     if ( components.count == 2 )
-                        user = [ [ TWPUser alloc ] initWithUserID: userIDElem
+                        user = [ [ TWPLoginUser alloc ] initWithUserID: userIDElem
                                                        OAuthToken: components.firstObject
                                                  OAuthTokenSecret: components.lastObject ];
                     }
@@ -249,14 +249,14 @@ TWPUserManager static __strong* sSharedManager = nil;
     return user;
     }
 
-- ( TWPUser* ) createUserWithUserName: ( NSString* )_UserName
+- ( TWPLoginUser* ) createUserWithUserName: ( NSString* )_UserName
                                userID: ( NSString* )_UserID
                            OAuthToken: ( NSString* )_OAuthToken
                      OAuthTokenSecret: ( NSString* )_OAuthTokenSecret
     {
-    TWPUser* newUser = nil;
+    TWPLoginUser* newUser = nil;
 
-    if ( ( newUser = [ [ TWPUser alloc ] initWithUserName: _UserName
+    if ( ( newUser = [ [ TWPLoginUser alloc ] initWithUserName: _UserName
                                                    userID: _UserID
                                                OAuthToken: _OAuthToken
                                          OAuthTokenSecret: _OAuthTokenSecret ] ) )
@@ -271,7 +271,7 @@ TWPUserManager static __strong* sSharedManager = nil;
     return newUser;
     }
 
-- ( BOOL ) _appendUserToUserDefaults: ( TWPUser* )_User
+- ( BOOL ) _appendUserToUserDefaults: ( TWPLoginUser* )_User
     {
     BOOL isSuccess = NO;
 

@@ -94,7 +94,7 @@
                                      successBlock:
         ^( NSString* _OAuthToken, NSString* _OAuthTokenSecret, NSString* _UserID, NSString* _ScreenName )
             {
-            TWPUser* newUser = [ [ TWPUserManager sharedManager ]
+            TWPLoginUser* newUser = [ [ TWPUserManager sharedManager ]
                 createUserWithUserName: _ScreenName userID: _UserID OAuthToken: _OAuthToken OAuthTokenSecret: _OAuthTokenSecret ];
 
             if ( newUser )

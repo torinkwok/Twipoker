@@ -24,9 +24,9 @@
 
 #import <Foundation/Foundation.h>
 
-/** `TWPUser` represents an Twipoker user.
+/** `TWPLoginUser` represents an Twipoker user.
   */
-@interface TWPUser : NSObject
+@interface TWPLoginUser : NSObject
     {
 @private
     STTwitterAPI __strong* _twitterAPI;
@@ -46,7 +46,7 @@
 
 @property ( strong, readonly ) STTwitterAPI* twitterAPI;
 
-@end // TWPUser class
+@end // TWPLoginUser class
 
 // ======================================================================================== //
 
@@ -69,7 +69,7 @@ NSString extern* const TWPNewUserUserInfoKey;
 @property ( weak, readwrite ) IBOutlet id <TWPUserManagerDelegate> delegate;
 
 @property ( strong, readonly ) NSDictionary* loginUsers;
-@property ( strong, readwrite ) TWPUser* currentUser;
+@property ( strong, readwrite ) TWPLoginUser* currentUser;
 
 #pragma mark Initialization
 // Returns the shared user manager object for the process.
@@ -78,9 +78,9 @@ NSString extern* const TWPNewUserUserInfoKey;
 #pragma mark Handling Users
 // Create an user by retrieving OAuth token pair from current default keychain
 // based on the given user id (_UserID is used for account name)
-- ( TWPUser* ) retrieveUserWithUserID: ( NSString* )_UserID;
+- ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID;
 
-- ( TWPUser* ) createUserWithUserName: ( NSString* )_UserName
+- ( TWPLoginUser* ) createUserWithUserName: ( NSString* )_UserName
                                userID: ( NSString* )_UserID
                            OAuthToken: ( NSString* )_OAuthToken
                      OAuthTokenSecret: ( NSString* )_OAuthTokenSecret;
@@ -97,7 +97,7 @@ NSString extern* const TWPNewUserUserInfoKey;
 - ( void ) twipokerDidFinishLogin: ( NSNotification* )_Notif;
 
 - ( void )        userManager: ( TWPUserManager* )_UserManager
-    didFinishLoginWithNewUser: ( TWPUser* )_NewUser;
+    didFinishLoginWithNewUser: ( TWPLoginUser* )_NewUser;
 
 @end
 

@@ -45,7 +45,7 @@ STTwitterAPI __strong* TWPTwitterAPI;
 
 - ( void ) applicationWillFinishLaunching: ( NSNotification* )_Notif
     {
-    TWPUser* currentUser = [ [ TWPUserManager sharedManager ] currentUser ];
+    TWPLoginUser* currentUser = [ [ TWPUserManager sharedManager ] currentUser ];
 
     if ( currentUser )
         [ self.mainWindowController showWindow: self ];
