@@ -37,7 +37,7 @@ NSString extern* const TWPUserDefaultsKeyAllLoginUsers;
 NSString extern* const TWPTwipokerDidFinishLoginNotification;
 
 // Notification User Info Keys
-NSString extern* const TWPNewUserUserInfoKey;
+NSString extern* const TWPNewLoginUserUserInfoKey;
 
 /** The `TWPLoginUsersManager` class enables us to manage all of the Twipoker users.
   */

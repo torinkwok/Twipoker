@@ -35,7 +35,7 @@ NSString* const TWPUserDefaultsKeyAllLoginUsers = @"home.bedroom.TongGuo.Twipoke
 NSString* const TWPTwipokerDidFinishLoginNotification = @"home.bedroom.TongGuo.Twipoker.Notif.DidFinishLogin";
 
 // Notification User Info Keys
-NSString* const TWPNewUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.NewUser";
+NSString* const TWPNewLoginUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.NewLoginUser";
 
 @implementation TWPLoginUsersManager
     {

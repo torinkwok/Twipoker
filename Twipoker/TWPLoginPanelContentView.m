@@ -100,7 +100,7 @@
             if ( newUser )
                 [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerDidFinishLoginNotification
                                                                        object: nil
-                                                                     userInfo: @{ TWPNewUserUserInfoKey : newUser } ];
+                                                                     userInfo: @{ TWPNewLoginUserUserInfoKey : newUser } ];
             }
                                             errorBlock: ^( NSError* _Error ){ NSLog( @"%@", _Error ); } ];
     }
