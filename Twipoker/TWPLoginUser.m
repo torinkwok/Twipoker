@@ -44,6 +44,17 @@
               } description ];
     }
 
+- ( BOOL ) isEqual: ( id )_Object
+    {
+    if ( _Object == self )
+        return YES;
+
+    if ( [ _Object isKindOfClass: [ TWPLoginUser class ] ] )
+        return [ self isEqualToLoginUser: ( TWPLoginUser* )_Object ];
+
+    return [ super isEqual: _Object ];
+    }
+
 #pragma mark Accessors
 // Screen name of current user, '@' has been excluded.
 - ( NSString* ) userName
@@ -67,6 +78,17 @@
 - ( NSString* ) OAuthTokenSecret
     {
     return self->_twitterAPI.oauthAccessTokenSecret;
+    }
+
+#pragma mark Comparing
+- ( BOOL ) isEqualToLoginUser: ( TWPLoginUser* )_AnotherLoginUser
+    {
+    if ( _AnotherLoginUser == self )
+        return YES;
+
+    return [ self.userID isEqualToString: _AnotherLoginUser.userID ]
+                && [ self.OAuthToken isEqualToString: _AnotherLoginUser.OAuthToken ]
+                && [ self.OAuthTokenSecret isEqualToString: _AnotherLoginUser.OAuthTokenSecret ];
     }
 
 @end // TWPLoginUser class

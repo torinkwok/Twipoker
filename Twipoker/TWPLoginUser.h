@@ -46,6 +46,9 @@
 
 @property ( strong, readonly ) STTwitterAPI* twitterAPI;
 
+#pragma mark Comparing
+- ( BOOL ) isEqualToLoginUser: ( TWPLoginUser* )_AnotherLoginUser;
+
 @end // TWPLoginUser class
 
 /*=============================================================================┐

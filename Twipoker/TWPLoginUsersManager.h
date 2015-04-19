@@ -27,7 +27,43 @@
 #import "TWPLoginUser.h"
 
 @class TWPLoginUser;
-@protocol TWPUserManagerDelegate;
+@protocol TWPLoginUsersManagerDelegate;
+
+/** The `TWPLoginUsersManager` class enables us to manage all of the Twipoker users.
+  */
+@interface TWPLoginUsersManager : NSObject
+//    {
+//@private
+//    NSArray __strong* _allLoginUsers;
+//    }
+
+@property ( weak, readwrite ) IBOutlet id <TWPLoginUsersManagerDelegate> delegate;
+
+//@property ( strong, readonly ) NSArray* allLoginUsers;
+@property ( strong, readwrite ) TWPLoginUser* currentLoginUser;
+
+#pragma mark Singleton Object
+// Returns the shared user manager object for the process.
++ ( instancetype ) sharedManager;
+
+#pragma mark Handling Users
+// Create an user by retrieving OAuth token pair from current default keychain
+// based on the given user id (_UserID is used for account name)
+- ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID;
+
+- ( TWPLoginUser* ) createUserWithUserID: ( NSString* )_UserID
+                                userName: ( NSString* )_UserName
+                              OAuthToken: ( NSString* )_OAuthToken
+                        OAuthTokenSecret: ( NSString* )_OAuthTokenSecret;
+
+- ( TWPLoginUser* ) createUserWithUserID: ( NSString* )_UserID
+                              OAuthToken: ( NSString* )_OAuthToken
+                        OAuthTokenSecret: ( NSString* )_OAuthTokenSecret;
+
+- ( NSArray* ) allUsers;
+- ( void ) removeAllUsers;
+
+@end
 
 // User Defauls Keys
 NSString extern* const TWPUserDefaultsKeyCurrentLoginUser;
@@ -39,32 +75,7 @@ NSString extern* const TWPTwipokerDidFinishLoginNotification;
 // Notification User Info Keys
 NSString extern* const TWPNewLoginUserUserInfoKey;
 
-/** The `TWPLoginUsersManager` class enables us to manage all of the Twipoker users.
-  */
-@interface TWPLoginUsersManager : NSObject
-
-@property ( weak, readwrite ) IBOutlet id <TWPUserManagerDelegate> delegate;
-
-#pragma mark Singleton Object
-// Returns the shared user manager object for the process.
-+ ( instancetype ) sharedManager;
-
-#pragma mark Handling Users
-// Create an user by retrieving OAuth token pair from current default keychain
-// based on the given user id (_UserID is used for account name)
-- ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID;
-
-- ( TWPLoginUser* ) createUserWithUserName: ( NSString* )_UserName
-                               userID: ( NSString* )_UserID
-                           OAuthToken: ( NSString* )_OAuthToken
-                     OAuthTokenSecret: ( NSString* )_OAuthTokenSecret;
-
-- ( NSArray* ) allUsers;
-- ( void ) removeAllUsers;
-
-@end
-
-@protocol TWPUserManagerDelegate
+@protocol TWPLoginUsersManagerDelegate
 
 @optional
 // Sent by the default notification center immediately after a successful login

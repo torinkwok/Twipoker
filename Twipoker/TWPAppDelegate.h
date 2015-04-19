@@ -27,7 +27,7 @@
 @class TWPLoginPanelController;
 @class TWPMainWindowController;
 
-@interface TWPAppDelegate : NSObject <NSApplicationDelegate/*, TWPUserManagerDelegate*/>
+@interface TWPAppDelegate : NSObject <NSApplicationDelegate/*, TWPLoginUsersManagerDelegate*/>
 
 @property ( strong ) TWPLoginPanelController* loginPanelController;
 @property ( strong ) TWPMainWindowController* mainWindowController;

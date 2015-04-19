@@ -45,20 +45,20 @@ STTwitterAPI __strong* TWPTwitterAPI;
 
 - ( void ) applicationWillFinishLaunching: ( NSNotification* )_Notif
     {
-    TWPLoginUser* currentUser = [ [ TWPLoginUsersManager sharedManager ] currentUser ];
-
-    if ( currentUser )
-        [ self.mainWindowController showWindow: self ];
-    else
-        {
-        [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                    selector: @selector( twipokerDidFinishLogin: )
-                                                        name: TWPTwipokerDidFinishLoginNotification
-                                                      object: nil ];
-        // If there is no current user,
-        // we have to prompt user for authorization by showing them a beautiful login panel.
-        [ self.loginPanelController showWindow: self ];
-        }
+//    TWPLoginUser* currentUser = [ [ TWPLoginUsersManager sharedManager ] currentUser ];
+//
+//    if ( currentUser )
+//        [ self.mainWindowController showWindow: self ];
+//    else
+//        {
+//        [ [ NSNotificationCenter defaultCenter ] addObserver: self
+//                                                    selector: @selector( twipokerDidFinishLogin: )
+//                                                        name: TWPTwipokerDidFinishLoginNotification
+//                                                      object: nil ];
+//        // If there is no current user,
+//        // we have to prompt user for authorization by showing them a beautiful login panel.
+//        [ self.loginPanelController showWindow: self ];
+//        }
     }
 
 #pragma mark Conforms to <TWPUesrManagerDelegate>
