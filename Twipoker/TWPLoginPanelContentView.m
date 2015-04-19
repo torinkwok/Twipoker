@@ -95,7 +95,7 @@
         ^( NSString* _OAuthToken, NSString* _OAuthTokenSecret, NSString* _UserID, NSString* _ScreenName )
             {
             TWPLoginUser* newUser = [ [ TWPLoginUsersManager sharedManager ]
-                createUserWithUserName: _ScreenName userID: _UserID OAuthToken: _OAuthToken OAuthTokenSecret: _OAuthTokenSecret ];
+                createUserWithUserID: _UserID userName: _ScreenName OAuthToken: _OAuthToken OAuthTokenSecret: _OAuthTokenSecret ];
 
             if ( newUser )
                 [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerDidFinishLoginNotification

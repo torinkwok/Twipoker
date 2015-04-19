@@ -78,12 +78,23 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
 
                 if ( loginUser )
                     [ self->_allLoginUsers addObject: loginUser ];
-                else if ( error )
+                else
+                    {
+                    [ self->_allLoginUserIDs removeObject: _UserID ];
+                    [ [ NSUserDefaults standardUserDefaults ] setObject: self->_allLoginUserIDs forKey: TWPUserDefaultsKeyAllLoginUsers ];
+
                     TWPPrintNSErrorForLog( error );
+                    }
                 }
 
-            if ( !( self->_currentLoginUserID = [ [ NSUserDefaults standardUserDefaults ] objectForKey: TWPUserDefaultsKeyCurrentLoginUser ] ) )
-                self->_currentLoginUser = [ self retrieveUserWithUserID: self->_currentLoginUserID ];
+            if ( ( self->_currentLoginUserID = [ [ NSUserDefaults standardUserDefaults ] objectForKey: TWPUserDefaultsKeyCurrentLoginUser ] ) )
+                {
+                if ( !( self->_currentLoginUser = [ self retrieveUserWithUserID: self->_currentLoginUserID ] ) )
+                    {
+                    self->_currentLoginUserID = nil;
+                    [ [ NSUserDefaults standardUserDefaults ] removeObjectForKey: TWPUserDefaultsKeyCurrentLoginUser ];
+                    }
+                }
 
             sSharedManager = self;
             }
@@ -93,12 +104,12 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     }
 
 #pragma mark Handling Users
-- ( TWPLoginUser* ) currentUser
+- ( TWPLoginUser* ) currentLoginUser
     {
     return self->_currentLoginUser;
     }
 
-- ( void ) setCurrentUser: ( TWPLoginUser* )_User
+- ( void ) setCurrentLoginUser: ( TWPLoginUser* )_User
     {
     if ( _User && ![ _User isEqualToLoginUser: self->_currentLoginUser ] )
         {
@@ -114,7 +125,7 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     TWPLoginUser* matchedLoginUser = nil;
 
     for ( TWPLoginUser* _LoginUser in self->_allLoginUsers )
-        if ( [ _LoginUser.userID isEqualToString: self->_currentLoginUserID ] )
+        if ( [ _LoginUser.userID isEqualToString: _UserID ] )
             matchedLoginUser = _LoginUser;
 
     return matchedLoginUser;
@@ -145,6 +156,11 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
             TWPPrintNSErrorForLog( error );
             }
         }
+    else
+        newLoginUser = [ self retrieveUserWithUserID: _UserID ];
+
+    if ( !self->_currentLoginUserID || !self->_currentLoginUser )
+        self.currentLoginUser = newLoginUser;
 
     return newLoginUser;
     }
