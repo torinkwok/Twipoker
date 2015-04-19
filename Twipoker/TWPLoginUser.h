@@ -26,7 +26,7 @@
 
 /** `TWPLoginUser` represents an Twipoker user.
   */
-@interface TWPLoginUser : NSObject
+@interface TWPLoginUser : NSObject <NSCopying>
     {
 @private
     STTwitterAPI __strong* _twitterAPI;

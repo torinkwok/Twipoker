@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPLoginUser.h"
+#import "TWPLogin+TWPLoginUsersManager.h"
 
 #pragma mark TWPLoginUser class
 @implementation TWPLoginUser
@@ -89,6 +90,16 @@
     return [ self.userID isEqualToString: _AnotherLoginUser.userID ]
                 && [ self.OAuthToken isEqualToString: _AnotherLoginUser.OAuthToken ]
                 && [ self.OAuthTokenSecret isEqualToString: _AnotherLoginUser.OAuthTokenSecret ];
+    }
+
+#pragma mark Conforms to <NSCopying>
+- ( instancetype ) copyWithZone: ( NSZone* )_Zone
+    {
+    TWPLoginUser* newLoginUser = [ TWPLoginUser _loginUserWithUserID: [ self.userID copy ]
+                                                            userName: [ self.userName copy ]
+                                                    OAuthAccessToken: [ self.OAuthToken copy ]
+                                              OAuthAccessTokenSecret: [ self.OAuthTokenSecret copy ] ];
+    return newLoginUser;
     }
 
 @end // TWPLoginUser class

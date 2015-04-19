@@ -183,6 +183,22 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
                       OAuthTokenSecret: _OAuthTokenSecret ];
     }
 
+- ( NSArray* ) allUsers
+    {
+    return [ self->_currentLoginUser copy ];
+    }
+
+- ( void ) removeAllUsers
+    {
+    self->_currentLoginUser = nil;
+    self->_currentLoginUserID = nil;
+    [ [ NSUserDefaults standardUserDefaults ] removeObjectForKey: TWPUserDefaultsKeyCurrentLoginUser ];
+
+    [ self->_allLoginUsers removeAllObjects ];
+    [ self->_allLoginUserIDs removeAllObjects ];
+    [ [ NSUserDefaults standardUserDefaults ] removeObjectForKey: TWPUserDefaultsKeyAllLoginUsers ];
+    }
+
 @end
 
 /*=============================================================================┐

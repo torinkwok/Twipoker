@@ -32,10 +32,6 @@
 /** The `TWPLoginUsersManager` class enables us to manage all of the Twipoker users.
   */
 @interface TWPLoginUsersManager : NSObject
-//    {
-//@private
-//    NSArray __strong* _allLoginUsers;
-//    }
 
 @property ( weak, readwrite ) IBOutlet id <TWPLoginUsersManagerDelegate> delegate;
 
