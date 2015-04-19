@@ -83,9 +83,7 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
                 }
 
             if ( !( self->_currentLoginUserID = [ [ NSUserDefaults standardUserDefaults ] objectForKey: TWPUserDefaultsKeyCurrentLoginUser ] ) )
-                for ( TWPLoginUser* _LoginUser in self->_allLoginUsers )
-                    if ( [ _LoginUser.userID isEqualToString: self->_currentLoginUserID ] )
-                        self->_currentLoginUser = _LoginUser;
+                self->_currentLoginUser = [ self retrieveUserWithUserID: self->_currentLoginUserID ];
 
             sSharedManager = self;
             }
@@ -113,11 +111,13 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
 
 - ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID
     {
-    TWPLoginUser* loginUser = nil;
+    TWPLoginUser* matchedLoginUser = nil;
 
-    // TODO:
+    for ( TWPLoginUser* _LoginUser in self->_allLoginUsers )
+        if ( [ _LoginUser.userID isEqualToString: self->_currentLoginUserID ] )
+            matchedLoginUser = _LoginUser;
 
-    return loginUser;
+    return matchedLoginUser;
     }
 
 - ( TWPLoginUser* ) createUserWithUserID: ( NSString* )_UserID
@@ -126,38 +126,37 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
                         OAuthTokenSecret: ( NSString* )_OAuthTokenSecret
     {
     NSError* error = nil;
+    TWPLoginUser* newLoginUser = nil;
 
     if ( ![ self->_allLoginUserIDs containsObject: _UserID ] )
         {
-        TWPLoginUser* loginUser = [ TWPLoginUser _loginUserWithUserID: _UserID
-                                                             userName: _UserName
-                                                     OAuthAccessToken: _OAuthToken
-                                               OAuthAccessTokenSecret: _OAuthTokenSecret ];
-        if ( loginUser )
+        newLoginUser = [ TWPLoginUser _loginUserWithUserID: _UserID
+                                                  userName: _UserName
+                                          OAuthAccessToken: _OAuthToken
+                                    OAuthAccessTokenSecret: _OAuthTokenSecret ];
+        if ( newLoginUser )
             {
-            [ loginUser _permanentSecret: &error ];
-            if ( !error || ( [ error.domain isEqualToString: NSOSStatusErrorDomain ]
-                                && error.code == errSecDuplicateItem ) )
-                {
-                
-                }
+            [ self->_allLoginUserIDs addObject: _UserID ];
+            [ self->_allLoginUsers addObject: newLoginUser ];
+
+            [ [ NSUserDefaults standardUserDefaults ] setObject: self->_allLoginUserIDs forKey: TWPUserDefaultsKeyAllLoginUsers ];
+
+            [ newLoginUser _permanentSecret: &error ];
+            TWPPrintNSErrorForLog( error );
             }
         }
 
-    return loginUser;
+    return newLoginUser;
     }
 
 - ( TWPLoginUser* ) createUserWithUserID: ( NSString* )_UserID
                               OAuthToken: ( NSString* )_OAuthToken
-                        OAuthTokenSecret: ( NSString* )_OAuthTokenSecret;
-
-- ( BOOL ) _appendUserToUserDefaults: ( TWPLoginUser* )_User
+                        OAuthTokenSecret: ( NSString* )_OAuthTokenSecret
     {
-    BOOL isSuccess = NO;
-
-    // TODO:
-
-    return isSuccess;
+    return [ self createUserWithUserID: _UserID
+                              userName: nil
+                            OAuthToken: _OAuthToken
+                      OAuthTokenSecret: _OAuthTokenSecret ];
     }
 
 @end
