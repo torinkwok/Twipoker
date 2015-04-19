@@ -31,7 +31,7 @@
 
 // User Defauls Keys
 NSString extern* const TWPUserDefaultsKeyCurrentLoginUser;
-NSString extern* const TWPUserDefaultsKeyAllUsers;
+NSString extern* const TWPUserDefaultsKeyAllLoginUsers;
 
 // Notification Names
 NSString extern* const TWPTwipokerDidFinishLoginNotification;
