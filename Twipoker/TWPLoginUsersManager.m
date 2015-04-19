@@ -183,7 +183,7 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
                       OAuthTokenSecret: _OAuthTokenSecret ];
     }
 
-- ( NSArray* ) allUsers
+- ( NSArray* ) copiesOfAllLoginUsers
     {
     NSMutableArray* copiedAllUsers = [ NSMutableArray array ];
 

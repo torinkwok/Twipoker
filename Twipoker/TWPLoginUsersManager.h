@@ -56,7 +56,7 @@
                               OAuthToken: ( NSString* )_OAuthToken
                         OAuthTokenSecret: ( NSString* )_OAuthTokenSecret;
 
-- ( NSArray* ) allUsers;
+- ( NSArray* ) copiesOfAllLoginUsers;
 - ( void ) removeAllUsers;
 
 @end

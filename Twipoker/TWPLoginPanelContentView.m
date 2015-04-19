@@ -111,9 +111,9 @@
 
             [ [ TWPLoginUsersManager sharedManager ] setCurrentLoginUser: newUser1 ];
 
-            NSArray* allUsers0 = [ [ TWPLoginUsersManager sharedManager ] allUsers ];
+            NSArray* allUsers0 = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
             NSArray* allUsers1 = [ allUsers0 copy ];
-            NSArray* allUsers2 = [ [ TWPLoginUsersManager sharedManager ] allUsers ];
+            NSArray* allUsers2 = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
             }
                                             errorBlock: ^( NSError* _Error ){ NSLog( @"%@", _Error ); } ];
     }
