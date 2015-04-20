@@ -76,8 +76,8 @@
 #pragma mark IBActions
 - ( IBAction ) getPINCodeAction: ( id )_Sender
     {
-    [ [ TWPLoginUsersManager sharedManager ] createUserByFetchingPIN: self.enterUserNameTextField.stringValue
-                                                          errorBlock:
+    [ [ TWPLoginUsersManager sharedManager ] fetchPINByLaunchingDefaultBrowser: self.enterUserNameTextField.stringValue
+                                                                    errorBlock:
         ^( NSError* _Error )
             {
             [ self performSelectorOnMainThread: @selector( presentError: )

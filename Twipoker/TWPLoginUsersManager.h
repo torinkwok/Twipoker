@@ -47,8 +47,8 @@
 // Set and get the current login user.
 @property ( strong, readwrite ) TWPLoginUser* currentLoginUser;
 
-- ( void ) createUserByFetchingPIN: ( NSString* )_ScreenName
-                        errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+- ( void ) fetchPINByLaunchingDefaultBrowser: ( NSString* )_ScreenName
+                                  errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
 - ( void ) createUserWithPIN: ( NSString* )_PIN
                 successBlock: ( void (^)( TWPLoginUser* _NewLoginUser ) )_SuccessBlock

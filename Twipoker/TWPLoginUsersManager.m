@@ -128,8 +128,8 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
         }
     }
 
-- ( void ) createUserByFetchingPIN: ( NSString* )_ScreenName
-                        errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+- ( void ) fetchPINByLaunchingDefaultBrowser: ( NSString* )_ScreenName
+                                  errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
     {
     self->_tmpTwitterAPI = [ STTwitterAPI twitterAPIWithOAuthConsumerName: TWPConsumerName
                                                               consumerKey: TWPConsumerKey
