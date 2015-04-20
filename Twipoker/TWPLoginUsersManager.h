@@ -35,24 +35,26 @@
 
 @property ( weak, readwrite ) IBOutlet id <TWPLoginUsersManagerDelegate> delegate;
 
-// Set and get the current login user.
-@property ( strong, readwrite ) TWPLoginUser* currentLoginUser;
-
 #pragma mark Singleton Object
 // Returns the shared user manager object for the process.
 + ( instancetype ) sharedManager;
 
 #pragma mark Handling Users
+// Set and get the current login user.
+@property ( strong, readwrite ) TWPLoginUser* currentLoginUser;
+
+- ( void ) createUserByFetchingPIN: ( NSString* )_ScreenName
+                      successBlock: ( void (^)( STTwitterAPI* _UncompletedTwitterAPI ) )_SuccessBlock
+                        errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
+- ( void ) createUserWithPIN: ( NSString* )_PIN
+       uncompletedTwitterAPI: ( STTwitterAPI* )_UncompletedTwitterAPI
+                successBlock: ( void (^)( TWPLoginUser* _NewLoginUser ) )_SuccessBlock
+                  errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
 // Create a login user by retrieving OAuth token pair from current default keychain
 // based on the given user id (_UserID is used for account name).
 - ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID;
-
-- ( STTwitterAPI* ) createUserByFetchingPIN: ( NSString* )_ScreenName
-                                      error: ( NSError** )_Error;
-
-- ( TWPLoginUser* ) createUserWithPIN: ( NSString* )_PIN
-                uncompletedTwitterAPI: ( STTwitterAPI* )_UncompletedTwitterAPI
-                                error: ( NSError** )_Error;
 
 // Create a login user with given _UserID, _UserName, _OAuthToken,_OAuthTokenSecret.
 // This method will not access the current default keychain automatically.

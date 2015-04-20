@@ -35,9 +35,9 @@ STTwitterAPI __strong* TWPTwitterAPI;
 #pragma mark Initialization & Deallocation
 - ( void ) awakeFromNib
     {
-    TWPTwitterAPI = [ STTwitterAPI twitterAPIWithOAuthConsumerName: TWPConsumerName
-                                                       consumerKey: TWPConsumerKey
-                                                    consumerSecret: TWPConsumerSecret ];
+//    TWPTwitterAPI = [ STTwitterAPI twitterAPIWithOAuthConsumerName: TWPConsumerName
+//                                                       consumerKey: TWPConsumerKey
+//                                                    consumerSecret: TWPConsumerSecret ];
 
     self.loginPanelController = [ TWPLoginPanelController loginPanelController ];
     self.mainWindowController = [ TWPMainWindowController mainWindowController ];
