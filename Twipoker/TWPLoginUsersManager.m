@@ -112,11 +112,13 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     }
 
 #pragma mark Handling Users
+// Get the current login user.
 - ( TWPLoginUser* ) currentLoginUser
     {
     return self->_currentLoginUser;
     }
 
+// Set the current login user.
 - ( void ) setCurrentLoginUser: ( TWPLoginUser* )_User
     {
     if ( _User && ![ _User isEqualToLoginUser: self->_currentLoginUser ] )
@@ -128,6 +130,8 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
         }
     }
 
+// Create a login user by retrieving OAuth token pair from current default keychain
+// based on the given user id (_UserID is used for account name).
 - ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID
     {
     TWPLoginUser* matchedLoginUser = nil;
@@ -139,6 +143,8 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     return matchedLoginUser;
     }
 
+// Create a login user with given _UserID, _UserName, _OAuthToken,_OAuthTokenSecret.
+// This method will not access the current default keychain automatically.
 - ( TWPLoginUser* ) createUserWithUserID: ( NSString* )_UserID
                                 userName: ( NSString* )_UserName
                               OAuthToken: ( NSString* )_OAuthToken
@@ -173,6 +179,8 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     return newLoginUser;
     }
 
+// Create a login user with given _UserID, _OAuthToken,_OAuthTokenSecret.
+// This method will not access the current default keychain automatically.
 - ( TWPLoginUser* ) createUserWithUserID: ( NSString* )_UserID
                               OAuthToken: ( NSString* )_OAuthToken
                         OAuthTokenSecret: ( NSString* )_OAuthTokenSecret
@@ -183,6 +191,7 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
                       OAuthTokenSecret: _OAuthTokenSecret ];
     }
 
+// Get the copies of all login users.
 - ( NSArray* ) copiesOfAllLoginUsers
     {
     NSMutableArray* copiedAllUsers = [ NSMutableArray array ];
@@ -195,6 +204,7 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     return [ copiedAllUsers copy ];
     }
 
+// Remove all login users.
 - ( void ) removeAllLoginUsers
     {
     [ self->_allLoginUsers removeAllObjects ];

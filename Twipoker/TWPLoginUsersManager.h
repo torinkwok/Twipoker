@@ -35,7 +35,7 @@
 
 @property ( weak, readwrite ) IBOutlet id <TWPLoginUsersManagerDelegate> delegate;
 
-//@property ( strong, readonly ) NSArray* allLoginUsers;
+// Set and get the current login user.
 @property ( strong, readwrite ) TWPLoginUser* currentLoginUser;
 
 #pragma mark Singleton Object
@@ -43,20 +43,27 @@
 + ( instancetype ) sharedManager;
 
 #pragma mark Handling Users
-// Create an user by retrieving OAuth token pair from current default keychain
-// based on the given user id (_UserID is used for account name)
+// Create a login user by retrieving OAuth token pair from current default keychain
+// based on the given user id (_UserID is used for account name).
 - ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID;
 
+// Create a login user with given _UserID, _UserName, _OAuthToken,_OAuthTokenSecret.
+// This method will not access the current default keychain automatically.
 - ( TWPLoginUser* ) createUserWithUserID: ( NSString* )_UserID
                                 userName: ( NSString* )_UserName
                               OAuthToken: ( NSString* )_OAuthToken
                         OAuthTokenSecret: ( NSString* )_OAuthTokenSecret;
 
+// Create a login user with given _UserID, _OAuthToken,_OAuthTokenSecret.
+// This method will not access the current default keychain automatically.
 - ( TWPLoginUser* ) createUserWithUserID: ( NSString* )_UserID
                               OAuthToken: ( NSString* )_OAuthToken
                         OAuthTokenSecret: ( NSString* )_OAuthTokenSecret;
 
+// Get the copies of all login users.
 - ( NSArray* ) copiesOfAllLoginUsers;
+
+// Remove all login users.
 - ( void ) removeAllLoginUsers;
 
 @end
