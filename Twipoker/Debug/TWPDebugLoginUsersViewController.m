@@ -79,7 +79,7 @@
 
 - ( NSString* ) toolbarItemLabel
     {
-    return NSLocalizedString( @"Users", nil );
+    return NSLocalizedString( @"Login Users", nil );
     }
 
 #pragma mark Confomrs to <NSTableViewDataSource>

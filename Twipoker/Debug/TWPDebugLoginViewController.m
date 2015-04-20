@@ -51,7 +51,7 @@
 
 - ( NSString* ) toolbarItemLabel
     {
-    return NSLocalizedString( @"Login", nil );
+    return NSLocalizedString( @"Login Panel", nil );
     }
 
 @end
