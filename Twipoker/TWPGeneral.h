@@ -51,6 +51,9 @@ NSString extern* const TWPOAuthCallbackOutOfBand;
 
 NSURL extern __strong* TWPUsersPermanentURL;
 
+// Notification Names
+NSString extern* const TWPTwipokerDidFinishLoginNotification;
+
 /*=============================================================================┐
 |                                                                              |
 |                                        `-://++/:-`    ..                     |

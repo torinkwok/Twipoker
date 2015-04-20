@@ -43,6 +43,9 @@ static void s_init()
     TWPUsersPermanentURL = [ applicationSupportURL URLByAppendingPathComponent: @"users.plist" ];
     }
 
+// Notification Names
+NSString* const TWPTwipokerDidFinishLoginNotification = @"home.bedroom.TongGuo.Twipoker.Notif.DidFinishLogin";
+
 /*=============================================================================┐
 |                                                                              |
 |                                        `-://++/:-`    ..                     |

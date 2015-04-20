@@ -37,8 +37,6 @@
     STTwitterAPI __strong __block* _tmpTwitterAPI;
     }
 
-@property ( weak, readwrite ) IBOutlet id <TWPLoginUsersManagerDelegate> delegate;
-
 #pragma mark Singleton Object
 // Returns the shared user manager object for the process.
 + ( instancetype ) sharedManager;
@@ -89,25 +87,12 @@ NSString extern* const TWPUserDefaultsKeyCurrentLoginUser;
 NSString extern* const TWPUserDefaultsKeyAllLoginUsers;
 
 // Notification Names
-NSString extern* const TWPTwipokerDidFinishLoginNotification;
-
 NSString extern* const TWPLoginUsersManagerDidFinishAddingNewLoginUser;
 NSString extern* const TWPLoginUsersManagerDidFinishUpdatingCurrentLoginUser;
 NSString extern* const TWPLoginUsersManagerDidFinishRemovingAllLoginUsers;
 
 // Notification User Info Keys
 NSString extern* const TWPNewLoginUserUserInfoKey;
-
-@protocol TWPLoginUsersManagerDelegate
-
-@optional
-// Sent by the default notification center immediately after a successful login
-- ( void ) twipokerDidFinishLogin: ( NSNotification* )_Notif;
-
-- ( void )        userManager: ( TWPLoginUsersManager* )_UserManager
-    didFinishLoginWithNewUser: ( TWPLoginUser* )_NewUser;
-
-@end
 
 /*=============================================================================┐
 |                                                                              |

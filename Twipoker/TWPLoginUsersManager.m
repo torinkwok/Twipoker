@@ -32,11 +32,9 @@ NSString* const TWPUserDefaultsKeyCurrentLoginUser = @"home.bedroom.TongGuo.Twip
 NSString* const TWPUserDefaultsKeyAllLoginUsers = @"home.bedroom.TongGuo.Twipoker.UserDefaults.AllLoginUsers";
 
 // Notification Names
-NSString* const TWPTwipokerDidFinishLoginNotification = @"home.bedroom.TongGuo.Twipoker.Notif.DidFinishLogin";
-
-NSString* const TWPLoginUsersManagerDidFinishAddingNewLoginUser = @"home.bedroom.TongGuo.Twipoker.Notif.DidFinishAddingNewLoginUser";
-NSString* const TWPLoginUsersManagerDidFinishUpdatingCurrentLoginUser = @"home.bedroom.TongGuo.Twipoker.Notif.DidFinishUpdatingCurrentLoginUser";
-NSString* const TWPLoginUsersManagerDidFinishRemovingAllLoginUsers = @"home.bedroom.TongGuo.Twipoker.Notif.DidRemovingAllLoginUsers";
+NSString* const TWPLoginUsersManagerDidFinishAddingNewLoginUser = @"home.bedroom.TongGuo.Twipoker.TWPLoginUsersManager.Notif.DidFinishAddingNewLoginUser";
+NSString* const TWPLoginUsersManagerDidFinishUpdatingCurrentLoginUser = @"home.bedroom.TongGuo.Twipoker.TWPLoginUsersManager.Notif.DidFinishUpdatingCurrentLoginUser";
+NSString* const TWPLoginUsersManagerDidFinishRemovingAllLoginUsers = @"home.bedroom.TongGuo.Twipoker.TWPLoginUsersManager.Notif.DidRemovingAllLoginUsers";
 
 // Notification User Info Keys
 NSString* const TWPNewLoginUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.NewLoginUser";
