@@ -179,7 +179,7 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
     {
     // _SuccessBlock must not be nil while the _ErrorBlock can be nil.
-    NSAssert( _SuccessBlock, @"Fatal error: Success block must not be nil" );
+    // NSAssert( _SuccessBlock, @"Fatal error: Success block must not be nil" );
     [ self->_tmpTwitterAPI postAccessTokenRequestWithPIN: _PIN
                                             successBlock:
         ^( NSString* _OAuthToken, NSString* _OAuthTokenSecret, NSString* _UserID, NSString* _ScreenName )
@@ -188,7 +188,9 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
 
             TWPLoginUser* newLoginUser = [ [ TWPLoginUsersManager sharedManager ]
                 createUserWithUserID: _UserID userName: _ScreenName OAuthToken: _OAuthToken OAuthTokenSecret: _OAuthTokenSecret ];
-            _SuccessBlock( newLoginUser );
+
+            if ( _SuccessBlock )
+                _SuccessBlock( newLoginUser );
             } errorBlock: ^( NSError* _Error ) { _ErrorBlock( _Error ); } ];
     }
 

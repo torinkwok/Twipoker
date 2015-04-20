@@ -38,11 +38,13 @@
 - ( void ) loginUsersManagerDidFinishAddingNewLoginUser: ( NSNotification* )_Notif
     {
     self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
+    [ self.loginUsersTableView reloadData ];
     }
 
 - ( void ) loginUsersManagerDidFinishRemovingAllLoginUsers: ( NSNotification* )_Notif
     {
     self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
+    [ self.loginUsersTableView reloadData ];
     }
 
 - ( instancetype ) init

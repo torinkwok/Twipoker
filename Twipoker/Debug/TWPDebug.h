@@ -36,7 +36,6 @@
 
 + ( instancetype ) sharedDebug;
 - ( IBAction ) showDebugConsole: ( id )_Sender;
-- ( IBAction ) removeAllLoginUsers: ( id )_Sender;
 
 @end
 

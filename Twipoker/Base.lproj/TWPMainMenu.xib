@@ -668,12 +668,6 @@
                                     <action selector="showDebugConsole:" target="wwj-yj-vTh" id="yPM-Oq-CGA"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Remove All Login Users" id="dye-TK-XFP">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="removeAllLoginUsers:" target="wwj-yj-vTh" id="YsO-MK-CTi"/>
-                                </connections>
-                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

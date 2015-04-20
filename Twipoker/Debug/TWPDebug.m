@@ -52,11 +52,6 @@ TWPDebug static __strong* g_globalDebug;
     [ self.debugConsoleController showWindow: self ];
     }
 
-- ( IBAction ) removeAllLoginUsers: ( id )_Sender
-    {
-    [ [ TWPLoginUsersManager sharedManager ] removeAllLoginUsers ];
-    }
-
 @end
 
 /*=============================================================================┐

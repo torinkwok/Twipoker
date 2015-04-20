@@ -32,6 +32,12 @@
 @property ( weak ) IBOutlet NSTextField* PINCodeTextField;
 @property ( weak ) IBOutlet NSButton* loginButton;
 
+@property ( weak ) IBOutlet NSButton* removeAllLoginUsers;
+
+- ( IBAction ) fetchPINCodeAction: ( id )_Sender;
+- ( IBAction ) loginAction: ( id )_Sender;
+- ( IBAction ) removeAllLoginUsersAction: ( id )_Sender;
+
 @end
 
 /*=============================================================================┐

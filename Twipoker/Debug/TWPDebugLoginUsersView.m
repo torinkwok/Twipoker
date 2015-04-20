@@ -23,10 +23,35 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDebugLoginUsersView.h"
+#import "TWPLoginUsersManager.h"
 
 @implementation TWPDebugLoginUsersView
 
+- ( IBAction ) fetchPINCodeAction: ( id )_Sender
+    {
+    [ [ TWPLoginUsersManager sharedManager ] fetchPINByLaunchingDefaultWebBrowser: self.userScreenNameTextField.stringValue
+                                                                       errorBlock:
+        ^( NSError* _Error )
+            {
+            [ self performSelectorOnMainThread: @selector( presentError: ) withObject: _Error waitUntilDone: YES ];
+            } ];
+    }
 
+- ( IBAction ) loginAction: ( id )_Sender
+    {
+    [ [ TWPLoginUsersManager sharedManager ] createUserWithPIN: self.PINCodeTextField.stringValue
+                                                  successBlock: nil
+                                                    errorBlock:
+        ^( NSError* _Error )
+            {
+            [ self performSelectorOnMainThread: @selector( presentError: ) withObject: _Error waitUntilDone: YES ];
+            } ];
+    }
+
+- ( IBAction ) removeAllLoginUsersAction: ( id )_Sender
+    {
+    [ [ TWPLoginUsersManager sharedManager ] removeAllLoginUsers ];
+    }
 
 #pragma  mark Control Delegate
 - ( void ) controlTextDidChange: ( NSNotification* )_Notif

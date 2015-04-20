@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPDebugLoginUsersViewController">
             <connections>
+                <outlet property="loginUsersTableView" destination="sSg-hZ-mmA" id="WV6-Wu-djk"/>
                 <outlet property="view" destination="c22-O7-iKe" id="rbG-76-hmy"/>
             </connections>
         </customObject>
@@ -182,6 +183,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="fetchPINCodeAction:" target="c22-O7-iKe" id="h4i-Af-f0Q"/>
+                                </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVV-nk-61Y">
                                 <rect key="frame" x="18" y="16" width="177" height="22"/>
@@ -215,6 +219,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="loginAction:" target="c22-O7-iKe" id="irw-02-jS2"/>
+                                </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGU-V7-pIE">
                                 <rect key="frame" x="19" y="16" width="123" height="22"/>
@@ -257,6 +264,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="removeAllLoginUsersAction:" target="c22-O7-iKe" id="Kn3-qE-aT5"/>
+                    </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LA3-jW-OID">
                     <rect key="frame" x="331" y="514" width="22" height="17"/>
@@ -272,6 +282,7 @@
                 <outlet property="PINCodeTextField" destination="XGU-V7-pIE" id="FRy-wF-uhm"/>
                 <outlet property="fetchPINCodeButton" destination="Rz6-PY-ySy" id="zzN-S0-VbN"/>
                 <outlet property="loginButton" destination="9H8-9V-oNU" id="Kgb-6g-YrG"/>
+                <outlet property="removeAllLoginUsers" destination="NTb-I9-1Qm" id="g8i-m6-yBR"/>
                 <outlet property="userScreenNameTextField" destination="DVV-nk-61Y" id="wGs-VH-nOg"/>
             </connections>
         </customView>

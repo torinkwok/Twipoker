@@ -29,6 +29,8 @@
 @interface TWPDebugLoginUsersViewController : NSViewController <MASPreferencesViewController
                                                                , NSTableViewDataSource
                                                                , NSTableViewDelegate>
+@property ( weak ) IBOutlet NSTableView* loginUsersTableView;
+
 #pragma mark Confomrs to <MASPreferencesViewController>
 @property ( nonatomic, readonly ) NSString* identifier;
 @property ( nonatomic, readonly ) NSImage* toolbarItemImage;
