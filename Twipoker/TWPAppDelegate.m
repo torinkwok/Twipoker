@@ -39,18 +39,22 @@
 
 - ( void ) applicationWillFinishLaunching: ( NSNotification* )_Notif
     {
+    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                selector: @selector( twipokerDidFinishLogin: )
+                                                    name: TWPTwipokerDidFinishLoginNotification
+                                                  object: nil ];
+
+    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                selector: @selector( usersManagerDidFinishRemovingAllLoginUsers: )
+                                                    name: TWPLoginUsersManagerDidFinishRemovingAllLoginUsers
+                                                  object: nil ];
+
     if ( [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ] )
         [ self.mainWindowController showWindow: self ];
     else
-        {
-        [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                    selector: @selector( twipokerDidFinishLogin: )
-                                                        name: TWPTwipokerDidFinishLoginNotification
-                                                      object: nil ];
         // If there is no current user,
         // we have to prompt user for authorization by showing them a beautiful login panel.
         [ self.loginPanelController showWindow: self ];
-        }
     }
 
 #pragma mark Conforms to <TWPUesrManagerDelegate>
@@ -59,6 +63,12 @@
     {
     [ self.loginPanelController close ];
     [ self.mainWindowController showWindow: self ];
+    }
+
+- ( void ) usersManagerDidFinishRemovingAllLoginUsers: ( NSNotification* )_Notif
+    {
+    [ self.mainWindowController close ];
+    [ self.loginPanelController showWindow: self ];
     }
 
 @end
