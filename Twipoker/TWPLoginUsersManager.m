@@ -134,9 +134,21 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     self->_tmpTwitterAPI = [ STTwitterAPI twitterAPIWithOAuthConsumerName: TWPConsumerName
                                                               consumerKey: TWPConsumerKey
                                                            consumerSecret: TWPConsumerSecret ];
-    // TODO: Waiting for handle the boundary conditions
+    // Obtain a pair of OAuth Request Token and secret
+    // to request a PIN code which will be used for user authorization
     [ self->_tmpTwitterAPI postTokenRequest:
-        ^( NSURL* _URL, NSString* _OAuthToken ) { [ [ NSWorkspace sharedWorkspace ] openURL: _URL ]; }
+        ^( NSURL* _URL, NSString* _OAuthToken )
+            {
+            // The form of _URL is similar to:
+            // https://api.twitter.com/oauth/authorize?oauth_token=mODthQ2tkjStNe6Clpd8OnlbcKUiqSDS&oauth_callback_confirmed=true&oauth_token_secret=uspT59p439KNiYK35m6mgLux7uObZajH
+            // It consists of the requested reqeust token pair:
+            // OAuth Request Token: mODthQ2tkjStNe6Clpd8OnlbcKUiqSDS
+            // OAuth Request Token Secret: uspT59p439KNiYK35m6mgLux7uObZajH
+
+            // Open this URL with the current default Web Browser.
+            // Users will find out the PIN code on the page to which _URL points.
+            [ [ NSWorkspace sharedWorkspace ] openURL: _URL ];
+            }
              authenticateInsteadOfAuthorize: NO
                                  forceLogin: @YES
                                  screenName: _ScreenName
