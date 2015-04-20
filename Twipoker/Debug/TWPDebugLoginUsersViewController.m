@@ -22,21 +22,35 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDebugConsoleController.h"
-#import "TWPDebugLoginViewController.h"
 #import "TWPDebugLoginUsersViewController.h"
 
-@implementation TWPDebugConsoleController
+@implementation TWPDebugLoginUsersViewController
 
-+ ( instancetype ) debugConsoleController
+@dynamic identifier;
+@dynamic toolbarItemImage;
+@dynamic toolbarItemLabel;
+
+- ( instancetype ) init
     {
-    TWPDebugConsoleController* controller =
-        [ [ [ self class ] alloc ] initWithViewControllers: @[ [ [ TWPDebugLoginViewController alloc ] init ]
-                                                             , [ [ TWPDebugLoginUsersViewController alloc ] init ]
-                                                             ]
-                                                     title: NSLocalizedString( @"Debug", nil ) ];
+    if ( self = [ super initWithNibName: @"TWPDebugLoginUsersView" bundle: [ NSBundle mainBundle ] ] )
+        ;
 
-    return controller;
+    return self;
+    }
+
+- ( NSString* ) identifier
+    {
+    return @"home.bedroom.TongGuo.Twipoker.UI.DebugConsole.LoginUsers";
+    }
+
+- ( NSImage* ) toolbarItemImage
+    {
+    return [ NSImage imageNamed: NSImageNameEveryone ];
+    }
+
+- ( NSString* ) toolbarItemLabel
+    {
+    return NSLocalizedString( @"Users", nil );
     }
 
 @end

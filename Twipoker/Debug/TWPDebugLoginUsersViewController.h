@@ -22,22 +22,16 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDebugConsoleController.h"
-#import "TWPDebugLoginViewController.h"
-#import "TWPDebugLoginUsersViewController.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation TWPDebugConsoleController
+#import "MASPreferencesViewController.h"
 
-+ ( instancetype ) debugConsoleController
-    {
-    TWPDebugConsoleController* controller =
-        [ [ [ self class ] alloc ] initWithViewControllers: @[ [ [ TWPDebugLoginViewController alloc ] init ]
-                                                             , [ [ TWPDebugLoginUsersViewController alloc ] init ]
-                                                             ]
-                                                     title: NSLocalizedString( @"Debug", nil ) ];
+@interface TWPDebugLoginUsersViewController : NSViewController <MASPreferencesViewController>
 
-    return controller;
-    }
+#pragma mark Required
+@property ( nonatomic, readonly ) NSString* identifier;
+@property ( nonatomic, readonly ) NSImage* toolbarItemImage;
+@property ( nonatomic, readonly ) NSString* toolbarItemLabel;
 
 @end
 
