@@ -24,6 +24,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+NSString extern* const kColumnIdentifierUserID;
+NSString extern* const kColumnIdentifierOAuthAccessToken;
+NSString extern* const kColumnIdentifierOAuthAccessTokenSecret;
+
 @interface TWPDebugLoginUsersView : NSView
 
 @property ( weak ) IBOutlet NSTableView* loginUsersTableView;
@@ -39,6 +43,8 @@
 
 - ( IBAction ) fetchPINCodeAction: ( id )_Sender;
 - ( IBAction ) loginAction: ( id )_Sender;
+
+- ( IBAction ) removeSelectedLoginUsersAction: ( id )_Sender;
 - ( IBAction ) removeAllLoginUsersAction: ( id )_Sender;
 
 @end

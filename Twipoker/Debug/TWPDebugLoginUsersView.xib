@@ -257,6 +257,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="removeSelectedLoginUsersAction:" target="c22-O7-iKe" id="qc8-gN-zHN"/>
+                    </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTb-I9-1Qm">
                     <rect key="frame" x="732" y="440" width="46" height="46"/>

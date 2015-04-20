@@ -25,6 +25,10 @@
 #import "TWPDebugLoginUsersView.h"
 #import "TWPLoginUsersManager.h"
 
+NSString* const kColumnIdentifierUserID = @"user-id";
+NSString* const kColumnIdentifierOAuthAccessToken = @"oauth-access-token";
+NSString* const kColumnIdentifierOAuthAccessTokenSecret = @"oauth-access-token-secret";
+
 @implementation TWPDebugLoginUsersView
 
 - ( IBAction ) fetchPINCodeAction: ( id )_Sender
@@ -45,6 +49,21 @@
         ^( NSError* _Error )
             {
             [ self performSelectorOnMainThread: @selector( presentError: ) withObject: _Error waitUntilDone: YES ];
+            } ];
+    }
+
+- ( IBAction ) removeSelectedLoginUsersAction: ( id )_Sender;
+    {
+    NSIndexSet* selectedRowIndexes = [ self.loginUsersTableView selectedRowIndexes ];
+    [ selectedRowIndexes enumerateIndexesUsingBlock:
+        ^( NSUInteger _RowIndex, BOOL* _Stop )
+            {
+            NSTableColumn* userIDColumn = [ self.loginUsersTableView tableColumnWithIdentifier: kColumnIdentifierUserID ];
+            NSString* userID = [ self.loginUsersTableView.dataSource tableView: self.loginUsersTableView
+                                                     objectValueForTableColumn: userIDColumn
+                                                                           row: _RowIndex ];
+
+            [ [ TWPLoginUsersManager sharedManager ] removeUserWithUserID: userID ];
             } ];
     }
 

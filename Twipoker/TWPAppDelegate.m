@@ -57,6 +57,12 @@
         [ self.loginPanelController showWindow: self ];
     }
 
+- ( void ) dealloc
+    {
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerDidFinishLoginNotification object: nil ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPLoginUsersManagerDidFinishRemovingAllLoginUsers object: nil ];
+    }
+
 #pragma mark Conforms to <TWPUesrManagerDelegate>
 // Sent by the default notification center immediately after a successful login
 - ( void ) twipokerDidFinishLogin: ( NSNotification* )_Notif

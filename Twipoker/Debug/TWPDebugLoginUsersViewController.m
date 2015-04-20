@@ -43,6 +43,11 @@
                                                       object: nil ];
 
         [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                    selector: @selector( loginUsersManagerDidFinishRemovingLoginUser: )
+                                                        name: TWPLoginUsersManagerDidFinishRemovingLoginUser
+                                                      object: nil ];
+
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self
                                                     selector: @selector( loginUsersManagerDidFinishRemovingAllLoginUsers: )
                                                         name: TWPLoginUsersManagerDidFinishRemovingAllLoginUsers
                                                       object: nil ];
@@ -52,6 +57,12 @@
     }
 
 - ( void ) loginUsersManagerDidFinishAddingNewLoginUser: ( NSNotification* )_Notif
+    {
+    self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
+    [ self.loginUsersTableView reloadData ];
+    }
+
+- ( void ) loginUsersManagerDidFinishRemovingLoginUser: ( NSNotification* )_Notif
     {
     self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
     [ self.loginUsersTableView reloadData ];
@@ -94,10 +105,6 @@
     {
     return self->_copiesOfAllLoginUsers.count;
     }
-
-NSString static* const kColumnIdentifierUserID = @"user-id";
-NSString static* const kColumnIdentifierOAuthAccessToken = @"oauth-access-token";
-NSString static* const kColumnIdentifierOAuthAccessTokenSecret = @"oauth-access-token-secret";
 
 - ( id )            tableView: ( NSTableView* )_TableView
     objectValueForTableColumn: ( NSTableColumn* )_TableColumn

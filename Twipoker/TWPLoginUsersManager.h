@@ -61,6 +61,9 @@
 // based on the given user id (_UserID is used for account name).
 - ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID;
 
+// Remove the login user identified by _UserID.
+- ( BOOL ) removeUserWithUserID: ( NSString* )_UserID;
+
 // Create a login user with given _UserID, _UserName, _OAuthToken,_OAuthTokenSecret.
 // This method will not access the current default keychain automatically.
 - ( TWPLoginUser* ) createUserWithUserID: ( NSString* )_UserID
@@ -88,11 +91,13 @@ NSString extern* const TWPUserDefaultsKeyAllLoginUsers;
 
 // Notification Names
 NSString extern* const TWPLoginUsersManagerDidFinishAddingNewLoginUser;
+NSString extern* const TWPLoginUsersManagerDidFinishRemovingLoginUser;
 NSString extern* const TWPLoginUsersManagerDidFinishUpdatingCurrentLoginUser;
 NSString extern* const TWPLoginUsersManagerDidFinishRemovingAllLoginUsers;
 
 // Notification User Info Keys
 NSString extern* const TWPNewLoginUserUserInfoKey;
+NSString extern* const TWPRemovedLoginUserUserInfoKey;
 
 /*=============================================================================┐
 |                                                                              |
