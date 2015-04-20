@@ -24,27 +24,11 @@
 
 #import "TWPDebugLoginUsersViewController.h"
 #import "TWPLoginUsersManager.h"
+#import "TWPDebugLoginUsersView.h"
 
 @implementation TWPDebugLoginUsersViewController
     {
     NSArray __strong* _copiesOfAllLoginUsers;
-    }
-
-#pragma mark Confomrs to <MASPreferencesViewController>
-@dynamic identifier;
-@dynamic toolbarItemImage;
-@dynamic toolbarItemLabel;
-
-- ( void ) loginUsersManagerDidFinishAddingNewLoginUser: ( NSNotification* )_Notif
-    {
-    self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
-    [ self.loginUsersTableView reloadData ];
-    }
-
-- ( void ) loginUsersManagerDidFinishRemovingAllLoginUsers: ( NSNotification* )_Notif
-    {
-    self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
-    [ self.loginUsersTableView reloadData ];
     }
 
 - ( instancetype ) init
@@ -67,6 +51,29 @@
     return self;
     }
 
+- ( void ) loginUsersManagerDidFinishAddingNewLoginUser: ( NSNotification* )_Notif
+    {
+    self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
+    [ self.loginUsersTableView reloadData ];
+    }
+
+- ( void ) loginUsersManagerDidFinishRemovingAllLoginUsers: ( NSNotification* )_Notif
+    {
+    self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
+    [ self.loginUsersTableView reloadData ];
+    }
+
+- ( void ) dealloc
+    {
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPLoginUsersManagerDidFinishAddingNewLoginUser object: nil ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPLoginUsersManagerDidFinishRemovingAllLoginUsers object: nil ];
+    }
+
+#pragma mark Confomrs to <MASPreferencesViewController>
+@dynamic identifier;
+@dynamic toolbarItemImage;
+@dynamic toolbarItemLabel;
+
 - ( NSString* ) identifier
     {
     return @"home.bedroom.TongGuo.Twipoker.UI.DebugConsole.LoginUsers";
@@ -88,17 +95,23 @@
     return self->_copiesOfAllLoginUsers.count;
     }
 
+NSString static* const kColumnIdentifierUserID = @"user-id";
+NSString static* const kColumnIdentifierOAuthAccessToken = @"oauth-access-token";
+NSString static* const kColumnIdentifierOAuthAccessTokenSecret = @"oauth-access-token-secret";
+
 - ( id )            tableView: ( NSTableView* )_TableView
     objectValueForTableColumn: ( NSTableColumn* )_TableColumn
                           row: ( NSInteger )_Row
     {
     id result = nil;
 
-    if ( [ _TableColumn.identifier isEqualToString: @"user-id" ] )
+    if ( [ _TableColumn.identifier isEqualToString: kColumnIdentifierUserID ] )
         result = [ ( TWPLoginUser* )self->_copiesOfAllLoginUsers[ _Row ] userID ];
-    else if ( [ _TableColumn.identifier isEqualToString: @"oauth-access-token" ] )
+
+    else if ( [ _TableColumn.identifier isEqualToString: kColumnIdentifierOAuthAccessToken ] )
         result = [ ( TWPLoginUser* )self->_copiesOfAllLoginUsers[ _Row ] OAuthToken ];
-    else if ( [ _TableColumn.identifier isEqualToString: @"oauth-access-token-secret" ] )
+
+    else if ( [ _TableColumn.identifier isEqualToString: kColumnIdentifierOAuthAccessTokenSecret ] )
         result = [ ( TWPLoginUser* )self->_copiesOfAllLoginUsers[ _Row ] OAuthTokenSecret ];
 
     return result;
@@ -111,23 +124,51 @@
     {
     NSView* resultView = nil;
 
-    if ( [ _TableColumn.identifier isEqualToString: @"user-id" ] )
+    if ( [ _TableColumn.identifier isEqualToString: kColumnIdentifierUserID ] )
         {
-        resultView = [ _TableView makeViewWithIdentifier: @"user-id" owner: self ];
+        resultView = [ _TableView makeViewWithIdentifier: kColumnIdentifierUserID owner: self ];
         [ [ ( NSTableCellView* )resultView textField ] setStringValue: [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ] ];
         }
-    else if ( [ _TableColumn.identifier isEqualToString: @"oauth-access-token" ] )
+    else if ( [ _TableColumn.identifier isEqualToString: kColumnIdentifierOAuthAccessToken ] )
         {
-        resultView = [ _TableView makeViewWithIdentifier: @"oauth-access-token" owner: self ];
+        resultView = [ _TableView makeViewWithIdentifier: kColumnIdentifierOAuthAccessToken owner: self ];
         [ [ ( NSTableCellView* )resultView textField ] setStringValue: [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ] ];
         }
-    else if ( [ _TableColumn.identifier isEqualToString: @"oauth-access-token-secret" ] )
+    else if ( [ _TableColumn.identifier isEqualToString: kColumnIdentifierOAuthAccessTokenSecret ] )
         {
-        resultView = [ _TableView makeViewWithIdentifier: @"oauth-access-token-secret" owner: self ];
+        resultView = [ _TableView makeViewWithIdentifier: kColumnIdentifierOAuthAccessTokenSecret owner: self ];
         [ [ ( NSTableCellView* )resultView textField ] setStringValue: [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ] ];
         }
 
     return resultView;
+    }
+
+- ( void ) tableViewSelectionDidChange: ( NSNotification* )_Notif
+    {
+    [ [ ( TWPDebugLoginUsersView* )self.view
+        removeSelectedLoginUsersButton ] setEnabled: [ ( NSTableView* )_Notif.object numberOfSelectedRows ] > 0 ];
+    }
+
+- ( void ) tableView: ( NSTableView* )_TableView
+       didAddRowView: ( NSTableRowView* )_RowView
+              forRow: ( NSInteger )_Row
+    {
+    [ self determineEnabled ];
+    }
+
+- ( void ) tableView: ( NSTableView* )_TableView
+    didRemoveRowView: ( NSTableRowView* )_RowView
+              forRow: ( NSInteger )_Row
+    {
+    [ self determineEnabled ];
+    }
+
+- ( void ) determineEnabled
+    {
+    [ [ ( TWPDebugLoginUsersView* )self.view removeAllLoginUsersButton ] setEnabled: self->_copiesOfAllLoginUsers.count ];
+
+    if ( !( self->_copiesOfAllLoginUsers.count ) )
+        [ [ ( TWPDebugLoginUsersView* )self.view removeSelectedLoginUsersButton ] setEnabled: NO ];
     }
 
 @end

@@ -40,7 +40,7 @@
                         <rect key="frame" x="1" y="17" width="756" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="G0E-2Q-CEg" viewBased="YES" id="sSg-hZ-mmA">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowSizeStyle="automatic" headerView="G0E-2Q-CEg" viewBased="YES" id="sSg-hZ-mmA">
                                 <rect key="frame" x="0.0" y="0.0" width="756" height="380"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -48,7 +48,7 @@
                                 <tableViewGridLines key="gridStyleMask" vertical="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="user-id" width="124.2109375" minWidth="40" maxWidth="1000" id="9Cn-3k-Dx4">
+                                    <tableColumn identifier="user-id" width="91.20703125" minWidth="40" maxWidth="1000" id="9Cn-3k-Dx4">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="User ID">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -62,13 +62,13 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="1hX-QO-GTv">
-                                                <rect key="frame" x="1" y="1" width="124" height="17"/>
+                                                <rect key="frame" x="1" y="1" width="91" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dCz-OQ-CuH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="124" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="91" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Wyv-Fi-3cb">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="2314211198" id="Wyv-Fi-3cb">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -81,7 +81,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="oauth-access-token" width="266.3359375" minWidth="40" maxWidth="1000" id="VC6-ww-Pd6">
+                                    <tableColumn identifier="oauth-access-token" width="279.80078125" minWidth="40" maxWidth="1000" id="VC6-ww-Pd6">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="OAuth Access Token">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -95,11 +95,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="Xmm-rM-8Ct">
-                                                <rect key="frame" x="128" y="1" width="266.5" height="17"/>
+                                                <rect key="frame" x="95" y="1" width="280" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mR8-uT-zff">
-                                                        <rect key="frame" x="0.0" y="0.0" width="266.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ON7-cg-eCv">
                                                             <font key="font" metaFont="system"/>
@@ -114,7 +114,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="oauth-access-token-secret" width="356.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="rL6-3x-keP">
+                                    <tableColumn identifier="oauth-access-token-secret" width="376" minWidth="10" maxWidth="3.4028234663852886e+38" id="rL6-3x-keP">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="OAuth Access Token Secret">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -128,11 +128,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="bXf-XJ-hwV">
-                                                <rect key="frame" x="397.5" y="1" width="356.5" height="17"/>
+                                                <rect key="frame" x="378" y="1" width="376" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cll-z0-aAT">
-                                                        <rect key="frame" x="0.0" y="0.0" width="356.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="376" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="eml-yv-lqH">
                                                             <font key="font" metaFont="system"/>
@@ -261,7 +261,7 @@
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTb-I9-1Qm">
                     <rect key="frame" x="732" y="440" width="46" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTrashEmpty" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hlD-dz-dUJ">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTrashEmpty" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hlD-dz-dUJ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -274,7 +274,9 @@
                 <outlet property="PINCodeTextField" destination="XGU-V7-pIE" id="FRy-wF-uhm"/>
                 <outlet property="fetchPINCodeButton" destination="Rz6-PY-ySy" id="zzN-S0-VbN"/>
                 <outlet property="loginButton" destination="9H8-9V-oNU" id="Kgb-6g-YrG"/>
-                <outlet property="removeAllLoginUsers" destination="NTb-I9-1Qm" id="g8i-m6-yBR"/>
+                <outlet property="loginUsersTableView" destination="sSg-hZ-mmA" id="nM4-JW-WkT"/>
+                <outlet property="removeAllLoginUsersButton" destination="NTb-I9-1Qm" id="QBO-3y-mOl"/>
+                <outlet property="removeSelectedLoginUsersButton" destination="bDm-3e-lBe" id="BDb-rZ-pEX"/>
                 <outlet property="userScreenNameTextField" destination="DVV-nk-61Y" id="wGs-VH-nOg"/>
             </connections>
         </customView>

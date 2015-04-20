@@ -26,13 +26,16 @@
 
 @interface TWPDebugLoginUsersView : NSView
 
+@property ( weak ) IBOutlet NSTableView* loginUsersTableView;
+
 @property ( weak ) IBOutlet NSTextField* userScreenNameTextField;
 @property ( weak ) IBOutlet NSButton* fetchPINCodeButton;
 
 @property ( weak ) IBOutlet NSTextField* PINCodeTextField;
 @property ( weak ) IBOutlet NSButton* loginButton;
 
-@property ( weak ) IBOutlet NSButton* removeAllLoginUsers;
+@property ( weak ) IBOutlet NSButton* removeSelectedLoginUsersButton;
+@property ( weak ) IBOutlet NSButton* removeAllLoginUsersButton;
 
 - ( IBAction ) fetchPINCodeAction: ( id )_Sender;
 - ( IBAction ) loginAction: ( id )_Sender;
