@@ -129,40 +129,35 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     }
 
 - ( void ) createUserByFetchingPIN: ( NSString* )_ScreenName
-                      successBlock: ( void (^)( STTwitterAPI* _UncompletedTwitterAPI ) )_SuccessBlock
                         errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
     {
-    STTwitterAPI* newTwitterAPI = [ STTwitterAPI twitterAPIWithOAuthConsumerName: TWPConsumerName
-                                                                     consumerKey: TWPConsumerKey
-                                                                  consumerSecret: TWPConsumerSecret ];
+    self->_tmpTwitterAPI = [ STTwitterAPI twitterAPIWithOAuthConsumerName: TWPConsumerName
+                                                              consumerKey: TWPConsumerKey
+                                                           consumerSecret: TWPConsumerSecret ];
     // TODO: Waiting for handle the boundary conditions
-    [ newTwitterAPI postTokenRequest:
-        ^( NSURL* _URL, NSString* _OAuthToken )
-            {
-            [ [ NSWorkspace sharedWorkspace ] openURL: _URL ];
-            _SuccessBlock( newTwitterAPI );
-            }
-      authenticateInsteadOfAuthorize: NO
-                          forceLogin: @YES
-                          screenName: _ScreenName
-                       oauthCallback: @"oob"
-                          errorBlock: ^( NSError* _Error ) { _ErrorBlock( _Error ); } ];
+    [ self->_tmpTwitterAPI postTokenRequest:
+        ^( NSURL* _URL, NSString* _OAuthToken ) { [ [ NSWorkspace sharedWorkspace ] openURL: _URL ]; }
+             authenticateInsteadOfAuthorize: NO
+                                 forceLogin: @YES
+                                 screenName: _ScreenName
+                              oauthCallback: TWPOAuthCallbackOutOfBand
+                                 errorBlock: ^( NSError* _Error ) { _ErrorBlock( _Error ); } ];
     }
 
 - ( void ) createUserWithPIN: ( NSString* )_PIN
-       uncompletedTwitterAPI: ( STTwitterAPI* )_UncompletedTwitterAPI
                 successBlock: ( void (^)( TWPLoginUser* _NewLoginUser ) )_SuccessBlock
                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
     {
-    [ _UncompletedTwitterAPI postAccessTokenRequestWithPIN: _PIN
-                                              successBlock:
+    [ self->_tmpTwitterAPI postAccessTokenRequestWithPIN: _PIN
+                                            successBlock:
         ^( NSString* _OAuthToken, NSString* _OAuthTokenSecret, NSString* _UserID, NSString* _ScreenName )
             {
+            self->_tmpTwitterAPI = nil;
+
             TWPLoginUser* newLoginUser = [ [ TWPLoginUsersManager sharedManager ]
                 createUserWithUserID: _UserID userName: _ScreenName OAuthToken: _OAuthToken OAuthTokenSecret: _OAuthTokenSecret ];
             _SuccessBlock( newLoginUser );
-            }
-                                                errorBlock: ^( NSError* _Error ) { _ErrorBlock( _Error ); } ];
+            } errorBlock: ^( NSError* _Error ) { _ErrorBlock( _Error ); } ];
     }
 
 // Create a login user by retrieving OAuth token pair from current default keychain

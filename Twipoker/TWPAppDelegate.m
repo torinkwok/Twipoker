@@ -30,24 +30,16 @@
 
 @implementation TWPAppDelegate
 
-STTwitterAPI __strong* TWPTwitterAPI;
-
 #pragma mark Initialization & Deallocation
 - ( void ) awakeFromNib
     {
-//    TWPTwitterAPI = [ STTwitterAPI twitterAPIWithOAuthConsumerName: TWPConsumerName
-//                                                       consumerKey: TWPConsumerKey
-//                                                    consumerSecret: TWPConsumerSecret ];
-
     self.loginPanelController = [ TWPLoginPanelController loginPanelController ];
     self.mainWindowController = [ TWPMainWindowController mainWindowController ];
     }
 
 - ( void ) applicationWillFinishLaunching: ( NSNotification* )_Notif
     {
-    TWPLoginUser* currentUser = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ];
-
-    if ( currentUser )
+    if ( [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ] )
         [ self.mainWindowController showWindow: self ];
     else
         {

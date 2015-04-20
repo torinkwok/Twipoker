@@ -29,9 +29,7 @@
 #import "TWPLoginUsersManager.h"
 
 @implementation TWPLoginPanelContentView
-    {
-    STTwitterAPI __strong __block* _tmpTwitterAPI;
-    }
+
 
 @synthesize enterUserNameTextField;
 
@@ -79,22 +77,18 @@
 - ( IBAction ) getPINCodeAction: ( id )_Sender
     {
     [ [ TWPLoginUsersManager sharedManager ] createUserByFetchingPIN: self.enterUserNameTextField.stringValue
-                                                        successBlock:
-        ^( STTwitterAPI* _UncompletedTwitterAPI )
+                                                          errorBlock:
+        ^( NSError* _Error )
             {
-            self->_tmpTwitterAPI = _UncompletedTwitterAPI;
-            } errorBlock: ^( NSError* _Error )
-                                {
-                                [ self performSelectorOnMainThread: @selector( presentError: )
-                                                        withObject: _Error
-                                                     waitUntilDone: YES ];
-                                } ];
+            [ self performSelectorOnMainThread: @selector( presentError: )
+                                    withObject: _Error
+                                 waitUntilDone: YES ];
+            } ];
     }
 
 - ( IBAction ) signInTwitterAction: ( id )_Sender
     {
     [ [ TWPLoginUsersManager sharedManager ] createUserWithPIN: self.enterPINTextField.stringValue
-                                         uncompletedTwitterAPI: self->_tmpTwitterAPI
                                                   successBlock:
         ^( TWPLoginUser* _NewLoginUser )
             {

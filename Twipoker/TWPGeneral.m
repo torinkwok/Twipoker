@@ -31,6 +31,8 @@ NSString* const TWPConsumerName = @"Twipoker";
 NSString* const TWPConsumerKey = @"4BIbHVLsffbHqrWK77fHtdFA7";
 NSString* const TWPConsumerSecret = @"FZJav5ZrY8HsuW8l4Sx4N0yWuYy4IsG4l5H5sxiggG3a5vbUvl";
 
+NSString* const TWPOAuthCallbackOutOfBand = @"oob";
+
 NSURL __strong* TWPUsersPermanentURL;
 
 __attribute__( ( constructor ) )

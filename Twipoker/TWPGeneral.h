@@ -47,10 +47,9 @@ NSString extern* const TWPConsumerName;
 NSString extern* const TWPConsumerKey;
 NSString extern* const TWPConsumerSecret;
 
-NSURL extern __strong* TWPUsersPermanentURL;
+NSString extern* const TWPOAuthCallbackOutOfBand;
 
-@class STTwitterAPI;
-STTwitterAPI extern __strong* TWPTwitterAPI;
+NSURL extern __strong* TWPUsersPermanentURL;
 
 /*=============================================================================┐
 |                                                                              |

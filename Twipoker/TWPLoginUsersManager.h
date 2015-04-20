@@ -32,6 +32,10 @@
 /** The `TWPLoginUsersManager` class enables us to manage all of the Twipoker users.
   */
 @interface TWPLoginUsersManager : NSObject
+    {
+@private
+    STTwitterAPI __strong __block* _tmpTwitterAPI;
+    }
 
 @property ( weak, readwrite ) IBOutlet id <TWPLoginUsersManagerDelegate> delegate;
 
@@ -44,11 +48,9 @@
 @property ( strong, readwrite ) TWPLoginUser* currentLoginUser;
 
 - ( void ) createUserByFetchingPIN: ( NSString* )_ScreenName
-                      successBlock: ( void (^)( STTwitterAPI* _UncompletedTwitterAPI ) )_SuccessBlock
                         errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
 - ( void ) createUserWithPIN: ( NSString* )_PIN
-       uncompletedTwitterAPI: ( STTwitterAPI* )_UncompletedTwitterAPI
                 successBlock: ( void (^)( TWPLoginUser* _NewLoginUser ) )_SuccessBlock
                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
