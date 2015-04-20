@@ -47,6 +47,13 @@
 // based on the given user id (_UserID is used for account name).
 - ( TWPLoginUser* ) retrieveUserWithUserID: ( NSString* )_UserID;
 
+- ( STTwitterAPI* ) createUserByFetchingPIN: ( NSString* )_ScreenName
+                                      error: ( NSError** )_Error;
+
+- ( TWPLoginUser* ) createUserWithPIN: ( NSString* )_PIN
+                uncompletedTwitterAPI: ( STTwitterAPI* )_UncompletedTwitterAPI
+                                error: ( NSError** )_Error;
+
 // Create a login user with given _UserID, _UserName, _OAuthToken,_OAuthTokenSecret.
 // This method will not access the current default keychain automatically.
 - ( TWPLoginUser* ) createUserWithUserID: ( NSString* )_UserID

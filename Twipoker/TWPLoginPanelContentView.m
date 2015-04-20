@@ -75,34 +75,36 @@
 #pragma mark IBActions
 - ( IBAction ) getPINCodeAction: ( id )_Sender
     {
-    // TODO: Waiting for handle the boundary conditions
-    [ TWPTwitterAPI postTokenRequest:
-        ^( NSURL* _URL, NSString* _OAuthToken )
-            {
-            [ [ NSWorkspace sharedWorkspace ] openURL: _URL ];
-            }
-      authenticateInsteadOfAuthorize: NO
-                          forceLogin: @YES
-                          screenName: self.enterUserNameTextField.stringValue
-                       oauthCallback: @"oob"
-                          errorBlock: ^( NSError* _Error ){ NSLog( @"%@", _Error ); } ];
+
+
+//    // TODO: Waiting for handle the boundary conditions
+//    [ TWPTwitterAPI postTokenRequest:
+//        ^( NSURL* _URL, NSString* _OAuthToken )
+//            {
+//            [ [ NSWorkspace sharedWorkspace ] openURL: _URL ];
+//            }
+//      authenticateInsteadOfAuthorize: NO
+//                          forceLogin: @YES
+//                          screenName: self.enterUserNameTextField.stringValue
+//                       oauthCallback: @"oob"
+//                          errorBlock: ^( NSError* _Error ){ NSLog( @"%@", _Error ); } ];
     }
 
 - ( IBAction ) signInTwitterAction: ( id )_Sender
     {
-    [ TWPTwitterAPI postAccessTokenRequestWithPIN: self.enterPINTextField.stringValue
-                                     successBlock:
-        ^( NSString* _OAuthToken, NSString* _OAuthTokenSecret, NSString* _UserID, NSString* _ScreenName )
-            {
-            TWPLoginUser* newUser = [ [ TWPLoginUsersManager sharedManager ]
-                createUserWithUserID: _UserID userName: _ScreenName OAuthToken: _OAuthToken OAuthTokenSecret: _OAuthTokenSecret ];
-
-            if ( newUser )
-                [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerDidFinishLoginNotification
-                                                                       object: nil
-                                                                     userInfo: @{ TWPNewLoginUserUserInfoKey : newUser } ];
-            }
-                                            errorBlock: ^( NSError* _Error ){ NSLog( @"%@", _Error ); } ];
+//    [ TWPTwitterAPI postAccessTokenRequestWithPIN: self.enterPINTextField.stringValue
+//                                     successBlock:
+//        ^( NSString* _OAuthToken, NSString* _OAuthTokenSecret, NSString* _UserID, NSString* _ScreenName )
+//            {
+//            TWPLoginUser* newUser = [ [ TWPLoginUsersManager sharedManager ]
+//                createUserWithUserID: _UserID userName: _ScreenName OAuthToken: _OAuthToken OAuthTokenSecret: _OAuthTokenSecret ];
+//
+//            if ( newUser )
+//                [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerDidFinishLoginNotification
+//                                                                       object: nil
+//                                                                     userInfo: @{ TWPNewLoginUserUserInfoKey : newUser } ];
+//            }
+//                                            errorBlock: ^( NSError* _Error ){ NSLog( @"%@", _Error ); } ];
     }
 
 @end
