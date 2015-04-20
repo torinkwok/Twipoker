@@ -128,6 +128,7 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
         }
     }
 
+// Fetch PIN code by opening the authorize URL with the default Web Browser
 - ( void ) fetchPINByLaunchingDefaultWebBrowser: ( NSString* )_ScreenName
                                      errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
     {
@@ -140,10 +141,14 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
         ^( NSURL* _URL, NSString* _OAuthToken )
             {
             // The form of _URL is similar to:
-            // https://api.twitter.com/oauth/authorize?oauth_token=mODthQ2tkjStNe6Clpd8OnlbcKUiqSDS&oauth_callback_confirmed=true&oauth_token_secret=uspT59p439KNiYK35m6mgLux7uObZajH
-            // It consists of the requested reqeust token pair:
-            // OAuth Request Token: mODthQ2tkjStNe6Clpd8OnlbcKUiqSDS
-            // OAuth Request Token Secret: uspT59p439KNiYK35m6mgLux7uObZajH
+            // https://api.twitter.com/oauth/authorize?oauth_callback_confirmed=true&oauth_token_secret=Qt8sA9YkmDn35HQ2cSLWT4Os73oEjxeJ&screen_name=@NSTongG&force_login=1&oauth_token=vCvhmhTkhhZaOjaMbqEWL06c1pfVEIUu
+
+            // It consists of the following parts:
+            // OAuth Request Token: vCvhmhTkhhZaOjaMbqEWL06c1pfVEIUu
+            // OAuth Request Token Secret: Qt8sA9YkmDn35HQ2cSLWT4Os73oEjxeJ
+            // Force Login: YES
+            // Screen Name: @NSTongG
+            // Confirmed: True
 
             // Open this URL with the current default Web Browser.
             // Users will find out the PIN code on the page to which _URL points.
@@ -156,10 +161,14 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
                                  errorBlock: ^( NSError* _Error ) { _ErrorBlock( _Error ); } ];
     }
 
+// Create a new login user by fetching the OAuth access token pair with given PIN code,
+// which was obtained by invoking `fetchPINByLaunchingDefaultWebBrowser:errorBlock:`.
 - ( void ) createUserWithPIN: ( NSString* )_PIN
                 successBlock: ( void (^)( TWPLoginUser* _NewLoginUser ) )_SuccessBlock
                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
     {
+    // _SuccessBlock must not be nil while the _ErrorBlock can be nil.
+    NSAssert( _SuccessBlock, @"Fatal error: Success block must not be nil" );
     [ self->_tmpTwitterAPI postAccessTokenRequestWithPIN: _PIN
                                             successBlock:
         ^( NSString* _OAuthToken, NSString* _OAuthTokenSecret, NSString* _UserID, NSString* _ScreenName )

@@ -47,9 +47,12 @@
 // Set and get the current login user.
 @property ( strong, readwrite ) TWPLoginUser* currentLoginUser;
 
+// Fetch PIN code by opening the authorize URL with the default Web Browser
 - ( void ) fetchPINByLaunchingDefaultWebBrowser: ( NSString* )_ScreenName
                                      errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
+// Create a new login user by fetching the OAuth access token pair with given PIN code,
+// which was obtained by invoking `fetchPINByLaunchingDefaultWebBrowser:errorBlock:`.
 - ( void ) createUserWithPIN: ( NSString* )_PIN
                 successBlock: ( void (^)( TWPLoginUser* _NewLoginUser ) )_SuccessBlock
                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
