@@ -26,9 +26,10 @@
 
 #import "MASPreferencesViewController.h"
 
-@interface TWPDebugLoginUsersViewController : NSViewController <MASPreferencesViewController>
-
-#pragma mark Required
+@interface TWPDebugLoginUsersViewController : NSViewController <MASPreferencesViewController
+                                                               , NSTableViewDataSource
+                                                               , NSTableViewDelegate>
+#pragma mark Confomrs to <MASPreferencesViewController>
 @property ( nonatomic, readonly ) NSString* identifier;
 @property ( nonatomic, readonly ) NSImage* toolbarItemImage;
 @property ( nonatomic, readonly ) NSString* toolbarItemLabel;

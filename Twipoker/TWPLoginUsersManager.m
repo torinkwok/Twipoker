@@ -34,6 +34,10 @@ NSString* const TWPUserDefaultsKeyAllLoginUsers = @"home.bedroom.TongGuo.Twipoke
 // Notification Names
 NSString* const TWPTwipokerDidFinishLoginNotification = @"home.bedroom.TongGuo.Twipoker.Notif.DidFinishLogin";
 
+NSString* const TWPLoginUsersManagerDidFinishAddingNewLoginUser = @"home.bedroom.TongGuo.Twipoker.Notif.DidFinishAddingNewLoginUser";
+NSString* const TWPLoginUsersManagerDidFinishUpdatingCurrentLoginUser = @"home.bedroom.TongGuo.Twipoker.Notif.DidFinishUpdatingCurrentLoginUser";
+NSString* const TWPLoginUsersManagerDidFinishRemovingAllLoginUsers = @"home.bedroom.TongGuo.Twipoker.Notif.DidRemovingAllLoginUsers";
+
 // Notification User Info Keys
 NSString* const TWPNewLoginUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.NewLoginUser";
 
@@ -108,12 +112,18 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     }
 
 #pragma mark Handling Users
+@dynamic countOfLoginUsers;
 @dynamic currentLoginUser;
 
 // Get the current login user.
 - ( TWPLoginUser* ) currentLoginUser
     {
     return self->_currentLoginUser;
+    }
+
+- ( NSUInteger ) countOfLoginUsers
+    {
+    return self->_allLoginUsers.count;
     }
 
 // Set the current login user.
@@ -125,6 +135,9 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
         self->_currentLoginUser = _User;
 
         [ [ NSUserDefaults standardUserDefaults ] setObject: self->_currentLoginUserID forKey: TWPUserDefaultsKeyCurrentLoginUser ];
+        [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPLoginUsersManagerDidFinishUpdatingCurrentLoginUser
+                                                               object: self
+                                                             userInfo: @{ TWPNewLoginUserUserInfoKey : self->_currentLoginUser } ];
         }
     }
 
@@ -219,6 +232,10 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
 
             [ newLoginUser _permanentSecret: &error ];
             TWPPrintNSErrorForLog( error );
+
+            [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPLoginUsersManagerDidFinishAddingNewLoginUser
+                                                                   object: self
+                                                                 userInfo: @{ TWPNewLoginUserUserInfoKey : newLoginUser } ];
             }
         }
     else
@@ -265,6 +282,10 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
     self->_currentLoginUser = nil;
     self->_currentLoginUserID = nil;
     [ [ NSUserDefaults standardUserDefaults ] removeObjectForKey: TWPUserDefaultsKeyCurrentLoginUser ];
+
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPLoginUsersManagerDidFinishRemovingAllLoginUsers
+                                                           object: self
+                                                         userInfo: nil ];
     }
 
 @end

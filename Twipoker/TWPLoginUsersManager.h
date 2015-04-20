@@ -44,6 +44,8 @@
 + ( instancetype ) sharedManager;
 
 #pragma mark Handling Users
+@property ( assign, readonly ) NSUInteger countOfLoginUsers;
+
 // Set and get the current login user.
 @property ( strong, readwrite ) TWPLoginUser* currentLoginUser;
 
@@ -88,6 +90,10 @@ NSString extern* const TWPUserDefaultsKeyAllLoginUsers;
 
 // Notification Names
 NSString extern* const TWPTwipokerDidFinishLoginNotification;
+
+NSString extern* const TWPLoginUsersManagerDidFinishAddingNewLoginUser;
+NSString extern* const TWPLoginUsersManagerDidFinishUpdatingCurrentLoginUser;
+NSString extern* const TWPLoginUsersManagerDidFinishRemovingAllLoginUsers;
 
 // Notification User Info Keys
 NSString extern* const TWPNewLoginUserUserInfoKey;

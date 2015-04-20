@@ -26,6 +26,7 @@
 
 @implementation TWPDebugLoginViewController
 
+#pragma mark Confomrs to <MASPreferencesViewController>
 @dynamic identifier;
 @dynamic toolbarItemImage;
 @dynamic toolbarItemLabel;

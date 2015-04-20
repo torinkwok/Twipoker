@@ -23,9 +23,11 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDebugLoginUsersViewController.h"
+#import "TWPLoginUsersManager.h"
 
 @implementation TWPDebugLoginUsersViewController
 
+#pragma mark Confomrs to <MASPreferencesViewController>
 @dynamic identifier;
 @dynamic toolbarItemImage;
 @dynamic toolbarItemLabel;
@@ -52,6 +54,14 @@
     {
     return NSLocalizedString( @"Users", nil );
     }
+
+#pragma mark Confomrs to <NSTableViewDataSource>
+- ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
+    {
+    return [ [ TWPLoginUsersManager sharedManager ] countOfLoginUsers ];
+    }
+
+//- ( NSInteger ) numberOfRows
 
 @end
 
