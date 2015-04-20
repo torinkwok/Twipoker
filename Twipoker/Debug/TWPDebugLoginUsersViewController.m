@@ -26,16 +26,41 @@
 #import "TWPLoginUsersManager.h"
 
 @implementation TWPDebugLoginUsersViewController
+    {
+    NSArray __strong* _copiesOfAllLoginUsers;
+    }
 
 #pragma mark Confomrs to <MASPreferencesViewController>
 @dynamic identifier;
 @dynamic toolbarItemImage;
 @dynamic toolbarItemLabel;
 
+- ( void ) loginUsersManagerDidFinishAddingNewLoginUser: ( NSNotification* )_Notif
+    {
+    self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
+    }
+
+- ( void ) loginUsersManagerDidFinishRemovingAllLoginUsers: ( NSNotification* )_Notif
+    {
+    self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
+    }
+
 - ( instancetype ) init
     {
     if ( self = [ super initWithNibName: @"TWPDebugLoginUsersView" bundle: [ NSBundle mainBundle ] ] )
-        ;
+        {
+        self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
+
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                    selector: @selector( loginUsersManagerDidFinishAddingNewLoginUser: )
+                                                        name: TWPLoginUsersManagerDidFinishAddingNewLoginUser
+                                                      object: nil ];
+
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                    selector: @selector( loginUsersManagerDidFinishRemovingAllLoginUsers: )
+                                                        name: TWPLoginUsersManagerDidFinishRemovingAllLoginUsers
+                                                      object: nil ];
+        }
 
     return self;
     }
@@ -58,10 +83,50 @@
 #pragma mark Confomrs to <NSTableViewDataSource>
 - ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
     {
-    return [ [ TWPLoginUsersManager sharedManager ] countOfLoginUsers ];
+    return self->_copiesOfAllLoginUsers.count;
     }
 
-//- ( NSInteger ) numberOfRows
+- ( id )            tableView: ( NSTableView* )_TableView
+    objectValueForTableColumn: ( NSTableColumn* )_TableColumn
+                          row: ( NSInteger )_Row
+    {
+    id result = nil;
+
+    if ( [ _TableColumn.identifier isEqualToString: @"user-id" ] )
+        result = [ ( TWPLoginUser* )self->_copiesOfAllLoginUsers[ _Row ] userID ];
+    else if ( [ _TableColumn.identifier isEqualToString: @"oauth-access-token" ] )
+        result = [ ( TWPLoginUser* )self->_copiesOfAllLoginUsers[ _Row ] OAuthToken ];
+    else if ( [ _TableColumn.identifier isEqualToString: @"oauth-access-token-secret" ] )
+        result = [ ( TWPLoginUser* )self->_copiesOfAllLoginUsers[ _Row ] OAuthTokenSecret ];
+
+    return result;
+    }
+
+#pragma mark Confomrs to <NSTableViewDelegate>
+- ( NSView* ) tableView: ( NSTableView* )_TableView
+     viewForTableColumn: ( NSTableColumn* )_TableColumn
+                    row: ( NSInteger )_Row
+    {
+    NSView* resultView = nil;
+
+    if ( [ _TableColumn.identifier isEqualToString: @"user-id" ] )
+        {
+        resultView = [ _TableView makeViewWithIdentifier: @"user-id" owner: self ];
+        [ [ ( NSTableCellView* )resultView textField ] setStringValue: [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ] ];
+        }
+    else if ( [ _TableColumn.identifier isEqualToString: @"oauth-access-token" ] )
+        {
+        resultView = [ _TableView makeViewWithIdentifier: @"oauth-access-token" owner: self ];
+        [ [ ( NSTableCellView* )resultView textField ] setStringValue: [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ] ];
+        }
+    else if ( [ _TableColumn.identifier isEqualToString: @"oauth-access-token-secret" ] )
+        {
+        resultView = [ _TableView makeViewWithIdentifier: @"oauth-access-token-secret" owner: self ];
+        [ [ ( NSTableCellView* )resultView textField ] setStringValue: [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ] ];
+        }
+
+    return resultView;
+    }
 
 @end
 
