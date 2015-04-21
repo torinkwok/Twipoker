@@ -231,6 +231,7 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
         [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPLoginUsersManagerDidFinishRemovingLoginUser
                                                                object: self
                                                              userInfo: @{ TWPRemovedLoginUserUserInfoKey : oldLoginUser } ];
+        isSuccess = YES;
         }
 
     return isSuccess;

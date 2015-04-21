@@ -26,6 +26,15 @@
 #import "TWPLoginUsersManager.h"
 #import "TWPDebugLoginUsersView.h"
 
+#pragma mark TWPDebugLoginUsersViewController + Private
+@interface TWPDebugLoginUsersViewController ()
+
+- ( void ) _determineEnabledWith: ( NSTableView* )_TableView
+                         rowView: ( NSTableRowView* )_RowView
+                          forRow: ( NSInteger )_Row;
+@end // TWPDebugLoginUsersViewController + Private
+
+#pragma mark TWPDebugLoginUsersViewController
 @implementation TWPDebugLoginUsersViewController
     {
     NSArray __strong* _copiesOfAllLoginUsers;
@@ -153,32 +162,35 @@
 - ( void ) tableViewSelectionDidChange: ( NSNotification* )_Notif
     {
     [ [ ( TWPDebugLoginUsersView* )self.view
-        removeSelectedLoginUsersButton ] setEnabled: [ ( NSTableView* )_Notif.object numberOfSelectedRows ] > 0 ];
+        removeSelectedLoginUsersButton ] setEnabled: [ ( NSTableView* )_Notif.object numberOfSelectedRows ] ];
     }
 
 - ( void ) tableView: ( NSTableView* )_TableView
        didAddRowView: ( NSTableRowView* )_RowView
               forRow: ( NSInteger )_Row
     {
-    [ self determineEnabled ];
+    [ self _determineEnabledWith: _TableView rowView: _RowView forRow: _Row ];
     }
 
 - ( void ) tableView: ( NSTableView* )_TableView
     didRemoveRowView: ( NSTableRowView* )_RowView
               forRow: ( NSInteger )_Row
     {
-    [ self determineEnabled ];
+    [ self _determineEnabledWith: _TableView rowView: _RowView forRow: _Row ];
     }
 
-- ( void ) determineEnabled
+- ( void ) _determineEnabledWith: ( NSTableView* )_TableView
+                         rowView: ( NSTableRowView* )_RowView
+                          forRow: ( NSInteger )_Row
     {
     [ [ ( TWPDebugLoginUsersView* )self.view removeAllLoginUsersButton ] setEnabled: self->_copiesOfAllLoginUsers.count ];
+    [ [ ( TWPDebugLoginUsersView* )self.view removeSelectedLoginUsersButton ] setEnabled: [ _TableView numberOfSelectedRows ] ];
 
     if ( !( self->_copiesOfAllLoginUsers.count ) )
         [ [ ( TWPDebugLoginUsersView* )self.view removeSelectedLoginUsersButton ] setEnabled: NO ];
     }
 
-@end
+@end // TWPDebugLoginUsersViewController
 
 /*=============================================================================┐
 |                                                                              |

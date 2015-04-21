@@ -450,10 +450,10 @@
 				831447DB1AD0046800BFECE4 /* TWPDebugConsoleController.m */,
 				831447D31ACFF1AD00BFECE4 /* TWPDebugLoginViewController.h */,
 				831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */,
-				8353614C1AE5363700CF1988 /* TWPDebugLoginUsersViewController.h */,
-				8353614D1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m */,
 				831447D71AD0008E00BFECE4 /* TWPDebugLoginView.h */,
 				831447D81AD0008E00BFECE4 /* TWPDebugLoginView.m */,
+				8353614C1AE5363700CF1988 /* TWPDebugLoginUsersViewController.h */,
+				8353614D1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m */,
 				8353614F1AE5635200CF1988 /* TWPDebugLoginUsersView.h */,
 				835361501AE5635200CF1988 /* TWPDebugLoginUsersView.m */,
 			);
