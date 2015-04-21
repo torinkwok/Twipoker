@@ -28,10 +28,6 @@
 
 #pragma mark TWPDebugLoginUsersViewController + Private
 @interface TWPDebugLoginUsersViewController ()
-
-- ( void ) _determineEnabledWith: ( NSTableView* )_TableView
-                         rowView: ( NSTableRowView* )_RowView
-                          forRow: ( NSInteger )_Row;
 @end // TWPDebugLoginUsersViewController + Private
 
 #pragma mark TWPDebugLoginUsersViewController
@@ -75,12 +71,24 @@
     {
     self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
     [ self.loginUsersTableView reloadData ];
+
+    if ( ![ _Notif.userInfo[ TWPNumberOfRemainingLoginUsersUserInfoKey ] integerValue ] )
+        {
+        [ [ ( TWPDebugLoginUsersView* )self.view removeAllLoginUsersButton ] setEnabled: NO ];
+        [ [ ( TWPDebugLoginUsersView* )self.view removeSelectedLoginUsersButton ] setEnabled: NO ];
+        }
     }
 
 - ( void ) loginUsersManagerDidFinishRemovingAllLoginUsers: ( NSNotification* )_Notif
     {
     self->_copiesOfAllLoginUsers = [ [ TWPLoginUsersManager sharedManager ] copiesOfAllLoginUsers ];
     [ self.loginUsersTableView reloadData ];
+
+    if ( ![ _Notif.userInfo[ TWPNumberOfRemainingLoginUsersUserInfoKey ] integerValue ] )
+        {
+        [ [ ( TWPDebugLoginUsersView* )self.view removeAllLoginUsersButton ] setEnabled: NO ];
+        [ [ ( TWPDebugLoginUsersView* )self.view removeSelectedLoginUsersButton ] setEnabled: NO ];
+        }
     }
 
 - ( void ) dealloc
@@ -169,25 +177,8 @@
        didAddRowView: ( NSTableRowView* )_RowView
               forRow: ( NSInteger )_Row
     {
-    [ self _determineEnabledWith: _TableView rowView: _RowView forRow: _Row ];
-    }
-
-- ( void ) tableView: ( NSTableView* )_TableView
-    didRemoveRowView: ( NSTableRowView* )_RowView
-              forRow: ( NSInteger )_Row
-    {
-    [ self _determineEnabledWith: _TableView rowView: _RowView forRow: _Row ];
-    }
-
-- ( void ) _determineEnabledWith: ( NSTableView* )_TableView
-                         rowView: ( NSTableRowView* )_RowView
-                          forRow: ( NSInteger )_Row
-    {
     [ [ ( TWPDebugLoginUsersView* )self.view removeAllLoginUsersButton ] setEnabled: self->_copiesOfAllLoginUsers.count ];
     [ [ ( TWPDebugLoginUsersView* )self.view removeSelectedLoginUsersButton ] setEnabled: [ _TableView numberOfSelectedRows ] ];
-
-    if ( !( self->_copiesOfAllLoginUsers.count ) )
-        [ [ ( TWPDebugLoginUsersView* )self.view removeSelectedLoginUsersButton ] setEnabled: NO ];
     }
 
 @end // TWPDebugLoginUsersViewController
