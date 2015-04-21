@@ -98,6 +98,7 @@ NSString extern* const TWPLoginUsersManagerDidFinishRemovingAllLoginUsers;
 // Notification User Info Keys
 NSString extern* const TWPNewLoginUserUserInfoKey;
 NSString extern* const TWPRemovedLoginUserUserInfoKey;
+NSString extern* const TWPCurrentLoginUserUserInfoKey;
 
 /*=============================================================================┐
 |                                                                              |

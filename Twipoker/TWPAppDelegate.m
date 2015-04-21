@@ -45,6 +45,11 @@
                                                   object: nil ];
 
     [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                selector: @selector( usersManagerDidFinishRemovingLoginUser: )
+                                                    name: TWPLoginUsersManagerDidFinishRemovingLoginUser
+                                                  object: nil ];
+
+    [ [ NSNotificationCenter defaultCenter ] addObserver: self
                                                 selector: @selector( usersManagerDidFinishRemovingAllLoginUsers: )
                                                     name: TWPLoginUsersManagerDidFinishRemovingAllLoginUsers
                                                   object: nil ];
@@ -60,6 +65,7 @@
 - ( void ) dealloc
     {
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerDidFinishLoginNotification object: nil ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPLoginUsersManagerDidFinishRemovingLoginUser object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPLoginUsersManagerDidFinishRemovingAllLoginUsers object: nil ];
     }
 
@@ -69,6 +75,17 @@
     {
     [ self.loginPanelController close ];
     [ self.mainWindowController showWindow: self ];
+    }
+
+- ( void ) usersManagerDidFinishRemovingLoginUser: ( NSNotification* )_Notif
+    {
+    id remainingCurrentLoginUser = _Notif.userInfo[ TWPCurrentLoginUserUserInfoKey ];
+
+    if ( remainingCurrentLoginUser == [ NSNull null ] )
+        {
+        [ self.mainWindowController close ];
+        [ self.loginPanelController showWindow: self ];
+        }
     }
 
 - ( void ) usersManagerDidFinishRemovingAllLoginUsers: ( NSNotification* )_Notif

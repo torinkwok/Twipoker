@@ -55,6 +55,7 @@ NSString* const kColumnIdentifierOAuthAccessTokenSecret = @"oauth-access-token-s
 - ( IBAction ) removeSelectedLoginUsersAction: ( id )_Sender;
     {
     NSIndexSet* selectedRowIndexes = [ self.loginUsersTableView selectedRowIndexes ];
+    NSMutableArray* userIDsToBeRemoved = [ NSMutableArray array ];
     [ selectedRowIndexes enumerateIndexesUsingBlock:
         ^( NSUInteger _RowIndex, BOOL* _Stop )
             {
@@ -62,9 +63,11 @@ NSString* const kColumnIdentifierOAuthAccessTokenSecret = @"oauth-access-token-s
             NSString* userID = [ self.loginUsersTableView.dataSource tableView: self.loginUsersTableView
                                                      objectValueForTableColumn: userIDColumn
                                                                            row: _RowIndex ];
-
-            [ [ TWPLoginUsersManager sharedManager ] removeUserWithUserID: userID ];
+            [ userIDsToBeRemoved addObject: userID ];
             } ];
+
+    for ( NSString* _UserID in userIDsToBeRemoved )
+        [ [ TWPLoginUsersManager sharedManager ] removeUserWithUserID: _UserID ];
     }
 
 - ( IBAction ) removeAllLoginUsersAction: ( id )_Sender
