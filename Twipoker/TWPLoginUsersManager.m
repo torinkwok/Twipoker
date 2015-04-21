@@ -40,7 +40,7 @@ NSString* const TWPLoginUsersManagerDidFinishRemovingAllLoginUsers = @"home.bedr
 // Notification User Info Keys
 NSString* const TWPNewLoginUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.NewLoginUser";
 NSString* const TWPRemovedLoginUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.RemovedLoginUser";
-NSString* const TWPCurrentLoginUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.CurrentLoginUser";
+NSString* const TWPNumberOfRemainingLoginUsersUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.NumberOfRemainingLoginUsersUserInfoKey";
 
 @implementation TWPLoginUsersManager
     {
@@ -232,7 +232,8 @@ TWPLoginUsersManager static __strong* sSharedManager = nil;
         [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPLoginUsersManagerDidFinishRemovingLoginUser
                                                                object: self
                                                              userInfo: @{ TWPRemovedLoginUserUserInfoKey : oldLoginUser
-                                                                        , TWPCurrentLoginUserUserInfoKey : self.currentLoginUser ?: [ NSNull null ] } ];
+                                                                        , TWPNumberOfRemainingLoginUsersUserInfoKey : @( self->_allLoginUsers.count )
+                                                                        } ];
         isSuccess = YES;
         }
 

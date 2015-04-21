@@ -79,9 +79,9 @@
 
 - ( void ) usersManagerDidFinishRemovingLoginUser: ( NSNotification* )_Notif
     {
-    id remainingCurrentLoginUser = _Notif.userInfo[ TWPCurrentLoginUserUserInfoKey ];
+    NSNumber* numberOfRemainingLoginUsers = _Notif.userInfo[ TWPNumberOfRemainingLoginUsersUserInfoKey ];
 
-    if ( remainingCurrentLoginUser == [ NSNull null ] )
+    if ( numberOfRemainingLoginUsers.integerValue == 0 )
         {
         [ self.mainWindowController close ];
         [ self.loginPanelController showWindow: self ];
