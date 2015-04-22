@@ -25,6 +25,10 @@
 #import <Foundation/Foundation.h>
 
 @interface TWPTimelineTableViewController :  NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+    {
+@private
+    NSMutableArray __strong* _tweets;
+    }
 
 @end
 

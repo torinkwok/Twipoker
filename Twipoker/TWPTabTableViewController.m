@@ -68,11 +68,16 @@
     NSTableCellView* resultView = nil;
 
     if ( [ _TableColumn.identifier isEqualToString: @"tab" ] )
-        resultView = [ _TableView makeViewWithIdentifier: @"tab" owner: self ];
+        resultView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
 
     [ resultView.textField setStringValue: self->_tabLabels[ _Row ] ];
 
     return resultView;
+    }
+
+- ( void ) tableViewSelectionDidChange: ( NSNotification* )_Notif
+    {
+    NSLog( @"Selected Index: %ld", [ ( NSTableView* )_Notif.object selectedRow ] );
     }
 
 @end

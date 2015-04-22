@@ -27,7 +27,7 @@
 @interface TWPTabTableViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
     {
 @private
-    NSArray* _tabLabels;    // Data source of TWPTabTable
+    NSArray __strong* _tabLabels;    // Data source of TWPTabTable
     }
 
 @end

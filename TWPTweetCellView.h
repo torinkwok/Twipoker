@@ -24,12 +24,26 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class OTCTweet;
+@class OTCTwitterUser;
+
 @interface TWPTweetCellView : NSTableCellView
+    {
+@private
+    OTCTweet __strong* _tweet;
+    }
 
 @property ( weak ) IBOutlet NSImageView* avatarImageView;
 @property ( weak ) IBOutlet NSTextField* userDisplayNameLabel;
 @property ( weak ) IBOutlet NSTextField* userScreenNameLabel;
 @property ( weak ) IBOutlet NSTextField* tweetTextLabel;
+
+@property ( strong, readwrite ) OTCTweet* tweet;
+@property ( strong, readonly ) OTCTwitterUser* author;
+
+#pragma mark Initialization
++ ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet;
+- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
 
 @end
 
