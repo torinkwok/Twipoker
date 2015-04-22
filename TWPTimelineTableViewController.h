@@ -22,11 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
-@interface TWPMainWindow : NSWindow
-
-@property ( weak ) IBOutlet NSView* placeholderView;
+@interface TWPTimelineTableViewController :  NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 @end
 

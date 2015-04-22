@@ -24,9 +24,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TWPMainWindow : NSWindow
+@interface TWPTweetCellView : NSTableCellView
 
-@property ( weak ) IBOutlet NSView* placeholderView;
+@property ( weak ) IBOutlet NSImageView* avatarImageView;
+@property ( weak ) IBOutlet NSTextField* userDisplayNameLabel;
+@property ( weak ) IBOutlet NSTextField* userScreenNameLabel;
+@property ( weak ) IBOutlet NSTextField* tweetTextLabel;
 
 @end
 
