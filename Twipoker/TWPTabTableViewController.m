@@ -26,6 +26,55 @@
 
 @implementation TWPTabTableViewController
 
+- ( id ) init
+    {
+    if ( self = [ super init ] )
+        {
+        self->_tabLabels = @[ NSLocalizedString( @"Timeline", nil )
+                            , NSLocalizedString( @"Favorites", nil )
+                            , NSLocalizedString( @"Lists", nil )
+                            , NSLocalizedString( @"Notifications", nil )
+                            , NSLocalizedString( @"Me", nil )
+                            , NSLocalizedString( @"Messages", nil )
+                            ];
+        }
+
+    return self;
+    }
+
+#pragma mark Conforms to <NSTableViewDataSource>
+- ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
+    {
+    return self->_tabLabels.count;
+    }
+
+- ( id )            tableView: ( NSTableView* )_TableView
+    objectValueForTableColumn: ( NSTableColumn* )_TableColumn
+                          row: ( NSInteger )_Row
+    {
+    id result = nil;
+
+    if ( [ _TableColumn.identifier isEqualToString: @"tab" ] )
+        result = self->_tabLabels[ _Row ];
+
+    return result;
+    }
+
+#pragma mark Conforms to <NSTableViewDelegate>
+- ( NSView* ) tableView: ( NSTableView* )_TableView
+     viewForTableColumn: ( NSTableColumn* )_TableColumn
+                    row: ( NSInteger )_Row
+    {
+    NSTableCellView* resultView = nil;
+
+    if ( [ _TableColumn.identifier isEqualToString: @"tab" ] )
+        resultView = [ _TableView makeViewWithIdentifier: @"tab" owner: self ];
+
+    [ resultView.textField setStringValue: self->_tabLabels[ _Row ] ];
+
+    return resultView;
+    }
+
 @end
 
 /*=============================================================================┐

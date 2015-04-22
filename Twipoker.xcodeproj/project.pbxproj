@@ -314,22 +314,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8347B7CE1AE7999F003A49AD /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				8347B7C81AE7976A003A49AD /* TWPTimelineTableView.h */,
+				8347B7C91AE7976A003A49AD /* TWPTimelineTableView.m */,
+			);
+			name = Timeline;
+			sourceTree = "<group>";
+		};
+		8347B7CF1AE799FF003A49AD /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				8347B7CB1AE797D0003A49AD /* TWPTabTableView.h */,
+				8347B7CC1AE797D0003A49AD /* TWPTabTableView.m */,
+				8347B7C21AE79575003A49AD /* TWPTabTableViewController.h */,
+				8347B7C31AE79575003A49AD /* TWPTabTableViewController.m */,
+				8347B7D01AE79A2A003A49AD /* Direct Messages */,
+			);
+			name = Tab;
+			sourceTree = "<group>";
+		};
+		8347B7D01AE79A2A003A49AD /* Direct Messages */ = {
+			isa = PBXGroup;
+			children = (
+				8347B7C51AE79713003A49AD /* TWPDirectMessagesViewController.h */,
+				8347B7C61AE79713003A49AD /* TWPDirectMessagesViewController.m */,
+			);
+			name = "Direct Messages";
+			sourceTree = "<group>";
+		};
 		83924D271AE0FC6300C25895 /* Main Window */ = {
 			isa = PBXGroup;
 			children = (
-				83924D281AE0FC6F00C25895 /* xib */,
 				83F231B21AE1147A00A05D1D /* TWPMainWindowController.h */,
 				83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */,
 				83F231AF1AE1147A00A05D1D /* TWPMainWindow.h */,
 				83F231B01AE1147A00A05D1D /* TWPMainWindow.m */,
-				8347B7CB1AE797D0003A49AD /* TWPTabTableView.h */,
-				8347B7CC1AE797D0003A49AD /* TWPTabTableView.m */,
-				8347B7C81AE7976A003A49AD /* TWPTimelineTableView.h */,
-				8347B7C91AE7976A003A49AD /* TWPTimelineTableView.m */,
-				8347B7C21AE79575003A49AD /* TWPTabTableViewController.h */,
-				8347B7C31AE79575003A49AD /* TWPTabTableViewController.m */,
-				8347B7C51AE79713003A49AD /* TWPDirectMessagesViewController.h */,
-				8347B7C61AE79713003A49AD /* TWPDirectMessagesViewController.m */,
+				83924D281AE0FC6F00C25895 /* xib */,
+				8347B7CF1AE799FF003A49AD /* Tab */,
+				8347B7CE1AE7999F003A49AD /* Timeline */,
 			);
 			name = "Main Window";
 			sourceTree = "<group>";

@@ -25,6 +25,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TWPTabTableViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+    {
+@private
+    NSArray* _tabLabels;    // Data source of TWPTabTable
+    }
 
 @end
 
