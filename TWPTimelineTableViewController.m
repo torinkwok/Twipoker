@@ -28,6 +28,7 @@
 #import "TWPTweetCellView.h"
 #import "TWPLoginUser.h"
 #import "TWPLoginUsersManager.h"
+#import "TWPTimelineScrollView.h"
 
 @implementation TWPTimelineTableViewController
 
@@ -38,7 +39,7 @@
         self->_tweets = [ NSMutableArray array ];
 
         [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-            getHomeTimelineSinceID: nil count: 20 successBlock:
+            getHomeTimelineSinceID: nil count: 30 successBlock:
                 ^( NSArray* _Tweets )
                     {
                     for ( NSDictionary* _TweetObject in _Tweets )
@@ -76,12 +77,9 @@
     {
     NSTableCellView* cellView = nil;
 
-    if ( [ _TableColumn.identifier isEqualToString: @"timeline" ] )
-        {
-        OTCTweet* tweet = [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ];
-        cellView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
-        [ ( TWPTweetCellView* )cellView setTweet: tweet ];
-        }
+    OTCTweet* tweet = [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ];
+    cellView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+    [ ( TWPTweetCellView* )cellView setTweet: tweet ];
 
     return cellView;
     }

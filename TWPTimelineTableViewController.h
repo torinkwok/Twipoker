@@ -24,11 +24,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class TWPTimelineScrollView;
+
 @interface TWPTimelineTableViewController :  NSViewController <NSTableViewDataSource, NSTableViewDelegate>
     {
 @private
     NSMutableArray __strong* _tweets;
     }
+
+@property ( weak ) IBOutlet TWPTimelineScrollView* scrollViewWrappedTimelineTableView;
 
 @end
 

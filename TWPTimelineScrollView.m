@@ -22,58 +22,31 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTabTableViewController.h"
+#import "TWPTimelineScrollView.h"
 
-@implementation TWPTabTableViewController
+@implementation TWPTimelineScrollView
 
-- ( id ) init
+- ( void ) reflectScrolledClipView: ( NSClipView* )_ClipView
     {
-    if ( self = [ super init ] )
-        {
-        self->_tabLabels = @[ NSLocalizedString( @"Timeline", nil )
-                            , NSLocalizedString( @"Favorites", nil )
-                            , NSLocalizedString( @"Lists", nil )
-                            , NSLocalizedString( @"Notifications", nil )
-                            , NSLocalizedString( @"Me", nil )
-                            , NSLocalizedString( @"Messages", nil )
-                            ];
-        }
+    [ super reflectScrolledClipView: _ClipView ];
 
-    return self;
+    NSRect boundsOfDocumentView = [ self.documentView bounds ];
+    NSRect boundsOfClipView = [ self.contentView bounds ];
+
+    NSPoint currentScrollLocation = boundsOfClipView.origin;
+
+//    NSLog( @"%@", NSStringFromRect( boundsOfDocumentView ) );
+//    NSLog( @"%@", NSStringFromRect( boundsOfClipView ) );
+//    NSLog( @"%@", NSStringFromPoint( currentScrollLocation ));
+//    NSLog( @"...." );
+
+    if ( currentScrollLocation.y >= ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
+        NSLog( @"Aha!" ); // TODO
     }
 
-#pragma mark Conforms to <NSTableViewDataSource>
-- ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
+- ( IBAction ) scrollToTop: ( id )_Sender
     {
-    return self->_tabLabels.count;
-    }
-
-- ( id )            tableView: ( NSTableView* )_TableView
-    objectValueForTableColumn: ( NSTableColumn* )_TableColumn
-                          row: ( NSInteger )_Row
-    {
-    id result = nil;
-
-    if ( [ _TableColumn.identifier isEqualToString: @"tab" ] )
-        result = self->_tabLabels[ _Row ];
-
-    return result;
-    }
-
-#pragma mark Conforms to <NSTableViewDelegate>
-- ( NSView* ) tableView: ( NSTableView* )_TableView
-     viewForTableColumn: ( NSTableColumn* )_TableColumn
-                    row: ( NSInteger )_Row
-    {
-    NSTableCellView* resultView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
-    [ resultView.textField setStringValue: self->_tabLabels[ _Row ] ];
-
-    return resultView;
-    }
-
-- ( void ) tableViewSelectionDidChange: ( NSNotification* )_Notif
-    {
-    NSLog( @"Selected Index: %ld", [ ( NSTableView* )_Notif.object selectedRow ] );
+    [ self scrollPoint: NSMakePoint( 0, 0 ) ];
     }
 
 @end

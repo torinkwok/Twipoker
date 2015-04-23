@@ -148,21 +148,8 @@
     {
     NSView* resultView = nil;
 
-    if ( [ _TableColumn.identifier isEqualToString: kColumnIdentifierUserID ] )
-        {
-        resultView = [ _TableView makeViewWithIdentifier: kColumnIdentifierUserID owner: self ];
-        [ [ ( NSTableCellView* )resultView textField ] setStringValue: [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ] ];
-        }
-    else if ( [ _TableColumn.identifier isEqualToString: kColumnIdentifierOAuthAccessToken ] )
-        {
-        resultView = [ _TableView makeViewWithIdentifier: kColumnIdentifierOAuthAccessToken owner: self ];
-        [ [ ( NSTableCellView* )resultView textField ] setStringValue: [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ] ];
-        }
-    else if ( [ _TableColumn.identifier isEqualToString: kColumnIdentifierOAuthAccessTokenSecret ] )
-        {
-        resultView = [ _TableView makeViewWithIdentifier: kColumnIdentifierOAuthAccessTokenSecret owner: self ];
-        [ [ ( NSTableCellView* )resultView textField ] setStringValue: [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ] ];
-        }
+    resultView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+    [ [ ( NSTableCellView* )resultView textField ] setStringValue: [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ] ];
 
     return resultView;
     }
