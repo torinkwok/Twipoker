@@ -30,11 +30,18 @@
     {
 @private
     NSMutableArray __strong* _tweets;
+
+    SInt64 _sinceID;
+    SInt64 _maxID;
     }
 
 @property ( weak ) IBOutlet TWPTimelineScrollView* scrollViewWrappedTimelineTableView;
 
 @end
+
+// Notification Names
+NSString extern* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets;
+NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
 
 /*=============================================================================┐
 |                                                                              |

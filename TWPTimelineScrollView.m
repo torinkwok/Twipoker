@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTimelineScrollView.h"
+#import "TWPTimelineTableViewController.h"
 
 @implementation TWPTimelineScrollView
 
@@ -35,13 +36,8 @@
 
     NSPoint currentScrollLocation = boundsOfClipView.origin;
 
-//    NSLog( @"%@", NSStringFromRect( boundsOfDocumentView ) );
-//    NSLog( @"%@", NSStringFromRect( boundsOfClipView ) );
-//    NSLog( @"%@", NSStringFromPoint( currentScrollLocation ));
-//    NSLog( @"...." );
-
-    if ( currentScrollLocation.y >= ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
-        NSLog( @"Aha!" ); // TODO
+    if ( currentScrollLocation.y == ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
+        [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets object: nil ];
     }
 
 - ( IBAction ) scrollToTop: ( id )_Sender

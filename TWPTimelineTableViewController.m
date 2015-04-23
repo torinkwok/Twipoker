@@ -30,6 +30,10 @@
 #import "TWPLoginUsersManager.h"
 #import "TWPTimelineScrollView.h"
 
+// Notification Names
+NSString* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets = @"TimelineTableViewDataSource.ShouldLoadOlderTweets";
+NSString* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets = @"TimelineTableViewDataSource.ShouldLoadLaterTweets";
+
 @implementation TWPTimelineTableViewController
 
 - ( instancetype ) init
@@ -40,16 +44,67 @@
 
         [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
             getHomeTimelineSinceID: nil count: 30 successBlock:
-                ^( NSArray* _Tweets )
+                ^( NSArray* _TweetObjects )
                     {
-                    for ( NSDictionary* _TweetObject in _Tweets )
+                    for ( NSDictionary* _TweetObject in _TweetObjects )
                         [ self->_tweets addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
 
+                    self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
+                    self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+
+                    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                                selector: @selector( tableViewDataSourceShoulLoadOlderTweets: )
+                                                                    name: TWPTimelineTableViewDataSourceShouldLoadOlderTweets
+                                                                  object: nil ];
+
+                    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                                selector: @selector( tableViewDataSourceShoulLoadLaterTweets: )
+                                                                    name: TWPTimelineTableViewDataSourceShouldLoadLaterTweets
+                                                                  object: nil ];
+
                     [ ( NSTableView* )self.view reloadData ];
-                    } errorBlock: nil ];
+                    } errorBlock: ^( NSError* _Error )
+                                    {
+                                    [ self presentError: _Error ];
+                                    } ];
         }
 
     return self;
+    }
+
+- ( void ) tableViewDataSourceShoulLoadOlderTweets: ( NSNotification* )_Notif
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        getStatusesHomeTimelineWithCount: @"30"
+                                 sinceID: nil
+                                   maxID: @( self->_maxID - 1 ).stringValue
+                                trimUser: @NO
+                          excludeReplies: @0
+                      contributorDetails: @YES
+                         includeEntities: @YES
+                            successBlock:
+        ^( NSArray* _TweetObjects )
+            {
+            for ( NSDictionary* _TweetObject in _TweetObjects )
+                {
+                OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
+
+                if ( ![ self->_tweets containsObject: tweet ] )
+                    [ self->_tweets addObject: tweet ];
+                }
+
+            self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+
+            [ ( NSTableView* )self.view reloadData ];
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            [ self presentError: _Error ];
+                            } ];
+    }
+
+- ( void ) tableViewDataSourceShoulLoadLaterTweets: ( NSNotification* )_Notif
+    {
+    NSLog( @"Later!" );
     }
 
 #pragma mark Conforms to <NSTableViewDataSource>
