@@ -326,14 +326,14 @@
 		8347B7CE1AE7999F003A49AD /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				8347B7C81AE7976A003A49AD /* TWPTimelineTableView.h */,
-				8347B7C91AE7976A003A49AD /* TWPTimelineTableView.m */,
 				833746931AE7CE0100AD689E /* TWPTimelineTableViewController.h */,
 				833746941AE7CE0100AD689E /* TWPTimelineTableViewController.m */,
-				833746961AE7CEBF00AD689E /* TWPTweetCellView.h */,
-				833746971AE7CEBF00AD689E /* TWPTweetCellView.m */,
+				8347B7C81AE7976A003A49AD /* TWPTimelineTableView.h */,
+				8347B7C91AE7976A003A49AD /* TWPTimelineTableView.m */,
 				83C624141AE8DDF600C36324 /* TWPTimelineScrollView.h */,
 				83C624151AE8DDF600C36324 /* TWPTimelineScrollView.m */,
+				833746961AE7CEBF00AD689E /* TWPTweetCellView.h */,
+				833746971AE7CEBF00AD689E /* TWPTweetCellView.m */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";

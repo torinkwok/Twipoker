@@ -22,14 +22,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="893" height="630"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="118" horizontalPageScroll="10" verticalLineScroll="118" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7n-tY-Yv1" customClass="TWPTimelineScrollView">
+                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="118" horizontalPageScroll="10" verticalLineScroll="118" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7n-tY-Yv1" userLabel="Home Timeline Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
                         <rect key="frame" x="287" y="-1" width="607" height="632"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" ambiguous="YES" misplaced="YES" copiesOnScroll="NO" id="g14-KI-LcH">
                             <rect key="frame" x="1" y="1" width="605" height="630"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="78z-JM-jG6" customClass="TWPTimelineTableView">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="78z-JM-jG6" userLabel="Home Timeline Table View" customClass="TWPTimelineTableView">
                                     <rect key="frame" x="0.0" y="0.0" width="605" height="630"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -209,7 +209,7 @@
             </connections>
         </customObject>
         <customObject id="FHw-bS-h2G" customClass="TWPDirectMessagesViewController"/>
-        <customObject id="2b2-pC-CWS" customClass="TWPTimelineTableViewController">
+        <customObject id="2b2-pC-CWS" userLabel="Home Timeline Table View Controller" customClass="TWPTimelineTableViewController">
             <connections>
                 <outlet property="scrollViewWrappedTimelineTableView" destination="z7n-tY-Yv1" id="Mwf-Gs-ctQ"/>
                 <outlet property="view" destination="78z-JM-jG6" id="9Gn-Ej-Kma"/>

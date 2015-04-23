@@ -30,7 +30,7 @@ NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
 
 @class TWPTimelineScrollView;
 
-@interface TWPTimelineTableViewController :  NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+@interface TWPTimelineTableViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
     {
 @private
     NSMutableArray __strong* _tweets;
