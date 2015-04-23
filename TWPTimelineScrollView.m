@@ -36,8 +36,18 @@
 
     NSPoint currentScrollLocation = boundsOfClipView.origin;
 
-    if ( currentScrollLocation.y == ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
-        [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets object: nil ];
+    if ( currentScrollLocation.y != 0
+            && currentScrollLocation.y >= ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
+        {
+        // Our data source must be not loading older tweets...
+        if ( ![ TWPTimelineTableViewController isLoadingOlderTweetsToken ] )
+            {
+            NSLog( @"> Loading..." );
+            // data source is now ready to load tweets... 🚀
+            [ TWPTimelineTableViewController setIsLoadingOlderTweetsToken: YES ];
+            [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets object: nil ];
+            }
+        }
     }
 
 - ( IBAction ) scrollToTop: ( id )_Sender

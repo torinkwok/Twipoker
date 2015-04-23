@@ -24,6 +24,10 @@
 
 #import <Foundation/Foundation.h>
 
+// Notification Names
+NSString extern* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets;
+NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
+
 @class TWPTimelineScrollView;
 
 @interface TWPTimelineTableViewController :  NSViewController <NSTableViewDataSource, NSTableViewDelegate>
@@ -35,13 +39,17 @@
     SInt64 _maxID;
     }
 
+#pragma mark Outlets
 @property ( weak ) IBOutlet TWPTimelineScrollView* scrollViewWrappedTimelineTableView;
 
-@end
+#pragma mark Tweets Data Source Attributes
++ ( void ) setIsLoadingOlderTweetsToken: ( BOOL )_IsLoadingOlderTweets;
++ ( BOOL ) isLoadingOlderTweetsToken;
 
-// Notification Names
-NSString extern* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets;
-NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
++ ( void ) setNumberOfTweetsWillBeLoadedOnce: ( NSUInteger )_Number;
++ ( NSUInteger ) numberOfTweetsWillBeLoadedOnce;
+
+@end
 
 /*=============================================================================┐
 |                                                                              |
