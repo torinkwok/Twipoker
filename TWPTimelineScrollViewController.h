@@ -39,8 +39,7 @@ NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
     SInt64 _maxID;
     }
 
-#pragma mark Outlets
-@property ( weak ) IBOutlet TWPTimelineScrollView* scrollViewWrappedTimelineTableView;
+@property ( weak, readonly ) NSTableView* timelineTableView;
 
 #pragma mark Tweets Data Source Attributes
 + ( void ) setIsLoadingOlderTweetsToken: ( BOOL )_IsLoadingOlderTweets;

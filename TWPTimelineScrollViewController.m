@@ -36,6 +36,13 @@ NSString* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets = @"Timeline
 
 @implementation TWPTimelineScrollViewController
 
+@dynamic timelineTableView;
+
+- ( NSTableView* ) timelineTableView
+    {
+    return [ ( NSScrollView* )self.view documentView ];
+    }
+
 #pragma mark Tweets Data Source Attributes
 BOOL static s_isLoadingOlderTweetsToken = NO;
 + ( void ) setIsLoadingOlderTweetsToken: ( BOOL )_IsLoadingOlderTweets
@@ -85,7 +92,7 @@ NSUInteger static s_numberOfTweetsWillBeLoadedOnce = 20;
                                                                 selector: @selector( tableViewDataSourceShoulLoadLaterTweets: )
                                                                     name: TWPTimelineTableViewDataSourceShouldLoadLaterTweets
                                                                   object: nil ];
-                    [ [ ( NSScrollView* )self.view documentView ] reloadData ];
+                    [ self.timelineTableView reloadData ];
                     } errorBlock: ^( NSError* _Error )
                                     {
                                     [ self presentError: _Error ];
@@ -140,7 +147,7 @@ NSUInteger static s_numberOfTweetsWillBeLoadedOnce = 20;
 
             self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
-            [ [ ( NSScrollView* )self.view documentView ] reloadData ];
+            [ self.timelineTableView reloadData ];
             } errorBlock: ^( NSError* _Error )
                             {
                             // Data source did finish loading older tweets due to the error occured

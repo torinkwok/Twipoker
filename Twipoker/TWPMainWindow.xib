@@ -29,7 +29,7 @@
                             <rect key="frame" x="1" y="1" width="605" height="630"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="78z-JM-jG6" userLabel="Home Timeline Table View" customClass="TWPTimelineTableView">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="78z-JM-jG6" userLabel="Home Timeline Table View">
                                     <rect key="frame" x="0.0" y="0.0" width="605" height="630"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -211,7 +211,6 @@
         <customObject id="FHw-bS-h2G" customClass="TWPDirectMessagesViewController"/>
         <customObject id="2b2-pC-CWS" userLabel="Home Timeline Scroll View Controller" customClass="TWPTimelineScrollViewController">
             <connections>
-                <outlet property="scrollViewWrappedTimelineTableView" destination="z7n-tY-Yv1" id="Mwf-Gs-ctQ"/>
                 <outlet property="view" destination="z7n-tY-Yv1" id="xFg-vh-tlZ"/>
             </connections>
         </customObject>
