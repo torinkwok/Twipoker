@@ -34,6 +34,7 @@ NSString* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets = @"Timeline
 
 @implementation TWPTimelineScrollViewController
 
+#pragma mark Accessors
 @dynamic timelineTableView;
 
 - ( NSTableView* ) timelineTableView

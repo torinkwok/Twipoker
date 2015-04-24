@@ -28,6 +28,7 @@
 
 @interface TWPTimelineScrollView : NSScrollView
 
+#pragma mark Accessors
 @property ( weak, readonly ) NSTableView* timelineTableView;
 
 @end

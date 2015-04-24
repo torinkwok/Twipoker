@@ -27,6 +27,7 @@
 
 @implementation TWPTimelineScrollView
 
+#pragma mark Accessors
 @dynamic timelineTableView;
 
 - ( NSTableView* ) timelineTableView
@@ -34,6 +35,7 @@
     return ( NSTableView* )[ self documentView ];
     }
 
+#pragma mark Overrides
 - ( void ) reflectScrolledClipView: ( NSClipView* )_ClipView
     {
     [ super reflectScrolledClipView: _ClipView ];
@@ -55,11 +57,6 @@
             [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets object: nil ];
             }
         }
-    }
-
-- ( IBAction ) scrollToTop: ( id )_Sender
-    {
-    [ self scrollPoint: NSMakePoint( 0, 0 ) ];
     }
 
 @end

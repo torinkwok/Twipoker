@@ -33,8 +33,8 @@ NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
 
 @class TWPTimelineScrollView;
 
-@interface TWPTimelineScrollViewController : NSViewController < TWPTimelineTableViewDataSource
-                                                              , TWPTimelineTableViewDelegate >
+@interface TWPTimelineScrollViewController : NSViewController
+    <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate>
     {
 @private
     NSMutableArray __strong* _tweets;
@@ -43,6 +43,7 @@ NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
     SInt64 _maxID;
     }
 
+#pragma mark Accessors
 @property ( weak, readonly ) NSTableView* timelineTableView;
 
 #pragma mark Conforms to <TWPTimelineTableViewDataSource>
