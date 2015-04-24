@@ -23,16 +23,18 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTimelineScrollView.h"
+#import "TWPTimelineTableView.h"
 #import "TWPTimelineScrollViewController.h"
 
+// TWPTimelineScrollView class
 @implementation TWPTimelineScrollView
 
 #pragma mark Accessors
 @dynamic timelineTableView;
 
-- ( NSTableView* ) timelineTableView
+- ( TWPTimelineTableView* ) timelineTableView
     {
-    return ( NSTableView* )[ self documentView ];
+    return ( TWPTimelineTableView* )[ self documentView ];
     }
 
 #pragma mark Overrides
@@ -59,7 +61,7 @@
         }
     }
 
-@end
+@end // TWPTimelineScrollView class
 
 /*=============================================================================┐
 |                                                                              |

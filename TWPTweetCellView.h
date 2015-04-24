@@ -27,12 +27,14 @@
 @class OTCTweet;
 @class OTCTwitterUser;
 
+// TWPTweetCellView class
 @interface TWPTweetCellView : NSTableCellView
     {
 @private
     OTCTweet __strong* _tweet;
     }
 
+#pragma mark Outlets
 @property ( weak ) IBOutlet NSImageView* avatarImageView;
 @property ( weak ) IBOutlet NSTextField* userDisplayNameLabel;
 @property ( weak ) IBOutlet NSTextField* userScreenNameLabel;
@@ -45,7 +47,7 @@
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet;
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
 
-@end
+@end // TWPTweetCellView class
 
 /*=============================================================================┐
 |                                                                              |

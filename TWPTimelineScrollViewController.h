@@ -24,15 +24,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "TWPTimelineTableViewDataSource.h"
-#import "TWPTimelineTableViewDelegate.h"
-
-// Notification Names
-NSString extern* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets;
-NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
+#import "TWPTimelineTableView.h"
 
 @class TWPTimelineScrollView;
 
+// TWPTimelineScrollViewController class
 @interface TWPTimelineScrollViewController : NSViewController
     <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate>
     {
@@ -44,13 +40,13 @@ NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
     }
 
 #pragma mark Accessors
-@property ( weak, readonly ) NSTableView* timelineTableView;
+@property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
 
 #pragma mark Conforms to <TWPTimelineTableViewDataSource>
 @property ( assign, readwrite ) BOOL isLoadingOlderTweets;
 @property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
 
-@end
+@end // TWPTimelineScrollViewController class
 
 /*=============================================================================┐
 |                                                                              |

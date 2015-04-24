@@ -22,10 +22,17 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPTimelineTableView.h"
 
-@protocol TWPTimelineTableViewDelegate <NSTableViewDelegate>
-@end
+// TWPTimelineTableView class
+@implementation TWPTimelineTableView
+
+@end // TWPTimelineTableView class
+
+#pragma mark <TWPTimelineTableViewDataSource>
+// Notification Names
+NSString* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets = @"TimelineTableViewDataSource.ShouldLoadOlderTweets";
+NSString* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets = @"TimelineTableViewDataSource.ShouldLoadLaterTweets";
 
 /*=============================================================================┐
 |                                                                              |

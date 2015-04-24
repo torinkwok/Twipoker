@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830896151AEA192C0081D227 /* TWPTimelineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896141AEA192C0081D227 /* TWPTimelineTableView.m */; };
 		831447D21ACFF19300BFECE4 /* TWPDebugLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */; };
 		831447D51ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */; };
 		831447D91AD0008E00BFECE4 /* TWPDebugLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D81AD0008E00BFECE4 /* TWPDebugLoginView.m */; };
@@ -117,8 +118,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		830896111AE9F9130081D227 /* TWPTimelineTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPTimelineTableViewDataSource.h; sourceTree = "<group>"; };
-		830896121AEA15130081D227 /* TWPTimelineTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPTimelineTableViewDelegate.h; sourceTree = "<group>"; };
+		830896131AEA192C0081D227 /* TWPTimelineTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPTimelineTableView.h; sourceTree = "<group>"; };
+		830896141AEA192C0081D227 /* TWPTimelineTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPTimelineTableView.m; sourceTree = "<group>"; };
 		831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TWPDebugLoginView.xib; sourceTree = "<group>"; };
 		831447D31ACFF1AD00BFECE4 /* TWPDebugLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugLoginViewController.h; sourceTree = "<group>"; };
 		831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginViewController.m; sourceTree = "<group>"; };
@@ -328,8 +329,8 @@
 		8347B7CE1AE7999F003A49AD /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				830896111AE9F9130081D227 /* TWPTimelineTableViewDataSource.h */,
-				830896121AEA15130081D227 /* TWPTimelineTableViewDelegate.h */,
+				830896131AEA192C0081D227 /* TWPTimelineTableView.h */,
+				830896141AEA192C0081D227 /* TWPTimelineTableView.m */,
 				833746931AE7CE0100AD689E /* TWPTimelineScrollViewController.h */,
 				833746941AE7CE0100AD689E /* TWPTimelineScrollViewController.m */,
 				83C624141AE8DDF600C36324 /* TWPTimelineScrollView.h */,
@@ -963,6 +964,7 @@
 				83924DF61AE105E600C25895 /* NSError+STTwitter.m in Sources */,
 				83CFD8771ACF1C820062D73D /* TWPTwipokerLogoView.m in Sources */,
 				831447DC1AD0046800BFECE4 /* TWPDebugConsoleController.m in Sources */,
+				830896151AEA192C0081D227 /* TWPTimelineTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

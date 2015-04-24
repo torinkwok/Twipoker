@@ -24,13 +24,29 @@
 
 #import <Cocoa/Cocoa.h>
 
+@protocol TWPTimelineTableViewDataSource;
+@protocol TWPTimelineTableViewDelegate;
+
+// TWPTimelineTableView class
+@interface TWPTimelineTableView : NSTableView
+@end // TWPTimelineTableView class
+
+#pragma mark <TWPTimelineTableViewDataSource>
+// Notification Names
+NSString extern* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets;
+NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
+
 @protocol TWPTimelineTableViewDataSource <NSTableViewDataSource>
 
 @required
 @property ( assign, readwrite ) BOOL isLoadingOlderTweets;
 @property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
 
-@end
+@end // <TWPTimelineTableViewDataSource> protocol
+
+#pragma mark <TWPTimelineTableViewDelegate>
+@protocol TWPTimelineTableViewDelegate <NSTableViewDelegate>
+@end // <TWPTimelineTableViewDelegate> protocol
 
 /*=============================================================================┐
 |                                                                              |

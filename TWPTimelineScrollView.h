@@ -24,14 +24,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TWPTimelineTableView;
 @class TWPTimelineScrollViewController;
 
+// TWPTimelineScrollView class
 @interface TWPTimelineScrollView : NSScrollView
 
 #pragma mark Accessors
-@property ( weak, readonly ) NSTableView* timelineTableView;
+@property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
 
-@end
+@end // TWPTimelineScrollView class
 
 /*=============================================================================┐
 |                                                                              |

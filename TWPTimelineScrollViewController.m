@@ -28,16 +28,13 @@
 #import "TWPLoginUsersManager.h"
 #import "TWPTimelineScrollView.h"
 
-// Notification Names
-NSString* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets = @"TimelineTableViewDataSource.ShouldLoadOlderTweets";
-NSString* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets = @"TimelineTableViewDataSource.ShouldLoadLaterTweets";
-
+// TWPTimelineScrollViewController class
 @implementation TWPTimelineScrollViewController
 
 #pragma mark Accessors
 @dynamic timelineTableView;
 
-- ( NSTableView* ) timelineTableView
+- ( TWPTimelineTableView* ) timelineTableView
     {
     return [ ( NSScrollView* )self.view documentView ];
     }
@@ -163,7 +160,7 @@ NSString* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets = @"Timeline
     return NO;
     }
 
-@end
+@end // TWPTimelineScrollViewController class
 
 /*=============================================================================┐
 |                                                                              |
