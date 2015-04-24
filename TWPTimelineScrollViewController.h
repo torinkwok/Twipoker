@@ -43,12 +43,9 @@ NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
 
 @property ( weak, readonly ) NSTableView* timelineTableView;
 
-#pragma mark Tweets Data Source Attributes
-+ ( void ) setIsLoadingOlderTweetsToken: ( BOOL )_IsLoadingOlderTweets;
-+ ( BOOL ) isLoadingOlderTweetsToken;
-
-+ ( void ) setNumberOfTweetsWillBeLoadedOnce: ( NSUInteger )_Number;
-+ ( NSUInteger ) numberOfTweetsWillBeLoadedOnce;
+#pragma mark Conforms to <TWPTimelineTableViewDataSource>
+@property ( assign, readwrite ) BOOL isLoadingOlderTweets;
+@property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
 
 @end
 

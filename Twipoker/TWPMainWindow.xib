@@ -114,6 +114,9 @@
                             <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
+                        <connections>
+                            <outlet property="controller" destination="2b2-pC-CWS" id="823-MN-vtv"/>
+                        </connections>
                     </scrollView>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="46" horizontalPageScroll="10" verticalLineScroll="46" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uak-CR-Afr">
                         <rect key="frame" x="-1" y="54" width="289" height="535"/>

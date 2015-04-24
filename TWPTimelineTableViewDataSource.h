@@ -26,6 +26,10 @@
 
 @protocol TWPTimelineTableViewDataSource <NSTableViewDataSource>
 
+@required
+@property ( assign, readwrite ) BOOL isLoadingOlderTweets;
+@property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
+
 @end
 
 /*=============================================================================┐
