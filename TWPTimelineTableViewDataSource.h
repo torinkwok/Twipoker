@@ -22,33 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
-#import "TWPTimelineTableViewDataSource.h"
-
-// Notification Names
-NSString extern* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets;
-NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
-
-@class TWPTimelineScrollView;
-
-@interface TWPTimelineScrollViewController : NSViewController <TWPTimelineTableViewDataSource, NSTableViewDelegate>
-    {
-@private
-    NSMutableArray __strong* _tweets;
-
-    SInt64 _sinceID;
-    SInt64 _maxID;
-    }
-
-@property ( weak, readonly ) NSTableView* timelineTableView;
-
-#pragma mark Tweets Data Source Attributes
-+ ( void ) setIsLoadingOlderTweetsToken: ( BOOL )_IsLoadingOlderTweets;
-+ ( BOOL ) isLoadingOlderTweetsToken;
-
-+ ( void ) setNumberOfTweetsWillBeLoadedOnce: ( NSUInteger )_Number;
-+ ( NSUInteger ) numberOfTweetsWillBeLoadedOnce;
+@protocol TWPTimelineTableViewDataSource <NSTableViewDataSource>
 
 @end
 

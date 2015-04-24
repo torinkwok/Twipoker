@@ -117,6 +117,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		830896111AE9F9130081D227 /* TWPTimelineTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPTimelineTableViewDataSource.h; sourceTree = "<group>"; };
 		831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TWPDebugLoginView.xib; sourceTree = "<group>"; };
 		831447D31ACFF1AD00BFECE4 /* TWPDebugLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugLoginViewController.h; sourceTree = "<group>"; };
 		831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginViewController.m; sourceTree = "<group>"; };
@@ -326,6 +327,7 @@
 		8347B7CE1AE7999F003A49AD /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				830896111AE9F9130081D227 /* TWPTimelineTableViewDataSource.h */,
 				833746931AE7CE0100AD689E /* TWPTimelineScrollViewController.h */,
 				833746941AE7CE0100AD689E /* TWPTimelineScrollViewController.m */,
 				83C624141AE8DDF600C36324 /* TWPTimelineScrollView.h */,

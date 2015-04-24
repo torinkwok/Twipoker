@@ -22,8 +22,6 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "Objectwitter-C.h"
-
 #import "TWPTimelineScrollViewController.h"
 #import "TWPTweetCellView.h"
 #import "TWPLoginUser.h"
