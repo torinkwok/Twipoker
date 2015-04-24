@@ -212,7 +212,7 @@
         <customObject id="2b2-pC-CWS" userLabel="Home Timeline Table View Controller" customClass="TWPTimelineTableViewController">
             <connections>
                 <outlet property="scrollViewWrappedTimelineTableView" destination="z7n-tY-Yv1" id="Mwf-Gs-ctQ"/>
-                <outlet property="view" destination="78z-JM-jG6" id="9Gn-Ej-Kma"/>
+                <outlet property="view" destination="z7n-tY-Yv1" id="xFg-vh-tlZ"/>
             </connections>
         </customObject>
     </objects>
