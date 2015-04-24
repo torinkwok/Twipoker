@@ -209,7 +209,7 @@
             </connections>
         </customObject>
         <customObject id="FHw-bS-h2G" customClass="TWPDirectMessagesViewController"/>
-        <customObject id="2b2-pC-CWS" userLabel="Home Timeline Table View Controller" customClass="TWPTimelineTableViewController">
+        <customObject id="2b2-pC-CWS" userLabel="Home Timeline Scroll View Controller" customClass="TWPTimelineScrollViewController">
             <connections>
                 <outlet property="scrollViewWrappedTimelineTableView" destination="z7n-tY-Yv1" id="Mwf-Gs-ctQ"/>
                 <outlet property="view" destination="z7n-tY-Yv1" id="xFg-vh-tlZ"/>

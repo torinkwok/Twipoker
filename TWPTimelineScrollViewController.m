@@ -24,7 +24,7 @@
 
 #import "Objectwitter-C.h"
 
-#import "TWPTimelineTableViewController.h"
+#import "TWPTimelineScrollViewController.h"
 #import "TWPTweetCellView.h"
 #import "TWPLoginUser.h"
 #import "TWPLoginUsersManager.h"
@@ -34,7 +34,7 @@
 NSString* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets = @"TimelineTableViewDataSource.ShouldLoadOlderTweets";
 NSString* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets = @"TimelineTableViewDataSource.ShouldLoadLaterTweets";
 
-@implementation TWPTimelineTableViewController
+@implementation TWPTimelineScrollViewController
 
 #pragma mark Tweets Data Source Attributes
 BOOL static s_isLoadingOlderTweetsToken = NO;
@@ -67,7 +67,7 @@ NSUInteger static s_numberOfTweetsWillBeLoadedOnce = 20;
         self->_tweets = [ NSMutableArray array ];
 
         [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-            getHomeTimelineSinceID: nil count: [ TWPTimelineTableViewController numberOfTweetsWillBeLoadedOnce ] successBlock:
+            getHomeTimelineSinceID: nil count: [ TWPTimelineScrollViewController numberOfTweetsWillBeLoadedOnce ] successBlock:
                 ^( NSArray* _TweetObjects )
                     {
                     for ( NSDictionary* _TweetObject in _TweetObjects )
@@ -116,7 +116,7 @@ NSUInteger static s_numberOfTweetsWillBeLoadedOnce = 20;
 - ( void ) tableViewDataSourceShoulLoadOlderTweets: ( NSNotification* )_Notif
     {
     [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-        getStatusesHomeTimelineWithCount: @( [ TWPTimelineTableViewController numberOfTweetsWillBeLoadedOnce ] ).stringValue
+        getStatusesHomeTimelineWithCount: @( [ TWPTimelineScrollViewController numberOfTweetsWillBeLoadedOnce ] ).stringValue
                                  sinceID: nil
                                    maxID: @( self->_maxID - 1 ).stringValue
                                 trimUser: @NO
@@ -129,7 +129,7 @@ NSUInteger static s_numberOfTweetsWillBeLoadedOnce = 20;
             for ( NSDictionary* _TweetObject in _TweetObjects )
                 {
                 // Data source did finish loading older tweets
-                [ TWPTimelineTableViewController setIsLoadingOlderTweetsToken: NO ];
+                [ TWPTimelineScrollViewController setIsLoadingOlderTweetsToken: NO ];
 
                 OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
 
@@ -144,7 +144,7 @@ NSUInteger static s_numberOfTweetsWillBeLoadedOnce = 20;
             } errorBlock: ^( NSError* _Error )
                             {
                             // Data source did finish loading older tweets due to the error occured
-                            [ TWPTimelineTableViewController setIsLoadingOlderTweetsToken: NO ];
+                            [ TWPTimelineScrollViewController setIsLoadingOlderTweetsToken: NO ];
                             [ self presentError: _Error ];
                             } ];
     }
