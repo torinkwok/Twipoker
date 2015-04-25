@@ -24,7 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class TWPTimelineScrollView;
+@class TWPTimelineScrollViewController;
 
 @interface TWPStackContentView : NSView
     {
@@ -32,11 +32,13 @@
     NSMutableArray __strong* _viewControllersStack;
     }
 
-@property ( weak ) IBOutlet TWPTimelineScrollView* homeTimelineScrollView;
-@property ( weak ) IBOutlet TWPTimelineScrollView* favoritesTimelineScrollView;
-@property ( weak ) IBOutlet TWPTimelineScrollView* listsTimelineScrollView;
-@property ( weak ) IBOutlet TWPTimelineScrollView* notificationsScrollView;
-@property ( weak ) IBOutlet TWPTimelineScrollView* meScrollView;
+#pragma mark Candidate Base Views
+@property ( weak ) IBOutlet TWPTimelineScrollViewController* homeTimelineScrollView;
+@property ( weak ) IBOutlet TWPTimelineScrollViewController* favoritesTimelineScrollView;
+@property ( weak ) IBOutlet TWPTimelineScrollViewController* notificationsTimelineScrollView;
+
+#pragma mark Current Base View
+@property ( weak ) TWPTimelineScrollViewController* baseView;
 
 @end
 

@@ -22,23 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPStackContentView.h"
+#import "TWPTabTableCellView.h"
 
-@implementation TWPStackContentView
-
-#pragma mark Candidate Base Views
-@synthesize homeTimelineScrollView;
-@synthesize favoritesTimelineScrollView;
-@synthesize notificationsTimelineScrollView;
-
-#pragma mark Current Base View
-@synthesize baseView;
-
-#pragma mark Initialization
-- ( void ) awakeFromNib
-    {
-    self.baseView = self.homeTimelineScrollView;
-    }
+@implementation TWPTabTableCellView
 
 @end
 
