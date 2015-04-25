@@ -30,6 +30,13 @@
     NSArray __strong* _tabLabels;    // Data source of TWPTabTable
     }
 
+@property ( weak ) IBOutlet NSViewController* associatedHomeTimelineScrollViewController;
+@property ( weak ) IBOutlet NSViewController* associatedFavoritesTimelineScrollViewController;
+@property ( weak ) IBOutlet NSViewController* associatedListsTimelineScrollViewController;
+@property ( weak ) IBOutlet NSViewController* associatedNotificationsTimelineScrollViewController;
+@property ( weak ) IBOutlet NSViewController* associatedMeTimelineScrollViewController;
+@property ( weak ) IBOutlet NSViewController* associatedMessagesTimelineScrollViewController;
+
 @end
 
 /*=============================================================================┐

@@ -50,7 +50,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="UBU-sD-AnM">
+                                                <tableCellView id="UBU-sD-AnM" customClass="TWPTabTableCellView">
                                                     <rect key="frame" x="1" y="1" width="284" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -110,21 +110,18 @@
                     <customView appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-W1-aLM" customClass="TWPStackContentView">
                         <rect key="frame" x="287" y="0.0" width="606" height="630"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <connections>
-                            <outlet property="favoritesTimelineScrollView" destination="Wt5-em-nhm" id="o3D-0O-5Dc"/>
-                            <outlet property="homeTimelineScrollView" destination="2b2-pC-CWS" id="kZf-zb-01k"/>
-                            <outlet property="notificationsTimelineScrollView" destination="cod-2Z-hAU" id="Q8T-IE-UqL"/>
-                        </connections>
                     </customView>
                 </subviews>
             </view>
         </window>
         <customObject id="1oD-YP-T2y" customClass="TWPTabTableViewController">
             <connections>
+                <outlet property="associatedFavoritesTimelineScrollViewController" destination="Wt5-em-nhm" id="dm9-Tp-nQZ"/>
+                <outlet property="associatedHomeTimelineScrollViewController" destination="2b2-pC-CWS" id="kT6-1t-yQi"/>
+                <outlet property="associatedNotificationsTimelineScrollViewController" destination="cod-2Z-hAU" id="voO-Id-QVz"/>
                 <outlet property="view" destination="y2h-Qf-hPL" id="lwX-26-uyW"/>
             </connections>
         </customObject>
-        <customObject id="FHw-bS-h2G" customClass="TWPDirectMessagesViewController"/>
         <customObject id="2b2-pC-CWS" userLabel="Home Timeline Scroll View Controller" customClass="TWPTimelineScrollViewController">
             <connections>
                 <outlet property="view" destination="z7n-tY-Yv1" id="xFg-vh-tlZ"/>
@@ -233,7 +230,7 @@
                 <rect key="frame" x="1" y="1" width="605" height="630"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="Zaa-Ft-1XM" userLabel="Home Timeline Table View" customClass="TWPTimelineTableView">
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="Zaa-Ft-1XM" userLabel="Favorites Timeline Table View" customClass="TWPTimelineTableView">
                         <rect key="frame" x="0.0" y="0.0" width="605" height="630"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
@@ -304,8 +301,8 @@ We'll see :)</string>
                             </tableColumn>
                         </tableColumns>
                         <connections>
-                            <outlet property="dataSource" destination="2b2-pC-CWS" id="5rg-X7-Dtr"/>
-                            <outlet property="delegate" destination="2b2-pC-CWS" id="9GU-7X-pT7"/>
+                            <outlet property="dataSource" destination="Wt5-em-nhm" id="6XY-03-n6Y"/>
+                            <outlet property="delegate" destination="Wt5-em-nhm" id="tbl-k8-6xj"/>
                         </connections>
                     </tableView>
                 </subviews>
@@ -330,7 +327,7 @@ We'll see :)</string>
                 <rect key="frame" x="1" y="1" width="605" height="630"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="pC9-uV-RYF" userLabel="Home Timeline Table View" customClass="TWPTimelineTableView">
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="pC9-uV-RYF" userLabel="Notifications Timeline Table View" customClass="TWPTimelineTableView">
                         <rect key="frame" x="0.0" y="0.0" width="605" height="630"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
@@ -400,8 +397,8 @@ We'll see :)</string>
                             </tableColumn>
                         </tableColumns>
                         <connections>
-                            <outlet property="dataSource" destination="2b2-pC-CWS" id="BFG-nt-XCA"/>
-                            <outlet property="delegate" destination="2b2-pC-CWS" id="62H-7z-bbb"/>
+                            <outlet property="dataSource" destination="cod-2Z-hAU" id="Jxs-oo-9gK"/>
+                            <outlet property="delegate" destination="cod-2Z-hAU" id="MJa-fo-wbj"/>
                         </connections>
                     </tableView>
                 </subviews>
@@ -419,7 +416,18 @@ We'll see :)</string>
                 <outlet property="controller" destination="2b2-pC-CWS" id="dMk-Yn-Msd"/>
             </connections>
         </scrollView>
-        <customObject id="Wt5-em-nhm" userLabel="Favorites Timeline Scroll View Controller" customClass="TWPTimelineScrollViewController"/>
-        <customObject id="cod-2Z-hAU" userLabel="Notifications Timeline Scroll View Controller" customClass="TWPTimelineScrollViewController"/>
+        <customObject id="Wt5-em-nhm" userLabel="Favorites Timeline Scroll View Controller" customClass="TWPTimelineScrollViewController">
+            <connections>
+                <outlet property="view" destination="LNO-6y-VY9" id="Lmf-aE-JmD"/>
+            </connections>
+        </customObject>
+        <customObject id="BdV-eD-14x" userLabel="Lists Timeline Scroll View Controller" customClass="TWPTimelineScrollViewController"/>
+        <customObject id="cod-2Z-hAU" userLabel="Notifications Timeline Scroll View Controller" customClass="TWPTimelineScrollViewController">
+            <connections>
+                <outlet property="view" destination="zbq-bC-fte" id="d6t-5w-2tp"/>
+            </connections>
+        </customObject>
+        <customObject id="RTK-Kg-kQk" userLabel="Me Timeline Scroll View Controller" customClass="TWPTimelineScrollViewController"/>
+        <customObject id="FHw-bS-h2G" customClass="TWPDirectMessagesViewController"/>
     </objects>
 </document>

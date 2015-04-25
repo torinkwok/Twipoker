@@ -26,6 +26,22 @@
 
 @implementation TWPTabTableCellView
 
+@synthesize associatedViewController = _associatedViewController;
+
+#pragma mark Initialization
++ ( instancetype ) tabTableCellViewWithAssociatedViewController: ( NSViewController* )_AssociatedViewController
+    {
+    return [ [ [ self class ] alloc ] initWithAssociatedViewController: _AssociatedViewController ];
+    }
+
+- ( instancetype ) initWithAssociatedViewController: ( NSViewController* )_AssociatedViewController
+    {
+    if ( self = [ super init ] )
+        self->_associatedViewController = _AssociatedViewController;
+
+    return self;
+    }
+
 @end
 
 /*=============================================================================┐

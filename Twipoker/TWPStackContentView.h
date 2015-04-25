@@ -32,11 +32,6 @@
     NSMutableArray __strong* _viewControllersStack;
     }
 
-#pragma mark Candidate Base Views
-@property ( weak ) IBOutlet TWPTimelineScrollViewController* homeTimelineScrollView;
-@property ( weak ) IBOutlet TWPTimelineScrollViewController* favoritesTimelineScrollView;
-@property ( weak ) IBOutlet TWPTimelineScrollViewController* notificationsTimelineScrollView;
-
 #pragma mark Current Base View
 @property ( weak ) TWPTimelineScrollViewController* baseView;
 

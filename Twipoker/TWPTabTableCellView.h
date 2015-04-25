@@ -26,6 +26,12 @@
 
 @interface TWPTabTableCellView : NSTableCellView
 
+@property ( weak, readwrite ) NSViewController* associatedViewController;
+
+#pragma mark Initialization
++ ( instancetype ) tabTableCellViewWithAssociatedViewController: ( NSViewController* )_AssociatedViewController;
+- ( instancetype ) initWithAssociatedViewController: ( NSViewController* )_AssociatedViewController;
+
 @end
 
 /*=============================================================================┐

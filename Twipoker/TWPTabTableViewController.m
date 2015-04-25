@@ -23,8 +23,16 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTabTableViewController.h"
+#import "TWPTabTableCellView.h"
 
 @implementation TWPTabTableViewController
+
+@synthesize associatedHomeTimelineScrollViewController;
+@synthesize associatedFavoritesTimelineScrollViewController;
+@synthesize associatedListsTimelineScrollViewController;
+@synthesize associatedNotificationsTimelineScrollViewController;
+@synthesize associatedMeTimelineScrollViewController;
+@synthesize associatedMessagesTimelineScrollViewController;
 
 - ( id ) init
     {
@@ -65,8 +73,18 @@
      viewForTableColumn: ( NSTableColumn* )_TableColumn
                     row: ( NSInteger )_Row
     {
-    NSTableCellView* resultView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+    TWPTabTableCellView* resultView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
     [ resultView.textField setStringValue: self->_tabLabels[ _Row ] ];
+
+    switch ( _Row )
+        {
+        case 0: resultView.associatedViewController = self.associatedHomeTimelineScrollViewController; break;
+        case 1: resultView.associatedViewController = self.associatedFavoritesTimelineScrollViewController; break;
+        case 2: resultView.associatedViewController = self.associatedListsTimelineScrollViewController; break;
+        case 3: resultView.associatedViewController = self.associatedNotificationsTimelineScrollViewController; break;
+        case 4: resultView.associatedViewController = self.associatedMeTimelineScrollViewController; break;
+        case 5: resultView.associatedViewController = self.associatedMessagesTimelineScrollViewController; break;
+        }
 
     return resultView;
     }
