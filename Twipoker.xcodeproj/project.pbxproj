@@ -62,6 +62,7 @@
 		83924E001AE105E600C25895 /* BAVPlistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF01AE105E600C25895 /* BAVPlistNode.m */; };
 		83924E011AE105E600C25895 /* JSONSyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF21AE105E600C25895 /* JSONSyntaxHighlight.m */; };
 		83924E021AE105E600C25895 /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF41AE105E600C25895 /* STHTTPRequest.m */; };
+		83A43B9B1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A43B9A1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m */; };
 		83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8381ACF1C820062D73D /* TWPDebug.m */; };
 		83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84C1ACF1C820062D73D /* TWPButton.m */; };
 		83CFD86E1ACF1C820062D73D /* TWPButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84E1ACF1C820062D73D /* TWPButtonCell.m */; };
@@ -232,6 +233,8 @@
 		83924DF21AE105E600C25895 /* JSONSyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONSyntaxHighlight.m; sourceTree = "<group>"; };
 		83924DF31AE105E600C25895 /* STHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHTTPRequest.h; sourceTree = "<group>"; };
 		83924DF41AE105E600C25895 /* STHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHTTPRequest.m; sourceTree = "<group>"; };
+		83A43B991AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPHomeTimelineScrollViewController.h; path = Twipoker/TWPHomeTimelineScrollViewController.h; sourceTree = "<group>"; };
+		83A43B9A1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPHomeTimelineScrollViewController.m; path = Twipoker/TWPHomeTimelineScrollViewController.m; sourceTree = "<group>"; };
 		83CFD8311ACF1BCE0062D73D /* Twipoker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Twipoker.entitlements; sourceTree = "<group>"; };
 		83CFD8321ACF1C820062D73D /* _TWPButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TWPButtonCell.h; path = Twipoker/_TWPButtonCell.h; sourceTree = "<group>"; };
 		83CFD8371ACF1C820062D73D /* TWPDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebug.h; sourceTree = "<group>"; };
@@ -336,6 +339,8 @@
 				8308961B1AEA1D1D0081D227 /* TWPTimelineTableView.m */,
 				830896181AEA1D1D0081D227 /* TWPTimelineScrollViewController.h */,
 				830896191AEA1D1D0081D227 /* TWPTimelineScrollViewController.m */,
+				83A43B991AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.h */,
+				83A43B9A1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m */,
 				830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */,
 				830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */,
 				8308961C1AEA1D1D0081D227 /* TWPTweetCellView.h */,
@@ -905,6 +910,7 @@
 				83924DC61AE104A900C25895 /* OTCMedia.m in Sources */,
 				8347B7C41AE79575003A49AD /* TWPTabTableViewController.m in Sources */,
 				83F231B41AE1147A00A05D1D /* TWPMainWindow.m in Sources */,
+				83A43B9B1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m in Sources */,
 				83CFD8861ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.m in Sources */,
 				83924DC81AE104A900C25895 /* OTCResolvedObject.m in Sources */,
 				83924E011AE105E600C25895 /* JSONSyntaxHighlight.m in Sources */,

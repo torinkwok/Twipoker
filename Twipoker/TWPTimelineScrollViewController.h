@@ -32,7 +32,7 @@
 @interface TWPTimelineScrollViewController : NSViewController
     <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate>
     {
-@private
+@protected
     NSMutableArray __strong* _tweets;
 
     SInt64 _sinceID;
