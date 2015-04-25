@@ -24,6 +24,7 @@
 
 #import "TWPTabTableViewController.h"
 #import "TWPTabTableCellView.h"
+#import "TWPTabTableView.h"
 
 @implementation TWPTabTableViewController
 
@@ -38,7 +39,7 @@
     {
     if ( self = [ super init ] )
         {
-        self->_tabLabels = @[ NSLocalizedString( @"Timeline", nil )
+        self->_tabLabels = @[ NSLocalizedString( @"Home", nil )
                             , NSLocalizedString( @"Favorites", nil )
                             , NSLocalizedString( @"Lists", nil )
                             , NSLocalizedString( @"Notifications", nil )
@@ -78,12 +79,12 @@
 
     switch ( _Row )
         {
-        case 0: resultView.associatedViewController = self.associatedHomeTimelineScrollViewController; break;
-        case 1: resultView.associatedViewController = self.associatedFavoritesTimelineScrollViewController; break;
-        case 2: resultView.associatedViewController = self.associatedListsTimelineScrollViewController; break;
-        case 3: resultView.associatedViewController = self.associatedNotificationsTimelineScrollViewController; break;
-        case 4: resultView.associatedViewController = self.associatedMeTimelineScrollViewController; break;
-        case 5: resultView.associatedViewController = self.associatedMessagesTimelineScrollViewController; break;
+        case TWPTabTableRowHome: resultView.associatedViewController = self.associatedHomeTimelineScrollViewController; break;
+        case TWPTabTableRowFavorites: resultView.associatedViewController = self.associatedFavoritesTimelineScrollViewController; break;
+        case TWPTabTableRowLists: resultView.associatedViewController = self.associatedListsTimelineScrollViewController; break;
+        case TWPTabTableRowNotifications: resultView.associatedViewController = self.associatedNotificationsTimelineScrollViewController; break;
+        case TWPTabTableRowMe: resultView.associatedViewController = self.associatedMeTimelineScrollViewController; break;
+        case TWPTabTableRowMessages: resultView.associatedViewController = self.associatedMessagesTimelineScrollViewController; break;
         }
 
     return resultView;
@@ -91,7 +92,18 @@
 
 - ( void ) tableViewSelectionDidChange: ( NSNotification* )_Notif
     {
-    NSLog( @"Selected Index: %ld", [ ( NSTableView* )_Notif.object selectedRow ] );
+    TWPTabTableView* tabTableView = ( TWPTabTableView* )[ _Notif object ];
+    NSTableColumn* currentTableColumn = [ tabTableView tableColumnWithIdentifier: @"tab" ];
+    TWPTabTableRow selectedRow = ( TWPTabTableRow )[ tabTableView selectedRow ];
+
+    TWPTabTableCellView* cellView = ( TWPTabTableCellView* )[ tabTableView.delegate
+        tableView: tabTableView viewForTableColumn: currentTableColumn row: ( NSInteger )selectedRow ];
+
+    NSNotification* notification = [ NSNotification notificationWithName: TWPTabTableViewSelectedTabChanged
+                                                                  object: self
+                                                                userInfo: @{ @"tab-cell-view" : cellView } ];
+
+    [ [ NSNotificationCenter defaultCenter ] postNotification: notification ];
     }
 
 @end

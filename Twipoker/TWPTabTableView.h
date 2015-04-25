@@ -24,6 +24,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef NS_ENUM( NSInteger, TWPTabTableRow )
+    { TWPTabTableRowUnknown = -1
+    , TWPTabTableRowHome = 0
+    , TWPTabTableRowFavorites = 1
+    , TWPTabTableRowLists = 2
+    , TWPTabTableRowNotifications = 3
+    , TWPTabTableRowMe = 4
+    , TWPTabTableRowMessages = 5
+    };
+
+NSString extern* const TWPTabTableViewSelectedTabChanged;
+
 @interface TWPTabTableView : NSTableView
 
 @end

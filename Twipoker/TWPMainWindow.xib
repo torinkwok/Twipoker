@@ -15,16 +15,16 @@
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="TWPMainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="87" width="893" height="630"/>
+            <rect key="contentRect" x="196" y="87" width="893" height="767"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="893" height="630"/>
             <value key="maxSize" type="size" width="893" height="630"/>
             <view key="contentView" id="EiT-Mj-1SZ" userLabel="Content View">
-                <rect key="frame" x="0.0" y="0.0" width="893" height="630"/>
+                <rect key="frame" x="0.0" y="-2" width="893" height="767"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="46" horizontalPageScroll="10" verticalLineScroll="46" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uak-CR-Afr">
-                        <rect key="frame" x="-1" y="54" width="289" height="535"/>
+                        <rect key="frame" x="-1" y="59" width="289" height="667"/>
                         <clipView key="contentView" misplaced="YES" id="V0v-xt-iVw">
                             <rect key="frame" x="1" y="1" width="287" height="533"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CSA-pX-nQA">
                                                             <rect key="frame" x="54" y="14" width="213" height="17"/>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Timeline" id="uQP-2H-OXt">
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Home" id="uQP-2H-OXt">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -91,24 +91,24 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-H2-zZU">
+                        <rect key="frame" x="75" y="730" width="34" height="34"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
+                    </imageView>
+                    <customView appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-W1-aLM" customClass="TWPStackContentView">
+                        <rect key="frame" x="287" y="0.0" width="606" height="767"/>
+                    </customView>
                     <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="103-qB-6B1">
-                        <rect key="frame" x="20" y="11" width="246" height="22"/>
+                        <rect key="frame" x="20" y="20" width="246" height="22"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search Twitter" usesSingleLineMode="YES" bezelStyle="round" id="EOV-LU-pMO">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </searchFieldCell>
                     </searchField>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-H2-zZU">
-                        <rect key="frame" x="75" y="593" width="34" height="34"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
-                    </imageView>
-                    <customView appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-W1-aLM" customClass="TWPStackContentView">
-                        <rect key="frame" x="287" y="0.0" width="606" height="630"/>
-                    </customView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-93.5" y="-1878"/>
+            <point key="canvasLocation" x="-93.5" y="-1809.5"/>
         </window>
         <customObject id="1oD-YP-T2y" customClass="TWPTabTableViewController">
             <connections>
@@ -417,6 +417,7 @@ We'll see :)</string>
         <customView id="LG3-WU-d0B" userLabel="Lists View Controller">
             <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <point key="canvasLocation" x="703.5" y="-1765"/>
         </customView>
         <customView id="j7Y-cD-0je" userLabel="Me View Controller">
             <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>

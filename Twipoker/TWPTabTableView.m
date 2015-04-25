@@ -24,6 +24,8 @@
 
 #import "TWPTabTableView.h"
 
+NSString* const TWPTabTableViewSelectedTabChanged = @"TabTableView.SelectedTabChanged";
+
 @implementation TWPTabTableView
 
 @end

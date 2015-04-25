@@ -23,6 +23,8 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPStackContentView.h"
+#import "TWPTabTableView.h"
+#import "TWPTabTableCellView.h"
 
 @implementation TWPStackContentView
 
@@ -32,7 +34,23 @@
 #pragma mark Initialization
 - ( void ) awakeFromNib
     {
-    // TODO:
+    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                selector: @selector( tabTableViewSelectedTabChanged: )
+                                                    name: TWPTabTableViewSelectedTabChanged
+                                                  object: nil ];
+    }
+
+- ( void ) tabTableViewSelectedTabChanged: ( NSNotification* )_Notif
+    {
+    NSViewController* associatedViewController = [ ( TWPTabTableCellView* )( _Notif.userInfo[ @"tab-cell-view" ] ) associatedViewController ];
+    NSView* associatedView = associatedViewController.view;
+
+    NSRect newFrame = NSInsetRect( self.bounds, 0, -2 );
+    newFrame.size.width += 2.f;
+    [ associatedView setFrame: newFrame ];
+    [ self setSubviews: @[ associatedView ] ];
+//    NSLog( @"%@", NSStringFromRect( self.frame ) );
+//    NSLog( @"%@", NSStringFromRect( associatedView.frame ) );
     }
 
 @end
