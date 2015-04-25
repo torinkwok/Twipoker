@@ -26,6 +26,13 @@
 
 @implementation TWPMainWindow
 
+- ( void ) awakeFromNib
+    {
+    self.titleVisibility = NSWindowTitleHidden;
+    self.titlebarAppearsTransparent = YES;
+    self.styleMask |= NSFullSizeContentViewWindowMask;
+    }
+
 @end
 
 /*=============================================================================┐

@@ -71,6 +71,7 @@
                                                                 selector: @selector( tableViewDataSourceShoulLoadLaterTweets: )
                                                                     name: TWPTimelineTableViewDataSourceShouldLoadLaterTweets
                                                                   object: nil ];
+                    id whatsTheFuck = self.timelineTableView;
                     [ self.timelineTableView reloadData ];
                     } errorBlock: ^( NSError* _Error )
                                     {
