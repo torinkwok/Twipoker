@@ -24,7 +24,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TWPDashboardStack;
+
 @interface TWPStackContentView : NSView
+
+@property ( weak ) IBOutlet TWPDashboardStack* initialViewsStack;
+
 @end
 
 /*=============================================================================┐

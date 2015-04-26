@@ -29,6 +29,8 @@
 
 @implementation TWPStackContentView
 
+@synthesize initialViewsStack = _initialViewsStack;
+
 #pragma mark Initialization
 - ( void ) awakeFromNib
     {
@@ -36,6 +38,9 @@
                                                 selector: @selector( dashboardViewSelectedTabChanged: )
                                                     name: TWPDashboardViewSelectedTabChanged
                                                   object: nil ];
+
+    [ self.initialViewsStack.baseViewController.view setFrame: [ self boundsOfElementView ] ];
+    [ self setSubviews: @[ self.initialViewsStack.baseViewController.view ] ];
     }
 
 - ( void ) dashboardViewSelectedTabChanged: ( NSNotification* )_Notif
@@ -43,10 +48,17 @@
     TWPDashboardStack* associatedViewsStack = [ ( TWPDashboardCellView* )( _Notif.userInfo[ @"tab-cell-view" ] ) associatedViewsStack ];
     NSView* associatedView = associatedViewsStack.baseViewController.view;
 
-    NSRect newFrame = NSInsetRect( self.bounds, 0, -2 );
-    newFrame.size.width += 2.f;
-    [ associatedView setFrame: newFrame ];
+    [ associatedView setFrame: [ self boundsOfElementView ] ];
     [ self setSubviews: @[ associatedView ] ];
+    }
+
+#pragma mark Utilities
+- ( NSRect ) boundsOfElementView
+    {
+    NSRect rect = NSInsetRect( self.bounds, 0, -1.5 );
+    rect.size.width += 1.f;
+
+    return rect;
     }
 
 @end

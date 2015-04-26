@@ -97,6 +97,9 @@
                     </imageView>
                     <customView appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-W1-aLM" customClass="TWPStackContentView">
                         <rect key="frame" x="287" y="0.0" width="606" height="767"/>
+                        <connections>
+                            <outlet property="initialViewsStack" destination="i5X-Cg-E7K" id="dWv-WC-CqE"/>
+                        </connections>
                     </customView>
                     <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="103-qB-6B1">
                         <rect key="frame" x="20" y="20" width="246" height="22"/>
