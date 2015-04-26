@@ -29,16 +29,43 @@
 // Notification Names
 NSString* const TWPTimelineScrollViewTypeUserInfoKey = @"TimelineScrollView.TypeUserInfoKey";
 
-// Corresponding Values of TWPTimelineScrollViewTypeUserInfoKey
-NSString* const TWPTimelineScrollViewTypeUserInfoKeyHome = @"TimelineScrollView.Type.UserInfoKey.Home";
-NSString* const TWPTimelineScrollViewTypeUserInfoKeyFavorites = @"TimelineScrollView.Type.UserInfoKey.Favorites";
-NSString* const TWPTimelineScrollViewTypeUserInfoKeyLists = @"TimelineScrollView.Type.UserInfoKey.Lists";
-NSString* const TWPTimelineScrollViewTypeUserInfoKeyNotifications = @"TimelineScrollView.Type.UserInfoKey.Notifications";
-NSString* const TWPTimelineScrollViewTypeUserInfoKeyMe = @"TimelineScrollView.Type.UserInfoKey.Me";
-NSString* const TWPTimelineScrollViewTypeUserInfoKeyMessages = @"TimelineScrollView.Type.UserInfoKey.Messages";
+// Type of scroll view controller
+NSString* const TWPTimelineScrollViewTypeHome = @"TimelineScrollView.Type.UserInfoKey.Home";
+NSString* const TWPTimelineScrollViewTypeFavorites = @"TimelineScrollView.Type.UserInfoKey.Favorites";
+NSString* const TWPTimelineScrollViewTypeLists = @"TimelineScrollView.Type.UserInfoKey.Lists";
+NSString* const TWPTimelineScrollViewTypeNotifications = @"TimelineScrollView.Type.UserInfoKey.Notifications";
+NSString* const TWPTimelineScrollViewTypeMe = @"TimelineScrollView.Type.UserInfoKey.Me";
+NSString* const TWPTimelineScrollViewTypeMessages = @"TimelineScrollView.Type.UserInfoKey.Messages";
+
+@interface TWPTimelineScrollView ()
+@property ( copy, readwrite ) NSString* type;
+@end
 
 // TWPTimelineScrollView class
 @implementation TWPTimelineScrollView
+
+@synthesize type;
+
+- ( void ) awakeFromNib
+    {
+    if ( [ self.identifier isEqualToString: @"home" ] )
+        self.type = TWPTimelineScrollViewTypeHome;
+
+    else if ( [ self.identifier isEqualToString: @"favorites" ] )
+        self.type = TWPTimelineScrollViewTypeFavorites;
+
+    else if ( [ self.identifier isEqualToString: @"lists" ] )
+        self.type = TWPTimelineScrollViewTypeNotifications;
+
+    else if ( [ self.identifier isEqualToString: @"notifications" ] )
+        self.type = TWPTimelineScrollViewTypeNotifications;
+
+    else if ( [ self.identifier isEqualToString: @"me" ] )
+        self.type = TWPTimelineScrollViewTypeMe;
+
+    else if ( [ self.identifier isEqualToString: @"messages" ] )
+        self.type = TWPTimelineScrollViewTypeMessages;
+    }
 
 #pragma mark Accessors
 @dynamic timelineTableView;
@@ -66,23 +93,10 @@ NSString* const TWPTimelineScrollViewTypeUserInfoKeyMessages = @"TimelineScrollV
             {
             NSLog( @"> Loading..." );
 
-            NSString* typeString = nil;
-            if ( [ self.identifier isEqualToString: @"home" ] )
-                typeString = TWPTimelineScrollViewTypeUserInfoKeyHome;
-
-            else if ( [ self.identifier isEqualToString: @"favorites" ] )
-                typeString = TWPTimelineScrollViewTypeUserInfoKeyFavorites;
-
-            else if ( [ self.identifier isEqualToString: @"notifications" ] )
-                typeString = TWPTimelineScrollViewTypeUserInfoKeyNotifications;
-
-            // TODO: Waiting for Favs, Lists, Me and Messages
-
             // data source is now ready to load tweets... 🚀
             [ ( TWPTimelineScrollViewController* )self.timelineTableView.dataSource setIsLoadingOlderTweets: YES ];
             [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets
-                                                                   object: @{ TWPTimelineScrollViewTypeUserInfoKey : typeString ?: [ NSNull null ]
-                                                                            } ];
+                                                                   object: @{ TWPTimelineScrollViewTypeUserInfoKey : self.type } ];
             }
         }
     }

@@ -22,11 +22,10 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Foundation/Foundation.h>
-
 #import "TWPTimelineTableView.h"
 
 @class TWPTimelineScrollView;
+@class TWPTimelineTableView;
 
 // TWPTimelineScrollViewController class
 @interface TWPTimelineScrollViewController : NSViewController
@@ -40,6 +39,7 @@
     }
 
 #pragma mark Accessors
+@property ( weak, readonly ) TWPTimelineScrollView* timelineScrollView;
 @property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
 
 #pragma mark Conforms to <TWPTimelineTableViewDataSource>

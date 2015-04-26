@@ -62,7 +62,6 @@
 		83924E001AE105E600C25895 /* BAVPlistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF01AE105E600C25895 /* BAVPlistNode.m */; };
 		83924E011AE105E600C25895 /* JSONSyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF21AE105E600C25895 /* JSONSyntaxHighlight.m */; };
 		83924E021AE105E600C25895 /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF41AE105E600C25895 /* STHTTPRequest.m */; };
-		83A43B9B1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A43B9A1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m */; };
 		83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8381ACF1C820062D73D /* TWPDebug.m */; };
 		83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84C1ACF1C820062D73D /* TWPButton.m */; };
 		83CFD86E1ACF1C820062D73D /* TWPButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84E1ACF1C820062D73D /* TWPButtonCell.m */; };
@@ -107,7 +106,6 @@
 		83F231BE1AE114A600A05D1D /* NSObject+FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231BC1AE114A600A05D1D /* NSObject+FBKVOController.m */; };
 		83F232171AE130A900A05D1D /* TWPLoginUsersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F232161AE130A900A05D1D /* TWPLoginUsersManager.m */; };
 		83F2321A1AE15BC200A05D1D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F232191AE15BC200A05D1D /* Security.framework */; };
-		83F2C19E1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C19D1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,8 +232,6 @@
 		83924DF21AE105E600C25895 /* JSONSyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONSyntaxHighlight.m; sourceTree = "<group>"; };
 		83924DF31AE105E600C25895 /* STHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHTTPRequest.h; sourceTree = "<group>"; };
 		83924DF41AE105E600C25895 /* STHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHTTPRequest.m; sourceTree = "<group>"; };
-		83A43B991AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPHomeTimelineScrollViewController.h; path = Twipoker/TWPHomeTimelineScrollViewController.h; sourceTree = "<group>"; };
-		83A43B9A1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPHomeTimelineScrollViewController.m; path = Twipoker/TWPHomeTimelineScrollViewController.m; sourceTree = "<group>"; };
 		83CFD8311ACF1BCE0062D73D /* Twipoker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Twipoker.entitlements; sourceTree = "<group>"; };
 		83CFD8321ACF1C820062D73D /* _TWPButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TWPButtonCell.h; path = Twipoker/_TWPButtonCell.h; sourceTree = "<group>"; };
 		83CFD8371ACF1C820062D73D /* TWPDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebug.h; sourceTree = "<group>"; };
@@ -308,8 +304,6 @@
 		83F232151AE130A900A05D1D /* TWPLoginUsersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPLoginUsersManager.h; sourceTree = "<group>"; };
 		83F232161AE130A900A05D1D /* TWPLoginUsersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPLoginUsersManager.m; sourceTree = "<group>"; };
 		83F232191AE15BC200A05D1D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		83F2C19C1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPFavoritesTimelineScrollViewController.h; path = Twipoker/TWPFavoritesTimelineScrollViewController.h; sourceTree = "<group>"; };
-		83F2C19D1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPFavoritesTimelineScrollViewController.m; path = Twipoker/TWPFavoritesTimelineScrollViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,10 +336,6 @@
 				8308961B1AEA1D1D0081D227 /* TWPTimelineTableView.m */,
 				830896181AEA1D1D0081D227 /* TWPTimelineScrollViewController.h */,
 				830896191AEA1D1D0081D227 /* TWPTimelineScrollViewController.m */,
-				83A43B991AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.h */,
-				83A43B9A1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m */,
-				83F2C19C1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.h */,
-				83F2C19D1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.m */,
 				830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */,
 				830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */,
 				8308961C1AEA1D1D0081D227 /* TWPTweetCellView.h */,
@@ -915,7 +905,6 @@
 				83924DC61AE104A900C25895 /* OTCMedia.m in Sources */,
 				8347B7C41AE79575003A49AD /* TWPTabTableViewController.m in Sources */,
 				83F231B41AE1147A00A05D1D /* TWPMainWindow.m in Sources */,
-				83A43B9B1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m in Sources */,
 				83CFD8861ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.m in Sources */,
 				83924DC81AE104A900C25895 /* OTCResolvedObject.m in Sources */,
 				83924E011AE105E600C25895 /* JSONSyntaxHighlight.m in Sources */,
@@ -963,7 +952,6 @@
 				83924DCB1AE104A900C25895 /* OTCUserMention.m in Sources */,
 				83D3FF1F1ACB144B009D40EE /* main.m in Sources */,
 				83924DC31AE104A900C25895 /* OTCEmbeddedURL.m in Sources */,
-				83F2C19E1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.m in Sources */,
 				83924DFC1AE105E600C25895 /* STTwitterOAuth.m in Sources */,
 				835361511AE5635200CF1988 /* TWPDebugLoginUsersView.m in Sources */,
 				83924DF71AE105E600C25895 /* NSString+STTwitter.m in Sources */,

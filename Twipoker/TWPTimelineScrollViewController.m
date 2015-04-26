@@ -25,22 +25,74 @@
 #import "TWPTimelineScrollViewController.h"
 #import "TWPTweetCellView.h"
 #import "TWPLoginUser.h"
+#import "TWPLoginUsersManager.h"
 #import "TWPTimelineScrollView.h"
 
 // TWPTimelineScrollViewController class
 @implementation TWPTimelineScrollViewController
 
 #pragma mark Accessors
+@dynamic timelineScrollView;
 @dynamic timelineTableView;
+
+- ( TWPTimelineScrollView* ) timelineScrollView
+    {
+    return ( TWPTimelineScrollView* )( self.view );
+    }
 
 - ( TWPTimelineTableView* ) timelineTableView
     {
-    return [ ( NSScrollView* )self.view documentView ];
+    return [ self.timelineScrollView documentView ];
     }
 
 #pragma mark Conforms to <TWPTimelineTableViewDataSource>
 @synthesize isLoadingOlderTweets = _isLoadingOlderTweets;
 @synthesize numberOfTweetsWillBeLoadedOnce = _numberOfTweetsWillBeLoadedOnce;
+
+#pragma mark Initialization
+- ( void ) awakeFromNib
+    {
+//    dispatch_once_t static onceToken;
+//
+//    dispatch_once( &onceToken
+//     , ( dispatch_block_t )^( void )
+//        {
+    if ( !self->_tweets )
+        {
+        self->_tweets = [ NSMutableArray array ];
+        self->_isLoadingOlderTweets = NO;
+        self->_numberOfTweetsWillBeLoadedOnce = 20;
+
+        if ( [ self.timelineScrollView.identifier isEqualToString: @"home" ] )
+            {
+            [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+                getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
+                    ^( NSArray* _TweetObjects )
+                        {
+                        for ( NSDictionary* _TweetObject in _TweetObjects )
+                            [ self->_tweets addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
+
+                        self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
+                        self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+
+                        [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                                    selector: @selector( tableViewDataSourceShoulLoadOlderTweets: )
+                                                                        name: TWPTimelineTableViewDataSourceShouldLoadOlderTweets
+                                                                      object: nil ];
+
+                        [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                                    selector: @selector( tableViewDataSourceShoulLoadLaterTweets: )
+                                                                        name: TWPTimelineTableViewDataSourceShouldLoadLaterTweets
+                                                                      object: nil ];
+                        [ self.timelineTableView reloadData ];
+                        } errorBlock: ^( NSError* _Error )
+                                        {
+                                        [ self presentError: _Error ];
+                                        } ];
+            }
+        }
+//        } );
+    }
 
 #pragma mark Conforms to <NSTableViewDataSource>
 - ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
@@ -58,6 +110,62 @@
         result = self->_tweets[ _Row ];
 
     return result;
+    }
+
+- ( void ) tableViewDataSourceShoulLoadOlderTweets: ( NSNotification* )_Notif
+    {
+    NSString* scrollViewType = _Notif.userInfo[ TWPTimelineScrollViewTypeUserInfoKey ];
+
+    if ( [ scrollViewType isEqualToString: TWPTimelineScrollViewTypeHome ] )
+        {
+        [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+            getStatusesHomeTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce).stringValue
+                                     sinceID: nil
+                                       maxID: @( self->_maxID - 1 ).stringValue
+                                    trimUser: @NO
+                              excludeReplies: @0
+                          contributorDetails: @YES
+                             includeEntities: @YES
+                                successBlock:
+            ^( NSArray* _TweetObjects )
+                {
+                for ( NSDictionary* _TweetObject in _TweetObjects )
+                    {
+                    // Data source did finish loading older tweets
+                    self.isLoadingOlderTweets = NO;
+
+                    OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
+
+                    // Duplicate tweet? Get out of here!
+                    if ( ![ self->_tweets containsObject: tweet ] )
+                        [ self->_tweets addObject: tweet ];
+                    }
+
+                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+
+                [ self.timelineTableView reloadData ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                // Data source did finish loading older tweets due to the error occured
+                                self.isLoadingOlderTweets = NO;
+                                [ self presentError: _Error ];
+                                } ];
+        }
+
+    else if ( [ scrollViewType isEqualToString: TWPTimelineScrollViewTypeFavorites ] )
+        {
+
+        }
+
+    else if ( [ scrollViewType isEqualToString: TWPTimelineScrollViewTypeNotifications ] )
+        {
+
+        }
+    }
+
+- ( void ) tableViewDataSourceShoulLoadLaterTweets: ( NSNotification* )_Notif
+    {
+    NSLog( @"Later!" );
     }
 
 #pragma mark Conforms to <NSTableViewDelegate>

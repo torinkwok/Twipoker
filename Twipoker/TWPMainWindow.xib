@@ -121,7 +121,7 @@
                 <outlet property="view" destination="y2h-Qf-hPL" id="lwX-26-uyW"/>
             </connections>
         </customObject>
-        <customObject id="2b2-pC-CWS" customClass="TWPHomeTimelineScrollViewController">
+        <customObject id="2b2-pC-CWS" customClass="TWPTimelineScrollViewController">
             <connections>
                 <outlet property="view" destination="z7n-tY-Yv1" id="xFg-vh-tlZ"/>
             </connections>

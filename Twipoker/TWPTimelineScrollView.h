@@ -30,19 +30,20 @@
 // Notification Names
 NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
 
-// Corresponding Values of TWPTimelineScrollViewTypeUserInfoKey
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyHome;
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyFavorites;
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyLists;
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyNotifications;
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyMe;
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyMessages;
+// Type of scroll view controller
+NSString extern* const TWPTimelineScrollViewTypeHome;
+NSString extern* const TWPTimelineScrollViewTypeFavorites;
+NSString extern* const TWPTimelineScrollViewTypeLists;
+NSString extern* const TWPTimelineScrollViewTypeNotifications;
+NSString extern* const TWPTimelineScrollViewTypeMe;
+NSString extern* const TWPTimelineScrollViewTypeMessages;
 
 // TWPTimelineScrollView class
 @interface TWPTimelineScrollView : NSScrollView
 
 #pragma mark Accessors
 @property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
+@property ( copy, readonly ) NSString* type;
 
 @end // TWPTimelineScrollView class
 
