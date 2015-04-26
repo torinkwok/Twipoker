@@ -24,7 +24,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TWPDashboardStack;
+
 @interface TWPDashboardCellView : NSTableCellView
+
+@property ( weak, readwrite ) TWPDashboardStack* associatedViewsStack;
 
 @end
 

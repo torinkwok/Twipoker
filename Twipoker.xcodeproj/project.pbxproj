@@ -72,6 +72,7 @@
 		83AAF6FC1AECF710007A3A48 /* TWPMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF6FA1AECF710007A3A48 /* TWPMeViewController.m */; };
 		83AAF7011AECF735007A3A48 /* TWPMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF7001AECF735007A3A48 /* TWPMessagesViewController.m */; };
 		83AAF7041AED0CEF007A3A48 /* TWPDashboardStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF7031AED0CEF007A3A48 /* TWPDashboardStack.m */; };
+		83AAF7081AED2B6D007A3A48 /* TWPDashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF7071AED2B6D007A3A48 /* TWPDashboardView.m */; };
 		83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8381ACF1C820062D73D /* TWPDebug.m */; };
 		83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84C1ACF1C820062D73D /* TWPButton.m */; };
 		83CFD86E1ACF1C820062D73D /* TWPButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84E1ACF1C820062D73D /* TWPButtonCell.m */; };
@@ -256,6 +257,8 @@
 		83AAF7001AECF735007A3A48 /* TWPMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPMessagesViewController.m; path = Twipoker/TWPMessagesViewController.m; sourceTree = "<group>"; };
 		83AAF7021AED0CEF007A3A48 /* TWPDashboardStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDashboardStack.h; path = Twipoker/TWPDashboardStack.h; sourceTree = "<group>"; };
 		83AAF7031AED0CEF007A3A48 /* TWPDashboardStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDashboardStack.m; path = Twipoker/TWPDashboardStack.m; sourceTree = "<group>"; };
+		83AAF7061AED2B6D007A3A48 /* TWPDashboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDashboardView.h; path = Twipoker/TWPDashboardView.h; sourceTree = "<group>"; };
+		83AAF7071AED2B6D007A3A48 /* TWPDashboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDashboardView.m; path = Twipoker/TWPDashboardView.m; sourceTree = "<group>"; };
 		83CFD8311ACF1BCE0062D73D /* Twipoker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Twipoker.entitlements; sourceTree = "<group>"; };
 		83CFD8321ACF1C820062D73D /* _TWPButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TWPButtonCell.h; path = Twipoker/_TWPButtonCell.h; sourceTree = "<group>"; };
 		83CFD8371ACF1C820062D73D /* TWPDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebug.h; sourceTree = "<group>"; };
@@ -373,6 +376,8 @@
 				83AAF7031AED0CEF007A3A48 /* TWPDashboardStack.m */,
 				83AAF6E21AECEE60007A3A48 /* TWPDashboardViewController.h */,
 				83AAF6E31AECEE60007A3A48 /* TWPDashboardViewController.m */,
+				83AAF7061AED2B6D007A3A48 /* TWPDashboardView.h */,
+				83AAF7071AED2B6D007A3A48 /* TWPDashboardView.m */,
 				83AAF6E51AECF41B007A3A48 /* TWPDashboardCellView.h */,
 				83AAF6E61AECF41B007A3A48 /* TWPDashboardCellView.m */,
 			);
@@ -1030,6 +1035,7 @@
 				8349A64C1AD2D30100487896 /* TWPWhyNotPasswordButton.m in Sources */,
 				83F231B61AE1147A00A05D1D /* TWPMainWindowController.m in Sources */,
 				83F232171AE130A900A05D1D /* TWPLoginUsersManager.m in Sources */,
+				83AAF7081AED2B6D007A3A48 /* TWPDashboardView.m in Sources */,
 				83AAF7041AED0CEF007A3A48 /* TWPDashboardStack.m in Sources */,
 				83AAF6EF1AECF6A4007A3A48 /* TWPFavoritesViewController.m in Sources */,
 				83924DC91AE104A900C25895 /* OTCTweet.m in Sources */,

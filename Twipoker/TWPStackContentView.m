@@ -23,13 +23,31 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPStackContentView.h"
+#import "TWPDashboardView.h"
+#import "TWPDashboardCellView.h"
+#import "TWPDashboardStack.h"
 
 @implementation TWPStackContentView
 
 #pragma mark Initialization
 - ( void ) awakeFromNib
     {
-    // TODO:
+    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                selector: @selector( dashboardViewSelectedTabChanged: )
+                                                    name: TWPDashboardViewSelectedTabChanged
+                                                  object: nil ];
+    }
+
+- ( void ) dashboardViewSelectedTabChanged: ( NSNotification* )_Notif
+    {
+    TWPDashboardStack* associatedViewsStack = [ ( TWPDashboardCellView* )( _Notif.userInfo[ @"tab-cell-view" ] ) associatedViewsStack ];
+    NSView* associatedView = associatedViewsStack.baseViewController.view;
+
+    NSRect newFrame = NSInsetRect( self.bounds, 0, -2 );
+    newFrame.size.width += 2.f;
+    [ associatedView setFrame: newFrame ];
+    [ self setSubviews: @[ associatedView ] ];
+
     }
 
 @end

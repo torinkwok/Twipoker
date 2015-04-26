@@ -26,6 +26,8 @@
 
 @implementation TWPDashboardCellView
 
+@synthesize associatedViewsStack;
+
 @end
 
 /*=============================================================================┐
