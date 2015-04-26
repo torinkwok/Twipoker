@@ -30,10 +30,12 @@
 
 @implementation TWPMeViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- ( void ) viewDidLoad
+    {
+    [ super viewDidLoad ];
+
     // Do view setup here.
-}
+    }
 
 @end
 
