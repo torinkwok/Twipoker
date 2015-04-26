@@ -30,6 +30,13 @@
     NSArray __strong* _dashboardTabs;
     }
 
+@property ( weak ) IBOutlet NSViewController* homeViewController;
+@property ( weak ) IBOutlet NSViewController* favoritesViewController;
+@property ( weak ) IBOutlet NSViewController* listsViewController;
+@property ( weak ) IBOutlet NSViewController* notificationsViewController;
+@property ( weak ) IBOutlet NSViewController* meViewController;
+@property ( weak ) IBOutlet NSViewController* messagesViewController;
+
 @end
 
 /*=============================================================================┐

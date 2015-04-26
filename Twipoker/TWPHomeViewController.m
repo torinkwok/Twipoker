@@ -24,6 +24,10 @@
 
 #import "TWPHomeViewController.h"
 
+@interface TWPHomeViewController ()
+
+@end
+
 @implementation TWPHomeViewController
 
 - ( void ) viewDidLoad
