@@ -22,22 +22,19 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
-@class TWPDashboardStack;
-
-@interface TWPDashboardViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+@interface TWPDashboardStack : NSObject
     {
 @private
-    NSArray __strong* _dashboardTabs;
+    NSMutableArray __strong* _viewsStack;
     }
 
-@property ( weak ) IBOutlet TWPDashboardStack* homeDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* favoritesDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* listsDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* notificationsDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* meDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* messagesDashboardStack;
+// Base View
+@property ( weak ) IBOutlet NSViewController* baseViewController;
+
+- ( void ) pushView: ( NSViewController* )_ViewController;
+- ( NSViewController* ) popView;
 
 @end
 

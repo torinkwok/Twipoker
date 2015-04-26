@@ -22,22 +22,36 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPDashboardStack.h"
 
-@class TWPDashboardStack;
+@implementation TWPDashboardStack
 
-@interface TWPDashboardViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+@synthesize baseViewController = _baseViewController;
+
+- ( instancetype ) init
     {
-@private
-    NSArray __strong* _dashboardTabs;
+    if ( self = [ super init ] )
+        self->_viewsStack = [ NSMutableArray array ];
+
+    return self;
     }
 
-@property ( weak ) IBOutlet TWPDashboardStack* homeDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* favoritesDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* listsDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* notificationsDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* meDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* messagesDashboardStack;
+- ( void ) pushView: ( NSViewController* )_ViewController
+    {
+    if ( _ViewController.view )
+        [ self->_viewsStack addObject: _ViewController ];
+    // TODO: Handling error: _ViewController.view must not be nil
+    }
+
+- ( NSViewController* ) popView
+    {
+    NSViewController* poppedView = nil;
+
+    if ( self->_viewsStack.count )
+        [ self->_viewsStack removeLastObject ];
+
+    return poppedView;
+    }
 
 @end
 
