@@ -30,6 +30,15 @@
 
 @implementation TWPMeViewController
 
+#pragma mark Initialization
+- ( instancetype ) init
+    {
+    if ( self = [ super initWithNibName: @"TWPMeView" bundle: [ NSBundle mainBundle ] ] )
+        ; // TODO:
+
+    return self;
+    }
+
 - ( void ) viewDidLoad
     {
     [ super viewDidLoad ];

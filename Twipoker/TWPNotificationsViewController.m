@@ -30,6 +30,14 @@
 
 @implementation TWPNotificationsViewController
 
+- ( instancetype ) init
+    {
+    if ( self = [ super initWithNibName: @"TWPNotificationsView" bundle: [ NSBundle mainBundle ] ] )
+        ; // TODO:
+
+    return self;
+    }
+
 - ( void ) viewDidLoad
     {
     [ super viewDidLoad ];

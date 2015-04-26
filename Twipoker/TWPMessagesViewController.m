@@ -30,6 +30,15 @@
 
 @implementation TWPMessagesViewController
 
+#pragma mark Initialization
+- ( instancetype ) init
+    {
+    if ( self = [ super initWithNibName: @"TWPMessagesView" bundle: [ NSBundle mainBundle ] ] )
+        ; // TODO:
+
+    return self;
+    }
+
 - ( void ) viewDidLoad
     {
     [ super viewDidLoad ];

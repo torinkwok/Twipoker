@@ -25,6 +25,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TWPHomeViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+
 @end
 
 /*=============================================================================┐

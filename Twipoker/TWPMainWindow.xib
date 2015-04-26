@@ -112,8 +112,10 @@
         </window>
         <customObject id="1Ip-8l-ddr" customClass="TWPDashboardViewController">
             <connections>
+                <outlet property="homeViewController" destination="qYt-FS-RIP" id="Oli-JM-A5c"/>
                 <outlet property="view" destination="y2h-Qf-hPL" id="BFS-2x-y3F"/>
             </connections>
         </customObject>
+        <customObject id="qYt-FS-RIP" customClass="TWPHomeViewController"/>
     </objects>
 </document>
