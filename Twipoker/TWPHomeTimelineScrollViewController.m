@@ -67,6 +67,8 @@
 
 - ( void ) tableViewDataSourceShoulLoadOlderTweets: ( NSNotification* )_Notif
     {
+    NSLog( @"Notif: %@", _Notif );
+
     [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
         getStatusesHomeTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce).stringValue
                                  sinceID: nil

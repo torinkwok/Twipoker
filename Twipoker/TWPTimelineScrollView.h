@@ -27,6 +27,17 @@
 @class TWPTimelineTableView;
 @class TWPTimelineScrollViewController;
 
+// Notification Names
+NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
+
+// Corresponding Values of TWPTimelineScrollViewTypeUserInfoKey
+NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyHome;
+NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyFavorites;
+NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyLists;
+NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyNotifications;
+NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyMe;
+NSString extern* const TWPTimelineScrollViewTypeUserInfoKeyMessages;
+
 // TWPTimelineScrollView class
 @interface TWPTimelineScrollView : NSScrollView
 

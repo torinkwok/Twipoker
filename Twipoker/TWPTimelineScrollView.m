@@ -26,6 +26,17 @@
 #import "TWPTimelineTableView.h"
 #import "TWPTimelineScrollViewController.h"
 
+// Notification Names
+NSString* const TWPTimelineScrollViewTypeUserInfoKey = @"TimelineScrollView.TypeUserInfoKey";
+
+// Corresponding Values of TWPTimelineScrollViewTypeUserInfoKey
+NSString* const TWPTimelineScrollViewTypeUserInfoKeyHome = @"TimelineScrollView.Type.UserInfoKey.Home";
+NSString* const TWPTimelineScrollViewTypeUserInfoKeyFavorites = @"TimelineScrollView.Type.UserInfoKey.Favorites";
+NSString* const TWPTimelineScrollViewTypeUserInfoKeyLists = @"TimelineScrollView.Type.UserInfoKey.Lists";
+NSString* const TWPTimelineScrollViewTypeUserInfoKeyNotifications = @"TimelineScrollView.Type.UserInfoKey.Notifications";
+NSString* const TWPTimelineScrollViewTypeUserInfoKeyMe = @"TimelineScrollView.Type.UserInfoKey.Me";
+NSString* const TWPTimelineScrollViewTypeUserInfoKeyMessages = @"TimelineScrollView.Type.UserInfoKey.Messages";
+
 // TWPTimelineScrollView class
 @implementation TWPTimelineScrollView
 
@@ -54,9 +65,24 @@
         if ( ![ ( TWPTimelineScrollViewController* )self.timelineTableView.dataSource isLoadingOlderTweets ] )
             {
             NSLog( @"> Loading..." );
+
+            NSString* typeString = nil;
+            if ( [ self.identifier isEqualToString: @"home" ] )
+                typeString = TWPTimelineScrollViewTypeUserInfoKeyHome;
+
+            else if ( [ self.identifier isEqualToString: @"favorites" ] )
+                typeString = TWPTimelineScrollViewTypeUserInfoKeyFavorites;
+
+            else if ( [ self.identifier isEqualToString: @"notifications" ] )
+                typeString = TWPTimelineScrollViewTypeUserInfoKeyNotifications;
+
+            // TODO: Waiting for Favs, Lists, Me and Messages
+
             // data source is now ready to load tweets... 🚀
             [ ( TWPTimelineScrollViewController* )self.timelineTableView.dataSource setIsLoadingOlderTweets: YES ];
-            [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets object: nil ];
+            [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets
+                                                                   object: @{ TWPTimelineScrollViewTypeUserInfoKey : typeString ?: [ NSNull null ]
+                                                                            } ];
             }
         }
     }
