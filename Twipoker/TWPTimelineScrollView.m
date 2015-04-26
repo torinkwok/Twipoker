@@ -29,43 +29,8 @@
 // Notification Names
 NSString* const TWPTimelineScrollViewTypeUserInfoKey = @"TimelineScrollView.TypeUserInfoKey";
 
-// Type of scroll view controller
-NSString* const TWPTimelineScrollViewTypeHome = @"TimelineScrollView.Type.UserInfoKey.Home";
-NSString* const TWPTimelineScrollViewTypeFavorites = @"TimelineScrollView.Type.UserInfoKey.Favorites";
-NSString* const TWPTimelineScrollViewTypeLists = @"TimelineScrollView.Type.UserInfoKey.Lists";
-NSString* const TWPTimelineScrollViewTypeNotifications = @"TimelineScrollView.Type.UserInfoKey.Notifications";
-NSString* const TWPTimelineScrollViewTypeMe = @"TimelineScrollView.Type.UserInfoKey.Me";
-NSString* const TWPTimelineScrollViewTypeMessages = @"TimelineScrollView.Type.UserInfoKey.Messages";
-
-@interface TWPTimelineScrollView ()
-@property ( copy, readwrite ) NSString* type;
-@end
-
 // TWPTimelineScrollView class
 @implementation TWPTimelineScrollView
-
-@synthesize type;
-
-- ( void ) awakeFromNib
-    {
-    if ( [ self.identifier isEqualToString: @"home" ] )
-        self.type = TWPTimelineScrollViewTypeHome;
-
-    else if ( [ self.identifier isEqualToString: @"favorites" ] )
-        self.type = TWPTimelineScrollViewTypeFavorites;
-
-    else if ( [ self.identifier isEqualToString: @"lists" ] )
-        self.type = TWPTimelineScrollViewTypeLists;
-
-    else if ( [ self.identifier isEqualToString: @"notifications" ] )
-        self.type = TWPTimelineScrollViewTypeNotifications;
-
-    else if ( [ self.identifier isEqualToString: @"me" ] )
-        self.type = TWPTimelineScrollViewTypeMe;
-
-    else if ( [ self.identifier isEqualToString: @"messages" ] )
-        self.type = TWPTimelineScrollViewTypeMessages;
-    }
 
 #pragma mark Accessors
 @dynamic timelineTableView;
@@ -97,7 +62,7 @@ NSString* const TWPTimelineScrollViewTypeMessages = @"TimelineScrollView.Type.Us
             [ ( TWPTimelineScrollViewController* )self.timelineTableView.dataSource setIsLoadingOlderTweets: YES ];
             [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets
                                                                    object: self
-                                                                 userInfo: @{ TWPTimelineScrollViewTypeUserInfoKey : self.type } ];
+                                                                 userInfo: nil ];
             }
         }
     }
