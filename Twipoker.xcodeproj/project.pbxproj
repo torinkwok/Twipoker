@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8308961E1AEA1D1D0081D227 /* TWPTimelineScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */; };
-		8308961F1AEA1D1D0081D227 /* TWPTimelineScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896191AEA1D1D0081D227 /* TWPTimelineScrollViewController.m */; };
-		830896201AEA1D1D0081D227 /* TWPTimelineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8308961B1AEA1D1D0081D227 /* TWPTimelineTableView.m */; };
 		830896211AEA1D1D0081D227 /* TWPTweetCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */; };
 		830896241AEA1D2A0081D227 /* TWPStackContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896231AEA1D2A0081D227 /* TWPStackContentView.m */; };
 		831447D21ACFF19300BFECE4 /* TWPDebugLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */; };
@@ -19,16 +17,13 @@
 		8338CD7D1AE3C5E800370C10 /* TWPLoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338CD7C1AE3C5E800370C10 /* TWPLoginUser.m */; };
 		8338CD801AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338CD7F1AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m */; };
 		8338CD831AE3C8F900370C10 /* TWPKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338CD821AE3C8F900370C10 /* TWPKeychain.m */; };
-		8347B7C41AE79575003A49AD /* TWPTabTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8347B7C31AE79575003A49AD /* TWPTabTableViewController.m */; };
 		8347B7C71AE79713003A49AD /* TWPDirectMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8347B7C61AE79713003A49AD /* TWPDirectMessagesViewController.m */; };
-		8347B7CD1AE797D0003A49AD /* TWPTabTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8347B7CC1AE797D0003A49AD /* TWPTabTableView.m */; };
 		8349A6441AD2263C00487896 /* NSActionCell+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A6431AD2263C00487896 /* NSActionCell+TwipokerDrawing.m */; };
 		8349A6471AD24C9700487896 /* NSControl+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A6461AD24C9700487896 /* NSControl+TwipokerDrawing.m */; };
 		8349A64C1AD2D30100487896 /* TWPWhyNotPasswordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A64B1AD2D30100487896 /* TWPWhyNotPasswordButton.m */; };
 		835361491AE5310200CF1988 /* TWPDebugLoginUsersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835361481AE5310200CF1988 /* TWPDebugLoginUsersView.xib */; };
 		8353614E1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353614D1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m */; };
 		835361511AE5635200CF1988 /* TWPDebugLoginUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 835361501AE5635200CF1988 /* TWPDebugLoginUsersView.m */; };
-		8377B3061AEB9E6B00FC75C2 /* TWPTabTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8377B3051AEB9E6B00FC75C2 /* TWPTabTableCellView.m */; };
 		83924D921AE1030B00C25895 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = 83924D871AE1030B00C25895 /* INAppStoreWindowSwizzling.c */; };
 		83924D931AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924D8A1AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.m */; };
 		83924D941AE1030B00C25895 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924D8C1AE1030B00C25895 /* NSDocument+INAppStoreWindowFixes.m */; };
@@ -62,6 +57,7 @@
 		83924E001AE105E600C25895 /* BAVPlistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF01AE105E600C25895 /* BAVPlistNode.m */; };
 		83924E011AE105E600C25895 /* JSONSyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF21AE105E600C25895 /* JSONSyntaxHighlight.m */; };
 		83924E021AE105E600C25895 /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924DF41AE105E600C25895 /* STHTTPRequest.m */; };
+		83AAF6D11AECE801007A3A48 /* TWPTimelineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */; };
 		83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8381ACF1C820062D73D /* TWPDebug.m */; };
 		83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84C1ACF1C820062D73D /* TWPButton.m */; };
 		83CFD86E1ACF1C820062D73D /* TWPButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84E1ACF1C820062D73D /* TWPButtonCell.m */; };
@@ -121,10 +117,6 @@
 /* Begin PBXFileReference section */
 		830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineScrollView.h; path = Twipoker/TWPTimelineScrollView.h; sourceTree = "<group>"; };
 		830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineScrollView.m; path = Twipoker/TWPTimelineScrollView.m; sourceTree = "<group>"; };
-		830896181AEA1D1D0081D227 /* TWPTimelineScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineScrollViewController.h; path = Twipoker/TWPTimelineScrollViewController.h; sourceTree = "<group>"; };
-		830896191AEA1D1D0081D227 /* TWPTimelineScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineScrollViewController.m; path = Twipoker/TWPTimelineScrollViewController.m; sourceTree = "<group>"; };
-		8308961A1AEA1D1D0081D227 /* TWPTimelineTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineTableView.h; path = Twipoker/TWPTimelineTableView.h; sourceTree = "<group>"; };
-		8308961B1AEA1D1D0081D227 /* TWPTimelineTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineTableView.m; path = Twipoker/TWPTimelineTableView.m; sourceTree = "<group>"; };
 		8308961C1AEA1D1D0081D227 /* TWPTweetCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTweetCellView.h; path = Twipoker/TWPTweetCellView.h; sourceTree = "<group>"; };
 		8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetCellView.m; path = Twipoker/TWPTweetCellView.m; sourceTree = "<group>"; };
 		830896221AEA1D2A0081D227 /* TWPStackContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPStackContentView.h; path = Twipoker/TWPStackContentView.h; sourceTree = "<group>"; };
@@ -142,12 +134,8 @@
 		8338CD7F1AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWPLogin+TWPLoginUsersManager.m"; sourceTree = "<group>"; };
 		8338CD811AE3C8F900370C10 /* TWPKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPKeychain.h; sourceTree = "<group>"; };
 		8338CD821AE3C8F900370C10 /* TWPKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPKeychain.m; sourceTree = "<group>"; };
-		8347B7C21AE79575003A49AD /* TWPTabTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTabTableViewController.h; path = Twipoker/TWPTabTableViewController.h; sourceTree = "<group>"; };
-		8347B7C31AE79575003A49AD /* TWPTabTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTabTableViewController.m; path = Twipoker/TWPTabTableViewController.m; sourceTree = "<group>"; };
 		8347B7C51AE79713003A49AD /* TWPDirectMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDirectMessagesViewController.h; path = Twipoker/TWPDirectMessagesViewController.h; sourceTree = "<group>"; };
 		8347B7C61AE79713003A49AD /* TWPDirectMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDirectMessagesViewController.m; path = Twipoker/TWPDirectMessagesViewController.m; sourceTree = "<group>"; };
-		8347B7CB1AE797D0003A49AD /* TWPTabTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTabTableView.h; path = Twipoker/TWPTabTableView.h; sourceTree = "<group>"; };
-		8347B7CC1AE797D0003A49AD /* TWPTabTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTabTableView.m; path = Twipoker/TWPTabTableView.m; sourceTree = "<group>"; };
 		8349A6421AD2263C00487896 /* NSActionCell+TwipokerDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSActionCell+TwipokerDrawing.h"; path = "Twipoker/NSActionCell+TwipokerDrawing.h"; sourceTree = "<group>"; };
 		8349A6431AD2263C00487896 /* NSActionCell+TwipokerDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSActionCell+TwipokerDrawing.m"; path = "Twipoker/NSActionCell+TwipokerDrawing.m"; sourceTree = "<group>"; };
 		8349A6451AD24C9700487896 /* NSControl+TwipokerDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSControl+TwipokerDrawing.h"; path = "Twipoker/NSControl+TwipokerDrawing.h"; sourceTree = "<group>"; };
@@ -159,8 +147,6 @@
 		8353614D1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginUsersViewController.m; sourceTree = "<group>"; };
 		8353614F1AE5635200CF1988 /* TWPDebugLoginUsersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugLoginUsersView.h; sourceTree = "<group>"; };
 		835361501AE5635200CF1988 /* TWPDebugLoginUsersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginUsersView.m; sourceTree = "<group>"; };
-		8377B3041AEB9E6B00FC75C2 /* TWPTabTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTabTableCellView.h; path = Twipoker/TWPTabTableCellView.h; sourceTree = "<group>"; };
-		8377B3051AEB9E6B00FC75C2 /* TWPTabTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTabTableCellView.m; path = Twipoker/TWPTabTableCellView.m; sourceTree = "<group>"; };
 		83924D871AE1030B00C25895 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
 		83924D881AE1030B00C25895 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
 		83924D891AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
@@ -232,6 +218,8 @@
 		83924DF21AE105E600C25895 /* JSONSyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONSyntaxHighlight.m; sourceTree = "<group>"; };
 		83924DF31AE105E600C25895 /* STHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHTTPRequest.h; sourceTree = "<group>"; };
 		83924DF41AE105E600C25895 /* STHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHTTPRequest.m; sourceTree = "<group>"; };
+		83AAF6CF1AECE801007A3A48 /* TWPTimelineTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineTableView.h; path = Twipoker/TWPTimelineTableView.h; sourceTree = "<group>"; };
+		83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineTableView.m; path = Twipoker/TWPTimelineTableView.m; sourceTree = "<group>"; };
 		83CFD8311ACF1BCE0062D73D /* Twipoker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Twipoker.entitlements; sourceTree = "<group>"; };
 		83CFD8321ACF1C820062D73D /* _TWPButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TWPButtonCell.h; path = Twipoker/_TWPButtonCell.h; sourceTree = "<group>"; };
 		83CFD8371ACF1C820062D73D /* TWPDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebug.h; sourceTree = "<group>"; };
@@ -332,10 +320,8 @@
 		8347B7CE1AE7999F003A49AD /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				8308961A1AEA1D1D0081D227 /* TWPTimelineTableView.h */,
-				8308961B1AEA1D1D0081D227 /* TWPTimelineTableView.m */,
-				830896181AEA1D1D0081D227 /* TWPTimelineScrollViewController.h */,
-				830896191AEA1D1D0081D227 /* TWPTimelineScrollViewController.m */,
+				83AAF6CF1AECE801007A3A48 /* TWPTimelineTableView.h */,
+				83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */,
 				830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */,
 				830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */,
 				8308961C1AEA1D1D0081D227 /* TWPTweetCellView.h */,
@@ -347,12 +333,6 @@
 		8347B7CF1AE799FF003A49AD /* Tab */ = {
 			isa = PBXGroup;
 			children = (
-				8377B3041AEB9E6B00FC75C2 /* TWPTabTableCellView.h */,
-				8377B3051AEB9E6B00FC75C2 /* TWPTabTableCellView.m */,
-				8347B7CB1AE797D0003A49AD /* TWPTabTableView.h */,
-				8347B7CC1AE797D0003A49AD /* TWPTabTableView.m */,
-				8347B7C21AE79575003A49AD /* TWPTabTableViewController.h */,
-				8347B7C31AE79575003A49AD /* TWPTabTableViewController.m */,
 				8347B7D01AE79A2A003A49AD /* Direct Messages */,
 			);
 			name = Tab;
@@ -901,12 +881,11 @@
 			files = (
 				83924D941AE1030B00C25895 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				8347B7C71AE79713003A49AD /* TWPDirectMessagesViewController.m in Sources */,
-				8308961F1AEA1D1D0081D227 /* TWPTimelineScrollViewController.m in Sources */,
 				83924DC61AE104A900C25895 /* OTCMedia.m in Sources */,
-				8347B7C41AE79575003A49AD /* TWPTabTableViewController.m in Sources */,
 				83F231B41AE1147A00A05D1D /* TWPMainWindow.m in Sources */,
 				83CFD8861ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.m in Sources */,
 				83924DC81AE104A900C25895 /* OTCResolvedObject.m in Sources */,
+				83AAF6D11AECE801007A3A48 /* TWPTimelineTableView.m in Sources */,
 				83924E011AE105E600C25895 /* JSONSyntaxHighlight.m in Sources */,
 				8338CD801AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m in Sources */,
 				83D3FF261ACB144B009D40EE /* TWPAppDelegate.m in Sources */,
@@ -918,7 +897,6 @@
 				83924DFB1AE105E600C25895 /* STTwitterHTML.m in Sources */,
 				83924DFA1AE105E600C25895 /* STTwitterAppOnly.m in Sources */,
 				83CFD8701ACF1C820062D73D /* TWPTextFieldCell.m in Sources */,
-				830896201AEA1D1D0081D227 /* TWPTimelineTableView.m in Sources */,
 				83924DC21AE104A900C25895 /* _OTCGeneral.m in Sources */,
 				83924D951AE1030B00C25895 /* INAppStoreWindow.m in Sources */,
 				83F231BD1AE114A600A05D1D /* FBKVOController.m in Sources */,
@@ -936,9 +914,7 @@
 				830896211AEA1D1D0081D227 /* TWPTweetCellView.m in Sources */,
 				83F231BE1AE114A600A05D1D /* NSObject+FBKVOController.m in Sources */,
 				83CFD8781ACF1C820062D73D /* TWPWindow.m in Sources */,
-				8377B3061AEB9E6B00FC75C2 /* TWPTabTableCellView.m in Sources */,
 				83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */,
-				8347B7CD1AE797D0003A49AD /* TWPTabTableView.m in Sources */,
 				83924DAA1AE1033700C25895 /* MASPreferencesWindowController.m in Sources */,
 				83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */,
 				831447D91AD0008E00BFECE4 /* TWPDebugLoginView.m in Sources */,

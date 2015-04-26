@@ -23,11 +23,6 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTimelineScrollView.h"
-#import "TWPTimelineTableView.h"
-#import "TWPTimelineScrollViewController.h"
-
-// Notification Names
-NSString* const TWPTimelineScrollViewTypeUserInfoKey = @"TimelineScrollView.TypeUserInfoKey";
 
 // TWPTimelineScrollView class
 @implementation TWPTimelineScrollView
@@ -53,17 +48,7 @@ NSString* const TWPTimelineScrollViewTypeUserInfoKey = @"TimelineScrollView.Type
     if ( currentScrollLocation.y != 0
             && currentScrollLocation.y >= ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
         {
-        // Our data source must be not loading older tweets...
-        if ( ![ ( TWPTimelineScrollViewController* )self.timelineTableView.dataSource isLoadingOlderTweets ] )
-            {
-            NSLog( @"> Loading..." );
-
-            // data source is now ready to load tweets... 🚀
-            [ ( TWPTimelineScrollViewController* )self.timelineTableView.dataSource setIsLoadingOlderTweets: YES ];
-            [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets
-                                                                   object: self
-                                                                 userInfo: nil ];
-            }
+//         TODO:
         }
     }
 

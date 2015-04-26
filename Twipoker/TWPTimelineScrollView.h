@@ -25,7 +25,6 @@
 #import <Cocoa/Cocoa.h>
 
 @class TWPTimelineTableView;
-@class TWPTimelineScrollViewController;
 
 // Notification Names
 NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;

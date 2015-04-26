@@ -24,17 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class TWPTimelineScrollViewController;
-
 @interface TWPStackContentView : NSView
-    {
-@private
-    NSMutableArray __strong* _viewControllersStack;
-    }
-
-#pragma mark Current Base View
-@property ( weak ) TWPTimelineScrollViewController* baseView;
-
 @end
 
 /*=============================================================================┐
