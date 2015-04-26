@@ -24,7 +24,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TWPDirectMessagesViewController : NSViewController
+@interface TWPDashboardViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+    {
+@private
+    NSArray __strong* _dashboardTabs;
+    }
 
 @end
 

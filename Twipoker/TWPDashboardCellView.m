@@ -22,9 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDirectMessagesViewController.h"
+#import "TWPDashboardCellView.h"
 
-@implementation TWPDirectMessagesViewController
+@implementation TWPDashboardCellView
 
 @end
 

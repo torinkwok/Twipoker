@@ -29,7 +29,7 @@
                             <rect key="frame" x="1" y="1" width="287" height="533"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="44" rowSizeStyle="automatic" viewBased="YES" id="y2h-Qf-hPL">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="44" rowSizeStyle="automatic" viewBased="YES" id="y2h-Qf-hPL">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -37,7 +37,7 @@
                                     <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                     <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <tableColumns>
-                                        <tableColumn identifier="tab" width="284" minWidth="40" maxWidth="1000" id="jeb-Iz-fid">
+                                        <tableColumn identifier="tabs" width="284" minWidth="40" maxWidth="1000" id="jeb-Iz-fid" userLabel="Tabs Column">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -50,7 +50,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="UBU-sD-AnM">
+                                                <tableCellView id="UBU-sD-AnM" customClass="TWPDashboardCellView">
                                                     <rect key="frame" x="1" y="1" width="284" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -74,6 +74,10 @@
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <outlet property="dataSource" destination="1Ip-8l-ddr" id="i7m-1O-1it"/>
+                                        <outlet property="delegate" destination="1Ip-8l-ddr" id="ftn-qa-Q0S"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -106,277 +110,10 @@
             </view>
             <point key="canvasLocation" x="-93.5" y="-1809.5"/>
         </window>
-        <scrollView identifier="home" autohidesScrollers="YES" horizontalLineScroll="118" horizontalPageScroll="10" verticalLineScroll="118" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="z7n-tY-Yv1" userLabel="Home Timeline Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
-            <rect key="frame" x="0.0" y="0.0" width="607" height="632"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <clipView key="contentView" copiesOnScroll="NO" id="g14-KI-LcH">
-                <rect key="frame" x="1" y="1" width="605" height="630"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="78z-JM-jG6" userLabel="Home Timeline Table View" customClass="TWPTimelineTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="605" height="0.0"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <size key="intercellSpacing" width="3" height="2"/>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
-                        <color key="gridColor" red="0.88235294117647056" green="0.90980392156862744" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
-                        <tableColumns>
-                            <tableColumn identifier="timeline" width="602" minWidth="40" maxWidth="1000" id="HDJ-om-SMu">
-                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                </tableHeaderCell>
-                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="BGd-0x-Ki3">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                <prototypeCellViews>
-                                    <tableCellView id="d8p-yX-GxS" customClass="TWPTweetCellView">
-                                        <rect key="frame" x="1" y="1" width="602" height="116"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jsQ-Aq-Evf" userLabel="User Display Name">
-                                                <rect key="frame" x="110" y="86" width="160" height="17"/>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="薛定鄂的月饼" id="4hH-Rd-UjA">
-                                                    <font key="font" size="13" name="STHeitiSC-Medium"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352941176469" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xl3-C6-rCX" userLabel="Avatar">
-                                                <rect key="frame" x="14" y="30" width="76" height="76"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="5FQ-JC-btz"/>
-                                            </imageView>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hiD-dY-XCZ" userLabel="Tweet Text">
-                                                <rect key="frame" x="110" y="27" width="481" height="51"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="qoo-fg-MVQ">
-                                                    <font key="font" metaFont="system"/>
-                                                    <string key="title">OS X 的 Keychain Services 的接口简直跟 POSIX 一样难用。所以最近写了一个全特性的 Objective-C 封装，完全面向对象， Cocoa 风格的 API 设计，文档齐全。http://nstongg.tumblr.com/post/112465955064/waxsealcore …</string>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352941176469" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGh-A0-cC9" userLabel="User Screen Name">
-                                                <rect key="frame" x="335" y="84" width="74" height="21"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="@NSTongG" id="Mrm-TV-1pA">
-                                                    <font key="font" size="10" name="ArialUnicodeMS"/>
-                                                    <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </subviews>
-                                        <connections>
-                                            <outlet property="avatarImageView" destination="Xl3-C6-rCX" id="DyG-xe-Pev"/>
-                                            <outlet property="tweetTextLabel" destination="hiD-dY-XCZ" id="y74-vK-5sL"/>
-                                            <outlet property="userDisplayNameLabel" destination="jsQ-Aq-Evf" id="yZs-TB-nPy"/>
-                                            <outlet property="userScreenNameLabel" destination="CGh-A0-cC9" id="Pyf-gy-Puu"/>
-                                        </connections>
-                                    </tableCellView>
-                                </prototypeCellViews>
-                            </tableColumn>
-                        </tableColumns>
-                    </tableView>
-                </subviews>
-                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-            </clipView>
-            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="SoP-oM-O40">
-                <rect key="frame" x="-100" y="-100" width="0.0" height="16"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="2U2-eV-Hg3">
-                <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <point key="canvasLocation" x="-245.5" y="-2569"/>
-        </scrollView>
-        <scrollView identifier="favorites" autohidesScrollers="YES" horizontalLineScroll="118" horizontalPageScroll="10" verticalLineScroll="118" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="LNO-6y-VY9" userLabel="Favorites Timeline Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
-            <rect key="frame" x="0.0" y="0.0" width="607" height="632"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <clipView key="contentView" copiesOnScroll="NO" id="JhD-dj-W0E">
-                <rect key="frame" x="1" y="1" width="605" height="630"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="Zaa-Ft-1XM" userLabel="Favorites Timeline Table View" customClass="TWPTimelineTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="605" height="0.0"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <size key="intercellSpacing" width="3" height="2"/>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
-                        <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <tableColumns>
-                            <tableColumn identifier="timeline" width="602" minWidth="40" maxWidth="1000" id="yvK-xM-gkf">
-                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                </tableHeaderCell>
-                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="wJl-Qp-Vjb">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                <prototypeCellViews>
-                                    <tableCellView id="IxK-eY-ayk" customClass="TWPTweetCellView">
-                                        <rect key="frame" x="1" y="1" width="602" height="116"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KQy-tm-lD3" userLabel="User Display Name">
-                                                <rect key="frame" x="110" y="86" width="160" height="17"/>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="VideoLAN" id="MEh-ms-nXF">
-                                                    <font key="font" size="13" name="STHeitiSC-Medium"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BsU-dp-OYJ" userLabel="Avatar">
-                                                <rect key="frame" x="14" y="30" width="76" height="76"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="haF-2G-CnA"/>
-                                            </imageView>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rqu-9p-n6i" userLabel="Tweet Text">
-                                                <rect key="frame" x="110" y="27" width="471" height="51"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="tfn-AS-yc9">
-                                                    <font key="font" metaFont="system"/>
-                                                    <string key="title">This week should get you updated versions of VLC on Android, Android TV, Windows Phone, Windows RT and beta for iOS :)
-We'll see :)</string>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-b0-LP1" userLabel="User Screen Name">
-                                                <rect key="frame" x="335" y="84" width="74" height="21"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="@videolan" id="93Q-4Q-td0">
-                                                    <font key="font" size="10" name="ArialUnicodeMS"/>
-                                                    <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </subviews>
-                                        <connections>
-                                            <outlet property="avatarImageView" destination="BsU-dp-OYJ" id="luA-Bo-kK6"/>
-                                            <outlet property="tweetTextLabel" destination="rqu-9p-n6i" id="bkw-sb-mPg"/>
-                                            <outlet property="userDisplayNameLabel" destination="KQy-tm-lD3" id="TO4-8o-Wl2"/>
-                                            <outlet property="userScreenNameLabel" destination="f0Z-b0-LP1" id="kRU-jF-hfS"/>
-                                        </connections>
-                                    </tableCellView>
-                                </prototypeCellViews>
-                            </tableColumn>
-                        </tableColumns>
-                    </tableView>
-                </subviews>
-                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-            </clipView>
-            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Qpi-8K-B1Z">
-                <rect key="frame" x="-100" y="-100" width="0.0" height="16"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="XIX-o6-JpZ">
-                <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <point key="canvasLocation" x="729.5" y="-2343"/>
-        </scrollView>
-        <scrollView identifier="notifications" autohidesScrollers="YES" horizontalLineScroll="118" horizontalPageScroll="10" verticalLineScroll="118" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="zbq-bC-fte" userLabel="Notifications Timeline Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
-            <rect key="frame" x="0.0" y="0.0" width="607" height="632"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <clipView key="contentView" copiesOnScroll="NO" id="8f4-G7-Byi">
-                <rect key="frame" x="1" y="1" width="605" height="630"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="pC9-uV-RYF" userLabel="Notifications Timeline Table View" customClass="TWPTimelineTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="605" height="0.0"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <size key="intercellSpacing" width="3" height="2"/>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
-                        <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <tableColumns>
-                            <tableColumn identifier="timeline" width="602" minWidth="40" maxWidth="1000" id="zXN-0y-Y4K">
-                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                </tableHeaderCell>
-                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="MfS-1V-gdZ">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                <prototypeCellViews>
-                                    <tableCellView id="cx6-dz-Xas" customClass="TWPTweetCellView">
-                                        <rect key="frame" x="1" y="1" width="602" height="116"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMW-tt-tj4" userLabel="User Display Name">
-                                                <rect key="frame" x="110" y="86" width="160" height="17"/>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Calles" id="BGQ-C3-08J">
-                                                    <font key="font" size="13" name="STHeitiSC-Medium"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yw-cU-uZO" userLabel="Avatar">
-                                                <rect key="frame" x="14" y="30" width="76" height="76"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="jiv-dZ-zQN"/>
-                                            </imageView>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pBU-Sg-IeZ" userLabel="Tweet Text">
-                                                <rect key="frame" x="110" y="27" width="460" height="51"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="j08-4I-E90">
-                                                    <font key="font" size="13" name="STHeitiSC-Light"/>
-                                                    <string key="title">用这个就好 http://www.omgchrome.com/disable-chromes-new-bookmark-manager/ … @NSTongG 好吧收回之前的一推，Chrome 新版的 bookmarks manager 虽然好看，但是难用的要死 😱😱😱</string>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BSY-1H-qjH" userLabel="User Screen Name">
-                                                <rect key="frame" x="335" y="84" width="74" height="21"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="@lanselau" id="Hlp-y4-tIZ">
-                                                    <font key="font" size="10" name="ArialUnicodeMS"/>
-                                                    <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </subviews>
-                                        <connections>
-                                            <outlet property="avatarImageView" destination="5yw-cU-uZO" id="SHE-65-ln6"/>
-                                            <outlet property="tweetTextLabel" destination="pBU-Sg-IeZ" id="dcV-x1-Izo"/>
-                                            <outlet property="userDisplayNameLabel" destination="bMW-tt-tj4" id="apv-15-w8k"/>
-                                            <outlet property="userScreenNameLabel" destination="BSY-1H-qjH" id="KCx-LV-Z4g"/>
-                                        </connections>
-                                    </tableCellView>
-                                </prototypeCellViews>
-                            </tableColumn>
-                        </tableColumns>
-                    </tableView>
-                </subviews>
-                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-            </clipView>
-            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="pcK-or-8KL">
-                <rect key="frame" x="-100" y="-100" width="0.0" height="16"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="drI-Jm-BkG">
-                <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <point key="canvasLocation" x="393.5" y="-2569"/>
-        </scrollView>
-        <customView id="LG3-WU-d0B" userLabel="Lists View Controller">
-            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <point key="canvasLocation" x="703.5" y="-1765"/>
-        </customView>
-        <customView id="j7Y-cD-0je" userLabel="Me View Controller">
-            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-        </customView>
-        <customView id="XVo-V7-uaI" userLabel="Messages View Controller">
-            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-        </customView>
+        <customObject id="1Ip-8l-ddr" customClass="TWPDashboardViewController">
+            <connections>
+                <outlet property="view" destination="y2h-Qf-hPL" id="BFS-2x-y3F"/>
+            </connections>
+        </customObject>
     </objects>
 </document>
