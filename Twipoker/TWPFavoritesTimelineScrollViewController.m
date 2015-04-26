@@ -22,10 +22,10 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
+#import "TWPFavoritesTimelineScrollViewController.h"
 
-#import "TWPTimelineScrollViewController.h"
+@implementation TWPFavoritesTimelineScrollViewController
 
-@interface TWPHomeTimelineScrollViewController : TWPTimelineScrollViewController
 @end
 
 /*=============================================================================┐

@@ -25,9 +25,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TWPMainWindow : NSWindow
-
-@property ( weak ) IBOutlet NSView* placeholderView;
-
 @end
 
 /*=============================================================================┐

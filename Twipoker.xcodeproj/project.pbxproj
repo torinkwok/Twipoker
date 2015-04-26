@@ -107,6 +107,7 @@
 		83F231BE1AE114A600A05D1D /* NSObject+FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231BC1AE114A600A05D1D /* NSObject+FBKVOController.m */; };
 		83F232171AE130A900A05D1D /* TWPLoginUsersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F232161AE130A900A05D1D /* TWPLoginUsersManager.m */; };
 		83F2321A1AE15BC200A05D1D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F232191AE15BC200A05D1D /* Security.framework */; };
+		83F2C19E1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C19D1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -307,6 +308,8 @@
 		83F232151AE130A900A05D1D /* TWPLoginUsersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPLoginUsersManager.h; sourceTree = "<group>"; };
 		83F232161AE130A900A05D1D /* TWPLoginUsersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPLoginUsersManager.m; sourceTree = "<group>"; };
 		83F232191AE15BC200A05D1D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		83F2C19C1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPFavoritesTimelineScrollViewController.h; path = Twipoker/TWPFavoritesTimelineScrollViewController.h; sourceTree = "<group>"; };
+		83F2C19D1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPFavoritesTimelineScrollViewController.m; path = Twipoker/TWPFavoritesTimelineScrollViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +344,8 @@
 				830896191AEA1D1D0081D227 /* TWPTimelineScrollViewController.m */,
 				83A43B991AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.h */,
 				83A43B9A1AEBBD8D000A7C2E /* TWPHomeTimelineScrollViewController.m */,
+				83F2C19C1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.h */,
+				83F2C19D1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.m */,
 				830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */,
 				830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */,
 				8308961C1AEA1D1D0081D227 /* TWPTweetCellView.h */,
@@ -958,6 +963,7 @@
 				83924DCB1AE104A900C25895 /* OTCUserMention.m in Sources */,
 				83D3FF1F1ACB144B009D40EE /* main.m in Sources */,
 				83924DC31AE104A900C25895 /* OTCEmbeddedURL.m in Sources */,
+				83F2C19E1AEC717900133E51 /* TWPFavoritesTimelineScrollViewController.m in Sources */,
 				83924DFC1AE105E600C25895 /* STTwitterOAuth.m in Sources */,
 				835361511AE5635200CF1988 /* TWPDebugLoginUsersView.m in Sources */,
 				83924DF71AE105E600C25895 /* NSString+STTwitter.m in Sources */,
