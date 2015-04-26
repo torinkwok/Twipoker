@@ -47,7 +47,6 @@
     newFrame.size.width += 2.f;
     [ associatedView setFrame: newFrame ];
     [ self setSubviews: @[ associatedView ] ];
-
     }
 
 @end
