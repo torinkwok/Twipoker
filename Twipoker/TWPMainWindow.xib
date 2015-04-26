@@ -121,7 +121,7 @@
                 <outlet property="view" destination="y2h-Qf-hPL" id="lwX-26-uyW"/>
             </connections>
         </customObject>
-        <customObject id="2b2-pC-CWS" customClass="TWPTimelineScrollViewController">
+        <customObject id="2b2-pC-CWS" userLabel="Home Timeline Scroll View Controller" customClass="TWPTimelineScrollViewController">
             <connections>
                 <outlet property="view" destination="z7n-tY-Yv1" id="xFg-vh-tlZ"/>
             </connections>
@@ -289,6 +289,10 @@ We'll see :)</string>
                                 </prototypeCellViews>
                             </tableColumn>
                         </tableColumns>
+                        <connections>
+                            <outlet property="dataSource" destination="Wt5-em-nhm" id="tuM-3O-EmW"/>
+                            <outlet property="delegate" destination="Wt5-em-nhm" id="wZ9-E2-tPf"/>
+                        </connections>
                     </tableView>
                 </subviews>
                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -375,6 +379,10 @@ We'll see :)</string>
                                 </prototypeCellViews>
                             </tableColumn>
                         </tableColumns>
+                        <connections>
+                            <outlet property="dataSource" destination="cod-2Z-hAU" id="IvT-av-ZeM"/>
+                            <outlet property="delegate" destination="cod-2Z-hAU" id="n00-nX-5FJ"/>
+                        </connections>
                     </tableView>
                 </subviews>
                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

@@ -49,8 +49,6 @@
     newFrame.size.width += 2.f;
     [ associatedView setFrame: newFrame ];
     [ self setSubviews: @[ associatedView ] ];
-//    NSLog( @"%@", NSStringFromRect( self.frame ) );
-//    NSLog( @"%@", NSStringFromRect( associatedView.frame ) );
     }
 
 @end

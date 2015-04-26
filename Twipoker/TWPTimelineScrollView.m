@@ -55,7 +55,7 @@ NSString* const TWPTimelineScrollViewTypeMessages = @"TimelineScrollView.Type.Us
         self.type = TWPTimelineScrollViewTypeFavorites;
 
     else if ( [ self.identifier isEqualToString: @"lists" ] )
-        self.type = TWPTimelineScrollViewTypeNotifications;
+        self.type = TWPTimelineScrollViewTypeLists;
 
     else if ( [ self.identifier isEqualToString: @"notifications" ] )
         self.type = TWPTimelineScrollViewTypeNotifications;
@@ -96,7 +96,8 @@ NSString* const TWPTimelineScrollViewTypeMessages = @"TimelineScrollView.Type.Us
             // data source is now ready to load tweets... 🚀
             [ ( TWPTimelineScrollViewController* )self.timelineTableView.dataSource setIsLoadingOlderTweets: YES ];
             [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets
-                                                                   object: @{ TWPTimelineScrollViewTypeUserInfoKey : self.type } ];
+                                                                   object: self
+                                                                 userInfo: @{ TWPTimelineScrollViewTypeUserInfoKey : self.type } ];
             }
         }
     }
