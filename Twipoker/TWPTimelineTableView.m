@@ -29,7 +29,7 @@
 
 @end // TWPTimelineTableView class
 
-#pragma mark <TWPTimelineTableViewDataSource>
+#pragma mark <TWPTimelineTableViewDelegate>
 // Notification Names
 NSString* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets = @"TimelineTableViewDataSource.ShouldLoadOlderTweets";
 NSString* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets = @"TimelineTableViewDataSource.ShouldLoadLaterTweets";

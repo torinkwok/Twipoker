@@ -32,16 +32,22 @@
 @protected
     NSMutableArray __strong* _tweets;
 
+    BOOL _isLoadingOlderTweets;
+    NSUInteger _numberOfTweetsWillBeLoadedOnce;
+
     SInt64 _sinceID;
     SInt64 _maxID;
     }
+
+@property ( weak ) IBOutlet TWPTimelineTableView* timelineTableView;
 
 #pragma mark Conforms to <TWPTimelineTableViewDataSource>
 @property ( assign, readwrite ) BOOL isLoadingOlderTweets;
 @property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
 
 #pragma mark Conforms to <TWPTimelineTableViewDelegate>
-// Nothing
+- ( void ) tableViewDataSourceShouldLoadOlderTweets: ( NSNotification* )_Notif;
+- ( void ) tableViewDataSourceShouldLoadLaterTweets: ( NSNotification* )_Notif;
 
 @end
 

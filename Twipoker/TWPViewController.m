@@ -23,8 +23,60 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPViewController.h"
+#import "TWPTweetCellView.h"
+#import "TWPLoginUsersManager.h"
 
 @implementation TWPViewController
+
+@synthesize isLoadingOlderTweets = _isLoadingOlderTweets;
+@synthesize numberOfTweetsWillBeLoadedOnce = _numberOfTweetsWillBeLoadedOnce;
+
+- ( instancetype ) initWithNibName: ( NSString* )_NibNameOrNil
+                            bundle: ( NSBundle* )_NibBundleOrNil
+    {
+    if ( self = [ super initWithNibName: _NibNameOrNil bundle: _NibBundleOrNil ] )
+        {
+        self->_tweets = [ NSMutableArray array ];
+
+        self->_isLoadingOlderTweets = NO;
+        self->_numberOfTweetsWillBeLoadedOnce = 20;
+        }
+
+    return self;
+    }
+
+#pragma mark Conforms to <TWPTimelineTableViewDataSource>
+- ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
+    {
+    return self->_tweets.count;
+    }
+
+- ( id )            tableView: ( NSTableView* )_TableView
+    objectValueForTableColumn: ( NSTableColumn* )_TableColumn
+                          row: ( NSInteger )_Row
+    {
+    id result = nil;
+
+    if ( [ _TableColumn.identifier isEqualToString: @"home-timeline" ] )
+        result = self->_tweets[ _Row ];
+
+    return result;
+    }
+
+#pragma mark Conforms to <TWPTimelineTableViewDelegate>
+- ( NSView* ) tableView: ( NSTableView* )_TableView
+     viewForTableColumn: ( NSTableColumn* )_TableColumn
+                    row: ( NSInteger )_Row
+    {
+    TWPTweetCellView* tweetCellView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+
+    OTCTweet* tweet = self->_tweets[ _Row ];
+    [ tweetCellView.userDisplayNameLabel setStringValue: tweet.author.displayName ];
+    [ tweetCellView.userScreenNameLabel setStringValue: tweet.author.screenName ];
+    [ tweetCellView.tweetTextLabel setStringValue: tweet.tweetText ];
+
+    return tweetCellView;
+    }
 
 @end
 

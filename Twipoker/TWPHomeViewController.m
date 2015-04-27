@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPHomeViewController.h"
+#import "TWPLoginUsersManager.h"
 
 @interface TWPHomeViewController ()
 
@@ -34,7 +35,32 @@
 - ( instancetype ) init
     {
     if ( self = [ super initWithNibName: @"TWPHomeView" bundle: [ NSBundle mainBundle ] ] )
-        ; // TODO:
+        {
+        [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+            getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
+                ^( NSArray* _TweetObjects )
+                    {
+                    for ( NSDictionary* _TweetObject in _TweetObjects )
+                        [ self->_tweets addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
+
+                    self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
+                    self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+
+                    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                                selector: @selector( tableViewDataSourceShouldLoadOlderTweets: )
+                                                                    name: TWPTimelineTableViewDataSourceShouldLoadOlderTweets
+                                                                  object: nil ];
+
+                    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                                selector: @selector( tableViewDataSourceShouldLoadLaterTweets: )
+                                                                    name: TWPTimelineTableViewDataSourceShouldLoadLaterTweets
+                                                                  object: nil ];
+                    [ self.timelineTableView reloadData ];
+                    } errorBlock: ^( NSError* _Error )
+                                    {
+                                    [ self presentError: _Error ];
+                                    } ];
+        }
 
     return self;
     }
@@ -44,6 +70,47 @@
     [ super viewDidLoad ];
 
     // Do view setup here.
+    }
+
+- ( void ) tableViewDataSourceShouldLoadOlderTweets: ( NSNotification* )_Notif
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        getStatusesHomeTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce).stringValue
+                                 sinceID: nil
+                                   maxID: @( self->_maxID - 1 ).stringValue
+                                trimUser: @NO
+                          excludeReplies: @0
+                      contributorDetails: @YES
+                         includeEntities: @YES
+                            successBlock:
+        ^( NSArray* _TweetObjects )
+            {
+            for ( NSDictionary* _TweetObject in _TweetObjects )
+                {
+                // Data source did finish loading older tweets
+                self.isLoadingOlderTweets = NO;
+
+                OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
+
+                // Duplicate tweet? Get out of here!
+                if ( ![ self->_tweets containsObject: tweet ] )
+                    [ self->_tweets addObject: tweet ];
+                }
+
+            self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+
+            [ self.timelineTableView reloadData ];
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            // Data source did finish loading older tweets due to the error occured
+                            self.isLoadingOlderTweets = NO;
+                            [ self presentError: _Error ];
+                            } ];
+    }
+
+- ( void ) tableViewDataSourceShouldLoadLaterTweets: ( NSNotification* )_Notif
+    {
+
     }
 
 @end

@@ -32,10 +32,6 @@
 @end // TWPTimelineTableView class
 
 #pragma mark <TWPTimelineTableViewDataSource>
-// Notification Names
-NSString extern* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets;
-NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
-
 @protocol TWPTimelineTableViewDataSource <NSTableViewDataSource>
 
 @required
@@ -45,7 +41,16 @@ NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
 @end // <TWPTimelineTableViewDataSource> protocol
 
 #pragma mark <TWPTimelineTableViewDelegate>
+// Notification Names
+NSString extern* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets;
+NSString extern* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets;
+
 @protocol TWPTimelineTableViewDelegate <NSTableViewDelegate>
+
+@required
+- ( void ) tableViewDataSourceShouldLoadOlderTweets: ( NSNotification* )_Notif;
+- ( void ) tableViewDataSourceShouldLoadLaterTweets: ( NSNotification* )_Notif;
+
 @end // <TWPTimelineTableViewDelegate> protocol
 
 /*=============================================================================┐
