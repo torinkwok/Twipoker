@@ -74,38 +74,51 @@
 
 - ( void ) tableViewDataSourceShouldLoadOlderTweets: ( NSNotification* )_Notif
     {
-    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-        getStatusesHomeTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce).stringValue
-                                 sinceID: nil
-                                   maxID: @( self->_maxID - 1 ).stringValue
-                                trimUser: @NO
-                          excludeReplies: @0
-                      contributorDetails: @YES
-                         includeEntities: @YES
-                            successBlock:
-        ^( NSArray* _TweetObjects )
-            {
-            for ( NSDictionary* _TweetObject in _TweetObjects )
-                {
-                // Data source did finish loading older tweets
-                self.isLoadingOlderTweets = NO;
+    [ self fetchTweetsWithSTTwitterAPI: @selector( getStatusesHomeTimelineWithCount:sinceID:maxID:trimUser:excludeReplies:contributorDetails:includeEntities:successBlock:errorBlock: )
+                            parameters: @[ @( self.numberOfTweetsWillBeLoadedOnce ).stringValue
+                                         , [ NSNull null ]
+                                         , @( self->_maxID - 1 ).stringValue
+                                         , @NO
+                                         , @0
+                                         , @YES
+                                         , @YES ]
+                          successBlock: nil
+                            errorBlock: nil
+                                target: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
 
-                OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
 
-                // Duplicate tweet? Get out of here!
-                if ( ![ self->_tweets containsObject: tweet ] )
-                    [ self->_tweets addObject: tweet ];
-                }
-
-            self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
-
-            [ self.timelineTableView reloadData ];
-            } errorBlock: ^( NSError* _Error )
-                            {
-                            // Data source did finish loading older tweets due to the error occured
-                            self.isLoadingOlderTweets = NO;
-                            [ self presentError: _Error ];
-                            } ];
+//    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+//        getStatusesHomeTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce).stringValue
+//                                 sinceID: nil
+//                                   maxID: @( self->_maxID - 1 ).stringValue
+//                                trimUser: @NO
+//                          excludeReplies: @0
+//                      contributorDetails: @YES
+//                         includeEntities: @YES
+//                            successBlock:
+//        ^( NSArray* _TweetObjects )
+//            {
+//            for ( NSDictionary* _TweetObject in _TweetObjects )
+//                {
+//                // Data source did finish loading older tweets
+//                self.isLoadingOlderTweets = NO;
+//
+//                OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
+//
+//                // Duplicate tweet? Get out of here!
+//                if ( ![ self->_tweets containsObject: tweet ] )
+//                    [ self->_tweets addObject: tweet ];
+//                }
+//
+//            self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+//
+//            [ self.timelineTableView reloadData ];
+//            } errorBlock: ^( NSError* _Error )
+//                            {
+//                            // Data source did finish loading older tweets due to the error occured
+//                            self.isLoadingOlderTweets = NO;
+//                            [ self presentError: _Error ];
+//                            } ];
     }
 
 - ( void ) tableViewDataSourceShouldLoadLaterTweets: ( NSNotification* )_Notif

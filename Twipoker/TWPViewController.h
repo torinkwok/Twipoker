@@ -49,6 +49,12 @@
 - ( void ) tableViewDataSourceShouldLoadOlderTweets: ( NSNotification* )_Notif;
 - ( void ) tableViewDataSourceShouldLoadLaterTweets: ( NSNotification* )_Notif;
 
+- ( void ) fetchTweetsWithSTTwitterAPI: ( SEL )_FetchAPISelector
+                            parameters: ( NSArray* )_Arguments
+                          successBlock: ( void (^)( NSArray* ) )_SuccessBlock
+                            errorBlock: ( void (^)( NSError* ) )_ErrorBlock
+                                target: ( id )_Target;
+
 @end
 
 /*=============================================================================┐

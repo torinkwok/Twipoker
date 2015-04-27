@@ -78,6 +78,74 @@
     return tweetCellView;
     }
 
+- ( void ) fetchTweetsWithSTTwitterAPI: ( SEL )_FetchAPISelector
+                            parameters: ( NSArray* )_Arguments
+                          successBlock: ( void (^)( NSArray* ) )_SuccessBlock
+                            errorBlock: ( void (^)( NSError* ) )_ErrorBlock
+                                target: ( id )_Target
+    {
+    NSMethodSignature* methodSignature = [ STTwitterAPI instanceMethodSignatureForSelector: _FetchAPISelector ];
+    NSInvocation* twitterAPIInvocation = [ NSInvocation invocationWithMethodSignature: methodSignature ];
+
+    [ twitterAPIInvocation setSelector: _FetchAPISelector ];
+
+    NSInteger index = 2;
+    for ( id _Arg in _Arguments )
+        {
+        if ( _Arg != [ NSNull null ] )
+            {
+            id argBuffer = _Arg;
+            [ twitterAPIInvocation setArgument: &argBuffer atIndex: index ];
+            }
+
+        index++;
+        }
+
+    if ( _SuccessBlock )
+        [ twitterAPIInvocation setArgument: ( __bridge void* )( [ _SuccessBlock copy ] ) atIndex: index++ ];
+    else
+        {
+        void ( ^successBlock )( NSArray* ) =
+            ^( NSArray* _TweetObjects )
+                {
+                for ( NSDictionary* _TweetObject in _TweetObjects )
+                    {
+                    // Data source did finish loading older tweets
+                    self.isLoadingOlderTweets = NO;
+
+                    OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
+
+                    // Duplicate tweet? Get out of here!
+                    if ( ![ self->_tweets containsObject: tweet ] )
+                        [ self->_tweets addObject: tweet ];
+                    }
+
+                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+
+                [ self.timelineTableView reloadData ];
+                };
+
+        successBlock = [ successBlock copy ];
+        [ twitterAPIInvocation setArgument: &successBlock atIndex: index++ ];
+        }
+
+    if ( _ErrorBlock )
+        [ twitterAPIInvocation setArgument: ( __bridge void* )( [ _ErrorBlock copy ] ) atIndex: index++ ];
+    else
+        {
+        void ( ^errorBlock )( NSError* ) =
+            ^( NSError* _Error )
+                {
+                [ self presentError: _Error ];
+                };
+
+        errorBlock = [ errorBlock copy ];
+        [ twitterAPIInvocation setArgument: &errorBlock atIndex: index++ ];
+        }
+
+    [ twitterAPIInvocation invokeWithTarget: _Target ];
+    }
+
 @end
 
 /*=============================================================================┐
