@@ -96,7 +96,7 @@
                 <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
-            <point key="canvasLocation" x="-245.5" y="-2569"/>
+            <point key="canvasLocation" x="-12.5" y="-2489"/>
         </scrollView>
     </objects>
 </document>

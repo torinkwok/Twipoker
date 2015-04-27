@@ -22,11 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
-
 #import "TWPViewController.h"
 
-@interface TWPHomeViewController : TWPViewController
+@implementation TWPViewController
 
 @end
 

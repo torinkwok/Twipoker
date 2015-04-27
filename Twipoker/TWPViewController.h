@@ -24,9 +24,24 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "TWPViewController.h"
+#import "TWPTimelineTableView.h"
 
-@interface TWPHomeViewController : TWPViewController
+@interface TWPViewController : NSViewController
+    <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate>
+    {
+@protected
+    NSMutableArray __strong* _tweets;
+
+    SInt64 _sinceID;
+    SInt64 _maxID;
+    }
+
+#pragma mark Conforms to <TWPTimelineTableViewDataSource>
+@property ( assign, readwrite ) BOOL isLoadingOlderTweets;
+@property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
+
+#pragma mark Conforms to <TWPTimelineTableViewDelegate>
+// Nothing
 
 @end
 
