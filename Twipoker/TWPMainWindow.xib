@@ -23,7 +23,7 @@
                 <rect key="frame" x="0.0" y="-2" width="893" height="767"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="46" horizontalPageScroll="10" verticalLineScroll="46" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uak-CR-Afr">
+                    <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="46" horizontalPageScroll="10" verticalLineScroll="46" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uak-CR-Afr">
                         <rect key="frame" x="-1" y="59" width="289" height="667"/>
                         <clipView key="contentView" misplaced="YES" id="V0v-xt-iVw">
                             <rect key="frame" x="1" y="1" width="287" height="533"/>
@@ -37,7 +37,7 @@
                                     <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                     <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <tableColumns>
-                                        <tableColumn identifier="tabs" width="284" minWidth="40" maxWidth="1000" id="jeb-Iz-fid" userLabel="Tabs Column">
+                                        <tableColumn identifier="tabs" width="286" minWidth="40" maxWidth="1000" id="jeb-Iz-fid" userLabel="Tabs Column">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -51,7 +51,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="UBU-sD-AnM" customClass="TWPDashboardCellView">
-                                                    <rect key="frame" x="1" y="1" width="284" height="44"/>
+                                                    <rect key="frame" x="1" y="1" width="286" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CSA-pX-nQA">

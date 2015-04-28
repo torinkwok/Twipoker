@@ -22,58 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetCellView.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation TWPTweetCellView
-
-@dynamic tweet;
-@dynamic author;
-
-#pragma mark Initialization
-+ ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet
-    {
-    return [ [ [ self class ] alloc ] initWithTweet: _Tweet ];
-    }
-
-- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
-    {
-    if ( self = [ super init ] )
-        [ self setTweet: _Tweet ];
-
-    return self;
-    }
-
-#pragma mark Accessors
-- ( void ) setTweet: ( OTCTweet* )_Tweet
-    {
-    if ( self->_tweet != _Tweet )
-        {
-        self->_tweet = _Tweet;
-
-        [ [ self tweetTextLabel ] setStringValue: self->_tweet.tweetText ];
-        [ [ self userDisplayNameLabel ] setStringValue: self->_tweet.author.displayName ];
-        [ [ self userScreenNameLabel ] setStringValue: [ @"@" stringByAppendingString: self->_tweet.author.screenName ] ];
-
-        [ self setNeedsDisplay: YES ];
-        }
-    }
-
-- ( OTCTweet* ) tweet
-    {
-    return self->_tweet;
-    }
-
-- ( OTCTwitterUser* ) author
-    {
-    return self.tweet.author;
-    }
-
-#pragma mark Events Handling
-- ( void ) mouseDown: ( NSEvent* )_Event
-    {
-    [ super mouseDown: _Event ];
-    NSLog( @"OMFG!" );
-    }
+@interface TWPTweetTextField : NSTextField
 
 @end
 

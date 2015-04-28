@@ -23,13 +23,30 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTimelineTableView.h"
+#import "TWPTweetCellView.h"
+#import "TWPTweetTextField.h"
 
 // TWPTimelineTableView class
 @implementation TWPTimelineTableView
 
-- ( void ) awakeFromNib
+- ( BOOL ) validateProposedFirstResponder: ( NSResponder* )_Responder
+                                 forEvent: ( NSEvent* )_Event
     {
-    
+    if ( [ _Responder isKindOfClass: [ TWPTweetCellView class ] ]
+            || [ _Responder isKindOfClass: [ TWPTweetTextField class ] ] )
+        return YES;
+    else
+        return [ super validateProposedFirstResponder: _Responder forEvent: _Event ];
+    }
+
+- ( NSView* ) hitTest: ( NSPoint )_Point
+    {
+    NSView* farthestDescendent = [ super hitTest: _Point ];
+
+    if ( [ farthestDescendent isKindOfClass: [ TWPTweetTextField class ] ] )
+        return [ farthestDescendent superview ];
+
+    return farthestDescendent;
     }
 
 @end // TWPTimelineTableView class

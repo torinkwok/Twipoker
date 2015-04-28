@@ -99,6 +99,7 @@
 		83CFD89D1ACF1FFD0062D73D /* icon_256x256@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8931ACF1FFD0062D73D /* icon_256x256@2x.png */; };
 		83CFD89E1ACF1FFD0062D73D /* logo_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8941ACF1FFD0062D73D /* logo_512x512.png */; };
 		83CFD89F1ACF1FFD0062D73D /* logo_512x512@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CFD8951ACF1FFD0062D73D /* logo_512x512@2x.png */; };
+		83D12E5E1AEFB387009ECC13 /* TWPTweetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D12E5D1AEFB387009ECC13 /* TWPTweetTextField.m */; };
 		83D3FF131ACB144B009D40EE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D3FF121ACB144B009D40EE /* Cocoa.framework */; };
 		83D3FF1D1ACB144B009D40EE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D3FF1B1ACB144B009D40EE /* InfoPlist.strings */; };
 		83D3FF1F1ACB144B009D40EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D3FF1E1ACB144B009D40EE /* main.m */; };
@@ -302,6 +303,8 @@
 		83CFD8931ACF1FFD0062D73D /* icon_256x256@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_256x256@2x.png"; sourceTree = "<group>"; };
 		83CFD8941ACF1FFD0062D73D /* logo_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_512x512.png; sourceTree = "<group>"; };
 		83CFD8951ACF1FFD0062D73D /* logo_512x512@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_512x512@2x.png"; sourceTree = "<group>"; };
+		83D12E5C1AEFB387009ECC13 /* TWPTweetTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTweetTextField.h; path = Twipoker/TWPTweetTextField.h; sourceTree = "<group>"; };
+		83D12E5D1AEFB387009ECC13 /* TWPTweetTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetTextField.m; path = Twipoker/TWPTweetTextField.m; sourceTree = "<group>"; };
 		83D3FF0F1ACB144B009D40EE /* Twipoker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twipoker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D3FF121ACB144B009D40EE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		83D3FF151ACB144B009D40EE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -368,6 +371,8 @@
 				830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */,
 				8308961C1AEA1D1D0081D227 /* TWPTweetCellView.h */,
 				8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */,
+				83D12E5C1AEFB387009ECC13 /* TWPTweetTextField.h */,
+				83D12E5D1AEFB387009ECC13 /* TWPTweetTextField.m */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -1004,6 +1009,7 @@
 				8338CD801AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m in Sources */,
 				83D3FF261ACB144B009D40EE /* TWPAppDelegate.m in Sources */,
 				83924DC51AE104A900C25895 /* OTCHashtag.m in Sources */,
+				83D12E5E1AEFB387009ECC13 /* TWPTweetTextField.m in Sources */,
 				83924D921AE1030B00C25895 /* INAppStoreWindowSwizzling.c in Sources */,
 				83AAF6F31AECF6C2007A3A48 /* TWPListsViewController.m in Sources */,
 				83924DFD1AE105E600C25895 /* STTwitterOS.m in Sources */,
