@@ -107,39 +107,6 @@
                                 self.isLoadingOlderTweets = NO;
                                 [ self presentError: _Error ];
                                 } ];
-
-//        [ twitterAPI getFavoritesListWithUserID: twitterAPI.userID
-//                                   orScreenName: nil
-//                                          count: @( self.numberOfTweetsWillBeLoadedOnce ).stringValue
-//                                        sinceID: nil
-//                                          maxID: @( self->_maxID ).stringValue
-//                                includeEntities: @YES
-//                                   successBlock:
-//            ^( NSArray* _TweetObjects )
-//                {
-//                for ( NSDictionary* _TweetObject in _TweetObjects )
-//                    {
-//                    // Data source did finish loading older tweets
-//                    self.isLoadingOlderTweets = NO;
-//
-//                    OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
-//
-//                    // Duplicate tweet? Get out of here!
-//                    if ( ![ self->_tweets containsObject: tweet ] )
-//                        {
-//                        [ self->_tweets addObject: tweet ];
-//                        }
-//                    }
-//
-//                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
-//
-//                [ self.timelineTableView reloadData ];
-//                } errorBlock: ^( NSError* _Error )
-//                                {
-//                                // Data source did finish loading older tweets due to the error occured
-//                                self.isLoadingOlderTweets = NO;
-//                                [ self presentError: _Error ];
-//                                } ];
         }
     }
 
