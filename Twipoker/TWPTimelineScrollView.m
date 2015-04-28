@@ -28,6 +28,7 @@
 @implementation TWPTimelineScrollView
 
 #pragma mark Accessors
+@synthesize delegate;
 @dynamic timelineTableView;
 
 - ( TWPTimelineTableView* ) timelineTableView
@@ -48,7 +49,8 @@
     if ( currentScrollLocation.y != 0
             && currentScrollLocation.y >= ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
         {
-//         TODO:
+        if ( self.delegate && [ self.delegate respondsToSelector: @selector( timelineScrollView:shouldFetchOlderTweets: ) ] )
+            [ self.delegate timelineScrollView: self shouldFetchOlderTweets: _ClipView ];
         }
     }
 
