@@ -47,7 +47,7 @@
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qQh-aM-xlg" userLabel="User Display Name">
                                                 <rect key="frame" x="112" y="86" width="156" height="17"/>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" borderStyle="border" title="薛定鄂的月饼" id="RbB-fu-zo4">
+                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="薛定鄂的月饼" id="RbB-fu-zo4">
                                                     <font key="font" size="13" name="STHeitiSC-Medium"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

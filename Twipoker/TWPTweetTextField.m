@@ -43,7 +43,10 @@
 
 - ( NSView* ) hitTest: ( NSPoint )_Point
     {
-    return self.firstTweetCellSuperview;
+    if ( NSPointInRect( _Point, self.bounds ) )
+        return self.firstTweetCellSuperview;
+    else
+        return [ super hitTest: _Point ];
     }
 
 @end
