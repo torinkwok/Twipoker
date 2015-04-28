@@ -42,6 +42,8 @@ NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
 // TWPTimelineScrollViewDelegate protocol
 @protocol TWPTimelineScrollViewDelegate <NSObject>
 
+@required
+
 // Tells the delegate that the data source of timeline table (document view of this scroll view)
 // should fetch older tweets
 - ( BOOL ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
