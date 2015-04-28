@@ -46,11 +46,13 @@
 
     NSPoint currentScrollLocation = boundsOfClipView.origin;
 
-    if ( currentScrollLocation.y != 0
-            && currentScrollLocation.y >= ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
+    if ( currentScrollLocation.y != 0 )
         {
-        if ( self.delegate && [ self.delegate respondsToSelector: @selector( timelineScrollView:shouldFetchOlderTweets: ) ] )
-            [ self.delegate timelineScrollView: self shouldFetchOlderTweets: _ClipView ];
+        if ( currentScrollLocation.y >= ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
+            {
+            if ( self.delegate && [ self.delegate respondsToSelector: @selector( timelineScrollView:shouldFetchOlderTweets: ) ] )
+                [ self.delegate timelineScrollView: self shouldFetchOlderTweets: _ClipView ];
+            }
         }
     }
 

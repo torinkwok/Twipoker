@@ -78,6 +78,12 @@
     return tweetCellView;
     }
 
+- ( BOOL ) tableView: ( NSTableView* )_TableView
+     shouldSelectRow: ( NSInteger )_Row
+    {
+    return NO;
+    }
+
 @end
 
 /*=============================================================================┐
