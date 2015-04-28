@@ -30,6 +30,7 @@
 - ( NSView* ) firstTweetCellSuperview
     {
     NSView* tweetCellView = self.superview;
+
     while ( true )
         {
         if ( [ tweetCellView isKindOfClass: [ TWPTweetCellView class ] ] )
@@ -43,7 +44,7 @@
 
 - ( NSView* ) hitTest: ( NSPoint )_Point
     {
-    if ( NSPointInRect( _Point, self.bounds ) )
+    if ( NSPointInRect( [ self convertPoint: _Point fromView: self.superview ], self.bounds ) )
         return self.firstTweetCellSuperview;
     else
         return [ super hitTest: _Point ];

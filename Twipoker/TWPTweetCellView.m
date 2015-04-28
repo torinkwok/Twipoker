@@ -72,7 +72,7 @@
 - ( void ) mouseDown: ( NSEvent* )_Event
     {
     [ super mouseDown: _Event ];
-    NSLog( @"OMFG!" );
+    NSLog( @"🙅🏻" );
     }
 
 @end
