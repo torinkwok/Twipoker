@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPNotificationsViewController">
             <connections>
+                <outlet property="timelineTableView" destination="l0U-Vr-U5G" id="U1y-wK-Urp"/>
                 <outlet property="view" destination="9Oj-GQ-J1B" id="Y6r-d6-fFh"/>
             </connections>
         </customObject>
@@ -84,6 +85,10 @@
                                 </prototypeCellViews>
                             </tableColumn>
                         </tableColumns>
+                        <connections>
+                            <outlet property="dataSource" destination="-2" id="GR4-LW-cOa"/>
+                            <outlet property="delegate" destination="-2" id="eaz-35-3gW"/>
+                        </connections>
                     </tableView>
                 </subviews>
                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -96,6 +101,9 @@
                 <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
+            <connections>
+                <outlet property="delegate" destination="-2" id="hNY-zj-m6L"/>
+            </connections>
             <point key="canvasLocation" x="393.5" y="-2569"/>
         </scrollView>
     </objects>

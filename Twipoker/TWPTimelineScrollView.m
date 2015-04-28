@@ -23,12 +23,12 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTimelineScrollView.h"
-#import "TWPViewController.h"
 
 // TWPTimelineScrollView class
 @implementation TWPTimelineScrollView
 
 #pragma mark Accessors
+@synthesize delegate;
 @dynamic timelineTableView;
 
 - ( TWPTimelineTableView* ) timelineTableView
@@ -46,18 +46,13 @@
 
     NSPoint currentScrollLocation = boundsOfClipView.origin;
 
-    if ( currentScrollLocation.y != 0
-            && currentScrollLocation.y >= ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
+    if ( currentScrollLocation.y != 0 )
         {
-        // Our data source must be not loading older tweets...
-        if ( ![ ( TWPViewController* )( self.timelineTableView.dataSource ) isLoadingOlderTweets ] )
+        if ( currentScrollLocation.y >= ( NSMaxY( boundsOfDocumentView ) - NSHeight( boundsOfClipView ) ) )
             {
-            NSLog( @"> Loading..." );
-            // data source is now ready to load tweets... 🚀
-            [ ( TWPViewController* )( self.timelineTableView.dataSource ) setIsLoadingOlderTweets: YES ];
-            [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTimelineTableViewDataSourceShouldLoadOlderTweets object: nil ];
+            if ( self.delegate && [ self.delegate respondsToSelector: @selector( timelineScrollView:shouldFetchOlderTweets: ) ] )
+                [ self.delegate timelineScrollView: self shouldFetchOlderTweets: _ClipView ];
             }
-
         }
     }
 

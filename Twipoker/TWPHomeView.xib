@@ -101,6 +101,9 @@
                 <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
+            <connections>
+                <outlet property="delegate" destination="-2" id="5Mj-1U-HAf"/>
+            </connections>
             <point key="canvasLocation" x="-245.5" y="-2569"/>
         </scrollView>
     </objects>

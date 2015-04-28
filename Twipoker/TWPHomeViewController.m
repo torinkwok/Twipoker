@@ -46,15 +46,6 @@
                     self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
                     self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
-                    [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                                selector: @selector( tableViewDataSourceShouldLoadOlderTweets: )
-                                                                    name: TWPTimelineTableViewDataSourceShouldLoadOlderTweets
-                                                                  object: nil ];
-
-                    [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                                selector: @selector( tableViewDataSourceShouldLoadLaterTweets: )
-                                                                    name: TWPTimelineTableViewDataSourceShouldLoadLaterTweets
-                                                                  object: nil ];
                     [ self.timelineTableView reloadData ];
                     } errorBlock: ^( NSError* _Error )
                                     {
@@ -72,58 +63,54 @@
     // Do view setup here.
     }
 
-- ( void ) tableViewDataSourceShouldLoadOlderTweets: ( NSNotification* )_Notif
+#pragma mark Conforms to <TWPTimelineScrollViewDelegate>
+- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
+       shouldFetchOlderTweets: ( NSClipView* )_ClipView
     {
-    [ self fetchTweetsWithSTTwitterAPI: @selector( getStatusesHomeTimelineWithCount:sinceID:maxID:trimUser:excludeReplies:contributorDetails:includeEntities:successBlock:errorBlock: )
-                            parameters: @[ @( self.numberOfTweetsWillBeLoadedOnce ).stringValue
-                                         , [ NSNull null ]
-                                         , @( self->_maxID - 1 ).stringValue
-                                         , @NO
-                                         , @0
-                                         , @YES
-                                         , @YES ]
-                          successBlock: nil
-                            errorBlock: nil
-                                target: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
+    if ( !self.isLoadingOlderTweets )
+        {
+        self.isLoadingOlderTweets = YES;
+        NSLog( @"%s", __PRETTY_FUNCTION__ );
 
+        [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+            getStatusesHomeTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce).stringValue
+                                     sinceID: nil
+                                       maxID: @( self->_maxID - 1 ).stringValue
+                                    trimUser: @NO
+                              excludeReplies: @0
+                          contributorDetails: @YES
+                             includeEntities: @YES
+                                successBlock:
+            ^( NSArray* _TweetObjects )
+                {
+                for ( NSDictionary* _TweetObject in _TweetObjects )
+                    {
+                    // Data source did finish loading older tweets
+                    self.isLoadingOlderTweets = NO;
 
-//    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-//        getStatusesHomeTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce).stringValue
-//                                 sinceID: nil
-//                                   maxID: @( self->_maxID - 1 ).stringValue
-//                                trimUser: @NO
-//                          excludeReplies: @0
-//                      contributorDetails: @YES
-//                         includeEntities: @YES
-//                            successBlock:
-//        ^( NSArray* _TweetObjects )
-//            {
-//            for ( NSDictionary* _TweetObject in _TweetObjects )
-//                {
-//                // Data source did finish loading older tweets
-//                self.isLoadingOlderTweets = NO;
-//
-//                OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
-//
-//                // Duplicate tweet? Get out of here!
-//                if ( ![ self->_tweets containsObject: tweet ] )
-//                    [ self->_tweets addObject: tweet ];
-//                }
-//
-//            self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
-//
-//            [ self.timelineTableView reloadData ];
-//            } errorBlock: ^( NSError* _Error )
-//                            {
-//                            // Data source did finish loading older tweets due to the error occured
-//                            self.isLoadingOlderTweets = NO;
-//                            [ self presentError: _Error ];
-//                            } ];
+                    OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
+
+                    // Duplicate tweet? Get out of here!
+                    if ( ![ self->_tweets containsObject: tweet ] )
+                        [ self->_tweets addObject: tweet ];
+                    }
+
+                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+
+                [ self.timelineTableView reloadData ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                // Data source did finish loading older tweets due to the error occured
+                                self.isLoadingOlderTweets = NO;
+                                [ self presentError: _Error ];
+                                } ];
+        }
     }
 
-- ( void ) tableViewDataSourceShouldLoadLaterTweets: ( NSNotification* )_Notif
+- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
+       shouldFetchLaterTweets: ( NSClipView* )_ClipView
     {
-
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
     }
 
 @end

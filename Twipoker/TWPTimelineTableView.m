@@ -27,6 +27,11 @@
 // TWPTimelineTableView class
 @implementation TWPTimelineTableView
 
+- ( void ) awakeFromNib
+    {
+    
+    }
+
 @end // TWPTimelineTableView class
 
 #pragma mark <TWPTimelineTableViewDelegate>
