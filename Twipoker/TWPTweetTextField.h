@@ -24,7 +24,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TWPTweetCellView;
+
 @interface TWPTweetTextField : NSTextField
+
+- ( NSView* ) firstTweetCellSuperview;
 
 @end
 

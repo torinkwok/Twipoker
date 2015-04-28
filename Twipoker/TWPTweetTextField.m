@@ -23,12 +23,27 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTweetTextField.h"
+#import "TWPTweetCellView.h"
 
 @implementation TWPTweetTextField
 
-- ( void ) mouseDown: ( NSEvent* )_Event
+- ( NSView* ) firstTweetCellSuperview
     {
-    NSLog( @"FUCK!" );
+    NSView* tweetCellView = self.superview;
+    while ( true )
+        {
+        if ( [ tweetCellView isKindOfClass: [ TWPTweetCellView class ] ] )
+            break;
+        else
+            tweetCellView = tweetCellView.superview;
+        }
+
+    return tweetCellView;
+    }
+
+- ( NSView* ) hitTest: ( NSPoint )_Point
+    {
+    return self.firstTweetCellSuperview;
     }
 
 @end

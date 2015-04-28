@@ -39,16 +39,6 @@
         return [ super validateProposedFirstResponder: _Responder forEvent: _Event ];
     }
 
-- ( NSView* ) hitTest: ( NSPoint )_Point
-    {
-    NSView* farthestDescendent = [ super hitTest: _Point ];
-
-    if ( [ farthestDescendent isKindOfClass: [ TWPTweetTextField class ] ] )
-        return [ farthestDescendent superview ];
-
-    return farthestDescendent;
-    }
-
 @end // TWPTimelineTableView class
 
 #pragma mark <TWPTimelineTableViewDelegate>
