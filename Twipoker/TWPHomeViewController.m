@@ -46,15 +46,6 @@
                     self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
                     self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
-                    [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                                selector: @selector( tableViewDataSourceShouldLoadOlderTweets: )
-                                                                    name: TWPTimelineTableViewDataSourceShouldLoadOlderTweets
-                                                                  object: nil ];
-
-                    [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                                selector: @selector( tableViewDataSourceShouldLoadLaterTweets: )
-                                                                    name: TWPTimelineTableViewDataSourceShouldLoadLaterTweets
-                                                                  object: nil ];
                     [ self.timelineTableView reloadData ];
                     } errorBlock: ^( NSError* _Error )
                                     {
@@ -120,16 +111,6 @@
        shouldFetchLaterTweets: ( NSClipView* )_ClipView
     {
     NSLog( @"%s", __PRETTY_FUNCTION__ );
-    }
-
-- ( void ) tableViewDataSourceShouldLoadOlderTweets: ( NSNotification* )_Notif
-    {
-
-    }
-
-- ( void ) tableViewDataSourceShouldLoadLaterTweets: ( NSNotification* )_Notif
-    {
-
     }
 
 @end
