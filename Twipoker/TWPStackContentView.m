@@ -34,22 +34,8 @@
 #pragma mark Initialization
 - ( void ) awakeFromNib
     {
-    [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                selector: @selector( dashboardViewSelectedTabChanged: )
-                                                    name: TWPDashboardViewSelectedTabChanged
-                                                  object: nil ];
-
     [ self.initialViewsStack.baseViewController.view setFrame: [ self boundsOfElementView ] ];
     [ self setSubviews: @[ self.initialViewsStack.baseViewController.view ] ];
-    }
-
-- ( void ) dashboardViewSelectedTabChanged: ( NSNotification* )_Notif
-    {
-    TWPDashboardStack* associatedViewsStack = [ ( TWPDashboardCellView* )( _Notif.userInfo[ @"tab-cell-view" ] ) associatedViewsStack ];
-    NSView* associatedView = associatedViewsStack.baseViewController.view;
-
-    [ associatedView setFrame: [ self boundsOfElementView ] ];
-    [ self setSubviews: @[ associatedView ] ];
     }
 
 #pragma mark Utilities

@@ -24,8 +24,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-NSString extern* const TWPDashboardViewSelectedTabChanged;
-
 @interface TWPDashboardView : NSTableView
 
 @end

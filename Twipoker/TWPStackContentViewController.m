@@ -111,15 +111,12 @@ NSString static* const kColumnIDTabs = @"tabs";
     TWPDashboardCellView* cellView = ( TWPDashboardCellView* )[ tabTableView.delegate
         tableView: tabTableView viewForTableColumn: currentTableColumn row: ( NSInteger )selectedRow ];
 
-    NSNotification* notification = [ NSNotification notificationWithName: TWPDashboardViewSelectedTabChanged
-                                                                  object: self
-                                                                userInfo: @{ @"tab-cell-view" : cellView } ];
+    TWPDashboardStack* associatedViewsStack = [ cellView associatedViewsStack ];
+    NSView* associatedView = associatedViewsStack.baseViewController.view;
 
-    [ [ NSNotificationCenter defaultCenter ] postNotification: notification ];
-
+    [ associatedView setFrame: [ ( TWPStackContentView* )self.view boundsOfElementView ] ];
+    [ ( TWPStackContentView* )self.view setSubviews: @[ associatedView ] ];
     }
-
-
 
 @end
 

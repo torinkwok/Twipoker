@@ -30,6 +30,9 @@
 
 @property ( weak ) IBOutlet TWPDashboardStack* initialViewsStack;
 
+#pragma mark Utilities
+- ( NSRect ) boundsOfElementView;
+
 @end
 
 /*=============================================================================┐

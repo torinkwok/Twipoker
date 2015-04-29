@@ -24,8 +24,6 @@
 
 #import "TWPDashboardView.h"
 
-NSString* const TWPDashboardViewSelectedTabChanged = @"DashboardView.Notf.SelectedTabChanged";
-
 @implementation TWPDashboardView
 
 @end
