@@ -25,6 +25,16 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TWPTwitterUserView : NSView
+    {
+@private
+    OTCTwitterUser __strong* _twitterUser;
+    }
+
+@property ( weak ) IBOutlet NSTextField* tweetsCountLabel;
+@property ( weak ) IBOutlet NSTextField* followingsCountLabel;
+@property ( weak ) IBOutlet NSTextField* followersCountLabel;
+
+@property ( strong, readwrite ) OTCTwitterUser* twitterUser;
 
 @end
 

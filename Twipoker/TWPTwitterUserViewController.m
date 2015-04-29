@@ -23,8 +23,36 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTwitterUserViewController.h"
+#import "TWPTwitterUserView.h"
 
 @implementation TWPTwitterUserViewController
+
+@dynamic twitterUserView;
+
+- ( void ) setTwitterUserView: ( TWPTwitterUserView* )_TwitterUserView
+    {
+    [ self setView: _TwitterUserView ];
+    }
+
+- ( TWPTwitterUserView* ) twitterUserView
+    {
+    return ( TWPTwitterUserView* )self.view;
+    }
+
++ ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+    {
+    return [ [ [ self class ] alloc ] initWithTwitterUser: _TwitterUser ];
+    }
+
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+    {
+    if ( self = [ super initWithNibName: @"TWPTwitterUserView" bundle: [ NSBundle mainBundle ] ] )
+        {
+
+        }
+
+    return self;
+    }
 
 @end
 

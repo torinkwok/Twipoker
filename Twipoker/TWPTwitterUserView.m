@@ -26,6 +26,38 @@
 
 @implementation TWPTwitterUserView
 
+@synthesize tweetsCountLabel;
+@synthesize followingsCountLabel;
+@synthesize followersCountLabel;
+
+@dynamic twitterUser;
+
+#pragma mark Accessors
+- ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
+    {
+    if ( self->_twitterUser != _TwitterUser )
+        {
+        self->_twitterUser = _TwitterUser;
+
+        [ self.tweetsCountLabel setStringValue: @( self.twitterUser.tweetsCount ).stringValue ];
+        [ self.followingsCountLabel setStringValue: @( self.twitterUser.followingsCount ).stringValue ];
+        [ self.followersCountLabel setStringValue: @( self.twitterUser.followersCount ).stringValue ];
+
+//        [ self setNeedsDisplay: YES ];
+        }
+    }
+
+- ( OTCTwitterUser* ) twitterUser
+    {
+    return self->_twitterUser;
+    }
+
+#pragma mark Custom Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
+    }
+
 @end
 
 /*=============================================================================┐

@@ -24,7 +24,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TWPTwitterUserView;
+
 @interface TWPTwitterUserViewController : NSViewController
+
+@property ( weak, readwrite ) TWPTwitterUserView* twitterUserView;
+
++ ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
 
 @end
 
