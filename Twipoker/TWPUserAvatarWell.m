@@ -44,7 +44,7 @@
         [ self setImage: nil ];
         self->_twitterUser = _TwitterUser;
 
-        NSURL* avatarURL = self->_twitterUser.avatarImageURLOverSSL;
+        NSURL* avatarURL = self->_twitterUser.originalAvatarImageURLOverSSL;
         self->_dataTask = [ self->_URLSession dataTaskWithURL: avatarURL
                           completionHandler:
             ^( NSData* _Data, NSURLResponse* _Response, NSError* _Error )

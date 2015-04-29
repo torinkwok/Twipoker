@@ -27,8 +27,8 @@
 @interface TWPUserAvatarWell : NSImageView // TODO: Replace it with `NSControl` class
     {
 @private
-    OTCTwitterUser __strong* _twitterUser;
-    NSURLSession __strong* _URLSession;
+    OTCTwitterUser   __strong* _twitterUser;
+    NSURLSession     __strong* _URLSession;
     NSURLSessionTask __strong* _dataTask;
     }
 

@@ -12,6 +12,7 @@
 		830896241AEA1D2A0081D227 /* TWPStackContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896231AEA1D2A0081D227 /* TWPStackContentView.m */; };
 		830B8F5D1AF0CC12006D2635 /* TWPStackContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B8F5C1AF0CC12006D2635 /* TWPStackContentViewController.m */; };
 		830B8F631AF0E303006D2635 /* TWPUserAvatarWell.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B8F621AF0E303006D2635 /* TWPUserAvatarWell.m */; };
+		830B8F921AF13BBF006D2635 /* NSURL+Objectwitter-C.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B8F911AF13BBF006D2635 /* NSURL+Objectwitter-C.m */; };
 		831447D21ACFF19300BFECE4 /* TWPDebugLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */; };
 		831447D51ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */; };
 		831447D91AD0008E00BFECE4 /* TWPDebugLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D81AD0008E00BFECE4 /* TWPDebugLoginView.m */; };
@@ -146,6 +147,8 @@
 		830B8F5C1AF0CC12006D2635 /* TWPStackContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPStackContentViewController.m; path = Twipoker/TWPStackContentViewController.m; sourceTree = "<group>"; };
 		830B8F611AF0E303006D2635 /* TWPUserAvatarWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPUserAvatarWell.h; path = Twipoker/TWPUserAvatarWell.h; sourceTree = "<group>"; };
 		830B8F621AF0E303006D2635 /* TWPUserAvatarWell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPUserAvatarWell.m; path = Twipoker/TWPUserAvatarWell.m; sourceTree = "<group>"; };
+		830B8F901AF13BBF006D2635 /* NSURL+Objectwitter-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Objectwitter-C.h"; sourceTree = "<group>"; };
+		830B8F911AF13BBF006D2635 /* NSURL+Objectwitter-C.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Objectwitter-C.m"; sourceTree = "<group>"; };
 		831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TWPDebugLoginView.xib; sourceTree = "<group>"; };
 		831447D31ACFF1AD00BFECE4 /* TWPDebugLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugLoginViewController.h; sourceTree = "<group>"; };
 		831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginViewController.m; sourceTree = "<group>"; };
@@ -513,6 +516,8 @@
 				83924DCF1AE105AB00C25895 /* NSColor+Objectwitter-C.m */,
 				83924DD01AE105AB00C25895 /* NSDate+WSCCocoaDate.h */,
 				83924DD11AE105AB00C25895 /* NSDate+WSCCocoaDate.m */,
+				830B8F901AF13BBF006D2635 /* NSURL+Objectwitter-C.h */,
+				830B8F911AF13BBF006D2635 /* NSURL+Objectwitter-C.m */,
 			);
 			name = "Objectwitter-C";
 			path = "Objectwitter-C/Objectwitter-C";
@@ -1047,6 +1052,7 @@
 				83924DC51AE104A900C25895 /* OTCHashtag.m in Sources */,
 				83D12E5E1AEFB387009ECC13 /* TWPTweetTextField.m in Sources */,
 				83924D921AE1030B00C25895 /* INAppStoreWindowSwizzling.c in Sources */,
+				830B8F921AF13BBF006D2635 /* NSURL+Objectwitter-C.m in Sources */,
 				83AAF6F31AECF6C2007A3A48 /* TWPListsViewController.m in Sources */,
 				83924DFD1AE105E600C25895 /* STTwitterOS.m in Sources */,
 				83AAF6EA1AECF648007A3A48 /* TWPHomeViewController.m in Sources */,
