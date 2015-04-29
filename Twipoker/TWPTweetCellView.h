@@ -26,7 +26,7 @@
 
 @class OTCTweet;
 @class OTCTwitterUser;
-@class TWPUserAvatar;
+@class TWPUserAvatarWell;
 
 // TWPTweetCellView class
 @interface TWPTweetCellView : NSTableCellView
@@ -36,7 +36,7 @@
     }
 
 #pragma mark Outlets
-@property ( weak ) IBOutlet TWPUserAvatar* avatarImageView;
+@property ( weak ) IBOutlet TWPUserAvatarWell* avatarImageView;
 @property ( weak ) IBOutlet NSTextField* userDisplayNameLabel;
 @property ( weak ) IBOutlet NSTextField* userScreenNameLabel;
 @property ( weak ) IBOutlet NSTextField* tweetTextLabel;

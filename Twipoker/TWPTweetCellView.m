@@ -23,7 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTweetCellView.h"
-#import "TWPUserAvatar.h"
+#import "TWPUserAvatarWell.h"
 
 @implementation TWPTweetCellView
 

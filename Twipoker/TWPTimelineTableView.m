@@ -25,7 +25,7 @@
 #import "TWPTimelineTableView.h"
 #import "TWPTweetCellView.h"
 #import "TWPTweetTextField.h"
-#import "TWPUserAvatar.h"
+#import "TWPUserAvatarWell.h"
 
 // TWPTimelineTableView class
 @implementation TWPTimelineTableView
@@ -35,7 +35,7 @@
     {
     if ( [ _Responder isKindOfClass: [ TWPTweetCellView class ] ]
             || [ _Responder isKindOfClass: [ TWPTweetTextField class ] ]
-            || [ _Responder isKindOfClass: [ TWPUserAvatar class ] ] )
+            || [ _Responder isKindOfClass: [ TWPUserAvatarWell class ] ] )
         return YES;
     else
         return [ super validateProposedFirstResponder: _Responder forEvent: _Event ];

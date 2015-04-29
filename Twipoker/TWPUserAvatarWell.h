@@ -22,15 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPUserAvatar.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation TWPUserAvatar
-
-- ( void ) mouseDown: ( NSEvent* )_Event
-    {
-    [ super mouseDown: _Event ];
-    [ NSApp sendAction: self.action to: self.target from: self ];
-    }
+@interface TWPUserAvatarWell : NSImageView // Replace it with `NSControl` class
 
 @end
 
