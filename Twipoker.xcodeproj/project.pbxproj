@@ -370,9 +370,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		830B8F601AF0DF72006D2635 /* Stack Content View */ = {
+			isa = PBXGroup;
+			children = (
+				83AAF7021AED0CEF007A3A48 /* TWPViewsStack.h */,
+				83AAF7031AED0CEF007A3A48 /* TWPViewsStack.m */,
+				830B8F5B1AF0CC12006D2635 /* TWPStackContentViewController.h */,
+				830B8F5C1AF0CC12006D2635 /* TWPStackContentViewController.m */,
+				830896221AEA1D2A0081D227 /* TWPStackContentView.h */,
+				830896231AEA1D2A0081D227 /* TWPStackContentView.m */,
+			);
+			name = "Stack Content View";
+			sourceTree = "<group>";
+		};
 		8347B7CE1AE7999F003A49AD /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				8336E5611AEE117C008A099C /* TWPViewController.h */,
+				8336E5621AEE117C008A099C /* TWPViewController.m */,
 				83AAF6CF1AECE801007A3A48 /* TWPTimelineTableView.h */,
 				83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */,
 				830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */,
@@ -381,6 +396,13 @@
 				8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */,
 				83D12E5C1AEFB387009ECC13 /* TWPTweetTextField.h */,
 				83D12E5D1AEFB387009ECC13 /* TWPTweetTextField.m */,
+				83D12E8D1AEFE2FD009ECC13 /* Twitter User View */,
+				83AAF6EB1AECF675007A3A48 /* Home */,
+				83AAF6EC1AECF684007A3A48 /* Favorites */,
+				83AAF6F01AECF6AC007A3A48 /* Lists */,
+				83AAF6F41AECF6D9007A3A48 /* Notifications */,
+				83AAF6F81AECF6F5007A3A48 /* Me */,
+				83AAF6FE1AECF721007A3A48 /* Messages */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -399,20 +421,13 @@
 		83924D271AE0FC6300C25895 /* Main Window */ = {
 			isa = PBXGroup;
 			children = (
+				83924D281AE0FC6F00C25895 /* xib */,
 				83F231B21AE1147A00A05D1D /* TWPMainWindowController.h */,
 				83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */,
 				83F231AF1AE1147A00A05D1D /* TWPMainWindow.h */,
 				83F231B01AE1147A00A05D1D /* TWPMainWindow.m */,
-				83AAF7021AED0CEF007A3A48 /* TWPViewsStack.h */,
-				83AAF7031AED0CEF007A3A48 /* TWPViewsStack.m */,
-				830B8F5B1AF0CC12006D2635 /* TWPStackContentViewController.h */,
-				830B8F5C1AF0CC12006D2635 /* TWPStackContentViewController.m */,
-				830896221AEA1D2A0081D227 /* TWPStackContentView.h */,
-				830896231AEA1D2A0081D227 /* TWPStackContentView.m */,
-				8336E5611AEE117C008A099C /* TWPViewController.h */,
-				8336E5621AEE117C008A099C /* TWPViewController.m */,
-				83924D281AE0FC6F00C25895 /* xib */,
 				8347B7CF1AE799FF003A49AD /* Dashboard */,
+				830B8F601AF0DF72006D2635 /* Stack Content View */,
 				8347B7CE1AE7999F003A49AD /* Timeline */,
 			);
 			name = "Main Window";
@@ -421,14 +436,7 @@
 		83924D281AE0FC6F00C25895 /* xib */ = {
 			isa = PBXGroup;
 			children = (
-				83D12E8D1AEFE2FD009ECC13 /* Twitter User View */,
 				83F231B11AE1147A00A05D1D /* TWPMainWindow.xib */,
-				83AAF6EB1AECF675007A3A48 /* Home */,
-				83AAF6EC1AECF684007A3A48 /* Favorites */,
-				83AAF6F01AECF6AC007A3A48 /* Lists */,
-				83AAF6F41AECF6D9007A3A48 /* Notifications */,
-				83AAF6F81AECF6F5007A3A48 /* Me */,
-				83AAF6FE1AECF721007A3A48 /* Messages */,
 			);
 			name = xib;
 			sourceTree = "<group>";
