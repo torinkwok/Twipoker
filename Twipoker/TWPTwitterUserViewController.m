@@ -47,9 +47,7 @@
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
     if ( self = [ super initWithNibName: @"TWPTwitterUserView" bundle: [ NSBundle mainBundle ] ] )
-        {
-
-        }
+        [ self.twitterUserView setTwitterUser: _TwitterUser ];
 
     return self;
     }
