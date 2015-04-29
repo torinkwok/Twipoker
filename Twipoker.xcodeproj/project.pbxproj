@@ -10,6 +10,7 @@
 		8308961E1AEA1D1D0081D227 /* TWPTimelineScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */; };
 		830896211AEA1D1D0081D227 /* TWPTweetCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */; };
 		830896241AEA1D2A0081D227 /* TWPStackContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896231AEA1D2A0081D227 /* TWPStackContentView.m */; };
+		830B8F5D1AF0CC12006D2635 /* TWPStackContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B8F5C1AF0CC12006D2635 /* TWPStackContentViewController.m */; };
 		831447D21ACFF19300BFECE4 /* TWPDebugLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */; };
 		831447D51ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */; };
 		831447D91AD0008E00BFECE4 /* TWPDebugLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D81AD0008E00BFECE4 /* TWPDebugLoginView.m */; };
@@ -64,7 +65,6 @@
 		83AAF6DB1AECE930007A3A48 /* TWPNotificationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83AAF6DA1AECE930007A3A48 /* TWPNotificationsView.xib */; };
 		83AAF6DF1AECE964007A3A48 /* TWPMeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83AAF6DE1AECE964007A3A48 /* TWPMeView.xib */; };
 		83AAF6E11AECE9E1007A3A48 /* TWPMessagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83AAF6E01AECE9E1007A3A48 /* TWPMessagesView.xib */; };
-		83AAF6E41AECEE60007A3A48 /* TWPDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF6E31AECEE60007A3A48 /* TWPDashboardViewController.m */; };
 		83AAF6E71AECF41B007A3A48 /* TWPDashboardCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF6E61AECF41B007A3A48 /* TWPDashboardCellView.m */; };
 		83AAF6EA1AECF648007A3A48 /* TWPHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF6E91AECF648007A3A48 /* TWPHomeViewController.m */; };
 		83AAF6EF1AECF6A4007A3A48 /* TWPFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF6EE1AECF6A4007A3A48 /* TWPFavoritesViewController.m */; };
@@ -141,6 +141,8 @@
 		8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetCellView.m; path = Twipoker/TWPTweetCellView.m; sourceTree = "<group>"; };
 		830896221AEA1D2A0081D227 /* TWPStackContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPStackContentView.h; path = Twipoker/TWPStackContentView.h; sourceTree = "<group>"; };
 		830896231AEA1D2A0081D227 /* TWPStackContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPStackContentView.m; path = Twipoker/TWPStackContentView.m; sourceTree = "<group>"; };
+		830B8F5B1AF0CC12006D2635 /* TWPStackContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPStackContentViewController.h; path = Twipoker/TWPStackContentViewController.h; sourceTree = "<group>"; };
+		830B8F5C1AF0CC12006D2635 /* TWPStackContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPStackContentViewController.m; path = Twipoker/TWPStackContentViewController.m; sourceTree = "<group>"; };
 		831447D11ACFF19300BFECE4 /* TWPDebugLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TWPDebugLoginView.xib; sourceTree = "<group>"; };
 		831447D31ACFF1AD00BFECE4 /* TWPDebugLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugLoginViewController.h; sourceTree = "<group>"; };
 		831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginViewController.m; sourceTree = "<group>"; };
@@ -246,8 +248,6 @@
 		83AAF6DA1AECE930007A3A48 /* TWPNotificationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPNotificationsView.xib; path = Twipoker/TWPNotificationsView.xib; sourceTree = "<group>"; };
 		83AAF6DE1AECE964007A3A48 /* TWPMeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPMeView.xib; path = Twipoker/TWPMeView.xib; sourceTree = "<group>"; };
 		83AAF6E01AECE9E1007A3A48 /* TWPMessagesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPMessagesView.xib; path = Twipoker/TWPMessagesView.xib; sourceTree = "<group>"; };
-		83AAF6E21AECEE60007A3A48 /* TWPDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDashboardViewController.h; path = Twipoker/TWPDashboardViewController.h; sourceTree = "<group>"; };
-		83AAF6E31AECEE60007A3A48 /* TWPDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDashboardViewController.m; path = Twipoker/TWPDashboardViewController.m; sourceTree = "<group>"; };
 		83AAF6E51AECF41B007A3A48 /* TWPDashboardCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDashboardCellView.h; path = Twipoker/TWPDashboardCellView.h; sourceTree = "<group>"; };
 		83AAF6E61AECF41B007A3A48 /* TWPDashboardCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDashboardCellView.m; path = Twipoker/TWPDashboardCellView.m; sourceTree = "<group>"; };
 		83AAF6E81AECF648007A3A48 /* TWPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPHomeViewController.h; path = Twipoker/TWPHomeViewController.h; sourceTree = "<group>"; };
@@ -390,8 +390,6 @@
 			children = (
 				83AAF7021AED0CEF007A3A48 /* TWPDashboardStack.h */,
 				83AAF7031AED0CEF007A3A48 /* TWPDashboardStack.m */,
-				83AAF6E21AECEE60007A3A48 /* TWPDashboardViewController.h */,
-				83AAF6E31AECEE60007A3A48 /* TWPDashboardViewController.m */,
 				83AAF7061AED2B6D007A3A48 /* TWPDashboardView.h */,
 				83AAF7071AED2B6D007A3A48 /* TWPDashboardView.m */,
 				83AAF6E51AECF41B007A3A48 /* TWPDashboardCellView.h */,
@@ -407,6 +405,8 @@
 				83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */,
 				83F231AF1AE1147A00A05D1D /* TWPMainWindow.h */,
 				83F231B01AE1147A00A05D1D /* TWPMainWindow.m */,
+				830B8F5B1AF0CC12006D2635 /* TWPStackContentViewController.h */,
+				830B8F5C1AF0CC12006D2635 /* TWPStackContentViewController.m */,
 				830896221AEA1D2A0081D227 /* TWPStackContentView.h */,
 				830896231AEA1D2A0081D227 /* TWPStackContentView.m */,
 				8336E5611AEE117C008A099C /* TWPViewController.h */,
@@ -1063,7 +1063,6 @@
 				83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */,
 				83924DAA1AE1033700C25895 /* MASPreferencesWindowController.m in Sources */,
 				83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */,
-				83AAF6E41AECEE60007A3A48 /* TWPDashboardViewController.m in Sources */,
 				831447D91AD0008E00BFECE4 /* TWPDebugLoginView.m in Sources */,
 				83924DC71AE104A900C25895 /* OTCPlace.m in Sources */,
 				83D12E931AEFE33E009ECC13 /* TWPTwitterUserViewController.m in Sources */,
@@ -1071,6 +1070,7 @@
 				83F231B61AE1147A00A05D1D /* TWPMainWindowController.m in Sources */,
 				83F232171AE130A900A05D1D /* TWPLoginUsersManager.m in Sources */,
 				83AAF7081AED2B6D007A3A48 /* TWPDashboardView.m in Sources */,
+				830B8F5D1AF0CC12006D2635 /* TWPStackContentViewController.m in Sources */,
 				83AAF7041AED0CEF007A3A48 /* TWPDashboardStack.m in Sources */,
 				83AAF6EF1AECF6A4007A3A48 /* TWPFavoritesViewController.m in Sources */,
 				83924DC91AE104A900C25895 /* OTCTweet.m in Sources */,

@@ -30,7 +30,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="44" rowSizeStyle="automatic" viewBased="YES" id="y2h-Qf-hPL">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="289" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -75,8 +75,8 @@
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
-                                        <outlet property="dataSource" destination="1Ip-8l-ddr" id="i7m-1O-1it"/>
-                                        <outlet property="delegate" destination="1Ip-8l-ddr" id="ftn-qa-Q0S"/>
+                                        <outlet property="dataSource" destination="HUR-ik-D4y" id="wYD-2k-96n"/>
+                                        <outlet property="delegate" destination="HUR-ik-D4y" id="woo-Z0-KDj"/>
                                     </connections>
                                 </tableView>
                             </subviews>
@@ -113,17 +113,6 @@
             </view>
             <point key="canvasLocation" x="-119.5" y="-1799.5"/>
         </window>
-        <customObject id="1Ip-8l-ddr" customClass="TWPDashboardViewController">
-            <connections>
-                <outlet property="favoritesDashboardStack" destination="k9K-Hk-Xzb" id="5mK-mN-tGp"/>
-                <outlet property="homeDashboardStack" destination="i5X-Cg-E7K" id="5LZ-rO-9kw"/>
-                <outlet property="listsDashboardStack" destination="jhD-Ze-QK8" id="pRv-cD-cGH"/>
-                <outlet property="meDashboardStack" destination="uTU-qJ-3dF" id="Vgd-OD-azk"/>
-                <outlet property="messagesDashboardStack" destination="4cS-D0-vD7" id="yUV-U2-paB"/>
-                <outlet property="notificationsDashboardStack" destination="A4Q-KL-bMh" id="e00-Hx-Pgx"/>
-                <outlet property="view" destination="y2h-Qf-hPL" id="BFS-2x-y3F"/>
-            </connections>
-        </customObject>
         <customObject id="qYt-FS-RIP" customClass="TWPHomeViewController"/>
         <customObject id="D4R-Db-Yb8" customClass="TWPFavoritesViewController"/>
         <customObject id="NMQ-Oj-KgN" customClass="TWPListsViewController"/>
@@ -158,6 +147,17 @@
         <customObject id="4cS-D0-vD7" userLabel="Messages - Dashboard Stack" customClass="TWPDashboardStack">
             <connections>
                 <outlet property="baseViewController" destination="f4H-bM-VHT" id="h8m-h5-KdH"/>
+            </connections>
+        </customObject>
+        <customObject id="HUR-ik-D4y" customClass="TWPStackContentViewController">
+            <connections>
+                <outlet property="favoritesDashboardStack" destination="k9K-Hk-Xzb" id="dxH-fp-hcg"/>
+                <outlet property="homeDashboardStack" destination="i5X-Cg-E7K" id="c2I-Ug-frY"/>
+                <outlet property="listsDashboardStack" destination="jhD-Ze-QK8" id="piV-M9-8Ce"/>
+                <outlet property="meDashboardStack" destination="uTU-qJ-3dF" id="0zS-11-lgA"/>
+                <outlet property="messagesDashboardStack" destination="4cS-D0-vD7" id="3ld-Cq-hfG"/>
+                <outlet property="notificationsDashboardStack" destination="A4Q-KL-bMh" id="bdR-3a-REp"/>
+                <outlet property="view" destination="9t8-W1-aLM" id="08g-c7-EMV"/>
             </connections>
         </customObject>
     </objects>
