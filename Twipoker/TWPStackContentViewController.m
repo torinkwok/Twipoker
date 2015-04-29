@@ -26,7 +26,7 @@
 #import "TWPStackContentView.h"
 #import "TWPDashboardView.h"
 #import "TWPDashboardCellView.h"
-#import "TWPDashboardStack.h"
+#import "TWPViewsStack.h"
 
 @implementation TWPStackContentViewController
 
@@ -84,7 +84,7 @@ NSString static* const kColumnIDTabs = @"tabs";
     NSString* tabName = [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ];
     [ dashboardCellView.textField setStringValue: tabName ];
 
-    TWPDashboardStack* viewsStack = nil;
+    TWPViewsStack* viewsStack = nil;
     switch ( _Row )
         {
         case 0: viewsStack = self.homeDashboardStack; break;
@@ -111,7 +111,7 @@ NSString static* const kColumnIDTabs = @"tabs";
     TWPDashboardCellView* cellView = ( TWPDashboardCellView* )[ tabTableView.delegate
         tableView: tabTableView viewForTableColumn: currentTableColumn row: ( NSInteger )selectedRow ];
 
-    TWPDashboardStack* associatedViewsStack = [ cellView associatedViewsStack ];
+    TWPViewsStack* associatedViewsStack = [ cellView associatedViewsStack ];
     NSView* associatedView = associatedViewsStack.currentView.view;
 
     [ associatedView setFrame: [ ( TWPStackContentView* )self.view boundsOfElementView ] ];

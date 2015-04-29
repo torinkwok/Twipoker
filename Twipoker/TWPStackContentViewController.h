@@ -24,7 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class TWPDashboardStack;
+@class TWPViewsStack;
 
 @interface TWPStackContentViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
     {
@@ -32,12 +32,12 @@
     NSArray __strong* _dashboardTabs;
     }
 
-@property ( weak ) IBOutlet TWPDashboardStack* homeDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* favoritesDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* listsDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* notificationsDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* meDashboardStack;
-@property ( weak ) IBOutlet TWPDashboardStack* messagesDashboardStack;
+@property ( weak ) IBOutlet TWPViewsStack* homeDashboardStack;
+@property ( weak ) IBOutlet TWPViewsStack* favoritesDashboardStack;
+@property ( weak ) IBOutlet TWPViewsStack* listsDashboardStack;
+@property ( weak ) IBOutlet TWPViewsStack* notificationsDashboardStack;
+@property ( weak ) IBOutlet TWPViewsStack* meDashboardStack;
+@property ( weak ) IBOutlet TWPViewsStack* messagesDashboardStack;
 
 @end
 

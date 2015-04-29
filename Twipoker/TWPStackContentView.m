@@ -25,7 +25,7 @@
 #import "TWPStackContentView.h"
 #import "TWPDashboardView.h"
 #import "TWPDashboardCellView.h"
-#import "TWPDashboardStack.h"
+#import "TWPViewsStack.h"
 
 @implementation TWPStackContentView
 

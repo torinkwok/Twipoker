@@ -113,42 +113,6 @@
             </view>
             <point key="canvasLocation" x="-119.5" y="-1799.5"/>
         </window>
-        <customObject id="qYt-FS-RIP" customClass="TWPHomeViewController"/>
-        <customObject id="D4R-Db-Yb8" customClass="TWPFavoritesViewController"/>
-        <customObject id="NMQ-Oj-KgN" customClass="TWPListsViewController"/>
-        <customObject id="h3J-yb-VMt" customClass="TWPNotificationsViewController"/>
-        <customObject id="27k-py-6ek" customClass="TWPMeViewController"/>
-        <customObject id="f4H-bM-VHT" customClass="TWPMessagesViewController"/>
-        <customObject id="i5X-Cg-E7K" userLabel="Home - Dashboard Stack" customClass="TWPDashboardStack">
-            <connections>
-                <outlet property="baseViewController" destination="qYt-FS-RIP" id="LF0-KP-2wa"/>
-            </connections>
-        </customObject>
-        <customObject id="k9K-Hk-Xzb" userLabel="Favorites - Dashboard Stack" customClass="TWPDashboardStack">
-            <connections>
-                <outlet property="baseViewController" destination="D4R-Db-Yb8" id="tgh-h2-mwM"/>
-            </connections>
-        </customObject>
-        <customObject id="jhD-Ze-QK8" userLabel="Lists - Dashboard Stack" customClass="TWPDashboardStack">
-            <connections>
-                <outlet property="baseViewController" destination="NMQ-Oj-KgN" id="kAZ-3M-Pdm"/>
-            </connections>
-        </customObject>
-        <customObject id="A4Q-KL-bMh" userLabel="Notifications - Dashboard Stack" customClass="TWPDashboardStack">
-            <connections>
-                <outlet property="baseViewController" destination="h3J-yb-VMt" id="IXC-GM-yk7"/>
-            </connections>
-        </customObject>
-        <customObject id="uTU-qJ-3dF" userLabel="Me - Dashboard Stack" customClass="TWPDashboardStack">
-            <connections>
-                <outlet property="baseViewController" destination="27k-py-6ek" id="HoY-Sv-05N"/>
-            </connections>
-        </customObject>
-        <customObject id="4cS-D0-vD7" userLabel="Messages - Dashboard Stack" customClass="TWPDashboardStack">
-            <connections>
-                <outlet property="baseViewController" destination="f4H-bM-VHT" id="h8m-h5-KdH"/>
-            </connections>
-        </customObject>
         <customObject id="HUR-ik-D4y" customClass="TWPStackContentViewController">
             <connections>
                 <outlet property="favoritesDashboardStack" destination="k9K-Hk-Xzb" id="dxH-fp-hcg"/>
@@ -158,6 +122,42 @@
                 <outlet property="messagesDashboardStack" destination="4cS-D0-vD7" id="3ld-Cq-hfG"/>
                 <outlet property="notificationsDashboardStack" destination="A4Q-KL-bMh" id="bdR-3a-REp"/>
                 <outlet property="view" destination="9t8-W1-aLM" id="08g-c7-EMV"/>
+            </connections>
+        </customObject>
+        <customObject id="qYt-FS-RIP" customClass="TWPHomeViewController"/>
+        <customObject id="D4R-Db-Yb8" customClass="TWPFavoritesViewController"/>
+        <customObject id="NMQ-Oj-KgN" customClass="TWPListsViewController"/>
+        <customObject id="h3J-yb-VMt" customClass="TWPNotificationsViewController"/>
+        <customObject id="27k-py-6ek" customClass="TWPMeViewController"/>
+        <customObject id="f4H-bM-VHT" customClass="TWPMessagesViewController"/>
+        <customObject id="i5X-Cg-E7K" userLabel="Home - Views Stack" customClass="TWPViewsStack">
+            <connections>
+                <outlet property="baseViewController" destination="qYt-FS-RIP" id="LF0-KP-2wa"/>
+            </connections>
+        </customObject>
+        <customObject id="k9K-Hk-Xzb" userLabel="Favorites - Views Stack" customClass="TWPViewsStack">
+            <connections>
+                <outlet property="baseViewController" destination="D4R-Db-Yb8" id="tgh-h2-mwM"/>
+            </connections>
+        </customObject>
+        <customObject id="jhD-Ze-QK8" userLabel="Lists - Views Stack" customClass="TWPViewsStack">
+            <connections>
+                <outlet property="baseViewController" destination="NMQ-Oj-KgN" id="kAZ-3M-Pdm"/>
+            </connections>
+        </customObject>
+        <customObject id="A4Q-KL-bMh" userLabel="Notifications - Views Stack" customClass="TWPViewsStack">
+            <connections>
+                <outlet property="baseViewController" destination="h3J-yb-VMt" id="IXC-GM-yk7"/>
+            </connections>
+        </customObject>
+        <customObject id="uTU-qJ-3dF" userLabel="Me - Views Stack" customClass="TWPViewsStack">
+            <connections>
+                <outlet property="baseViewController" destination="27k-py-6ek" id="HoY-Sv-05N"/>
+            </connections>
+        </customObject>
+        <customObject id="4cS-D0-vD7" userLabel="Messages - Views Stack" customClass="TWPViewsStack">
+            <connections>
+                <outlet property="baseViewController" destination="f4H-bM-VHT" id="h8m-h5-KdH"/>
             </connections>
         </customObject>
     </objects>

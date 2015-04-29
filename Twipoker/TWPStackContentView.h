@@ -24,11 +24,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class TWPDashboardStack;
+@class TWPViewsStack;
 
 @interface TWPStackContentView : NSView
 
-@property ( weak ) IBOutlet TWPDashboardStack* initialViewsStack;
+@property ( weak ) IBOutlet TWPViewsStack* initialViewsStack;
 
 #pragma mark Utilities
 - ( NSRect ) boundsOfElementView;

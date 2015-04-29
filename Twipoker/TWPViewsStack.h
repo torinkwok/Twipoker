@@ -22,49 +22,21 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardStack.h"
+#import <Foundation/Foundation.h>
 
-@implementation TWPDashboardStack
-
-@synthesize baseViewController = _baseViewController;
-
-- ( instancetype ) init
+@interface TWPViewsStack : NSObject
     {
-    if ( self = [ super init ] )
-        self->_viewsStack = [ NSMutableArray array ];
-
-    return self;
+@private
+    NSMutableArray __strong* _viewsStack;
     }
 
-- ( void ) pushView: ( NSViewController* )_ViewController
-    {
-    if ( _ViewController.view )
-        [ self->_viewsStack addObject: _ViewController ];
+// Base View
+@property ( weak ) IBOutlet NSViewController* baseViewController;
 
-    // TODO: Handling error: _ViewController.view must not be nil
-    }
+- ( void ) pushView: ( NSViewController* )_ViewController;
+- ( NSViewController* ) popView;
 
-- ( NSViewController* ) popView
-    {
-    NSViewController* poppedView = nil;
-
-    if ( self->_viewsStack.count )
-        [ self->_viewsStack removeLastObject ];
-
-    return poppedView;
-    }
-
-- ( NSViewController* ) currentView
-    {
-    NSViewController* current = nil;
-
-    if ( self->_viewsStack.count > 0 )
-        current = self->_viewsStack.lastObject;
-    else
-        current = self.baseViewController;
-
-    return current;
-    }
+- ( NSViewController* ) currentView;
 
 @end
 
