@@ -56,6 +56,9 @@
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUA-3k-7Zo" userLabel="Avatar" customClass="TWPUserAvatar">
                                                 <rect key="frame" x="14" y="30" width="76" height="76"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="6e1-qO-y4I"/>
+                                                <connections>
+                                                    <action selector="displayUserAction:" target="feT-IJ-5DR" id="8vM-JX-Wio"/>
+                                                </connections>
                                             </imageView>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUo-13-Uhb" userLabel="Tweet Text" customClass="TWPTweetTextField">
                                                 <rect key="frame" x="110" y="27" width="481" height="51"/>

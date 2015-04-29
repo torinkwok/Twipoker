@@ -24,7 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TWPUserAvatar : NSImageView
+@interface TWPUserAvatar : NSImageView // Replace it with `NSControl` class
 
 @end
 

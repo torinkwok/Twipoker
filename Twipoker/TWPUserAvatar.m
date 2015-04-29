@@ -26,9 +26,10 @@
 
 @implementation TWPUserAvatar
 
-- ( void ) mouseDown:(NSEvent *)theEvent
+- ( void ) mouseDown: ( NSEvent* )_Event
     {
-    NSLog( @"%@", theEvent );
+    [ super mouseDown: _Event ];
+    [ NSApp sendAction: self.action to: self.target from: self ];
     }
 
 @end

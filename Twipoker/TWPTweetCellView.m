@@ -23,8 +23,14 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTweetCellView.h"
+#import "TWPUserAvatar.h"
 
 @implementation TWPTweetCellView
+
+@synthesize avatarImageView;
+@synthesize userDisplayNameLabel;
+@synthesize userScreenNameLabel;
+@synthesize tweetTextLabel;
 
 @dynamic tweet;
 @dynamic author;
@@ -72,7 +78,11 @@
 - ( void ) mouseDown: ( NSEvent* )_Event
     {
     [ super mouseDown: _Event ];
-    NSLog( @"🙅🏻" );
+    }
+
+- ( IBAction ) displayUserAction: ( id )_Sender
+    {
+    NSLog( @"🚀" );
     }
 
 @end
