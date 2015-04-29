@@ -22,31 +22,11 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTimelineTableView.h"
-#import "TWPTweetCellView.h"
-#import "TWPTweetTextField.h"
-#import "TWPUserAvatar.h"
+#import <Cocoa/Cocoa.h>
 
-// TWPTimelineTableView class
-@implementation TWPTimelineTableView
+@interface TWPUserAvatar : NSImageView
 
-- ( BOOL ) validateProposedFirstResponder: ( NSResponder* )_Responder
-                                 forEvent: ( NSEvent* )_Event
-    {
-    if ( [ _Responder isKindOfClass: [ TWPTweetCellView class ] ]
-            || [ _Responder isKindOfClass: [ TWPTweetTextField class ] ]
-            || [ _Responder isKindOfClass: [ TWPUserAvatar class ] ] )
-        return YES;
-    else
-        return [ super validateProposedFirstResponder: _Responder forEvent: _Event ];
-    }
-
-@end // TWPTimelineTableView class
-
-#pragma mark <TWPTimelineTableViewDelegate>
-// Notification Names
-NSString* const TWPTimelineTableViewDataSourceShouldLoadOlderTweets = @"TimelineTableViewDataSource.ShouldLoadOlderTweets";
-NSString* const TWPTimelineTableViewDataSourceShouldLoadLaterTweets = @"TimelineTableViewDataSource.ShouldLoadLaterTweets";
+@end
 
 /*=============================================================================┐
 |                                                                              |
