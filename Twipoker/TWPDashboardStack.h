@@ -36,6 +36,8 @@
 - ( void ) pushView: ( NSViewController* )_ViewController;
 - ( NSViewController* ) popView;
 
+- ( NSViewController* ) currentView;
+
 @end
 
 /*=============================================================================┐

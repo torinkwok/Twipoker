@@ -40,6 +40,7 @@
     {
     if ( _ViewController.view )
         [ self->_viewsStack addObject: _ViewController ];
+
     // TODO: Handling error: _ViewController.view must not be nil
     }
 
@@ -51,6 +52,18 @@
         [ self->_viewsStack removeLastObject ];
 
     return poppedView;
+    }
+
+- ( NSViewController* ) currentView
+    {
+    NSViewController* current = nil;
+
+    if ( self->_viewsStack.count > 0 )
+        current = self->_viewsStack.lastObject;
+    else
+        current = self.baseViewController;
+
+    return current;
     }
 
 @end

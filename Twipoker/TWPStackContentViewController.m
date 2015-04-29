@@ -112,7 +112,7 @@ NSString static* const kColumnIDTabs = @"tabs";
         tableView: tabTableView viewForTableColumn: currentTableColumn row: ( NSInteger )selectedRow ];
 
     TWPDashboardStack* associatedViewsStack = [ cellView associatedViewsStack ];
-    NSView* associatedView = associatedViewsStack.baseViewController.view;
+    NSView* associatedView = associatedViewsStack.currentView.view;
 
     [ associatedView setFrame: [ ( TWPStackContentView* )self.view boundsOfElementView ] ];
     [ ( TWPStackContentView* )self.view setSubviews: @[ associatedView ] ];
