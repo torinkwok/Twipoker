@@ -79,7 +79,7 @@
                                             </textField>
                                         </subviews>
                                         <connections>
-                                            <outlet property="avatarImageView" destination="AUA-3k-7Zo" id="mMX-wH-mTI"/>
+                                            <outlet property="authorAvatarWell" destination="AUA-3k-7Zo" id="mMX-wH-mTI"/>
                                             <outlet property="tweetTextLabel" destination="RUo-13-Uhb" id="KsU-R1-3o6"/>
                                             <outlet property="userDisplayNameLabel" destination="qQh-aM-xlg" id="6y2-5k-I37"/>
                                             <outlet property="userScreenNameLabel" destination="8dn-Xw-kCW" id="bXJ-1t-Yo4"/>

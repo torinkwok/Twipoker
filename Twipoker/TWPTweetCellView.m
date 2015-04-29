@@ -27,7 +27,7 @@
 
 @implementation TWPTweetCellView
 
-@synthesize avatarImageView;
+@synthesize authorAvatarWell;
 @synthesize userDisplayNameLabel;
 @synthesize userScreenNameLabel;
 @synthesize tweetTextLabel;
@@ -56,6 +56,7 @@
         {
         self->_tweet = _Tweet;
 
+        [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
         [ [ self tweetTextLabel ] setStringValue: self->_tweet.tweetText ];
         [ [ self userDisplayNameLabel ] setStringValue: self->_tweet.author.displayName ];
         [ [ self userScreenNameLabel ] setStringValue: [ @"@" stringByAppendingString: self->_tweet.author.screenName ] ];
