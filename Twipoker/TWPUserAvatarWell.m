@@ -39,9 +39,9 @@
 #pragma mark Accessors
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
-    NSLog( @"🚀" );
     if ( self->_twitterUser != _TwitterUser )
         {
+        [ self setImage: nil ];
         self->_twitterUser = _TwitterUser;
 
         NSURL* avatarURL = self->_twitterUser.avatarImageURLOverSSL;
@@ -50,13 +50,13 @@
             ^( NSData* _Data, NSURLResponse* _Response, NSError* _Error )
                 {
                 NSImage* avatarImage = [ [ NSImage alloc ] initWithData: _Data ];
-                self.image = avatarImage;
+                [ self performSelectorOnMainThread: @selector( setImage: ) withObject: avatarImage waitUntilDone: NO ];
                 NSLog( @"✈️" );
                 } ];
 
         [ self->_dataTask resume ];
 
-//        [ self setNeedsDisplay: YES ];
+        // [ self setNeedsDisplay: YES ];
         }
     }
 

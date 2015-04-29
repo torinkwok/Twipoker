@@ -53,9 +53,9 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NCJ-R9-K3H" userLabel="Avatar">
-                                                <rect key="frame" x="14" y="30" width="76" height="76"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="vNN-4G-qhZ"/>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NCJ-R9-K3H" userLabel="Avatar" customClass="TWPUserAvatarWell">
+                                                <rect key="frame" x="17" y="33" width="70" height="70"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="vNN-4G-qhZ"/>
                                             </imageView>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Zm-LF-WLC" userLabel="Tweet Text">
                                                 <rect key="frame" x="110" y="27" width="460" height="51"/>
@@ -76,7 +76,7 @@
                                             </textField>
                                         </subviews>
                                         <connections>
-                                            <outlet property="avatarImageView" destination="NCJ-R9-K3H" id="KT4-AZ-gUH"/>
+                                            <outlet property="authorAvatarWell" destination="NCJ-R9-K3H" id="aJm-MN-4B9"/>
                                             <outlet property="tweetTextLabel" destination="0Zm-LF-WLC" id="qgW-No-aNp"/>
                                             <outlet property="userDisplayNameLabel" destination="eXM-2Q-QOh" id="uWK-Yy-62H"/>
                                             <outlet property="userScreenNameLabel" destination="o41-Av-dG3" id="jsi-WU-dei"/>

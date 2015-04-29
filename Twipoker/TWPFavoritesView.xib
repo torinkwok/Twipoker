@@ -53,9 +53,9 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SvM-Jd-99n" userLabel="Avatar">
-                                                <rect key="frame" x="14" y="30" width="76" height="76"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="cha-Zk-kVb"/>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SvM-Jd-99n" userLabel="Avatar" customClass="TWPUserAvatarWell">
+                                                <rect key="frame" x="17" y="33" width="70" height="70"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="cha-Zk-kVb"/>
                                             </imageView>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qzl-7a-xVt" userLabel="Tweet Text">
                                                 <rect key="frame" x="110" y="27" width="471" height="51"/>
@@ -77,7 +77,7 @@ We'll see :)</string>
                                             </textField>
                                         </subviews>
                                         <connections>
-                                            <outlet property="avatarImageView" destination="SvM-Jd-99n" id="y1K-be-od0"/>
+                                            <outlet property="authorAvatarWell" destination="SvM-Jd-99n" id="ThD-sd-Hzf"/>
                                             <outlet property="tweetTextLabel" destination="qzl-7a-xVt" id="WFF-eI-L5u"/>
                                             <outlet property="userDisplayNameLabel" destination="4ba-FH-E3H" id="xiR-Au-AcM"/>
                                             <outlet property="userScreenNameLabel" destination="5m8-1e-qWr" id="aS4-9v-ttW"/>
