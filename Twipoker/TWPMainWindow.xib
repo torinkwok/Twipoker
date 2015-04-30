@@ -117,7 +117,7 @@
                                     </button>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmE-n4-O8w">
                                         <rect key="frame" x="556" y="18" width="30" height="25"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="draft-tweet-black" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hDF-zy-ZtU">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="draft-tweet-black" imagePosition="only" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hDF-zy-ZtU">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -126,6 +126,12 @@
                                         <rect key="frame" x="288" y="16" width="30" height="30"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="twitter-logo-blue" id="8Lr-ax-6GU"/>
                                     </imageView>
+                                    <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="arD-r0-jYJ">
+                                        <rect key="frame" x="0.0" y="-2" width="606" height="5"/>
+                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <font key="titleFont" metaFont="system"/>
+                                    </box>
                                 </subviews>
                             </customView>
                         </subviews>
@@ -193,11 +199,6 @@
                 <outlet property="baseViewController" destination="f4H-bM-VHT" id="h8m-h5-KdH"/>
             </connections>
         </customObject>
-        <visualEffectView appearanceType="vibrantDark" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="FOi-8j-tmc">
-            <rect key="frame" x="0.0" y="0.0" width="606" height="62"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <point key="canvasLocation" x="-112" y="-1740"/>
-        </visualEffectView>
     </objects>
     <resources>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
