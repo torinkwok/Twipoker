@@ -168,7 +168,7 @@
                 <outlet property="timelineTableView" destination="ytX-LH-Qoq" id="f7T-M4-d7R"/>
                 <outlet property="tweetsCountLabel" destination="KvR-lt-ngl" id="XNR-Sk-rdP"/>
             </connections>
-            <point key="canvasLocation" x="-113.5" y="-2717.5"/>
+            <point key="canvasLocation" x="-251.5" y="-2732.5"/>
         </customView>
     </objects>
 </document>

@@ -26,16 +26,18 @@
 #import "TWPDashboardView.h"
 #import "TWPDashboardCellView.h"
 #import "TWPViewsStack.h"
+#import "TWPNavigationBar.h"
 
 @implementation TWPStackContentView
 
+@synthesize navigationBar = _navigationBar;
 @synthesize initialViewsStack = _initialViewsStack;
 
 #pragma mark Initialization
 - ( void ) awakeFromNib
     {
     [ self.initialViewsStack.baseViewController.view setFrame: [ self boundsOfElementView ] ];
-    [ self setSubviews: @[ self.initialViewsStack.baseViewController.view ] ];
+    [ self setSubviews: @[ self.initialViewsStack.baseViewController.view, self.navigationBar ] ];
     }
 
 #pragma mark Utilities

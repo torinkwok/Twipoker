@@ -27,6 +27,7 @@
 #import "TWPDashboardView.h"
 #import "TWPDashboardCellView.h"
 #import "TWPViewsStack.h"
+#import "TWPNavigationBar.h"
 
 @implementation TWPStackContentViewController
 
@@ -116,6 +117,11 @@ NSString static* const kColumnIDTabs = @"tabs";
 
     [ associatedView setFrame: [ ( TWPStackContentView* )self.view boundsOfElementView ] ];
     [ ( TWPStackContentView* )self.view setSubviews: @[ associatedView ] ];
+
+    TWPNavigationBar* navigationBar = ( ( TWPStackContentView* )self.view ).navigationBar;
+    [ ( ( TWPStackContentView* )self.view ) addSubview: ( NSView* )navigationBar
+                                            positioned: NSWindowBelow
+                                            relativeTo: nil ];
     }
 
 @end

@@ -25,9 +25,11 @@
 #import <Cocoa/Cocoa.h>
 
 @class TWPViewsStack;
+@class TWPNavigationBar;
 
 @interface TWPStackContentView : NSView
 
+@property ( weak ) IBOutlet TWPNavigationBar* navigationBar;
 @property ( weak ) IBOutlet TWPViewsStack* initialViewsStack;
 
 #pragma mark Utilities
