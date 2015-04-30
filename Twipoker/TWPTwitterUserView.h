@@ -24,6 +24,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TWPTimelineTableView;
+
 @interface TWPTwitterUserView : NSView
     {
 @private
@@ -33,6 +35,8 @@
 @property ( weak ) IBOutlet NSTextField* tweetsCountLabel;
 @property ( weak ) IBOutlet NSTextField* followingsCountLabel;
 @property ( weak ) IBOutlet NSTextField* followersCountLabel;
+
+@property ( weak ) IBOutlet TWPTimelineTableView* timelineTableView;
 
 @property ( strong, readwrite ) OTCTwitterUser* twitterUser;
 

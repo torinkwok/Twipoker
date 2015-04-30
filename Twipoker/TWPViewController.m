@@ -72,9 +72,6 @@
 
     OTCTweet* tweet = self->_tweets[ _Row ];
     tweetCellView.tweet = tweet;
-//    [ tweetCellView.userDisplayNameLabel setStringValue: tweet.author.displayName ];
-//    [ tweetCellView.userScreenNameLabel setStringValue: tweet.author.screenName ];
-//    [ tweetCellView.tweetTextLabel setStringValue: tweet.tweetText ];
 
     return tweetCellView;
     }

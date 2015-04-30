@@ -87,6 +87,10 @@
                                         </prototypeCellViews>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="LvE-Rc-Efr"/>
+                                    <outlet property="delegate" destination="-2" id="5Zg-rB-Spw"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -161,6 +165,7 @@
             <connections>
                 <outlet property="followersCountLabel" destination="9vr-Is-YOr" id="yK1-QQ-uuy"/>
                 <outlet property="followingsCountLabel" destination="CPd-VQ-0Pn" id="6Kn-DM-DRi"/>
+                <outlet property="timelineTableView" destination="ytX-LH-Qoq" id="f7T-M4-d7R"/>
                 <outlet property="tweetsCountLabel" destination="KvR-lt-ngl" id="XNR-Sk-rdP"/>
             </connections>
             <point key="canvasLocation" x="-113.5" y="-2717.5"/>

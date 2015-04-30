@@ -24,14 +24,24 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "TWPViewController.h"
+#import "TWPTimelineScrollView.h"
+
 @class TWPTwitterUserView;
 
-@interface TWPTwitterUserViewController : NSViewController
+@interface TWPTwitterUserViewController : TWPViewController
 
 @property ( weak, readwrite ) TWPTwitterUserView* twitterUserView;
 
 + ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
+
+#pragma mark Conforms to <TWPTimelineScrollViewDelegate>
+- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
+       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
+
+- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
+       shouldFetchLaterTweets: ( NSClipView* )_ClipView;
 
 @end
 
