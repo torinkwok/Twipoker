@@ -44,6 +44,9 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
 
 @property ( weak, readonly ) TWPViewsStack* currentDashboardStack;
 
+#pragma mark IBActions
+- ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender;
+
 @end
 
 /*=============================================================================┐

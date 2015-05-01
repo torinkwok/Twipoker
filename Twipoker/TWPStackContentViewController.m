@@ -138,6 +138,12 @@ NSString static* const kColumnIDTabs = @"tabs";
     self.currentDashboardStack = associatedViewsStack;
     }
 
+#pragma mark IBActions
+- ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
+    {
+    NSLog( @"👽" );
+    }
+
 @end
 
 /*=============================================================================┐
