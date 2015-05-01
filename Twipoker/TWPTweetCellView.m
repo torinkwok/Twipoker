@@ -81,7 +81,7 @@
     [ super mouseDown: _Event ];
     }
 
-- ( IBAction ) displayUserAction: ( id )_Sender
+- ( IBAction ) displayUserProfilePanelAction: ( id )_Sender
     {
     NSLog( @"🚀" );
     }

@@ -48,7 +48,7 @@
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet;
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
 
-- ( IBAction ) displayUserAction: ( id )_Sender;
+- ( IBAction ) displayUserProfilePanelAction: ( id )_Sender;
 
 @end // TWPTweetCellView class
 

@@ -29,7 +29,7 @@
 #import "TWPViewsStack.h"
 #import "TWPNavigationBar.h"
 
-// KVO Key Path
+// KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
 
 #pragma mark TWPStackContentViewController + Private Category
