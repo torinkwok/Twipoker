@@ -24,6 +24,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+// KVO Key Path
+NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath;
+
 @class TWPViewsStack;
 
 @interface TWPStackContentViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>

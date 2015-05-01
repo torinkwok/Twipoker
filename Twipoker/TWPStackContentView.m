@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPStackContentView.h"
+#import "TWPStackContentViewController.h"
 #import "TWPDashboardView.h"
 #import "TWPDashboardCellView.h"
 #import "TWPViewsStack.h"
@@ -30,14 +31,25 @@
 
 @implementation TWPStackContentView
 
-@synthesize navigationBar = _navigationBar;
-@synthesize initialViewsStack = _initialViewsStack;
+@synthesize navigationBar;
+
+@synthesize controller;
+@synthesize KVOController;
 
 #pragma mark Initialization
 - ( void ) awakeFromNib
     {
-    [ self.initialViewsStack.baseViewController.view setFrame: [ self boundsOfElementView ] ];
-    [ self setSubviews: @[ self.initialViewsStack.baseViewController.view, self.navigationBar ] ];
+    self.KVOController = [ FBKVOController controllerWithObserver: self ];
+    [ self.KVOController observe: self.controller
+                         keyPath: TWPStackContentViewControllerCurrentDashboardStackKeyPath
+                         options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                           block:
+        ( FBKVONotificationBlock )^( id _Observer, id _Object, NSDictionary* _Changes )
+            {
+            TWPViewsStack* newViewsStack = _Changes[ @"new" ];
+            [ newViewsStack.currentView.view setFrame: [ self boundsOfElementView ] ];
+            [ self setSubviews: @[ newViewsStack.currentView.view, self.navigationBar ] ];
+            } ];
     }
 
 #pragma mark Utilities

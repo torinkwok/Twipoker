@@ -29,6 +29,9 @@
 #import "TWPViewsStack.h"
 #import "TWPNavigationBar.h"
 
+// KVO Key Path
+NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
+
 #pragma mark TWPStackContentViewController + Private Category
 @interface TWPStackContentViewController ()
 
@@ -127,16 +130,10 @@ NSString static* const kColumnIDTabs = @"tabs";
         tableView: tabTableView viewForTableColumn: currentTableColumn row: ( NSInteger )selectedRow ];
 
     TWPViewsStack* associatedViewsStack = [ cellView associatedViewsStack ];
+
+    // self.view is observing this key path,
+    // it will be notified after assignment then make appropriate adjustments
     self.currentDashboardStack = associatedViewsStack;
-    NSView* associatedView = associatedViewsStack.currentView.view;
-
-    [ associatedView setFrame: [ ( TWPStackContentView* )self.view boundsOfElementView ] ];
-    [ ( TWPStackContentView* )self.view setSubviews: @[ associatedView ] ];
-
-    TWPNavigationBar* navigationBar = ( ( TWPStackContentView* )self.view ).navigationBar;
-    [ ( ( TWPStackContentView* )self.view ) addSubview: ( NSView* )navigationBar
-                                            positioned: NSWindowBelow
-                                            relativeTo: nil ];
     }
 
 @end

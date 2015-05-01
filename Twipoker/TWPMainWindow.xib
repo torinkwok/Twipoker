@@ -141,7 +141,7 @@
                             </customView>
                         </subviews>
                         <connections>
-                            <outlet property="initialViewsStack" destination="i5X-Cg-E7K" id="dWv-WC-CqE"/>
+                            <outlet property="controller" destination="HUR-ik-D4y" id="wSL-fX-a3x"/>
                             <outlet property="navigationBar" destination="Cjl-yU-kQO" id="EHL-b3-fwc"/>
                         </connections>
                     </customView>
