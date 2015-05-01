@@ -39,6 +39,8 @@
 @property ( weak ) IBOutlet TWPViewsStack* meDashboardStack;
 @property ( weak ) IBOutlet TWPViewsStack* messagesDashboardStack;
 
+@property ( weak, readonly ) TWPViewsStack* currentDashboardStack;
+
 @end
 
 /*=============================================================================┐

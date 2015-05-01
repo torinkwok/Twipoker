@@ -29,6 +29,13 @@
 #import "TWPViewsStack.h"
 #import "TWPNavigationBar.h"
 
+#pragma mark TWPStackContentViewController + Private Category
+@interface TWPStackContentViewController ()
+
+@property ( weak, readwrite ) TWPViewsStack* currentDashboardStack;
+
+@end // TWPStackContentViewController + Private Category
+
 @implementation TWPStackContentViewController
 
 @synthesize homeDashboardStack;
@@ -37,6 +44,8 @@
 @synthesize notificationsDashboardStack;
 @synthesize meDashboardStack;
 @synthesize messagesDashboardStack;
+
+@synthesize currentDashboardStack;
 
 #pragma mark Initialization
 - ( instancetype ) init
@@ -53,6 +62,11 @@
         }
 
     return self;
+    }
+
+- ( void ) awakeFromNib
+    {
+    self.currentDashboardStack = self.homeDashboardStack;
     }
 
 NSString static* const kColumnIDTabs = @"tabs";
@@ -113,6 +127,7 @@ NSString static* const kColumnIDTabs = @"tabs";
         tableView: tabTableView viewForTableColumn: currentTableColumn row: ( NSInteger )selectedRow ];
 
     TWPViewsStack* associatedViewsStack = [ cellView associatedViewsStack ];
+    self.currentDashboardStack = associatedViewsStack;
     NSView* associatedView = associatedViewsStack.currentView.view;
 
     [ associatedView setFrame: [ ( TWPStackContentView* )self.view boundsOfElementView ] ];
