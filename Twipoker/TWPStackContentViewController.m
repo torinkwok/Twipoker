@@ -35,6 +35,8 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
 #pragma mark TWPStackContentViewController + Private Category
 @interface TWPStackContentViewController ()
 
+// `currentDashboardStack` property was set as read only in the declaration.
+// Make it internally writable.
 @property ( weak, readwrite ) TWPViewsStack* currentDashboardStack;
 
 @end // TWPStackContentViewController + Private Category
