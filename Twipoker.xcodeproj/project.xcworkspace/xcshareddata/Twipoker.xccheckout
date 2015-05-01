@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>584A5B3E-760A-4063-92F3-71D3C5419DC1</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Twipoker</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>18587E881E3ABFA494C4A3627AA8693F7A3692F3</key>
@@ -22,7 +22,7 @@
 		<string>https://github.com/Twipoker-Project/KVOController</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Twipoker.xcodeproj</string>
+	<string>Twipoker.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>18587E881E3ABFA494C4A3627AA8693F7A3692F3</key>

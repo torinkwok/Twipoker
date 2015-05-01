@@ -44,17 +44,6 @@
                                         <rect key="frame" x="1" y="1" width="602" height="116"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qQh-aM-xlg" userLabel="User Display Name" customClass="TWPUserDisplayNameLabel">
-                                                <rect key="frame" x="110" y="86" width="160" height="17"/>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="薛定鄂的月饼" id="RbB-fu-zo4">
-                                                    <font key="font" size="13" name="STHeitiSC-Medium"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352941176469" blue="0.49803921568627452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                                <connections>
-                                                    <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="fQe-4E-d1a"/>
-                                                </connections>
-                                            </textField>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUA-3k-7Zo" userLabel="Avatar" customClass="TWPUserAvatarWell">
                                                 <rect key="frame" x="17" y="33" width="70" height="70"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="6e1-qO-y4I"/>
@@ -71,8 +60,18 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
+                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eac-Er-ZZh">
+                                                <rect key="frame" x="107" y="82" width="215" height="25"/>
+                                                <buttonCell key="cell" type="square" title="薛定谔的月饼" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="left" imageScaling="proportionallyDown" inset="2" id="gyJ-VR-MFd">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="FC1-4K-dU5"/>
+                                                </connections>
+                                            </button>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-Xw-kCW" userLabel="User Screen Name">
-                                                <rect key="frame" x="335" y="84" width="74" height="21"/>
+                                                <rect key="frame" x="328" y="82" width="74" height="21"/>
                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="@NSTongG" id="j46-ja-PuX">
                                                     <font key="font" size="10" name="ArialUnicodeMS"/>
                                                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -83,7 +82,7 @@
                                         <connections>
                                             <outlet property="authorAvatarWell" destination="AUA-3k-7Zo" id="mMX-wH-mTI"/>
                                             <outlet property="tweetTextLabel" destination="RUo-13-Uhb" id="KsU-R1-3o6"/>
-                                            <outlet property="userDisplayNameLabel" destination="qQh-aM-xlg" id="6y2-5k-I37"/>
+                                            <outlet property="userDisplayNameButton" destination="Eac-Er-ZZh" id="H3L-JW-eak"/>
                                             <outlet property="userScreenNameLabel" destination="8dn-Xw-kCW" id="bXJ-1t-Yo4"/>
                                         </connections>
                                     </tableCellView>

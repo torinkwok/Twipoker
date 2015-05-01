@@ -35,7 +35,8 @@
     {
     if ( [ _Responder isKindOfClass: [ TWPTweetCellView class ] ]
             || [ _Responder isKindOfClass: [ TWPTweetTextField class ] ]
-            || [ _Responder isKindOfClass: [ TWPUserAvatarWell class ] ] )
+            || [ _Responder isKindOfClass: [ TWPUserAvatarWell class ] ]
+            || [ _Responder isKindOfClass: [ NSButton class ] ] )
         return YES;
     else
         return [ super validateProposedFirstResponder: _Responder forEvent: _Event ];
