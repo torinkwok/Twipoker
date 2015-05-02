@@ -28,6 +28,7 @@
 #import "TWPDashboardCellView.h"
 #import "TWPViewsStack.h"
 #import "TWPNavigationBar.h"
+#import "TWPTwitterUserViewController.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -141,7 +142,7 @@ NSString static* const kColumnIDTabs = @"tabs";
 #pragma mark IBActions
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
     {
-    NSLog( @"👽" );
+
     }
 
 @end
