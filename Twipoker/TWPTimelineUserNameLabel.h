@@ -29,8 +29,8 @@
 @private
     OTCTwitterUser __strong* _twitterUser;
 
-    NSButtonCell __strong* _userDisplayNameCell;    // e.g. 薛定谔的月饼
-    NSButtonCell __strong* _userScreenNameCell;     // e.g. @NSTongG
+    NSRect _displayNameStringRect;  // e.g. 薛定谔的月饼
+    NSRect _screenNameStringRect;   // e.g. @NSTongG
     }
 
 @property ( strong, readwrite ) OTCTwitterUser* twitterUser;
