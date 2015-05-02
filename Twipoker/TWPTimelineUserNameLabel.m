@@ -63,7 +63,7 @@
     self->_fontOfDisplayName = [ [ NSFontManager sharedFontManager ] convertWeight: 5.f ofFont: [ NSFont fontWithName: @"Heiti SC" size: 15.f ] ];
     self->_colorOfDisplayName = [ NSColor blackColor ];
 
-    self->_fontOfScreenName = [ [ NSFontManager sharedFontManager ] convertWeight: 4.f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 13.f ] ];
+    self->_fontOfScreenName = [ [ NSFontManager sharedFontManager ] convertWeight: 2.f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 13.f ] ];
     self->_colorOfScreenName = [ NSColor colorWithSRGBRed: 152.f / 255 green: 166.f / 255 blue: 178.f / 255 alpha: 1.f ];
     }
 
@@ -93,10 +93,8 @@
                                                 , NSMinY( self.bounds )
                                                 , screenNameStringSizeWithAttrs.width, screenNameStringSizeWithAttrs.height
                                                 );
-        NSLog( @"Before: %g", self->_screenNameStringRect.origin.y );
+
         self->_screenNameStringRect.origin.y += ( NSHeight( self->_displayNameStringRect ) - NSHeight( self->_screenNameStringRect ) ) / 2;
-        NSLog( @"After: %g", self->_screenNameStringRect.origin.y );
-        NSLog( @"..." );
 
         self->_attributedDisplayNameString =
             [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.displayName
@@ -119,6 +117,13 @@
 
     [ self->_attributedDisplayNameString drawInRect: self->_displayNameStringRect ];
     [ self->_attributedScreenNameString drawInRect: self->_screenNameStringRect ];
+    }
+
+#pragma mark Events Handling
+- ( void ) mouseDown: ( NSEvent* )_Event
+    {
+    [ super mouseDown: _Event ];
+    [ NSApp sendAction: self.action to: self.target from: self ];
     }
 
 @end

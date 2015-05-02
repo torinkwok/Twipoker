@@ -24,16 +24,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TWPTimelineUserNameLabel : NSView
+@interface TWPTimelineUserNameLabel : NSControl
     {
 @private
     OTCTwitterUser __strong* _twitterUser;
 
-    NSRect _displayNameStringRect;  // e.g. 薛定谔的月饼
-    NSRect _screenNameStringRect;   // e.g. @NSTongG
+    NSRect _displayNameStringRect;
+    NSRect _screenNameStringRect;
 
-    NSAttributedString __strong* _attributedDisplayNameString;
-    NSAttributedString __strong* _attributedScreenNameString;
+    NSAttributedString __strong* _attributedDisplayNameString;  // e.g. 薛定谔的月饼
+    NSAttributedString __strong* _attributedScreenNameString;   // e.g. @NSTongG
 
     NSFont __strong* _fontOfDisplayName;
     NSColor __strong* _colorOfDisplayName;

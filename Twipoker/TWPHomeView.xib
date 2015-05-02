@@ -61,7 +61,10 @@
                                                 </textFieldCell>
                                             </textField>
                                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rT6-rl-xjK" customClass="TWPTimelineUserNameLabel">
-                                                <rect key="frame" x="112" y="86" width="477" height="22"/>
+                                                <rect key="frame" x="110" y="86" width="481" height="22"/>
+                                                <connections>
+                                                    <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="DPZ-XO-MCM"/>
+                                                </connections>
                                             </customView>
                                         </subviews>
                                         <connections>
