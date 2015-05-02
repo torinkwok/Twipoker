@@ -42,6 +42,31 @@
     return self;
     }
 
+- ( instancetype ) initWithFrame: ( NSRect )_Frame
+    {
+    if ( self = [ super initWithFrame: _Frame ] )
+        [ self _init ];
+
+    return self;
+    }
+
+- ( instancetype ) initWithCoder: ( NSCoder* )_Coder
+    {
+    if ( self = [ super initWithCoder: _Coder ] )
+        [ self _init ];
+
+    return self;
+    }
+
+- ( void ) _init
+    {
+    self->_fontOfDisplayName = [ [ NSFontManager sharedFontManager ] convertWeight: 5.f ofFont: [ NSFont fontWithName: @"Heiti SC" size: 15.f ] ];
+    self->_colorOfDisplayName = [ NSColor blackColor ];
+
+    self->_fontOfScreenName = [ [ NSFontManager sharedFontManager ] convertWeight: 4.f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 13.f ] ];
+    self->_colorOfScreenName = [ NSColor colorWithSRGBRed: 152.f / 255 green: 166.f / 255 blue: 178.f / 255 alpha: 1.f ];
+    }
+
 #pragma mark Accessors
 - ( OTCTwitterUser* ) twitterUser
     {
@@ -55,19 +80,34 @@
         self->_twitterUser = _TwitterUser;
 
         NSSize displayNameStringSizeWithAttrs =
-            [ self->_twitterUser.displayName sizeWithAttributes: @{ NSFontNameAttribute : [ NSFont fontWithName: @"Heiti SC" size: 20.f ] } ];
+            [ self->_twitterUser.displayName sizeWithAttributes: @{ NSFontAttributeName : self->_fontOfDisplayName } ];
 
         NSSize screenNameStringSizeWithAttrs =
-            [ self->_twitterUser.screenName sizeWithAttributes: @{ NSFontNameAttribute : [ NSFont fontWithName: @"Heiti SC" size: 10.f ] } ];
+            [ self->_twitterUser.screenName sizeWithAttributes: @{ NSFontAttributeName : self->_fontOfScreenName } ];
 
         self->_displayNameStringRect = NSMakeRect( NSMinX( self.bounds ), NSMinY( self.bounds )
                                                  , displayNameStringSizeWithAttrs.width, displayNameStringSizeWithAttrs.height
                                                  );
 
-        self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( self->_displayNameStringRect ) + 5.f, NSMinY( self.bounds )
+        self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( self->_displayNameStringRect ) + 3.f
+                                                , NSMinY( self.bounds )
                                                 , screenNameStringSizeWithAttrs.width, screenNameStringSizeWithAttrs.height
                                                 );
+        NSLog( @"Before: %g", self->_screenNameStringRect.origin.y );
+        self->_screenNameStringRect.origin.y += ( NSHeight( self->_displayNameStringRect ) - NSHeight( self->_screenNameStringRect ) ) / 2;
+        NSLog( @"After: %g", self->_screenNameStringRect.origin.y );
+        NSLog( @"..." );
 
+        self->_attributedDisplayNameString =
+            [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.displayName
+                                               attributes: @{ NSFontAttributeName : self->_fontOfDisplayName
+                                                            , NSForegroundColorAttributeName : self->_colorOfDisplayName
+                                                            } ];
+        self->_attributedScreenNameString =
+            [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.screenName
+                                               attributes: @{ NSFontAttributeName : self->_fontOfScreenName
+                                                            , NSForegroundColorAttributeName : self->_colorOfScreenName
+                                                            } ];
         [ self setNeedsDisplay: YES ];
         }
     }
@@ -77,21 +117,8 @@
     {
     [ super drawRect: _DirtyRect ];
 
-    NSAttributedString* attributedDisplayNameString =
-        [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.displayName
-                                           attributes: @{ NSFontNameAttribute : [ NSFont fontWithName: @"Heiti SC" size: 20.f ]
-                                                        , NSForegroundColorAttributeName : [ NSColor colorWithSRGBRed: 102.f / 255 green: 117.f / 255 blue: 100.f / 255 alpha: 1.f ]
-                                                        } ];
-
-    [ attributedDisplayNameString drawInRect: self->_displayNameStringRect ];
-
-    NSAttributedString* attributedScreenNameString =
-        [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.screenName
-                                           attributes: @{ NSFontNameAttribute : [ NSFont fontWithName: @"Heiti SC" size: 10.f ]
-                                                        , NSForegroundColorAttributeName : [ NSColor colorWithSRGBRed: 102.f / 255 green: 117.f / 255 blue: 100.f / 255 alpha: 1.f ]
-                                                        } ];
-
-    [ attributedScreenNameString drawInRect: self->_screenNameStringRect ];
+    [ self->_attributedDisplayNameString drawInRect: self->_displayNameStringRect ];
+    [ self->_attributedScreenNameString drawInRect: self->_screenNameStringRect ];
     }
 
 @end

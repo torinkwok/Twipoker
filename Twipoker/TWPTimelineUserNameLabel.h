@@ -31,6 +31,15 @@
 
     NSRect _displayNameStringRect;  // e.g. 薛定谔的月饼
     NSRect _screenNameStringRect;   // e.g. @NSTongG
+
+    NSAttributedString __strong* _attributedDisplayNameString;
+    NSAttributedString __strong* _attributedScreenNameString;
+
+    NSFont __strong* _fontOfDisplayName;
+    NSColor __strong* _colorOfDisplayName;
+
+    NSFont __strong* _fontOfScreenName;
+    NSColor __strong* _colorOfScreenName;
     }
 
 @property ( strong, readwrite ) OTCTwitterUser* twitterUser;
