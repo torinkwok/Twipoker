@@ -22,127 +22,82 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPStackContentViewController.h"
-#import "TWPStackContentView.h"
-#import "TWPDashboardView.h"
-#import "TWPDashboardCellView.h"
-#import "TWPViewsStack.h"
-#import "TWPNavigationBar.h"
-#import "TWPTwitterUserViewController.h"
+#import "TWPTimelineUserNameLabel.h"
 
-// KVO Key Paths
-NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
+@implementation TWPTimelineUserNameLabel
 
-#pragma mark TWPStackContentViewController + Private Category
-@interface TWPStackContentViewController ()
-
-// `currentDashboardStack` property was set as read only in the declaration.
-// Make it internally writable.
-@property ( weak, readwrite ) TWPViewsStack* currentDashboardStack;
-
-@end // TWPStackContentViewController + Private Category
-
-@implementation TWPStackContentViewController
-
-@synthesize homeDashboardStack;
-@synthesize favoritesDashboardStack;
-@synthesize listsDashboardStack;
-@synthesize notificationsDashboardStack;
-@synthesize meDashboardStack;
-@synthesize messagesDashboardStack;
-
-@synthesize currentDashboardStack;
+@dynamic twitterUser;
 
 #pragma mark Initialization
-- ( instancetype ) init
++ ( instancetype ) timelineUserNameLabelWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+    {
+    return [ [ [ self class ] alloc ] initWithTwitterUser: _TwitterUser ];
+    }
+
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
     if ( self = [ super init ] )
+        [ self setTwitterUser: _TwitterUser ];
+
+    return self;
+    }
+
+- ( instancetype ) initWithFrame: ( NSRect )_Frame
+    {
+    if ( self = [ super initWithFrame: _Frame ] )
         {
-        self->_dashboardTabs = @[ NSLocalizedString( @"Home", nil )
-                                , NSLocalizedString( @"Favorites", nil )
-                                , NSLocalizedString( @"Lists", nil )
-                                , NSLocalizedString( @"Notifications", nil )
-                                , NSLocalizedString( @"Me", nil )
-                                , NSLocalizedString( @"Messages", nil )
-                                ];
+        self->_userDisplayNameCell = [ [ NSButtonCell alloc ] init ];
+        self->_userScreenNameCell = [ [ NSButtonCell alloc ] init ];
+
+        [ self->_userDisplayNameCell setBordered: NO ];
+        [ self->_userScreenNameCell setBordered: NO ];
+
+        [ self->_userDisplayNameCell setFont: [ NSFont fontWithName: @"Heiti SC" size: 13.f ] ];
+        [ self->_userScreenNameCell setFont: [ NSFont fontWithName: @"Arial Unicode MS" size: 10.f ] ];
         }
 
     return self;
     }
 
-- ( void ) awakeFromNib
+#pragma mark Accessors
+- ( OTCTwitterUser* ) twitterUser
     {
-    self.currentDashboardStack = self.homeDashboardStack;
+    return self->_twitterUser;
     }
 
-NSString static* const kColumnIDTabs = @"tabs";
-
-#pragma mark Conforms to <NSTableViewDataSource>
-- ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
+- ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
-    return self->_dashboardTabs.count;
-    }
-
-- ( id )            tableView: ( NSTableView* )_TableView
-    objectValueForTableColumn: ( NSTableColumn* )_TableColumn
-                          row: ( NSInteger )_Row
-    {
-    id result = nil;
-
-    if ( [ _TableColumn.identifier isEqualToString: kColumnIDTabs ] )
-        result = self->_dashboardTabs[ _Row ];
-
-    return result;
-    }
-
-#pragma mark Conforms to <NSTableViewDelegate>
-- ( NSView* ) tableView: ( NSTableView* )_TableView
-     viewForTableColumn: ( NSTableColumn* )_TableColumn
-                    row: ( NSInteger )_Row
-    {
-    TWPDashboardCellView* dashboardCellView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
-
-    NSString* tabName = [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ];
-    [ dashboardCellView.textField setStringValue: tabName ];
-
-    TWPViewsStack* viewsStack = nil;
-    switch ( _Row )
+    if ( self->_twitterUser != _TwitterUser )
         {
-        case 0: viewsStack = self.homeDashboardStack; break;
-        case 1: viewsStack = self.favoritesDashboardStack; break;
-        case 2: viewsStack = self.listsDashboardStack; break;
-        case 3: viewsStack = self.notificationsDashboardStack; break;
-        case 4: viewsStack = self.meDashboardStack; break;
-        case 5: viewsStack = self.messagesDashboardStack; break;
+        self->_twitterUser = _TwitterUser;
+
+        [ self->_userDisplayNameCell setTitle: self->_twitterUser.displayName ];
+        [ self->_userScreenNameCell setTitle: self->_twitterUser.screenName ];
         }
-
-    dashboardCellView.associatedViewsStack = viewsStack;
-
-    // TODO: [ cellView.imageView set... ];
-
-    return dashboardCellView;
     }
 
-- ( void ) tableViewSelectionDidChange: ( NSNotification* )_Notif
+#pragma mark Customize Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    NSTableView* tabTableView = [ _Notif object ];
-    NSTableColumn* currentTableColumn = [ tabTableView tableColumnWithIdentifier: @"tabs" ];
-    NSInteger selectedRow = [ tabTableView selectedRow ];
+    [ super drawRect: _DirtyRect ];
 
-    TWPDashboardCellView* cellView = ( TWPDashboardCellView* )[ tabTableView.delegate
-        tableView: tabTableView viewForTableColumn: currentTableColumn row: ( NSInteger )selectedRow ];
+    NSString* displayNameString = self->_userDisplayNameCell.title;
+    NSString* screenNameString = self->_userScreenNameCell.title;
 
-    TWPViewsStack* associatedViewsStack = [ cellView associatedViewsStack ];
+    NSSize displayNameStringSizeWithAttrs =
+        [ displayNameString sizeWithAttributes: @{ NSFontNameAttribute : self->_userDisplayNameCell.font } ];
 
-    // self.view is observing this key path,
-    // it will be notified after assignment then make appropriate adjustments
-    self.currentDashboardStack = associatedViewsStack;
-    }
+    NSSize screenNameStringSizeWithAttrs =
+        [ screenNameString sizeWithAttributes: @{ NSFontNameAttribute : self->_userScreenNameCell.font } ];
 
-#pragma mark IBActions
-- ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
-    {
-    NSLog( @"👽" );
+    NSRect displayNameRect = NSMakeRect( NSMinX( self.bounds ), NSMinY( self.bounds )
+                                       , displayNameStringSizeWithAttrs.width, displayNameStringSizeWithAttrs.height );
+
+    NSRect screenNameRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( displayNameRect ) + 5.f, NSMinY( self.bounds )
+                                      , screenNameStringSizeWithAttrs.width, screenNameStringSizeWithAttrs.height );
+
+    [ self->_userDisplayNameCell drawWithFrame: displayNameRect inView: self ];
+    [ self->_userScreenNameCell drawWithFrame: screenNameRect inView: self ];
     }
 
 @end
