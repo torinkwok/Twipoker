@@ -39,8 +39,6 @@
 #pragma mark Outlets
 @property ( weak ) IBOutlet TWPUserAvatarWell* authorAvatarWell;
 @property ( weak ) IBOutlet TWPTimelineUserNameLabel* userNameLabel;
-@property ( weak ) IBOutlet NSButton* userDisplayNameButton;
-@property ( weak ) IBOutlet NSTextField* userScreenNameLabel;
 @property ( weak ) IBOutlet NSTextField* tweetTextLabel;
 
 @property ( strong, readwrite ) OTCTweet* tweet;

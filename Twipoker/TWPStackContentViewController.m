@@ -143,8 +143,9 @@ NSString static* const kColumnIDTabs = @"tabs";
 #pragma mark IBActions
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
     {
-//    NSLog( @"👽" );
-    NSLog( @"%@", [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ] );
+    OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
+
+    NSLog( @"%@", twitterUser );
     }
 
 @end

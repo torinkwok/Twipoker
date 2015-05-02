@@ -30,8 +30,6 @@
 
 @synthesize authorAvatarWell;
 @synthesize userNameLabel;
-@synthesize userDisplayNameButton;
-@synthesize userScreenNameLabel;
 @synthesize tweetTextLabel;
 
 @dynamic tweet;
@@ -61,8 +59,6 @@
         [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
         [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
         [ [ self tweetTextLabel ] setStringValue: self->_tweet.tweetText ];
-        [ [ self userDisplayNameButton ] setTitle: self->_tweet.author.displayName ];
-        [ [ self userScreenNameLabel ] setStringValue: [ @"@" stringByAppendingString: self->_tweet.author.screenName ] ];
 
         [ self setNeedsDisplay: YES ];
         }
