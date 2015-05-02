@@ -42,21 +42,35 @@
     return self;
     }
 
+- ( instancetype ) initWithCoder: ( NSCoder* )_Coder
+    {
+    if ( self = [ super initWithCoder: _Coder ] )
+        [ self _initTimelineUserNameLabel ];
+
+    return self;
+    }
+
 - ( instancetype ) initWithFrame: ( NSRect )_Frame
     {
     if ( self = [ super initWithFrame: _Frame ] )
-        {
-        self->_userDisplayNameCell = [ [ NSButtonCell alloc ] init ];
-        self->_userScreenNameCell = [ [ NSButtonCell alloc ] init ];
-
-        [ self->_userDisplayNameCell setBordered: NO ];
-        [ self->_userScreenNameCell setBordered: NO ];
-
-        [ self->_userDisplayNameCell setFont: [ NSFont fontWithName: @"Heiti SC" size: 13.f ] ];
-        [ self->_userScreenNameCell setFont: [ NSFont fontWithName: @"Arial Unicode MS" size: 10.f ] ];
-        }
+        [ self _initTimelineUserNameLabel ];
 
     return self;
+    }
+
+- ( void ) _initTimelineUserNameLabel
+    {
+    self->_userDisplayNameCell = [ [ NSButtonCell alloc ] initTextCell: @"N/A" ];
+    self->_userScreenNameCell = [ [ NSButtonCell alloc ] initTextCell: @"N/A" ];
+
+    [ self->_userDisplayNameCell setBordered: NO ];
+    [ self->_userScreenNameCell setBordered: NO ];
+
+    [ self->_userDisplayNameCell setAlignment: NSLeftTextAlignment ];
+    [ self->_userScreenNameCell setAlignment: NSLeftTextAlignment ];
+
+    [ self->_userDisplayNameCell setFont: [ NSFont fontWithName: @"Lucida Grande" size: 13.f ] ];
+    [ self->_userScreenNameCell setFont: [ NSFont fontWithName: @"Lucida Grande" size: 10.f ] ];
     }
 
 #pragma mark Accessors
@@ -73,6 +87,8 @@
 
         [ self->_userDisplayNameCell setTitle: self->_twitterUser.displayName ];
         [ self->_userScreenNameCell setTitle: self->_twitterUser.screenName ];
+
+        [ self setNeedsDisplay: YES ];
         }
     }
 
@@ -95,6 +111,15 @@
 
     NSRect screenNameRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( displayNameRect ) + 5.f, NSMinY( self.bounds )
                                       , screenNameStringSizeWithAttrs.width, screenNameStringSizeWithAttrs.height );
+
+//    NSLog( @"Display Name: %@", displayNameString );
+//    NSLog( @"Screen Name: %@", screenNameString );
+//    NSLog( @"Display Name Rect: %@", NSStringFromRect( displayNameRect ) );
+//    NSLog( @"Screen Name Rect: %@", NSStringFromRect( screenNameRect ) );
+//    NSLog( @"..." );
+
+//    NSRectFill( displayNameRect );
+//    NSRectFill( screenNameRect );
 
     [ self->_userDisplayNameCell drawWithFrame: displayNameRect inView: self ];
     [ self->_userScreenNameCell drawWithFrame: screenNameRect inView: self ];

@@ -60,30 +60,14 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eac-Er-ZZh">
-                                                <rect key="frame" x="107" y="82" width="215" height="25"/>
-                                                <buttonCell key="cell" type="square" title="薛定谔的月饼" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="left" imageScaling="proportionallyDown" inset="2" id="gyJ-VR-MFd">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" size="13" name="STHeitiSC-Light"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="FC1-4K-dU5"/>
-                                                </connections>
-                                            </button>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-Xw-kCW" userLabel="User Screen Name">
-                                                <rect key="frame" x="328" y="82" width="74" height="21"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="@NSTongG" id="j46-ja-PuX">
-                                                    <font key="font" size="10" name="ArialUnicodeMS"/>
-                                                    <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
+                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rT6-rl-xjK" customClass="TWPTimelineUserNameLabel">
+                                                <rect key="frame" x="112" y="86" width="477" height="22"/>
+                                            </customView>
                                         </subviews>
                                         <connections>
                                             <outlet property="authorAvatarWell" destination="AUA-3k-7Zo" id="mMX-wH-mTI"/>
                                             <outlet property="tweetTextLabel" destination="RUo-13-Uhb" id="KsU-R1-3o6"/>
-                                            <outlet property="userDisplayNameButton" destination="Eac-Er-ZZh" id="H3L-JW-eak"/>
-                                            <outlet property="userScreenNameLabel" destination="8dn-Xw-kCW" id="bXJ-1t-Yo4"/>
+                                            <outlet property="userNameLabel" destination="rT6-rl-xjK" id="789-ne-8mN"/>
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>

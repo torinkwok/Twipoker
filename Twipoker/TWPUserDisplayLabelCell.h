@@ -1,5 +1,5 @@
 //
-//  TWPTimelineUserNameLabelCell.h
+//  TWPUserDisplayLabelCell.h
 //  Twipoker
 //
 //  Created by Tong G. on 5/2/15.
@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TWPTimelineUserNameLabelCell : NSButton
+@interface TWPUserDisplayLabelCell : NSButtonCell
 
 @end

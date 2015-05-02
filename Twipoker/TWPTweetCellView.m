@@ -24,10 +24,12 @@
 
 #import "TWPTweetCellView.h"
 #import "TWPUserAvatarWell.h"
+#import "TWPTimelineUserNameLabel.h"
 
 @implementation TWPTweetCellView
 
 @synthesize authorAvatarWell;
+@synthesize userNameLabel;
 @synthesize userDisplayNameButton;
 @synthesize userScreenNameLabel;
 @synthesize tweetTextLabel;
@@ -57,6 +59,7 @@
         self->_tweet = _Tweet;
 
         [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
+        [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
         [ [ self tweetTextLabel ] setStringValue: self->_tweet.tweetText ];
         [ [ self userDisplayNameButton ] setTitle: self->_tweet.author.displayName ];
         [ [ self userScreenNameLabel ] setStringValue: [ @"@" stringByAppendingString: self->_tweet.author.screenName ] ];
