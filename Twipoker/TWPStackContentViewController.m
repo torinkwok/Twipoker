@@ -30,6 +30,7 @@
 #import "TWPNavigationBar.h"
 #import "TWPTwitterUserViewController.h"
 #import "TWPTimelineUserNameLabel.h"
+#import "TWPTwitterUserViewController.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -145,7 +146,11 @@ NSString static* const kColumnIDTabs = @"tabs";
     {
     OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
 
-    NSLog( @"%@", twitterUser );
+    TWPTwitterUserViewController* twitterUserViewNewController =
+        [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];
+
+    [ self.currentDashboardStack pushView: twitterUserViewNewController ];
+    self.currentDashboardStack = self.currentDashboardStack;
     }
 
 @end
