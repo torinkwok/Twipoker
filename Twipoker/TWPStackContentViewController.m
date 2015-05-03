@@ -119,12 +119,12 @@ NSString static* const kColumnIDTabs = @"tabs";
     TWPViewsStack* viewsStack = nil;
     switch ( _Row )
         {
-        case 0: viewsStack = self.homeDashboardStack; break;
-        case 1: viewsStack = self.favoritesDashboardStack; break;
-        case 2: viewsStack = self.listsDashboardStack; break;
-        case 3: viewsStack = self.notificationsDashboardStack; break;
-        case 4: viewsStack = self.meDashboardStack; break;
-        case 5: viewsStack = self.messagesDashboardStack; break;
+        case 0: viewsStack = self.homeDashboardStack;           break;
+        case 1: viewsStack = self.favoritesDashboardStack;      break;
+        case 2: viewsStack = self.listsDashboardStack;          break;
+        case 3: viewsStack = self.notificationsDashboardStack;  break;
+        case 4: viewsStack = self.meDashboardStack;             break;
+        case 5: viewsStack = self.messagesDashboardStack;       break;
         }
 
     dashboardCellView.associatedViewsStack = viewsStack;
@@ -162,7 +162,6 @@ NSString static* const kColumnIDTabs = @"tabs";
     [ self.currentDashboardStack pushView: twitterUserViewNewController ];
     self.currentDashboardStack = self.currentDashboardStack;
     [ self.navigationBarController reload ];
-//    self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
 - ( IBAction ) goBackAction: ( id )_Sender
