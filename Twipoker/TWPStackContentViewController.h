@@ -35,6 +35,9 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
     NSArray __strong* _dashboardTabs;
     }
 
+@property ( weak ) IBOutlet NSButton* goBackButton;
+@property ( weak ) IBOutlet NSButton* goForwardButton;
+
 @property ( weak ) IBOutlet TWPViewsStack* homeDashboardStack;
 @property ( weak ) IBOutlet TWPViewsStack* favoritesDashboardStack;
 @property ( weak ) IBOutlet TWPViewsStack* listsDashboardStack;
@@ -46,6 +49,9 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
 
 #pragma mark IBActions
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender;
+
+- ( IBAction ) goBackAction: ( id )_Sender;
+- ( IBAction ) goForwardAction: ( id )_Sender;
 
 @end
 

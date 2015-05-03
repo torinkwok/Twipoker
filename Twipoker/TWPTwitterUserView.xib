@@ -92,6 +92,9 @@
                         <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="90Z-Io-2Sp"/>
+                    </connections>
                 </scrollView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tte-81-XHf">
                     <rect key="frame" x="-3" y="560" width="613" height="150"/>

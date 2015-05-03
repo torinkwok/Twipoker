@@ -153,6 +153,17 @@ NSString static* const kColumnIDTabs = @"tabs";
     self.currentDashboardStack = self.currentDashboardStack;
     }
 
+- ( IBAction ) goBackAction: ( id )_Sender
+    {
+    [ self.currentDashboardStack backwardMoveCursor ];
+    self.currentDashboardStack = self.currentDashboardStack;
+    }
+
+- ( IBAction ) goForwardAction: ( id )_Sender
+    {
+
+    }
+
 @end
 
 /*=============================================================================┐

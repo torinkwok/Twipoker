@@ -31,7 +31,10 @@
 - ( instancetype ) init
     {
     if ( self = [ super init ] )
+        {
         self->_viewsStack = [ NSMutableArray array ];
+        self->_cursor = -1;
+        }
 
     return self;
     }
@@ -39,7 +42,10 @@
 - ( void ) pushView: ( NSViewController* )_ViewController
     {
     if ( _ViewController.view )
+        {
         [ self->_viewsStack addObject: _ViewController ];
+        self->_cursor++;
+        }
 
     // TODO: Handling error: _ViewController.view must not be nil
     }
@@ -49,9 +55,30 @@
     NSViewController* poppedView = nil;
 
     if ( self->_viewsStack.count )
+        {
         [ self->_viewsStack removeLastObject ];
+        self->_cursor--;
+        }
 
     return poppedView;
+    }
+
+- ( NSViewController* ) backwardMoveCursor
+    {
+    if ( self->_cursor > 0 )
+        self->_cursor--;
+
+    return [ self currentView ];
+    }
+
+- ( NSViewController* ) forwardMoveCursor
+    {
+    self->_cursor++;
+
+    if ( self->_cursor > self->_viewsStack.count )
+        self->_cursor = self->_viewsStack.count;
+
+    return [ self currentView ];
     }
 
 - ( NSViewController* ) currentView
@@ -59,7 +86,7 @@
     NSViewController* current = nil;
 
     if ( self->_viewsStack.count > 0 )
-        current = self->_viewsStack.lastObject;
+        current = [ self->_viewsStack objectAtIndex: self->_cursor ];
     else
         current = self.baseViewController;
 

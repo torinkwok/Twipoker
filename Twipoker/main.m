@@ -24,10 +24,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, const char * argv[])
-{
-    return NSApplicationMain(argc, argv);
-}
+int main( int _Argc, char const* _Argv[] )
+    {
+    return NSApplicationMain( _Argc, _Argv );
+    }
 
 /*=============================================================================┐
 |                                                                              |

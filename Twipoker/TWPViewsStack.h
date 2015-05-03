@@ -28,6 +28,7 @@
     {
 @private
     NSMutableArray __strong* _viewsStack;
+    NSInteger _cursor;
     }
 
 // Base View
@@ -35,6 +36,9 @@
 
 - ( void ) pushView: ( NSViewController* )_ViewController;
 - ( NSViewController* ) popView;
+
+- ( NSViewController* ) backwardMoveCursor;
+- ( NSViewController* ) forwardMoveCursor;
 
 - ( NSViewController* ) currentView;
 
