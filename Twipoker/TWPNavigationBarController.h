@@ -37,6 +37,8 @@
 @property ( weak ) IBOutlet NSButton* goBackButton;
 @property ( weak ) IBOutlet NSButton* goForwardButton;
 
+- ( void ) reload;
+
 @end
 
 /*=============================================================================┐

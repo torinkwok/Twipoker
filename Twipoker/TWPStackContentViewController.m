@@ -162,14 +162,14 @@ NSString static* const kColumnIDTabs = @"tabs";
     {
     [ self.currentDashboardStack backwardMoveCursor ];
     self.currentDashboardStack = self.currentDashboardStack;
-    self.navigationBarController.delegate = self.currentDashboardStack;
+    [ self.navigationBarController reload ];
     }
 
 - ( IBAction ) goForwardAction: ( id )_Sender
     {
     [ self.currentDashboardStack forwardMoveCursor ];
     self.currentDashboardStack = self.currentDashboardStack;
-    self.navigationBarController.delegate = self.currentDashboardStack;
+    [ self.navigationBarController reload ];
     }
 
 @end

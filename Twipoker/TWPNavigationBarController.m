@@ -27,25 +27,30 @@
 
 @implementation TWPNavigationBarController
 
+#pragma mark Accessors
 @dynamic delegate;
 
 - ( void ) setDelegate: ( TWPViewsStack* )_NewDelegate
     {
-//    if ( self->_delegate != _NewDelegate )
-//        {
+    if ( self->_delegate != _NewDelegate )
+        {
         self->_delegate = _NewDelegate;
-
-        BOOL goBackButtonNewState = self->_delegate.cursor > -1;
-        BOOL goForwardButtonNewState = self->_delegate.cursor != self->_delegate.viewsStack.count - 1;
-
-        [ self.goBackButton setEnabled: goBackButtonNewState ];
-        [ self.goForwardButton setEnabled: goForwardButtonNewState ];
-//        }
+        [ self reload ];
+        }
     }
 
 - ( TWPViewsStack* ) delegate
     {
     return self->_delegate;
+    }
+
+- ( void ) reload
+    {
+    BOOL goBackButtonNewState = self->_delegate.cursor > -1;
+    BOOL goForwardButtonNewState = self->_delegate.cursor != self->_delegate.viewsStack.count - 1;
+
+    [ self.goBackButton setEnabled: goBackButtonNewState ];
+    [ self.goForwardButton setEnabled: goForwardButtonNewState ];
     }
 
 @end
