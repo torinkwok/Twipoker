@@ -28,6 +28,7 @@
 NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath;
 
 @class TWPViewsStack;
+@class TWPNavigationBarController;
 
 @interface TWPStackContentViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
     {
@@ -35,8 +36,7 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
     NSArray __strong* _dashboardTabs;
     }
 
-@property ( weak ) IBOutlet NSButton* goBackButton;
-@property ( weak ) IBOutlet NSButton* goForwardButton;
+@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
 
 @property ( weak ) IBOutlet TWPViewsStack* homeDashboardStack;
 @property ( weak ) IBOutlet TWPViewsStack* favoritesDashboardStack;

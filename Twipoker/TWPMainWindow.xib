@@ -166,12 +166,11 @@
         <customObject id="HUR-ik-D4y" customClass="TWPStackContentViewController">
             <connections>
                 <outlet property="favoritesDashboardStack" destination="k9K-Hk-Xzb" id="dxH-fp-hcg"/>
-                <outlet property="goBackButton" destination="YCM-gZ-AcP" id="x32-sX-TIU"/>
-                <outlet property="goForwardButton" destination="IjZ-GZ-rhx" id="oJ1-uh-0HT"/>
                 <outlet property="homeDashboardStack" destination="i5X-Cg-E7K" id="c2I-Ug-frY"/>
                 <outlet property="listsDashboardStack" destination="jhD-Ze-QK8" id="piV-M9-8Ce"/>
                 <outlet property="meDashboardStack" destination="uTU-qJ-3dF" id="0zS-11-lgA"/>
                 <outlet property="messagesDashboardStack" destination="4cS-D0-vD7" id="3ld-Cq-hfG"/>
+                <outlet property="navigationBarController" destination="Gr0-CG-Iha" id="03g-lC-fEz"/>
                 <outlet property="notificationsDashboardStack" destination="A4Q-KL-bMh" id="bdR-3a-REp"/>
                 <outlet property="view" destination="9t8-W1-aLM" id="08g-c7-EMV"/>
             </connections>
@@ -210,6 +209,13 @@
         <customObject id="4cS-D0-vD7" userLabel="Messages - Views Stack" customClass="TWPViewsStack">
             <connections>
                 <outlet property="baseViewController" destination="f4H-bM-VHT" id="h8m-h5-KdH"/>
+            </connections>
+        </customObject>
+        <customObject id="Gr0-CG-Iha" customClass="TWPNavigationBarController">
+            <connections>
+                <outlet property="goBackButton" destination="YCM-gZ-AcP" id="EvN-bO-Bg4"/>
+                <outlet property="goForwardButton" destination="IjZ-GZ-rhx" id="VZ4-ok-Z6c"/>
+                <outlet property="view" destination="Cjl-yU-kQO" id="Z6Q-WQ-cOB"/>
             </connections>
         </customObject>
     </objects>

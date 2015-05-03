@@ -31,6 +31,7 @@
 #import "TWPTwitterUserViewController.h"
 #import "TWPTimelineUserNameLabel.h"
 #import "TWPTwitterUserViewController.h"
+#import "TWPNavigationBarController.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -45,6 +46,8 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
 @end // TWPStackContentViewController + Private Category
 
 @implementation TWPStackContentViewController
+
+@synthesize navigationBarController;
 
 @synthesize homeDashboardStack;
 @synthesize favoritesDashboardStack;
@@ -139,6 +142,7 @@ NSString static* const kColumnIDTabs = @"tabs";
     // self.view is observing this key path,
     // it will be notified after assignment then make appropriate adjustments
     self.currentDashboardStack = associatedViewsStack;
+    self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
 #pragma mark IBActions
@@ -151,17 +155,21 @@ NSString static* const kColumnIDTabs = @"tabs";
 
     [ self.currentDashboardStack pushView: twitterUserViewNewController ];
     self.currentDashboardStack = self.currentDashboardStack;
+    self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
 - ( IBAction ) goBackAction: ( id )_Sender
     {
     [ self.currentDashboardStack backwardMoveCursor ];
     self.currentDashboardStack = self.currentDashboardStack;
+    self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
 - ( IBAction ) goForwardAction: ( id )_Sender
     {
-
+    [ self.currentDashboardStack forwardMoveCursor ];
+    self.currentDashboardStack = self.currentDashboardStack;
+    self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
 @end

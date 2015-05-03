@@ -34,6 +34,12 @@
 // Base View
 @property ( weak ) IBOutlet NSViewController* baseViewController;
 
+// Views Stack
+@property ( strong, readonly ) NSMutableArray* viewsStack;
+
+// Views Stack Cursor
+@property ( assign, readonly ) NSInteger cursor;
+
 - ( void ) pushView: ( NSViewController* )_ViewController;
 - ( NSViewController* ) popView;
 
