@@ -22,89 +22,35 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
+#import "TWPNavigationBarController.h"
 #import "TWPViewsStack.h"
 
-@implementation TWPViewsStack
+@implementation TWPNavigationBarController
 
-@synthesize baseViewController = _baseViewController;
-@synthesize viewsStack = _viewsStack;
-@synthesize cursor = _cursor;
+#pragma mark Accessors
+@dynamic delegate;
 
-- ( instancetype ) init
+- ( void ) setDelegate: ( TWPViewsStack* )_NewDelegate
     {
-    if ( self = [ super init ] )
+    if ( self->_delegate != _NewDelegate )
         {
-        self->_viewsStack = [ NSMutableArray array ];
-        self->_cursor = -1;
+        self->_delegate = _NewDelegate;
+        [ self reload ];
         }
-
-    return self;
     }
 
-- ( void ) pushView: ( NSViewController* )_ViewController
+- ( TWPViewsStack* ) delegate
     {
-    if ( _ViewController.view )
-        {
-        if ( self->_cursor < ( NSInteger )( self->_viewsStack.count - 1 ) )
-            {
-            NSInteger firstDeletionIndex = self->_cursor + 1;
-            NSRange range = NSMakeRange( firstDeletionIndex, self->_viewsStack.count - firstDeletionIndex );
-            [ self->_viewsStack removeObjectsInRange: range ];
-            }
-
-        [ self->_viewsStack addObject: _ViewController ];
-        self->_cursor++;
-        }
-
-    // TODO: Handling error: _ViewController.view must not be nil
+    return self->_delegate;
     }
 
-- ( NSViewController* ) popView
+- ( void ) reload
     {
-    NSViewController* poppedView = nil;
+    BOOL goBackButtonNewState = self->_delegate.cursor > -1;
+    BOOL goForwardButtonNewState = self->_delegate.cursor != self->_delegate.viewsStack.count - 1;
 
-    if ( self->_viewsStack.count )
-        {
-        [ self->_viewsStack removeLastObject ];
-        self->_cursor--;
-        }
-
-    return poppedView;
-    }
-
-- ( NSViewController* ) backwardMoveCursor
-    {
-    if ( self->_cursor > -1 )
-        self->_cursor--;
-
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) forwardMoveCursor
-    {
-    self->_cursor++;
-
-    if ( self->_cursor > self->_viewsStack.count )
-        self->_cursor = self->_viewsStack.count;
-
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) currentView
-    {
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) _currentView
-    {
-    NSViewController* current = nil;
-
-    if ( self->_cursor > -1 )
-        current = [ self->_viewsStack objectAtIndex: self->_cursor ];
-    else
-        current = self.baseViewController;
-
-    return current;
+    [ self.goBackButton setEnabled: goBackButtonNewState ];
+    [ self.goForwardButton setEnabled: goForwardButtonNewState ];
     }
 
 @end

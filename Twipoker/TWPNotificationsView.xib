@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6724" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6724"/>
     </dependencies>
     <objects>
@@ -45,14 +44,6 @@
                                         <rect key="frame" x="1" y="1" width="602" height="116"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXM-2Q-QOh" userLabel="User Display Name">
-                                                <rect key="frame" x="110" y="86" width="160" height="17"/>
-                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Calles" id="AYU-Kg-cTL">
-                                                    <font key="font" size="13" name="STHeitiSC-Medium"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NCJ-R9-K3H" userLabel="Avatar" customClass="TWPUserAvatarWell">
                                                 <rect key="frame" x="17" y="33" width="70" height="70"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="vNN-4G-qhZ"/>
@@ -66,20 +57,17 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o41-Av-dG3" userLabel="User Screen Name">
-                                                <rect key="frame" x="335" y="84" width="74" height="21"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="@lanselau" id="6x4-Ph-PH7">
-                                                    <font key="font" size="10" name="ArialUnicodeMS"/>
-                                                    <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
+                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OET-9P-mTn" customClass="TWPTimelineUserNameLabel">
+                                                <rect key="frame" x="110" y="86" width="481" height="22"/>
+                                                <connections>
+                                                    <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="7We-PV-hRD"/>
+                                                </connections>
+                                            </customView>
                                         </subviews>
                                         <connections>
                                             <outlet property="authorAvatarWell" destination="NCJ-R9-K3H" id="aJm-MN-4B9"/>
                                             <outlet property="tweetTextLabel" destination="0Zm-LF-WLC" id="qgW-No-aNp"/>
-                                            <outlet property="userDisplayNameLabel" destination="eXM-2Q-QOh" id="uWK-Yy-62H"/>
-                                            <outlet property="userScreenNameLabel" destination="o41-Av-dG3" id="jsi-WU-dei"/>
+                                            <outlet property="userNameLabel" destination="OET-9P-mTn" id="dgB-Xw-bWj"/>
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>

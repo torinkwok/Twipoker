@@ -27,8 +27,27 @@
 #import "TWPDashboardView.h"
 #import "TWPDashboardCellView.h"
 #import "TWPViewsStack.h"
+#import "TWPNavigationBar.h"
+#import "TWPTwitterUserViewController.h"
+#import "TWPTimelineUserNameLabel.h"
+#import "TWPTwitterUserViewController.h"
+#import "TWPNavigationBarController.h"
+
+// KVO Key Paths
+NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
+
+#pragma mark TWPStackContentViewController + Private Category
+@interface TWPStackContentViewController ()
+
+// `currentDashboardStack` property was set as read only in the declaration.
+// Make it internally writable.
+@property ( weak, readwrite ) TWPViewsStack* currentDashboardStack;
+
+@end // TWPStackContentViewController + Private Category
 
 @implementation TWPStackContentViewController
+
+@synthesize navigationBarController;
 
 @synthesize homeDashboardStack;
 @synthesize favoritesDashboardStack;
@@ -36,6 +55,8 @@
 @synthesize notificationsDashboardStack;
 @synthesize meDashboardStack;
 @synthesize messagesDashboardStack;
+
+@synthesize currentDashboardStack;
 
 #pragma mark Initialization
 - ( instancetype ) init
@@ -52,6 +73,17 @@
         }
 
     return self;
+    }
+
+- ( void ) viewWillAppear
+    {
+    dispatch_once_t static onceToken;
+    dispatch_once( &onceToken
+        , ( dispatch_block_t )^( void )
+            {
+            self.currentDashboardStack = self.homeDashboardStack;
+            self.navigationBarController.delegate = self.currentDashboardStack;
+            } );
     }
 
 NSString static* const kColumnIDTabs = @"tabs";
@@ -87,12 +119,12 @@ NSString static* const kColumnIDTabs = @"tabs";
     TWPViewsStack* viewsStack = nil;
     switch ( _Row )
         {
-        case 0: viewsStack = self.homeDashboardStack; break;
-        case 1: viewsStack = self.favoritesDashboardStack; break;
-        case 2: viewsStack = self.listsDashboardStack; break;
-        case 3: viewsStack = self.notificationsDashboardStack; break;
-        case 4: viewsStack = self.meDashboardStack; break;
-        case 5: viewsStack = self.messagesDashboardStack; break;
+        case 0: viewsStack = self.homeDashboardStack;           break;
+        case 1: viewsStack = self.favoritesDashboardStack;      break;
+        case 2: viewsStack = self.listsDashboardStack;          break;
+        case 3: viewsStack = self.notificationsDashboardStack;  break;
+        case 4: viewsStack = self.meDashboardStack;             break;
+        case 5: viewsStack = self.messagesDashboardStack;       break;
         }
 
     dashboardCellView.associatedViewsStack = viewsStack;
@@ -105,17 +137,45 @@ NSString static* const kColumnIDTabs = @"tabs";
 - ( void ) tableViewSelectionDidChange: ( NSNotification* )_Notif
     {
     NSTableView* tabTableView = [ _Notif object ];
-    NSTableColumn* currentTableColumn = [ tabTableView tableColumnWithIdentifier: @"tabs" ];
+    NSTableColumn* currentTableColumn = [ tabTableView tableColumnWithIdentifier: kColumnIDTabs ];
     NSInteger selectedRow = [ tabTableView selectedRow ];
 
     TWPDashboardCellView* cellView = ( TWPDashboardCellView* )[ tabTableView.delegate
         tableView: tabTableView viewForTableColumn: currentTableColumn row: ( NSInteger )selectedRow ];
 
     TWPViewsStack* associatedViewsStack = [ cellView associatedViewsStack ];
-    NSView* associatedView = associatedViewsStack.currentView.view;
 
-    [ associatedView setFrame: [ ( TWPStackContentView* )self.view boundsOfElementView ] ];
-    [ ( TWPStackContentView* )self.view setSubviews: @[ associatedView ] ];
+    // self.view is observing this key path,
+    // it will be notified after assignment then make appropriate adjustments
+    self.currentDashboardStack = associatedViewsStack;
+    self.navigationBarController.delegate = self.currentDashboardStack;
+    }
+
+#pragma mark IBActions
+- ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
+    {
+    OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
+
+    TWPTwitterUserViewController* twitterUserViewNewController =
+        [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];
+
+    [ self.currentDashboardStack pushView: twitterUserViewNewController ];
+    self.currentDashboardStack = self.currentDashboardStack;
+    [ self.navigationBarController reload ];
+    }
+
+- ( IBAction ) goBackAction: ( id )_Sender
+    {
+    [ self.currentDashboardStack backwardMoveCursor ];
+    self.currentDashboardStack = self.currentDashboardStack;
+    [ self.navigationBarController reload ];
+    }
+
+- ( IBAction ) goForwardAction: ( id )_Sender
+    {
+    [ self.currentDashboardStack forwardMoveCursor ];
+    self.currentDashboardStack = self.currentDashboardStack;
+    [ self.navigationBarController reload ];
     }
 
 @end

@@ -92,14 +92,14 @@
 
         [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
             getStatusesUserTimelineForUserID: self.twitterUserView.twitterUser.IDString
-                                    screenName: nil
-                                  sinceID: nil
-                                    count: @( self.numberOfTweetsWillBeLoadedOnce ).stringValue
-                                    maxID: @( self->_maxID - 1 ).stringValue
-                                 trimUser: @NO
-                           excludeReplies: @0
-                       contributorDetails: @YES
-                          includeRetweets: @YES
+                                  screenName: nil
+                                     sinceID: nil
+                                       count: @( self.numberOfTweetsWillBeLoadedOnce ).stringValue
+                                       maxID: @( self->_maxID - 1 ).stringValue
+                                    trimUser: @NO
+                              excludeReplies: @0
+                          contributorDetails: @YES
+                             includeRetweets: @YES
                                 successBlock:
             ^( NSArray* _TweetObjects )
                 {

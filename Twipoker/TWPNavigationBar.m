@@ -22,89 +22,27 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPViewsStack.h"
+#import "TWPNavigationBar.h"
 
-@implementation TWPViewsStack
+@implementation TWPNavigationBar
 
-@synthesize baseViewController = _baseViewController;
-@synthesize viewsStack = _viewsStack;
-@synthesize cursor = _cursor;
-
-- ( instancetype ) init
+#pragma mark Initialzation
+- ( void ) awakeFromNib
     {
-    if ( self = [ super init ] )
-        {
-        self->_viewsStack = [ NSMutableArray array ];
-        self->_cursor = -1;
-        }
-
-    return self;
+    self.wantsLayer = YES;
+    self.material = NSVisualEffectMaterialLight;
+    self.blendingMode = NSVisualEffectBlendingModeWithinWindow;
     }
 
-- ( void ) pushView: ( NSViewController* )_ViewController
+#pragma mark Overrides for Custom Appearance
+- ( BOOL ) allowsVibrancy
     {
-    if ( _ViewController.view )
-        {
-        if ( self->_cursor < ( NSInteger )( self->_viewsStack.count - 1 ) )
-            {
-            NSInteger firstDeletionIndex = self->_cursor + 1;
-            NSRange range = NSMakeRange( firstDeletionIndex, self->_viewsStack.count - firstDeletionIndex );
-            [ self->_viewsStack removeObjectsInRange: range ];
-            }
-
-        [ self->_viewsStack addObject: _ViewController ];
-        self->_cursor++;
-        }
-
-    // TODO: Handling error: _ViewController.view must not be nil
+    return YES;
     }
 
-- ( NSViewController* ) popView
+- ( BOOL ) mouseDownCanMoveWindow
     {
-    NSViewController* poppedView = nil;
-
-    if ( self->_viewsStack.count )
-        {
-        [ self->_viewsStack removeLastObject ];
-        self->_cursor--;
-        }
-
-    return poppedView;
-    }
-
-- ( NSViewController* ) backwardMoveCursor
-    {
-    if ( self->_cursor > -1 )
-        self->_cursor--;
-
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) forwardMoveCursor
-    {
-    self->_cursor++;
-
-    if ( self->_cursor > self->_viewsStack.count )
-        self->_cursor = self->_viewsStack.count;
-
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) currentView
-    {
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) _currentView
-    {
-    NSViewController* current = nil;
-
-    if ( self->_cursor > -1 )
-        current = [ self->_viewsStack objectAtIndex: self->_cursor ];
-    else
-        current = self.baseViewController;
-
-    return current;
+    return YES;
     }
 
 @end

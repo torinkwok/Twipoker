@@ -28,13 +28,23 @@
     {
 @private
     NSMutableArray __strong* _viewsStack;
+    NSInteger _cursor;
     }
 
 // Base View
 @property ( weak ) IBOutlet NSViewController* baseViewController;
 
+// Views Stack
+@property ( strong, readonly ) NSMutableArray* viewsStack;
+
+// Views Stack Cursor
+@property ( assign, readonly ) NSInteger cursor;
+
 - ( void ) pushView: ( NSViewController* )_ViewController;
 - ( NSViewController* ) popView;
+
+- ( NSViewController* ) backwardMoveCursor;
+- ( NSViewController* ) forwardMoveCursor;
 
 - ( NSViewController* ) currentView;
 

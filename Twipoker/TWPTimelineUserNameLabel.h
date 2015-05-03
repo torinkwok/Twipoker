@@ -22,90 +22,31 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPViewsStack.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation TWPViewsStack
-
-@synthesize baseViewController = _baseViewController;
-@synthesize viewsStack = _viewsStack;
-@synthesize cursor = _cursor;
-
-- ( instancetype ) init
+@interface TWPTimelineUserNameLabel : NSControl
     {
-    if ( self = [ super init ] )
-        {
-        self->_viewsStack = [ NSMutableArray array ];
-        self->_cursor = -1;
-        }
+@private
+    OTCTwitterUser __strong* _twitterUser;
 
-    return self;
+    NSRect _displayNameStringRect;
+    NSRect _screenNameStringRect;
+
+    NSAttributedString __strong* _attributedDisplayNameString;  // e.g. 薛定谔的月饼
+    NSAttributedString __strong* _attributedScreenNameString;   // e.g. @NSTongG
+
+    NSFont __strong* _fontOfDisplayName;
+    NSColor __strong* _colorOfDisplayName;
+
+    NSFont __strong* _fontOfScreenName;
+    NSColor __strong* _colorOfScreenName;
     }
 
-- ( void ) pushView: ( NSViewController* )_ViewController
-    {
-    if ( _ViewController.view )
-        {
-        if ( self->_cursor < ( NSInteger )( self->_viewsStack.count - 1 ) )
-            {
-            NSInteger firstDeletionIndex = self->_cursor + 1;
-            NSRange range = NSMakeRange( firstDeletionIndex, self->_viewsStack.count - firstDeletionIndex );
-            [ self->_viewsStack removeObjectsInRange: range ];
-            }
+@property ( strong, readwrite ) OTCTwitterUser* twitterUser;
 
-        [ self->_viewsStack addObject: _ViewController ];
-        self->_cursor++;
-        }
-
-    // TODO: Handling error: _ViewController.view must not be nil
-    }
-
-- ( NSViewController* ) popView
-    {
-    NSViewController* poppedView = nil;
-
-    if ( self->_viewsStack.count )
-        {
-        [ self->_viewsStack removeLastObject ];
-        self->_cursor--;
-        }
-
-    return poppedView;
-    }
-
-- ( NSViewController* ) backwardMoveCursor
-    {
-    if ( self->_cursor > -1 )
-        self->_cursor--;
-
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) forwardMoveCursor
-    {
-    self->_cursor++;
-
-    if ( self->_cursor > self->_viewsStack.count )
-        self->_cursor = self->_viewsStack.count;
-
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) currentView
-    {
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) _currentView
-    {
-    NSViewController* current = nil;
-
-    if ( self->_cursor > -1 )
-        current = [ self->_viewsStack objectAtIndex: self->_cursor ];
-    else
-        current = self.baseViewController;
-
-    return current;
-    }
+#pragma mark Initialization
++ ( instancetype ) timelineUserNameLabelWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
 
 @end
 

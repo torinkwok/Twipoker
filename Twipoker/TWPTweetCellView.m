@@ -24,12 +24,12 @@
 
 #import "TWPTweetCellView.h"
 #import "TWPUserAvatarWell.h"
+#import "TWPTimelineUserNameLabel.h"
 
 @implementation TWPTweetCellView
 
 @synthesize authorAvatarWell;
-@synthesize userDisplayNameLabel;
-@synthesize userScreenNameLabel;
+@synthesize userNameLabel;
 @synthesize tweetTextLabel;
 
 @dynamic tweet;
@@ -57,9 +57,8 @@
         self->_tweet = _Tweet;
 
         [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
+        [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
         [ [ self tweetTextLabel ] setStringValue: self->_tweet.tweetText ];
-        [ [ self userDisplayNameLabel ] setStringValue: self->_tweet.author.displayName ];
-        [ [ self userScreenNameLabel ] setStringValue: [ @"@" stringByAppendingString: self->_tweet.author.screenName ] ];
 
         [ self setNeedsDisplay: YES ];
         }
@@ -81,7 +80,7 @@
     [ super mouseDown: _Event ];
     }
 
-- ( IBAction ) displayUserAction: ( id )_Sender
+- ( IBAction ) displayUserProfilePanelAction: ( id )_Sender
     {
     NSLog( @"🚀" );
     }

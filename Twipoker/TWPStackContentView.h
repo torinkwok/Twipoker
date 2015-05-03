@@ -25,10 +25,15 @@
 #import <Cocoa/Cocoa.h>
 
 @class TWPViewsStack;
+@class TWPNavigationBar;
+@class TWPStackContentViewController;
 
 @interface TWPStackContentView : NSView
 
-@property ( weak ) IBOutlet TWPViewsStack* initialViewsStack;
+@property ( weak ) IBOutlet TWPNavigationBar* navigationBar;
+
+@property ( weak ) IBOutlet TWPStackContentViewController* controller;
+@property ( strong, readwrite ) FBKVOController* KVOController;
 
 #pragma mark Utilities
 - ( NSRect ) boundsOfElementView;
