@@ -75,9 +75,15 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
     return self;
     }
 
-- ( void ) awakeFromNib
+- ( void ) viewWillAppear
     {
-    self.currentDashboardStack = self.homeDashboardStack;
+    dispatch_once_t static onceToken;
+    dispatch_once( &onceToken
+        , ( dispatch_block_t )^( void )
+            {
+            self.currentDashboardStack = self.homeDashboardStack;
+            self.navigationBarController.delegate = self.currentDashboardStack;
+            } );
     }
 
 NSString static* const kColumnIDTabs = @"tabs";
@@ -155,7 +161,8 @@ NSString static* const kColumnIDTabs = @"tabs";
 
     [ self.currentDashboardStack pushView: twitterUserViewNewController ];
     self.currentDashboardStack = self.currentDashboardStack;
-    self.navigationBarController.delegate = self.currentDashboardStack;
+    [ self.navigationBarController reload ];
+//    self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
 - ( IBAction ) goBackAction: ( id )_Sender
