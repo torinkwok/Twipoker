@@ -45,6 +45,13 @@
     {
     if ( _ViewController.view )
         {
+        if ( self->_cursor < ( NSInteger )( self->_viewsStack.count - 1 ) )
+            {
+            NSInteger firstDeletionIndex = self->_cursor + 1;
+            NSRange range = NSMakeRange( firstDeletionIndex, self->_viewsStack.count - firstDeletionIndex );
+            [ self->_viewsStack removeObjectsInRange: range ];
+            }
+
         [ self->_viewsStack addObject: _ViewController ];
         self->_cursor++;
         }
