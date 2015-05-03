@@ -22,89 +22,108 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPViewsStack.h"
+#import "TWPTimelineUserNameLabel.h"
 
-@implementation TWPViewsStack
+@implementation TWPTimelineUserNameLabel
 
-@synthesize baseViewController = _baseViewController;
-@synthesize viewsStack = _viewsStack;
-@synthesize cursor = _cursor;
+@dynamic twitterUser;
 
-- ( instancetype ) init
+#pragma mark Initialization
++ ( instancetype ) timelineUserNameLabelWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+    {
+    return [ [ [ self class ] alloc ] initWithTwitterUser: _TwitterUser ];
+    }
+
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
     if ( self = [ super init ] )
-        {
-        self->_viewsStack = [ NSMutableArray array ];
-        self->_cursor = -1;
-        }
+        [ self setTwitterUser: _TwitterUser ];
 
     return self;
     }
 
-- ( void ) pushView: ( NSViewController* )_ViewController
+- ( instancetype ) initWithFrame: ( NSRect )_Frame
     {
-    if ( _ViewController.view )
+    if ( self = [ super initWithFrame: _Frame ] )
+        [ self _init ];
+
+    return self;
+    }
+
+- ( instancetype ) initWithCoder: ( NSCoder* )_Coder
+    {
+    if ( self = [ super initWithCoder: _Coder ] )
+        [ self _init ];
+
+    return self;
+    }
+
+- ( void ) _init
+    {
+    self->_fontOfDisplayName = [ [ NSFontManager sharedFontManager ] convertWeight: 5.f ofFont: [ NSFont fontWithName: @"Heiti SC" size: 15.f ] ];
+    self->_colorOfDisplayName = [ NSColor blackColor ];
+
+    self->_fontOfScreenName = [ [ NSFontManager sharedFontManager ] convertWeight: 2.f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 13.f ] ];
+    self->_colorOfScreenName = [ NSColor colorWithSRGBRed: 152.f / 255 green: 166.f / 255 blue: 178.f / 255 alpha: 1.f ];
+    }
+
+#pragma mark Accessors
+- ( OTCTwitterUser* ) twitterUser
+    {
+    return self->_twitterUser;
+    }
+
+- ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
+    {
+    if ( self->_twitterUser != _TwitterUser )
         {
-        if ( self->_cursor < ( NSInteger )( self->_viewsStack.count - 1 ) )
-            {
-            NSInteger firstDeletionIndex = self->_cursor + 1;
-            NSRange range = NSMakeRange( firstDeletionIndex, self->_viewsStack.count - firstDeletionIndex );
-            [ self->_viewsStack removeObjectsInRange: range ];
-            }
+        self->_twitterUser = _TwitterUser;
 
-        [ self->_viewsStack addObject: _ViewController ];
-        self->_cursor++;
+        NSSize displayNameStringSizeWithAttrs =
+            [ self->_twitterUser.displayName sizeWithAttributes: @{ NSFontAttributeName : self->_fontOfDisplayName } ];
+
+        NSSize screenNameStringSizeWithAttrs =
+            [ self->_twitterUser.screenName sizeWithAttributes: @{ NSFontAttributeName : self->_fontOfScreenName } ];
+
+        self->_displayNameStringRect = NSMakeRect( NSMinX( self.bounds ), NSMinY( self.bounds )
+                                                 , displayNameStringSizeWithAttrs.width, displayNameStringSizeWithAttrs.height
+                                                 );
+
+        self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( self->_displayNameStringRect ) + 3.f
+                                                , NSMinY( self.bounds )
+                                                , screenNameStringSizeWithAttrs.width, screenNameStringSizeWithAttrs.height
+                                                );
+
+        self->_screenNameStringRect.origin.y += ( NSHeight( self->_displayNameStringRect ) - NSHeight( self->_screenNameStringRect ) ) / 2;
+
+        self->_attributedDisplayNameString =
+            [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.displayName
+                                               attributes: @{ NSFontAttributeName : self->_fontOfDisplayName
+                                                            , NSForegroundColorAttributeName : self->_colorOfDisplayName
+                                                            } ];
+        self->_attributedScreenNameString =
+            [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.screenName
+                                               attributes: @{ NSFontAttributeName : self->_fontOfScreenName
+                                                            , NSForegroundColorAttributeName : self->_colorOfScreenName
+                                                            } ];
+        [ self setNeedsDisplay: YES ];
         }
-
-    // TODO: Handling error: _ViewController.view must not be nil
     }
 
-- ( NSViewController* ) popView
+#pragma mark Customize Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    NSViewController* poppedView = nil;
+    [ super drawRect: _DirtyRect ];
 
-    if ( self->_viewsStack.count )
-        {
-        [ self->_viewsStack removeLastObject ];
-        self->_cursor--;
-        }
-
-    return poppedView;
+    [ self->_attributedDisplayNameString drawInRect: self->_displayNameStringRect ];
+    [ self->_attributedScreenNameString drawInRect: self->_screenNameStringRect ];
     }
 
-- ( NSViewController* ) backwardMoveCursor
+#pragma mark Events Handling
+- ( void ) mouseDown: ( NSEvent* )_Event
     {
-    if ( self->_cursor > -1 )
-        self->_cursor--;
-
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) forwardMoveCursor
-    {
-    self->_cursor++;
-
-    if ( self->_cursor > self->_viewsStack.count )
-        self->_cursor = self->_viewsStack.count;
-
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) currentView
-    {
-    return [ self _currentView ];
-    }
-
-- ( NSViewController* ) _currentView
-    {
-    NSViewController* current = nil;
-
-    if ( self->_cursor > -1 )
-        current = [ self->_viewsStack objectAtIndex: self->_cursor ];
-    else
-        current = self.baseViewController;
-
-    return current;
+    [ super mouseDown: _Event ];
+    [ NSApp sendAction: self.action to: self.target from: self ];
     }
 
 @end

@@ -28,12 +28,15 @@
 NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath;
 
 @class TWPViewsStack;
+@class TWPNavigationBarController;
 
 @interface TWPStackContentViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
     {
 @private
     NSArray __strong* _dashboardTabs;
     }
+
+@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
 
 @property ( weak ) IBOutlet TWPViewsStack* homeDashboardStack;
 @property ( weak ) IBOutlet TWPViewsStack* favoritesDashboardStack;
@@ -46,6 +49,9 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
 
 #pragma mark IBActions
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender;
+
+- ( IBAction ) goBackAction: ( id )_Sender;
+- ( IBAction ) goForwardAction: ( id )_Sender;
 
 @end
 

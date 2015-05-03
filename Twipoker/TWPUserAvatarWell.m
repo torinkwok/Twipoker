@@ -51,7 +51,6 @@
                 {
                 NSImage* avatarImage = [ [ NSImage alloc ] initWithData: _Data ];
                 [ self performSelectorOnMainThread: @selector( setImage: ) withObject: avatarImage waitUntilDone: NO ];
-                NSLog( @"✈️" );
                 } ];
 
         [ self->_dataTask resume ];
