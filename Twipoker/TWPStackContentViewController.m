@@ -137,7 +137,7 @@ NSString static* const kColumnIDTabs = @"tabs";
 - ( void ) tableViewSelectionDidChange: ( NSNotification* )_Notif
     {
     NSTableView* tabTableView = [ _Notif object ];
-    NSTableColumn* currentTableColumn = [ tabTableView tableColumnWithIdentifier: @"tabs" ];
+    NSTableColumn* currentTableColumn = [ tabTableView tableColumnWithIdentifier: kColumnIDTabs ];
     NSInteger selectedRow = [ tabTableView selectedRow ];
 
     TWPDashboardCellView* cellView = ( TWPDashboardCellView* )[ tabTableView.delegate

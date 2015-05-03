@@ -70,7 +70,7 @@
     if ( self->_cursor > -1 )
         self->_cursor--;
 
-    return [ self currentView ];
+    return [ self _currentView ];
     }
 
 - ( NSViewController* ) forwardMoveCursor
@@ -80,10 +80,15 @@
     if ( self->_cursor > self->_viewsStack.count )
         self->_cursor = self->_viewsStack.count;
 
-    return [ self currentView ];
+    return [ self _currentView ];
     }
 
 - ( NSViewController* ) currentView
+    {
+    return [ self _currentView ];
+    }
+
+- ( NSViewController* ) _currentView
     {
     NSViewController* current = nil;
 
