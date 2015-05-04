@@ -80,6 +80,8 @@
 		83C07A971AF22B0600184CCB /* draft-tweet-black.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 83C07A961AF22B0600184CCB /* draft-tweet-black.tiff */; };
 		83C07A991AF22FA000184CCB /* twitter-logo-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C07A981AF22FA000184CCB /* twitter-logo-blue.png */; };
 		83C07A9C1AF2313100184CCB /* TWPNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C07A9B1AF2313100184CCB /* TWPNavigationBar.m */; };
+		83CCEDCC1AF7B35200DC364C /* TWPRepliesTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CCEDCB1AF7B35200DC364C /* TWPRepliesTimelineViewController.m */; };
+		83CCEDCE1AF7C22300DC364C /* TWPRepliesTimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83CCEDCD1AF7C22300DC364C /* TWPRepliesTimelineView.xib */; };
 		83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8381ACF1C820062D73D /* TWPDebug.m */; };
 		83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84C1ACF1C820062D73D /* TWPButton.m */; };
 		83CFD86E1ACF1C820062D73D /* TWPButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD84E1ACF1C820062D73D /* TWPButtonCell.m */; };
@@ -289,6 +291,9 @@
 		83C07A981AF22FA000184CCB /* twitter-logo-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-logo-blue.png"; sourceTree = "<group>"; };
 		83C07A9A1AF2313100184CCB /* TWPNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPNavigationBar.h; path = Twipoker/TWPNavigationBar.h; sourceTree = "<group>"; };
 		83C07A9B1AF2313100184CCB /* TWPNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPNavigationBar.m; path = Twipoker/TWPNavigationBar.m; sourceTree = "<group>"; };
+		83CCEDCA1AF7B35200DC364C /* TWPRepliesTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPRepliesTimelineViewController.h; path = Twipoker/TWPRepliesTimelineViewController.h; sourceTree = "<group>"; };
+		83CCEDCB1AF7B35200DC364C /* TWPRepliesTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPRepliesTimelineViewController.m; path = Twipoker/TWPRepliesTimelineViewController.m; sourceTree = "<group>"; };
+		83CCEDCD1AF7C22300DC364C /* TWPRepliesTimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPRepliesTimelineView.xib; path = Twipoker/TWPRepliesTimelineView.xib; sourceTree = "<group>"; };
 		83CFD8311ACF1BCE0062D73D /* Twipoker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Twipoker.entitlements; sourceTree = "<group>"; };
 		83CFD8321ACF1C820062D73D /* _TWPButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TWPButtonCell.h; path = Twipoker/_TWPButtonCell.h; sourceTree = "<group>"; };
 		83CFD8371ACF1C820062D73D /* TWPDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebug.h; sourceTree = "<group>"; };
@@ -430,6 +435,7 @@
 				830B8F611AF0E303006D2635 /* TWPUserAvatarWell.h */,
 				830B8F621AF0E303006D2635 /* TWPUserAvatarWell.m */,
 				83D12E8D1AEFE2FD009ECC13 /* Twitter User View */,
+				83CCEDC91AF7B2F500DC364C /* Replies Timeline View */,
 				83AAF6EB1AECF675007A3A48 /* Home */,
 				83AAF6EC1AECF684007A3A48 /* Favorites */,
 				83AAF6F01AECF6AC007A3A48 /* Lists */,
@@ -665,6 +671,16 @@
 				83C07A8B1AF221ED00184CCB /* arrow-forward-enabled@2x.png */,
 			);
 			path = "navigation-bar";
+			sourceTree = "<group>";
+		};
+		83CCEDC91AF7B2F500DC364C /* Replies Timeline View */ = {
+			isa = PBXGroup;
+			children = (
+				83CCEDCD1AF7C22300DC364C /* TWPRepliesTimelineView.xib */,
+				83CCEDCA1AF7B35200DC364C /* TWPRepliesTimelineViewController.h */,
+				83CCEDCB1AF7B35200DC364C /* TWPRepliesTimelineViewController.m */,
+			);
+			name = "Replies Timeline View";
 			sourceTree = "<group>";
 		};
 		83CFD8361ACF1C820062D73D /* Debug */ = {
@@ -1052,6 +1068,7 @@
 				83AAF6DB1AECE930007A3A48 /* TWPNotificationsView.xib in Resources */,
 				83924DA91AE1033700C25895 /* MASPreferencesWindow.xib in Resources */,
 				83AAF6D71AECE907007A3A48 /* TWPListsView.xib in Resources */,
+				83CCEDCE1AF7C22300DC364C /* TWPRepliesTimelineView.xib in Resources */,
 				835361491AE5310200CF1988 /* TWPDebugLoginUsersView.xib in Resources */,
 				83CFD8981ACF1FFD0062D73D /* icon_32x32.png in Resources */,
 				83CFD8721ACF1C820062D73D /* TWPLoginPanel-Info.plist in Resources */,
@@ -1147,6 +1164,7 @@
 				83D3E1B81AF61DC200E42842 /* TWPNavigationBarController.m in Sources */,
 				83924DFC1AE105E600C25895 /* STTwitterOAuth.m in Sources */,
 				835361511AE5635200CF1988 /* TWPDebugLoginUsersView.m in Sources */,
+				83CCEDCC1AF7B35200DC364C /* TWPRepliesTimelineViewController.m in Sources */,
 				83924DF71AE105E600C25895 /* NSString+STTwitter.m in Sources */,
 				83924E001AE105E600C25895 /* BAVPlistNode.m in Sources */,
 				83CFD8731ACF1C820062D73D /* TWPLoginPanel.m in Sources */,
