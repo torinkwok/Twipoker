@@ -81,16 +81,20 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     }
 
 #pragma mark Events Handling
-- ( void ) mouseDown: ( NSEvent* )_Event
+- ( NSView* ) hitTest: ( NSPoint )_Point
     {
-//    NSLog( @"%s", __PRETTY_FUNCTION__ );
-    [ super mouseDown: _Event ];
+    NSPoint location = [ self convertPoint: _Point fromView: self.superview ];
+    NSArray* subviews = [ self subviews ];
 
-//    NSPoint location = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
-//    if ( [ self hitTest: location ] == self )
-//        [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTweetCellViewShouldDisplayDetailOfTweet
-//                                                               object: self
-//                                                             userInfo: @{ TWPTweetCellViewTweetUserInfoKey : self.tweet } ];
+    NSView* hitTestView = nil;
+    for ( NSView* subview in subviews )
+        {
+        NSRect subviewFrame = subview.frame;
+        if ( [ self mouse: location inRect: subviewFrame ] )
+            hitTestView = [ subview hitTest: location ];
+        }
+
+    return hitTestView;
     }
 
 - ( IBAction ) displayUserProfilePanelAction: ( id )_Sender

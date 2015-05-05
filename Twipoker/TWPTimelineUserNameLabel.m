@@ -126,13 +126,13 @@
     [ NSApp sendAction: self.action to: self.target from: self ];
     }
 
-//- ( NSView* ) hitTest: ( NSPoint )_Point
-//    {
-//    if ( [ self mouse: [ self convertPoint: _Point fromView: self.superview ] inRect: self.bounds ] )
-//        return self;
-//    else
-//        return [ super hitTest: _Point ];
-//    }
+- ( NSView* ) hitTest: ( NSPoint )_Point
+    {
+    if ( [ self mouse: [ self convertPoint: _Point fromView: self.superview ] inRect: self.bounds ] )
+        return self;
+    else
+        return [ super hitTest: _Point ];
+    }
 
 - ( BOOL ) acceptsFirstResponder
     {

@@ -42,13 +42,16 @@
     return tweetCellView;
     }
 
+- ( void ) mouseDown: ( NSEvent* )_Event
+    {
+    [ super mouseDown: _Event ];
+    NSLog( @"👽" );
+    }
+
 - ( NSView* ) hitTest: ( NSPoint )_Point
     {
     if ( [ self mouse: [ self convertPoint: _Point fromView: self.superview ] inRect: self.bounds ] )
-//        return self.firstTweetCellSuperview;
         return self;
-//    if ( NSPointInRect( [ self convertPoint: _Point fromView: self.superview ], self.bounds ) )
-//        return self.firstTweetCellSuperview;
     else
         return [ super hitTest: _Point ];
     }
