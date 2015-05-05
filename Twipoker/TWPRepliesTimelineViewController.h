@@ -28,6 +28,14 @@
 #import "TWPTimelineScrollView.h"
 
 @interface TWPRepliesTimelineViewController : TWPViewController <TWPTimelineScrollViewDelegate>
+    {
+@private
+    OTCTweet __strong* _tweet;
+    }
+
+#pragma mark Initialization
++ ( instancetype ) repliesTimelineViewControllerWithTweet: ( OTCTweet* )_Tweet;
+- ( instancetype ) initWithTweet: ( OTCTweet* )_AnchorTweet;
 
 @end
 

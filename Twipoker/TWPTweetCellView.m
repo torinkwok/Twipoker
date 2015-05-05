@@ -26,6 +26,12 @@
 #import "TWPUserAvatarWell.h"
 #import "TWPTimelineUserNameLabel.h"
 
+// Notification Names
+NSString* const TWPTweetCellViewShouldDisplayDetailOfTweet = @"TweetCellView.Notif.ShouldDisplayDetailOfTweet";
+
+// User Info Keys
+NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.Tweet";
+
 @implementation TWPTweetCellView
 
 @synthesize authorAvatarWell;
@@ -77,7 +83,14 @@
 #pragma mark Events Handling
 - ( void ) mouseDown: ( NSEvent* )_Event
     {
+//    NSLog( @"%s", __PRETTY_FUNCTION__ );
     [ super mouseDown: _Event ];
+
+//    NSPoint location = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
+//    if ( [ self hitTest: location ] == self )
+//        [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTweetCellViewShouldDisplayDetailOfTweet
+//                                                               object: self
+//                                                             userInfo: @{ TWPTweetCellViewTweetUserInfoKey : self.tweet } ];
     }
 
 - ( IBAction ) displayUserProfilePanelAction: ( id )_Sender

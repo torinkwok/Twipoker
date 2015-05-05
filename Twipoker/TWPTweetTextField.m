@@ -44,8 +44,11 @@
 
 - ( NSView* ) hitTest: ( NSPoint )_Point
     {
-    if ( NSPointInRect( [ self convertPoint: _Point fromView: self.superview ], self.bounds ) )
-        return self.firstTweetCellSuperview;
+    if ( [ self mouse: [ self convertPoint: _Point fromView: self.superview ] inRect: self.bounds ] )
+//        return self.firstTweetCellSuperview;
+        return self;
+//    if ( NSPointInRect( [ self convertPoint: _Point fromView: self.superview ], self.bounds ) )
+//        return self.firstTweetCellSuperview;
     else
         return [ super hitTest: _Point ];
     }

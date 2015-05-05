@@ -26,6 +26,20 @@
 
 @implementation TWPRepliesTimelineViewController
 
+#pragma mark Initialization
++ ( instancetype ) repliesTimelineViewControllerWithTweet: ( OTCTweet* )_Tweet
+    {
+    return [ [ [ self class ] alloc ] initWithTweet: _Tweet ];
+    }
+
+- ( instancetype ) initWithTweet: ( OTCTweet* )_AnchorTweet
+    {
+    if ( self = [ super initWithNibName: @"TWPRepliesTimelineView" bundle: [ NSBundle mainBundle ] ] )
+        [ self->_tweets addObject: _AnchorTweet ];
+
+    return self;
+    }
+
 @end
 
 /*=============================================================================┐

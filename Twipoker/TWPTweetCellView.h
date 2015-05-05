@@ -29,6 +29,12 @@
 @class TWPUserAvatarWell;
 @class TWPTimelineUserNameLabel;
 
+// Notification Names
+NSString extern* const TWPTweetCellViewShouldDisplayDetailOfTweet;
+
+// User Info Keys
+NSString extern* const TWPTweetCellViewTweetUserInfoKey;
+
 // TWPTweetCellView class
 @interface TWPTweetCellView : NSTableCellView
     {

@@ -32,6 +32,8 @@
 #import "TWPTimelineUserNameLabel.h"
 #import "TWPTwitterUserViewController.h"
 #import "TWPNavigationBarController.h"
+#import "TWPRepliesTimelineViewController.h"
+#import "TWPTweetCellView.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -70,9 +72,22 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
                                 , NSLocalizedString( @"Me", nil )
                                 , NSLocalizedString( @"Messages", nil )
                                 ];
+
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                    selector: @selector( shouldDisplayDetailOfTweet: )
+                                                        name: TWPTweetCellViewShouldDisplayDetailOfTweet
+                                                      object: nil ];
         }
 
     return self;
+    }
+
+- ( void ) shouldDisplayDetailOfTweet: ( NSNotification* )_Notif
+    {
+    NSLog( @"%@", _Notif );
+//    OTCTweet* tweet = _Notif.userInfo[ TWPTweetCellViewTweetUserInfoKey ];
+//    TWPRepliesTimelineViewController* newView = [ TWPRepliesTimelineViewController repliesTimelineViewControllerWithTweet: tweet ];
+//    [ self _pushViewIntoViewsStack: newView ];
     }
 
 - ( void ) viewWillAppear
@@ -152,16 +167,22 @@ NSString static* const kColumnIDTabs = @"tabs";
     }
 
 #pragma mark IBActions
-- ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
+- ( void ) _pushViewIntoViewsStack: ( NSViewController* )_ViewContorller
     {
-    OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
-
-    TWPTwitterUserViewController* twitterUserViewNewController =
-        [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];
-
-    [ self.currentDashboardStack pushView: twitterUserViewNewController ];
+    [ self.currentDashboardStack pushView: _ViewContorller ];
     self.currentDashboardStack = self.currentDashboardStack;
     [ self.navigationBarController reload ];
+    }
+
+- ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
+    {
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
+    OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
+
+    NSViewController* twitterUserViewNewController =
+        [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];
+
+    [ self _pushViewIntoViewsStack: twitterUserViewNewController ];
     }
 
 - ( IBAction ) goBackAction: ( id )_Sender
