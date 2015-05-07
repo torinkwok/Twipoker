@@ -30,7 +30,7 @@
 @interface TWPRepliesTimelineViewController : TWPViewController <TWPTimelineScrollViewDelegate>
     {
 @private
-    OTCTweet __strong* _tweet;
+    OTCTweet __strong* _anchorTweet;
     }
 
 #pragma mark Initialization
