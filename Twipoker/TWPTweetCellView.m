@@ -25,6 +25,7 @@
 #import "TWPTweetCellView.h"
 #import "TWPUserAvatarWell.h"
 #import "TWPTimelineUserNameLabel.h"
+#import "TWPTweetTextField.h"
 
 // Notification Names
 NSString* const TWPTweetCellViewShouldDisplayDetailOfTweet = @"TweetCellView.Notif.ShouldDisplayDetailOfTweet";
@@ -64,7 +65,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
         [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
         [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
-        [ [ self tweetTextLabel ] setStringValue: self->_tweet.tweetText ];
+        [ [ self tweetTextLabel ] setTweet: self->_tweet ];
 
         [ self setNeedsDisplay: YES ];
         }

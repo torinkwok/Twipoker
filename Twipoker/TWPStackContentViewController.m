@@ -34,6 +34,7 @@
 #import "TWPNavigationBarController.h"
 #import "TWPRepliesTimelineViewController.h"
 #import "TWPTweetCellView.h"
+#import "TWPTweetTextField.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -183,6 +184,16 @@ NSString static* const kColumnIDTabs = @"tabs";
         [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];
 
     [ self _pushViewIntoViewsStack: twitterUserViewNewController ];
+    }
+
+- ( IBAction ) pushRepliesTimleineToCurrentViewsStackAction: ( id )_Sender
+    {
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
+
+    NSViewController* newRepliesTimelineViewController =
+        [ TWPRepliesTimelineViewController repliesTimelineViewControllerWithTweet: [ ( TWPTweetTextField* )_Sender tweet ] ];
+
+    [ self _pushViewIntoViewsStack: newRepliesTimelineViewController ];
     }
 
 - ( IBAction ) goBackAction: ( id )_Sender

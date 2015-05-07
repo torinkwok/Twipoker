@@ -59,6 +59,9 @@
                                                             <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <connections>
+                                                            <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="s5B-sC-psN"/>
+                                                        </connections>
                                                     </textField>
                                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwo-hv-szg" customClass="TWPTimelineUserNameLabel">
                                                         <rect key="frame" x="110" y="86" width="481" height="22"/>

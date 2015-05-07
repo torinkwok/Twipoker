@@ -48,7 +48,7 @@
                                                 <rect key="frame" x="17" y="33" width="70" height="70"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="cha-Zk-kVb"/>
                                             </imageView>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qzl-7a-xVt" userLabel="Tweet Text">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qzl-7a-xVt" userLabel="Tweet Text" customClass="TWPTweetTextField">
                                                 <rect key="frame" x="110" y="27" width="471" height="51"/>
                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="9sH-8s-xGT">
                                                     <font key="font" metaFont="system"/>
@@ -57,6 +57,9 @@ We'll see :)</string>
                                                     <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
+                                                <connections>
+                                                    <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="rOJ-ie-c6U"/>
+                                                </connections>
                                             </textField>
                                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TLx-BQ-56R" customClass="TWPTimelineUserNameLabel">
                                                 <rect key="frame" x="110" y="86" width="481" height="22"/>

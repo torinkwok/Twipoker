@@ -27,6 +27,8 @@
 
 @implementation TWPTweetTextField
 
+@dynamic tweet;
+
 - ( NSView* ) firstTweetCellSuperview
     {
     NSView* tweetCellView = self.superview;
@@ -42,10 +44,26 @@
     return tweetCellView;
     }
 
+#pragma mark Accessors
+- ( void ) setTweet: ( OTCTweet* )_Tweet
+    {
+    if ( self->_tweet != _Tweet )
+        {
+        self->_tweet = _Tweet;
+        [ self setStringValue: self->_tweet.tweetText ];
+        }
+    }
+
+- ( OTCTweet* ) tweet
+    {
+    return self->_tweet;
+    }
+
+#pragma mark Handling Event
 - ( void ) mouseDown: ( NSEvent* )_Event
     {
     [ super mouseDown: _Event ];
-    NSLog( @"👽" );
+    [ NSApp sendAction: self.action to: self.target from: self ];
     }
 
 - ( NSView* ) hitTest: ( NSPoint )_Point

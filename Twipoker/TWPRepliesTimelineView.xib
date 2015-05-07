@@ -48,13 +48,16 @@
                                                 <rect key="frame" x="17" y="33" width="70" height="70"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="9eW-EJ-CCH"/>
                                             </imageView>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VWQ-jX-dvo" userLabel="Tweet Text">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VWQ-jX-dvo" userLabel="Tweet Text" customClass="TWPTweetTextField">
                                                 <rect key="frame" x="110" y="27" width="464" height="51"/>
                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="前天吃饭要求退菜服务员居然爽快地答应了，人生第一次 RT @NSTongG: 一道久等未上的芝士焗海鲜，本质上处于做与未做的薛定谔猫态，一旦找来服务员要求退菜，立马坍缩为已做状态。 #生活中的量子力学 " id="Mvb-Yz-tS7">
                                                     <font key="font" size="13" name="STHeitiSC-Light"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
+                                                <connections>
+                                                    <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="q09-wI-CCQ"/>
+                                                </connections>
                                             </textField>
                                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28m-22-CWP" customClass="TWPTimelineUserNameLabel">
                                                 <rect key="frame" x="110" y="86" width="481" height="22"/>

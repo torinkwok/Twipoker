@@ -27,6 +27,12 @@
 @class TWPTweetCellView;
 
 @interface TWPTweetTextField : NSTextField
+    {
+@private
+    OTCTweet __strong* _tweet;
+    }
+
+@property ( strong, readwrite ) OTCTweet* tweet;
 
 - ( NSView* ) firstTweetCellSuperview;
 
