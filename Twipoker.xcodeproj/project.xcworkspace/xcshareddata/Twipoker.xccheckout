@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>584A5B3E-760A-4063-92F3-71D3C5419DC1</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Twipoker</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>18587E881E3ABFA494C4A3627AA8693F7A3692F3</key>
@@ -15,29 +15,29 @@
 		<key>336CDBD9E1CDFE33BBA325DD45A570E8908345C7</key>
 		<string>https://github.com/Twipoker-Project/INAppStoreWindow</string>
 		<key>BF33C3BAAC366188C471139BF2C57C062F55FB51</key>
-		<string>https://bitbucket.org/TongGuo/twipoker.git</string>
+		<string>https://github.com/TongG/Twipoker.git</string>
 		<key>F0515DE9ED749C0E1C50A307EAD2A54C575AF047</key>
 		<string>https://github.com/Twipoker-Project/TGForkedMASPreferences</string>
 		<key>F17C12D860420E85866F57474FF628886C65A3EA</key>
 		<string>https://github.com/Twipoker-Project/KVOController</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Twipoker.xcodeproj</string>
+	<string>Twipoker.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>18587E881E3ABFA494C4A3627AA8693F7A3692F3</key>
-		<string>../..Twipoker/Vendor/Objectwitter-C</string>
+		<string>../..Twipoker/Vendor/Objectwitter-C/</string>
 		<key>336CDBD9E1CDFE33BBA325DD45A570E8908345C7</key>
-		<string>../..Twipoker/Vendor/INAppStoreWindow</string>
+		<string>../..Twipoker/Vendor/INAppStoreWindow/</string>
 		<key>BF33C3BAAC366188C471139BF2C57C062F55FB51</key>
 		<string>../..</string>
 		<key>F0515DE9ED749C0E1C50A307EAD2A54C575AF047</key>
-		<string>../..Twipoker/Vendor/TGForkedMASPreferences</string>
+		<string>../..Twipoker/Vendor/TGForkedMASPreferences/</string>
 		<key>F17C12D860420E85866F57474FF628886C65A3EA</key>
-		<string>../..Twipoker/Vendor/KVOController</string>
+		<string>../..Twipoker/Vendor/KVOController/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/TongGuo/twipoker.git</string>
+	<string>https://github.com/TongG/Twipoker.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
