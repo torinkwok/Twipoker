@@ -63,6 +63,7 @@
 		83AAF7011AECF735007A3A48 /* TWPMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF7001AECF735007A3A48 /* TWPMessagesViewController.m */; };
 		83AAF7041AED0CEF007A3A48 /* TWPViewsStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF7031AED0CEF007A3A48 /* TWPViewsStack.m */; };
 		83AAF7081AED2B6D007A3A48 /* TWPDashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF7071AED2B6D007A3A48 /* TWPDashboardView.m */; };
+		83BE4AA71B056160008ED545 /* OTCList.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BE4AA51B056160008ED545 /* OTCList.m */; };
 		83C07A971AF22B0600184CCB /* draft-tweet-black.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 83C07A961AF22B0600184CCB /* draft-tweet-black.tiff */; };
 		83C07A991AF22FA000184CCB /* twitter-logo-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C07A981AF22FA000184CCB /* twitter-logo-blue.png */; };
 		83C07A9C1AF2313100184CCB /* TWPNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C07A9B1AF2313100184CCB /* TWPNavigationBar.m */; };
@@ -253,6 +254,9 @@
 		83AAF7031AED0CEF007A3A48 /* TWPViewsStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPViewsStack.m; path = Twipoker/TWPViewsStack.m; sourceTree = "<group>"; };
 		83AAF7061AED2B6D007A3A48 /* TWPDashboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDashboardView.h; path = Twipoker/TWPDashboardView.h; sourceTree = "<group>"; };
 		83AAF7071AED2B6D007A3A48 /* TWPDashboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDashboardView.m; path = Twipoker/TWPDashboardView.m; sourceTree = "<group>"; };
+		83BE4AA41B056160008ED545 /* OTCList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCList.h; sourceTree = "<group>"; };
+		83BE4AA51B056160008ED545 /* OTCList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCList.m; sourceTree = "<group>"; };
+		83BE4AA61B056160008ED545 /* OTCSTTwitterStreamingAPIDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCSTTwitterStreamingAPIDelegate.h; sourceTree = "<group>"; };
 		83C07A861AF221ED00184CCB /* arrow-back-enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-back-enabled.png"; sourceTree = "<group>"; };
 		83C07A871AF221ED00184CCB /* arrow-back-enabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-back-enabled@2x.png"; sourceTree = "<group>"; };
 		83C07A881AF221ED00184CCB /* arrow-forward-desabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-forward-desabled.png"; sourceTree = "<group>"; };
@@ -366,7 +370,6 @@
 		83E9A2EF1B02724600CA5926 /* OTCDirectMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCDirectMessage.m; sourceTree = "<group>"; };
 		83E9A2F01B02724600CA5926 /* OTCStreamingEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCStreamingEvent.h; sourceTree = "<group>"; };
 		83E9A2F11B02724600CA5926 /* OTCStreamingEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTCStreamingEvent.m; sourceTree = "<group>"; };
-		83E9A2F21B02724600CA5926 /* OTCSTTwitterAPIDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCSTTwitterAPIDelegate.h; sourceTree = "<group>"; };
 		83E9A2F71B02726800CA5926 /* BAVPlistNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAVPlistNode.h; sourceTree = "<group>"; };
 		83E9A2F81B02726800CA5926 /* BAVPlistNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAVPlistNode.m; sourceTree = "<group>"; };
 		83E9A2F91B02726800CA5926 /* JSONSyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSyntaxHighlight.h; sourceTree = "<group>"; };
@@ -555,6 +558,8 @@
 				83924DBF1AE104A900C25895 /* OTCTwitterUser.m */,
 				83924DC01AE104A900C25895 /* OTCUserMention.h */,
 				83924DC11AE104A900C25895 /* OTCUserMention.m */,
+				83BE4AA41B056160008ED545 /* OTCList.h */,
+				83BE4AA51B056160008ED545 /* OTCList.m */,
 				83924DCE1AE105AB00C25895 /* NSColor+Objectwitter-C.h */,
 				83924DCF1AE105AB00C25895 /* NSColor+Objectwitter-C.m */,
 				83924DD01AE105AB00C25895 /* NSDate+WSCCocoaDate.h */,
@@ -565,7 +570,7 @@
 				83E9A2ED1B02724500CA5926 /* OTCClientApplication.m */,
 				83E9A2F01B02724600CA5926 /* OTCStreamingEvent.h */,
 				83E9A2F11B02724600CA5926 /* OTCStreamingEvent.m */,
-				83E9A2F21B02724600CA5926 /* OTCSTTwitterAPIDelegate.h */,
+				83BE4AA61B056160008ED545 /* OTCSTTwitterStreamingAPIDelegate.h */,
 			);
 			name = "Objectwitter-C";
 			path = "Objectwitter-C/Objectwitter-C";
@@ -1202,6 +1207,7 @@
 				83E9A2E51B02721200CA5926 /* STTwitterAPI.m in Sources */,
 				8338CD831AE3C8F900370C10 /* TWPKeychain.m in Sources */,
 				831447D51ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m in Sources */,
+				83BE4AA71B056160008ED545 /* OTCList.m in Sources */,
 				83E9A2EA1B02721200CA5926 /* STTwitterOSRequest.m in Sources */,
 				83CFD8771ACF1C820062D73D /* TWPTwipokerLogoView.m in Sources */,
 				83AAF6F71AECF6F1007A3A48 /* TWPNotificationsViewController.m in Sources */,
