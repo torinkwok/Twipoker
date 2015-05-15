@@ -29,11 +29,14 @@
 @interface TWPLoginUser : NSObject <NSCopying>
     {
 @private
-    STTwitterAPI __strong* _twitterAPI;
+    NSString* _userName;
+    NSString* _userID;
+    NSString* _OAuthToken;
+    NSString* _OAuthTokenSecret;
     }
 
 // Screen name of current user, '@' has been excluded.
-@property ( copy, readwrite ) NSString* userName;
+@property ( copy ) NSString* userName;
 
 // The string representation of unique identifier for this user.
 @property ( copy, readonly ) NSString* userID;

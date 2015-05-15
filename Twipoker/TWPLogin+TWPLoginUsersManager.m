@@ -25,6 +25,10 @@
 #import "TWPLogin+TWPLoginUsersManager.h"
 #import "TWPKeychain.h"
 
+@interface TWPLoginUser ()
+
+@end
+
 #pragma mark TWPLoginUser + TWPLoginUsersManager
 @implementation TWPLoginUser ( TWPLoginUsersManager )
 
@@ -92,14 +96,10 @@
 
     if ( self = [ super init ] )
         {
-        STTwitterAPI* newAPI = [ STTwitterAPI twitterAPIWithOAuthConsumerName: TWPConsumerName
-                                                                  consumerKey: TWPConsumerKey
-                                                               consumerSecret: TWPConsumerSecret
-                                                                   oauthToken: _OAuthAccessTokenString
-                                                             oauthTokenSecret: _OAuthAccessTokenSecretString ];
-        self->_twitterAPI = newAPI;
-        self->_twitterAPI.userName = _UserName;
-        self->_twitterAPI.userID = _UserID;
+        self.userName = _UserName;
+        self->_userID = [ _UserID copy ];
+        self->_OAuthToken = [ _OAuthAccessTokenString copy ];
+        self->_OAuthTokenSecret = [ _OAuthAccessTokenSecretString copy ];
         }
 
     return self;

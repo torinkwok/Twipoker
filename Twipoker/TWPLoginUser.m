@@ -28,20 +28,20 @@
 #pragma mark TWPLoginUser class
 @implementation TWPLoginUser
 
-@dynamic userName;
-@dynamic userID;
-@dynamic OAuthToken;
-@dynamic OAuthTokenSecret;
+@synthesize userName = _userName;
+@synthesize userID = _userID;
+@synthesize OAuthToken = _OAuthToken;
+@synthesize OAuthTokenSecret = _OAuthTokenSecret;
 
-@synthesize twitterAPI = _twitterAPI;
+@dynamic twitterAPI;
 
 #pragma mark Overrides
 - ( NSString* ) description
     {
-    return [ @{ @"User Name" : ( self.userName ?: [ NSNull null ] )
-              , @"User ID" : ( self.userID ?: [ NSNull null ] )
-              , @"OAuth Token" : ( self.OAuthToken ?: [ NSNull null ] )
-              , @"OAuth Token Secret" : ( self.OAuthTokenSecret ?: [ NSNull null ] )
+    return [ @{ @"User Name" : ( self->_userName ?: [ NSNull null ] )
+              , @"User ID" : ( self->_userID ?: [ NSNull null ] )
+              , @"OAuth Token" : ( self->_OAuthToken ?: [ NSNull null ] )
+              , @"OAuth Token Secret" : ( self->_OAuthTokenSecret ?: [ NSNull null ] )
               } description ];
     }
 
@@ -57,28 +57,16 @@
     }
 
 #pragma mark Accessors
-// Screen name of current user, '@' has been excluded.
-- ( NSString* ) userName
+- ( STTwitterAPI* ) twitterAPI
     {
-    return self->_twitterAPI.userName;
-    }
+    STTwitterAPI* newAPI = [ STTwitterAPI twitterAPIWithOAuthConsumerName: TWPConsumerName
+                                                              consumerKey: TWPConsumerKey
+                                                           consumerSecret: TWPConsumerSecret
+                                                               oauthToken: self->_OAuthToken
+                                                         oauthTokenSecret: self->_OAuthTokenSecret ];
+    [ newAPI setUserName: self->_userName ];
 
-// The string representation of unique identifier for this user.
-- ( NSString* ) userID
-    {
-    return self->_twitterAPI.userID;
-    }
-
-// OAuth access token of this user. (Used for creating `twitterAPI`)
-- ( NSString* ) OAuthToken
-    {
-    return self->_twitterAPI.oauthAccessToken;
-    }
-
-// OAuth access token secret of this user. (Used for creating `twitterAPI`)
-- ( NSString* ) OAuthTokenSecret
-    {
-    return self->_twitterAPI.oauthAccessTokenSecret;
+    return newAPI;
     }
 
 #pragma mark Comparing
@@ -95,10 +83,10 @@
 #pragma mark Conforms to <NSCopying>
 - ( instancetype ) copyWithZone: ( NSZone* )_Zone
     {
-    TWPLoginUser* newLoginUser = [ TWPLoginUser _loginUserWithUserID: [ self.userID copy ]
-                                                            userName: [ self.userName copy ]
-                                                    OAuthAccessToken: [ self.OAuthToken copy ]
-                                              OAuthAccessTokenSecret: [ self.OAuthTokenSecret copy ] ];
+    TWPLoginUser* newLoginUser = [ TWPLoginUser _loginUserWithUserID: [ self->_userID copy ]
+                                                            userName: [ self->_userName copy ]
+                                                    OAuthAccessToken: [ self->_OAuthToken copy ]
+                                              OAuthAccessTokenSecret: [ self->_OAuthTokenSecret copy ] ];
     return newLoginUser;
     }
 
