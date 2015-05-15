@@ -46,6 +46,13 @@
                     self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
                     self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
+                    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI setDelegate: self ];
+                    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+                        fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
+                                                            includeReplies: @YES
+                                                           keywordsToTrack: nil
+                                                     locationBoundingBoxes: nil ];
+
                     [ self.timelineTableView reloadData ];
                     } errorBlock: ^( NSError* _Error )
                                     {
@@ -111,6 +118,14 @@
        shouldFetchLaterTweets: ( NSClipView* )_ClipView
     {
     NSLog( @"%s", __PRETTY_FUNCTION__ );
+    }
+
+#pragma mark Conforms to <OTCTwitterStreamingAPIDelegate>
+- ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI
+      didReceiveTweet: ( OTCTweet* )_ReceivedTweet
+    {
+    [ self->_tweets insertObject: _ReceivedTweet atIndex: 0 ];
+    [ self.timelineTableView reloadData ];
     }
 
 @end

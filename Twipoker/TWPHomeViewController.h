@@ -27,7 +27,7 @@
 #import "TWPViewController.h"
 #import "TWPTimelineScrollView.h"
 
-@interface TWPHomeViewController : TWPViewController <TWPTimelineScrollViewDelegate>
+@interface TWPHomeViewController : TWPViewController <TWPTimelineScrollViewDelegate, OTCSTTwitterStreamingAPIDelegate>
 
 #pragma mark Conforms to <TWPTimelineScrollViewDelegate>
 - ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
