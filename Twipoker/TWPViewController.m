@@ -28,6 +28,8 @@
 
 @implementation TWPViewController
 
+@dynamic twitterAPI;
+
 @synthesize isLoadingOlderTweets = _isLoadingOlderTweets;
 @synthesize numberOfTweetsWillBeLoadedOnce = _numberOfTweetsWillBeLoadedOnce;
 
@@ -40,9 +42,27 @@
 
         self->_isLoadingOlderTweets = NO;
         self->_numberOfTweetsWillBeLoadedOnce = 20;
+
+        self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
         }
 
     return self;
+    }
+
+#pragma mark Accessors
+- ( STTwitterAPI* ) twitterAPI
+    {
+    return self->_twitterAPI;
+    }
+
+- ( void ) setTwitterAPI: ( STTwitterAPI* )_TwitterAPI
+    {
+    if ( self->_twitterAPI != _TwitterAPI )
+        {
+        self->_twitterAPI = _TwitterAPI;
+
+        // TODO: Whatever is necessary
+        }
     }
 
 #pragma mark Conforms to <TWPTimelineTableViewDataSource>

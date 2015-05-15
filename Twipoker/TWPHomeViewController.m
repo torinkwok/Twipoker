@@ -36,28 +36,25 @@
     {
     if ( self = [ super initWithNibName: @"TWPHomeView" bundle: [ NSBundle mainBundle ] ] )
         {
-        [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-            getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
-                ^( NSArray* _TweetObjects )
-                    {
-                    for ( NSDictionary* _TweetObject in _TweetObjects )
-                        [ self->_tweets addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
+        [ self.twitterAPI getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
+            ^( NSArray* _TweetObjects )
+                {
+                for ( NSDictionary* _TweetObject in _TweetObjects )
+                    [ self->_tweets addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
 
-                    self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
-                    self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+                self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
+                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
-                    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI setDelegate: self ];
-                    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-                        fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
-                                                            includeReplies: @YES
-                                                           keywordsToTrack: nil
-                                                     locationBoundingBoxes: nil ];
-
-                    [ self.timelineTableView reloadData ];
-                    } errorBlock: ^( NSError* _Error )
-                                    {
-                                    [ self presentError: _Error ];
-                                    } ];
+                [ self.twitterAPI setDelegate: self ];
+                [ self.twitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
+                                                                      includeReplies: @YES
+                                                                     keywordsToTrack: nil
+                                                               locationBoundingBoxes: nil ];
+                [ self.timelineTableView reloadData ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                [ self presentError: _Error ];
+                                } ];
         }
 
     return self;
@@ -79,15 +76,14 @@
         self.isLoadingOlderTweets = YES;
         NSLog( @"%s", __PRETTY_FUNCTION__ );
 
-        [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-            getStatusesHomeTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce).stringValue
-                                     sinceID: nil
-                                       maxID: @( self->_maxID - 1 ).stringValue
-                                    trimUser: @NO
-                              excludeReplies: @0
-                          contributorDetails: @YES
-                             includeEntities: @YES
-                                successBlock:
+        [ self.twitterAPI getStatusesHomeTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce).stringValue
+                                                   sinceID: nil
+                                                     maxID: @( self->_maxID - 1 ).stringValue
+                                                  trimUser: @NO
+                                            excludeReplies: @0
+                                        contributorDetails: @YES
+                                           includeEntities: @YES
+                                              successBlock:
             ^( NSArray* _TweetObjects )
                 {
                 for ( NSDictionary* _TweetObject in _TweetObjects )

@@ -36,21 +36,20 @@
     {
     if ( self = [ super initWithNibName: @"TWPFavoritesView" bundle: [ NSBundle mainBundle ] ] )
         {
-        [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-            getFavoritesListWithSuccessBlock:
-                ^( NSArray* _TweetObjects )
-                    {
-                    for ( NSDictionary* _TweetObject in _TweetObjects )
-                        [ self->_tweets addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
+        [ self.twitterAPI getFavoritesListWithSuccessBlock:
+            ^( NSArray* _TweetObjects )
+                {
+                for ( NSDictionary* _TweetObject in _TweetObjects )
+                    [ self->_tweets addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
 
-                    self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
-                    self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+                self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
+                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
-                    [ self.timelineTableView reloadData ];
-                    } errorBlock: ^( NSError* _Error )
-                                    {
-                                    [ self presentError: _Error ];
-                                    } ];
+                [ self.timelineTableView reloadData ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                [ self presentError: _Error ];
+                                } ];
         }
 
     return self;
@@ -72,7 +71,7 @@
         self.isLoadingOlderTweets = YES;
         NSLog( @"%s", __PRETTY_FUNCTION__ );
 
-        STTwitterAPI* twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
+        STTwitterAPI __weak* twitterAPI = self.twitterAPI;
         [ twitterAPI getFavoritesListWithUserID: twitterAPI.userID
                                    orScreenName: nil
                                           count: @( self.numberOfTweetsWillBeLoadedOnce ).stringValue

@@ -30,6 +30,8 @@
     <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate>
     {
 @protected
+    STTwitterAPI __strong* _twitterAPI;
+
     NSMutableArray __strong* _tweets;
 
     BOOL _isLoadingOlderTweets;
@@ -38,6 +40,8 @@
     SInt64 _sinceID;
     SInt64 _maxID;
     }
+
+@property ( strong, readwrite ) STTwitterAPI* twitterAPI;
 
 @property ( weak ) IBOutlet TWPTimelineTableView* timelineTableView;
 

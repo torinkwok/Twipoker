@@ -51,11 +51,9 @@
     if ( self = [ super initWithNibName: @"TWPTwitterUserView" bundle: [ NSBundle mainBundle ] ] )
         {
         [ self.twitterUserView setTwitterUser: _TwitterUser ];
-
-        [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-            getUserTimelineWithScreenName: self.twitterUserView.twitterUser.screenName
-                                    count: self.numberOfTweetsWillBeLoadedOnce
-                             successBlock:
+        [ self.twitterAPI getUserTimelineWithScreenName: self.twitterUserView.twitterUser.screenName
+                                                  count: self.numberOfTweetsWillBeLoadedOnce
+                                           successBlock:
                 ^( NSArray* _TweetObjects )
                     {
                     for ( NSDictionary* _TweetObject in _TweetObjects )
@@ -90,17 +88,16 @@
         self.isLoadingOlderTweets = YES;
         NSLog( @"%s", __PRETTY_FUNCTION__ );
 
-        [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-            getStatusesUserTimelineForUserID: self.twitterUserView.twitterUser.IDString
-                                  screenName: nil
-                                     sinceID: nil
-                                       count: @( self.numberOfTweetsWillBeLoadedOnce ).stringValue
-                                       maxID: @( self->_maxID - 1 ).stringValue
-                                    trimUser: @NO
-                              excludeReplies: @0
-                          contributorDetails: @YES
-                             includeRetweets: @YES
-                                successBlock:
+        [ self.twitterAPI getStatusesUserTimelineForUserID: self.twitterUserView.twitterUser.IDString
+                                                screenName: nil
+                                                   sinceID: nil
+                                                     count: @( self.numberOfTweetsWillBeLoadedOnce ).stringValue
+                                                     maxID: @( self->_maxID - 1 ).stringValue
+                                                  trimUser: @NO
+                                            excludeReplies: @0
+                                        contributorDetails: @YES
+                                           includeRetweets: @YES
+                                              successBlock:
             ^( NSArray* _TweetObjects )
                 {
                 for ( NSDictionary* _TweetObject in _TweetObjects )

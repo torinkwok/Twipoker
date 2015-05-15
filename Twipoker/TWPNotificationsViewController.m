@@ -36,10 +36,9 @@
     {
     if ( self = [ super initWithNibName: @"TWPNotificationsView" bundle: [ NSBundle mainBundle ] ] )
         {
-        [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-            getMentionsTimelineSinceID: nil
-                                 count: self.numberOfTweetsWillBeLoadedOnce
-                          successBlock:
+        [ self.twitterAPI getMentionsTimelineSinceID: nil
+                                               count: self.numberOfTweetsWillBeLoadedOnce
+                                        successBlock:
                 ^( NSArray* _TweetObjects )
                     {
                     for ( NSDictionary* _TweetObject in _TweetObjects )
@@ -74,14 +73,13 @@
         self.isLoadingOlderTweets = YES;
         NSLog( @"%s", __PRETTY_FUNCTION__ );
 
-        STTwitterAPI* twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
-        [ twitterAPI getStatusesMentionTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce ).stringValue
-                                                 sinceID: nil
-                                                   maxID: @( self->_maxID ).stringValue
-                                                trimUser: NO
-                                      contributorDetails: @YES
-                                         includeEntities: @YES
-                                            successBlock:
+        [ self.twitterAPI getStatusesMentionTimelineWithCount: @( self.numberOfTweetsWillBeLoadedOnce ).stringValue
+                                                      sinceID: nil
+                                                        maxID: @( self->_maxID ).stringValue
+                                                     trimUser: NO
+                                           contributorDetails: @YES
+                                              includeEntities: @YES
+                                                 successBlock:
             ^( NSArray* _TweetObjects )
                 {
                 for ( NSDictionary* _TweetObject in _TweetObjects )
