@@ -45,6 +45,10 @@
                 self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
                 self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
+                [ self.twitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
+                                                                      includeReplies: @YES
+                                                                     keywordsToTrack: nil
+                                                               locationBoundingBoxes: nil ];
                 [ self.timelineTableView reloadData ];
                 } errorBlock: ^( NSError* _Error )
                                 {
@@ -111,6 +115,34 @@
        shouldFetchLaterTweets: ( NSClipView* )_ClipView
     {
     NSLog( @"%s", __PRETTY_FUNCTION__ );
+    }
+
+#pragma mark Conforms to <OTCTwitterStreamingAPIDelegate>
+- ( void )             twitterAPI: ( STTwitterAPI* )_TwitterAPI
+    streamingEventHasBeenDetected: ( OTCStreamingEvent* )_DetectedEvent
+    {
+    if ( _DetectedEvent.eventType == OTCStreamingEventTypeFavorite )
+        {
+        if ( [ _DetectedEvent.sourceUser.IDString isEqualToString: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
+            {
+            OTCTweet* targetTweet = ( OTCTweet* )_DetectedEvent.targetObject;
+
+            if ( targetTweet )
+                {
+                [ self->_tweets insertObject: targetTweet atIndex: 0 ];
+                [ self.timelineTableView reloadData ];
+                }
+            }
+        }
+
+    else if ( _DetectedEvent.eventType == OTCStreamingEventTypeUnfavorite )
+        {
+        if ( [ _DetectedEvent.sourceUser.IDString isEqualToString: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
+            {
+            [ self->_tweets removeObject: _DetectedEvent.targetObject ];
+            [ self.timelineTableView reloadData ];
+            }
+        }
     }
 
 @end

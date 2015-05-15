@@ -44,6 +44,7 @@
         self->_numberOfTweetsWillBeLoadedOnce = 20;
 
         self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
+        self->_twitterAPI.delegate = self;
         }
 
     return self;

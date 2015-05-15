@@ -45,7 +45,6 @@
                 self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
                 self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
-                [ self.twitterAPI setDelegate: self ];
                 [ self.twitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
                                                                       includeReplies: @YES
                                                                      keywordsToTrack: nil

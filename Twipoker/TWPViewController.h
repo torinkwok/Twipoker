@@ -27,7 +27,7 @@
 #import "TWPTimelineTableView.h"
 
 @interface TWPViewController : NSViewController
-    <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate>
+    <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate, OTCSTTwitterStreamingAPIDelegate>
     {
 @protected
     STTwitterAPI __strong* _twitterAPI;
