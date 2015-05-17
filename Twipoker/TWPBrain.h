@@ -24,8 +24,24 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
+    { TWPBrainSignalTypeTweetMask           = 1 << 0
+    , TWPBrainSignalTypeFriendsListsMask    = 1 << 1
+    , TWPBrainSignalTypeDeleteMask          = 1 << 2
+    , TWPBrainSignalTypeScrubGeoMask        = 1 << 3
+    , TWPBrainSignalTypeLimitMask           = 1 << 4
+    , TWPBrainSignalTypeDisconnectMask      = 1 << 5
+    , TWPBrainSignalTypeWarningMask         = 1 << 6
+    , TWPBrainSignalTypeEventMask           = 1 << 7
+    , TWPBrainSignalTypeStatusWithheldMask  = 1 << 8
+    , TWPBrainSignalTypeCountryWithheldMask = 1 << 9
+    , TWPBrainSignalTypeUserWithheldMask    = 1 << 10
+    , TWPBrainSignalTypeControlMask         = 1 << 11
+    , TWPBrainSignalTypeDirectMessagesMask  = 1 << 12
+    };
+
 // TWPBrain class
-@interface TWPBrain : NSObject
+@interface TWPBrain : NSObject <OTCSTTwitterStreamingAPIDelegate>
 
 @end // TWPBrain class
 
