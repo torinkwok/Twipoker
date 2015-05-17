@@ -29,14 +29,6 @@
 
 // TWPBrain class
 @implementation TWPBrain
-    {
-    // Home Timeline
-    STTwitterAPI __strong* _homeTimelineStreamAPI;
-    NSMutableArray __strong* _limbsSignalMaskPairsForAuthingUserStreamAPI;
-
-    // Specified Users
-    NSMutableDictionary __strong* _dictOfSecifiedUsersStreamAPI;
-    }
 
 #pragma mark Initializations
 + ( instancetype ) wiseBrain
@@ -59,9 +51,9 @@ TWPBrain static __strong* sWiseBrain;
             self->_dictOfSecifiedUsersStreamAPI = [ NSMutableDictionary dictionary ];
 
             [ self->_homeTimelineStreamAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
-                                                                                     includeReplies: @NO
-                                                                                    keywordsToTrack: nil
-                                                                              locationBoundingBoxes: nil ];
+                                                                               includeReplies: @NO
+                                                                              keywordsToTrack: nil
+                                                                        locationBoundingBoxes: nil ];
             sWiseBrain = self;
             }
         }
@@ -133,11 +125,60 @@ TWPBrain static __strong* sWiseBrain;
 #pragma mark Conforms to <OTCSTTwitterStreamingAPIDelegate> protocol
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
-    for ( _TWPSignalLimbPair* _Pair in self->_limbsSignalMaskPairsForAuthingUserStreamAPI )
+    if ( _TwitterAPI == self->_homeTimelineStreamAPI )
         {
-        if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
-                && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetWithinHomeTimeline:fromBrain: ) ] )
-            [ _Pair.limb didReceiveTweetWithinHomeTimeline: _ReceivedTweet fromBrain: self ];
+        for ( _TWPSignalLimbPair* _Pair in self->_limbsSignalMaskPairsForAuthingUserStreamAPI )
+            {
+            if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
+                    && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetWithinHomeTimeline:fromBrain: ) ] )
+                [ _Pair.limb didReceiveTweetWithinHomeTimeline: _ReceivedTweet fromBrain: self ];
+            }
+        }
+    else
+        {
+        for ( NSString* _UserID in self->_dictOfSecifiedUsersStreamAPI )
+            {
+            _TWPSignalLimbPairs* pairs = ( _TWPSignalLimbPairs* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
+            if ( pairs.twitterAPI == _TwitterAPI )
+                {
+                for ( _TWPSignalLimbPair* _Pair in pairs )
+                    {
+                    if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
+                        && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetWithinHomeTimeline:fromBrain: ) ] )
+                        [ _Pair.limb didReceiveTweetWithinHomeTimeline: _ReceivedTweet fromBrain: self ];
+                    }
+                }
+            }
+        }
+    }
+
+- ( void )             twitterAPI: ( STTwitterAPI* )_TwitterAPI
+    streamingEventHasBeenDetected: ( OTCStreamingEvent* )_DetectedEvent
+    {
+    if ( _TwitterAPI == self->_homeTimelineStreamAPI )
+        {
+        for ( _TWPSignalLimbPair* _Pair in self->_limbsSignalMaskPairsForAuthingUserStreamAPI )
+            {
+            if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
+                    && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetWithinHomeTimeline:fromBrain: ) ] )
+                [ _Pair.limb didReceiveEvent: _DetectedEvent fromBrain: self ];
+            }
+        }
+    else
+        {
+        for ( NSString* _UserID in self->_dictOfSecifiedUsersStreamAPI )
+            {
+            _TWPSignalLimbPairs* pairs = ( _TWPSignalLimbPairs* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
+            if ( pairs.twitterAPI == _TwitterAPI )
+                {
+                for ( _TWPSignalLimbPair* _Pair in pairs )
+                    {
+                    if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
+                        && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetWithinHomeTimeline:fromBrain: ) ] )
+                        [ _Pair.limb didReceiveEvent: _DetectedEvent fromBrain: self ];
+                    }
+                }
+            }
         }
     }
 

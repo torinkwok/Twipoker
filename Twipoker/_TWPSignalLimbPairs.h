@@ -42,7 +42,7 @@
 
 // --------------------------------------------------------------------------------------------------- //
 // _TWPSignalLimbPairs class
-@interface _TWPSignalLimbPairs : NSObject
+@interface _TWPSignalLimbPairs : NSObject <NSFastEnumeration>
     {
 @private
     STTwitterAPI __strong* _twitterAPI;

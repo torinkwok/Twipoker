@@ -44,6 +44,15 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 
 // TWPBrain class
 @interface TWPBrain : NSObject <OTCSTTwitterStreamingAPIDelegate>
+    {
+@private
+    // Home Timeline
+    STTwitterAPI __strong* _homeTimelineStreamAPI;
+    NSMutableArray __strong* _limbsSignalMaskPairsForAuthingUserStreamAPI;
+
+    // Specified Users
+    NSMutableDictionary __strong* _dictOfSecifiedUsersStreamAPI;
+    }
 
 #pragma mark Initializations
 + ( instancetype ) wiseBrain;
@@ -71,6 +80,7 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 @protocol TWPLimb <NSObject>
 
 - ( void ) didReceiveTweetWithinHomeTimeline: ( OTCTweet* )_Tweet fromBrain: ( TWPBrain* )_Brain;
+- ( void ) didReceiveEvent: ( OTCStreamingEvent* )_Tweet fromBrain: ( TWPBrain* )_Brain;
 
 @end // TWPLimb class
 

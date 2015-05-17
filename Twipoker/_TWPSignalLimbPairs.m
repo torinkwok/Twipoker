@@ -134,6 +134,14 @@
     [ self->_signalLimbPairs removeObject: _NewPair ];
     }
 
+#pragma mark Conforms <NSFastEnumeration> protocol
+- ( NSUInteger ) countByEnumeratingWithState: ( NSFastEnumerationState* )_State
+                                     objects: ( __unsafe_unretained id [] )_Buffer
+                                       count: ( NSUInteger )_Len
+    {
+    return [ self->_signalLimbPairs countByEnumeratingWithState: _State objects: _Buffer count: _Len ];
+    }
+
 @end // _TWPSignalLimbPairs class
 
 /*=============================================================================┐

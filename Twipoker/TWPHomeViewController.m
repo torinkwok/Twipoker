@@ -36,8 +36,7 @@
     {
     if ( self = [ super initWithNibName: @"TWPHomeView" bundle: [ NSBundle mainBundle ] ] )
         {
-        [ [ TWPBrain wiseBrain ] registerLimbForAuthenticatingUser: self
-                                                       brainSignal: TWPBrainSignalTypeTweetMask ];
+        [ [ TWPBrain wiseBrain ] registerLimbForAuthenticatingUser: self brainSignal: TWPBrainSignalTypeTweetMask ];
 
         [ self.twitterAPI getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
             ^( NSArray* _TweetObjects )
@@ -48,10 +47,6 @@
                 self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
                 self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
-//                [ self.twitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
-//                                                                      includeReplies: @YES
-//                                                                     keywordsToTrack: nil
-//                                                               locationBoundingBoxes: nil ];
                 [ self.timelineTableView reloadData ];
                 } errorBlock: ^( NSError* _Error )
                                 {
