@@ -52,6 +52,8 @@ TWPBrain static __strong* sWiseBrain;
         if ( self = [ super init ] )
             {
             self->_homeTimelineStreamAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
+            self->_homeTimelineStreamAPI.delegate = self;
+
             self->_limbsSignalMaskPairsForAuthingUserStreamAPI = [ NSMutableArray array ];
 
             self->_dictOfSecifiedUsersStreamAPI = [ NSMutableDictionary dictionary ];
@@ -125,6 +127,17 @@ TWPBrain static __strong* sWiseBrain;
 
         if ( !correctpondingPairs.pairsCount )
             [ self->_dictOfSecifiedUsersStreamAPI[ _UserID ] removeObjectForKey: _UserID ];
+        }
+    }
+
+#pragma mark Conforms to <OTCSTTwitterStreamingAPIDelegate> protocol
+- ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
+    {
+    for ( _TWPSignalLimbPair* _Pair in self->_limbsSignalMaskPairsForAuthingUserStreamAPI )
+        {
+        if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
+                && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetWithinHomeTimeline:fromBrain: ) ] )
+            [ _Pair.limb didReceiveTweetWithinHomeTimeline: _ReceivedTweet fromBrain: self ];
         }
     }
 

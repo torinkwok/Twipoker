@@ -68,9 +68,9 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 @end // TWPBrain class
 
 // TWPLimb class
-@protocol TWPLimb
+@protocol TWPLimb <NSObject>
 
-//- ( void )
+- ( void ) didReceiveTweetWithinHomeTimeline: ( OTCTweet* )_Tweet fromBrain: ( TWPBrain* )_Brain;
 
 @end // TWPLimb class
 

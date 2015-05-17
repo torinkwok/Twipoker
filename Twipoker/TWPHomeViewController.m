@@ -36,6 +36,9 @@
     {
     if ( self = [ super initWithNibName: @"TWPHomeView" bundle: [ NSBundle mainBundle ] ] )
         {
+        [ [ TWPBrain wiseBrain ] registerLimbForAuthenticatingUser: self
+                                                       brainSignal: TWPBrainSignalTypeTweetMask ];
+
         [ self.twitterAPI getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
             ^( NSArray* _TweetObjects )
                 {
@@ -45,10 +48,10 @@
                 self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
                 self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
-                [ self.twitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
-                                                                      includeReplies: @YES
-                                                                     keywordsToTrack: nil
-                                                               locationBoundingBoxes: nil ];
+//                [ self.twitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
+//                                                                      includeReplies: @YES
+//                                                                     keywordsToTrack: nil
+//                                                               locationBoundingBoxes: nil ];
                 [ self.timelineTableView reloadData ];
                 } errorBlock: ^( NSError* _Error )
                                 {
@@ -115,11 +118,10 @@
     NSLog( @"%s", __PRETTY_FUNCTION__ );
     }
 
-#pragma mark Conforms to <OTCTwitterStreamingAPIDelegate>
-- ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI
-      didReceiveTweet: ( OTCTweet* )_ReceivedTweet
+#pragma mark Conforms to <TWPLimb>
+- ( void ) didReceiveTweetWithinHomeTimeline: ( OTCTweet* )_Tweet fromBrain: ( TWPBrain* )_Brain
     {
-    [ self->_tweets insertObject: _ReceivedTweet atIndex: 0 ];
+    [ self->_tweets insertObject: _Tweet atIndex: 0 ];
     [ self.timelineTableView reloadData ];
     }
 
