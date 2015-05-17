@@ -22,57 +22,119 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Foundation/Foundation.h>
+#import "_TWPSignalLimbPairs.h"
 
-@protocol TWPLimb;
+// --------------------------------------------------------------------------------------------------- //
+// _TWPSignalLimbPair class
+@implementation _TWPSignalLimbPair
 
-typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
-    { TWPBrainSignalTypeTweetMask           = 1U
-    , TWPBrainSignalTypeFriendsListsMask    = 1U << 1
-    , TWPBrainSignalTypeDeleteMask          = 1U << 2
-    , TWPBrainSignalTypeScrubGeoMask        = 1U << 3
-    , TWPBrainSignalTypeLimitMask           = 1U << 4
-    , TWPBrainSignalTypeDisconnectMask      = 1U << 5
-    , TWPBrainSignalTypeWarningMask         = 1U << 6
-    , TWPBrainSignalTypeEventMask           = 1U << 7
-    , TWPBrainSignalTypeStatusWithheldMask  = 1U << 8
-    , TWPBrainSignalTypeCountryWithheldMask = 1U << 9
-    , TWPBrainSignalTypeUserWithheldMask    = 1U << 10
-    , TWPBrainSignalTypeControlMask         = 1U << 11
-    , TWPBrainSignalTypeDirectMessagesMask  = 1U << 12
-    };
-
-// TWPBrain class
-@interface TWPBrain : NSObject <OTCSTTwitterStreamingAPIDelegate>
+@synthesize signalMask;
+@synthesize limb;
 
 #pragma mark Initializations
-+ ( instancetype ) wiseBrain;
++ ( instancetype ) pairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_Limb
+    {
+    return [ [ [ self class ] alloc ] initWithSignalMask: _SignalMask limb: _Limb ];
+    }
 
-#pragma mark Registration of Limbs
-// Authenticating User
-- ( void ) registerLimbForAuthenticatingUser: ( NSObject <TWPLimb>* )_NewLimb
-                                 brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
+- ( instancetype ) initWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_Limb
+    {
+    if ( !_Limb )
+        return nil;
 
-- ( void ) removeLimbForAuthenticatingUser: ( NSObject <TWPLimb>* )_Limb
-                               brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
+    if ( self = [ super init ] )
+        {
+        self.signalMask = _SignalMask;
+        self.limb = _Limb;
+        }
 
-// Specifying User
-- ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb
-              forUserID: ( NSString* )_UserID
-            brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
+    return self;
+    }
 
-- ( void ) removeLimb: ( NSObject <TWPLimb>* )_Limb
-            forUserID: ( NSString* )_UserID
-          brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
+#pragma mark Comparing
+- ( BOOL ) isEqualToPair: ( _TWPSignalLimbPair* )_RhsPair
+    {
+    if ( self == _RhsPair )
+        return YES;
 
-@end // TWPBrain class
+    return ( self.signalMask == _RhsPair.signalMask ) && ( self.limb == _RhsPair.limb );
+    }
 
-// TWPLimb class
-@protocol TWPLimb
+- ( BOOL ) isEqual: ( id )_Object
+    {
+    if ( self == _Object )
+        return YES;
 
-//- ( void )
+    if ( [ _Object isKindOfClass: [ _TWPSignalLimbPair class ] ] )
+        return [ self isEqualToPair: ( _TWPSignalLimbPair* )_Object ];
 
-@end // TWPLimb class
+    return [ super isEqual: _Object ];
+    }
+
+- ( NSUInteger ) hash
+    {
+    NSUInteger signalMaskHash = self.signalMask;
+    NSUInteger limbHash = ( NSUInteger )self.limb;
+
+    return signalMaskHash ^ limbHash;
+    }
+
+@end // _TWPSignalLimbPair class
+
+// --------------------------------------------------------------------------------------------------- //
+// _TWPSignalLimbPairs class
+@implementation _TWPSignalLimbPairs
+
+@synthesize twitterAPI = _twitterAPI;
+
+@dynamic pairsCount;
+
++ ( instancetype ) pairsWithTwitterAPI: ( STTwitterAPI* )_TwitterAPI
+    {
+    return [ [ [ self class ] alloc ] initWithTwitterAPI: _TwitterAPI ];
+    }
+
+- ( instancetype ) initWithTwitterAPI: ( STTwitterAPI* )_TwitterAPI
+    {
+    if ( self = [ super init ] )
+        {
+        self->_twitterAPI = _TwitterAPI;
+        self->_signalLimbPairs = [ NSMutableSet set ];
+        }
+
+    return self;
+    }
+
+- ( NSUInteger ) pairsCount
+    {
+    return self->_signalLimbPairs.count;
+    }
+
+- ( void ) addPairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask
+                            limb: ( NSObject <TWPLimb>* )_NewLimb
+    {
+    _TWPSignalLimbPair* pair = [ _TWPSignalLimbPair pairWithSignalMask: _SignalMask limb: _NewLimb ];
+    [ self addPair: pair ];
+    }
+
+- ( void ) addPair: ( _TWPSignalLimbPair* )_NewPair
+    {
+    [ self->_signalLimbPairs addObject: _NewPair ];
+    }
+
+- ( void ) removePairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask
+                               limb: ( NSObject <TWPLimb>* )_NewLimb
+    {
+    _TWPSignalLimbPair* pair = [ _TWPSignalLimbPair pairWithSignalMask: _SignalMask limb: _NewLimb ];
+    [ self removePair: pair ];
+    }
+
+- ( void ) removePair: ( _TWPSignalLimbPair* )_NewPair
+    {
+    [ self->_signalLimbPairs removeObject: _NewPair ];
+    }
+
+@end // _TWPSignalLimbPairs class
 
 /*=============================================================================┐
 |                                                                              |

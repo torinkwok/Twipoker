@@ -25,67 +25,7 @@
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
 
-// _TWPSignalLimbPair class
-@interface _TWPSignalLimbPair : NSObject
-
-@property ( assign, readwrite ) TWPBrainSignalTypeMask signalMask;
-@property ( strong, readwrite ) NSObject <TWPLimb>* limb;
-
-#pragma mark Initializations
-+ ( instancetype ) pairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_Limb;
-- ( instancetype ) initWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_Limb;
-
-#pragma mark Comparing
-- ( BOOL ) isEqualToPair: ( _TWPSignalLimbPair* )_RhsPair;
-
-@end
-
-@implementation _TWPSignalLimbPair
-
-@synthesize signalMask;
-@synthesize limb;
-
-#pragma mark Initializations
-+ ( instancetype ) pairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_Limb
-    {
-    return [ [ [ self class ] alloc ] initWithSignalMask: _SignalMask limb: _Limb ];
-    }
-
-- ( instancetype ) initWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_Limb
-    {
-    if ( !_Limb )
-        return nil;
-
-    if ( self = [ super init ] )
-        {
-        self.signalMask = _SignalMask;
-        self.limb = _Limb;
-        }
-
-    return self;
-    }
-
-#pragma mark Comparing
-- ( BOOL ) isEqualToPair: ( _TWPSignalLimbPair* )_RhsPair
-    {
-    if ( self == _RhsPair )
-        return YES;
-
-    return ( self.signalMask == _RhsPair.signalMask ) && ( self.limb == _RhsPair.limb );
-    }
-
-- ( BOOL ) isEqual: ( id )_Object
-    {
-    if ( self == _Object )
-        return YES;
-
-    if ( [ _Object isKindOfClass: [ _TWPSignalLimbPair class ] ] )
-        return [ self isEqualToPair: ( _TWPSignalLimbPair* )_Object ];
-
-    return [ super isEqual: _Object ];
-    }
-
-@end // _TWPSignalLimbPair class
+#import "_TWPSignalLimbPairs.h"
 
 // TWPBrain class
 @implementation TWPBrain
@@ -95,7 +35,7 @@
     NSMutableArray __strong* _limbsSignalMaskPairsForAuthingUserStreamAPI;
 
     // Specified Users
-    NSMutableDictionary __strong* _pairsForSecifiedUsersStreamAPI;
+    NSMutableDictionary __strong* _dictOfSecifiedUsersStreamAPI;
     }
 
 #pragma mark Initializations
@@ -113,6 +53,8 @@ TWPBrain static __strong* sWiseBrain;
             {
             self->_homeTimelineStreamAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
             self->_limbsSignalMaskPairsForAuthingUserStreamAPI = [ NSMutableArray array ];
+
+            self->_dictOfSecifiedUsersStreamAPI = [ NSMutableDictionary dictionary ];
 
             [ self->_homeTimelineStreamAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
                                                                                      includeReplies: @NO
@@ -146,6 +88,43 @@ TWPBrain static __strong* sWiseBrain;
         {
         [ self->_limbsSignalMaskPairsForAuthingUserStreamAPI removeObject:
             [ _TWPSignalLimbPair pairWithSignalMask: _BrainSignals limb: _Limb ] ];
+        }
+    }
+
+// Specifying User
+- ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb
+              forUserID: ( NSString* )_UserID
+            brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals
+    {
+    if ( _NewLimb && _UserID )
+        {
+        _TWPSignalLimbPairs* correctpondingPairs = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
+
+        if ( !correctpondingPairs )
+            {
+            correctpondingPairs = [ _TWPSignalLimbPairs pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
+            [ correctpondingPairs addPairWithSignalMask: _BrainSignals limb: _NewLimb ];
+
+            self->_dictOfSecifiedUsersStreamAPI[ _UserID ] = correctpondingPairs;
+            }
+        else
+            [ correctpondingPairs addPairWithSignalMask: _BrainSignals limb: _NewLimb ];
+        }
+    }
+
+- ( void ) removeLimb: ( NSObject <TWPLimb>* )_Limb
+            forUserID: ( NSString* )_UserID
+          brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals
+    {
+    if ( _Limb && _UserID )
+        {
+        _TWPSignalLimbPairs* correctpondingPairs = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
+
+        if ( correctpondingPairs )
+            [ correctpondingPairs removePairWithSignalMask: _BrainSignals limb: _Limb ];
+
+        if ( !correctpondingPairs.pairsCount )
+            [ self->_dictOfSecifiedUsersStreamAPI[ _UserID ] removeObjectForKey: _UserID ];
         }
     }
 
