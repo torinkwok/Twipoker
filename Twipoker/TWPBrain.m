@@ -25,7 +25,7 @@
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
 
-#import "_TWPSignalLimbPairs.h"
+#import "_TWPSignalLimbPairsSet.h"
 
 // TWPBrain class
 @implementation TWPBrain
@@ -46,7 +46,7 @@ TWPBrain static __strong* sWiseBrain;
             // Home Timeline
             // Single-user stream, containing roughly all of the data corresponding with
             // the current authenticating user’s view of Twitter.
-            self->_pairsForHomeTimeline = [ _TWPSignalLimbPairs pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
+            self->_pairsForHomeTimeline = [ _TWPSignalLimbPairsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
             self->_pairsForHomeTimeline.twitterAPI.delegate = self;
             [ self->_pairsForHomeTimeline.twitterAPI
                 fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
@@ -55,7 +55,7 @@ TWPBrain static __strong* sWiseBrain;
                                              locationBoundingBoxes: nil ];
             // Global Timeline
             // Streams of the public data flowing through Twitter.
-            self->_pairsForMentionsTimeline = [ _TWPSignalLimbPairs pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
+            self->_pairsForMentionsTimeline = [ _TWPSignalLimbPairsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
             self->_pairsForMentionsTimeline.twitterAPI.delegate = self;
             [ self->_pairsForMentionsTimeline.twitterAPI
                     fetchStatusesFilterKeyword: @"@NSTongG" users: nil locationBoundingBoxes: nil ];
@@ -123,11 +123,11 @@ TWPBrain static __strong* sWiseBrain;
 #if 0
     if ( _NewLimb )
         {
-        _TWPSignalLimbPairs* correctpondingPairs = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
+        _TWPSignalLimbPairsSet* correctpondingPairs = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
 
         if ( !correctpondingPairs )
             {
-            correctpondingPairs = [ _TWPSignalLimbPairs pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
+            correctpondingPairs = [ _TWPSignalLimbPairsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
             [ correctpondingPairs addPairWithSignalMask: _BrainSignals limb: _NewLimb ];
 
             self->_dictOfSecifiedUsersStreamAPI[ _UserID ] = correctpondingPairs;
@@ -149,7 +149,7 @@ TWPBrain static __strong* sWiseBrain;
     {
     if ( _NewLimb )
         {
-        _TWPSignalLimbPairs* correctpondingPairs = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
+        _TWPSignalLimbPairsSet* correctpondingPairs = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
 
         if ( correctpondingPairs )
             [ correctpondingPairs removePairWithSignalMask: _BrainSignals limb: _NewLimb ];
@@ -165,7 +165,7 @@ TWPBrain static __strong* sWiseBrain;
     if ( _TwitterAPI == self->_pairsForHomeTimeline.twitterAPI
             || _TwitterAPI == self->_pairsForMentionsTimeline.twitterAPI )
         {
-        _TWPSignalLimbPairs* pairs = nil;
+        _TWPSignalLimbPairsSet* pairs = nil;
 
         if ( _TwitterAPI == self->_pairsForHomeTimeline.twitterAPI )
             pairs = self->_pairsForHomeTimeline;
@@ -188,7 +188,7 @@ TWPBrain static __strong* sWiseBrain;
         {
         for ( NSString* _UserID in self->_dictOfSecifiedUsersStreamAPI )
             {
-            _TWPSignalLimbPairs* pairs = ( _TWPSignalLimbPairs* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
+            _TWPSignalLimbPairsSet* pairs = ( _TWPSignalLimbPairsSet* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
             if ( pairs.twitterAPI == _TwitterAPI )
                 {
                 for ( _TWPSignalLimbPair* _Pair in pairs )
@@ -218,7 +218,7 @@ TWPBrain static __strong* sWiseBrain;
         {
         for ( NSString* _UserID in self->_dictOfSecifiedUsersStreamAPI )
             {
-            _TWPSignalLimbPairs* pairs = ( _TWPSignalLimbPairs* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
+            _TWPSignalLimbPairsSet* pairs = ( _TWPSignalLimbPairsSet* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
             if ( pairs.twitterAPI == _TwitterAPI )
                 {
                 for ( _TWPSignalLimbPair* _Pair in pairs )
