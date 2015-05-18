@@ -76,11 +76,7 @@
     objectValueForTableColumn: ( NSTableColumn* )_TableColumn
                           row: ( NSInteger )_Row
     {
-    id result = nil;
-
-    if ( [ _TableColumn.identifier isEqualToString: @"home-timeline" ] )
-        result = self->_tweets[ _Row ];
-
+    id result = self->_tweets[ _Row ];
     return result;
     }
 

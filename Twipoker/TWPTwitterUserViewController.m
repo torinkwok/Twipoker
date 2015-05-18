@@ -50,6 +50,8 @@
     {
     if ( self = [ super initWithNibName: @"TWPTwitterUserView" bundle: [ NSBundle mainBundle ] ] )
         {
+        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: _TwitterUser.IDString brainSignal: TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask ];
+
         [ self.twitterUserView setTwitterUser: _TwitterUser ];
         [ self.twitterAPI getUserTimelineWithScreenName: self.twitterUserView.twitterUser.screenName
                                                   count: self.numberOfTweetsWillBeLoadedOnce
@@ -128,6 +130,29 @@
        shouldFetchLaterTweets: ( NSClipView* )_ClipView
     {
     NSLog( @"%s", __PRETTY_FUNCTION__ );
+    }
+
+#pragma mark Conforms to <TWPLimb> protocol
+- ( void ) didReceiveTweet: ( OTCTweet* )_Tweet
+                 fromBrain: ( TWPBrain* )_Brain
+    {
+    [ self->_tweets insertObject: _Tweet atIndex: 0 ];
+    [ self.timelineTableView reloadData ];
+    }
+
+- ( void ) didReceiveTweetDeletion: ( NSString* )_DeletedTweetID
+                            byUser: ( NSString* )_UserID
+                                on: ( NSDate* )_DeletionDate
+    {
+    for ( OTCTweet* tweet in self->_tweets )
+        {
+        if ( [ tweet.tweetIDString isEqualToString: _DeletedTweetID ] )
+            {
+            [ self->_tweets removeObject: tweet ];
+            [ self.timelineTableView reloadData ];
+            break;
+            }
+        }
     }
 
 @end

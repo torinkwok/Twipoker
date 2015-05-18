@@ -36,7 +36,7 @@
     {
     if ( self = [ super initWithNibName: @"TWPHomeView" bundle: [ NSBundle mainBundle ] ] )
         {
-        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: nil brainSignal: TWPBrainSignalTypeNewTweetMask ];
+        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: nil brainSignal: TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask ];
 
         [ self.twitterAPI getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
             ^( NSArray* _TweetObjects )
@@ -118,6 +118,21 @@
     {
     [ self->_tweets insertObject: _Tweet atIndex: 0 ];
     [ self.timelineTableView reloadData ];
+    }
+
+- ( void ) didReceiveTweetDeletion: ( NSString* )_DeletedTweetID
+                            byUser: ( NSString* )_UserID
+                                on: ( NSDate* )_DeletionDate
+    {
+    for ( OTCTweet* tweet in self->_tweets )
+        {
+        if ( [ tweet.tweetIDString isEqualToString: _DeletedTweetID ] )
+            {
+            [ self->_tweets removeObject: tweet ];
+            [ self.timelineTableView reloadData ];
+            break;
+            }
+        }
     }
 
 @end

@@ -22,14 +22,14 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPBrain.h"
 
 #import "TWPViewController.h"
 #import "TWPTimelineScrollView.h"
 
 @class TWPTwitterUserView;
 
-@interface TWPTwitterUserViewController : TWPViewController
+@interface TWPTwitterUserViewController : TWPViewController <TWPLimb>
 
 @property ( weak, readwrite ) TWPTwitterUserView* twitterUserView;
 

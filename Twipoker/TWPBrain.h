@@ -34,6 +34,7 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     , TWPBrainSignalTypeTimelineEventMask   = 1U << 3
     , TWPBrainSignalTypeDirectMessagesMask  = 1U << 4
     , TWPBrainSignalTypeDisconnectionMask   = 1U << 5
+    , TWPBrainSignalTypeUserUpdateMask      = 1U << 6
     };
 
 // TWPBrain class
@@ -72,6 +73,7 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 
 @optional
 - ( void ) didReceiveTweet: ( OTCTweet* )_Tweet fromBrain: ( TWPBrain* )_Brain;
+- ( void ) didReceiveTweetDeletion: ( NSString* )_DeletedTweetID byUser: ( NSString* )_UserID on: ( NSDate* )_DeletionDate;
 - ( void ) didReceiveMention: ( OTCTweet* )_Metion fromBrain: ( TWPBrain* )_Brain;
 - ( void ) didReceiveEvent: ( OTCStreamingEvent* )_Tweet fromBrain: ( TWPBrain* )_Brain;
 

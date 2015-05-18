@@ -70,77 +70,58 @@ TWPBrain static __strong* sWiseBrain;
     }
 
 #pragma mark Registration of Limbs
-// Authenticating User
-//- ( void ) registerLimbForAuthenticatingUser: ( NSObject <TWPLimb>* )_NewLimb
-//                                 brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals
-//    {
-//    if ( _NewLimb )
-//        {
-//        _TWPSignalLimbPair* pair = [ _TWPSignalLimbPair pairWithSignalMask: _BrainSignals limb: _NewLimb ];
-//
-//        if ( pair )
-//            [ self->_pairArrForHomeTimeline addObject: pair ];
-//        }
-//    }
-//
-//- ( void ) removeLimbForAuthenticatingUser: ( NSObject <TWPLimb>* )_Limb
-//                               brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals
-//    {
-//    if ( _Limb )
-//        {
-//        [ self->_pairArrForHomeTimeline removeObject:
-//            [ _TWPSignalLimbPair pairWithSignalMask: _BrainSignals limb: _Limb ] ];
-//        }
-//    }
-
 - ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb
               forUserID: ( NSString* )_UserID
             brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals
     {
     if ( _NewLimb )
         {
-        _TWPSignalLimbPair* pair = [ _TWPSignalLimbPair pairWithSignalMask: _BrainSignals limb: _NewLimb ];
-
-        if ( pair )
+        if ( !_UserID )
             {
-            id __weak target = nil;
+            _TWPSignalLimbPair* pair = [ _TWPSignalLimbPair pairWithSignalMask: _BrainSignals limb: _NewLimb ];
 
-            if ( _BrainSignals & TWPBrainSignalTypeNewTweetMask
-                    || _BrainSignals & TWPBrainSignalTypeTweetDeletionMask
-                    || _BrainSignals & TWPBrainSignalTypeTimelineEventMask
-                    || _BrainSignals & TWPBrainSignalTypeDirectMessagesMask )
-                [ self->_pairsSetForHomeTimeline addPair: pair ];
+            if ( pair )
+                {
+                id __weak target = nil;
 
-            if ( _BrainSignals & TWPBrainSignalTypeMentionedMeMask )
-                [ self->_pairsSetForMentionsTimeline addPair: pair ];
+                if ( _BrainSignals & TWPBrainSignalTypeNewTweetMask
+                        || _BrainSignals & TWPBrainSignalTypeTweetDeletionMask
+                        || _BrainSignals & TWPBrainSignalTypeTimelineEventMask
+                        || _BrainSignals & TWPBrainSignalTypeDirectMessagesMask )
+                    [ self->_pairsSetForHomeTimeline addPair: pair ];
 
-            if ( _BrainSignals & TWPBrainSignalTypeDisconnectionMask )
-                ;
+                if ( _BrainSignals & TWPBrainSignalTypeMentionedMeMask )
+                    [ self->_pairsSetForMentionsTimeline addPair: pair ];
 
-            [ target performSelectorOnMainThread: @selector( addObject: ) withObject: pair waitUntilDone: YES ];
+                if ( _BrainSignals & TWPBrainSignalTypeDisconnectionMask )
+                    ;
+
+                [ target performSelectorOnMainThread: @selector( addObject: ) withObject: pair waitUntilDone: YES ];
+                }
+            }
+        else if ( _UserID
+                    && ( _BrainSignals & TWPBrainSignalTypeNewTweetMask
+                            || _BrainSignals & TWPBrainSignalTypeTweetDeletionMask
+                            || _BrainSignals & TWPBrainSignalTypeUserUpdateMask ) )
+            {
+            _TWPSignalLimbPairsSet* pairsSet = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
+
+            if ( !pairsSet )
+                {
+                pairsSet = [ _TWPSignalLimbPairsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
+                [ pairsSet addPairWithSignalMask: _BrainSignals limb: _NewLimb ];
+
+                self->_dictOfSecifiedUsersStreamAPI[ _UserID ] = pairsSet;
+                pairsSet.twitterAPI.delegate = self;
+                [ pairsSet.twitterAPI fetchStatusesFilterKeyword: @"" users: @[ _UserID ] locationBoundingBoxes: nil ];
+
+                if ( pairsSet )
+                    [ self->_dictOfSecifiedUsersStreamAPI setObject: pairsSet forKey: _UserID ];
+                }
+            else
+                [ pairsSet addPairWithSignalMask: _BrainSignals limb: _NewLimb ];
             }
         }
-#if 0
-    if ( _NewLimb )
-        {
-        _TWPSignalLimbPairsSet* correctpondingPairs = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
-
-        if ( !correctpondingPairs )
-            {
-            correctpondingPairs = [ _TWPSignalLimbPairsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
-            [ correctpondingPairs addPairWithSignalMask: _BrainSignals limb: _NewLimb ];
-
-            self->_dictOfSecifiedUsersStreamAPI[ _UserID ] = correctpondingPairs;
-            correctpondingPairs.twitterAPI.delegate = self;
-            [ correctpondingPairs.twitterAPI fetchStatusesFilterKeyword: @"" users: @[ _UserID ] locationBoundingBoxes: nil ];
-
-            if ( correctpondingPairs )
-                [ self->_dictOfSecifiedUsersStreamAPI setObject: correctpondingPairs forKey: _UserID ];
-            }
-        else
-            [ correctpondingPairs addPairWithSignalMask: _BrainSignals limb: _NewLimb ];
-        }
-#endif
     }
 
 - ( void ) removeLimb: ( NSObject <TWPLimb>* )_NewLimb
@@ -194,7 +175,7 @@ TWPBrain static __strong* sWiseBrain;
                 for ( _TWPSignalLimbPair* _Pair in pairsSet )
                     {
                     if ( ( _Pair.signalMask & TWPBrainSignalTypeNewTweetMask )
-                        && [ _Pair.limb respondsToSelector: @selector( didReceiveTweet:fromBrain: ) ] )
+                            && [ _Pair.limb respondsToSelector: @selector( didReceiveTweet:fromBrain: ) ] )
                         [ _Pair.limb didReceiveTweet: _ReceivedTweet fromBrain: self ];
                     }
                 }
@@ -214,18 +195,34 @@ TWPBrain static __strong* sWiseBrain;
                 [ _Pair.limb didReceiveEvent: _DetectedEvent fromBrain: self ];
             }
         }
+    }
+
+- ( void )   twitterAPI: ( STTwitterAPI* )_TwitterAPI
+    tweetHasBeenDeleted: ( NSString* )_DeletedTweetID
+                 byUser: ( NSString* )_UserID
+                     on: ( NSDate* )_DeletionDate
+    {
+    if ( _TwitterAPI == self->_pairsSetForHomeTimeline.twitterAPI )
+        {
+        for ( _TWPSignalLimbPair* _Pair in self->_pairsSetForHomeTimeline )
+            {
+            if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetDeletionMask )
+                    && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetDeletion:byUser:on: ) ] )
+                [ _Pair.limb didReceiveTweetDeletion: _DeletedTweetID byUser: _UserID on: _DeletionDate ];
+            }
+        }
     else
         {
         for ( NSString* _UserID in self->_dictOfSecifiedUsersStreamAPI )
             {
-            _TWPSignalLimbPairsSet* pairs = ( _TWPSignalLimbPairsSet* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
-            if ( pairs.twitterAPI == _TwitterAPI )
+            _TWPSignalLimbPairsSet* pairsSet = ( _TWPSignalLimbPairsSet* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
+            if ( pairsSet.twitterAPI == _TwitterAPI )
                 {
-                for ( _TWPSignalLimbPair* _Pair in pairs )
+                for ( _TWPSignalLimbPair* _Pair in pairsSet )
                     {
-                    if ( ( _Pair.signalMask & TWPBrainSignalTypeTimelineEventMask )
-                        && [ _Pair.limb respondsToSelector: @selector( didReceiveEvent:fromBrain: ) ] )
-                        [ _Pair.limb didReceiveEvent: _DetectedEvent fromBrain: self ];
+                    if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetDeletionMask )
+                            && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetDeletion:byUser:on: ) ] )
+                        [ _Pair.limb didReceiveTweetDeletion: _DeletedTweetID byUser: _UserID on: _DeletionDate ];
                     }
                 }
             }
