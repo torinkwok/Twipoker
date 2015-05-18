@@ -36,6 +36,11 @@
     {
     if ( self = [ super initWithNibName: @"TWPFavoritesView" bundle: [ NSBundle mainBundle ] ] )
         {
+//        NSString* userID = [ self.twitterAPI.oauthAccessToken componentsSeparatedByString: @"-" ].firstObject;
+//        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: userID brainSignal: TWPBrainSignalTypeEventMask ];
+
+        [ [ TWPBrain wiseBrain ] registerLimbForAuthenticatingUser: self brainSignal: TWPBrainSignalTypeEventMask ];
+
         [ self.twitterAPI getFavoritesListWithSuccessBlock:
             ^( NSArray* _TweetObjects )
                 {
@@ -45,10 +50,10 @@
                 self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
                 self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
 
-                [ self.twitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
-                                                                      includeReplies: @YES
-                                                                     keywordsToTrack: nil
-                                                               locationBoundingBoxes: nil ];
+//                [ self.twitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
+//                                                                      includeReplies: @YES
+//                                                                     keywordsToTrack: nil
+//                                                               locationBoundingBoxes: nil ];
                 [ self.timelineTableView reloadData ];
                 } errorBlock: ^( NSError* _Error )
                                 {
@@ -117,9 +122,8 @@
     NSLog( @"%s", __PRETTY_FUNCTION__ );
     }
 
-#pragma mark Conforms to <OTCTwitterStreamingAPIDelegate>
-- ( void )             twitterAPI: ( STTwitterAPI* )_TwitterAPI
-    streamingEventHasBeenDetected: ( OTCStreamingEvent* )_DetectedEvent
+#pragma mark Conforms to <TWPLimb>
+- ( void ) didReceiveEvent: ( OTCStreamingEvent* )_DetectedEvent fromBrain: ( TWPBrain* )_Brain
     {
     if ( _DetectedEvent.eventType == OTCStreamingEventTypeFavorite )
         {

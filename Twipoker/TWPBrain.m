@@ -43,17 +43,25 @@ TWPBrain static __strong* sWiseBrain;
         {
         if ( self = [ super init ] )
             {
+            // Home Timeline
             self->_homeTimelineStreamAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
-            self->_homeTimelineStreamAPI.delegate = self;
-
             self->_limbsSignalMaskPairsForAuthingUserStreamAPI = [ NSMutableArray array ];
-
-            self->_dictOfSecifiedUsersStreamAPI = [ NSMutableDictionary dictionary ];
-
+            self->_homeTimelineStreamAPI.delegate = self;
             [ self->_homeTimelineStreamAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
                                                                                includeReplies: @NO
                                                                               keywordsToTrack: nil
                                                                         locationBoundingBoxes: nil ];
+
+            // Specified Users
+            self->_mentionsStreamAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
+            self->_limbsSignalMaskPairsForMentionsStreamAPI = [ NSMutableArray array ];
+            self->_mentionsStreamAPI.delegate = self;
+            [ self->_mentionsStreamAPI fetchStatusesFilterKeyword: @"@NSTongG"
+                                                                 users: nil
+                                                 locationBoundingBoxes: nil ];
+
+            self->_dictOfSecifiedUsersStreamAPI = [ NSMutableDictionary dictionary ];
+
             sWiseBrain = self;
             }
         }
@@ -100,6 +108,11 @@ TWPBrain static __strong* sWiseBrain;
             [ correctpondingPairs addPairWithSignalMask: _BrainSignals limb: _NewLimb ];
 
             self->_dictOfSecifiedUsersStreamAPI[ _UserID ] = correctpondingPairs;
+            correctpondingPairs.twitterAPI.delegate = self;
+            [ correctpondingPairs.twitterAPI fetchStatusesFilterKeyword: @"" users: @[ _UserID ] locationBoundingBoxes: nil ];
+
+            if ( correctpondingPairs )
+                [ self->_dictOfSecifiedUsersStreamAPI setObject: correctpondingPairs forKey: _UserID ];
             }
         else
             [ correctpondingPairs addPairWithSignalMask: _BrainSignals limb: _NewLimb ];
@@ -125,13 +138,13 @@ TWPBrain static __strong* sWiseBrain;
 #pragma mark Conforms to <OTCSTTwitterStreamingAPIDelegate> protocol
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
-    if ( _TwitterAPI == self->_homeTimelineStreamAPI )
+    if ( _TwitterAPI == self->_homeTimelineStreamAPI || _TwitterAPI == self->_mentionsStreamAPI )
         {
         for ( _TWPSignalLimbPair* _Pair in self->_limbsSignalMaskPairsForAuthingUserStreamAPI )
             {
             if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
-                    && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetWithinHomeTimeline:fromBrain: ) ] )
-                [ _Pair.limb didReceiveTweetWithinHomeTimeline: _ReceivedTweet fromBrain: self ];
+                    && [ _Pair.limb respondsToSelector: @selector( didReceiveTweet:fromBrain: ) ] )
+                [ _Pair.limb didReceiveTweet: _ReceivedTweet fromBrain: self ];
             }
         }
     else
@@ -144,8 +157,8 @@ TWPBrain static __strong* sWiseBrain;
                 for ( _TWPSignalLimbPair* _Pair in pairs )
                     {
                     if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
-                        && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetWithinHomeTimeline:fromBrain: ) ] )
-                        [ _Pair.limb didReceiveTweetWithinHomeTimeline: _ReceivedTweet fromBrain: self ];
+                        && [ _Pair.limb respondsToSelector: @selector( didReceiveTweet:fromBrain: ) ] )
+                        [ _Pair.limb didReceiveTweet: _ReceivedTweet fromBrain: self ];
                     }
                 }
             }
@@ -159,8 +172,8 @@ TWPBrain static __strong* sWiseBrain;
         {
         for ( _TWPSignalLimbPair* _Pair in self->_limbsSignalMaskPairsForAuthingUserStreamAPI )
             {
-            if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
-                    && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetWithinHomeTimeline:fromBrain: ) ] )
+            if ( ( _Pair.signalMask & TWPBrainSignalTypeEventMask )
+                    && [ _Pair.limb respondsToSelector: @selector( didReceiveEvent:fromBrain: ) ] )
                 [ _Pair.limb didReceiveEvent: _DetectedEvent fromBrain: self ];
             }
         }
@@ -173,8 +186,8 @@ TWPBrain static __strong* sWiseBrain;
                 {
                 for ( _TWPSignalLimbPair* _Pair in pairs )
                     {
-                    if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
-                        && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetWithinHomeTimeline:fromBrain: ) ] )
+                    if ( ( _Pair.signalMask & TWPBrainSignalTypeEventMask )
+                        && [ _Pair.limb respondsToSelector: @selector( didReceiveEvent:fromBrain: ) ] )
                         [ _Pair.limb didReceiveEvent: _DetectedEvent fromBrain: self ];
                     }
                 }

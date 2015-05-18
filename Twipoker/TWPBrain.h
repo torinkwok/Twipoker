@@ -50,6 +50,9 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     STTwitterAPI __strong* _homeTimelineStreamAPI;
     NSMutableArray __strong* _limbsSignalMaskPairsForAuthingUserStreamAPI;
 
+    STTwitterAPI __strong* _mentionsStreamAPI;
+    NSMutableArray __strong* _limbsSignalMaskPairsForMentionsStreamAPI;
+
     // Specified Users
     NSMutableDictionary __strong* _dictOfSecifiedUsersStreamAPI;
     }
@@ -65,6 +68,15 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 - ( void ) removeLimbForAuthenticatingUser: ( NSObject <TWPLimb>* )_Limb
                                brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
 
+// Mentions
+- ( void ) registerLimbForMentions: ( NSObject <TWPLimb>* )_NewLimb
+                       brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
+
+- ( void ) removeLimbForAuthenticatingUser: ( NSObject <TWPLimb>* )_Limb
+                               brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
+
+// Mentions
+
 // Specifying User
 - ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb
               forUserID: ( NSString* )_UserID
@@ -79,7 +91,8 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 // TWPLimb class
 @protocol TWPLimb <NSObject>
 
-- ( void ) didReceiveTweetWithinHomeTimeline: ( OTCTweet* )_Tweet fromBrain: ( TWPBrain* )_Brain;
+- ( void ) didReceiveTweet: ( OTCTweet* )_Tweet fromBrain: ( TWPBrain* )_Brain;
+- ( void ) didReceiveMention: ( OTCTweet* )_Metion fromBrain: ( TWPBrain* )_Brain;
 - ( void ) didReceiveEvent: ( OTCStreamingEvent* )_Tweet fromBrain: ( TWPBrain* )_Brain;
 
 @end // TWPLimb class

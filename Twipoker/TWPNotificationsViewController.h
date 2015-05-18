@@ -22,12 +22,12 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPBrain.h"
 
 #import "TWPViewController.h"
 #import "TWPTimelineScrollView.h"
 
-@interface TWPNotificationsViewController : TWPViewController <TWPTimelineScrollViewDelegate>
+@interface TWPNotificationsViewController : TWPViewController <TWPLimb>
 
 #pragma mark Conforms to <TWPTimelineScrollViewDelegate>
 - ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
