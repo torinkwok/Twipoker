@@ -28,6 +28,8 @@
 
 @implementation TWPTwitterUserViewController
 
+@synthesize twitterUser = _twitterUser;
+
 @dynamic twitterUserView;
 
 - ( void ) setTwitterUserView: ( TWPTwitterUserView* )_TwitterUserView
@@ -48,8 +50,13 @@
 
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
+    if ( !_TwitterUser )
+        return nil;
+
     if ( self = [ super initWithNibName: @"TWPTwitterUserView" bundle: [ NSBundle mainBundle ] ] )
         {
+        self->_twitterUser = _TwitterUser;
+
         [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: _TwitterUser.IDString brainSignal: TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask ];
 
         [ self.twitterUserView setTwitterUser: _TwitterUser ];
@@ -79,6 +86,11 @@
     [ super viewDidLoad ];
 
     // Do view setup here.
+    }
+
+- ( void ) dealloc
+    {
+//    [ [ TWPBrain wiseBrain ] removeLimb: self forUserID: self->_twitterUser.IDString brainSignal: TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask ];
     }
 
 #pragma mark Conforms to <TWPTimelineScrollViewDelegate>

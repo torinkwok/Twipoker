@@ -114,9 +114,6 @@ TWPBrain static __strong* sWiseBrain;
                 self->_dictOfSecifiedUsersStreamAPI[ _UserID ] = pairsSet;
                 pairsSet.twitterAPI.delegate = self;
                 [ pairsSet.twitterAPI fetchStatusesFilterKeyword: @"" users: @[ _UserID ] locationBoundingBoxes: nil ];
-
-                if ( pairsSet )
-                    [ self->_dictOfSecifiedUsersStreamAPI setObject: pairsSet forKey: _UserID ];
                 }
             else
                 [ pairsSet addPairWithSignalMask: _BrainSignals limb: _NewLimb ];

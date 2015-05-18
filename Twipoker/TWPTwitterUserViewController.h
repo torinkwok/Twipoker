@@ -30,7 +30,12 @@
 @class TWPTwitterUserView;
 
 @interface TWPTwitterUserViewController : TWPViewController <TWPLimb>
+    {
+@private
+    OTCTwitterUser __strong* _twitterUser;
+    }
 
+@property ( strong, readonly /* TODO: make this property read-write */ ) OTCTwitterUser* twitterUser;
 @property ( weak, readwrite ) TWPTwitterUserView* twitterUserView;
 
 + ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
