@@ -56,14 +56,10 @@
 + ( instancetype ) pairsWithTwitterAPI: ( STTwitterAPI* )_TwitterAPI;
 - ( instancetype ) initWithTwitterAPI: ( STTwitterAPI* )_TwitterAPI;
 
-- ( void ) addPairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask
-                            limb: ( NSObject <TWPLimb>* )_NewLimb;
-
+- ( void ) addPairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_NewLimb;
 - ( void ) addPair: ( _TWPSignalLimbPair* )_NewPair;
 
-- ( void ) removePairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask
-                               limb: ( NSObject <TWPLimb>* )_NewLimb;
-
+- ( void ) removePairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_NewLimb;
 - ( void ) removePair: ( _TWPSignalLimbPair* )_NewPair;
 
 @end
