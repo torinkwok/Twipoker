@@ -36,7 +36,7 @@
     {
     if ( self = [ super initWithNibName: @"TWPHomeView" bundle: [ NSBundle mainBundle ] ] )
         {
-        [ [ TWPBrain wiseBrain ] registerLimbForAuthenticatingUser: self brainSignal: TWPBrainSignalTypeTweetMask ];
+        [ [ TWPBrain wiseBrain ] registerLimbForAuthenticatingUser: self brainSignal: TWPBrainSignalTypeNewTweetMask ];
 
         [ self.twitterAPI getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
             ^( NSArray* _TweetObjects )

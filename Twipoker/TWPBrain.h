@@ -27,19 +27,12 @@
 @protocol TWPLimb;
 
 typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
-    { TWPBrainSignalTypeTweetMask           = 1U
-    , TWPBrainSignalTypeFriendsListsMask    = 1U << 1
-    , TWPBrainSignalTypeDeleteMask          = 1U << 2
-    , TWPBrainSignalTypeScrubGeoMask        = 1U << 3
-    , TWPBrainSignalTypeLimitMask           = 1U << 4
-    , TWPBrainSignalTypeDisconnectMask      = 1U << 5
-    , TWPBrainSignalTypeWarningMask         = 1U << 6
-    , TWPBrainSignalTypeEventMask           = 1U << 7
-    , TWPBrainSignalTypeStatusWithheldMask  = 1U << 8
-    , TWPBrainSignalTypeCountryWithheldMask = 1U << 9
-    , TWPBrainSignalTypeUserWithheldMask    = 1U << 10
-    , TWPBrainSignalTypeControlMask         = 1U << 11
-    , TWPBrainSignalTypeDirectMessagesMask  = 1U << 12
+    { TWPBrainSignalTypeNewTweetMask        = 1U
+    , TWPBrainSignalTypeMentionedMeMask     = 1U << 1
+    , TWPBrainSignalTypeTweetDeletionMask   = 1U << 2
+    , TWPBrainSignalTypeTimelineEventMask   = 1U << 3
+    , TWPBrainSignalTypeDirectMessagesMask  = 1U << 4
+    , TWPBrainSignalTypeDisconnectionMask   = 1U << 5
     };
 
 // TWPBrain class
@@ -47,13 +40,24 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     {
 @private
     // Home Timeline
+    // Single-user streams, containing roughly all of the data corresponding with
+    // the current authenticating user’s view of Twitter.
     STTwitterAPI __strong* _homeTimelineStreamAPI;
-    NSMutableArray __strong* _limbsSignalMaskPairsForAuthingUserStreamAPI;
+    /* @[ _TWPSignalLimbPair, _TWPSignalLimbPair, _TWPSignalLimbPair... ] */
+    NSMutableArray __strong* _pairArrForHomeTimeline;
 
-    STTwitterAPI __strong* _mentionsStreamAPI;
-    NSMutableArray __strong* _limbsSignalMaskPairsForMentionsStreamAPI;
+    // Global Timeline
+    // Streams of the public data flowing through Twitter.
+    STTwitterAPI __strong* _globalTimelineStreamAPI;
+    /* @[ _TWPSignalLimbPair, _TWPSignalLimbPair, _TWPSignalLimbPair... ] */
+    NSMutableArray __strong* _pairArrForGlobalTimeline;
 
     // Specified Users
+    /* @{ UserID : _TWPSignalLimbPairs
+        , UserID : _TWPSignalLimbPairs
+        , UserID : _TWPSignalLimbPairs
+        , ...
+        } */
     NSMutableDictionary __strong* _dictOfSecifiedUsersStreamAPI;
     }
 
@@ -61,36 +65,15 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 + ( instancetype ) wiseBrain;
 
 #pragma mark Registration of Limbs
-// Authenticating User
-- ( void ) registerLimbForAuthenticatingUser: ( NSObject <TWPLimb>* )_NewLimb
-                                 brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
-
-- ( void ) removeLimbForAuthenticatingUser: ( NSObject <TWPLimb>* )_Limb
-                               brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
-
-// Mentions
-- ( void ) registerLimbForMentions: ( NSObject <TWPLimb>* )_NewLimb
-                       brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
-
-- ( void ) removeLimbForAuthenticatingUser: ( NSObject <TWPLimb>* )_Limb
-                               brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
-
-// Mentions
-
-// Specifying User
-- ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb
-              forUserID: ( NSString* )_UserID
-            brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
-
-- ( void ) removeLimb: ( NSObject <TWPLimb>* )_Limb
-            forUserID: ( NSString* )_UserID
-          brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
+- ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb forUserID: ( NSString* )_UserID brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
+- ( void ) removeLimb: ( NSObject <TWPLimb>* )_Limb forUserID: ( NSString* )_UserID brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
 
 @end // TWPBrain class
 
 // TWPLimb class
 @protocol TWPLimb <NSObject>
 
+@optional
 - ( void ) didReceiveTweet: ( OTCTweet* )_Tweet fromBrain: ( TWPBrain* )_Brain;
 - ( void ) didReceiveMention: ( OTCTweet* )_Metion fromBrain: ( TWPBrain* )_Brain;
 - ( void ) didReceiveEvent: ( OTCStreamingEvent* )_Tweet fromBrain: ( TWPBrain* )_Brain;

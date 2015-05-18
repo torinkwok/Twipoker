@@ -45,7 +45,7 @@ TWPBrain static __strong* sWiseBrain;
             {
             // Home Timeline
             self->_homeTimelineStreamAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
-            self->_limbsSignalMaskPairsForAuthingUserStreamAPI = [ NSMutableArray array ];
+            self->_pairArrForHomeTimeline = [ NSMutableArray array ];
             self->_homeTimelineStreamAPI.delegate = self;
             [ self->_homeTimelineStreamAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
                                                                                includeReplies: @NO
@@ -53,10 +53,10 @@ TWPBrain static __strong* sWiseBrain;
                                                                         locationBoundingBoxes: nil ];
 
             // Specified Users
-            self->_mentionsStreamAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
-            self->_limbsSignalMaskPairsForMentionsStreamAPI = [ NSMutableArray array ];
-            self->_mentionsStreamAPI.delegate = self;
-            [ self->_mentionsStreamAPI fetchStatusesFilterKeyword: @"@NSTongG"
+            self->_globalTimelineStreamAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
+            self->_pairArrForGlobalTimeline = [ NSMutableArray array ];
+            self->_globalTimelineStreamAPI.delegate = self;
+            [ self->_globalTimelineStreamAPI fetchStatusesFilterKeyword: @"@NSTongG"
                                                                  users: nil
                                                  locationBoundingBoxes: nil ];
 
@@ -79,7 +79,7 @@ TWPBrain static __strong* sWiseBrain;
         _TWPSignalLimbPair* pair = [ _TWPSignalLimbPair pairWithSignalMask: _BrainSignals limb: _NewLimb ];
 
         if ( pair )
-            [ self->_limbsSignalMaskPairsForAuthingUserStreamAPI addObject: pair ];
+            [ self->_pairArrForHomeTimeline addObject: pair ];
         }
     }
 
@@ -88,7 +88,7 @@ TWPBrain static __strong* sWiseBrain;
     {
     if ( _Limb )
         {
-        [ self->_limbsSignalMaskPairsForAuthingUserStreamAPI removeObject:
+        [ self->_pairArrForHomeTimeline removeObject:
             [ _TWPSignalLimbPair pairWithSignalMask: _BrainSignals limb: _Limb ] ];
         }
     }
@@ -138,11 +138,11 @@ TWPBrain static __strong* sWiseBrain;
 #pragma mark Conforms to <OTCSTTwitterStreamingAPIDelegate> protocol
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
-    if ( _TwitterAPI == self->_homeTimelineStreamAPI || _TwitterAPI == self->_mentionsStreamAPI )
+    if ( _TwitterAPI == self->_homeTimelineStreamAPI || _TwitterAPI == self->_globalTimelineStreamAPI )
         {
-        for ( _TWPSignalLimbPair* _Pair in self->_limbsSignalMaskPairsForAuthingUserStreamAPI )
+        for ( _TWPSignalLimbPair* _Pair in self->_pairArrForHomeTimeline )
             {
-            if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
+            if ( ( _Pair.signalMask & TWPBrainSignalTypeNewTweetMask )
                     && [ _Pair.limb respondsToSelector: @selector( didReceiveTweet:fromBrain: ) ] )
                 [ _Pair.limb didReceiveTweet: _ReceivedTweet fromBrain: self ];
             }
@@ -156,7 +156,7 @@ TWPBrain static __strong* sWiseBrain;
                 {
                 for ( _TWPSignalLimbPair* _Pair in pairs )
                     {
-                    if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetMask )
+                    if ( ( _Pair.signalMask & TWPBrainSignalTypeNewTweetMask )
                         && [ _Pair.limb respondsToSelector: @selector( didReceiveTweet:fromBrain: ) ] )
                         [ _Pair.limb didReceiveTweet: _ReceivedTweet fromBrain: self ];
                     }
@@ -170,9 +170,9 @@ TWPBrain static __strong* sWiseBrain;
     {
     if ( _TwitterAPI == self->_homeTimelineStreamAPI )
         {
-        for ( _TWPSignalLimbPair* _Pair in self->_limbsSignalMaskPairsForAuthingUserStreamAPI )
+        for ( _TWPSignalLimbPair* _Pair in self->_pairArrForHomeTimeline )
             {
-            if ( ( _Pair.signalMask & TWPBrainSignalTypeEventMask )
+            if ( ( _Pair.signalMask & TWPBrainSignalTypeTimelineEventMask )
                     && [ _Pair.limb respondsToSelector: @selector( didReceiveEvent:fromBrain: ) ] )
                 [ _Pair.limb didReceiveEvent: _DetectedEvent fromBrain: self ];
             }
@@ -186,7 +186,7 @@ TWPBrain static __strong* sWiseBrain;
                 {
                 for ( _TWPSignalLimbPair* _Pair in pairs )
                     {
-                    if ( ( _Pair.signalMask & TWPBrainSignalTypeEventMask )
+                    if ( ( _Pair.signalMask & TWPBrainSignalTypeTimelineEventMask )
                         && [ _Pair.limb respondsToSelector: @selector( didReceiveEvent:fromBrain: ) ] )
                         [ _Pair.limb didReceiveEvent: _DetectedEvent fromBrain: self ];
                     }

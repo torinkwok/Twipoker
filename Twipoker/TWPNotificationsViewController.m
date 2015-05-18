@@ -36,7 +36,7 @@
     {
     if ( self = [ super initWithNibName: @"TWPNotificationsView" bundle: [ NSBundle mainBundle ] ] )
         {
-        [ [ TWPBrain wiseBrain ] registerLimbForAuthenticatingUser: self brainSignal: TWPBrainSignalTypeTweetMask ];
+        [ [ TWPBrain wiseBrain ] registerLimbForAuthenticatingUser: self brainSignal: TWPBrainSignalTypeNewTweetMask ];
         [ self.twitterAPI getMentionsTimelineSinceID: nil
                                                count: self.numberOfTweetsWillBeLoadedOnce
                                         successBlock:
