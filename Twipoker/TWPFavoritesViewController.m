@@ -39,7 +39,7 @@
 //        NSString* userID = [ self.twitterAPI.oauthAccessToken componentsSeparatedByString: @"-" ].firstObject;
 //        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: userID brainSignal: TWPBrainSignalTypeEventMask ];
 
-        [ [ TWPBrain wiseBrain ] registerLimbForAuthenticatingUser: self brainSignal: TWPBrainSignalTypeEventMask ];
+        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: nil brainSignal: TWPBrainSignalTypeTimelineEventMask ];
 
         [ self.twitterAPI getFavoritesListWithSuccessBlock:
             ^( NSArray* _TweetObjects )
