@@ -43,11 +43,11 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     // Home Timeline
     // Single-user stream, containing roughly all of the data corresponding with
     // the current authenticating user’s view of Twitter.
-    _TWPSignalLimbPairsSet __strong* _pairsForHomeTimeline;
+    _TWPSignalLimbPairsSet __strong* _pairsSetForHomeTimeline;
 
     // Global Timeline
     // Streams of the public data flowing through Twitter.
-    _TWPSignalLimbPairsSet __strong* _pairsForMentionsTimeline;
+    _TWPSignalLimbPairsSet __strong* _pairsSetForMentionsTimeline;
 
     // Specified Users
     /* @{ UserID : _TWPSignalLimbPairsSet
