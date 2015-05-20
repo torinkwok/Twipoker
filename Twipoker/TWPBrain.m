@@ -120,15 +120,29 @@ TWPBrain static __strong* sWiseBrain;
         if ( [ _MntID.userID isEqualToString: authorID ] /* Specified user */
                 || !_MntID.userID /* Current authenticating user */ )
             {
+            BOOL yesOrNo1 = _MntID.signalMask & TWPBrainSignalTypeNewTweetMask;
+            BOOL yesOrNo2 = [ self->_friendsList containsObject: authorID ];
+            BOOL yesOrNo3 = [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ];
             if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask
+                    && [ self->_friendsList containsObject: authorID ]
                     && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
                 [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
-        #if 0
-            if ( !NSEqualRanges( [ _ReceivedTweet.tweetText rangeOfString: @"@NSTongG " ], NSMakeRange( NSNotFound, 0 ) )
-                    && _MntID.signalMask & TWPBrainSignalTypeMentionedMeMask
-                    && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveMention: ) ] )
-                [ _MntID.limb brain: self didReceiveMention: _ReceivedTweet ];
-        #endif
+
+            NSArray* userMentions = _ReceivedTweet.userMentions;
+            if ( userMentions.count > 0 )
+
+                {
+                for ( OTCUserMention* _UserMention in userMentions )
+                    {
+                    if ( [ _UserMention.userIDString isEqualToString: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ]
+                            && _MntID.signalMask & TWPBrainSignalTypeMentionedMeMask
+                            && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveMention: ) ] )
+                        {
+                        [ _MntID.limb brain: self didReceiveMention: _ReceivedTweet ];
+                        break;
+                        }
+                    }
+                }
             }
         }
     }
