@@ -110,11 +110,18 @@ TWPBrain static __strong* sWiseBrain;
 
     for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
         {
-        if ( [ _MntID.userID isEqualToString: authorID ] || !_MntID.userID )
+        if ( [ _MntID.userID isEqualToString: authorID ] /* Specified user */
+                || !_MntID.userID /* Current authenticating user */ )
             {
             if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask
                     && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
                 [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
+        #if 0
+            if ( !NSEqualRanges( [ _ReceivedTweet.tweetText rangeOfString: @"@NSTongG " ], NSMakeRange( NSNotFound, 0 ) )
+                    && _MntID.signalMask & TWPBrainSignalTypeMentionedMeMask
+                    && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveMention: ) ] )
+                [ _MntID.limb brain: self didReceiveMention: _ReceivedTweet ];
+        #endif
             }
         }
     }
@@ -126,7 +133,8 @@ TWPBrain static __strong* sWiseBrain;
 
     for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
         {
-        if ( [ _MntID.userID isEqualToString: sourceUserID ] || !_MntID.userID )
+        if ( [ _MntID.userID isEqualToString: sourceUserID ] /* Specified user */
+                || !_MntID.userID /* Current authenticating user */ )
             {
             if ( _MntID.signalMask & TWPBrainSignalTypeTimelineEventMask
                     && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveEvent: ) ] )
@@ -142,7 +150,8 @@ TWPBrain static __strong* sWiseBrain;
     {
     for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
         {
-        if ( [ _MntID.userID isEqualToString: _UserID ] || !_MntID.userID )
+        if ( [ _MntID.userID isEqualToString: _UserID ] /* Specified user */
+                || !_MntID.userID /* Current authenticating user */ )
             {
             if ( _MntID.signalMask & TWPBrainSignalTypeTweetDeletionMask
                     && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweetDeletion:byUser:on: ) ] )

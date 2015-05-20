@@ -116,7 +116,7 @@
     }
 
 #pragma mark Conforms to <TWPLimb>
-- ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveMention: ( OTCTweet* )_Tweet
     {
     [ self->_tweets insertObject: _Tweet atIndex: 0 ];
     [ self.timelineTableView reloadData ];
