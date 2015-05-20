@@ -24,7 +24,6 @@
 
 #import "_TWPMonitoringUserID.h"
 
-// --------------------------------------------------------------------------------------------------- //
 // _TWPMonitoringUserID class
 @implementation _TWPMonitoringUserID
 

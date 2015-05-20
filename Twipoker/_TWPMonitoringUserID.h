@@ -24,7 +24,6 @@
 
 #import "TWPBrain.h"
 
-// --------------------------------------------------------------------------------------------------- //
 // _TWPMonitoringUserID class
 @interface _TWPMonitoringUserID : NSObject
 

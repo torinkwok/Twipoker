@@ -49,15 +49,15 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     // Streams of the public data flowing through Twitter.
     STTwitterAPI __strong* _publicTimelineFilterStream;
 
-    NSMutableArray __strong* _monitoringUserIDs;
+    NSMutableSet __strong* _monitoringUserIDs;
     }
 
 #pragma mark Initializations
 + ( instancetype ) wiseBrain;
 
 #pragma mark Registration of Limbs
-- ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb forUserID: ( NSString* )_UserID brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
-- ( void ) removeLimb: ( NSObject <TWPLimb>* )_Limb forUserID: ( NSString* )_UserID brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
+- ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb forUserIDs: ( NSArray* )_UserIDs brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
+- ( void ) removeLimb: ( NSObject <TWPLimb>* )_Limb forUserIDs: ( NSArray* )_UserIDs brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
 
 @end // TWPBrain class
 
@@ -68,7 +68,7 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweetDeletion: ( NSString* )_DeletedTweetID byUser: ( NSString* )_UserID on: ( NSDate* )_DeletionDate;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveMention: ( OTCTweet* )_Metion;
-- ( void ) brain: ( TWPBrain* )_Brain didReceiveEvent: ( OTCStreamingEvent* )_Tweet;
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveEvent: ( OTCStreamingEvent* )_DetectedEvent;
 
 @end // TWPLimb class
 

@@ -39,7 +39,7 @@
 //        NSString* userID = [ self.twitterAPI.oauthAccessToken componentsSeparatedByString: @"-" ].firstObject;
 //        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: userID brainSignal: TWPBrainSignalTypeEventMask ];
 
-        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: nil brainSignal: TWPBrainSignalTypeTimelineEventMask ];
+        [ [ TWPBrain wiseBrain ] registerLimb: self forUserIDs: nil brainSignal: TWPBrainSignalTypeTimelineEventMask ];
 
         [ self.twitterAPI getFavoritesListWithSuccessBlock:
             ^( NSArray* _TweetObjects )
@@ -123,7 +123,7 @@
     }
 
 #pragma mark Conforms to <TWPLimb>
-- ( void ) didReceiveEvent: ( OTCStreamingEvent* )_DetectedEvent fromBrain: ( TWPBrain* )_Brain
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveEvent: ( OTCStreamingEvent* )_DetectedEvent
     {
     if ( _DetectedEvent.eventType == OTCStreamingEventTypeFavorite )
         {

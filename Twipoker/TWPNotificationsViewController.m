@@ -36,7 +36,7 @@
     {
     if ( self = [ super initWithNibName: @"TWPNotificationsView" bundle: [ NSBundle mainBundle ] ] )
         {
-        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: nil brainSignal: TWPBrainSignalTypeMentionedMeMask ];
+        [ [ TWPBrain wiseBrain ] registerLimb: self forUserIDs: nil brainSignal: TWPBrainSignalTypeMentionedMeMask ];
         [ self.twitterAPI getMentionsTimelineSinceID: nil
                                                count: self.numberOfTweetsWillBeLoadedOnce
                                         successBlock:
@@ -116,7 +116,7 @@
     }
 
 #pragma mark Conforms to <TWPLimb>
-- ( void ) didReceiveMention: ( OTCTweet* )_Tweet fromBrain: ( TWPBrain* )_Brain
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet
     {
     [ self->_tweets insertObject: _Tweet atIndex: 0 ];
     [ self.timelineTableView reloadData ];

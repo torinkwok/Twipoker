@@ -59,6 +59,8 @@ TWPBrain static __strong* sWiseBrain;
             self->_publicTimelineFilterStream.delegate = self;
             [ self->_publicTimelineFilterStream fetchStatusesFilterKeyword: @"@NSTongG" users: nil locationBoundingBoxes: nil ];
 
+            self->_monitoringUserIDs = [ NSMutableSet set ];
+
             sWiseBrain = self;
             }
         }
@@ -68,23 +70,69 @@ TWPBrain static __strong* sWiseBrain;
 
 #pragma mark Registration of Limbs
 - ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb
-              forUserID: ( NSString* )_UserID
+             forUserIDs: ( NSArray* )_UserIDs
             brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals
     {
-    // TODO;
+    NSParameterAssert( ( _NewLimb ) );
+
+    if ( _UserIDs )
+        {
+        for ( NSString* _UserID in _UserIDs )
+            {
+            _TWPMonitoringUserID* monitoringUserID = [ _TWPMonitoringUserID IDWithUserID: _UserID signalMask: _BrainSignals limb: _NewLimb ];
+            [ self->_monitoringUserIDs addObject: monitoringUserID ];
+            }
+        }
+    else
+        [ self->_monitoringUserIDs addObject: [ _TWPMonitoringUserID IDWithUserID: nil signalMask: _BrainSignals limb: _NewLimb ] ];
     }
 
-- ( void ) removeLimb: ( NSObject <TWPLimb>* )_NewLimb
-            forUserID: ( NSString* )_UserID
+- ( void ) removeLimb: ( NSObject <TWPLimb>* )_Limb
+           forUserIDs: ( NSArray* )_UserIDs
           brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals
     {
-    // TODO:
+    if ( _UserIDs )
+        {
+        for ( NSString* _UserID in _UserIDs )
+            {
+            _TWPMonitoringUserID* monitoringUserID = [ _TWPMonitoringUserID IDWithUserID: _UserID signalMask: _BrainSignals limb: _Limb ];
+            [ self->_monitoringUserIDs removeObject: monitoringUserID ];
+            }
+        }
+    else
+        [ self->_monitoringUserIDs removeObject: [ _TWPMonitoringUserID IDWithUserID: nil signalMask: _BrainSignals limb: _Limb ] ];
     }
 
 #pragma mark Conforms to <OTCSTTwitterStreamingAPIDelegate> protocol
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
-    // TODO:
+    NSString* authorID = _ReceivedTweet.author.IDString;
+
+    for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
+        {
+        if ( [ _MntID.userID isEqualToString: authorID ] || !_MntID.userID )
+            {
+            if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask
+                    && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
+                [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
+            }
+        }
+    }
+
+- ( void )             twitterAPI: ( STTwitterAPI* )_TwitterAPI
+    streamingEventHasBeenDetected: ( OTCStreamingEvent* )_DetectedEvent
+    {
+    NSString* sourceUserID = _DetectedEvent.sourceUser.IDString;
+
+    for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
+        {
+        if ( [ _MntID.userID isEqualToString: sourceUserID ] || !_MntID.userID )
+            {
+            if ( _MntID.signalMask & TWPBrainSignalTypeTimelineEventMask
+                    && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveEvent: ) ] )
+                [ _MntID.limb brain: self didReceiveEvent: _DetectedEvent ];
+            }
+        }
     }
 
 - ( void )   twitterAPI: ( STTwitterAPI* )_TwitterAPI
@@ -92,7 +140,15 @@ TWPBrain static __strong* sWiseBrain;
                  byUser: ( NSString* )_UserID
                      on: ( NSDate* )_DeletionDate
     {
-    // TODO:
+    for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
+        {
+        if ( [ _MntID.userID isEqualToString: _UserID ] || !_MntID.userID )
+            {
+            if ( _MntID.signalMask & TWPBrainSignalTypeTweetDeletionMask
+                    && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweetDeletion:byUser:on: ) ] )
+                [ _MntID.limb brain: self didReceiveTweetDeletion: _DeletedTweetID byUser: _UserID on: _DeletionDate ];
+            }
+        }
     }
 
 @end // TWPBrain class

@@ -36,7 +36,7 @@
     {
     if ( self = [ super initWithNibName: @"TWPHomeView" bundle: [ NSBundle mainBundle ] ] )
         {
-        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: nil brainSignal: TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask ];
+        [ [ TWPBrain wiseBrain ] registerLimb: self forUserIDs: nil brainSignal: TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask ];
 
         [ self.twitterAPI getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
             ^( NSArray* _TweetObjects )
@@ -114,15 +114,16 @@
     }
 
 #pragma mark Conforms to <TWPLimb>
-- ( void ) didReceiveTweet: ( OTCTweet* )_Tweet fromBrain: ( TWPBrain* )_Brain
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet
     {
     [ self->_tweets insertObject: _Tweet atIndex: 0 ];
     [ self.timelineTableView reloadData ];
     }
 
-- ( void ) didReceiveTweetDeletion: ( NSString* )_DeletedTweetID
-                            byUser: ( NSString* )_UserID
-                                on: ( NSDate* )_DeletionDate
+- ( void )            brain: ( TWPBrain* )_Brain
+    didReceiveTweetDeletion: ( NSString* )_DeletedTweetID
+                     byUser: ( NSString* )_UserID
+                         on: ( NSDate* )_DeletionDate
     {
     for ( OTCTweet* tweet in self->_tweets )
         {
