@@ -49,6 +49,7 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     // Streams of the public data flowing through Twitter.
     STTwitterAPI __strong* _publicTimelineFilterStream;
 
+    NSMutableSet __strong* _friendsList;
     NSMutableSet __strong* _monitoringUserIDs;
     }
 

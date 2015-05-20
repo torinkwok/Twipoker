@@ -59,6 +59,7 @@ TWPBrain static __strong* sWiseBrain;
             self->_publicTimelineFilterStream.delegate = self;
             [ self->_publicTimelineFilterStream fetchStatusesFilterKeyword: @"@NSTongG" users: nil locationBoundingBoxes: nil ];
 
+            self->_friendsList = [ NSMutableSet set ];
             self->_monitoringUserIDs = [ NSMutableSet set ];
 
             sWiseBrain = self;
@@ -104,6 +105,12 @@ TWPBrain static __strong* sWiseBrain;
     }
 
 #pragma mark Conforms to <OTCSTTwitterStreamingAPIDelegate> protocol
+- ( void )      twitterAPI: ( STTwitterAPI* )_TwitterAPI
+    didReceiveFriendsLists: ( NSArray* )_Friends
+    {
+    [ self->_friendsList addObjectsFromArray: _Friends ];
+    }
+
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
     NSString* authorID = _ReceivedTweet.author.IDString;
@@ -129,7 +136,23 @@ TWPBrain static __strong* sWiseBrain;
 - ( void )             twitterAPI: ( STTwitterAPI* )_TwitterAPI
     streamingEventHasBeenDetected: ( OTCStreamingEvent* )_DetectedEvent
     {
-    NSString* sourceUserID = _DetectedEvent.sourceUser.IDString;
+    OTCTwitterUser* sourceUser = _DetectedEvent.sourceUser;
+    OTCTwitterUser* targetUser = _DetectedEvent.targetUser;
+
+    NSString* sourceUserID = sourceUser.IDString;
+    NSString* targetUserID = targetUser.IDString;
+
+    SEL friendsListOperation = nil;
+    switch ( _DetectedEvent.eventType)
+        {
+        case OTCStreamingEventTypeFollow: friendsListOperation = @selector( addObject: ); break;
+        case OTCStreamingEventTypeUnfollow: friendsListOperation = @selector( removeObject: ); break;
+
+        default:;
+        }
+
+    if ( friendsListOperation && targetUserID )
+        [ self->_friendsList performSelectorOnMainThread: friendsListOperation withObject: targetUserID waitUntilDone: YES ];
 
     for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
         {
