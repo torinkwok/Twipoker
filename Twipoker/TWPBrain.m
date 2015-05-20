@@ -25,7 +25,7 @@
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
 
-#import "_TWPSignalLimbPairsSet.h"
+#import "_TWPMonitoringUserIDsSet.h"
 
 // TWPBrain class
 @implementation TWPBrain
@@ -46,7 +46,7 @@ TWPBrain static __strong* sWiseBrain;
             // Home Timeline
             // Single-user stream, containing roughly all of the data corresponding with
             // the current authenticating user’s view of Twitter.
-            self->_pairsSetForHomeTimeline = [ _TWPSignalLimbPairsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
+            self->_pairsSetForHomeTimeline = [ _TWPMonitoringUserIDsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
             self->_pairsSetForHomeTimeline.twitterAPI.delegate = self;
             [ self->_pairsSetForHomeTimeline.twitterAPI
                 fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
@@ -55,7 +55,7 @@ TWPBrain static __strong* sWiseBrain;
                                              locationBoundingBoxes: nil ];
             // Global Timeline
             // Streams of the public data flowing through Twitter.
-            self->_pairsSetForMentionsTimeline = [ _TWPSignalLimbPairsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
+            self->_pairsSetForMentionsTimeline = [ _TWPMonitoringUserIDsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
             self->_pairsSetForMentionsTimeline.twitterAPI.delegate = self;
             [ self->_pairsSetForMentionsTimeline.twitterAPI
                     fetchStatusesFilterKeyword: @"@NSTongG" users: nil locationBoundingBoxes: nil ];
@@ -78,7 +78,7 @@ TWPBrain static __strong* sWiseBrain;
         {
         if ( !_UserID )
             {
-            _TWPSignalLimbPair* pair = [ _TWPSignalLimbPair pairWithSignalMask: _BrainSignals limb: _NewLimb ];
+            _TWPMonitoringUserID* pair = [ _TWPMonitoringUserID pairWithSignalMask: _BrainSignals limb: _NewLimb ];
 
             if ( pair )
                 {
@@ -104,11 +104,11 @@ TWPBrain static __strong* sWiseBrain;
                             || _BrainSignals & TWPBrainSignalTypeTweetDeletionMask
                             || _BrainSignals & TWPBrainSignalTypeUserUpdateMask ) )
             {
-            _TWPSignalLimbPairsSet* pairsSet = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
+            _TWPMonitoringUserIDsSet* pairsSet = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
 
             if ( !pairsSet )
                 {
-                pairsSet = [ _TWPSignalLimbPairsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
+                pairsSet = [ _TWPMonitoringUserIDsSet pairsWithTwitterAPI: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI ];
                 [ pairsSet addPairWithSignalMask: _BrainSignals limb: _NewLimb ];
 
                 self->_dictOfSecifiedUsersStreamAPI[ _UserID ] = pairsSet;
@@ -127,7 +127,7 @@ TWPBrain static __strong* sWiseBrain;
     {
     if ( _NewLimb )
         {
-        _TWPSignalLimbPairsSet* correctpondingPairs = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
+        _TWPMonitoringUserIDsSet* correctpondingPairs = self->_dictOfSecifiedUsersStreamAPI[ _UserID ];
 
         if ( correctpondingPairs )
             [ correctpondingPairs removePairWithSignalMask: _BrainSignals limb: _NewLimb ];
@@ -143,7 +143,7 @@ TWPBrain static __strong* sWiseBrain;
     if ( _TwitterAPI == self->_pairsSetForHomeTimeline.twitterAPI
             || _TwitterAPI == self->_pairsSetForMentionsTimeline.twitterAPI )
         {
-        _TWPSignalLimbPairsSet* pairsSet = nil;
+        _TWPMonitoringUserIDsSet* pairsSet = nil;
 
         if ( _TwitterAPI == self->_pairsSetForHomeTimeline.twitterAPI )
             pairsSet = self->_pairsSetForHomeTimeline;
@@ -151,7 +151,7 @@ TWPBrain static __strong* sWiseBrain;
         else if ( _TwitterAPI == self->_pairsSetForMentionsTimeline.twitterAPI )
             pairsSet = self->_pairsSetForMentionsTimeline;
 
-        for ( _TWPSignalLimbPair* _Pair in pairsSet )
+        for ( _TWPMonitoringUserID* _Pair in pairsSet )
             {
             if ( ( _Pair.signalMask & TWPBrainSignalTypeNewTweetMask )
                     && [ _Pair.limb respondsToSelector: @selector( didReceiveTweet:fromBrain: ) ] )
@@ -166,10 +166,10 @@ TWPBrain static __strong* sWiseBrain;
         {
         for ( NSString* _UserID in self->_dictOfSecifiedUsersStreamAPI )
             {
-            _TWPSignalLimbPairsSet* pairsSet = ( _TWPSignalLimbPairsSet* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
+            _TWPMonitoringUserIDsSet* pairsSet = ( _TWPMonitoringUserIDsSet* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
             if ( pairsSet.twitterAPI == _TwitterAPI )
                 {
-                for ( _TWPSignalLimbPair* _Pair in pairsSet )
+                for ( _TWPMonitoringUserID* _Pair in pairsSet )
                     {
                     if ( ( _Pair.signalMask & TWPBrainSignalTypeNewTweetMask )
                             && [ _Pair.limb respondsToSelector: @selector( didReceiveTweet:fromBrain: ) ] )
@@ -185,7 +185,7 @@ TWPBrain static __strong* sWiseBrain;
     {
     if ( _TwitterAPI == self->_pairsSetForHomeTimeline.twitterAPI )
         {
-        for ( _TWPSignalLimbPair* _Pair in self->_pairsSetForHomeTimeline )
+        for ( _TWPMonitoringUserID* _Pair in self->_pairsSetForHomeTimeline )
             {
             if ( ( _Pair.signalMask & TWPBrainSignalTypeTimelineEventMask )
                     && [ _Pair.limb respondsToSelector: @selector( didReceiveEvent:fromBrain: ) ] )
@@ -201,7 +201,7 @@ TWPBrain static __strong* sWiseBrain;
     {
     if ( _TwitterAPI == self->_pairsSetForHomeTimeline.twitterAPI )
         {
-        for ( _TWPSignalLimbPair* _Pair in self->_pairsSetForHomeTimeline )
+        for ( _TWPMonitoringUserID* _Pair in self->_pairsSetForHomeTimeline )
             {
             if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetDeletionMask )
                     && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetDeletion:byUser:on: ) ] )
@@ -212,10 +212,10 @@ TWPBrain static __strong* sWiseBrain;
         {
         for ( NSString* _UserID in self->_dictOfSecifiedUsersStreamAPI )
             {
-            _TWPSignalLimbPairsSet* pairsSet = ( _TWPSignalLimbPairsSet* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
+            _TWPMonitoringUserIDsSet* pairsSet = ( _TWPMonitoringUserIDsSet* )( self->_dictOfSecifiedUsersStreamAPI[ _UserID ] );
             if ( pairsSet.twitterAPI == _TwitterAPI )
                 {
-                for ( _TWPSignalLimbPair* _Pair in pairsSet )
+                for ( _TWPMonitoringUserID* _Pair in pairsSet )
                     {
                     if ( ( _Pair.signalMask & TWPBrainSignalTypeTweetDeletionMask )
                             && [ _Pair.limb respondsToSelector: @selector( didReceiveTweetDeletion:byUser:on: ) ] )

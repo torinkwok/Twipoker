@@ -25,44 +25,21 @@
 #import "TWPBrain.h"
 
 // --------------------------------------------------------------------------------------------------- //
-// _TWPSignalLimbPair class
-@interface _TWPSignalLimbPair : NSObject
+// _TWPMonitoringUserID class
+@interface _TWPMonitoringUserID : NSObject
 
+@property ( copy, readwrite ) NSString* userID;
 @property ( assign, readwrite ) TWPBrainSignalTypeMask signalMask;
 @property ( strong, readwrite ) NSObject <TWPLimb>* limb;
 
 #pragma mark Initializations
-+ ( instancetype ) pairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_Limb;
-- ( instancetype ) initWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_Limb;
++ ( instancetype ) IDWithUserID: ( NSString* )_UserID signalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_Limb;
+- ( instancetype ) initWithUserID: ( NSString* )_UserID signalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_Limb;
 
 #pragma mark Comparing
-- ( BOOL ) isEqualToPair: ( _TWPSignalLimbPair* )_RhsPair;
+- ( BOOL ) isEqualToPair: ( _TWPMonitoringUserID* )_RhsPair;
 
-@end // _TWPSignalLimbPair class
-
-// --------------------------------------------------------------------------------------------------- //
-// _TWPSignalLimbPairsSet class
-@interface _TWPSignalLimbPairsSet : NSObject <NSFastEnumeration>
-    {
-@private
-    STTwitterAPI __strong* _twitterAPI;
-    NSMutableSet __strong* _signalLimbPairs;
-    }
-
-@property ( strong, readonly ) STTwitterAPI* twitterAPI;
-
-@property ( assign, readonly ) NSUInteger pairsCount;
-
-+ ( instancetype ) pairsWithTwitterAPI: ( STTwitterAPI* )_TwitterAPI;
-- ( instancetype ) initWithTwitterAPI: ( STTwitterAPI* )_TwitterAPI;
-
-- ( void ) addPairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_NewLimb;
-- ( void ) addPair: ( _TWPSignalLimbPair* )_NewPair;
-
-- ( void ) removePairWithSignalMask: ( TWPBrainSignalTypeMask )_SignalMask limb: ( NSObject <TWPLimb>* )_NewLimb;
-- ( void ) removePair: ( _TWPSignalLimbPair* )_NewPair;
-
-@end
+@end // _TWPMonitoringUserID class
 
 /*=============================================================================┐
 |                                                                              |

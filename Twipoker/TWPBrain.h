@@ -25,7 +25,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol TWPLimb;
-@class _TWPSignalLimbPairsSet;
+@class _TWPMonitoringUserIDsSet;
 
 typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     { TWPBrainSignalTypeNewTweetMask        = 1U
@@ -44,16 +44,16 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     // Home Timeline
     // Single-user stream, containing roughly all of the data corresponding with
     // the current authenticating user’s view of Twitter.
-    _TWPSignalLimbPairsSet __strong* _pairsSetForHomeTimeline;
+    _TWPMonitoringUserIDsSet __strong* _pairsSetForHomeTimeline;
 
     // Global Timeline
     // Streams of the public data flowing through Twitter.
-    _TWPSignalLimbPairsSet __strong* _pairsSetForMentionsTimeline;
+    _TWPMonitoringUserIDsSet __strong* _pairsSetForMentionsTimeline;
 
     // Specified Users
-    /* @{ UserID : _TWPSignalLimbPairsSet
-        , UserID : _TWPSignalLimbPairsSet
-        , UserID : _TWPSignalLimbPairsSet
+    /* @{ UserID : _TWPMonitoringUserIDsSet
+        , UserID : _TWPMonitoringUserIDsSet
+        , UserID : _TWPMonitoringUserIDsSet
         , ...
         } */
     NSMutableDictionary __strong* _dictOfSecifiedUsersStreamAPI;
