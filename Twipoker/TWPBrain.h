@@ -25,7 +25,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol TWPLimb;
-@class _TWPMonitoringUserIDsSet;
 
 typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     { TWPBrainSignalTypeNewTweetMask        = 1U
@@ -44,19 +43,13 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     // Home Timeline
     // Single-user stream, containing roughly all of the data corresponding with
     // the current authenticating user’s view of Twitter.
-    _TWPMonitoringUserIDsSet __strong* _pairsSetForHomeTimeline;
+    STTwitterAPI __strong* _authingUserTimelineStream;
 
     // Global Timeline
     // Streams of the public data flowing through Twitter.
-    _TWPMonitoringUserIDsSet __strong* _pairsSetForMentionsTimeline;
+    STTwitterAPI __strong* _publicTimelineFilterStream;
 
-    // Specified Users
-    /* @{ UserID : _TWPMonitoringUserIDsSet
-        , UserID : _TWPMonitoringUserIDsSet
-        , UserID : _TWPMonitoringUserIDsSet
-        , ...
-        } */
-    NSMutableDictionary __strong* _dictOfSecifiedUsersStreamAPI;
+    NSMutableArray __strong* _monitoringUserIDs;
     }
 
 #pragma mark Initializations
@@ -72,10 +65,10 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 @protocol TWPLimb <NSObject>
 
 @optional
-- ( void ) didReceiveTweet: ( OTCTweet* )_Tweet fromBrain: ( TWPBrain* )_Brain;
-- ( void ) didReceiveTweetDeletion: ( NSString* )_DeletedTweetID byUser: ( NSString* )_UserID on: ( NSDate* )_DeletionDate;
-- ( void ) didReceiveMention: ( OTCTweet* )_Metion fromBrain: ( TWPBrain* )_Brain;
-- ( void ) didReceiveEvent: ( OTCStreamingEvent* )_Tweet fromBrain: ( TWPBrain* )_Brain;
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet;
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveTweetDeletion: ( NSString* )_DeletedTweetID byUser: ( NSString* )_UserID on: ( NSDate* )_DeletionDate;
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveMention: ( OTCTweet* )_Metion;
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveEvent: ( OTCStreamingEvent* )_Tweet;
 
 @end // TWPLimb class
 
