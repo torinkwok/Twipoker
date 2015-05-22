@@ -63,6 +63,9 @@ TWPBrain static __strong* sWiseBrain;
             self->_monitoringUserIDs = [ NSMutableSet set ];
 
             sWiseBrain = self;
+
+            NSLog( @"Home: %@", self->_authingUserTimelineStream );
+            NSLog( @"Public: %@", self->_publicTimelineFilterStream );
             }
         }
 
@@ -113,33 +116,35 @@ TWPBrain static __strong* sWiseBrain;
 
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
-    NSString* authorID = _ReceivedTweet.author.IDString;
+    NSNumber* authorID = [ NSNumber numberWithLongLong: _ReceivedTweet.author.ID ];
 
     for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
         {
-        if ( [ _MntID.userID isEqualToString: authorID ] /* Specified user */
+        if ( _MntID.userID.longLongValue == authorID.longLongValue /* Specified user */
                 || !_MntID.userID /* Current authenticating user */ )
             {
-            BOOL yesOrNo1 = _MntID.signalMask & TWPBrainSignalTypeNewTweetMask;
-            BOOL yesOrNo2 = [ self->_friendsList containsObject: authorID ];
-            BOOL yesOrNo3 = [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ];
-            if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask
-                    && [ self->_friendsList containsObject: authorID ]
-                    && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
-                [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
-
-            NSArray* userMentions = _ReceivedTweet.userMentions;
-            if ( userMentions.count > 0 )
-
+            if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask )
                 {
-                for ( OTCUserMention* _UserMention in userMentions )
+                if ( [ self->_friendsList containsObject: authorID ]
+                    && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
+                    [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
+                }
+
+            if( _MntID.signalMask & TWPBrainSignalTypeMentionedMeMask )
+                {
+                NSArray* userMentions = _ReceivedTweet.userMentions;
+                if ( userMentions.count > 0 )
                     {
-                    if ( [ _UserMention.userIDString isEqualToString: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ]
-                            && _MntID.signalMask & TWPBrainSignalTypeMentionedMeMask
-                            && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveMention: ) ] )
+                    for ( OTCUserMention* _UserMention in userMentions )
                         {
-                        [ _MntID.limb brain: self didReceiveMention: _ReceivedTweet ];
-                        break;
+                        if ( [ _UserMention.userIDString isEqualToString:
+                            [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
+                            {
+                            if ( [ _MntID.limb respondsToSelector: @selector( brain:didReceiveMention: ) ] )
+                                [ _MntID.limb brain: self didReceiveMention: _ReceivedTweet ];
+
+                            break;
+                            }
                         }
                     }
                 }

@@ -131,7 +131,7 @@
             {
             OTCTweet* targetTweet = ( OTCTweet* )_DetectedEvent.targetObject;
 
-            if ( targetTweet )
+            if ( targetTweet && ![ self->_tweets containsObject: targetTweet ] )
                 {
                 [ self->_tweets insertObject: targetTweet atIndex: 0 ];
                 [ self.timelineTableView reloadData ];
@@ -143,8 +143,13 @@
         {
         if ( [ _DetectedEvent.sourceUser.IDString isEqualToString: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
             {
-            [ self->_tweets removeObject: _DetectedEvent.targetObject ];
-            [ self.timelineTableView reloadData ];
+            OTCTweet* targetTweet = ( OTCTweet* )_DetectedEvent.targetObject;
+
+            if ( targetTweet )
+                {
+                [ self->_tweets removeObject: _DetectedEvent.targetObject ];
+                [ self.timelineTableView reloadData ];
+                }
             }
         }
     }
