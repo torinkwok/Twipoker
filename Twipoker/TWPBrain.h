@@ -51,6 +51,8 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 
     NSMutableSet __strong* _friendsList;
     NSMutableSet __strong* _monitoringUserIDs;
+
+    NSMutableArray __strong* _uniqueTweetsQueue;
     }
 
 #pragma mark Initializations

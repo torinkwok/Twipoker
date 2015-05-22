@@ -116,11 +116,8 @@
 #pragma mark Conforms to <TWPLimb>
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet
     {
-    if ( ![ self->_tweets containsObject: _Tweet ] )
-        {
-        [ self->_tweets insertObject: _Tweet atIndex: 0 ];
-        [ self.timelineTableView reloadData ];
-        }
+    [ self->_tweets insertObject: _Tweet atIndex: 0 ];
+    [ self.timelineTableView reloadData ];
     }
 
 - ( void )            brain: ( TWPBrain* )_Brain

@@ -62,6 +62,8 @@ TWPBrain static __strong* sWiseBrain;
             self->_friendsList = [ NSMutableSet set ];
             self->_monitoringUserIDs = [ NSMutableSet set ];
 
+            self->_uniqueTweetsQueue = [ NSMutableArray array ];
+
             sWiseBrain = self;
 
             NSLog( @"Home: %@", self->_authingUserTimelineStream );
@@ -116,34 +118,39 @@ TWPBrain static __strong* sWiseBrain;
 
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
-    NSNumber* authorID = [ NSNumber numberWithLongLong: _ReceivedTweet.author.ID ];
-
-    for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
+    if ( ![ self->_uniqueTweetsQueue containsObject: _ReceivedTweet ] )
         {
-        if ( _MntID.userID.longLongValue == authorID.longLongValue /* Specified user */
-                || !_MntID.userID /* Current authenticating user */ )
+        [ self->_uniqueTweetsQueue addObject: _ReceivedTweet ];
+
+        NSNumber* authorID = [ NSNumber numberWithLongLong: _ReceivedTweet.author.ID ];
+
+        for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
             {
-            if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask )
+            if ( _MntID.userID.longLongValue == authorID.longLongValue /* Specified user */
+                    || !_MntID.userID /* Current authenticating user */ )
                 {
-                if ( [ self->_friendsList containsObject: authorID ]
-                    && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
-                    [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
-                }
-
-            if( _MntID.signalMask & TWPBrainSignalTypeMentionedMeMask )
-                {
-                NSArray* userMentions = _ReceivedTweet.userMentions;
-                if ( userMentions.count > 0 )
+                if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask )
                     {
-                    for ( OTCUserMention* _UserMention in userMentions )
-                        {
-                        if ( [ _UserMention.userIDString isEqualToString:
-                            [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
-                            {
-                            if ( [ _MntID.limb respondsToSelector: @selector( brain:didReceiveMention: ) ] )
-                                [ _MntID.limb brain: self didReceiveMention: _ReceivedTweet ];
+                    if ( [ self->_friendsList containsObject: authorID ]
+                            && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
+                        [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
+                    }
 
-                            break;
+                if( _MntID.signalMask & TWPBrainSignalTypeMentionedMeMask )
+                    {
+                    NSArray* userMentions = _ReceivedTweet.userMentions;
+                    if ( userMentions.count > 0 )
+                        {
+                        for ( OTCUserMention* _UserMention in userMentions )
+                            {
+                            if ( [ _UserMention.userIDString isEqualToString:
+                                [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
+                                {
+                                if ( [ _MntID.limb respondsToSelector: @selector( brain:didReceiveMention: ) ] )
+                                    [ _MntID.limb brain: self didReceiveMention: _ReceivedTweet ];
+
+                                break;
+                                }
                             }
                         }
                     }
@@ -190,6 +197,15 @@ TWPBrain static __strong* sWiseBrain;
                  byUser: ( NSString* )_UserID
                      on: ( NSDate* )_DeletionDate
     {
+    for ( OTCTweet* tweet in self->_uniqueTweetsQueue )
+        {
+        if ( [ tweet.tweetIDString isEqualToString: _DeletedTweetID ] )
+            {
+            [ self->_uniqueTweetsQueue removeObject: tweet ];
+            break;
+            }
+        }
+
     for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
         {
         if ( [ _MntID.userID isEqualToString: _UserID ] /* Specified user */
