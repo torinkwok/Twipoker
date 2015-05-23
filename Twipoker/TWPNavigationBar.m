@@ -29,15 +29,13 @@
 #pragma mark Initialzation
 - ( void ) awakeFromNib
     {
-    self.wantsLayer = YES;
-    self.material = NSVisualEffectMaterialLight;
-    self.blendingMode = NSVisualEffectBlendingModeWithinWindow;
     }
 
 #pragma mark Overrides for Custom Appearance
-- ( BOOL ) allowsVibrancy
+- ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    return YES;
+    [ [ NSColor whiteColor ] set ];
+    NSRectFill( _DirtyRect );
     }
 
 - ( BOOL ) mouseDownCanMoveWindow

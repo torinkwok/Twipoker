@@ -48,7 +48,7 @@
             {
             TWPViewsStack* newViewsStack = _Changes[ @"new" ];
             [ newViewsStack.currentView.view setFrame: [ self boundsOfElementView ] ];
-            [ self setSubviews: @[ newViewsStack.currentView.view, self.navigationBar ] ];
+            [ self setSubviews: @[ newViewsStack.currentView.view ] ];
             } ];
     }
 

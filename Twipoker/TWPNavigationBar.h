@@ -24,7 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TWPNavigationBar : NSVisualEffectView
+@interface TWPNavigationBar : NSView
 
 @end
 
