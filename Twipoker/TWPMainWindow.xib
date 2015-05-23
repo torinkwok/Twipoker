@@ -98,7 +98,7 @@
                         <rect key="frame" x="287" y="710" width="606" height="60"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
-                                <rect key="frame" x="20" y="18" width="27" height="22"/>
+                                <rect key="frame" x="20" y="18" width="27" height="25"/>
                                 <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSGoLeftTemplate" imagePosition="only" alignment="center" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="hWp-8T-ztY">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -108,7 +108,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IjZ-GZ-rhx" userLabel="Go Forward Button">
-                                <rect key="frame" x="48" y="18" width="27" height="22"/>
+                                <rect key="frame" x="48" y="18" width="27" height="25"/>
                                 <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSGoRightTemplate" imagePosition="only" alignment="center" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="QPG-sT-bpd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -118,14 +118,14 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmE-n4-O8w" userLabel="Craft Tweet Button">
-                                <rect key="frame" x="559" y="18" width="27" height="22"/>
+                                <rect key="frame" x="559" y="18" width="27" height="25"/>
                                 <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="draft-tweet-black" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="hDF-zy-ZtU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMS-HU-W4h" userLabel="Twitter Logo Button">
-                                <rect key="frame" x="291" y="17" width="25" height="25"/>
+                                <rect key="frame" x="291" y="18" width="25" height="25"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="twitter-logo-blue" id="8Lr-ax-6GU"/>
                             </imageView>
                             <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="U4w-bQ-pXh">
