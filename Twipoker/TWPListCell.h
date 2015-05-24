@@ -25,6 +25,8 @@
 #import <Cocoa/Cocoa.h>
 
 @class TWPUserAvatarWell;
+@class TWPTimelineUserNameLabel;
+@class TWPTweetTextField;
 
 // TWPListCell class
 @interface TWPListCell : NSTableCellView
@@ -35,8 +37,8 @@
 
 #pragma mark Outlets
 @property ( weak ) IBOutlet TWPUserAvatarWell* creatorAvatar;
-@property ( weak ) IBOutlet NSView* listNameLabel;
-@property ( weak ) IBOutlet NSTextField* listDescriptionLabel;
+@property ( weak ) IBOutlet TWPTimelineUserNameLabel* listNameLabel;
+@property ( weak ) IBOutlet TWPTweetTextField* listDescriptionLabel;
 
 @property ( strong, readwrite ) OTCList* twitterList;
 @property ( strong, readonly ) OTCTwitterUser* creator;

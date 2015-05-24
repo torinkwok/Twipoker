@@ -24,6 +24,8 @@
 
 #import "TWPListCell.h"
 #import "TWPUserAvatarWell.h"
+#import "TWPTimelineUserNameLabel.h"
+#import "TWPTweetTextField.h"
 
 @implementation TWPListCell
 
