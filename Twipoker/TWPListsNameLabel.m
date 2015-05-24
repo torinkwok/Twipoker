@@ -22,10 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPBrain.h"
-#import "TWPViewController.h"
+#import "TWPListsNameLabel.h"
 
-@interface TWPListsViewController : TWPViewController <TWPLimb>
+@implementation TWPListsNameLabel
 
 @end
 

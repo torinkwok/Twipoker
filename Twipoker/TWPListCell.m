@@ -22,10 +22,51 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPBrain.h"
-#import "TWPViewController.h"
+#import "TWPListCell.h"
+#import "TWPUserAvatarWell.h"
 
-@interface TWPListsViewController : TWPViewController <TWPLimb>
+@implementation TWPListCell
+
+@synthesize creatorAvatar;
+@synthesize listNameLabel;
+@synthesize listDescriptionLabel;
+
+@dynamic twitterList;
+
+#pragma mark Initialization
++ ( instancetype ) listCellWithTwitterList: ( OTCList* )_TwitterList
+    {
+    return [ [ [ self class ] alloc ] initWithTwitterList: _TwitterList ];
+    }
+
+- ( instancetype ) initWithTwitterList: ( OTCList* )_TwitterList
+    {
+    if ( self = [ super init ] )
+        [ self setTwitterList: _TwitterList ];
+
+    return self;
+    }
+
+#pragma mark Accessors
+- ( void ) setTwitterList: ( OTCList* )_TwitterList
+    {
+    if ( self->_twitterList != _TwitterList )
+        {
+        self->_twitterList = _TwitterList;
+
+        [ [ self creatorAvatar ] setTwitterUser: self->_twitterList.creator ];
+        }
+    }
+
+- ( OTCList* ) twitterList
+    {
+    return self->_twitterList;
+    }
+
+- ( OTCTwitterUser* ) creator
+    {
+    return self->_twitterList.creator;
+    }
 
 @end
 

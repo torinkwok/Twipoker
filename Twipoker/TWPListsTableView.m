@@ -22,10 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPBrain.h"
-#import "TWPViewController.h"
+#import "TWPListsTableView.h"
 
-@interface TWPListsViewController : TWPViewController <TWPLimb>
+@implementation TWPListsTableView
 
 @end
 

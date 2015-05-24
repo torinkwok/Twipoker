@@ -22,12 +22,30 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPBrain.h"
-#import "TWPViewController.h"
+#import <Cocoa/Cocoa.h>
 
-@interface TWPListsViewController : TWPViewController <TWPLimb>
+@class TWPUserAvatarWell;
 
-@end
+// TWPListCell class
+@interface TWPListCell : NSTableCellView
+    {
+@private
+    OTCList __strong* _twitterList;
+    }
+
+#pragma mark Outlets
+@property ( weak ) IBOutlet TWPUserAvatarWell* creatorAvatar;
+@property ( weak ) IBOutlet NSView* listNameLabel;
+@property ( weak ) IBOutlet NSTextField* listDescriptionLabel;
+
+@property ( strong, readwrite ) OTCList* twitterList;
+@property ( strong, readonly ) OTCTwitterUser* creator;
+
+#pragma mark Initialization
++ ( instancetype ) listCellWithTwitterList: ( OTCList* )_TwitterList;
+- ( instancetype ) initWithTwitterList: ( OTCList* )_TwitterList;
+
+@end // TWPListCell class
 
 /*=============================================================================┐
 |                                                                              |

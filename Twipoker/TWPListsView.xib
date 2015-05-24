@@ -1,30 +1,97 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6724" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6724"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPListsViewController">
             <connections>
-                <outlet property="view" destination="c22-O7-iKe" id="TCM-FI-zQC"/>
+                <outlet property="timelineTableView" destination="NoB-0S-7u6" id="ZQe-tD-Muu"/>
+                <outlet property="view" destination="sbF-b9-UgM" id="srW-Zn-z8z"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+        <scrollView identifier="home" autohidesScrollers="YES" horizontalLineScroll="70" horizontalPageScroll="10" verticalLineScroll="70" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="sbF-b9-UgM" userLabel="Home Timeline Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
+            <rect key="frame" x="0.0" y="0.0" width="607" height="632"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AyZ-YF-Eo4">
-                    <rect key="frame" x="224" y="128" width="33" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lists" id="Xad-Oo-dva">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-            </subviews>
-        </customView>
+            <clipView key="contentView" copiesOnScroll="NO" id="DiR-cs-bNm">
+                <rect key="frame" x="1" y="1" width="605" height="630"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="68" rowSizeStyle="automatic" viewBased="YES" id="NoB-0S-7u6" customClass="TWPListsTableView">
+                        <rect key="frame" x="0.0" y="0.0" width="605" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <size key="intercellSpacing" width="3" height="2"/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
+                        <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <tableColumns>
+                            <tableColumn identifier="lists-column" width="602" minWidth="40" maxWidth="1000" id="nEb-zt-Aq7">
+                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                </tableHeaderCell>
+                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Wcs-Ii-tfz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                <prototypeCellViews>
+                                    <tableCellView id="KKL-9M-yAp" customClass="TWPListCell">
+                                        <rect key="frame" x="1" y="1" width="602" height="68"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwq-Nh-2aJ" userLabel="Avatar" customClass="TWPUserAvatarWell">
+                                                <rect key="frame" x="464" y="-40" width="70" height="70"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="MGV-NU-RXC"/>
+                                            </imageView>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aBX-gU-zgk" userLabel="Tweet Text" customClass="TWPTweetTextField">
+                                                <rect key="frame" x="12" y="13" width="411" height="17"/>
+                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Octocat!" id="x5f-D2-Xsi">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="cWH-zJ-zXS"/>
+                                                </connections>
+                                            </textField>
+                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uOA-Nx-8ue">
+                                                <rect key="frame" x="14" y="38" width="407" height="22"/>
+                                                <connections>
+                                                    <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="dHg-HV-Lzo"/>
+                                                </connections>
+                                            </customView>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f7t-fL-zAY" userLabel="Avatar" customClass="TWPUserAvatarWell">
+                                                <rect key="frame" x="538" y="9" width="50" height="50"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="39f-lQ-Bw7"/>
+                                            </imageView>
+                                        </subviews>
+                                        <connections>
+                                            <outlet property="creatorAvatar" destination="f7t-fL-zAY" id="Gew-i5-2ck"/>
+                                            <outlet property="listDescriptionLabel" destination="aBX-gU-zgk" id="6BD-2O-1gN"/>
+                                            <outlet property="listNameLabel" destination="uOA-Nx-8ue" id="IbZ-5y-jIb"/>
+                                        </connections>
+                                    </tableCellView>
+                                </prototypeCellViews>
+                            </tableColumn>
+                        </tableColumns>
+                    </tableView>
+                </subviews>
+                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </clipView>
+            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="seE-Jk-3Q3">
+                <rect key="frame" x="-100" y="-100" width="0.0" height="16"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="82A-Iq-ep2">
+                <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <point key="canvasLocation" x="-245.5" y="-2569"/>
+        </scrollView>
     </objects>
 </document>

@@ -22,10 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPBrain.h"
-#import "TWPViewController.h"
+#import <Cocoa/Cocoa.h>
 
-@interface TWPListsViewController : TWPViewController <TWPLimb>
+@interface TWPListsNameLabel : NSControl
 
 @end
 
