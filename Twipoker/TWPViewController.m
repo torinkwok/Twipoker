@@ -23,25 +23,18 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPViewController.h"
-#import "TWPTweetCellView.h"
 #import "TWPLoginUsersManager.h"
 
 @implementation TWPViewController
 
 @dynamic twitterAPI;
 
-@synthesize isLoadingOlderTweets = _isLoadingOlderTweets;
-@synthesize numberOfTweetsWillBeLoadedOnce = _numberOfTweetsWillBeLoadedOnce;
-
 - ( instancetype ) initWithNibName: ( NSString* )_NibNameOrNil
                             bundle: ( NSBundle* )_NibBundleOrNil
     {
     if ( self = [ super initWithNibName: _NibNameOrNil bundle: _NibBundleOrNil ] )
         {
-        self->_tweets = [ NSMutableArray array ];
-
-        self->_isLoadingOlderTweets = NO;
-        self->_numberOfTweetsWillBeLoadedOnce = 20;
+        self->_data = [ NSMutableArray array ];
 
         self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
         self->_twitterAPI.delegate = self;
@@ -66,33 +59,21 @@
         }
     }
 
-#pragma mark Conforms to <TWPTimelineTableViewDataSource>
+#pragma mark Conforms to <NSTableViewDataSource>
 - ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
     {
-    return self->_tweets.count;
+    return self->_data.count;
     }
 
 - ( id )            tableView: ( NSTableView* )_TableView
     objectValueForTableColumn: ( NSTableColumn* )_TableColumn
                           row: ( NSInteger )_Row
     {
-    id result = self->_tweets[ _Row ];
+    id result = self->_data[ _Row ];
     return result;
     }
 
-#pragma mark Conforms to <TWPTimelineTableViewDelegate>
-- ( NSView* ) tableView: ( NSTableView* )_TableView
-     viewForTableColumn: ( NSTableColumn* )_TableColumn
-                    row: ( NSInteger )_Row
-    {
-    TWPTweetCellView* tweetCellView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
-
-    OTCTweet* tweet = self->_tweets[ _Row ];
-    tweetCellView.tweet = tweet;
-
-    return tweetCellView;
-    }
-
+#pragma mark Conforms to <NSTableViewDelegate>
 - ( BOOL ) tableView: ( NSTableView* )_TableView
      shouldSelectRow: ( NSInteger )_Row
     {

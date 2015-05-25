@@ -23,6 +23,8 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPListsViewController.h"
+#import "TWPLoginUsersManager.h"
+#import "TWPListCellView.h"
 
 @interface TWPListsViewController ()
 
@@ -30,11 +32,28 @@
 
 @implementation TWPListsViewController
 
+@synthesize listsTableView;
+
 #pragma mark Initialization
 - ( instancetype ) init
     {
     if ( self = [ super initWithNibName: @"TWPListsView" bundle: [ NSBundle mainBundle ] ] )
-        ; // TODO:
+        {
+        [ self.twitterAPI getListsSubscribedByUsername: nil
+                                              orUserID: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID
+                                               reverse: @YES
+                                          successBlock:
+            ^( NSArray* _Lists )
+                {
+                for ( NSDictionary* _TweetObject in _Lists )
+                    [ self->_data addObject: [ OTCList listWithJSON: _TweetObject ] ];
+
+                [ self.listsTableView reloadData ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                [ self presentError: _Error ];
+                                } ];
+        }
 
     return self;
     }
@@ -44,6 +63,20 @@
     [ super viewDidLoad ];
 
     // Do view setup here.
+    }
+
+#pragma mark Conforms to <TWPListsTableViewDelegate>
+- ( NSView* ) tableView: ( NSTableView* )_TableView
+     viewForTableColumn: ( NSTableColumn* )_TableColumn
+                    row: ( NSInteger )_Row
+    {
+    TWPListCellView* listCellView =
+        ( TWPListCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+
+    OTCList* twitterList = ( OTCList* )( self->_data[ _Row ] );
+    listCellView.twitterList = twitterList;
+
+    return listCellView;
     }
 
 @end

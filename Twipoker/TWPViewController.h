@@ -22,32 +22,17 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
-
-#import "TWPTimelineTableView.h"
+#import "TWPBrain.h"
 
 @interface TWPViewController : NSViewController
-    <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate, OTCSTTwitterStreamingAPIDelegate>
+    <OTCSTTwitterStreamingAPIDelegate, TWPLimb, NSTableViewDataSource, NSTableViewDelegate>
     {
 @protected
     STTwitterAPI __strong* _twitterAPI;
-
-    NSMutableArray __strong* _tweets;
-
-    BOOL _isLoadingOlderTweets;
-    NSUInteger _numberOfTweetsWillBeLoadedOnce;
-
-    SInt64 _sinceID;
-    SInt64 _maxID;
+    NSMutableArray __strong* _data;
     }
 
 @property ( strong, readwrite ) STTwitterAPI* twitterAPI;
-
-@property ( weak ) IBOutlet TWPTimelineTableView* timelineTableView;
-
-#pragma mark Conforms to <TWPTimelineTableViewDataSource>
-@property ( assign, readwrite ) BOOL isLoadingOlderTweets;
-@property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
 
 @end
 

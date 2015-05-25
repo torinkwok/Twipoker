@@ -22,34 +22,11 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPListsNameLabel.h"
 
-@class TWPTimelineTableView;
-@protocol TWPTimelineScrollViewDelegate;
+@implementation TWPListsNameLabel
 
-// Notification Names
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
-
-// TWPTimelineScrollView class
-@interface TWPTimelineScrollView : NSScrollView
-
-#pragma mark Accessors
-@property ( weak, readwrite ) IBOutlet id <TWPTimelineScrollViewDelegate> delegate;
-@property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
-
-@end // TWPTimelineScrollView class
-
-// TWPTimelineScrollViewDelegate protocol
-@protocol TWPTimelineScrollViewDelegate <NSObject>
-
-@optional
-
-// Tells the delegate that the data source of timeline table (document view of this scroll view)
-// should fetch older tweets
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
-
-@end // TWPTimelineScrollViewDelegate protocol
+@end
 
 /*=============================================================================┐
 |                                                                              |

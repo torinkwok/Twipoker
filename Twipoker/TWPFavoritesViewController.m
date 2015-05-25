@@ -45,10 +45,10 @@
             ^( NSArray* _TweetObjects )
                 {
                 for ( NSDictionary* _TweetObject in _TweetObjects )
-                    [ self->_tweets addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
+                    [ self->_data addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
 
-                self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
-                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+                self->_sinceID = [ ( OTCTweet* )self->_data.firstObject tweetID ];
+                self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
 
 //                [ self.twitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
 //                                                                      includeReplies: @YES
@@ -92,21 +92,18 @@
                 {
                 for ( NSDictionary* _TweetObject in _TweetObjects )
                     {
-                    // Data source did finish loading older tweets
-                    self.isLoadingOlderTweets = NO;
-
                     OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
 
                     // Duplicate tweet? Get out of here!
-                    if ( ![ self->_tweets containsObject: tweet ] )
-                        {
-                        [ self->_tweets addObject: tweet ];
-                        }
+                    if ( ![ self->_data containsObject: tweet ] )
+                        [ self->_data addObject: tweet ];
                     }
 
-                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
-
+                self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
                 [ self.timelineTableView reloadData ];
+
+                // Data source did finish loading older tweets
+                self.isLoadingOlderTweets = NO;
                 } errorBlock: ^( NSError* _Error )
                                 {
                                 // Data source did finish loading older tweets due to the error occured
@@ -114,12 +111,6 @@
                                 [ self presentError: _Error ];
                                 } ];
         }
-    }
-
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchLaterTweets: ( NSClipView* )_ClipView
-    {
-    NSLog( @"%s", __PRETTY_FUNCTION__ );
     }
 
 #pragma mark Conforms to <TWPLimb>
@@ -133,7 +124,7 @@
 
             if ( targetTweet )
                 {
-                [ self->_tweets insertObject: targetTweet atIndex: 0 ];
+                [ self->_data insertObject: targetTweet atIndex: 0 ];
                 [ self.timelineTableView reloadData ];
                 }
             }
@@ -143,7 +134,7 @@
         {
         if ( [ _DetectedEvent.sourceUser.IDString isEqualToString: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
             {
-            [ self->_tweets removeObject: _DetectedEvent.targetObject ];
+            [ self->_data removeObject: _DetectedEvent.targetObject ];
             [ self.timelineTableView reloadData ];
             }
         }

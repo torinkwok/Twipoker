@@ -37,7 +37,7 @@
     if ( self = [ super initWithNibName: @"TWPRepliesTimelineView" bundle: [ NSBundle mainBundle ] ] )
         {
         self->_anchorTweet = _AnchorTweet;
-        [ self->_tweets addObject: self->_anchorTweet ];
+        [ self->_data addObject: self->_anchorTweet ];
         }
 
     return self;

@@ -24,32 +24,34 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class TWPTimelineTableView;
-@protocol TWPTimelineScrollViewDelegate;
+@class TWPUserAvatarWell;
+@class TWPTimelineUserNameLabel;
+@class TWPTweetTextField;
 
 // Notification Names
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
+NSString extern* const TWPListCellViewMouseDown;
 
-// TWPTimelineScrollView class
-@interface TWPTimelineScrollView : NSScrollView
+// TWPListCellView class
+@interface TWPListCellView : NSTableCellView
+    {
+@private
+    OTCList __strong* _twitterList;
+    }
 
-#pragma mark Accessors
-@property ( weak, readwrite ) IBOutlet id <TWPTimelineScrollViewDelegate> delegate;
-@property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
+#pragma mark Outlets
+@property ( weak ) IBOutlet TWPUserAvatarWell* creatorAvatar;
+@property ( weak ) IBOutlet NSTextField* listNameLabel;
+@property ( weak ) IBOutlet NSTextField* listDescriptionLabel;
+@property ( weak ) IBOutlet NSTextField* membersCountLabel;
 
-@end // TWPTimelineScrollView class
+@property ( strong, readwrite ) OTCList* twitterList;
+@property ( strong, readonly ) OTCTwitterUser* creator;
 
-// TWPTimelineScrollViewDelegate protocol
-@protocol TWPTimelineScrollViewDelegate <NSObject>
+#pragma mark Initialization
++ ( instancetype ) listCellWithTwitterList: ( OTCList* )_TwitterList;
+- ( instancetype ) initWithTwitterList: ( OTCList* )_TwitterList;
 
-@optional
-
-// Tells the delegate that the data source of timeline table (document view of this scroll view)
-// should fetch older tweets
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
-
-@end // TWPTimelineScrollViewDelegate protocol
+@end // TWPListCellView class
 
 /*=============================================================================┐
 |                                                                              |

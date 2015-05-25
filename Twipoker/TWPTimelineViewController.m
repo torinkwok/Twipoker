@@ -22,34 +22,41 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPTimelineViewController.h"
+#import "TWPTweetCellView.h"
 
-@class TWPTimelineTableView;
-@protocol TWPTimelineScrollViewDelegate;
+@implementation TWPTimelineViewController
 
-// Notification Names
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
+@synthesize isLoadingOlderTweets = _isLoadingOlderTweets;
+@synthesize numberOfTweetsWillBeLoadedOnce = _numberOfTweetsWillBeLoadedOnce;
 
-// TWPTimelineScrollView class
-@interface TWPTimelineScrollView : NSScrollView
+- ( instancetype ) initWithNibName: ( NSString* )_NibNameOrNil
+                            bundle: ( NSBundle* )_NibBundleOrNil
+    {
+    if ( self = [ super initWithNibName: _NibNameOrNil bundle: _NibBundleOrNil ] )
+        {
+        self->_isLoadingOlderTweets = NO;
+        self->_numberOfTweetsWillBeLoadedOnce = 20;
+        }
 
-#pragma mark Accessors
-@property ( weak, readwrite ) IBOutlet id <TWPTimelineScrollViewDelegate> delegate;
-@property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
+    return self;
+    }
 
-@end // TWPTimelineScrollView class
+#pragma mark Conforms to <TWPTimelineTableViewDelegate>
+- ( NSView* ) tableView: ( NSTableView* )_TableView
+     viewForTableColumn: ( NSTableColumn* )_TableColumn
+                    row: ( NSInteger )_Row
+    {
+    TWPTweetCellView* tweetCellView =
+        ( TWPTweetCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
 
-// TWPTimelineScrollViewDelegate protocol
-@protocol TWPTimelineScrollViewDelegate <NSObject>
+    OTCTweet* tweet = ( OTCTweet* )( self->_data[ _Row ] );
+    tweetCellView.tweet = tweet;
 
-@optional
+    return tweetCellView;
+    }
 
-// Tells the delegate that the data source of timeline table (document view of this scroll view)
-// should fetch older tweets
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
-
-@end // TWPTimelineScrollViewDelegate protocol
+@end
 
 /*=============================================================================┐
 |                                                                              |

@@ -22,34 +22,69 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPListCellView.h"
+#import "TWPUserAvatarWell.h"
+#import "TWPTimelineUserNameLabel.h"
+#import "TWPTweetTextField.h"
 
-@class TWPTimelineTableView;
-@protocol TWPTimelineScrollViewDelegate;
+NSString* const TWPListCellViewMouseDown = @"ListCellView.Notif.MouseDown";
 
-// Notification Names
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
+@implementation TWPListCellView
 
-// TWPTimelineScrollView class
-@interface TWPTimelineScrollView : NSScrollView
+@synthesize creatorAvatar;
+@synthesize listNameLabel;
+@synthesize listDescriptionLabel;
+@synthesize membersCountLabel;
+
+@dynamic twitterList;
+
+#pragma mark Initialization
++ ( instancetype ) listCellWithTwitterList: ( OTCList* )_TwitterList
+    {
+    return [ [ [ self class ] alloc ] initWithTwitterList: _TwitterList ];
+    }
+
+- ( instancetype ) initWithTwitterList: ( OTCList* )_TwitterList
+    {
+    if ( self = [ super init ] )
+        [ self setTwitterList: _TwitterList ];
+
+    return self;
+    }
 
 #pragma mark Accessors
-@property ( weak, readwrite ) IBOutlet id <TWPTimelineScrollViewDelegate> delegate;
-@property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
+- ( void ) setTwitterList: ( OTCList* )_TwitterList
+    {
+    if ( self->_twitterList != _TwitterList )
+        {
+        self->_twitterList = _TwitterList;
 
-@end // TWPTimelineScrollView class
+        [ [ self creatorAvatar ] setTwitterUser: self->_twitterList.creator ];
+        [ [ self listNameLabel ] setStringValue: self->_twitterList.shortenName ];
+        [ [ self listDescriptionLabel ] setStringValue: self->_twitterList.descriptionSetByCreator ];
+        [ [ self membersCountLabel ] setStringValue: [ NSString stringWithFormat: @"%lu Members", self->_twitterList.memberCount ] ];
+        }
+    }
 
-// TWPTimelineScrollViewDelegate protocol
-@protocol TWPTimelineScrollViewDelegate <NSObject>
+- ( OTCList* ) twitterList
+    {
+    return self->_twitterList;
+    }
 
-@optional
+- ( OTCTwitterUser* ) creator
+    {
+    return self->_twitterList.creator;
+    }
 
-// Tells the delegate that the data source of timeline table (document view of this scroll view)
-// should fetch older tweets
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
+#pragma mark Events Handling
+- ( void ) mouseDown: ( NSEvent* )_Event
+    {
+    [ super mouseDown: _Event ];
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPListCellViewMouseDown
+                                                           object: self ];
+    }
 
-@end // TWPTimelineScrollViewDelegate protocol
+@end
 
 /*=============================================================================┐
 |                                                                              |

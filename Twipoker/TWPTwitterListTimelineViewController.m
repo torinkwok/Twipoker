@@ -22,34 +22,91 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPTwitterListTimelineViewController.h"
+#import "TWPTimelineScrollView.h"
 
-@class TWPTimelineTableView;
-@protocol TWPTimelineScrollViewDelegate;
+@implementation TWPTwitterListTimelineViewController
 
-// Notification Names
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
++ ( instancetype ) twitterListViewControllerWithTwitterList: ( OTCList* )_TwitterList
+    {
+    return [ [ [ self class ] alloc ] initWithTwitterList: _TwitterList ];
+    }
 
-// TWPTimelineScrollView class
-@interface TWPTimelineScrollView : NSScrollView
+- ( instancetype ) initWithTwitterList: ( OTCList* )_TwitterList
+    {
+    if ( !_TwitterList )
+        return nil;
 
-#pragma mark Accessors
-@property ( weak, readwrite ) IBOutlet id <TWPTimelineScrollViewDelegate> delegate;
-@property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
+    if ( self = [ super initWithNibName: @"TWPTwitterListTimelineView" bundle: [ NSBundle mainBundle ] ] )
+        {
+        self->_twitterList = _TwitterList;
 
-@end // TWPTimelineScrollView class
+        [ self.twitterAPI getListsStatusesForListID: [ NSString stringWithFormat: @"%@", self->_twitterList.IDString ]
+                                            sinceID: nil
+                                              maxID: nil
+                                              count: [ NSString stringWithFormat: @"%lu", self.numberOfTweetsWillBeLoadedOnce ]
+                                    includeEntities: @YES
+                                    includeRetweets: @YES
+                                       successBlock:
+            ^( NSArray* _TweetObjects )
+                {
+                for ( NSDictionary* _TweetObject in _TweetObjects )
+                    [ self->_data addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
 
-// TWPTimelineScrollViewDelegate protocol
-@protocol TWPTimelineScrollViewDelegate <NSObject>
+                self->_sinceID = [ ( OTCTweet* )self->_data.firstObject tweetID ];
+                self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
 
-@optional
+                [ self.timelineTableView reloadData ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                [ self presentError: _Error ];
+                                } ];
+        }
 
-// Tells the delegate that the data source of timeline table (document view of this scroll view)
-// should fetch older tweets
+    return self;
+    }
+
 - ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
+       shouldFetchOlderTweets: ( NSClipView* )_ClipView
+    {
+    if ( !self.isLoadingOlderTweets )
+        {
+        self.isLoadingOlderTweets = YES;
+        NSLog( @"%s", __PRETTY_FUNCTION__ );
 
-@end // TWPTimelineScrollViewDelegate protocol
+        [ self.twitterAPI getListsStatusesForListID: self->_twitterList.IDString
+                                            sinceID: nil
+                                              maxID: @( self->_maxID - 1 ).stringValue
+                                              count: @( self.numberOfTweetsWillBeLoadedOnce ).stringValue
+                                    includeEntities: @YES
+                                    includeRetweets: @YES
+                                       successBlock:
+            ^( NSArray* _TweetObjects )
+                {
+                for ( NSDictionary* _TweetObject in _TweetObjects )
+                    {
+                    OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
+
+                    // Duplicate tweet? Get out of here!
+                    if ( ![ self->_data containsObject: tweet ] )
+                        [ self->_data addObject: tweet ];
+                    }
+
+                self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
+                [ self.timelineTableView reloadData ];
+
+                // Data source did finish loading older tweets
+                self.isLoadingOlderTweets = NO;
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                // Data source did finish loading older tweets due to the error occured
+                                self.isLoadingOlderTweets = NO;
+                                [ self presentError: _Error ];
+                                } ];
+        }
+    }
+
+@end
 
 /*=============================================================================┐
 |                                                                              |

@@ -63,19 +63,19 @@
         [ self.twitterAPI getUserTimelineWithScreenName: self.twitterUserView.twitterUser.screenName
                                                   count: self.numberOfTweetsWillBeLoadedOnce
                                            successBlock:
-                ^( NSArray* _TweetObjects )
-                    {
-                    for ( NSDictionary* _TweetObject in _TweetObjects )
-                        [ self->_tweets addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
+            ^( NSArray* _TweetObjects )
+                {
+                for ( NSDictionary* _TweetObject in _TweetObjects )
+                    [ self->_data addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
 
-                    self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
-                    self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+                self->_sinceID = [ ( OTCTweet* )self->_data.firstObject tweetID ];
+                self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
 
-                    [ self.timelineTableView reloadData ];
-                    } errorBlock: ^( NSError* _Error )
-                                    {
-                                    [ self presentError: _Error ];
-                                    } ];
+                [ self.timelineTableView reloadData ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                [ self presentError: _Error ];
+                                } ];
         }
 
     return self;
@@ -116,19 +116,18 @@
                 {
                 for ( NSDictionary* _TweetObject in _TweetObjects )
                     {
-                    // Data source did finish loading older tweets
-                    self.isLoadingOlderTweets = NO;
-
                     OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
 
                     // Duplicate tweet? Get out of here!
-                    if ( ![ self->_tweets containsObject: tweet ] )
-                        [ self->_tweets addObject: tweet ];
+                    if ( ![ self->_data containsObject: tweet ] )
+                        [ self->_data addObject: tweet ];
                     }
 
-                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
-
+                self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
                 [ self.timelineTableView reloadData ];
+
+                // Data source did finish loading older tweets
+                self.isLoadingOlderTweets = NO;
                 } errorBlock: ^( NSError* _Error )
                                 {
                                 // Data source did finish loading older tweets due to the error occured
@@ -138,16 +137,10 @@
         }
     }
 
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchLaterTweets: ( NSClipView* )_ClipView
-    {
-    NSLog( @"%s", __PRETTY_FUNCTION__ );
-    }
-
 #pragma mark Conforms to <TWPLimb> protocol
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet
     {
-    [ self->_tweets insertObject: _Tweet atIndex: 0 ];
+    [ self->_data insertObject: _Tweet atIndex: 0 ];
     [ self.timelineTableView reloadData ];
     }
 
@@ -156,11 +149,11 @@
                      byUser: ( NSString* )_UserID
                          on: ( NSDate* )_DeletionDate
     {
-    for ( OTCTweet* tweet in self->_tweets )
+    for ( OTCTweet* tweet in self->_data )
         {
         if ( [ tweet.tweetIDString isEqualToString: _DeletedTweetID ] )
             {
-            [ self->_tweets removeObject: tweet ];
+            [ self->_data removeObject: tweet ];
             [ self.timelineTableView reloadData ];
             break;
             }

@@ -22,9 +22,15 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPViewController.h"
+#import "TWPListsTableView.h"
 
-@interface TWPListsViewController : NSViewController
+@class TWPListsTableView;
+
+@interface TWPListsViewController : TWPViewController
+    <TWPListsTableViewDataSource, TWPListsTableViewDelegate>
+
+@property ( weak ) IBOutlet TWPListsTableView* listsTableView;
 
 @end
 
