@@ -23,14 +23,14 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPListsTableView.h"
-#import "TWPListCell.h"
+#import "TWPListCellView.h"
 
 @implementation TWPListsTableView
 
 - ( BOOL ) validateProposedFirstResponder: ( NSResponder* )_Responder
                                  forEvent: ( NSEvent* )_Event
     {
-    if ( [ _Responder isKindOfClass: [ TWPListCell class ] ]
+    if ( [ _Responder isKindOfClass: [ TWPListCellView class ] ]
             || [ _Responder isKindOfClass: [ NSTextField class ] ]
             || [ _Responder isKindOfClass: [ NSImageView class ] ] )
 

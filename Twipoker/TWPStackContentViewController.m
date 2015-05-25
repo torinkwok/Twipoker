@@ -35,7 +35,7 @@
 #import "TWPRepliesTimelineViewController.h"
 #import "TWPTweetCellView.h"
 #import "TWPTweetTextField.h"
-#import "TWPListCell.h"
+#import "TWPListCellView.h"
 #import "TWPTwitterListTimelineViewController.h"
 
 // KVO Key Paths
@@ -92,7 +92,7 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
 
 - ( void ) fuckingNotif: ( NSNotification* )_Notif
     {
-    TWPListCell* listCell = ( TWPListCell* )( _Notif.object );
+    TWPListCellView* listCell = ( TWPListCellView* )( _Notif.object );
     OTCList* twitterList = listCell.twitterList;
 
     NSViewController* twitterListTimelineNewController =

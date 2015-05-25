@@ -24,7 +24,7 @@
 
 #import "TWPListsViewController.h"
 #import "TWPLoginUsersManager.h"
-#import "TWPListCell.h"
+#import "TWPListCellView.h"
 
 @interface TWPListsViewController ()
 
@@ -70,8 +70,8 @@
      viewForTableColumn: ( NSTableColumn* )_TableColumn
                     row: ( NSInteger )_Row
     {
-    TWPListCell* listCellView =
-        ( TWPListCell* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+    TWPListCellView* listCellView =
+        ( TWPListCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
 
     OTCList* twitterList = ( OTCList* )( self->_data[ _Row ] );
     listCellView.twitterList = twitterList;

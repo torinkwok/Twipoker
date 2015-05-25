@@ -40,7 +40,7 @@
                                 </textFieldCell>
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
-                                    <tableCellView id="KKL-9M-yAp" customClass="TWPListCell">
+                                    <tableCellView id="KKL-9M-yAp" customClass="TWPListCellView">
                                         <rect key="frame" x="1" y="1" width="602" height="92"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>

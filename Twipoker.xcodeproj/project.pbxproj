@@ -135,7 +135,7 @@
 		83E9A2FF1B02726800CA5926 /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E9A2FC1B02726800CA5926 /* STHTTPRequest.m */; };
 		83EE64CD1B11B52200A515A7 /* TWPListsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE64CC1B11B52200A515A7 /* TWPListsTableView.m */; };
 		83EE64D01B11B6B400A515A7 /* TWPListsNameLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE64CF1B11B6B400A515A7 /* TWPListsNameLabel.m */; };
-		83EE64D31B11B82D00A515A7 /* TWPListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE64D21B11B82D00A515A7 /* TWPListCell.m */; };
+		83EE64D31B11B82D00A515A7 /* TWPListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE64D21B11B82D00A515A7 /* TWPListCellView.m */; };
 		83F231B41AE1147A00A05D1D /* TWPMainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231B01AE1147A00A05D1D /* TWPMainWindow.m */; };
 		83F231B51AE1147A00A05D1D /* TWPMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83F231B11AE1147A00A05D1D /* TWPMainWindow.xib */; };
 		83F231B61AE1147A00A05D1D /* TWPMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */; };
@@ -397,8 +397,8 @@
 		83EE64CC1B11B52200A515A7 /* TWPListsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPListsTableView.m; path = Twipoker/TWPListsTableView.m; sourceTree = "<group>"; };
 		83EE64CE1B11B6B400A515A7 /* TWPListsNameLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPListsNameLabel.h; path = Twipoker/TWPListsNameLabel.h; sourceTree = "<group>"; };
 		83EE64CF1B11B6B400A515A7 /* TWPListsNameLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPListsNameLabel.m; path = Twipoker/TWPListsNameLabel.m; sourceTree = "<group>"; };
-		83EE64D11B11B82D00A515A7 /* TWPListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPListCell.h; path = Twipoker/TWPListCell.h; sourceTree = "<group>"; };
-		83EE64D21B11B82D00A515A7 /* TWPListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPListCell.m; path = Twipoker/TWPListCell.m; sourceTree = "<group>"; };
+		83EE64D11B11B82D00A515A7 /* TWPListCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPListCellView.h; path = Twipoker/TWPListCellView.h; sourceTree = "<group>"; };
+		83EE64D21B11B82D00A515A7 /* TWPListCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPListCellView.m; path = Twipoker/TWPListCellView.m; sourceTree = "<group>"; };
 		83F231AF1AE1147A00A05D1D /* TWPMainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPMainWindow.h; path = Twipoker/TWPMainWindow.h; sourceTree = "<group>"; };
 		83F231B01AE1147A00A05D1D /* TWPMainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPMainWindow.m; path = Twipoker/TWPMainWindow.m; sourceTree = "<group>"; };
 		83F231B11AE1147A00A05D1D /* TWPMainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPMainWindow.xib; path = Twipoker/TWPMainWindow.xib; sourceTree = "<group>"; };
@@ -661,8 +661,8 @@
 				83AAF6D61AECE907007A3A48 /* TWPListsView.xib */,
 				83AAF6F11AECF6C2007A3A48 /* TWPListsViewController.h */,
 				83AAF6F21AECF6C2007A3A48 /* TWPListsViewController.m */,
-				83EE64D11B11B82D00A515A7 /* TWPListCell.h */,
-				83EE64D21B11B82D00A515A7 /* TWPListCell.m */,
+				83EE64D11B11B82D00A515A7 /* TWPListCellView.h */,
+				83EE64D21B11B82D00A515A7 /* TWPListCellView.m */,
 				83EE64CB1B11B52200A515A7 /* TWPListsTableView.h */,
 				83EE64CC1B11B52200A515A7 /* TWPListsTableView.m */,
 				83EE64CE1B11B6B400A515A7 /* TWPListsNameLabel.h */,
@@ -1241,7 +1241,7 @@
 				83AAF7041AED0CEF007A3A48 /* TWPViewsStack.m in Sources */,
 				83AAF6EF1AECF6A4007A3A48 /* TWPFavoritesViewController.m in Sources */,
 				83924DC91AE104A900C25895 /* OTCTweet.m in Sources */,
-				83EE64D31B11B82D00A515A7 /* TWPListCell.m in Sources */,
+				83EE64D31B11B82D00A515A7 /* TWPListCellView.m in Sources */,
 				83AAF7011AECF735007A3A48 /* TWPMessagesViewController.m in Sources */,
 				83CFD86F1ACF1C820062D73D /* TWPTextField.m in Sources */,
 				83924DCB1AE104A900C25895 /* OTCUserMention.m in Sources */,
