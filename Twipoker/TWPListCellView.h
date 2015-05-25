@@ -28,6 +28,9 @@
 @class TWPTimelineUserNameLabel;
 @class TWPTweetTextField;
 
+// Notification Names
+NSString extern* const TWPListCellViewMouseDown;
+
 // TWPListCellView class
 @interface TWPListCellView : NSTableCellView
     {

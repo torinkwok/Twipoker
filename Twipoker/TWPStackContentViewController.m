@@ -82,23 +82,18 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
                                                       object: nil ];
 
         [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                    selector: @selector( fuckingNotif: )
-                                                        name: @"fucking-notif"
+                                                    selector: @selector( _listCellMouseDown: )
+                                                        name: TWPListCellViewMouseDown
                                                       object: nil ];
         }
 
     return self;
     }
 
-- ( void ) fuckingNotif: ( NSNotification* )_Notif
+- ( void ) dealloc
     {
-    TWPListCellView* listCell = ( TWPListCellView* )( _Notif.object );
-    OTCList* twitterList = listCell.twitterList;
-
-    NSViewController* twitterListTimelineNewController =
-        [ TWPTwitterListTimelineViewController twitterListViewControllerWithTwitterList: twitterList ];
-
-    [ self _pushViewIntoViewsStack: twitterListTimelineNewController ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTweetCellViewShouldDisplayDetailOfTweet object: nil ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPListCellViewMouseDown object: nil ];
     }
 
 - ( void ) shouldDisplayDetailOfTweet: ( NSNotification* )_Notif
@@ -193,6 +188,11 @@ NSString static* const kColumnIDTabs = @"tabs";
     [ self.navigationBarController reload ];
     }
 
+- ( void ) _listCellMouseDown: ( NSNotification* )_Notif
+    {
+    [ self pushTwitterListTimelineToCurrentViewsStackAction: ( TWPListCellView* )( _Notif.object ) ];
+    }
+
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
     {
     OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
@@ -213,7 +213,10 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( IBAction ) pushTwitterListTimelineToCurrentViewsStackAction: ( id )_Sender
     {
-    NSLog( @"%s", __PRETTY_FUNCTION__ );
+    NSViewController* twitterListTimelineNewController =
+        [ TWPTwitterListTimelineViewController twitterListViewControllerWithTwitterList: [ ( TWPListCellView* )_Sender twitterList ] ];
+
+    [ self _pushViewIntoViewsStack: twitterListTimelineNewController ];
     }
 
 - ( IBAction ) goBackAction: ( id )_Sender

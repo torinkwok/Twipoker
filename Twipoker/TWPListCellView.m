@@ -27,6 +27,8 @@
 #import "TWPTimelineUserNameLabel.h"
 #import "TWPTweetTextField.h"
 
+NSString* const TWPListCellViewMouseDown = @"ListCellView.Notif.MouseDown";
+
 @implementation TWPListCellView
 
 @synthesize creatorAvatar;
@@ -78,7 +80,7 @@
 - ( void ) mouseDown: ( NSEvent* )_Event
     {
     [ super mouseDown: _Event ];
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: @"fucking-notif"
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPListCellViewMouseDown
                                                            object: self ];
     }
 
