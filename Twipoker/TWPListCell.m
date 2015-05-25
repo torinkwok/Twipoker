@@ -32,6 +32,7 @@
 @synthesize creatorAvatar;
 @synthesize listNameLabel;
 @synthesize listDescriptionLabel;
+@synthesize membersCountLabel;
 
 @dynamic twitterList;
 
@@ -57,6 +58,9 @@
         self->_twitterList = _TwitterList;
 
         [ [ self creatorAvatar ] setTwitterUser: self->_twitterList.creator ];
+        [ [ self listNameLabel ] setStringValue: self->_twitterList.shortenName ];
+        [ [ self listDescriptionLabel ] setStringValue: self->_twitterList.descriptionSetByCreator ];
+        [ [ self membersCountLabel ] setStringValue: [ NSString stringWithFormat: @"%lu Members", self->_twitterList.memberCount ] ];
         }
     }
 
@@ -68,6 +72,12 @@
 - ( OTCTwitterUser* ) creator
     {
     return self->_twitterList.creator;
+    }
+
+#pragma mark Events Handling
+- ( void ) mouseDown: ( NSEvent* )_Event
+    {
+    NSLog( @"👽" );
     }
 
 @end
