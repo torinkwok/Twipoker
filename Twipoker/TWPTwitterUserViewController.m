@@ -137,12 +137,6 @@
         }
     }
 
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchLaterTweets: ( NSClipView* )_ClipView
-    {
-    NSLog( @"%s", __PRETTY_FUNCTION__ );
-    }
-
 #pragma mark Conforms to <TWPLimb> protocol
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet
     {

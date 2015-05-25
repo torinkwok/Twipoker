@@ -106,12 +106,6 @@
         }
     }
 
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchLaterTweets: ( NSClipView* )_ClipView
-    {
-
-    }
-
 #pragma mark Conforms to <TWPLimb>
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveMention: ( OTCTweet* )_Tweet
     {

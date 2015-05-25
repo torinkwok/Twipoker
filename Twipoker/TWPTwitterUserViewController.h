@@ -29,7 +29,7 @@
 
 @class TWPTwitterUserView;
 
-@interface TWPTwitterUserViewController : TWPTimelineViewController <TWPLimb>
+@interface TWPTwitterUserViewController : TWPTimelineViewController
     {
 @private
     OTCTwitterUser __strong* _twitterUser;
@@ -40,13 +40,6 @@
 
 + ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
-
-#pragma mark Conforms to <TWPTimelineScrollViewDelegate>
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
-
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchLaterTweets: ( NSClipView* )_ClipView;
 
 @end
 

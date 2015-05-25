@@ -24,9 +24,12 @@
 
 #import "TWPViewController.h"
 #import "TWPTimelineTableView.h"
+#import "TWPTimelineScrollView.h"
 
 @interface TWPTimelineViewController : TWPViewController
-    <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate >
+    <TWPTimelineScrollViewDelegate
+    ,TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate
+    , TWPLimb >
     {
 @protected
     BOOL _isLoadingOlderTweets;
@@ -41,6 +44,10 @@
 #pragma mark Conforms to <TWPTimelineTableViewDataSource>
 @property ( assign, readwrite ) BOOL isLoadingOlderTweets;
 @property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
+
+#pragma mark Conforms to <TWPTimelineScrollViewDelegate>
+- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
+       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
 
 @end
 

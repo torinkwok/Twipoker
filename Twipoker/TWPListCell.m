@@ -77,10 +77,7 @@
 #pragma mark Events Handling
 - ( void ) mouseDown: ( NSEvent* )_Event
     {
-//    pushTwitterListTimelineToCurrentViewsStackAction
-    NSLog( @"👽" );
     [ super mouseDown: _Event ];
-//    [ NSApp sendAction:  to: self.target from: self ];
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: @"fucking-notif"
                                                            object: self ];
     }

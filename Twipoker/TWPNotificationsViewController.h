@@ -27,15 +27,7 @@
 #import "TWPTimelineViewController.h"
 #import "TWPTimelineScrollView.h"
 
-@interface TWPNotificationsViewController : TWPTimelineViewController <TWPLimb>
-
-#pragma mark Conforms to <TWPTimelineScrollViewDelegate>
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
-
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchLaterTweets: ( NSClipView* )_ClipView;
-
+@interface TWPNotificationsViewController : TWPTimelineViewController 
 @end
 
 /*=============================================================================┐
