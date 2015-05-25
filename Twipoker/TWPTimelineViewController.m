@@ -22,31 +22,45 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPBrain.h"
-
 #import "TWPTimelineViewController.h"
-#import "TWPTimelineScrollView.h"
+#import "TWPTweetCellView.h"
 
-@class TWPTwitterUserView;
+@implementation TWPTimelineViewController
 
-@interface TWPTwitterUserViewController : TWPTimelineViewController <TWPLimb>
+@synthesize isLoadingOlderTweets = _isLoadingOlderTweets;
+@synthesize numberOfTweetsWillBeLoadedOnce = _numberOfTweetsWillBeLoadedOnce;
+
+- ( instancetype ) initWithNibName: ( NSString* )_NibNameOrNil
+                            bundle: ( NSBundle* )_NibBundleOrNil
     {
-@private
-    OTCTwitterUser __strong* _twitterUser;
+    if ( self = [ super initWithNibName: _NibNameOrNil bundle: _NibBundleOrNil ] )
+        {
+        self->_isLoadingOlderTweets = NO;
+        self->_numberOfTweetsWillBeLoadedOnce = 20;
+        }
+
+    return self;
     }
 
-@property ( strong, readonly /* TODO: make this property read-write */ ) OTCTwitterUser* twitterUser;
-@property ( weak, readwrite ) TWPTwitterUserView* twitterUserView;
+#pragma mark Conforms to <TWPTimelineTableViewDelegate>
+- ( NSView* ) tableView: ( NSTableView* )_TableView
+     viewForTableColumn: ( NSTableColumn* )_TableColumn
+                    row: ( NSInteger )_Row
+    {
+    TWPTweetCellView* tweetCellView =
+        ( TWPTweetCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
 
-+ ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
-- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
+    OTCTweet* tweet = ( OTCTweet* )( self->_data[ _Row ] );
+    tweetCellView.tweet = tweet;
 
-#pragma mark Conforms to <TWPTimelineScrollViewDelegate>
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
+    return tweetCellView;
+    }
 
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchLaterTweets: ( NSClipView* )_ClipView;
+- ( BOOL ) tableView: ( NSTableView* )_TableView
+     shouldSelectRow: ( NSInteger )_Row
+    {
+    return NO;
+    }
 
 @end
 

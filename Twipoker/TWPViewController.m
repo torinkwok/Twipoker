@@ -23,7 +23,6 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPViewController.h"
-#import "TWPTweetCellView.h"
 #import "TWPLoginUsersManager.h"
 
 @implementation TWPViewController
@@ -39,9 +38,6 @@
     if ( self = [ super initWithNibName: _NibNameOrNil bundle: _NibBundleOrNil ] )
         {
         self->_data = [ NSMutableArray array ];
-
-        self->_isLoadingOlderTweets = NO;
-        self->_numberOfTweetsWillBeLoadedOnce = 20;
 
         self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
         self->_twitterAPI.delegate = self;
@@ -78,25 +74,6 @@
     {
     id result = self->_data[ _Row ];
     return result;
-    }
-
-#pragma mark Conforms to <TWPTimelineTableViewDelegate>
-- ( NSView* ) tableView: ( NSTableView* )_TableView
-     viewForTableColumn: ( NSTableColumn* )_TableColumn
-                    row: ( NSInteger )_Row
-    {
-    TWPTweetCellView* tweetCellView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
-
-    OTCTweet* tweet = self->_data[ _Row ];
-    tweetCellView.tweet = tweet;
-
-    return tweetCellView;
-    }
-
-- ( BOOL ) tableView: ( NSTableView* )_TableView
-     shouldSelectRow: ( NSInteger )_Row
-    {
-    return NO;
     }
 
 @end

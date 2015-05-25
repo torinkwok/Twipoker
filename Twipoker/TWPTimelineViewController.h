@@ -22,31 +22,24 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPBrain.h"
+#import "TWPViewController.h"
 
-#import "TWPTimelineViewController.h"
-#import "TWPTimelineScrollView.h"
-
-@class TWPTwitterUserView;
-
-@interface TWPTwitterUserViewController : TWPTimelineViewController <TWPLimb>
+@interface TWPTimelineViewController : TWPViewController
+    <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate >
     {
-@private
-    OTCTwitterUser __strong* _twitterUser;
+@protected
+    BOOL _isLoadingOlderTweets;
+    NSUInteger _numberOfTweetsWillBeLoadedOnce;
+
+    SInt64 _sinceID;
+    SInt64 _maxID;
     }
 
-@property ( strong, readonly /* TODO: make this property read-write */ ) OTCTwitterUser* twitterUser;
-@property ( weak, readwrite ) TWPTwitterUserView* twitterUserView;
+@property ( weak ) IBOutlet TWPTimelineTableView* timelineTableView;
 
-+ ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
-- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
-
-#pragma mark Conforms to <TWPTimelineScrollViewDelegate>
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
-
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchLaterTweets: ( NSClipView* )_ClipView;
+#pragma mark Conforms to <TWPTimelineTableViewDataSource>
+@property ( assign, readwrite ) BOOL isLoadingOlderTweets;
+@property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
 
 @end
 

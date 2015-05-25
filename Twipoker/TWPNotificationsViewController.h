@@ -24,10 +24,10 @@
 
 #import "TWPBrain.h"
 
-#import "TWPViewController.h"
+#import "TWPTimelineViewController.h"
 #import "TWPTimelineScrollView.h"
 
-@interface TWPNotificationsViewController : TWPViewController <TWPLimb>
+@interface TWPNotificationsViewController : TWPTimelineViewController <TWPLimb>
 
 #pragma mark Conforms to <TWPTimelineScrollViewDelegate>
 - ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView

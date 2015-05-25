@@ -69,6 +69,7 @@
 		83C07A971AF22B0600184CCB /* draft-tweet-black.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 83C07A961AF22B0600184CCB /* draft-tweet-black.tiff */; };
 		83C07A991AF22FA000184CCB /* twitter-logo-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C07A981AF22FA000184CCB /* twitter-logo-blue.png */; };
 		83C07A9C1AF2313100184CCB /* TWPNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C07A9B1AF2313100184CCB /* TWPNavigationBar.m */; };
+		83C3DABE1B133AC6005973EE /* TWPTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C3DABD1B133AC6005973EE /* TWPTimelineViewController.m */; };
 		83CCEDCC1AF7B35200DC364C /* TWPRepliesTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CCEDCB1AF7B35200DC364C /* TWPRepliesTimelineViewController.m */; };
 		83CCEDCE1AF7C22300DC364C /* TWPRepliesTimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83CCEDCD1AF7C22300DC364C /* TWPRepliesTimelineView.xib */; };
 		83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8381ACF1C820062D73D /* TWPDebug.m */; };
@@ -276,6 +277,8 @@
 		83C07A981AF22FA000184CCB /* twitter-logo-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-logo-blue.png"; sourceTree = "<group>"; };
 		83C07A9A1AF2313100184CCB /* TWPNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPNavigationBar.h; path = Twipoker/TWPNavigationBar.h; sourceTree = "<group>"; };
 		83C07A9B1AF2313100184CCB /* TWPNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPNavigationBar.m; path = Twipoker/TWPNavigationBar.m; sourceTree = "<group>"; };
+		83C3DABC1B133AC6005973EE /* TWPTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineViewController.h; path = Twipoker/TWPTimelineViewController.h; sourceTree = "<group>"; };
+		83C3DABD1B133AC6005973EE /* TWPTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineViewController.m; path = Twipoker/TWPTimelineViewController.m; sourceTree = "<group>"; };
 		83CCEDCA1AF7B35200DC364C /* TWPRepliesTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPRepliesTimelineViewController.h; path = Twipoker/TWPRepliesTimelineViewController.h; sourceTree = "<group>"; };
 		83CCEDCB1AF7B35200DC364C /* TWPRepliesTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPRepliesTimelineViewController.m; path = Twipoker/TWPRepliesTimelineViewController.m; sourceTree = "<group>"; };
 		83CCEDCD1AF7C22300DC364C /* TWPRepliesTimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPRepliesTimelineView.xib; path = Twipoker/TWPRepliesTimelineView.xib; sourceTree = "<group>"; };
@@ -450,6 +453,8 @@
 			children = (
 				8336E5611AEE117C008A099C /* TWPViewController.h */,
 				8336E5621AEE117C008A099C /* TWPViewController.m */,
+				83C3DABC1B133AC6005973EE /* TWPTimelineViewController.h */,
+				83C3DABD1B133AC6005973EE /* TWPTimelineViewController.m */,
 				83AAF6CF1AECE801007A3A48 /* TWPTimelineTableView.h */,
 				83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */,
 				830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */,
@@ -1163,6 +1168,7 @@
 				83AAF6D11AECE801007A3A48 /* TWPTimelineTableView.m in Sources */,
 				83D12E901AEFE322009ECC13 /* TWPTwitterUserView.m in Sources */,
 				8338CD801AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m in Sources */,
+				83C3DABE1B133AC6005973EE /* TWPTimelineViewController.m in Sources */,
 				83D3FF261ACB144B009D40EE /* TWPAppDelegate.m in Sources */,
 				83E9A2FD1B02726800CA5926 /* BAVPlistNode.m in Sources */,
 				83E9A2E71B02721200CA5926 /* STTwitterHTML.m in Sources */,
