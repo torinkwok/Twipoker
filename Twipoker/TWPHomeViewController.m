@@ -85,9 +85,6 @@
                 {
                 for ( NSDictionary* _TweetObject in _TweetObjects )
                     {
-                    // Data source did finish loading older tweets
-                    self.isLoadingOlderTweets = NO;
-
                     OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
 
                     // Duplicate tweet? Get out of here!
@@ -96,8 +93,10 @@
                     }
 
                 self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
-
                 [ self.timelineTableView reloadData ];
+
+                // Data source did finish loading older tweets
+                self.isLoadingOlderTweets = NO;
                 } errorBlock: ^( NSError* _Error )
                                 {
                                 // Data source did finish loading older tweets due to the error occured

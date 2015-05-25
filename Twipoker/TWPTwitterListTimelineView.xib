@@ -77,6 +77,10 @@
                                 </prototypeCellViews>
                             </tableColumn>
                         </tableColumns>
+                        <connections>
+                            <outlet property="dataSource" destination="-2" id="OfF-3b-Ddg"/>
+                            <outlet property="delegate" destination="-2" id="4Lw-hf-7pb"/>
+                        </connections>
                     </tableView>
                 </subviews>
                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -89,6 +93,9 @@
                 <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
+            <connections>
+                <outlet property="delegate" destination="-2" id="Oe5-kq-cNc"/>
+            </connections>
             <point key="canvasLocation" x="-245.5" y="-2569"/>
         </scrollView>
     </objects>

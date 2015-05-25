@@ -35,6 +35,8 @@
 #import "TWPRepliesTimelineViewController.h"
 #import "TWPTweetCellView.h"
 #import "TWPTweetTextField.h"
+#import "TWPListCell.h"
+#import "TWPTwitterListTimelineViewController.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -78,9 +80,25 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
                                                     selector: @selector( shouldDisplayDetailOfTweet: )
                                                         name: TWPTweetCellViewShouldDisplayDetailOfTweet
                                                       object: nil ];
+
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                    selector: @selector( fuckingNotif: )
+                                                        name: @"fucking-notif"
+                                                      object: nil ];
         }
 
     return self;
+    }
+
+- ( void ) fuckingNotif: ( NSNotification* )_Notif
+    {
+    TWPListCell* listCell = ( TWPListCell* )( _Notif.object );
+    OTCList* twitterList = listCell.twitterList;
+
+    NSViewController* twitterListTimelineNewController =
+        [ TWPTwitterListTimelineViewController twitterListViewControllerWithTwitterList: twitterList ];
+
+    [ self _pushViewIntoViewsStack: twitterListTimelineNewController ];
     }
 
 - ( void ) shouldDisplayDetailOfTweet: ( NSNotification* )_Notif
@@ -177,7 +195,6 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
     {
-    NSLog( @"%s", __PRETTY_FUNCTION__ );
     OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
 
     NSViewController* twitterUserViewNewController =
@@ -188,12 +205,15 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( IBAction ) pushRepliesTimleineToCurrentViewsStackAction: ( id )_Sender
     {
-    NSLog( @"%s", __PRETTY_FUNCTION__ );
-
     NSViewController* newRepliesTimelineViewController =
         [ TWPRepliesTimelineViewController repliesTimelineViewControllerWithTweet: [ ( TWPTweetTextField* )_Sender tweet ] ];
 
     [ self _pushViewIntoViewsStack: newRepliesTimelineViewController ];
+    }
+
+- ( IBAction ) pushTwitterListTimelineToCurrentViewsStackAction: ( id )_Sender
+    {
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
     }
 
 - ( IBAction ) goBackAction: ( id )_Sender

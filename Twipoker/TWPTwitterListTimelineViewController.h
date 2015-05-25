@@ -23,10 +23,11 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTimelineViewController.h"
+#import "TWPTimelineScrollView.h"
 
 @class OTCList;
 
-@interface TWPTwitterListTimelineViewController : TWPTimelineViewController
+@interface TWPTwitterListTimelineViewController : TWPTimelineViewController <TWPLimb>
     {
 @private
     OTCList __strong* _twitterList;
@@ -36,6 +37,9 @@
 
 + ( instancetype ) twitterListViewControllerWithTwitterList: ( OTCList* )_TwitterList;
 - ( instancetype ) initWithTwitterList: ( OTCList* )_TwitterList;
+
+- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
+       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
 
 @end
 
