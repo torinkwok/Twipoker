@@ -22,10 +22,15 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPBrain.h"
 #import "TWPViewController.h"
+#import "TWPListsTableView.h"
 
-@interface TWPListsViewController : TWPViewController <TWPLimb>
+@class TWPListsTableView;
+
+@interface TWPListsViewController : TWPViewController
+    <TWPListsTableViewDataSource, TWPListsTableViewDelegate>
+
+@property ( weak ) IBOutlet TWPListsTableView* listsTableView;
 
 @end
 

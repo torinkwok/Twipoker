@@ -455,6 +455,8 @@
 				8336E5621AEE117C008A099C /* TWPViewController.m */,
 				83C3DABC1B133AC6005973EE /* TWPTimelineViewController.h */,
 				83C3DABD1B133AC6005973EE /* TWPTimelineViewController.m */,
+				83AAF6F11AECF6C2007A3A48 /* TWPListsViewController.h */,
+				83AAF6F21AECF6C2007A3A48 /* TWPListsViewController.m */,
 				83AAF6CF1AECE801007A3A48 /* TWPTimelineTableView.h */,
 				83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */,
 				830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */,
@@ -653,8 +655,6 @@
 			isa = PBXGroup;
 			children = (
 				83AAF6D61AECE907007A3A48 /* TWPListsView.xib */,
-				83AAF6F11AECF6C2007A3A48 /* TWPListsViewController.h */,
-				83AAF6F21AECF6C2007A3A48 /* TWPListsViewController.m */,
 				83EE64D11B11B82D00A515A7 /* TWPListCell.h */,
 				83EE64D21B11B82D00A515A7 /* TWPListCell.m */,
 				83EE64CB1B11B52200A515A7 /* TWPListsTableView.h */,

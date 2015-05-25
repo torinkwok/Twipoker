@@ -6,7 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPListsViewController">
             <connections>
-                <outlet property="timelineTableView" destination="NoB-0S-7u6" id="ZQe-tD-Muu"/>
+                <outlet property="listsTableView" destination="NoB-0S-7u6" id="CUM-dn-usn"/>
                 <outlet property="view" destination="sbF-b9-UgM" id="srW-Zn-z8z"/>
             </connections>
         </customObject>
@@ -79,6 +79,10 @@
                                 </prototypeCellViews>
                             </tableColumn>
                         </tableColumns>
+                        <connections>
+                            <outlet property="dataSource" destination="-2" id="9BR-qI-60l"/>
+                            <outlet property="delegate" destination="-2" id="xy3-fQ-5Vx"/>
+                        </connections>
                     </tableView>
                 </subviews>
                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

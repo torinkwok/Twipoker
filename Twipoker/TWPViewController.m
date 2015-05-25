@@ -29,9 +29,6 @@
 
 @dynamic twitterAPI;
 
-@synthesize isLoadingOlderTweets = _isLoadingOlderTweets;
-@synthesize numberOfTweetsWillBeLoadedOnce = _numberOfTweetsWillBeLoadedOnce;
-
 - ( instancetype ) initWithNibName: ( NSString* )_NibNameOrNil
                             bundle: ( NSBundle* )_NibBundleOrNil
     {
@@ -62,7 +59,7 @@
         }
     }
 
-#pragma mark Conforms to <TWPTimelineTableViewDataSource>
+#pragma mark Conforms to <NSTableViewDataSource>
 - ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
     {
     return self->_data.count;
@@ -74,6 +71,13 @@
     {
     id result = self->_data[ _Row ];
     return result;
+    }
+
+#pragma mark Conforms to <NSTableViewDelegate>
+- ( BOOL ) tableView: ( NSTableView* )_TableView
+     shouldSelectRow: ( NSInteger )_Row
+    {
+    return NO;
     }
 
 @end

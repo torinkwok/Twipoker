@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPViewController.h"
+#import "TWPTimelineTableView.h"
 
 @interface TWPTimelineViewController : TWPViewController
     <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate >

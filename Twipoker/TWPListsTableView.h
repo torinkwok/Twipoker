@@ -27,6 +27,16 @@
 @interface TWPListsTableView : NSTableView
 @end
 
+#pragma mark <TWPListsTableViewDataSource>
+@protocol TWPListsTableViewDataSource <NSTableViewDataSource>
+// TODO: Temporarily Empty
+@end // <TWPListsTableViewDataSource> protocol
+
+#pragma mark <TWPListsTableViewDelegate>
+@protocol TWPListsTableViewDelegate <NSTableViewDelegate>
+// TODO: Temporarily Empty
+@end // <TWPListsTableViewDelegate> protocol
+
 /*=============================================================================┐
 |                                                                              |
 |                                        `-://++/:-`    ..                     |

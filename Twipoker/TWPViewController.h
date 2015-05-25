@@ -22,10 +22,10 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTimelineTableView.h"
+#import "TWPBrain.h"
 
 @interface TWPViewController : NSViewController
-    <TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate, OTCSTTwitterStreamingAPIDelegate>
+    <OTCSTTwitterStreamingAPIDelegate, TWPLimb, NSTableViewDataSource, NSTableViewDelegate>
     {
 @protected
     STTwitterAPI __strong* _twitterAPI;
