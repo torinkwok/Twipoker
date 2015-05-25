@@ -71,6 +71,7 @@
 		83C07A9C1AF2313100184CCB /* TWPNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C07A9B1AF2313100184CCB /* TWPNavigationBar.m */; };
 		83C3DABE1B133AC6005973EE /* TWPTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C3DABD1B133AC6005973EE /* TWPTimelineViewController.m */; };
 		83C3DAC41B138613005973EE /* TWPTwitterListTimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C3DAC31B138613005973EE /* TWPTwitterListTimelineView.xib */; };
+		83C3DAC71B1387FF005973EE /* TWPTwitterListTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C3DAC61B1387FF005973EE /* TWPTwitterListTimelineViewController.m */; };
 		83CCEDCC1AF7B35200DC364C /* TWPRepliesTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CCEDCB1AF7B35200DC364C /* TWPRepliesTimelineViewController.m */; };
 		83CCEDCE1AF7C22300DC364C /* TWPRepliesTimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83CCEDCD1AF7C22300DC364C /* TWPRepliesTimelineView.xib */; };
 		83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8381ACF1C820062D73D /* TWPDebug.m */; };
@@ -281,6 +282,8 @@
 		83C3DABC1B133AC6005973EE /* TWPTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineViewController.h; path = Twipoker/TWPTimelineViewController.h; sourceTree = "<group>"; };
 		83C3DABD1B133AC6005973EE /* TWPTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineViewController.m; path = Twipoker/TWPTimelineViewController.m; sourceTree = "<group>"; };
 		83C3DAC31B138613005973EE /* TWPTwitterListTimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPTwitterListTimelineView.xib; path = Twipoker/TWPTwitterListTimelineView.xib; sourceTree = "<group>"; };
+		83C3DAC51B1387FF005973EE /* TWPTwitterListTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTwitterListTimelineViewController.h; path = Twipoker/TWPTwitterListTimelineViewController.h; sourceTree = "<group>"; };
+		83C3DAC61B1387FF005973EE /* TWPTwitterListTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTwitterListTimelineViewController.m; path = Twipoker/TWPTwitterListTimelineViewController.m; sourceTree = "<group>"; };
 		83CCEDCA1AF7B35200DC364C /* TWPRepliesTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPRepliesTimelineViewController.h; path = Twipoker/TWPRepliesTimelineViewController.h; sourceTree = "<group>"; };
 		83CCEDCB1AF7B35200DC364C /* TWPRepliesTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPRepliesTimelineViewController.m; path = Twipoker/TWPRepliesTimelineViewController.m; sourceTree = "<group>"; };
 		83CCEDCD1AF7C22300DC364C /* TWPRepliesTimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPRepliesTimelineView.xib; path = Twipoker/TWPRepliesTimelineView.xib; sourceTree = "<group>"; };
@@ -472,7 +475,7 @@
 				830B8F611AF0E303006D2635 /* TWPUserAvatarWell.h */,
 				830B8F621AF0E303006D2635 /* TWPUserAvatarWell.m */,
 				83D12E8D1AEFE2FD009ECC13 /* Twitter User View */,
-				83C3DAC21B1385B5005973EE /* Twitter Lists Timeline */,
+				83C3DAC21B1385B5005973EE /* Twitter List Timeline */,
 				83CCEDC91AF7B2F500DC364C /* Replies Timeline View */,
 				83AAF6EB1AECF675007A3A48 /* Home */,
 				83AAF6EC1AECF684007A3A48 /* Favorites */,
@@ -720,12 +723,14 @@
 			path = "navigation-bar";
 			sourceTree = "<group>";
 		};
-		83C3DAC21B1385B5005973EE /* Twitter Lists Timeline */ = {
+		83C3DAC21B1385B5005973EE /* Twitter List Timeline */ = {
 			isa = PBXGroup;
 			children = (
 				83C3DAC31B138613005973EE /* TWPTwitterListTimelineView.xib */,
+				83C3DAC51B1387FF005973EE /* TWPTwitterListTimelineViewController.h */,
+				83C3DAC61B1387FF005973EE /* TWPTwitterListTimelineViewController.m */,
 			);
-			name = "Twitter Lists Timeline";
+			name = "Twitter List Timeline";
 			sourceTree = "<group>";
 		};
 		83CCEDC91AF7B2F500DC364C /* Replies Timeline View */ = {
@@ -1188,6 +1193,7 @@
 				838CC0621AF4B27300AE2E9D /* TWPTimelineUserNameLabel.m in Sources */,
 				83D12E5E1AEFB387009ECC13 /* TWPTweetTextField.m in Sources */,
 				83924D921AE1030B00C25895 /* INAppStoreWindowSwizzling.c in Sources */,
+				83C3DAC71B1387FF005973EE /* TWPTwitterListTimelineViewController.m in Sources */,
 				830B8F921AF13BBF006D2635 /* NSURL+Objectwitter-C.m in Sources */,
 				83AAF6F31AECF6C2007A3A48 /* TWPListsViewController.m in Sources */,
 				83E9A2F31B02724600CA5926 /* OTCClientApplication.m in Sources */,

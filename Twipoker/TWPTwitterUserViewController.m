@@ -63,19 +63,19 @@
         [ self.twitterAPI getUserTimelineWithScreenName: self.twitterUserView.twitterUser.screenName
                                                   count: self.numberOfTweetsWillBeLoadedOnce
                                            successBlock:
-                ^( NSArray* _TweetObjects )
-                    {
-                    for ( NSDictionary* _TweetObject in _TweetObjects )
-                        [ self->_data addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
+            ^( NSArray* _TweetObjects )
+                {
+                for ( NSDictionary* _TweetObject in _TweetObjects )
+                    [ self->_data addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
 
-                    self->_sinceID = [ ( OTCTweet* )self->_data.firstObject tweetID ];
-                    self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
+                self->_sinceID = [ ( OTCTweet* )self->_data.firstObject tweetID ];
+                self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
 
-                    [ self.timelineTableView reloadData ];
-                    } errorBlock: ^( NSError* _Error )
-                                    {
-                                    [ self presentError: _Error ];
-                                    } ];
+                [ self.timelineTableView reloadData ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                [ self presentError: _Error ];
+                                } ];
         }
 
     return self;
