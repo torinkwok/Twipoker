@@ -32,7 +32,7 @@
 @protected
     STTwitterAPI __strong* _twitterAPI;
 
-    NSMutableArray __strong* _tweets;
+    NSMutableArray __strong* _data;
 
     BOOL _isLoadingOlderTweets;
     NSUInteger _numberOfTweetsWillBeLoadedOnce;

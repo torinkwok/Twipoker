@@ -45,10 +45,10 @@
             ^( NSArray* _TweetObjects )
                 {
                 for ( NSDictionary* _TweetObject in _TweetObjects )
-                    [ self->_tweets addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
+                    [ self->_data addObject: [ OTCTweet tweetWithJSON: _TweetObject ] ];
 
-                self->_sinceID = [ ( OTCTweet* )self->_tweets.firstObject tweetID ];
-                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+                self->_sinceID = [ ( OTCTweet* )self->_data.firstObject tweetID ];
+                self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
 
 //                [ self.twitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
 //                                                                      includeReplies: @YES
@@ -98,13 +98,13 @@
                     OTCTweet* tweet = [ OTCTweet tweetWithJSON: _TweetObject ];
 
                     // Duplicate tweet? Get out of here!
-                    if ( ![ self->_tweets containsObject: tweet ] )
+                    if ( ![ self->_data containsObject: tweet ] )
                         {
-                        [ self->_tweets addObject: tweet ];
+                        [ self->_data addObject: tweet ];
                         }
                     }
 
-                self->_maxID = [ ( OTCTweet* )self->_tweets.lastObject tweetID ];
+                self->_maxID = [ ( OTCTweet* )self->_data.lastObject tweetID ];
 
                 [ self.timelineTableView reloadData ];
                 } errorBlock: ^( NSError* _Error )
@@ -133,7 +133,7 @@
 
             if ( targetTweet )
                 {
-                [ self->_tweets insertObject: targetTweet atIndex: 0 ];
+                [ self->_data insertObject: targetTweet atIndex: 0 ];
                 [ self.timelineTableView reloadData ];
                 }
             }
@@ -143,7 +143,7 @@
         {
         if ( [ _DetectedEvent.sourceUser.IDString isEqualToString: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
             {
-            [ self->_tweets removeObject: _DetectedEvent.targetObject ];
+            [ self->_data removeObject: _DetectedEvent.targetObject ];
             [ self.timelineTableView reloadData ];
             }
         }

@@ -38,7 +38,7 @@
     {
     if ( self = [ super initWithNibName: _NibNameOrNil bundle: _NibBundleOrNil ] )
         {
-        self->_tweets = [ NSMutableArray array ];
+        self->_data = [ NSMutableArray array ];
 
         self->_isLoadingOlderTweets = NO;
         self->_numberOfTweetsWillBeLoadedOnce = 20;
@@ -69,14 +69,14 @@
 #pragma mark Conforms to <TWPTimelineTableViewDataSource>
 - ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
     {
-    return self->_tweets.count;
+    return self->_data.count;
     }
 
 - ( id )            tableView: ( NSTableView* )_TableView
     objectValueForTableColumn: ( NSTableColumn* )_TableColumn
                           row: ( NSInteger )_Row
     {
-    id result = self->_tweets[ _Row ];
+    id result = self->_data[ _Row ];
     return result;
     }
 
@@ -87,7 +87,7 @@
     {
     TWPTweetCellView* tweetCellView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
 
-    OTCTweet* tweet = self->_tweets[ _Row ];
+    OTCTweet* tweet = self->_data[ _Row ];
     tweetCellView.tweet = tweet;
 
     return tweetCellView;
