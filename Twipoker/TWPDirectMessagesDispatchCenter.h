@@ -36,6 +36,9 @@
     STTwitterAPI __strong* _twitterAPI;
     }
 
+@property ( strong, readonly ) NSMutableArray* sentDMs;
+@property ( strong, readonly ) NSMutableArray* receivedDMs;
+
 #pragma mark Initialization
 + ( instancetype ) defaultCenter;
 

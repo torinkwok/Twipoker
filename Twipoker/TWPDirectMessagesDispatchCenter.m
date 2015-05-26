@@ -27,6 +27,9 @@
 
 @implementation TWPDirectMessagesDispatchCenter
 
+@synthesize sentDMs = _sentDMs;
+@synthesize receivedDMs = _receivedDMs;
+
 #pragma mark Initialization
 + ( instancetype ) defaultCenter
     {
@@ -45,7 +48,7 @@ TWPDirectMessagesDispatchCenter static __strong* sDefaultCenter = nil;
             self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
 
             // Fetch 20 most recent direct messages sent by current authenticating user
-            [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 20 ).stringValue page: nil includeEntities: @YES
+            [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue page: nil includeEntities: @YES
                                             successBlock:
                 ^( NSArray* _Messages )
                     {
@@ -59,7 +62,7 @@ TWPDirectMessagesDispatchCenter static __strong* sDefaultCenter = nil;
                         ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
 
             // Fetch 20 most recent direct messages sent to current authenticating user
-            [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 20 ).stringValue includeEntities: @YES skipStatus: @YES
+            [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue includeEntities: @YES skipStatus: @YES
                                             successBlock:
                 ^( NSArray* _Messages )
                     {

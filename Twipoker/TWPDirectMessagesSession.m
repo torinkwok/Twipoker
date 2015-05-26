@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDirectMessagesSession.h"
+#import "TWPDirectMessagesDispatchCenter.h"
 
 @implementation TWPDirectMessagesSession
 
@@ -44,6 +45,21 @@
     if ( self = [ super init ] )
         {
         self->_DMs = [ NSMutableArray array ];
+
+        for ( OTCDirectMessage* _DM in [ [ TWPDirectMessagesDispatchCenter defaultCenter ] receivedDMs ] )
+            if ( [ self->_recipient isEqualToUser: _DM.recipient ] )
+                [ _DMs addObject: _DM ];
+
+        for ( OTCDirectMessage* _DM in [ [ TWPDirectMessagesDispatchCenter defaultCenter ] sentDMs ] )
+            if ( [ self->_sender isEqualToUser: _DM.sender ] )
+                [ _DMs addObject: _DM ];
+
+        [ self->_DMs sortWithOptions: NSSortConcurrent
+                     usingComparator:
+            ( NSComparator )^( OTCDirectMessage* _LhsDM, OTCDirectMessage* _RhsDM )
+                {
+                return _LhsDM.tweetID < _RhsDM.tweetID;
+                } ];
 
         self->_recipient = _Recipient;
         self->_sender = _Sender;
