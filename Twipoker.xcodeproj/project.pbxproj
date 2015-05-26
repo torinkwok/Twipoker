@@ -20,6 +20,7 @@
 		8317328C1B145F7100B136BF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8317328B1B145F7100B136BF /* README.md */; };
 		8317328F1B14812B00B136BF /* TWPDirectMessagesDispatchCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8317328E1B14812B00B136BF /* TWPDirectMessagesDispatchCenter.m */; };
 		831732921B14900A00B136BF /* TWPDirectMessagesSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 831732911B14900A00B136BF /* TWPDirectMessagesSession.m */; };
+		831732951B1504A100B136BF /* TWPMainWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 831732941B1504A100B136BF /* TWPMainWindowContentView.m */; };
 		8336E5631AEE117C008A099C /* TWPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8336E5621AEE117C008A099C /* TWPViewController.m */; };
 		8338CD7D1AE3C5E800370C10 /* TWPLoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338CD7C1AE3C5E800370C10 /* TWPLoginUser.m */; };
 		8338CD801AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338CD7F1AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m */; };
@@ -183,6 +184,8 @@
 		8317328E1B14812B00B136BF /* TWPDirectMessagesDispatchCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDirectMessagesDispatchCenter.m; path = Twipoker/TWPDirectMessagesDispatchCenter.m; sourceTree = "<group>"; };
 		831732901B14900A00B136BF /* TWPDirectMessagesSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDirectMessagesSession.h; path = Twipoker/TWPDirectMessagesSession.h; sourceTree = "<group>"; };
 		831732911B14900A00B136BF /* TWPDirectMessagesSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDirectMessagesSession.m; path = Twipoker/TWPDirectMessagesSession.m; sourceTree = "<group>"; };
+		831732931B1504A100B136BF /* TWPMainWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPMainWindowContentView.h; path = Twipoker/TWPMainWindowContentView.h; sourceTree = "<group>"; };
+		831732941B1504A100B136BF /* TWPMainWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPMainWindowContentView.m; path = Twipoker/TWPMainWindowContentView.m; sourceTree = "<group>"; };
 		8336E5611AEE117C008A099C /* TWPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPViewController.h; path = Twipoker/TWPViewController.h; sourceTree = "<group>"; };
 		8336E5621AEE117C008A099C /* TWPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPViewController.m; path = Twipoker/TWPViewController.m; sourceTree = "<group>"; };
 		8338CD7B1AE3C5E800370C10 /* TWPLoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPLoginUser.h; sourceTree = "<group>"; };
@@ -510,6 +513,8 @@
 				83924D281AE0FC6F00C25895 /* xib */,
 				83F231B21AE1147A00A05D1D /* TWPMainWindowController.h */,
 				83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */,
+				831732931B1504A100B136BF /* TWPMainWindowContentView.h */,
+				831732941B1504A100B136BF /* TWPMainWindowContentView.m */,
 				83F231AF1AE1147A00A05D1D /* TWPMainWindow.h */,
 				83F231B01AE1147A00A05D1D /* TWPMainWindow.m */,
 				8347B7CF1AE799FF003A49AD /* Dashboard */,
@@ -1208,6 +1213,7 @@
 				83924D921AE1030B00C25895 /* INAppStoreWindowSwizzling.c in Sources */,
 				83C3DAC71B1387FF005973EE /* TWPTwitterListTimelineViewController.m in Sources */,
 				830B8F921AF13BBF006D2635 /* NSURL+Objectwitter-C.m in Sources */,
+				831732951B1504A100B136BF /* TWPMainWindowContentView.m in Sources */,
 				83AAF6F31AECF6C2007A3A48 /* TWPListsViewController.m in Sources */,
 				83E9A2F31B02724600CA5926 /* OTCClientApplication.m in Sources */,
 				83AAF6EA1AECF648007A3A48 /* TWPHomeViewController.m in Sources */,
