@@ -17,6 +17,8 @@
 		831447D51ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D41ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m */; };
 		831447D91AD0008E00BFECE4 /* TWPDebugLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447D81AD0008E00BFECE4 /* TWPDebugLoginView.m */; };
 		831447DC1AD0046800BFECE4 /* TWPDebugConsoleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 831447DB1AD0046800BFECE4 /* TWPDebugConsoleController.m */; };
+		8317328C1B145F7100B136BF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8317328B1B145F7100B136BF /* README.md */; };
+		8317328F1B14812B00B136BF /* TWPDirectMessagesDispatchCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8317328E1B14812B00B136BF /* TWPDirectMessagesDispatchCenter.m */; };
 		8336E5631AEE117C008A099C /* TWPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8336E5621AEE117C008A099C /* TWPViewController.m */; };
 		8338CD7D1AE3C5E800370C10 /* TWPLoginUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338CD7C1AE3C5E800370C10 /* TWPLoginUser.m */; };
 		8338CD801AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338CD7F1AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m */; };
@@ -175,6 +177,9 @@
 		831447D81AD0008E00BFECE4 /* TWPDebugLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginView.m; sourceTree = "<group>"; };
 		831447DA1AD0046800BFECE4 /* TWPDebugConsoleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugConsoleController.h; sourceTree = "<group>"; };
 		831447DB1AD0046800BFECE4 /* TWPDebugConsoleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugConsoleController.m; sourceTree = "<group>"; };
+		8317328B1B145F7100B136BF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8317328D1B14812B00B136BF /* TWPDirectMessagesDispatchCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDirectMessagesDispatchCenter.h; path = Twipoker/TWPDirectMessagesDispatchCenter.h; sourceTree = "<group>"; };
+		8317328E1B14812B00B136BF /* TWPDirectMessagesDispatchCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDirectMessagesDispatchCenter.m; path = Twipoker/TWPDirectMessagesDispatchCenter.m; sourceTree = "<group>"; };
 		8336E5611AEE117C008A099C /* TWPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPViewController.h; path = Twipoker/TWPViewController.h; sourceTree = "<group>"; };
 		8336E5621AEE117C008A099C /* TWPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPViewController.m; path = Twipoker/TWPViewController.m; sourceTree = "<group>"; };
 		8338CD7B1AE3C5E800370C10 /* TWPLoginUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPLoginUser.h; sourceTree = "<group>"; };
@@ -697,6 +702,8 @@
 				83AAF6E01AECE9E1007A3A48 /* TWPMessagesView.xib */,
 				83AAF6FF1AECF735007A3A48 /* TWPMessagesViewController.h */,
 				83AAF7001AECF735007A3A48 /* TWPMessagesViewController.m */,
+				8317328D1B14812B00B136BF /* TWPDirectMessagesDispatchCenter.h */,
+				8317328E1B14812B00B136BF /* TWPDirectMessagesDispatchCenter.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -914,6 +921,7 @@
 				83D3FF361ACB144B009D40EE /* TwipokerTests */,
 				83D3FF111ACB144B009D40EE /* Frameworks */,
 				83D3FF101ACB144B009D40EE /* Products */,
+				8317328B1B145F7100B136BF /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1218,12 +1226,14 @@
 				8349A6471AD24C9700487896 /* NSControl+TwipokerDrawing.m in Sources */,
 				83924D931AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
 				83924DC41AE104A900C25895 /* OTCFinancialSymbol.m in Sources */,
+				8317328C1B145F7100B136BF /* README.md in Sources */,
 				830896211AEA1D1D0081D227 /* TWPTweetCellView.m in Sources */,
 				83E9A2FF1B02726800CA5926 /* STHTTPRequest.m in Sources */,
 				83F231BE1AE114A600A05D1D /* NSObject+FBKVOController.m in Sources */,
 				83CFD8781ACF1C820062D73D /* TWPWindow.m in Sources */,
 				83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */,
 				83E9A2FE1B02726800CA5926 /* JSONSyntaxHighlight.m in Sources */,
+				8317328F1B14812B00B136BF /* TWPDirectMessagesDispatchCenter.m in Sources */,
 				830B8F631AF0E303006D2635 /* TWPUserAvatarWell.m in Sources */,
 				83924DAA1AE1033700C25895 /* MASPreferencesWindowController.m in Sources */,
 				83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */,
