@@ -46,12 +46,17 @@
         {
         self->_DMs = [ NSMutableArray array ];
 
-        for ( OTCDirectMessage* _DM in [ [ TWPDirectMessagesDispatchCenter defaultCenter ] receivedDMs ] )
-            if ( [ self->_recipient isEqualToUser: _DM.recipient ] )
+        self->_recipient = _Recipient;
+        self->_sender = _Sender;
+
+        NSArray* receivedDMs = [ [ TWPDirectMessagesDispatchCenter defaultCenter ] receivedDMs ];
+        for ( OTCDirectMessage* _DM in receivedDMs )
+            if ( [ self->_sender isEqualToUser: _DM.sender ] )
                 [ _DMs addObject: _DM ];
 
-        for ( OTCDirectMessage* _DM in [ [ TWPDirectMessagesDispatchCenter defaultCenter ] sentDMs ] )
-            if ( [ self->_sender isEqualToUser: _DM.sender ] )
+        NSArray* sentDMs = [ [ TWPDirectMessagesDispatchCenter defaultCenter ] sentDMs ];
+        for ( OTCDirectMessage* _DM in sentDMs )
+            if ( [ self->_recipient isEqualToUser: _DM.recipient ] )
                 [ _DMs addObject: _DM ];
 
         [ self->_DMs sortWithOptions: NSSortConcurrent
@@ -60,9 +65,6 @@
                 {
                 return _LhsDM.tweetID < _RhsDM.tweetID;
                 } ];
-
-        self->_recipient = _Recipient;
-        self->_sender = _Sender;
         }
 
     return self;

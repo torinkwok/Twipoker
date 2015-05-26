@@ -37,6 +37,8 @@
 #import "TWPTweetTextField.h"
 #import "TWPListCellView.h"
 #import "TWPTwitterListTimelineViewController.h"
+#import "TWPDirectMessagesSession.h"
+#import "TWPLoginUsersManager.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -196,6 +198,10 @@ NSString static* const kColumnIDTabs = @"tabs";
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
     {
     OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
+
+    TWPDirectMessagesSession* DMSession =
+        [ TWPDirectMessagesSession sessionWithRecipient: [ [ TWPBrain wiseBrain ] currentTwitterUser ]
+                                                 sender: twitterUser ];
 
     NSViewController* twitterUserViewNewController =
         [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];

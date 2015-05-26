@@ -55,6 +55,8 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     NSMutableArray __strong* _uniqueTweetsQueue;
     }
 
+@property ( strong, readwrite ) OTCTwitterUser* currentTwitterUser;
+
 #pragma mark Initializations
 + ( instancetype ) wiseBrain;
 

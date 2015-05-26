@@ -30,6 +30,8 @@
 // TWPBrain class
 @implementation TWPBrain
 
+@synthesize currentTwitterUser;
+
 #pragma mark Initializations
 + ( instancetype ) wiseBrain
     {
@@ -64,10 +66,16 @@ TWPBrain static __strong* sWiseBrain;
 
             self->_uniqueTweetsQueue = [ NSMutableArray array ];
 
-            sWiseBrain = self;
+            [ self->_authingUserTimelineStream getUsersShowForUserID: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID
+                                                        orScreenName: nil
+                                                     includeEntities: @YES
+                                                        successBlock:
+                ^( NSDictionary* _User )
+                    {
+                    self.currentTwitterUser = [ OTCTwitterUser userWithJSON: _User ];
+                    } errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
 
-            NSLog( @"Home: %@", self->_authingUserTimelineStream );
-            NSLog( @"Public: %@", self->_publicTimelineFilterStream );
+            sWiseBrain = self;
             }
         }
 
