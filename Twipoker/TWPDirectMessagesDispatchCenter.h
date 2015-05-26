@@ -27,10 +27,10 @@
 @interface TWPDirectMessagesDispatchCenter : NSObject
     {
 @private
-    // Storing the direct messages sent by me
+    // The ivar storing the direct messages sent by current authenticating user
     NSMutableArray __strong* _sentDMs;
 
-    // Storing the direct messages sent to me
+    // The ivar storing the direct messages sent to current authenticating user
     NSMutableArray __strong* _receivedDMs;
 
     STTwitterAPI __strong* _twitterAPI;

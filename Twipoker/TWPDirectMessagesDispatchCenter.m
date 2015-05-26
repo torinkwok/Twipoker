@@ -44,12 +44,8 @@ TWPDirectMessagesDispatchCenter static __strong* sDefaultCenter = nil;
             self->_receivedDMs = [ NSMutableArray array ];
             self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
 
-            // Fetch 20 most recent direct messages sent by me
-            [ self->_twitterAPI getDirectMessagesSinceID: nil
-                                                   maxID: nil
-                                                   count: @( 20 ).stringValue
-                                                    page: nil
-                                         includeEntities: @YES
+            // Fetch 20 most recent direct messages sent by current authenticating user
+            [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 20 ).stringValue page: nil includeEntities: @YES
                                             successBlock:
                 ^( NSArray* _Messages )
                     {
@@ -62,12 +58,8 @@ TWPDirectMessagesDispatchCenter static __strong* sDefaultCenter = nil;
                     } errorBlock:
                         ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
 
-            // Fetch 20 most recent direct messages sent to me
-            [ self->_twitterAPI getDirectMessagesSinceID: nil
-                                                   maxID: nil
-                                                   count: @( 20 ).stringValue
-                                         includeEntities: @YES
-                                              skipStatus: @YES
+            // Fetch 20 most recent direct messages sent to current authenticating user
+            [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 20 ).stringValue includeEntities: @YES skipStatus: @YES
                                             successBlock:
                 ^( NSArray* _Messages )
                     {
