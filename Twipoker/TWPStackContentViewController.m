@@ -199,9 +199,9 @@ NSString static* const kColumnIDTabs = @"tabs";
     {
     OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
 
-    TWPDirectMessagesSession* DMSession =
-        [ TWPDirectMessagesSession sessionWithRecipient: [ [ TWPBrain wiseBrain ] currentTwitterUser ]
-                                                 sender: twitterUser ];
+    // Just for test
+//    TWPDirectMessagesSession* DMSession =
+//        [ TWPDirectMessagesSession sessionWithOtherSideUser: twitterUser ];
 
     NSViewController* twitterUserViewNewController =
         [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];

@@ -28,35 +28,31 @@
 @implementation TWPDirectMessagesSession
 
 @synthesize allDirectMessages = _DMs;
-
-@synthesize recipient = _recipient;
-@synthesize sender = _sender;
+@synthesize otherSideUser = _otherSideUser;
 
 #pragma mark Initializations
-+ ( instancetype ) sessionWithRecipient: ( OTCTwitterUser* )_Recipient
-                                 sender: ( OTCTwitterUser* )_Sender
++ ( instancetype ) sessionWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser
     {
-    return [ [ [ self class ] alloc ] initWithRecipient: _Recipient sender: _Sender ];
+    return [ [ [ self class ] alloc ] initWithOtherSideUser: _OtherSideUser ];
     }
 
-- ( instancetype ) initWithRecipient: ( OTCTwitterUser* )_Recipient
-                              sender: ( OTCTwitterUser* )_Sender
+- ( instancetype ) initWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser
     {
     if ( self = [ super init ] )
         {
         self->_DMs = [ NSMutableArray array ];
+        self->_otherSideUser = _OtherSideUser;
 
-        self->_recipient = _Recipient;
-        self->_sender = _Sender;
-
+        // Retrieve the direct messages sent by the other side user
         NSArray* receivedDMs = [ [ TWPDirectMessagesDispatchCenter defaultCenter ] receivedDMs ];
         for ( OTCDirectMessage* _DM in receivedDMs )
-            if ( [ self->_sender isEqualToUser: _DM.sender ] )
+            if ( [ self->_otherSideUser isEqualToUser: _DM.sender ] )
                 [ _DMs addObject: _DM ];
 
+        // Retrieve the direct messages sent by me and received by other side user
         NSArray* sentDMs = [ [ TWPDirectMessagesDispatchCenter defaultCenter ] sentDMs ];
         for ( OTCDirectMessage* _DM in sentDMs )
-            if ( [ self->_recipient isEqualToUser: _DM.recipient ] )
+            if ( [ self->_otherSideUser isEqualToUser: _DM.recipient ] )
                 [ _DMs addObject: _DM ];
 
         [ self->_DMs sortWithOptions: NSSortConcurrent

@@ -28,20 +28,17 @@
     {
 @private
     NSMutableArray __strong* _DMs;
-
-    OTCTwitterUser __strong* _recipient;
-    OTCTwitterUser __strong* _sender;
+    OTCTwitterUser __strong* _otherSideUser;
     }
 
 // Maybe empty
 @property ( strong, readonly ) NSMutableArray* allDirectMessages;
 
-@property ( strong, readonly ) OTCTwitterUser* recipient;
-@property ( strong, readonly ) OTCTwitterUser* sender;
+@property ( strong, readonly ) OTCTwitterUser* otherSideUser;
 
 #pragma mark Initializations
-+ ( instancetype ) sessionWithRecipient: ( OTCTwitterUser* )_Recipient sender: ( OTCTwitterUser* )_Sender;
-- ( instancetype ) initWithRecipient: ( OTCTwitterUser* )_Recipient sender: ( OTCTwitterUser* )_Sender;
++ ( instancetype ) sessionWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser;
+- ( instancetype ) initWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser;
 
 @end
 
