@@ -23,7 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDirectMessagesSession.h"
-#import "TWPDirectMessagesDispatchCenter.h"
+#import "TWPDirectMessagesCoordinator.h"
 
 @implementation TWPDirectMessagesSession
 
@@ -44,20 +44,20 @@
         self->_otherSideUser = _OtherSideUser;
 
         // Retrieve the direct messages sent/received by the other side user
-        NSArray* allDMs =  [ [ TWPDirectMessagesDispatchCenter defaultCenter ] allDMs ];
+        NSArray* allDMs =  [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
         for ( OTCDirectMessage* _DM in allDMs )
             if ( [ self->_otherSideUser isEqualToUser: _DM.sender ]
                     || [ self->_otherSideUser isEqualToUser: _DM.recipient ] )
                 [ _DMs addObject: _DM ];
 
 //        // Retrieve the direct messages sent by the other side user
-//        NSArray* receivedDMs = [ [ TWPDirectMessagesDispatchCenter defaultCenter ] receivedDMs ];
+//        NSArray* receivedDMs = [ [ TWPDirectMessagesCoordinator defaultCenter ] receivedDMs ];
 //        for ( OTCDirectMessage* _DM in receivedDMs )
 //            if ( [ self->_otherSideUser isEqualToUser: _DM.sender ] )
 //                [ _DMs addObject: _DM ];
 //
 //        // Retrieve the direct messages sent by me and received by other side user
-//        NSArray* sentDMs = [ [ TWPDirectMessagesDispatchCenter defaultCenter ] sentDMs ];
+//        NSArray* sentDMs = [ [ TWPDirectMessagesCoordinator defaultCenter ] sentDMs ];
 //        for ( OTCDirectMessage* _DM in sentDMs )
 //            if ( [ self->_otherSideUser isEqualToUser: _DM.recipient ] )
 //                [ _DMs addObject: _DM ];

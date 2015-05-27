@@ -22,27 +22,82 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Foundation/Foundation.h>
+#import "TWPDirectMessagesCoordinator.h"
+#import "TWPLoginUsersManager.h"
 
-@interface TWPDirectMessagesDispatchCenter : NSObject
-    {
-@private
-    // The ivar storing the direct messages sent by current authenticating user
-    NSMutableArray __strong* _sentDMs;
+@implementation TWPDirectMessagesCoordinator
 
-    // The ivar storing the direct messages sent to current authenticating user
-    NSMutableArray __strong* _receivedDMs;
+@synthesize sentDMs = _sentDMs;
+@synthesize receivedDMs = _receivedDMs;
 
-    STTwitterAPI __strong* _twitterAPI;
-    }
-
-@property ( strong, readonly ) NSMutableArray* sentDMs;
-@property ( strong, readonly ) NSMutableArray* receivedDMs;
-
-@property ( strong, readonly ) NSArray* allDMs;
+@dynamic allDMs;
 
 #pragma mark Initialization
-+ ( instancetype ) defaultCenter;
++ ( instancetype ) defaultCenter
+    {
+    return [ [ [ self class ] alloc ] init ];
+    }
+
+TWPDirectMessagesCoordinator static __strong* sDefaultCenter = nil;
+- ( instancetype ) init
+    {
+    if ( !sDefaultCenter )
+        {
+        if ( self = [ super init ] )
+            {
+            self->_sentDMs = [ NSMutableArray array ];
+            self->_receivedDMs = [ NSMutableArray array ];
+            self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
+
+            // Fetch 20 most recent direct messages sent by current authenticating user
+            [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue page: nil includeEntities: @YES
+                                            successBlock:
+                ^( NSArray* _Messages )
+                    {
+                    for ( NSDictionary* _MsgJSON in _Messages )
+                        {
+                        OTCDirectMessage* dm = [ OTCDirectMessage directMessageWithJSON: _MsgJSON ];
+                        if ( dm )
+                            [ self->_sentDMs addObject: dm ];
+                        }
+                    } errorBlock:
+                        ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
+
+            // Fetch 20 most recent direct messages sent to current authenticating user
+            [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue includeEntities: @YES skipStatus: @YES
+                                            successBlock:
+                ^( NSArray* _Messages )
+                    {
+                    for ( NSDictionary* _MsgJSON in _Messages )
+                        {
+                        OTCDirectMessage* dm = [ OTCDirectMessage directMessageWithJSON: _MsgJSON ];
+                        if ( dm )
+                            [ self->_receivedDMs addObject: dm ];
+                        }
+                    } errorBlock:
+                        ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
+
+            sDefaultCenter = self;
+            }
+        }
+
+    return sDefaultCenter;
+    }
+
+#pragma mark Accessors
+- ( NSArray* ) allDMs
+    {
+    NSMutableArray* DMs = [ NSMutableArray arrayWithCapacity: self->_sentDMs.count + self->_receivedDMs.count ];
+    [ DMs addObjectsFromArray: self->_sentDMs ];
+    [ DMs addObjectsFromArray: self->_receivedDMs ];
+
+    return [ DMs sortedArrayWithOptions: NSSortConcurrent
+                        usingComparator:
+        ( NSComparator )^( OTCDirectMessage* _LhsDM, OTCDirectMessage* _RhsDM )
+            {
+            return _LhsDM.tweetID < _RhsDM.tweetID;
+            } ];
+    }
 
 @end
 

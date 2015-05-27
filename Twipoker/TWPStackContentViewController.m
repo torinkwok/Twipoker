@@ -39,7 +39,7 @@
 #import "TWPTwitterListTimelineViewController.h"
 #import "TWPDirectMessagesSession.h"
 #import "TWPLoginUsersManager.h"
-#import "TWPDirectMessagesDispatchCenter.h"
+#import "TWPDirectMessagesCoordinator.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -203,8 +203,8 @@ NSString static* const kColumnIDTabs = @"tabs";
     // Just for test
 //    TWPDirectMessagesSession* DMSession =
 //        [ TWPDirectMessagesSession sessionWithOtherSideUser: twitterUser ];
-//    NSArray* allDMs1 = [ [ TWPDirectMessagesDispatchCenter defaultCenter ] allDMs ];
-//    NSArray* allDMs2 = [ [ TWPDirectMessagesDispatchCenter defaultCenter ] allDMs ];
+//    NSArray* allDMs1 = [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
+//    NSArray* allDMs2 = [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
 
     NSViewController* twitterUserViewNewController =
         [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];

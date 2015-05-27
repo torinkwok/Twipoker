@@ -24,7 +24,7 @@
 
 #import "TWPDirectMessagesPreviewViewController.h"
 #import "TWPDirectMessagesSession.h"
-#import "TWPDirectMessagesDispatchCenter.h"
+#import "TWPDirectMessagesCoordinator.h"
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
 
@@ -56,7 +56,7 @@
     dispatch_once( &onceToken
         , ( dispatch_block_t )^( void )
             {
-            NSArray* allDMs = [ [ TWPDirectMessagesDispatchCenter defaultCenter ] allDMs ];
+            NSArray* allDMs = [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
 
             NSString* currentTwitterUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID;
             NSMutableSet* otherSideUsers = [ NSMutableSet set ];
