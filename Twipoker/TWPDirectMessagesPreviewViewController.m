@@ -23,6 +23,8 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDirectMessagesPreviewViewController.h"
+#import "TWPDirectMessagesSession.h"
+#import "TWPDirectMessagesDispatchCenter.h"
 
 @interface TWPDirectMessagesPreviewViewController ()
 
@@ -34,7 +36,7 @@
 - ( instancetype ) init
     {
     if ( self = [ super initWithNibName: @"TWPMessagesView" bundle: [ NSBundle mainBundle ] ] )
-        ; // TODO:
+        self->_directMessageSessions = [ NSMutableArray array ];
 
     return self;
     }
@@ -43,8 +45,12 @@
     {
     [ super viewDidLoad ];
 
-    // Do view setup here.
+
     }
+
+#pragma mark Conforms to <NSTableViewDataSource>
+
+#pragma mark Conforms to <NSTableViewDelegate>
 
 @end
 

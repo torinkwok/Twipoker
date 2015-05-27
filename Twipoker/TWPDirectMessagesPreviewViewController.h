@@ -25,6 +25,11 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TWPDirectMessagesPreviewViewController : NSViewController
+    <NSTableViewDataSource, NSTableViewDelegate>
+    {
+@private
+    NSMutableArray __strong* _directMessageSessions;
+    }
 
 @end
 

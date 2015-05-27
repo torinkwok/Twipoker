@@ -182,9 +182,9 @@
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8bI-YH-IYu">
-                                                            <rect key="frame" x="251" y="45" width="28" height="17"/>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Feb" id="CVt-Js-5YO">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaw-Hp-Dzh">
+                                                            <rect key="frame" x="73" y="9" width="267" height="34"/>
+                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Preview of the most recent direct  message" id="kjV-Qp-NrA">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -194,9 +194,9 @@
                                                             <rect key="frame" x="11" y="6" width="59" height="59"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="k2I-JS-6ik"/>
                                                         </imageView>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaw-Hp-Dzh">
-                                                            <rect key="frame" x="73" y="9" width="267" height="34"/>
-                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Preview of the most recent direct  message" id="kjV-Qp-NrA">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8bI-YH-IYu">
+                                                            <rect key="frame" x="251" y="45" width="28" height="17"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Feb" id="CVt-Js-5YO">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
