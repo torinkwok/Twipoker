@@ -39,6 +39,8 @@
 @property ( strong, readonly ) NSMutableArray* sentDMs;
 @property ( strong, readonly ) NSMutableArray* receivedDMs;
 
+@property ( strong, readonly ) NSArray* allDMs;
+
 #pragma mark Initialization
 + ( instancetype ) defaultCenter;
 

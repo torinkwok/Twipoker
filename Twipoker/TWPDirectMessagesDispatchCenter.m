@@ -30,6 +30,8 @@
 @synthesize sentDMs = _sentDMs;
 @synthesize receivedDMs = _receivedDMs;
 
+@dynamic allDMs;
+
 #pragma mark Initialization
 + ( instancetype ) defaultCenter
     {
@@ -80,6 +82,21 @@ TWPDirectMessagesDispatchCenter static __strong* sDefaultCenter = nil;
         }
 
     return sDefaultCenter;
+    }
+
+#pragma mark Accessors
+- ( NSArray* ) allDMs
+    {
+    NSMutableArray* DMs = [ NSMutableArray arrayWithCapacity: self->_sentDMs.count + self->_receivedDMs.count ];
+    [ DMs addObjectsFromArray: self->_sentDMs ];
+    [ DMs addObjectsFromArray: self->_receivedDMs ];
+
+    return [ DMs sortedArrayWithOptions: NSSortConcurrent
+                        usingComparator:
+        ( NSComparator )^( OTCDirectMessage* _LhsDM, OTCDirectMessage* _RhsDM )
+            {
+            return _LhsDM.tweetID < _RhsDM.tweetID;
+            } ];
     }
 
 @end
