@@ -24,7 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TWPDirectMessagesPreviewTableView : NSTableView
+@interface TWPDirectMessagesPreviewViewController : NSViewController
 
 @end
 

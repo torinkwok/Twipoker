@@ -22,29 +22,16 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPMessagesViewController.h"
+#import <Cocoa/Cocoa.h>
 
-@interface TWPMessagesViewController ()
+@class TWPUserAvatarWell;
 
-@end
+@interface TWPDirectMessageSessionsPreviewCellView : NSTableCellView
 
-@implementation TWPMessagesViewController
-
-#pragma mark Initialization
-- ( instancetype ) init
-    {
-    if ( self = [ super initWithNibName: @"TWPMessagesView" bundle: [ NSBundle mainBundle ] ] )
-        ; // TODO:
-
-    return self;
-    }
-
-- ( void ) viewDidLoad
-    {
-    [ super viewDidLoad ];
-
-    // Do view setup here.
-    }
+@property ( weak ) IBOutlet TWPUserAvatarWell* userAvatar;
+@property ( weak ) IBOutlet NSTextField* userNameLabel;
+@property ( weak ) IBOutlet NSTextField* dateLabel;
+@property ( weak ) IBOutlet NSTextField* contentPreview;
 
 @end
 

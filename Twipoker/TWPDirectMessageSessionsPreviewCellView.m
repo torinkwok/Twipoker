@@ -22,9 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPDirectMessageSessionsPreviewCellView.h"
 
-@interface TWPDirectMessagesPreviewTableView : NSTableView
+@implementation TWPDirectMessageSessionsPreviewCellView
 
 @end
 

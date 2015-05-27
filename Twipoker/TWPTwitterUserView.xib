@@ -27,7 +27,6 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                 <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <tableColumns>
                                     <tableColumn identifier="home-timeline" width="602" minWidth="40" maxWidth="1000" id="D74-9T-36S">

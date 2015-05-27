@@ -22,9 +22,29 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPDirectMessagesPreviewViewController.h"
 
-@interface TWPMessagesViewController : NSViewController
+@interface TWPDirectMessagesPreviewViewController ()
+
+@end
+
+@implementation TWPDirectMessagesPreviewViewController
+
+#pragma mark Initialization
+- ( instancetype ) init
+    {
+    if ( self = [ super initWithNibName: @"TWPMessagesView" bundle: [ NSBundle mainBundle ] ] )
+        ; // TODO:
+
+    return self;
+    }
+
+- ( void ) viewDidLoad
+    {
+    [ super viewDidLoad ];
+
+    // Do view setup here.
+    }
 
 @end
 

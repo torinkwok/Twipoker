@@ -53,16 +53,16 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CSA-pX-nQA">
-                                                            <rect key="frame" x="71" y="14" width="178" height="17"/>
+                                                            <rect key="frame" x="71" y="9" width="178" height="25"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Home" id="uQP-2H-OXt">
-                                                                <font key="font" size="15" name="HelveticaNeue"/>
+                                                                <font key="font" size="17" name="LucidaGrande"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjF-28-4tv">
-                                                            <rect key="frame" x="37" y="7" width="31" height="31"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="mIZ-lm-YMe"/>
+                                                            <rect key="frame" x="40" y="10" width="25" height="25"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="bottomLeft" imageScaling="proportionallyDown" id="mIZ-lm-YMe"/>
                                                         </imageView>
                                                     </subviews>
                                                     <connections>
@@ -144,13 +144,13 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </searchFieldCell>
                     </searchField>
-                    <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="46" horizontalPageScroll="10" verticalLineScroll="46" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwj-uj-ZVJ" userLabel="DIrect Messages Scroll View - Table View">
+                    <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwj-uj-ZVJ" userLabel="DIrect Messages Scroll View - Table View">
                         <rect key="frame" x="0.0" y="0.0" width="288" height="421"/>
                         <clipView key="contentView" misplaced="YES" id="F2g-Mf-VDW">
                             <rect key="frame" x="1" y="1" width="287" height="533"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="44" rowSizeStyle="automatic" viewBased="YES" id="iY4-6u-VrM" customClass="TWPDirectMessagesPreviewTableView">
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="70" rowSizeStyle="automatic" viewBased="YES" id="iY4-6u-VrM" customClass="TWPDirectMessagesPreviewTableView">
                                     <rect key="frame" x="0.0" y="0.0" width="289" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -170,30 +170,54 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="Nae-CX-cQs" customClass="TWPDashboardCellView">
-                                                    <rect key="frame" x="1" y="1" width="285" height="44"/>
+                                                <tableCellView id="Nae-CX-cQs" customClass="TWPDirectMessageSessionsPreviewCellView">
+                                                    <rect key="frame" x="1" y="1" width="285" height="70"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRl-rH-ieI">
-                                                            <rect key="frame" x="54" y="14" width="213" height="17"/>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Home" id="K1q-F2-jaL">
+                                                            <rect key="frame" x="73" y="45" width="112" height="17"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="XiaoChenYu" id="K1q-F2-jaL">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QD4-Mx-eYK">
-                                                            <rect key="frame" x="20" y="7" width="31" height="31"/>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8bI-YH-IYu">
+                                                            <rect key="frame" x="251" y="45" width="28" height="17"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Feb" id="CVt-Js-5YO">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QD4-Mx-eYK" customClass="TWPUserAvatarWell">
+                                                            <rect key="frame" x="11" y="6" width="59" height="59"/>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="k2I-JS-6ik"/>
                                                         </imageView>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaw-Hp-Dzh">
+                                                            <rect key="frame" x="73" y="9" width="267" height="34"/>
+                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Preview of the most recent direct  message" id="kjV-Qp-NrA">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
                                                     </subviews>
                                                     <connections>
+                                                        <outlet property="dateLabel" destination="8bI-YH-IYu" id="eTd-bf-Cuh"/>
+                                                        <outlet property="imageView" destination="QD4-Mx-eYK" id="FhJ-Cn-BZE"/>
                                                         <outlet property="textField" destination="JRl-rH-ieI" id="64G-9e-ueU"/>
+                                                        <outlet property="userAvatar" destination="QD4-Mx-eYK" id="ScZ-EP-rYh"/>
+                                                        <outlet property="userNameLabel" destination="JRl-rH-ieI" id="4SH-VD-Ek9"/>
                                                     </connections>
                                                 </tableCellView>
                                             </prototypeCellViews>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <outlet property="dataSource" destination="f4H-bM-VHT" id="DaH-W9-bRL"/>
+                                        <outlet property="delegate" destination="f4H-bM-VHT" id="EME-UM-bbq"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -228,7 +252,7 @@
         <customObject id="NMQ-Oj-KgN" customClass="TWPListsViewController"/>
         <customObject id="h3J-yb-VMt" customClass="TWPNotificationsViewController"/>
         <customObject id="27k-py-6ek" customClass="TWPMeViewController"/>
-        <customObject id="f4H-bM-VHT" customClass="TWPMessagesViewController"/>
+        <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController"/>
         <customObject id="i5X-Cg-E7K" userLabel="Home - Views Stack" customClass="TWPViewsStack">
             <connections>
                 <outlet property="baseViewController" destination="qYt-FS-RIP" id="LF0-KP-2wa"/>
