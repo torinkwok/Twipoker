@@ -252,7 +252,11 @@
         <customObject id="NMQ-Oj-KgN" customClass="TWPListsViewController"/>
         <customObject id="h3J-yb-VMt" customClass="TWPNotificationsViewController"/>
         <customObject id="27k-py-6ek" customClass="TWPMeViewController"/>
-        <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController"/>
+        <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController">
+            <connections>
+                <outlet property="view" destination="Zwj-uj-ZVJ" id="2WP-UN-rmj"/>
+            </connections>
+        </customObject>
         <customObject id="i5X-Cg-E7K" userLabel="Home - Views Stack" customClass="TWPViewsStack">
             <connections>
                 <outlet property="baseViewController" destination="qYt-FS-RIP" id="LF0-KP-2wa"/>

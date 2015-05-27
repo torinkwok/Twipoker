@@ -25,6 +25,8 @@
 #import "TWPDirectMessagesPreviewViewController.h"
 #import "TWPDirectMessagesSession.h"
 #import "TWPDirectMessagesDispatchCenter.h"
+#import "TWPBrain.h"
+#import "TWPLoginUsersManager.h"
 
 @interface TWPDirectMessagesPreviewViewController ()
 
@@ -44,11 +46,39 @@
 - ( void ) viewDidLoad
     {
     [ super viewDidLoad ];
-
-
     }
 
 #pragma mark Conforms to <NSTableViewDataSource>
+- ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
+    {
+    dispatch_once_t static onceToken;
+
+    dispatch_once( &onceToken
+        , ( dispatch_block_t )^( void )
+            {
+            NSArray* allDMs = [ [ TWPDirectMessagesDispatchCenter defaultCenter ] allDMs ];
+
+            NSString* currentTwitterUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID;
+            NSMutableSet* otherSideUsers = [ NSMutableSet set ];
+            for ( OTCDirectMessage* _DM in allDMs )
+                {
+                if ( ![ _DM.recipient.IDString isEqualToString: currentTwitterUserID ] )
+                    [ otherSideUsers addObject: _DM.recipient ];
+
+                if ( ![ _DM.sender.IDString isEqualToString: currentTwitterUserID ] )
+                    [ otherSideUsers addObject: _DM.sender ];
+                }
+
+            for ( OTCTwitterUser* _OtherSideUser in otherSideUsers )
+                {
+                TWPDirectMessagesSession* session = [ TWPDirectMessagesSession sessionWithOtherSideUser: _OtherSideUser ];
+                if ( session )
+                    [ self->_directMessageSessions addObject: session ];
+                }
+            } );
+
+    return self->_directMessageSessions.count;
+    }
 
 #pragma mark Conforms to <NSTableViewDelegate>
 
