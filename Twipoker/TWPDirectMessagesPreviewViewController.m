@@ -27,12 +27,16 @@
 #import "TWPDirectMessagesCoordinator.h"
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
+#import "TWPDirectMessageSessionsPreviewCellView.h"
+#import "TWPUserAvatarWell.h"
 
 @interface TWPDirectMessagesPreviewViewController ()
 
 @end
 
 @implementation TWPDirectMessagesPreviewViewController
+
+@synthesize DMPreviewTableView;
 
 - ( void ) updateDMs: ( NSArray* )_DMs
     {
@@ -57,7 +61,8 @@
             [ self->_directMessageSessions addObject: session ];
         }
 
-    NSLog( @"%@", self->_directMessageSessions );
+    [ self.DMPreviewTableView reloadData ];
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
     }
 
 #pragma mark Initialization
@@ -80,7 +85,27 @@
     return self->_directMessageSessions.count;
     }
 
+- ( id )            tableView: ( NSTableView* )_TableView
+    objectValueForTableColumn: ( NSTableColumn* )_TableColumn
+                          row: ( NSInteger )_Row
+    {
+    id result = [ self->_directMessageSessions objectAtIndex: _Row ];
+    return result;
+    }
+
 #pragma mark Conforms to <NSTableViewDelegate>
+- ( NSView* ) tableView: ( NSTableView* )_TableView
+     viewForTableColumn: ( NSTableColumn* )_TableColumn
+                    row: ( NSInteger )_Row
+    {
+    TWPDirectMessageSessionsPreviewCellView* previewCellView =
+        ( TWPDirectMessageSessionsPreviewCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+
+    TWPDirectMessagesSession* DMSession = ( TWPDirectMessagesSession* )( self->_directMessageSessions[ _Row ] );
+    previewCellView.session = DMSession;
+
+    return previewCellView;
+    }
 
 @end
 

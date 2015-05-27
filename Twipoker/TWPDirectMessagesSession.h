@@ -33,8 +33,8 @@
 
 // Maybe empty
 @property ( strong, readonly ) NSMutableArray* allDirectMessages;
-
 @property ( strong, readonly ) OTCTwitterUser* otherSideUser;
+@property ( strong, readonly ) OTCDirectMessage* mostRecentMessage;
 
 #pragma mark Initializations
 + ( instancetype ) sessionWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser;

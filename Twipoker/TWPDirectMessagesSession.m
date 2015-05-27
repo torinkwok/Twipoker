@@ -29,6 +29,7 @@
 
 @synthesize allDirectMessages = _DMs;
 @synthesize otherSideUser = _otherSideUser;
+@dynamic mostRecentMessage;
 
 #pragma mark Initializations
 + ( instancetype ) sessionWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser
@@ -59,6 +60,12 @@
         }
 
     return self;
+    }
+
+#pragma mark Accessors
+- ( OTCDirectMessage* ) mostRecentMessage
+    {
+    return self->_DMs.firstObject;
     }
 
 #pragma mark Comparing

@@ -23,8 +23,35 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDirectMessageSessionsPreviewCellView.h"
+#import "TWPDirectMessagesSession.h"
+#import "TWPUserAvatarWell.h"
 
 @implementation TWPDirectMessageSessionsPreviewCellView
+
+@synthesize userAvatar;
+@synthesize userNameLabel;
+@synthesize dateLabel;
+@synthesize contentPreview;
+
+@dynamic session;
+
+#pragma mark Accessors
+- ( void ) setSession: ( TWPDirectMessagesSession* )_Session
+    {
+    if ( self->_session != _Session )
+        {
+        self->_session = _Session;
+
+        [ self.userAvatar setTwitterUser: self->_session.otherSideUser ];
+        [ self.userNameLabel setStringValue: self->_session.otherSideUser.displayName ];
+
+        OTCDirectMessage* mostRecentDM = [ self->_session mostRecentMessage ];
+        [ dateLabel setStringValue: mostRecentDM.dateCreated.description ];
+        [ contentPreview setStringValue: mostRecentDM.tweetText ];
+
+        [ self setNeedsDisplay: YES ];
+        }
+    }
 
 @end
 

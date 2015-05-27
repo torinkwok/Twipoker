@@ -31,6 +31,8 @@
     NSMutableArray __strong* _directMessageSessions;
     }
 
+@property ( weak ) IBOutlet NSTableView* DMPreviewTableView;
+
 - ( void ) updateDMs: ( NSArray* )_DMs;
 
 @end
