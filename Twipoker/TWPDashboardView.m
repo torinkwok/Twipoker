@@ -26,6 +26,12 @@
 
 @implementation TWPDashboardView
 
+- ( void ) awakeFromNib
+    {
+    [ self setBackgroundColor:
+        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+    }
+
 @end
 
 /*=============================================================================┐
