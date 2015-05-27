@@ -31,6 +31,8 @@
     NSMutableArray __strong* _directMessageSessions;
     }
 
+- ( void ) updateDMs: ( NSArray* )_DMs;
+
 @end
 
 /*=============================================================================┐

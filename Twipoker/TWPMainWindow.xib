@@ -294,6 +294,11 @@
                 <outlet property="view" destination="Cjl-yU-kQO" id="Z6Q-WQ-cOB"/>
             </connections>
         </customObject>
+        <customObject id="DoC-kn-lPg" customClass="TWPDirectMessagesCoordinator">
+            <connections>
+                <outlet property="DMPreviewViewContorller" destination="f4H-bM-VHT" id="451-GU-mrU"/>
+            </connections>
+        </customObject>
     </objects>
     <resources>
         <image name="NSGoLeftTemplate" width="9" height="12"/>

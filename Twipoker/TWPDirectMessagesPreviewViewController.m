@@ -34,6 +34,32 @@
 
 @implementation TWPDirectMessagesPreviewViewController
 
+- ( void ) updateDMs: ( NSArray* )_DMs
+    {
+    NSString* currentTwitterUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID;
+    NSMutableArray* otherSideUsers = [ NSMutableArray array ];
+
+    for ( OTCDirectMessage* _DM in _DMs )
+        {
+        if ( ![ _DM.recipient.IDString isEqualToString: currentTwitterUserID ] )
+            if ( ![ otherSideUsers containsObject: _DM.recipient ] )
+                [ otherSideUsers addObject: _DM.recipient ];
+
+        if ( ![ _DM.sender.IDString isEqualToString: currentTwitterUserID ] )
+            if ( ![ otherSideUsers containsObject: _DM.sender ] )
+                [ otherSideUsers addObject: _DM.sender ];
+        }
+
+    for ( OTCTwitterUser* _OtherSideUser in otherSideUsers )
+        {
+        TWPDirectMessagesSession* session = [ TWPDirectMessagesSession sessionWithOtherSideUser: _OtherSideUser ];
+        if ( session && ![ self->_directMessageSessions containsObject: session ] )
+            [ self->_directMessageSessions addObject: session ];
+        }
+
+    NSLog( @"%@", self->_directMessageSessions );
+    }
+
 #pragma mark Initialization
 - ( instancetype ) init
     {
@@ -51,32 +77,6 @@
 #pragma mark Conforms to <NSTableViewDataSource>
 - ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
     {
-    dispatch_once_t static onceToken;
-
-    dispatch_once( &onceToken
-        , ( dispatch_block_t )^( void )
-            {
-            NSArray* allDMs = [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
-
-            NSString* currentTwitterUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID;
-            NSMutableSet* otherSideUsers = [ NSMutableSet set ];
-            for ( OTCDirectMessage* _DM in allDMs )
-                {
-                if ( ![ _DM.recipient.IDString isEqualToString: currentTwitterUserID ] )
-                    [ otherSideUsers addObject: _DM.recipient ];
-
-                if ( ![ _DM.sender.IDString isEqualToString: currentTwitterUserID ] )
-                    [ otherSideUsers addObject: _DM.sender ];
-                }
-
-            for ( OTCTwitterUser* _OtherSideUser in otherSideUsers )
-                {
-                TWPDirectMessagesSession* session = [ TWPDirectMessagesSession sessionWithOtherSideUser: _OtherSideUser ];
-                if ( session )
-                    [ self->_directMessageSessions addObject: session ];
-                }
-            } );
-
     return self->_directMessageSessions.count;
     }
 

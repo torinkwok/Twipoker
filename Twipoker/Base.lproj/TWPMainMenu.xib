@@ -19,7 +19,6 @@
             </connections>
         </customObject>
         <customObject id="nXo-2H-eBh" customClass="TWPLoginUsersManager"/>
-        <customObject id="7q2-Qg-Vlj" customClass="TWPDirectMessagesCoordinator"/>
         <customObject id="Jep-j0-R92" customClass="TWPBrain"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>

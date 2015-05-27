@@ -40,6 +40,9 @@
 + ( instancetype ) sessionWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser;
 - ( instancetype ) initWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser;
 
+#pragma mark Comparing
+- ( BOOL ) isEqualToSession: ( TWPDirectMessagesSession* )_AnotherSession;
+
 @end
 
 /*=============================================================================┐

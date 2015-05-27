@@ -24,6 +24,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TWPDirectMessagesPreviewViewController;
+
 @interface TWPDirectMessagesCoordinator : NSObject
     {
 @private
@@ -35,6 +37,8 @@
 
     STTwitterAPI __strong* _twitterAPI;
     }
+
+@property ( weak ) IBOutlet TWPDirectMessagesPreviewViewController* DMPreviewViewContorller;
 
 @property ( strong, readonly ) NSMutableArray* sentDMs;
 @property ( strong, readonly ) NSMutableArray* receivedDMs;

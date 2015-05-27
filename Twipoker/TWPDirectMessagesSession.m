@@ -50,18 +50,6 @@
                     || [ self->_otherSideUser isEqualToUser: _DM.recipient ] )
                 [ _DMs addObject: _DM ];
 
-//        // Retrieve the direct messages sent by the other side user
-//        NSArray* receivedDMs = [ [ TWPDirectMessagesCoordinator defaultCenter ] receivedDMs ];
-//        for ( OTCDirectMessage* _DM in receivedDMs )
-//            if ( [ self->_otherSideUser isEqualToUser: _DM.sender ] )
-//                [ _DMs addObject: _DM ];
-//
-//        // Retrieve the direct messages sent by me and received by other side user
-//        NSArray* sentDMs = [ [ TWPDirectMessagesCoordinator defaultCenter ] sentDMs ];
-//        for ( OTCDirectMessage* _DM in sentDMs )
-//            if ( [ self->_otherSideUser isEqualToUser: _DM.recipient ] )
-//                [ _DMs addObject: _DM ];
-
         [ self->_DMs sortWithOptions: NSSortConcurrent
                      usingComparator:
             ( NSComparator )^( OTCDirectMessage* _LhsDM, OTCDirectMessage* _RhsDM )
@@ -71,6 +59,26 @@
         }
 
     return self;
+    }
+
+#pragma mark Comparing
+- ( BOOL ) isEqualToSession: ( TWPDirectMessagesSession* )_AnotherSession
+    {
+    if ( self == _AnotherSession )
+        return YES;
+
+    return [ self->_otherSideUser isEqualToUser: _AnotherSession.otherSideUser ];
+    }
+
+- ( BOOL ) isEqual: ( id )_Object
+    {
+    if ( self == _Object )
+        return YES;
+
+    if ( [ _Object isKindOfClass: [ TWPDirectMessagesSession class ] ] )
+        return [ self isEqualToSession: ( TWPDirectMessagesSession* )_Object ];
+
+    return [ super isEqual: _Object ];
     }
 
 @end
