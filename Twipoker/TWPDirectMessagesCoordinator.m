@@ -41,10 +41,10 @@
     return [ [ [ self class ] alloc ] init ];
     }
 
-TWPDirectMessagesCoordinator static __strong* sDefaultCenter = nil;
+TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
 - ( instancetype ) init
     {
-    if ( !sDefaultCenter )
+    if ( !sDefaultCoordinator )
         {
         if ( self = [ super init ] )
             {
@@ -52,48 +52,41 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCenter = nil;
             self->_receivedDMs = [ NSMutableArray array ];
             self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
 
-            sDefaultCenter = self;
+            sDefaultCoordinator = self;
             }
         }
 
-    return sDefaultCenter;
+    return sDefaultCoordinator;
     }
 
 - ( void ) awakeFromNib
     {
+    void ( ^directMessagesFetchingBlock )( NSArray*, NSMutableArray* ) =
+        ^( NSArray* _MessagesJSON, NSMutableArray* _StorageIvar )
+            {
+            for ( NSDictionary* _MsgJSON in _MessagesJSON )
+                {
+                OTCDirectMessage* dm = [ OTCDirectMessage directMessageWithJSON: _MsgJSON ];
+                if ( dm )
+                    [ _StorageIvar addObject: dm ];
+                }
+
+            [ self.DMPreviewViewContorller updateDMs: [ self allDMs ] ];
+            };
+
     // Fetch 20 most recent direct messages sent by current authenticating user
     [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue page: nil includeEntities: @YES
                                     successBlock:
         ^( NSArray* _Messages )
-            {
-            NSLog( @"%s", __PRETTY_FUNCTION__ );
-            for ( NSDictionary* _MsgJSON in _Messages )
-                {
-                OTCDirectMessage* dm = [ OTCDirectMessage directMessageWithJSON: _MsgJSON ];
-                if ( dm )
-                    [ self->_sentDMs addObject: dm ];
-                }
-
-            [ self.DMPreviewViewContorller updateDMs: [ self allDMs ] ];
-            } errorBlock:
-                ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
+            { directMessagesFetchingBlock( _Messages, self->_sentDMs ); }
+                                      errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
 
     // Fetch 20 most recent direct messages sent to current authenticating user
     [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue includeEntities: @YES skipStatus: @YES
                                     successBlock:
         ^( NSArray* _Messages )
-            {
-            NSLog( @"%s", __PRETTY_FUNCTION__ );
-            for ( NSDictionary* _MsgJSON in _Messages )
-                {
-                OTCDirectMessage* dm = [ OTCDirectMessage directMessageWithJSON: _MsgJSON ];
-                if ( dm )
-                    [ self->_receivedDMs addObject: dm ];
-                }
-
-            [ self.DMPreviewViewContorller updateDMs: [ self allDMs ] ];
-            } errorBlock:
-                ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
+            { directMessagesFetchingBlock( _Messages, self->_receivedDMs ); }
+                                      errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
     }
 
 #pragma mark Accessors
