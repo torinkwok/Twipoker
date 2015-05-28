@@ -23,7 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDirectMessagePreviewTableCellView.h"
-#import "TWPDirectMessagesSession.h"
+#import "TWPDirectMessageSession.h"
 #import "TWPUserAvatarWell.h"
 
 @implementation TWPDirectMessagePreviewTableCellView
@@ -36,7 +36,7 @@
 @dynamic session;
 
 #pragma mark Accessors
-- ( void ) setSession: ( TWPDirectMessagesSession* )_Session
+- ( void ) setSession: ( TWPDirectMessageSession* )_Session
     {
     self->_session = _Session;
 

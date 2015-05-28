@@ -22,10 +22,10 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDirectMessagesSession.h"
+#import "TWPDirectMessageSession.h"
 #import "TWPDirectMessagesCoordinator.h"
 
-@implementation TWPDirectMessagesSession
+@implementation TWPDirectMessageSession
 
 @synthesize allDirectMessages = _DMs;
 @synthesize otherSideUser = _otherSideUser;
@@ -56,7 +56,7 @@
     }
 
 #pragma mark Comparing
-- ( BOOL ) isEqualToSession: ( TWPDirectMessagesSession* )_AnotherSession
+- ( BOOL ) isEqualToSession: ( TWPDirectMessageSession* )_AnotherSession
     {
     if ( self == _AnotherSession )
         return YES;
@@ -69,8 +69,8 @@
     if ( self == _Object )
         return YES;
 
-    if ( [ _Object isKindOfClass: [ TWPDirectMessagesSession class ] ] )
-        return [ self isEqualToSession: ( TWPDirectMessagesSession* )_Object ];
+    if ( [ _Object isKindOfClass: [ TWPDirectMessageSession class ] ] )
+        return [ self isEqualToSession: ( TWPDirectMessageSession* )_Object ];
 
     return [ super isEqual: _Object ];
     }

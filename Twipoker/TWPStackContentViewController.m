@@ -37,7 +37,7 @@
 #import "TWPTweetTextField.h"
 #import "TWPListCellView.h"
 #import "TWPTwitterListTimelineViewController.h"
-#import "TWPDirectMessagesSession.h"
+#import "TWPDirectMessageSession.h"
 #import "TWPLoginUsersManager.h"
 #import "TWPDirectMessagesCoordinator.h"
 

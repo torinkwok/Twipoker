@@ -23,7 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDirectMessagesPreviewViewController.h"
-#import "TWPDirectMessagesSession.h"
+#import "TWPDirectMessageSession.h"
 #import "TWPDirectMessagesCoordinator.h"
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
@@ -58,7 +58,7 @@ int static sCounter;
 
     for ( OTCTwitterUser* _OtherSideUser in otherSideUsers )
         {
-        TWPDirectMessagesSession* session = [ TWPDirectMessagesSession sessionWithOtherSideUser: _OtherSideUser ];
+        TWPDirectMessageSession* session = [ TWPDirectMessageSession sessionWithOtherSideUser: _OtherSideUser ];
         if ( session )
             {
             if ( ![ self->_directMessageSessions containsObject: session ] )
@@ -77,7 +77,7 @@ int static sCounter;
 #pragma mark Initialization
 - ( instancetype ) init
     {
-    if ( self = [ super initWithNibName: @"TWPDirectMessagesSessionView" bundle: [ NSBundle mainBundle ] ] )
+    if ( self = [ super initWithNibName: @"TWPDirectMessageSessionView" bundle: [ NSBundle mainBundle ] ] )
         self->_directMessageSessions = [ NSMutableArray array ];
 
     return self;
@@ -110,7 +110,7 @@ int static sCounter;
     TWPDirectMessagePreviewTableCellView* previewCellView =
         ( TWPDirectMessagePreviewTableCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
 
-    TWPDirectMessagesSession* DMSession = ( TWPDirectMessagesSession* )( self->_directMessageSessions[ _Row ] );
+    TWPDirectMessageSession* DMSession = ( TWPDirectMessageSession* )( self->_directMessageSessions[ _Row ] );
     previewCellView.session = DMSession;
 
     return previewCellView;

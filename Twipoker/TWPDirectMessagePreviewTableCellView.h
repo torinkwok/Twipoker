@@ -25,12 +25,12 @@
 #import <Cocoa/Cocoa.h>
 
 @class TWPUserAvatarWell;
-@class TWPDirectMessagesSession;
+@class TWPDirectMessageSession;
 
 @interface TWPDirectMessagePreviewTableCellView : NSTableCellView
     {
 @private
-    TWPDirectMessagesSession __strong* _session;
+    TWPDirectMessageSession __strong* _session;
     }
 
 @property ( weak ) IBOutlet TWPUserAvatarWell* userAvatar;
@@ -38,7 +38,7 @@
 @property ( weak ) IBOutlet NSTextField* dateLabel;
 @property ( weak ) IBOutlet NSTextField* contentPreview;
 
-@property ( strong, readwrite ) TWPDirectMessagesSession* session;
+@property ( strong, readwrite ) TWPDirectMessageSession* session;
 
 @end
 

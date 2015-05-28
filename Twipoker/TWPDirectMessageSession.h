@@ -24,7 +24,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TWPDirectMessagesSession : NSObject
+@interface TWPDirectMessageSession : NSObject
     {
 @private
     NSMutableArray __strong* _DMs;
@@ -41,7 +41,7 @@
 - ( instancetype ) initWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser;
 
 #pragma mark Comparing
-- ( BOOL ) isEqualToSession: ( TWPDirectMessagesSession* )_AnotherSession;
+- ( BOOL ) isEqualToSession: ( TWPDirectMessageSession* )_AnotherSession;
 
 #pragma mark Reloading Messages
 - ( void ) reloadMessages;
