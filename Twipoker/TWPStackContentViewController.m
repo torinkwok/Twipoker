@@ -183,6 +183,15 @@ NSString static* const kColumnIDTabs = @"tabs";
     self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
+- ( BOOL ) tableView: ( NSTableView* )_TableView
+     shouldSelectRow: ( NSInteger )_Row
+    {
+    if ( [ self->_dashboardTabs[ _Row ] isEqualToString: @"Messages" ] )
+        return NO;
+    else
+        return YES;
+    }
+
 #pragma mark IBActions
 - ( void ) _pushViewIntoViewsStack: ( NSViewController* )_ViewContorller
     {
@@ -199,12 +208,6 @@ NSString static* const kColumnIDTabs = @"tabs";
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
     {
     OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
-
-    // Just for test
-//    TWPDirectMessagesSession* DMSession =
-//        [ TWPDirectMessagesSession sessionWithOtherSideUser: twitterUser ];
-//    NSArray* allDMs1 = [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
-//    NSArray* allDMs2 = [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
 
     NSViewController* twitterUserViewNewController =
         [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];
