@@ -38,19 +38,16 @@
 #pragma mark Accessors
 - ( void ) setSession: ( TWPDirectMessagesSession* )_Session
     {
-    if ( self->_session != _Session )
-        {
-        self->_session = _Session;
+    self->_session = _Session;
 
-        [ self.userAvatar setTwitterUser: self->_session.otherSideUser ];
-        [ self.userNameLabel setStringValue: self->_session.otherSideUser.displayName ];
+    [ self.userAvatar setTwitterUser: self->_session.otherSideUser ];
+    [ self.userNameLabel setStringValue: self->_session.otherSideUser.displayName ];
 
-        OTCDirectMessage* mostRecentDM = [ self->_session mostRecentMessage ];
-        [ dateLabel setStringValue: mostRecentDM.dateCreated.description ];
-        [ contentPreview setStringValue: mostRecentDM.tweetText ];
+    OTCDirectMessage* mostRecentDM = [ self->_session mostRecentMessage ];
+    [ dateLabel setStringValue: mostRecentDM.dateCreated.description ];
+    [ contentPreview setStringValue: mostRecentDM.tweetText ];
 
-        [ self setNeedsDisplay: YES ];
-        }
+    [ self setNeedsDisplay: YES ];
     }
 
 @end

@@ -43,20 +43,7 @@
         {
         self->_DMs = [ NSMutableArray array ];
         self->_otherSideUser = _OtherSideUser;
-
-        // Retrieve the direct messages sent/received by the other side user
-        NSArray* allDMs =  [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
-        for ( OTCDirectMessage* _DM in allDMs )
-            if ( [ self->_otherSideUser isEqualToUser: _DM.sender ]
-                    || [ self->_otherSideUser isEqualToUser: _DM.recipient ] )
-                [ _DMs addObject: _DM ];
-
-        [ self->_DMs sortWithOptions: NSSortConcurrent
-                     usingComparator:
-            ( NSComparator )^( OTCDirectMessage* _LhsDM, OTCDirectMessage* _RhsDM )
-                {
-                return _LhsDM.tweetID < _RhsDM.tweetID;
-                } ];
+        [ self _loadMessages ];
         }
 
     return self;
@@ -89,14 +76,20 @@
     }
 
 #pragma mark Reloading
-- ( void ) reload
+- ( void ) reloadMessages
+    {
+    [ self _loadMessages ];
+    }
+
+- ( void ) _loadMessages
     {
     // Retrieve the direct messages sent/received by the other side user
     NSArray* allDMs =  [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
     for ( OTCDirectMessage* _DM in allDMs )
         if ( [ self->_otherSideUser isEqualToUser: _DM.sender ]
                 || [ self->_otherSideUser isEqualToUser: _DM.recipient ] )
-            [ _DMs addObject: _DM ];
+            if ( ![ _DMs containsObject: _DM ] )
+                [ _DMs addObject: _DM ];
 
     [ self->_DMs sortWithOptions: NSSortConcurrent
                  usingComparator:

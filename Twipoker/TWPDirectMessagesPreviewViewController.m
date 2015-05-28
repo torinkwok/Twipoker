@@ -56,13 +56,19 @@ int static sCounter;
                 [ otherSideUsers addObject: _DM.sender ];
         }
 
-    [ self->_directMessageSessions removeAllObjects ];
     for ( OTCTwitterUser* _OtherSideUser in otherSideUsers )
         {
         TWPDirectMessagesSession* session = [ TWPDirectMessagesSession sessionWithOtherSideUser: _OtherSideUser ];
-
         if ( session )
-            [ self->_directMessageSessions addObject: session ];
+            {
+            if ( ![ self->_directMessageSessions containsObject: session ] )
+                [ self->_directMessageSessions addObject: session ];
+            else
+                {
+                NSUInteger index = [ self->_directMessageSessions indexOfObject: session ];
+                [ self->_directMessageSessions[ index ] reloadMessages ];
+                }
+            }
         }
 
     [ self.DMPreviewTableView reloadData ];

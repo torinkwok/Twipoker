@@ -195,7 +195,7 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="k2I-JS-6ik"/>
                                                         </imageView>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8bI-YH-IYu">
-                                                            <rect key="frame" x="251" y="45" width="28" height="17"/>
+                                                            <rect key="frame" x="213" y="45" width="66" height="17"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Feb" id="CVt-Js-5YO">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
