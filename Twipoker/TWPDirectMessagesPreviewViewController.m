@@ -22,10 +22,10 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
+#import "TWPBrain.h"
 #import "TWPDirectMessagesPreviewViewController.h"
 #import "TWPDirectMessageSession.h"
 #import "TWPDirectMessagesCoordinator.h"
-#import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
 #import "TWPDirectMessagePreviewTableCellView.h"
 #import "TWPUserAvatarWell.h"
@@ -38,39 +38,9 @@
 
 @synthesize DMPreviewTableView;
 
-int static sCounter;
-- ( void ) updateDMs: ( NSArray* )_DMs
+- ( void ) updateDMs
     {
-    sCounter++;
-    NSString* currentTwitterUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID;
-    NSMutableArray* otherSideUsers = [ NSMutableArray array ];
-
-    for ( OTCDirectMessage* _DM in _DMs )
-        {
-        if ( ![ _DM.recipient.IDString isEqualToString: currentTwitterUserID ] )
-            if ( ![ otherSideUsers containsObject: _DM.recipient ] )
-                [ otherSideUsers addObject: _DM.recipient ];
-
-        if ( ![ _DM.sender.IDString isEqualToString: currentTwitterUserID ] )
-            if ( ![ otherSideUsers containsObject: _DM.sender ] )
-                [ otherSideUsers addObject: _DM.sender ];
-        }
-
-    for ( OTCTwitterUser* _OtherSideUser in otherSideUsers )
-        {
-        TWPDirectMessageSession* session = [ TWPDirectMessageSession sessionWithOtherSideUser: _OtherSideUser ];
-        if ( session )
-            {
-            if ( ![ self->_directMessageSessions containsObject: session ] )
-                [ self->_directMessageSessions addObject: session ];
-            else
-                {
-                NSUInteger index = [ self->_directMessageSessions indexOfObject: session ];
-                [ self->_directMessageSessions[ index ] reloadMessages ];
-                }
-            }
-        }
-
+    self->_directMessageSessions = [ [ TWPDirectMessagesCoordinator defaultCenter ] allDirectMessageSessions ];
     [ self.DMPreviewTableView reloadData ];
     }
 
@@ -78,7 +48,7 @@ int static sCounter;
 - ( instancetype ) init
     {
     if ( self = [ super initWithNibName: @"TWPDirectMessageSessionView" bundle: [ NSBundle mainBundle ] ] )
-        self->_directMessageSessions = [ NSMutableArray array ];
+        self->_directMessageSessions = [ NSArray array ];
 
     return self;
     }

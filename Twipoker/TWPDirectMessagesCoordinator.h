@@ -31,9 +31,9 @@
 @private
     // The ivar storing the direct messages sent by current authenticating user
     NSMutableArray __strong* _sentDMs;
-
     // The ivar storing the direct messages sent to current authenticating user
     NSMutableArray __strong* _receivedDMs;
+    NSMutableArray __strong* _allDirectMessageSessions;
 
     STTwitterAPI __strong* _twitterAPI;
     }
@@ -42,8 +42,9 @@
 
 @property ( strong, readonly ) NSMutableArray* sentDMs;
 @property ( strong, readonly ) NSMutableArray* receivedDMs;
-
 @property ( strong, readonly ) NSArray* allDMs;
+
+@property ( strong, readonly ) NSArray* allDirectMessageSessions;
 
 #pragma mark Initialization
 + ( instancetype ) defaultCenter;

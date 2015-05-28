@@ -28,12 +28,12 @@
     <NSTableViewDataSource, NSTableViewDelegate>
     {
 @private
-    NSMutableArray __strong* _directMessageSessions;
+    NSArray __strong* _directMessageSessions;
     }
 
 @property ( weak ) IBOutlet NSTableView* DMPreviewTableView;
 
-- ( void ) updateDMs: ( NSArray* )_DMs;
+- ( void ) updateDMs;
 
 @end
 
