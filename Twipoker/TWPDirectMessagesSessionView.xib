@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6724"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TWPDirectMessagesPreviewViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="TWPDirectMessageSessionViewController">
             <connections>
                 <outlet property="view" destination="Vph-0s-fBn" id="bFM-20-AcC"/>
             </connections>
@@ -18,14 +18,14 @@
                 <rect key="frame" x="1" y="1" width="605" height="630"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="LD4-SU-xW0" userLabel="Direct Message Session Table View" customClass="TWPTimelineTableView">
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="LD4-SU-xW0" customClass="TWPDirectMessageSessionView">
                         <rect key="frame" x="0.0" y="0.0" width="607" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <tableColumns>
-                            <tableColumn identifier="home-timeline" width="604" minWidth="40" maxWidth="1000" id="UHM-qr-hkq">
+                            <tableColumn identifier="dm-session" width="604" minWidth="40" maxWidth="1000" id="UHM-qr-hkq">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -38,16 +38,13 @@
                                 </textFieldCell>
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
-                                    <tableCellView id="w53-kK-Wt9" customClass="TWPTweetCellView">
+                                    <tableCellView id="w53-kK-Wt9" customClass="TWPDirectMessageSessionCellView">
                                         <rect key="frame" x="1" y="1" width="604" height="116"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tit-hB-IA0" userLabel="Avatar" customClass="TWPUserAvatarWell">
                                                 <rect key="frame" x="17" y="33" width="70" height="70"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="y46-uA-AZB"/>
-                                                <connections>
-                                                    <action selector="displayUserProfilePanelAction:" target="w53-kK-Wt9" id="fVI-Yg-8Zv"/>
-                                                </connections>
                                             </imageView>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKv-qb-6vr" userLabel="Tweet Text" customClass="TWPTweetTextField">
                                                 <rect key="frame" x="110" y="27" width="481" height="51"/>
@@ -69,14 +66,16 @@
                                             </customView>
                                         </subviews>
                                         <connections>
-                                            <outlet property="authorAvatarWell" destination="Tit-hB-IA0" id="CqN-hr-YpE"/>
-                                            <outlet property="tweetTextLabel" destination="tKv-qb-6vr" id="A8F-jR-ht3"/>
                                             <outlet property="userNameLabel" destination="srC-al-AOM" id="dsM-Bt-Kef"/>
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
                             </tableColumn>
                         </tableColumns>
+                        <connections>
+                            <outlet property="dataSource" destination="-2" id="c0q-Ux-z68"/>
+                            <outlet property="delegate" destination="-2" id="96v-gv-2UX"/>
+                        </connections>
                     </tableView>
                 </subviews>
                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
