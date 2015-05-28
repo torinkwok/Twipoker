@@ -27,7 +27,7 @@
 #import "TWPDirectMessagesCoordinator.h"
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
-#import "TWPDirectMessagePreviewCellView.h"
+#import "TWPDirectMessagePreviewTableCellView.h"
 #import "TWPUserAvatarWell.h"
 
 @interface TWPDirectMessagesPreviewViewController ()
@@ -107,8 +107,8 @@ int static sCounter;
      viewForTableColumn: ( NSTableColumn* )_TableColumn
                     row: ( NSInteger )_Row
     {
-    TWPDirectMessagePreviewCellView* previewCellView =
-        ( TWPDirectMessagePreviewCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+    TWPDirectMessagePreviewTableCellView* previewCellView =
+        ( TWPDirectMessagePreviewTableCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
 
     TWPDirectMessagesSession* DMSession = ( TWPDirectMessagesSession* )( self->_directMessageSessions[ _Row ] );
     previewCellView.session = DMSession;

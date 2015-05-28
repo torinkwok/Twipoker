@@ -22,23 +22,33 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPDirectMessagePreviewTableCellView.h"
+#import "TWPDirectMessagesSession.h"
+#import "TWPUserAvatarWell.h"
 
-@class TWPUserAvatarWell;
-@class TWPDirectMessagesSession;
+@implementation TWPDirectMessagePreviewTableCellView
 
-@interface TWPDirectMessagePreviewCellView : NSTableCellView
+@synthesize userAvatar;
+@synthesize userNameLabel;
+@synthesize dateLabel;
+@synthesize contentPreview;
+
+@dynamic session;
+
+#pragma mark Accessors
+- ( void ) setSession: ( TWPDirectMessagesSession* )_Session
     {
-@private
-    TWPDirectMessagesSession __strong* _session;
+    self->_session = _Session;
+
+    [ self.userAvatar setTwitterUser: self->_session.otherSideUser ];
+    [ self.userNameLabel setStringValue: self->_session.otherSideUser.displayName ];
+
+    OTCDirectMessage* mostRecentDM = [ self->_session mostRecentMessage ];
+    [ dateLabel setStringValue: mostRecentDM.dateCreated.description ];
+    [ contentPreview setStringValue: mostRecentDM.tweetText ];
+
+    [ self setNeedsDisplay: YES ];
     }
-
-@property ( weak ) IBOutlet TWPUserAvatarWell* userAvatar;
-@property ( weak ) IBOutlet NSTextField* userNameLabel;
-@property ( weak ) IBOutlet NSTextField* dateLabel;
-@property ( weak ) IBOutlet NSTextField* contentPreview;
-
-@property ( strong, readwrite ) TWPDirectMessagesSession* session;
 
 @end
 
