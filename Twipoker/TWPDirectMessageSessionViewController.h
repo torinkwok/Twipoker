@@ -24,7 +24,13 @@
 
 #import "TWPViewController.h"
 
+@class TWPDirectMessageSession;
+
 @interface TWPDirectMessageSessionViewController : TWPViewController
+    {
+@private
+
+    }
 
 @end
 
