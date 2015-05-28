@@ -38,8 +38,10 @@
 
 @synthesize DMPreviewTableView;
 
+int static sCounter;
 - ( void ) updateDMs: ( NSArray* )_DMs
     {
+    sCounter++;
     NSString* currentTwitterUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID;
     NSMutableArray* otherSideUsers = [ NSMutableArray array ];
 
@@ -54,15 +56,16 @@
                 [ otherSideUsers addObject: _DM.sender ];
         }
 
+    [ self->_directMessageSessions removeAllObjects ];
     for ( OTCTwitterUser* _OtherSideUser in otherSideUsers )
         {
         TWPDirectMessagesSession* session = [ TWPDirectMessagesSession sessionWithOtherSideUser: _OtherSideUser ];
-        if ( session && ![ self->_directMessageSessions containsObject: session ] )
+
+        if ( session )
             [ self->_directMessageSessions addObject: session ];
         }
 
     [ self.DMPreviewTableView reloadData ];
-    NSLog( @"%s", __PRETTY_FUNCTION__ );
     }
 
 #pragma mark Initialization

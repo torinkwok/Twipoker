@@ -43,6 +43,9 @@
 #pragma mark Comparing
 - ( BOOL ) isEqualToSession: ( TWPDirectMessagesSession* )_AnotherSession;
 
+#pragma mark Reloading
+- ( void ) reload;
+
 @end
 
 /*=============================================================================┐

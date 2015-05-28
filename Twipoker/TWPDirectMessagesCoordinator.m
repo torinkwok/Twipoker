@@ -52,7 +52,6 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCenter = nil;
             self->_receivedDMs = [ NSMutableArray array ];
             self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
 
-
             sDefaultCenter = self;
             }
         }
