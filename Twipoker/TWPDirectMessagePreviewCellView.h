@@ -27,7 +27,7 @@
 @class TWPUserAvatarWell;
 @class TWPDirectMessagesSession;
 
-@interface TWPDirectMessageSessionsPreviewCellView : NSTableCellView
+@interface TWPDirectMessagePreviewCellView : NSTableCellView
     {
 @private
     TWPDirectMessagesSession __strong* _session;

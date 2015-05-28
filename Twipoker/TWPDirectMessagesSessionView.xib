@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6724" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6724"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TWPDirectMessagesPreviewViewController">
+            <connections>
+                <outlet property="view" destination="Vph-0s-fBn" id="bFM-20-AcC"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <scrollView identifier="home" borderType="none" autohidesScrollers="YES" horizontalLineScroll="118" horizontalPageScroll="10" verticalLineScroll="118" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="Vph-0s-fBn" userLabel="Direct Message Session Scroll View - Direct Message Session Table View" customClass="TWPTimelineScrollView">
+            <rect key="frame" x="0.0" y="0.0" width="607" height="632"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <clipView key="contentView" copiesOnScroll="NO" id="XfV-WE-5cv">
+                <rect key="frame" x="1" y="1" width="605" height="630"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="LD4-SU-xW0" userLabel="Direct Message Session Table View" customClass="TWPTimelineTableView">
+                        <rect key="frame" x="0.0" y="0.0" width="607" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <size key="intercellSpacing" width="3" height="2"/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <tableColumns>
+                            <tableColumn identifier="home-timeline" width="604" minWidth="40" maxWidth="1000" id="UHM-qr-hkq">
+                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                </tableHeaderCell>
+                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="ifb-Ym-O69">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                <prototypeCellViews>
+                                    <tableCellView id="w53-kK-Wt9" customClass="TWPTweetCellView">
+                                        <rect key="frame" x="1" y="1" width="604" height="116"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tit-hB-IA0" userLabel="Avatar" customClass="TWPUserAvatarWell">
+                                                <rect key="frame" x="17" y="33" width="70" height="70"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="y46-uA-AZB"/>
+                                                <connections>
+                                                    <action selector="displayUserProfilePanelAction:" target="w53-kK-Wt9" id="fVI-Yg-8Zv"/>
+                                                </connections>
+                                            </imageView>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKv-qb-6vr" userLabel="Tweet Text" customClass="TWPTweetTextField">
+                                                <rect key="frame" x="110" y="27" width="481" height="51"/>
+                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="cCh-bP-RO2">
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="title">OS X 的 Keychain Services 的接口简直跟 POSIX 一样难用。所以最近写了一个全特性的 Objective-C 封装，完全面向对象， Cocoa 风格的 API 设计，文档齐全。http://nstongg.tumblr.com/post/112465955064/waxsealcore …</string>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="Fha-SH-YDx"/>
+                                                </connections>
+                                            </textField>
+                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srC-al-AOM" customClass="TWPTimelineUserNameLabel">
+                                                <rect key="frame" x="110" y="86" width="481" height="22"/>
+                                                <connections>
+                                                    <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="nBf-wV-wmF"/>
+                                                </connections>
+                                            </customView>
+                                        </subviews>
+                                        <connections>
+                                            <outlet property="authorAvatarWell" destination="Tit-hB-IA0" id="CqN-hr-YpE"/>
+                                            <outlet property="tweetTextLabel" destination="tKv-qb-6vr" id="A8F-jR-ht3"/>
+                                            <outlet property="userNameLabel" destination="srC-al-AOM" id="dsM-Bt-Kef"/>
+                                        </connections>
+                                    </tableCellView>
+                                </prototypeCellViews>
+                            </tableColumn>
+                        </tableColumns>
+                    </tableView>
+                </subviews>
+                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </clipView>
+            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="uDW-wv-HDN">
+                <rect key="frame" x="-100" y="-100" width="0.0" height="16"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="aDI-eG-yVu">
+                <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <point key="canvasLocation" x="-245.5" y="-2569"/>
+        </scrollView>
+    </objects>
+</document>

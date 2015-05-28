@@ -170,7 +170,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="Nae-CX-cQs" customClass="TWPDirectMessageSessionsPreviewCellView">
+                                                <tableCellView id="Nae-CX-cQs" customClass="TWPDirectMessagePreviewCellView">
                                                     <rect key="frame" x="1" y="1" width="285" height="70"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>

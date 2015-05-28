@@ -22,11 +22,11 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDirectMessageSessionsPreviewCellView.h"
+#import "TWPDirectMessagePreviewCellView.h"
 #import "TWPDirectMessagesSession.h"
 #import "TWPUserAvatarWell.h"
 
-@implementation TWPDirectMessageSessionsPreviewCellView
+@implementation TWPDirectMessagePreviewCellView
 
 @synthesize userAvatar;
 @synthesize userNameLabel;
