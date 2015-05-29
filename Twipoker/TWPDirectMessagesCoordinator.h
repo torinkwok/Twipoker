@@ -25,16 +25,26 @@
 #import <Foundation/Foundation.h>
 
 @class TWPDirectMessagesPreviewViewController;
+@class TWPDirectMessageSession;
 
+@protocol TWPDirectMessagesCoordinatorObserver;
+
+// TWPDirectMessagesCoordinator class
 @interface TWPDirectMessagesCoordinator : NSObject
     {
 @private
     // The ivar storing the direct messages sent to/received by current authenticating user
     NSMutableArray __strong* _allDMs;
-
     NSMutableArray __strong* _allDirectMessageSessions;
 
     STTwitterAPI __strong* _twitterAPI;
+
+    /* @[ @[ OTCTwitterUser, id <TWPDirectMessagesCoordinatorObserver> ]
+        , @[ OTCTwitterUser, id <TWPDirectMessagesCoordinatorObserver> ]
+        , @[ OTCTwitterUser, id <TWPDirectMessagesCoordinatorObserver> ]
+        , ...
+        ] */
+    NSMutableArray __strong* _observers;
     }
 
 @property ( weak ) IBOutlet TWPDirectMessagesPreviewViewController* DMPreviewViewContorller;
@@ -47,7 +57,24 @@
 #pragma mark Initialization
 + ( instancetype ) defaultCenter;
 
-@end
+#pragma mark Observer Registration
+// Once the `_OtherSideUser` sent direct message to the current authenticating user,
+// `_NewObserver` will be notified.
+- ( void ) registerObserver: ( id <TWPDirectMessagesCoordinatorObserver> )_NewObserver
+              otherSideUser: ( OTCTwitterUser* )_OtherSideUser;
+
+@end // TWPDirectMessagesCoordinator class
+
+// <TWPDirectMessagesCoordinatorObserver> protocol
+@protocol TWPDirectMessagesCoordinatorObserver <NSObject>
+
+@optional
+- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator didAddNewSession: ( TWPDirectMessageSession* )_NewSession;
+
+@required
+- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator didUpdateSession: ( TWPDirectMessageSession* )_UpdatedSession;
+
+@end // <TWPDirectMessagesCoordinatorObserver> protocol
 
 /*=============================================================================┐
 |                                                                              |

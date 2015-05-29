@@ -22,6 +22,8 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
+#import <objc/message.h>
+
 #import "TWPDirectMessagesCoordinator.h"
 #import "TWPLoginUsersManager.h"
 #import "TWPDirectMessagesPreviewViewController.h"
@@ -141,20 +143,61 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
 
         if ( session )
             {
+            SEL delegateMethodSEL = nil;
+
+            // If the direct message session represented by `session`
+            // doesn't exist in self->_allDirectMessageSessions,
+            // append it.
             if ( ![ self->_allDirectMessageSessions containsObject: session ] )
-                // If the direct message session represented by `session`
-                // doesn't exist in self->_allDirectMessageSessions,
-                // append it.
+                {
                 [ self->_allDirectMessageSessions addObject: session ];
+                delegateMethodSEL = @selector( coordinator:didAddNewSession: );
+                }
             else
                 {
                 NSUInteger index = [ self->_allDirectMessageSessions indexOfObject: session ];
                 [ self->_allDirectMessageSessions[ index ] reloadMessages ];
+                delegateMethodSEL = @selector( coordinator:didUpdateSession: );
+                }
+
+            for ( NSArray* _Pair in self->_observers )
+                {
+                if ( [ _Pair.firstObject isEqualToUser: _OtherSideUser ] || _Pair.firstObject == [ NSNull null ] )
+                    if ( [ _Pair.lastObject conformsToProtocol: @protocol( TWPDirectMessagesCoordinatorObserver ) ]
+                            && [ _Pair.lastObject respondsToSelector: delegateMethodSEL ] )
+                        {
+                        id observer = _Pair.lastObject;
+                        Method delegateRuntimeMethod = class_getInstanceMethod( [ observer class ], delegateMethodSEL );
+                        method_invoke( observer, delegateRuntimeMethod, self, session );
+//
+//                        NSInvocation* delegateInvocation =
+//                            [ NSInvocation invocationWithMethodSignature: [ observer methodSignatureForSelector: delegateMethodSEL ] ];
+//
+//                        [ delegateInvocation setSelector: delegateMethodSEL ];
+//
+//                        id coordinator = self;
+//                        [ delegateInvocation setArgument: &coordinator atIndex: 2 ];
+//                        [ delegateInvocation setArgument: &session atIndex: 3 ];
+//
+//                        [ delegateInvocation invokeWithTarget: observer ];
+
+//                        [ _Pair.lastObject coordinator: self didAddNewSession: session ];
+                        }
                 }
             }
         }
 
-    [ self.DMPreviewViewContorller updateDMs ];
+//    [ self.DMPreviewViewContorller updateDMs ];
+    }
+
+#pragma mark Observer Registration
+// Once the `_OtherSideUser` sent direct message to the current authenticating user,
+// `_NewObserver` will be notified.
+- ( void ) registerObserver: ( id <TWPDirectMessagesCoordinatorObserver> )_NewObserver
+              otherSideUser: ( OTCTwitterUser* )_OtherSideUser
+    {
+    NSParameterAssert( ( _NewObserver ) );
+    [ self->_observers addObject: @[ ( _OtherSideUser ?: [ NSNull null ] ), _NewObserver ] ];
     }
 
 @end
