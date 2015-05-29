@@ -35,9 +35,7 @@
 @implementation TWPDirectMessagesCoordinator
 
 @synthesize DMPreviewViewContorller;
-
-@synthesize sentDMs = _sentDMs;
-@synthesize receivedDMs = _receivedDMs;
+@synthesize allDMs = _allDMs;
 @synthesize allDirectMessageSessions = _allDirectMessageSessions;
 
 #pragma mark Initialization
@@ -53,8 +51,7 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
         {
         if ( self = [ super init ] )
             {
-            self->_sentDMs = [ NSMutableArray array ];
-            self->_receivedDMs = [ NSMutableArray array ];
+            self->_allDMs = [ NSMutableArray array ];
             self->_allDirectMessageSessions = [ NSMutableArray array ];
 
             self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
@@ -68,49 +65,41 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
 
 - ( void ) awakeFromNib
     {
-    void ( ^directMessagesFetchingBlock )( NSArray*, NSMutableArray* ) =
-        ^( NSArray* _MessagesJSON, NSMutableArray* _StorageIvar )
+    void ( ^directMessagesFetchingBlock )( NSArray* ) =
+        ^( NSArray* _MessagesJSON )
             {
             for ( NSDictionary* _MsgJSON in _MessagesJSON )
                 {
                 OTCDirectMessage* dm = [ OTCDirectMessage directMessageWithJSON: _MsgJSON ];
-                if ( dm )
-                    [ _StorageIvar addObject: dm ];
+                if ( dm ) [ self->_allDMs addObject: dm ];
+
+                [ self->_allDMs sortWithOptions: NSSortConcurrent
+                                usingComparator:
+                    ( NSComparator )^( OTCDirectMessage* _LhsDM, OTCDirectMessage* _RhsDM )
+                        {
+                        return _LhsDM.tweetID < _RhsDM.tweetID;
+                        } ];
                 }
 
-            [ self _updateSessions: [ self allDMs ] ];
+            [ self _updateSessions: self->_allDMs ];
             };
 
     // Fetch 20 most recent direct messages sent by current authenticating user
     [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue page: nil includeEntities: @YES
                                     successBlock:
         ^( NSArray* _Messages )
-            { directMessagesFetchingBlock( _Messages, self->_sentDMs ); }
+            { directMessagesFetchingBlock( _Messages ); }
                                       errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
 
     // Fetch 20 most recent direct messages sent to current authenticating user
     [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue includeEntities: @YES skipStatus: @YES
                                     successBlock:
         ^( NSArray* _Messages )
-            { directMessagesFetchingBlock( _Messages, self->_receivedDMs ); }
+            { directMessagesFetchingBlock( _Messages ); }
                                       errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
     }
 
 #pragma mark Dynamic Accessors
-- ( NSArray* ) allDMs
-    {
-    NSMutableArray* DMs = [ NSMutableArray arrayWithCapacity: self->_sentDMs.count + self->_receivedDMs.count ];
-    [ DMs addObjectsFromArray: self->_sentDMs ];
-    [ DMs addObjectsFromArray: self->_receivedDMs ];
-
-    return [ DMs sortedArrayWithOptions: NSSortConcurrent
-                        usingComparator:
-        ( NSComparator )^( OTCDirectMessage* _LhsDM, OTCDirectMessage* _RhsDM )
-            {
-            return _LhsDM.tweetID < _RhsDM.tweetID;
-            } ];
-    }
-
 - ( NSArray* ) allDirectMessageSessions
     {
     return self->_allDirectMessageSessions;
