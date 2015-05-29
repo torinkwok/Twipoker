@@ -120,25 +120,35 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
 - ( void ) _updateSessions: ( NSArray* )_AllDMs
     {
     NSString* currentTwitterUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID;
-    NSMutableArray* otherSideUsers = [ NSMutableArray array ];
 
+    // Extract all the possible users
+    NSMutableArray* otherSideUsers = [ NSMutableArray array ];
     for ( OTCDirectMessage* _DM in _AllDMs )
         {
+        // If the recipient of this direct message is not current authenticating user...
         if ( ![ _DM.recipient.IDString isEqualToString: currentTwitterUserID ] )
+            // If otherSideUsers contains the recipient of this direct message, skip this step
             if ( ![ otherSideUsers containsObject: _DM.recipient ] )
                 [ otherSideUsers addObject: _DM.recipient ];
 
+        // If the sender of this direct message is not current authenticating user...
         if ( ![ _DM.sender.IDString isEqualToString: currentTwitterUserID ] )
+            // If otherSideUsers contains the sender of this direct message, skip this step
             if ( ![ otherSideUsers containsObject: _DM.sender ] )
                 [ otherSideUsers addObject: _DM.sender ];
         }
 
+    // Construct direct message sessions according possible user
     for ( OTCTwitterUser* _OtherSideUser in otherSideUsers )
         {
         TWPDirectMessageSession* session = [ TWPDirectMessageSession sessionWithOtherSideUser: _OtherSideUser ];
+
         if ( session )
             {
             if ( ![ self->_allDirectMessageSessions containsObject: session ] )
+                // If the direct message session represented by `session`
+                // doesn't exist in self->_allDirectMessageSessions,
+                // append it.
                 [ self->_allDirectMessageSessions addObject: session ];
             else
                 {

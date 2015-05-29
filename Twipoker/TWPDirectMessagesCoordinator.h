@@ -44,6 +44,7 @@
 @property ( strong, readonly ) NSMutableArray* receivedDMs;
 @property ( strong, readonly ) NSArray* allDMs;
 
+// @[ TWPDirectMessageSession, TWPDirectMessageSession, ... ]
 @property ( strong, readonly ) NSArray* allDirectMessageSessions;
 
 #pragma mark Initialization
