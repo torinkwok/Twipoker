@@ -37,12 +37,6 @@
 
 @synthesize DMPreviewTableView;
 
-- ( void ) updateDMs
-    {
-//    self->_directMessageSessions = [ [ TWPDirectMessagesCoordinator defaultCenter ] allDirectMessageSessions ];
-//    [ self.DMPreviewTableView reloadData ];
-    }
-
 #pragma mark Initialization
 - ( instancetype ) init
     {
@@ -92,8 +86,9 @@
     {
 #if DEBUG
     NSLog( @"🌍" );
-    TWPDirectMessageSession* newSession = [ TWPDirectMessageSession sessionWithOtherSideUser: _OtherSideUser ];
 #endif
+    TWPDirectMessageSession* newSession = [ TWPDirectMessageSession sessionWithOtherSideUser: _OtherSideUser ];
+
     if ( newSession )
         {
         [ self->_directMessageSessions addObject: newSession ];

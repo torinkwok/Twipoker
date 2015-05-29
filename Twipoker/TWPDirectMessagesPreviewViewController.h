@@ -33,8 +33,6 @@
 
 @property ( weak ) IBOutlet NSTableView* DMPreviewTableView;
 
-- ( void ) updateDMs;
-
 @end
 
 /*=============================================================================┐
