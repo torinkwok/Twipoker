@@ -25,7 +25,6 @@
 #import "TWPBrain.h"
 #import "TWPDirectMessagesPreviewViewController.h"
 #import "TWPDirectMessageSession.h"
-#import "TWPDirectMessagesCoordinator.h"
 #import "TWPLoginUsersManager.h"
 #import "TWPDirectMessagePreviewTableCellView.h"
 #import "TWPUserAvatarWell.h"
@@ -51,6 +50,11 @@
         self->_directMessageSessions = [ NSArray array ];
 
     return self;
+    }
+
+- ( void ) awakeFromNib
+    {
+    [ [ TWPDirectMessagesCoordinator defaultCenter ] registerObserver: self otherSideUser: nil ];
     }
 
 - ( void ) viewDidLoad
@@ -84,6 +88,19 @@
     previewCellView.session = DMSession;
 
     return previewCellView;
+    }
+
+#pragma mark Conforms to <TWPDirectMessagesCoordinatorObserver>
+- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator
+      didUpdateSession: ( TWPDirectMessageSession* )_UpdatedSession
+    {
+    NSLog( @"🌍" );
+    }
+
+- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator
+      didAddNewSession: ( TWPDirectMessageSession* )_UpdatedSession
+    {
+    NSLog( @"👩" );
     }
 
 @end

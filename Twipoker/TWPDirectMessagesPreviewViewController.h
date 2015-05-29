@@ -22,10 +22,10 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPDirectMessagesCoordinator.h"
 
 @interface TWPDirectMessagesPreviewViewController : NSViewController
-    <NSTableViewDataSource, NSTableViewDelegate>
+    <NSTableViewDataSource, NSTableViewDelegate, TWPDirectMessagesCoordinatorObserver >
     {
 @private
     NSArray __strong* _directMessageSessions;

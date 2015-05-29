@@ -61,6 +61,8 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
 
             self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
 
+            self->_observers = [ NSMutableArray array ];
+
             sDefaultCoordinator = self;
             }
         }
@@ -162,32 +164,17 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
 
             for ( NSArray* _Pair in self->_observers )
                 {
-                if ( [ _Pair.firstObject isEqualToUser: _OtherSideUser ] || _Pair.firstObject == [ NSNull null ] )
+                if ( _Pair.firstObject == [ NSNull null ] || [ _Pair.firstObject isEqualToUser: _OtherSideUser ] )
                     if ( [ _Pair.lastObject conformsToProtocol: @protocol( TWPDirectMessagesCoordinatorObserver ) ]
                             && [ _Pair.lastObject respondsToSelector: delegateMethodSEL ] )
                         {
                         id observer = _Pair.lastObject;
                         Method delegateRuntimeMethod = class_getInstanceMethod( [ observer class ], delegateMethodSEL );
                         method_invoke( observer, delegateRuntimeMethod, self, session );
-//
-//                        NSInvocation* delegateInvocation =
-//                            [ NSInvocation invocationWithMethodSignature: [ observer methodSignatureForSelector: delegateMethodSEL ] ];
-//
-//                        [ delegateInvocation setSelector: delegateMethodSEL ];
-//
-//                        id coordinator = self;
-//                        [ delegateInvocation setArgument: &coordinator atIndex: 2 ];
-//                        [ delegateInvocation setArgument: &session atIndex: 3 ];
-//
-//                        [ delegateInvocation invokeWithTarget: observer ];
-
-//                        [ _Pair.lastObject coordinator: self didAddNewSession: session ];
                         }
                 }
             }
         }
-
-//    [ self.DMPreviewViewContorller updateDMs ];
     }
 
 #pragma mark Observer Registration
