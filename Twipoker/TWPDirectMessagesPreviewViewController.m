@@ -39,27 +39,23 @@
 
 - ( void ) updateDMs
     {
-    self->_directMessageSessions = [ [ TWPDirectMessagesCoordinator defaultCenter ] allDirectMessageSessions ];
-    [ self.DMPreviewTableView reloadData ];
+//    self->_directMessageSessions = [ [ TWPDirectMessagesCoordinator defaultCenter ] allDirectMessageSessions ];
+//    [ self.DMPreviewTableView reloadData ];
     }
 
 #pragma mark Initialization
 - ( instancetype ) init
     {
     if ( self = [ super initWithNibName: @"TWPDirectMessageSessionView" bundle: [ NSBundle mainBundle ] ] )
-        self->_directMessageSessions = [ NSArray array ];
+        self->_directMessageSessions = [ NSMutableArray array ];
 
     return self;
-    }
-
-- ( void ) awakeFromNib
-    {
-    [ [ TWPDirectMessagesCoordinator defaultCenter ] registerObserver: self otherSideUser: nil ];
     }
 
 - ( void ) viewDidLoad
     {
     [ super viewDidLoad ];
+    [ [ TWPDirectMessagesCoordinator defaultCenter ] registerObserver: self otherSideUser: nil ];
     }
 
 #pragma mark Conforms to <NSTableViewDataSource>
@@ -91,16 +87,35 @@
     }
 
 #pragma mark Conforms to <TWPDirectMessagesCoordinatorObserver>
-- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator
-      didUpdateSession: ( TWPDirectMessageSession* )_UpdatedSession
+- ( void )       coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator
+    didAddNewSessionWithUser: ( OTCTwitterUser* )_OtherSideUser
     {
+#if DEBUG
     NSLog( @"🌍" );
+    TWPDirectMessageSession* newSession = [ TWPDirectMessageSession sessionWithOtherSideUser: _OtherSideUser ];
+#endif
+    if ( newSession )
+        {
+        [ self->_directMessageSessions addObject: newSession ];
+        [ self.DMPreviewTableView reloadData ];
+        }
     }
 
-- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator
-      didAddNewSession: ( TWPDirectMessageSession* )_UpdatedSession
+- ( void )       coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator
+    didUpdateSessionWithUser: ( OTCTwitterUser* )_OtherSideUser
     {
-    NSLog( @"👩" );
+#if DEBUG
+    NSLog( @"🌞" );
+#endif
+    for ( TWPDirectMessageSession* _Session in self->_directMessageSessions )
+        {
+        if ( [ _Session.otherSideUser isEqualToUser: _OtherSideUser ] )
+            {
+            [ _Session reloadMessages ];
+            [ self.DMPreviewTableView reloadData ];
+            break;
+            }
+        }
     }
 
 @end

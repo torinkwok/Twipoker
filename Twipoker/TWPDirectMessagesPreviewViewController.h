@@ -28,7 +28,7 @@
     <NSTableViewDataSource, NSTableViewDelegate, TWPDirectMessagesCoordinatorObserver >
     {
 @private
-    NSArray __strong* _directMessageSessions;
+    NSMutableArray __strong* _directMessageSessions;
     }
 
 @property ( weak ) IBOutlet NSTableView* DMPreviewTableView;

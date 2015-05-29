@@ -69,10 +69,10 @@
 @protocol TWPDirectMessagesCoordinatorObserver <NSObject>
 
 @optional
-- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator didAddNewSession: ( TWPDirectMessageSession* )_NewSession;
+- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator didAddNewSessionWithUser: ( OTCTwitterUser* )_OtherSideUser;
 
 @required
-- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator didUpdateSession: ( TWPDirectMessageSession* )_UpdatedSession;
+- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator didUpdateSessionWithUser: ( OTCTwitterUser* )_OtherSideUser;
 
 @end // <TWPDirectMessagesCoordinatorObserver> protocol
 

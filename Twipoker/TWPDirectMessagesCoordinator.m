@@ -153,13 +153,13 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
             if ( ![ self->_allDirectMessageSessions containsObject: session ] )
                 {
                 [ self->_allDirectMessageSessions addObject: session ];
-                delegateMethodSEL = @selector( coordinator:didAddNewSession: );
+                delegateMethodSEL = @selector( coordinator:didAddNewSessionWithUser: );
                 }
             else
                 {
                 NSUInteger index = [ self->_allDirectMessageSessions indexOfObject: session ];
                 [ self->_allDirectMessageSessions[ index ] reloadMessages ];
-                delegateMethodSEL = @selector( coordinator:didUpdateSession: );
+                delegateMethodSEL = @selector( coordinator:didUpdateSessionWithUser: );
                 }
 
             for ( NSArray* _Pair in self->_observers )
@@ -170,7 +170,7 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
                         {
                         id observer = _Pair.lastObject;
                         Method delegateRuntimeMethod = class_getInstanceMethod( [ observer class ], delegateMethodSEL );
-                        method_invoke( observer, delegateRuntimeMethod, self, session );
+                        method_invoke( observer, delegateRuntimeMethod, self, _OtherSideUser );
                         }
                 }
             }
