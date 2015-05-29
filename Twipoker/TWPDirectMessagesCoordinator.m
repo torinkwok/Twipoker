@@ -29,7 +29,10 @@
 
 // Private Interfaces
 @interface TWPDirectMessagesCoordinator ()
-- ( void ) _updateSessions: ( NSArray* )_AllDMs;
+
+- ( void ) _realodAllSessions;
+- ( NSArray* ) _allOtherSideUsers;
+
 @end // Private Interfaces
 
 @implementation TWPDirectMessagesCoordinator
@@ -65,7 +68,7 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
 
 - ( void ) awakeFromNib
     {
-    void ( ^directMessagesFetchingBlock )( NSArray* ) =
+    void ( ^fetchDirectMessagesSuccessBlock )( NSArray* ) =
         ^( NSArray* _MessagesJSON )
             {
             for ( NSDictionary* _MsgJSON in _MessagesJSON )
@@ -81,21 +84,17 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
                         } ];
                 }
 
-            [ self _updateSessions: self->_allDMs ];
+            [ self _realodAllSessions ];
             };
 
     // Fetch 20 most recent direct messages sent by current authenticating user
     [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue page: nil includeEntities: @YES
-                                    successBlock:
-        ^( NSArray* _Messages )
-            { directMessagesFetchingBlock( _Messages ); }
+                                    successBlock: fetchDirectMessagesSuccessBlock
                                       errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
 
     // Fetch 20 most recent direct messages sent to current authenticating user
     [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue includeEntities: @YES skipStatus: @YES
-                                    successBlock:
-        ^( NSArray* _Messages )
-            { directMessagesFetchingBlock( _Messages ); }
+                                    successBlock: fetchDirectMessagesSuccessBlock
                                       errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
     }
 
@@ -106,13 +105,13 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
     }
 
 #pragma mark Private Interfaces
-- ( void ) _updateSessions: ( NSArray* )_AllDMs
+// Extract all the possible users
+- ( NSArray* ) _allOtherSideUsers
     {
     NSString* currentTwitterUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID;
 
-    // Extract all the possible users
     NSMutableArray* otherSideUsers = [ NSMutableArray array ];
-    for ( OTCDirectMessage* _DM in _AllDMs )
+    for ( OTCDirectMessage* _DM in self->_allDMs )
         {
         // If the recipient of this direct message is not current authenticating user...
         if ( ![ _DM.recipient.IDString isEqualToString: currentTwitterUserID ] )
@@ -126,6 +125,14 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
             if ( ![ otherSideUsers containsObject: _DM.sender ] )
                 [ otherSideUsers addObject: _DM.sender ];
         }
+
+    return otherSideUsers;
+    }
+
+// Reload all the direct message sessions
+- ( void ) _realodAllSessions
+    {
+    NSArray* otherSideUsers = [ self _allOtherSideUsers ];
 
     // Construct direct message sessions according possible user
     for ( OTCTwitterUser* _OtherSideUser in otherSideUsers )
