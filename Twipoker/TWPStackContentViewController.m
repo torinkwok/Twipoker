@@ -193,9 +193,9 @@ NSString static* const kColumnIDTabs = @"tabs";
 - ( BOOL ) tableView: ( NSTableView* )_TableView
      shouldSelectRow: ( NSInteger )_Row
     {
-    if ( [ self->_dashboardTabs[ _Row ] isEqualToString: @"Messages" ] )
-        return NO;
-    else
+//    if ( [ self->_dashboardTabs[ _Row ] isEqualToString: @"Messages" ] )
+//        return NO;
+//    else
         return YES;
     }
 
@@ -215,7 +215,6 @@ NSString static* const kColumnIDTabs = @"tabs";
 - ( void ) _dmPreviewTableCellMouseDown: ( NSNotification* )_Notif
     {
     [ self pushDirectMessageSessionViewToCurrentViewStackAction: ( TWPDirectMessagePreviewTableCellView* )( _Notif.object ) ];
-//    [ NSApp sendAction: @selector( pushDirectMessageSessionViewToCurrentViewStackAction: ) to: nil from: self ];
     }
 
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
@@ -246,6 +245,8 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( IBAction ) pushDirectMessageSessionViewToCurrentViewStackAction: ( id )_Sender
     {
+    [ self.dashboardView selectRowIndexes: [ NSIndexSet indexSetWithIndex: 5 ] byExtendingSelection: NO ];
+
     NSViewController* dmSessionViewNewController =
         [ TWPDirectMessageSessionViewController sessionViewControllerWithSession: [ ( TWPDirectMessagePreviewTableCellView* )_Sender session ] ];
 

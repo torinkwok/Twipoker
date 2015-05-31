@@ -23,8 +23,27 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDirectMessageSessionCellView.h"
+#import "TWPUserAvatarWell.h"
 
 @implementation TWPDirectMessageSessionCellView
+
+@synthesize userNameLabel;
+@synthesize directMessageTextLabel;
+@synthesize senderAvatar;
+
+@dynamic directMessage;
+
+- ( void ) setDirectMessage: ( OTCDirectMessage* )_DirectMessage
+    {
+    if ( self->_directMessage != _DirectMessage )
+        {
+        self->_directMessage = _DirectMessage;
+
+        [ self.userNameLabel setStringValue: _DirectMessage.sender.displayName ];
+        [ self.directMessageTextLabel setStringValue: _DirectMessage.tweetText ];
+        [ self.senderAvatar setTwitterUser: _DirectMessage.sender ];
+        }
+    }
 
 @end
 

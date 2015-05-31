@@ -58,15 +58,19 @@
                                                     <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="Fha-SH-YDx"/>
                                                 </connections>
                                             </textField>
-                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srC-al-AOM" customClass="TWPTimelineUserNameLabel">
-                                                <rect key="frame" x="110" y="86" width="481" height="22"/>
-                                                <connections>
-                                                    <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="nBf-wV-wmF"/>
-                                                </connections>
-                                            </customView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hr3-a8-ogJ">
+                                                <rect key="frame" x="112" y="86" width="479" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="F7l-Nf-KIO">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                         </subviews>
                                         <connections>
-                                            <outlet property="userNameLabel" destination="srC-al-AOM" id="dsM-Bt-Kef"/>
+                                            <outlet property="directMessageTextLabel" destination="tKv-qb-6vr" id="hph-ZE-wbc"/>
+                                            <outlet property="senderAvatar" destination="Tit-hB-IA0" id="XAM-cp-eg4"/>
+                                            <outlet property="userNameLabel" destination="hr3-a8-ogJ" id="yAx-Zm-3cs"/>
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>

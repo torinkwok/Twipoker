@@ -24,7 +24,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TWPUserAvatarWell;
+
 @interface TWPDirectMessageSessionCellView : NSTableCellView
+    {
+@private
+    OTCDirectMessage __strong* _directMessage;
+    }
+
+@property ( weak ) IBOutlet NSTextField* userNameLabel;
+@property ( weak ) IBOutlet NSTextField* directMessageTextLabel;
+@property ( weak ) IBOutlet TWPUserAvatarWell* senderAvatar;
+
+@property ( strong, readwrite ) OTCDirectMessage* directMessage;
 
 @end
 

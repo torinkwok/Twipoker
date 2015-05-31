@@ -24,6 +24,7 @@
 
 #import "TWPDirectMessageSessionViewController.h"
 #import "TWPDirectMessageSession.h"
+#import "TWPDirectMessageSessionCellView.h"
 
 @implementation TWPDirectMessageSessionViewController
 
@@ -56,6 +57,20 @@
     }
 
 #pragma mark Conforms to <NSTableViewDelegate>
+- ( NSView* ) tableView: ( NSTableView* )_TableView
+     viewForTableColumn: ( NSTableColumn* )_TableColumn
+                    row: ( NSInteger )_Row
+    {
+    TWPDirectMessageSessionCellView* sessionCellView =
+        ( TWPDirectMessageSessionCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+
+    OTCDirectMessage* dm = self->_session.allDirectMessages[ _Row ];
+    sessionCellView.directMessage = dm;
+
+    return sessionCellView;
+    }
+
+
 - ( BOOL ) tableView: ( NSTableView* )_TableView
      shouldSelectRow: ( NSInteger )_Row
     {

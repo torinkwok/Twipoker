@@ -238,6 +238,7 @@
         </window>
         <customObject id="HUR-ik-D4y" customClass="TWPStackContentViewController">
             <connections>
+                <outlet property="dashboardView" destination="y2h-Qf-hPL" id="hqM-Dg-AqE"/>
                 <outlet property="favoritesDashboardStack" destination="k9K-Hk-Xzb" id="dxH-fp-hcg"/>
                 <outlet property="homeDashboardStack" destination="i5X-Cg-E7K" id="c2I-Ug-frY"/>
                 <outlet property="listsDashboardStack" destination="jhD-Ze-QK8" id="piV-M9-8Ce"/>
@@ -284,11 +285,7 @@
                 <outlet property="baseViewController" destination="27k-py-6ek" id="HoY-Sv-05N"/>
             </connections>
         </customObject>
-        <customObject id="4cS-D0-vD7" userLabel="Messages - Views Stack" customClass="TWPViewsStack">
-            <connections>
-                <outlet property="baseViewController" destination="f4H-bM-VHT" id="h8m-h5-KdH"/>
-            </connections>
-        </customObject>
+        <customObject id="4cS-D0-vD7" userLabel="Messages - Views Stack" customClass="TWPViewsStack"/>
         <customObject id="Gr0-CG-Iha" customClass="TWPNavigationBarController">
             <connections>
                 <outlet property="goBackButton" destination="YCM-gZ-AcP" id="EvN-bO-Bg4"/>
