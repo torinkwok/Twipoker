@@ -100,6 +100,8 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
     [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue includeEntities: @YES skipStatus: @YES
                                     successBlock: fetchDirectMessagesSuccessBlock
                                       errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
+
+    [ [ TWPBrain wiseBrain ] registerLimb: self forUserIDs: nil brainSignal: TWPBrainSignalTypeDirectMessagesMask ];
     }
 
 #pragma mark Dynamic Accessors
@@ -185,6 +187,15 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
     {
     NSParameterAssert( ( _NewObserver ) );
     [ self->_observers addObject: @[ ( _OtherSideUser ?: [ NSNull null ] ), _NewObserver ] ];
+    }
+
+#pragma mark Conforms to <TWPLimb>
+- ( void )            brain: ( TWPBrain* )_Brain
+    didReceiveDirectMessage: ( OTCDirectMessage* )_DirectMessage
+    {
+    NSLog( @"Oh %@", _DirectMessage );
+    [ self->_allDMs addObject: _DirectMessage ];
+    [ self _realodAllSessions ];
     }
 
 @end

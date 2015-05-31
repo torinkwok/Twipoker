@@ -38,7 +38,8 @@
 
 - ( instancetype ) init
     {
-    if ( self = [ super initWithNibName: @"TWPDirectMessagesStartAPrivateConversation" bundle: [ NSBundle mainBundle ] ] )
+    if ( self = [ super initWithNibName: @"TWPDirectMessagesStartAPrivateConversation"
+                                 bundle: [ NSBundle mainBundle ] ] )
         ;
 
     return self;

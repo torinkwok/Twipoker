@@ -25,7 +25,6 @@
 #import "TWPDirectMessageSessionView.h"
 
 @implementation TWPDirectMessageSessionView
-
 @end
 
 /*=============================================================================┐

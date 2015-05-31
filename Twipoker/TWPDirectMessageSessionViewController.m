@@ -25,8 +25,11 @@
 #import "TWPDirectMessageSessionViewController.h"
 #import "TWPDirectMessageSession.h"
 #import "TWPDirectMessageSessionCellView.h"
+#import "TWPDirectMessageSessionView.h"
 
 @implementation TWPDirectMessageSessionViewController
+
+@synthesize sessionView;
 
 #pragma mark Initializations
 + ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession
@@ -40,6 +43,11 @@
         self->_session = _DMSession;
 
     return self;
+    }
+
+- ( void ) awakeFromNib
+    {
+    [ [ TWPDirectMessagesCoordinator defaultCenter ] registerObserver: self otherSideUser: self->_session.otherSideUser ];
     }
 
 #pragma mark Conforms to <NSTableViewDataSource>
@@ -75,6 +83,14 @@
      shouldSelectRow: ( NSInteger )_Row
     {
     return NO;
+    }
+
+#pragma mark Conforms to <TWPDirectMessagesCoordinatorObserver>
+- ( void )       coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator
+    didUpdateSessionWithUser: ( OTCTwitterUser* )_OtherSideUser
+    {
+    [ self->_session reloadMessages ];
+    [ self.sessionView reloadData ];
     }
 
 @end

@@ -23,15 +23,19 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPViewController.h"
+#import "TWPDirectMessagesCoordinator.h"
 
 @class TWPDirectMessageSession;
+@class TWPDirectMessageSessionView;
 
 @interface TWPDirectMessageSessionViewController : TWPViewController
-    <NSTableViewDataSource, NSTableViewDelegate>
+    <NSTableViewDataSource, NSTableViewDelegate, TWPDirectMessagesCoordinatorObserver>
     {
 @private
     TWPDirectMessageSession __strong* _session;
     }
+
+@property ( weak ) IBOutlet TWPDirectMessageSessionView* sessionView;
 
 #pragma mark Initializations
 + ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession;

@@ -226,6 +226,25 @@ TWPBrain static __strong* sWiseBrain;
         }
     }
 
+- ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI
+     sentOrReceivedDM: ( OTCDirectMessage* )_DirectMessage
+    {
+    NSNumber* senderID = [ NSNumber numberWithLongLong: _DirectMessage.sender.ID ];
+
+    for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
+        {
+        if ( _MntID.userID.longLongValue == senderID.longLongValue /* Specified user */
+                || !_MntID.userID /* Current authenticating user */ )
+            {
+            if ( _MntID.signalMask & TWPBrainSignalTypeDirectMessagesMask )
+                {
+                if ( [ _MntID.limb respondsToSelector: @selector( brain:didReceiveDirectMessage: ) ] )
+                    [ _MntID.limb brain: self didReceiveDirectMessage: _DirectMessage ];
+                }
+            }
+        }
+    }
+
 @end // TWPBrain class
 
 /*=============================================================================┐

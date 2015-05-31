@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPDirectMessageSessionViewController">
             <connections>
+                <outlet property="sessionView" destination="LD4-SU-xW0" id="KwU-ao-b72"/>
                 <outlet property="view" destination="Vph-0s-fBn" id="bFM-20-AcC"/>
             </connections>
         </customObject>

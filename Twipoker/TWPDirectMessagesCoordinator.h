@@ -22,7 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Foundation/Foundation.h>
+#import "TWPBrain.h"
 
 @class TWPDirectMessagesPreviewViewController;
 @class TWPDirectMessageSession;
@@ -30,7 +30,7 @@
 @protocol TWPDirectMessagesCoordinatorObserver;
 
 // TWPDirectMessagesCoordinator class
-@interface TWPDirectMessagesCoordinator : NSObject
+@interface TWPDirectMessagesCoordinator : NSObject <TWPLimb>
     {
 @private
     // The ivar storing the direct messages sent to/received by current authenticating user
