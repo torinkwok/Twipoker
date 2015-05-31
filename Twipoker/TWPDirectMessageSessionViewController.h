@@ -27,10 +27,15 @@
 @class TWPDirectMessageSession;
 
 @interface TWPDirectMessageSessionViewController : TWPViewController
+    <NSTableViewDataSource, NSTableViewDelegate>
     {
 @private
-
+    TWPDirectMessageSession __strong* _session;
     }
+
+#pragma mark Initializations
++ ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession;
+- ( instancetype ) initWithSession: ( TWPDirectMessageSession* )_DMSession;
 
 @end
 

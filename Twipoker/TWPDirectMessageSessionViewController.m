@@ -23,8 +23,44 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDirectMessageSessionViewController.h"
+#import "TWPDirectMessageSession.h"
 
 @implementation TWPDirectMessageSessionViewController
+
+#pragma mark Initializations
++ ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession
+    {
+    return [ [ [ self class ] alloc ] initWithSession: _DMSession ];
+    }
+
+- ( instancetype ) initWithSession: ( TWPDirectMessageSession* )_DMSession
+    {
+    if ( self = [ super initWithNibName: @"TWPDirectMessagesSessionView" bundle: [ NSBundle mainBundle ] ] )
+        self->_session = _DMSession;
+
+    return self;
+    }
+
+#pragma mark Conforms to <NSTableViewDataSource>
+- ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
+    {
+    return [ self->_session allDirectMessages ].count;
+    }
+
+- ( id )            tableView: ( NSTableView* )_TableView
+    objectValueForTableColumn: ( NSTableColumn* )_TableColumn
+                          row: ( NSInteger )_Row
+    {
+    id result = self->_session.allDirectMessages[ _Row ];
+    return result;
+    }
+
+#pragma mark Conforms to <NSTableViewDelegate>
+- ( BOOL ) tableView: ( NSTableView* )_TableView
+     shouldSelectRow: ( NSInteger )_Row
+    {
+    return NO;
+    }
 
 @end
 

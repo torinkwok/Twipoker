@@ -80,6 +80,17 @@
     return previewCellView;
     }
 
+- ( BOOL ) tableView: ( NSTableView* )_TableView
+     shouldSelectRow: ( NSInteger )_RowIndex
+    {
+    return NO;
+    }
+
+- ( void ) tableViewSelectionDidChange: ( NSNotification* )_Notif
+    {
+    NSLog( @"%@", _Notif );
+    }
+
 #pragma mark Conforms to <TWPDirectMessagesCoordinatorObserver>
 - ( void )       coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator
     didAddNewSessionWithUser: ( OTCTwitterUser* )_OtherSideUser

@@ -26,6 +26,9 @@
 #import "TWPDirectMessageSession.h"
 #import "TWPUserAvatarWell.h"
 
+// Notifications Name
+NSString* const TWPDirectMessagePreviewTableCellViewMouseDown = @"DirectMessagePreviewTable.Notif.MouseDown";
+
 @implementation TWPDirectMessagePreviewTableCellView
 
 @synthesize userAvatar;
@@ -36,6 +39,11 @@
 @dynamic session;
 
 #pragma mark Accessors
+- ( TWPDirectMessageSession* ) session
+    {
+    return self->_session;
+    }
+
 - ( void ) setSession: ( TWPDirectMessageSession* )_Session
     {
     self->_session = _Session;
@@ -48,6 +56,15 @@
     [ contentPreview setStringValue: mostRecentDM.tweetText ];
 
     [ self setNeedsDisplay: YES ];
+    }
+
+#pragma mark Events Handling
+- ( void ) mouseDown: ( NSEvent* )_Event
+    {
+//    NSLog( @"%@", _Event );
+
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPDirectMessagePreviewTableCellViewMouseDown
+                                                           object: self ];
     }
 
 @end

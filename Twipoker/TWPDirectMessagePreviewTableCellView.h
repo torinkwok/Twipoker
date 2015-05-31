@@ -27,6 +27,9 @@
 @class TWPUserAvatarWell;
 @class TWPDirectMessageSession;
 
+// Notifications Name
+NSString extern* const TWPDirectMessagePreviewTableCellViewMouseDown;
+
 @interface TWPDirectMessagePreviewTableCellView : NSTableCellView
     {
 @private

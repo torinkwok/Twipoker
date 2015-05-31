@@ -51,6 +51,7 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender;
 - ( IBAction ) pushRepliesTimleineToCurrentViewsStackAction: ( id )_Sender;
 - ( IBAction ) pushTwitterListTimelineToCurrentViewsStackAction: ( id )_Sender;
+- ( IBAction ) pushDirectMessageSessionViewToCurrentViewStackAction: ( id )_Sender;
 
 - ( IBAction ) goBackAction: ( id )_Sender;
 - ( IBAction ) goForwardAction: ( id )_Sender;
