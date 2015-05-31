@@ -254,12 +254,7 @@
         <customObject id="NMQ-Oj-KgN" customClass="TWPListsViewController"/>
         <customObject id="h3J-yb-VMt" customClass="TWPNotificationsViewController"/>
         <customObject id="27k-py-6ek" customClass="TWPMeViewController"/>
-        <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController">
-            <connections>
-                <outlet property="DMPreviewTableView" destination="iY4-6u-VrM" id="eeR-90-VL3"/>
-                <outlet property="view" destination="Zwj-uj-ZVJ" id="2WP-UN-rmj"/>
-            </connections>
-        </customObject>
+        <customObject id="jJM-iy-4nF" customClass="TWPDirectMessagesStartAPrivateConversationViewController"/>
         <customObject id="i5X-Cg-E7K" userLabel="Home - Views Stack" customClass="TWPViewsStack">
             <connections>
                 <outlet property="baseViewController" destination="qYt-FS-RIP" id="LF0-KP-2wa"/>
@@ -285,7 +280,11 @@
                 <outlet property="baseViewController" destination="27k-py-6ek" id="HoY-Sv-05N"/>
             </connections>
         </customObject>
-        <customObject id="4cS-D0-vD7" userLabel="Messages - Views Stack" customClass="TWPViewsStack"/>
+        <customObject id="4cS-D0-vD7" userLabel="Messages - Views Stack" customClass="TWPViewsStack">
+            <connections>
+                <outlet property="baseViewController" destination="jJM-iy-4nF" id="cHb-Nx-ciu"/>
+            </connections>
+        </customObject>
         <customObject id="Gr0-CG-Iha" customClass="TWPNavigationBarController">
             <connections>
                 <outlet property="goBackButton" destination="YCM-gZ-AcP" id="EvN-bO-Bg4"/>
@@ -296,6 +295,12 @@
         <customObject id="DoC-kn-lPg" customClass="TWPDirectMessagesCoordinator">
             <connections>
                 <outlet property="DMPreviewViewContorller" destination="f4H-bM-VHT" id="451-GU-mrU"/>
+            </connections>
+        </customObject>
+        <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController">
+            <connections>
+                <outlet property="DMPreviewTableView" destination="iY4-6u-VrM" id="eeR-90-VL3"/>
+                <outlet property="view" destination="Zwj-uj-ZVJ" id="2WP-UN-rmj"/>
             </connections>
         </customObject>
     </objects>

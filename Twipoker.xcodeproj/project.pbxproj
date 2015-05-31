@@ -10,6 +10,10 @@
 		8308961E1AEA1D1D0081D227 /* TWPTimelineScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */; };
 		830896211AEA1D1D0081D227 /* TWPTweetCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */; };
 		830896241AEA1D2A0081D227 /* TWPStackContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896231AEA1D2A0081D227 /* TWPStackContentView.m */; };
+		830A39941B1B07D2002EA4E2 /* direct_message_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 830A39931B1B07D2002EA4E2 /* direct_message_start.png */; };
+		830A39961B1B0863002EA4E2 /* TWPDirectMessagesStartAPrivateConversation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 830A39951B1B0863002EA4E2 /* TWPDirectMessagesStartAPrivateConversation.xib */; };
+		830A39991B1B0883002EA4E2 /* TWPDirectMessagesStartAPrivateConversationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830A39981B1B0883002EA4E2 /* TWPDirectMessagesStartAPrivateConversationView.m */; };
+		830A399C1B1B0895002EA4E2 /* TWPDirectMessagesStartAPrivateConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830A399B1B1B0895002EA4E2 /* TWPDirectMessagesStartAPrivateConversationViewController.m */; };
 		830B8F5D1AF0CC12006D2635 /* TWPStackContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B8F5C1AF0CC12006D2635 /* TWPStackContentViewController.m */; };
 		830B8F631AF0E303006D2635 /* TWPUserAvatarWell.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B8F621AF0E303006D2635 /* TWPUserAvatarWell.m */; };
 		830B8F921AF13BBF006D2635 /* NSURL+Objectwitter-C.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B8F911AF13BBF006D2635 /* NSURL+Objectwitter-C.m */; };
@@ -171,6 +175,12 @@
 		8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetCellView.m; path = Twipoker/TWPTweetCellView.m; sourceTree = "<group>"; };
 		830896221AEA1D2A0081D227 /* TWPStackContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPStackContentView.h; path = Twipoker/TWPStackContentView.h; sourceTree = "<group>"; };
 		830896231AEA1D2A0081D227 /* TWPStackContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPStackContentView.m; path = Twipoker/TWPStackContentView.m; sourceTree = "<group>"; };
+		830A39931B1B07D2002EA4E2 /* direct_message_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = direct_message_start.png; sourceTree = "<group>"; };
+		830A39951B1B0863002EA4E2 /* TWPDirectMessagesStartAPrivateConversation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPDirectMessagesStartAPrivateConversation.xib; path = Twipoker/TWPDirectMessagesStartAPrivateConversation.xib; sourceTree = "<group>"; };
+		830A39971B1B0883002EA4E2 /* TWPDirectMessagesStartAPrivateConversationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDirectMessagesStartAPrivateConversationView.h; path = Twipoker/TWPDirectMessagesStartAPrivateConversationView.h; sourceTree = "<group>"; };
+		830A39981B1B0883002EA4E2 /* TWPDirectMessagesStartAPrivateConversationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDirectMessagesStartAPrivateConversationView.m; path = Twipoker/TWPDirectMessagesStartAPrivateConversationView.m; sourceTree = "<group>"; };
+		830A399A1B1B0895002EA4E2 /* TWPDirectMessagesStartAPrivateConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDirectMessagesStartAPrivateConversationViewController.h; path = Twipoker/TWPDirectMessagesStartAPrivateConversationViewController.h; sourceTree = "<group>"; };
+		830A399B1B1B0895002EA4E2 /* TWPDirectMessagesStartAPrivateConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDirectMessagesStartAPrivateConversationViewController.m; path = Twipoker/TWPDirectMessagesStartAPrivateConversationViewController.m; sourceTree = "<group>"; };
 		830B8F5B1AF0CC12006D2635 /* TWPStackContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPStackContentViewController.h; path = Twipoker/TWPStackContentViewController.h; sourceTree = "<group>"; };
 		830B8F5C1AF0CC12006D2635 /* TWPStackContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPStackContentViewController.m; path = Twipoker/TWPStackContentViewController.m; sourceTree = "<group>"; };
 		830B8F611AF0E303006D2635 /* TWPUserAvatarWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPUserAvatarWell.h; path = Twipoker/TWPUserAvatarWell.h; sourceTree = "<group>"; };
@@ -723,6 +733,11 @@
 			isa = PBXGroup;
 			children = (
 				83AAF6E01AECE9E1007A3A48 /* TWPDirectMessagesSessionView.xib */,
+				830A39951B1B0863002EA4E2 /* TWPDirectMessagesStartAPrivateConversation.xib */,
+				830A39971B1B0883002EA4E2 /* TWPDirectMessagesStartAPrivateConversationView.h */,
+				830A39981B1B0883002EA4E2 /* TWPDirectMessagesStartAPrivateConversationView.m */,
+				830A399A1B1B0895002EA4E2 /* TWPDirectMessagesStartAPrivateConversationViewController.h */,
+				830A399B1B1B0895002EA4E2 /* TWPDirectMessagesStartAPrivateConversationViewController.m */,
 				8317328D1B14812B00B136BF /* TWPDirectMessagesCoordinator.h */,
 				8317328E1B14812B00B136BF /* TWPDirectMessagesCoordinator.m */,
 				831732901B14900A00B136BF /* TWPDirectMessageSession.h */,
@@ -879,6 +894,7 @@
 			children = (
 				83C07A981AF22FA000184CCB /* twitter-logo-blue.png */,
 				83C07A961AF22B0600184CCB /* draft-tweet-black.tiff */,
+				830A39931B1B07D2002EA4E2 /* direct_message_start.png */,
 				83C07A851AF221ED00184CCB /* navigation-bar */,
 				83D3FF2A1ACB144B009D40EE /* Images.xcassets */,
 				83CFD88C1ACF1FFD0062D73D /* icon_16x16.png */,
@@ -1186,6 +1202,7 @@
 				83AAF6E11AECE9E1007A3A48 /* TWPDirectMessagesSessionView.xib in Resources */,
 				83C3DAC41B138613005973EE /* TWPTwitterListTimelineView.xib in Resources */,
 				83CFD89D1ACF1FFD0062D73D /* icon_256x256@2x.png in Resources */,
+				830A39941B1B07D2002EA4E2 /* direct_message_start.png in Resources */,
 				83AAF6DB1AECE930007A3A48 /* TWPNotificationsView.xib in Resources */,
 				83924DA91AE1033700C25895 /* MASPreferencesWindow.xib in Resources */,
 				83AAF6D71AECE907007A3A48 /* TWPListsView.xib in Resources */,
@@ -1201,6 +1218,7 @@
 				83CFD89B1ACF1FFD0062D73D /* icon_128x128@2x.png in Resources */,
 				83CFD89C1ACF1FFD0062D73D /* icon_256x256.png in Resources */,
 				83AAF6D51AECE8F6007A3A48 /* TWPFavoritesView.xib in Resources */,
+				830A39961B1B0863002EA4E2 /* TWPDirectMessagesStartAPrivateConversation.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1248,6 +1266,7 @@
 				83CFD8701ACF1C820062D73D /* TWPTextFieldCell.m in Sources */,
 				83AAF6FC1AECF710007A3A48 /* TWPMeViewController.m in Sources */,
 				83924DC21AE104A900C25895 /* _OTCGeneral.m in Sources */,
+				830A39991B1B0883002EA4E2 /* TWPDirectMessagesStartAPrivateConversationView.m in Sources */,
 				83924D951AE1030B00C25895 /* INAppStoreWindow.m in Sources */,
 				83F231BD1AE114A600A05D1D /* FBKVOController.m in Sources */,
 				83CFD8761ACF1C820062D73D /* TWPLoginPanelController.m in Sources */,
@@ -1304,6 +1323,7 @@
 				83924D961AE1030B00C25895 /* INWindowButton.m in Sources */,
 				83924DCA1AE104A900C25895 /* OTCTwitterUser.m in Sources */,
 				8317329B1B15E25C00B136BF /* TWPDirectMessagePreviewTableCellView.m in Sources */,
+				830A399C1B1B0895002EA4E2 /* TWPDirectMessagesStartAPrivateConversationViewController.m in Sources */,
 				83924DD31AE105AB00C25895 /* NSDate+WSCCocoaDate.m in Sources */,
 				83CFD8711ACF1C820062D73D /* TWPGeneral.m in Sources */,
 				83E9A2E81B02721200CA5926 /* STTwitterOAuth.m in Sources */,
