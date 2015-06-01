@@ -61,7 +61,7 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
 
             self->_twitterAPI = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
 
-            self->_observers = [ NSMutableArray array ];
+            self->_dispatchTable = [ NSMutableArray array ];
 
             sDefaultCoordinator = self;
             }
@@ -164,7 +164,7 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
                 delegateMethodSEL = @selector( coordinator:didUpdateSessionWithUser: );
                 }
 
-            for ( NSArray* _Pair in self->_observers )
+            for ( NSArray* _Pair in self->_dispatchTable )
                 {
                 if ( _Pair.firstObject == [ NSNull null ] || [ _Pair.firstObject isEqualToUser: _OtherSideUser ] )
                     if ( [ _Pair.lastObject conformsToProtocol: @protocol( TWPDirectMessagesCoordinatorObserver ) ]
@@ -180,13 +180,32 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
     }
 
 #pragma mark Observer Registration
-// Once the `_OtherSideUser` sent direct message to the current authenticating user,
-// `_NewObserver` will be notified.
+// Adds an entry to the receiver’s dispatch table with an observer, an other side user object.
+// Once the `_OtherSideUser` sent direct message to the current authenticating user, `_NewObserver` will be notified.
 - ( void ) registerObserver: ( id <TWPDirectMessagesCoordinatorObserver> )_NewObserver
               otherSideUser: ( OTCTwitterUser* )_OtherSideUser
     {
     NSParameterAssert( ( _NewObserver ) );
-    [ self->_observers addObject: @[ ( _OtherSideUser ?: [ NSNull null ] ), _NewObserver ] ];
+    [ self->_dispatchTable addObject: @[ ( _OtherSideUser ?: [ NSNull null ] ), _NewObserver ] ];
+    }
+
+// Removes all the entries specifying a given observer from the receiver’s dispatch table.
+- ( void ) removeObserver: ( id )_Observer
+    {
+    NSMutableIndexSet* indexesOfObserver = [ NSMutableIndexSet indexSet ];
+
+    for ( NSArray* _ObserverPair in self->_dispatchTable )
+        if ( _ObserverPair.lastObject == _Observer )
+            [ indexesOfObserver addIndex: [ self->_dispatchTable indexOfObject: _ObserverPair ] ];
+
+    [ self->_dispatchTable removeObjectsAtIndexes: indexesOfObserver ];
+    }
+
+// Removes matching entries from the receiver’s dispatch table.
+- ( void ) removeObserver: ( id )_Observer
+            otherSideUser: ( OTCTwitterUser* )_OtherSideUser
+    {
+    [ self->_dispatchTable removeObject: @[ _OtherSideUser, _Observer ] ];
     }
 
 #pragma mark Conforms to <TWPLimb>

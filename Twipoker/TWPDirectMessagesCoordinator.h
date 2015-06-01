@@ -39,12 +39,12 @@
 
     STTwitterAPI __strong* _twitterAPI;
 
-    /* @[ @[ OTCTwitterUser, id <TWPDirectMessagesCoordinatorObserver> ]
-        , @[ OTCTwitterUser, id <TWPDirectMessagesCoordinatorObserver> ]
-        , @[ OTCTwitterUser, id <TWPDirectMessagesCoordinatorObserver> ]
+    /* @[ @[ OTCTwitterUser (Other Side User), id <TWPDirectMessagesCoordinatorObserver> (Observer) ]
+        , @[ OTCTwitterUser (Other Side User), id <TWPDirectMessagesCoordinatorObserver> (Observer) ]
+        , @[ OTCTwitterUser (Other Side User), id <TWPDirectMessagesCoordinatorObserver> (Observer) ]
         , ...
         ] */
-    NSMutableArray __strong* _observers;
+    NSMutableArray __strong* _dispatchTable;
     }
 
 @property ( weak ) IBOutlet TWPDirectMessagesPreviewViewController* DMPreviewViewContorller;
@@ -58,10 +58,16 @@
 + ( instancetype ) defaultCenter;
 
 #pragma mark Observer Registration
-// Once the `_OtherSideUser` sent direct message to the current authenticating user,
-// `_NewObserver` will be notified.
+// Adds an entry to the receiver’s dispatch table with an observer, an other side user object.
+// Once the `_OtherSideUser` sent direct message to the current authenticating user, `_NewObserver` will be notified.
 - ( void ) registerObserver: ( id <TWPDirectMessagesCoordinatorObserver> )_NewObserver
               otherSideUser: ( OTCTwitterUser* )_OtherSideUser;
+
+// Removes all the entries specifying a given observer from the receiver’s dispatch table.
+- ( void ) removeObserver: ( id )_Observer;
+
+// Removes matching entries from the receiver’s dispatch table.
+- ( void ) removeObserver: ( id )_Observer otherSideUser: ( OTCTwitterUser* )_OtherSideUser;
 
 @end // TWPDirectMessagesCoordinator class
 
