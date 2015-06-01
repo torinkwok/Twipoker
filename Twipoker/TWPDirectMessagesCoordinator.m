@@ -212,7 +212,6 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
 - ( void )            brain: ( TWPBrain* )_Brain
     didReceiveDirectMessage: ( OTCDirectMessage* )_DirectMessage
     {
-    NSLog( @"Oh %@", _DirectMessage );
     [ self->_allDMs addObject: _DirectMessage ];
     [ self _realodAllSessions ];
     }

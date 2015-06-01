@@ -46,7 +46,7 @@
                            block:
         ( FBKVONotificationBlock )^( id _Observer, id _Object, NSDictionary* _Changes )
             {
-            TWPViewsStack* newViewsStack = _Changes[ @"new" ];
+            TWPViewsStack __weak* newViewsStack = _Changes[ @"new" ];
             [ newViewsStack.currentView.view setFrame: [ self boundsOfElementView ] ];
             [ self setSubviews: @[ newViewsStack.currentView.view ] ];
             } ];

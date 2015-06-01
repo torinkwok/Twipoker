@@ -50,6 +50,12 @@
     [ [ TWPDirectMessagesCoordinator defaultCenter ] registerObserver: self otherSideUser: self->_session.otherSideUser ];
     }
 
+- ( void ) dealloc
+    {
+    NSLog( @"🔥🔥🔥🔥" );
+    [ [ TWPDirectMessagesCoordinator defaultCenter ] removeObserver: self ];
+    }
+
 #pragma mark Conforms to <NSTableViewDataSource>
 - ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
     {
