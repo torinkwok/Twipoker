@@ -22,14 +22,14 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import "TWPDirectMessagesStartAPrivateConversationView.h"
 
-@implementation TWPDashboardView
+@implementation TWPDirectMessagesStartAPrivateConversationView
 
-- ( void ) awakeFromNib
+- ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+    [ [ NSColor whiteColor ] set ];
+    NSRectFill( _DirtyRect );
     }
 
 @end

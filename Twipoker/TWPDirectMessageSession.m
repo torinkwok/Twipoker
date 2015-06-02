@@ -22,14 +22,81 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import "TWPDirectMessageSession.h"
+#import "TWPDirectMessagesCoordinator.h"
 
-@implementation TWPDashboardView
+@implementation TWPDirectMessageSession
 
-- ( void ) awakeFromNib
+@synthesize allDirectMessages = _DMs;
+@synthesize otherSideUser = _otherSideUser;
+@dynamic mostRecentMessage;
+
+#pragma mark Initializations
++ ( instancetype ) sessionWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+    return [ [ [ self class ] alloc ] initWithOtherSideUser: _OtherSideUser ];
+    }
+
+- ( instancetype ) initWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser
+    {
+    if ( self = [ super init ] )
+        {
+        self->_DMs = [ NSMutableArray array ];
+        self->_otherSideUser = _OtherSideUser;
+        [ self _loadMessages ];
+        }
+
+    return self;
+    }
+
+#pragma mark Accessors
+- ( OTCDirectMessage* ) mostRecentMessage
+    {
+    return self->_DMs.firstObject;
+    }
+
+#pragma mark Comparing
+- ( BOOL ) isEqualToSession: ( TWPDirectMessageSession* )_AnotherSession
+    {
+    if ( self == _AnotherSession )
+        return YES;
+
+    return [ self->_otherSideUser isEqualToUser: _AnotherSession.otherSideUser ];
+    }
+
+- ( BOOL ) isEqual: ( id )_Object
+    {
+    if ( self == _Object )
+        return YES;
+
+    if ( [ _Object isKindOfClass: [ TWPDirectMessageSession class ] ] )
+        return [ self isEqualToSession: ( TWPDirectMessageSession* )_Object ];
+
+    return [ super isEqual: _Object ];
+    }
+
+#pragma mark Reloading
+- ( void ) reloadMessages
+    {
+    [ self _loadMessages ];
+    }
+
+- ( void ) _loadMessages
+    {
+    // Retrieve the direct messages sent/received by the other side user
+    NSArray* allDMs =  [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
+    for ( OTCDirectMessage* _DM in allDMs )
+        if ( [ self->_otherSideUser isEqualToUser: _DM.sender ]
+                || [ self->_otherSideUser isEqualToUser: _DM.recipient ] )
+            if ( ![ _DMs containsObject: _DM ] )
+                [ _DMs addObject: _DM ];
+
+    [ self->_DMs sortWithOptions: NSSortConcurrent
+                 usingComparator:
+        ( NSComparator )^( OTCDirectMessage* _LhsDM, OTCDirectMessage* _RhsDM )
+            {
+            return _LhsDM.tweetID < _RhsDM.tweetID;
+            } ];
     }
 
 @end

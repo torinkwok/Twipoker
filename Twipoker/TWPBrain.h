@@ -55,6 +55,8 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     NSMutableArray __strong* _uniqueTweetsQueue;
     }
 
+@property ( strong, readwrite ) OTCTwitterUser* currentTwitterUser;
+
 #pragma mark Initializations
 + ( instancetype ) wiseBrain;
 
@@ -71,6 +73,7 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweetDeletion: ( NSString* )_DeletedTweetID byUser: ( NSString* )_UserID on: ( NSDate* )_DeletionDate;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveMention: ( OTCTweet* )_Metion;
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveDirectMessage: ( OTCDirectMessage* )_DirectMessage;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveEvent: ( OTCStreamingEvent* )_DetectedEvent;
 
 @end // TWPLimb class

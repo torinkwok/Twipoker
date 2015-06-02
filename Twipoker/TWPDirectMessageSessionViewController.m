@@ -22,14 +22,81 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import "TWPDirectMessageSessionViewController.h"
+#import "TWPDirectMessageSession.h"
+#import "TWPDirectMessageSessionCellView.h"
+#import "TWPDirectMessageSessionView.h"
 
-@implementation TWPDashboardView
+@implementation TWPDirectMessageSessionViewController
+
+@synthesize sessionView;
+
+#pragma mark Initializations
++ ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession
+    {
+    return [ [ [ self class ] alloc ] initWithSession: _DMSession ];
+    }
+
+- ( instancetype ) initWithSession: ( TWPDirectMessageSession* )_DMSession
+    {
+    if ( self = [ super initWithNibName: @"TWPDirectMessagesSessionView" bundle: [ NSBundle mainBundle ] ] )
+        self->_session = _DMSession;
+
+    return self;
+    }
 
 - ( void ) awakeFromNib
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+    [ [ TWPDirectMessagesCoordinator defaultCenter ] registerObserver: self otherSideUser: self->_session.otherSideUser ];
+    }
+
+- ( void ) dealloc
+    {
+    NSLog( @"🔥🔥🔥🔥" );
+    [ [ TWPDirectMessagesCoordinator defaultCenter ] removeObserver: self ];
+    }
+
+#pragma mark Conforms to <NSTableViewDataSource>
+- ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
+    {
+    return [ self->_session allDirectMessages ].count;
+    }
+
+- ( id )            tableView: ( NSTableView* )_TableView
+    objectValueForTableColumn: ( NSTableColumn* )_TableColumn
+                          row: ( NSInteger )_Row
+    {
+    id result = self->_session.allDirectMessages[ _Row ];
+    return result;
+    }
+
+#pragma mark Conforms to <NSTableViewDelegate>
+- ( NSView* ) tableView: ( NSTableView* )_TableView
+     viewForTableColumn: ( NSTableColumn* )_TableColumn
+                    row: ( NSInteger )_Row
+    {
+    TWPDirectMessageSessionCellView* sessionCellView =
+        ( TWPDirectMessageSessionCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+
+    OTCDirectMessage* dm = self->_session.allDirectMessages[ _Row ];
+    sessionCellView.directMessage = dm;
+
+    return sessionCellView;
+    }
+
+
+- ( BOOL ) tableView: ( NSTableView* )_TableView
+     shouldSelectRow: ( NSInteger )_Row
+    {
+    return NO;
+    }
+
+#pragma mark Conforms to <TWPDirectMessagesCoordinatorObserver>
+- ( void )       coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator
+    didUpdateSessionWithUser: ( OTCTwitterUser* )_OtherSideUser
+    {
+    [ self->_session reloadMessages ];
+    [ self.sessionView reloadData ];
     }
 
 @end

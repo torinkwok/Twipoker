@@ -30,6 +30,8 @@
 // TWPBrain class
 @implementation TWPBrain
 
+@synthesize currentTwitterUser;
+
 #pragma mark Initializations
 + ( instancetype ) wiseBrain
     {
@@ -64,10 +66,16 @@ TWPBrain static __strong* sWiseBrain;
 
             self->_uniqueTweetsQueue = [ NSMutableArray array ];
 
-            sWiseBrain = self;
+            [ self->_authingUserTimelineStream getUsersShowForUserID: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID
+                                                        orScreenName: nil
+                                                     includeEntities: @YES
+                                                        successBlock:
+                ^( NSDictionary* _User )
+                    {
+                    self.currentTwitterUser = [ OTCTwitterUser userWithJSON: _User ];
+                    } errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
 
-            NSLog( @"Home: %@", self->_authingUserTimelineStream );
-            NSLog( @"Public: %@", self->_publicTimelineFilterStream );
+            sWiseBrain = self;
             }
         }
 
@@ -214,6 +222,25 @@ TWPBrain static __strong* sWiseBrain;
             if ( _MntID.signalMask & TWPBrainSignalTypeTweetDeletionMask
                     && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweetDeletion:byUser:on: ) ] )
                 [ _MntID.limb brain: self didReceiveTweetDeletion: _DeletedTweetID byUser: _UserID on: _DeletionDate ];
+            }
+        }
+    }
+
+- ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI
+     sentOrReceivedDM: ( OTCDirectMessage* )_DirectMessage
+    {
+    NSNumber* senderID = [ NSNumber numberWithLongLong: _DirectMessage.sender.ID ];
+
+    for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
+        {
+        if ( _MntID.userID.longLongValue == senderID.longLongValue /* Specified user */
+                || !_MntID.userID /* Current authenticating user */ )
+            {
+            if ( _MntID.signalMask & TWPBrainSignalTypeDirectMessagesMask )
+                {
+                if ( [ _MntID.limb respondsToSelector: @selector( brain:didReceiveDirectMessage: ) ] )
+                    [ _MntID.limb brain: self didReceiveDirectMessage: _DirectMessage ];
+                }
             }
         }
     }

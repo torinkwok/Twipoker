@@ -22,15 +22,24 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import "TWPViewController.h"
+#import "TWPDirectMessagesCoordinator.h"
 
-@implementation TWPDashboardView
+@class TWPDirectMessageSession;
+@class TWPDirectMessageSessionView;
 
-- ( void ) awakeFromNib
+@interface TWPDirectMessageSessionViewController : TWPViewController
+    <NSTableViewDataSource, NSTableViewDelegate, TWPDirectMessagesCoordinatorObserver>
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+@private
+    TWPDirectMessageSession __strong* _session;
     }
+
+@property ( weak ) IBOutlet TWPDirectMessageSessionView* sessionView;
+
+#pragma mark Initializations
++ ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession;
+- ( instancetype ) initWithSession: ( TWPDirectMessageSession* )_DMSession;
 
 @end
 

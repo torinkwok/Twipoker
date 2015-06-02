@@ -16,21 +16,20 @@
             <rect key="frame" x="0.0" y="5" width="607" height="707"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView identifier="home" ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="118" horizontalPageScroll="10" verticalLineScroll="118" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvA-dR-Nmc" userLabel="User Timeline Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
+                <scrollView identifier="home" ambiguous="YES" misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="118" horizontalPageScroll="10" verticalLineScroll="118" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvA-dR-Nmc" userLabel="User Timeline Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
                     <rect key="frame" x="0.0" y="0.0" width="607" height="482"/>
                     <clipView key="contentView" ambiguous="YES" misplaced="YES" copiesOnScroll="NO" id="iLM-pt-JDa">
                         <rect key="frame" x="1" y="1" width="605" height="630"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="ytX-LH-Qoq" userLabel="User Timeline Table View" customClass="TWPTimelineTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="605" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="607" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                 <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <tableColumns>
-                                    <tableColumn identifier="home-timeline" width="602" minWidth="40" maxWidth="1000" id="D74-9T-36S">
+                                    <tableColumn identifier="home-timeline" width="604" minWidth="40" maxWidth="1000" id="D74-9T-36S">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -44,7 +43,7 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="ji8-df-job" customClass="TWPTweetCellView">
-                                                <rect key="frame" x="1" y="1" width="602" height="116"/>
+                                                <rect key="frame" x="1" y="1" width="604" height="116"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VYC-sf-OlJ" userLabel="Avatar" customClass="TWPUserAvatarWell">

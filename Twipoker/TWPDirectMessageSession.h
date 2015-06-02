@@ -22,15 +22,29 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import <Foundation/Foundation.h>
 
-@implementation TWPDashboardView
-
-- ( void ) awakeFromNib
+@interface TWPDirectMessageSession : NSObject
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+@private
+    NSMutableArray __strong* _DMs;
+    OTCTwitterUser __strong* _otherSideUser;
     }
+
+// Maybe empty
+@property ( strong, readonly ) NSMutableArray* allDirectMessages;
+@property ( strong, readonly ) OTCTwitterUser* otherSideUser;
+@property ( strong, readonly ) OTCDirectMessage* mostRecentMessage;
+
+#pragma mark Initializations
++ ( instancetype ) sessionWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser;
+- ( instancetype ) initWithOtherSideUser: ( OTCTwitterUser* )_OtherSideUser;
+
+#pragma mark Comparing
+- ( BOOL ) isEqualToSession: ( TWPDirectMessageSession* )_AnotherSession;
+
+#pragma mark Reloading Messages
+- ( void ) reloadMessages;
 
 @end
 

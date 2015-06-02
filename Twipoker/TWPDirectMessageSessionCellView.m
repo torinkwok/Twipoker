@@ -22,28 +22,27 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPMessagesViewController.h"
+#import "TWPDirectMessageSessionCellView.h"
+#import "TWPUserAvatarWell.h"
 
-@interface TWPMessagesViewController ()
+@implementation TWPDirectMessageSessionCellView
 
-@end
+@synthesize userNameLabel;
+@synthesize directMessageTextLabel;
+@synthesize senderAvatar;
 
-@implementation TWPMessagesViewController
+@dynamic directMessage;
 
-#pragma mark Initialization
-- ( instancetype ) init
+- ( void ) setDirectMessage: ( OTCDirectMessage* )_DirectMessage
     {
-    if ( self = [ super initWithNibName: @"TWPMessagesView" bundle: [ NSBundle mainBundle ] ] )
-        ; // TODO:
+    if ( self->_directMessage != _DirectMessage )
+        {
+        self->_directMessage = _DirectMessage;
 
-    return self;
-    }
-
-- ( void ) viewDidLoad
-    {
-    [ super viewDidLoad ];
-
-    // Do view setup here.
+        [ self.userNameLabel setStringValue: _DirectMessage.sender.displayName ];
+        [ self.directMessageTextLabel setStringValue: _DirectMessage.tweetText ];
+        [ self.senderAvatar setTwitterUser: _DirectMessage.sender ];
+        }
     }
 
 @end

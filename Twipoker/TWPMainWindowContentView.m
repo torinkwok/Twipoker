@@ -22,9 +22,16 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPMainWindowContentView.h"
 
-@interface TWPMessagesViewController : NSViewController
+@implementation TWPMainWindowContentView
+
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    NSColor* color = [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ];
+    [ color set ];
+    NSRectFill( _DirtyRect );
+    }
 
 @end
 

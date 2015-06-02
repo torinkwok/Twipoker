@@ -22,14 +22,27 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import "TWPDirectMessagesStartAPrivateConversationViewController.h"
 
-@implementation TWPDashboardView
+@interface TWPDirectMessagesStartAPrivateConversationViewController ()
 
-- ( void ) awakeFromNib
+@end
+
+@implementation TWPDirectMessagesStartAPrivateConversationViewController
+
+- ( void ) viewDidLoad
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+    [ super viewDidLoad ];
+    // Do view setup here.
+    }
+
+- ( instancetype ) init
+    {
+    if ( self = [ super initWithNibName: @"TWPDirectMessagesStartAPrivateConversation"
+                                 bundle: [ NSBundle mainBundle ] ] )
+        ;
+
+    return self;
     }
 
 @end

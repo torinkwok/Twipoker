@@ -22,14 +22,49 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import "TWPDirectMessagePreviewTableCellView.h"
+#import "TWPDirectMessageSession.h"
+#import "TWPUserAvatarWell.h"
 
-@implementation TWPDashboardView
+// Notifications Name
+NSString* const TWPDirectMessagePreviewTableCellViewMouseDown = @"DirectMessagePreviewTable.Notif.MouseDown";
 
-- ( void ) awakeFromNib
+@implementation TWPDirectMessagePreviewTableCellView
+
+@synthesize userAvatar;
+@synthesize userNameLabel;
+@synthesize dateLabel;
+@synthesize contentPreview;
+
+@dynamic session;
+
+#pragma mark Accessors
+- ( TWPDirectMessageSession* ) session
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+    return self->_session;
+    }
+
+- ( void ) setSession: ( TWPDirectMessageSession* )_Session
+    {
+    self->_session = _Session;
+
+    [ self.userAvatar setTwitterUser: self->_session.otherSideUser ];
+    [ self.userNameLabel setStringValue: self->_session.otherSideUser.displayName ];
+
+    OTCDirectMessage* mostRecentDM = [ self->_session mostRecentMessage ];
+    [ dateLabel setStringValue: mostRecentDM.dateCreated.description ];
+    [ contentPreview setStringValue: mostRecentDM.tweetText ];
+
+    [ self setNeedsDisplay: YES ];
+    }
+
+#pragma mark Events Handling
+- ( void ) mouseDown: ( NSEvent* )_Event
+    {
+//    NSLog( @"%@", _Event );
+
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPDirectMessagePreviewTableCellViewMouseDown
+                                                           object: self ];
     }
 
 @end

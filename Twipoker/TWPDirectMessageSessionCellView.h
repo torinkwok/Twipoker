@@ -22,15 +22,21 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation TWPDashboardView
+@class TWPUserAvatarWell;
 
-- ( void ) awakeFromNib
+@interface TWPDirectMessageSessionCellView : NSTableCellView
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+@private
+    OTCDirectMessage __strong* _directMessage;
     }
+
+@property ( weak ) IBOutlet NSTextField* userNameLabel;
+@property ( weak ) IBOutlet NSTextField* directMessageTextLabel;
+@property ( weak ) IBOutlet TWPUserAvatarWell* senderAvatar;
+
+@property ( strong, readwrite ) OTCDirectMessage* directMessage;
 
 @end
 

@@ -22,17 +22,65 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import "TWPBrain.h"
 
-@implementation TWPDashboardView
+@class TWPDirectMessagesPreviewViewController;
+@class TWPDirectMessageSession;
 
-- ( void ) awakeFromNib
+@protocol TWPDirectMessagesCoordinatorObserver;
+
+// TWPDirectMessagesCoordinator class
+@interface TWPDirectMessagesCoordinator : NSObject <TWPLimb>
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+@private
+    // The ivar storing the direct messages sent to/received by current authenticating user
+    NSMutableArray __strong* _allDMs;
+    NSMutableArray __strong* _allDirectMessageSessions;
+
+    STTwitterAPI __strong* _twitterAPI;
+
+    /* @[ @[ OTCTwitterUser (Other Side User), id <TWPDirectMessagesCoordinatorObserver> (Observer) ]
+        , @[ OTCTwitterUser (Other Side User), id <TWPDirectMessagesCoordinatorObserver> (Observer) ]
+        , @[ OTCTwitterUser (Other Side User), id <TWPDirectMessagesCoordinatorObserver> (Observer) ]
+        , ...
+        ] */
+    NSMutableArray __strong* _dispatchTable;
     }
 
-@end
+@property ( weak ) IBOutlet TWPDirectMessagesPreviewViewController* DMPreviewViewContorller;
+
+@property ( strong, readonly ) NSArray* allDMs;
+
+// @[ TWPDirectMessageSession, TWPDirectMessageSession, ... ]
+@property ( strong, readonly ) NSArray* allDirectMessageSessions;
+
+#pragma mark Initialization
++ ( instancetype ) defaultCenter;
+
+#pragma mark Observer Registration
+// Adds an entry to the receiver’s dispatch table with an observer, an other side user object.
+// Once the `_OtherSideUser` sent direct message to the current authenticating user, `_NewObserver` will be notified.
+- ( void ) registerObserver: ( id <TWPDirectMessagesCoordinatorObserver> )_NewObserver
+              otherSideUser: ( OTCTwitterUser* )_OtherSideUser;
+
+// Removes all the entries specifying a given observer from the receiver’s dispatch table.
+- ( void ) removeObserver: ( id )_Observer;
+
+// Removes matching entries from the receiver’s dispatch table.
+- ( void ) removeObserver: ( id )_Observer otherSideUser: ( OTCTwitterUser* )_OtherSideUser;
+
+@end // TWPDirectMessagesCoordinator class
+
+// <TWPDirectMessagesCoordinatorObserver> protocol
+@protocol TWPDirectMessagesCoordinatorObserver <NSObject>
+
+@optional
+- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator didAddNewSessionWithUser: ( OTCTwitterUser* )_OtherSideUser;
+
+@required
+- ( void ) coordinator: ( TWPDirectMessagesCoordinator* )_Coordinator didUpdateSessionWithUser: ( OTCTwitterUser* )_OtherSideUser;
+
+@end // <TWPDirectMessagesCoordinatorObserver> protocol
 
 /*=============================================================================┐
 |                                                                              |

@@ -22,15 +22,16 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import "TWPDirectMessagesCoordinator.h"
 
-@implementation TWPDashboardView
-
-- ( void ) awakeFromNib
+@interface TWPDirectMessagesPreviewViewController : NSViewController
+    <NSTableViewDataSource, NSTableViewDelegate, TWPDirectMessagesCoordinatorObserver >
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+@private
+    NSMutableArray __strong* _directMessageSessions;
     }
+
+@property ( weak ) IBOutlet NSTableView* DMPreviewTableView;
 
 @end
 

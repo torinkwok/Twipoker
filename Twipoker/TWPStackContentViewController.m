@@ -37,6 +37,11 @@
 #import "TWPTweetTextField.h"
 #import "TWPListCellView.h"
 #import "TWPTwitterListTimelineViewController.h"
+#import "TWPDirectMessageSession.h"
+#import "TWPLoginUsersManager.h"
+#import "TWPDirectMessagesCoordinator.h"
+#import "TWPDirectMessagePreviewTableCellView.h"
+#import "TWPDirectMessageSessionViewController.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -84,6 +89,11 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
         [ [ NSNotificationCenter defaultCenter ] addObserver: self
                                                     selector: @selector( _listCellMouseDown: )
                                                         name: TWPListCellViewMouseDown
+                                                      object: nil ];
+
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                    selector: @selector( _dmPreviewTableCellMouseDown: )
+                                                        name: TWPDirectMessagePreviewTableCellViewMouseDown
                                                       object: nil ];
         }
 
@@ -180,6 +190,15 @@ NSString static* const kColumnIDTabs = @"tabs";
     self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
+- ( BOOL ) tableView: ( NSTableView* )_TableView
+     shouldSelectRow: ( NSInteger )_Row
+    {
+//    if ( [ self->_dashboardTabs[ _Row ] isEqualToString: @"Messages" ] )
+//        return NO;
+//    else
+        return YES;
+    }
+
 #pragma mark IBActions
 - ( void ) _pushViewIntoViewsStack: ( NSViewController* )_ViewContorller
     {
@@ -191,6 +210,11 @@ NSString static* const kColumnIDTabs = @"tabs";
 - ( void ) _listCellMouseDown: ( NSNotification* )_Notif
     {
     [ self pushTwitterListTimelineToCurrentViewsStackAction: ( TWPListCellView* )( _Notif.object ) ];
+    }
+
+- ( void ) _dmPreviewTableCellMouseDown: ( NSNotification* )_Notif
+    {
+    [ self pushDirectMessageSessionViewToCurrentViewStackAction: ( TWPDirectMessagePreviewTableCellView* )( _Notif.object ) ];
     }
 
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
@@ -217,6 +241,16 @@ NSString static* const kColumnIDTabs = @"tabs";
         [ TWPTwitterListTimelineViewController twitterListViewControllerWithTwitterList: [ ( TWPListCellView* )_Sender twitterList ] ];
 
     [ self _pushViewIntoViewsStack: twitterListTimelineNewController ];
+    }
+
+- ( IBAction ) pushDirectMessageSessionViewToCurrentViewStackAction: ( id )_Sender
+    {
+    [ self.dashboardView selectRowIndexes: [ NSIndexSet indexSetWithIndex: 5 ] byExtendingSelection: NO ];
+
+    NSViewController* dmSessionViewNewController =
+        [ TWPDirectMessageSessionViewController sessionViewControllerWithSession: [ ( TWPDirectMessagePreviewTableCellView* )_Sender session ] ];
+
+    [ self _pushViewIntoViewsStack: dmSessionViewNewController ];
     }
 
 - ( IBAction ) goBackAction: ( id )_Sender

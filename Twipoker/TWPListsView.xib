@@ -12,7 +12,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <scrollView identifier="home" autohidesScrollers="YES" horizontalLineScroll="94" horizontalPageScroll="10" verticalLineScroll="94" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="sbF-b9-UgM" userLabel="Lists Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
+        <scrollView identifier="home" borderType="none" autohidesScrollers="YES" horizontalLineScroll="94" horizontalPageScroll="10" verticalLineScroll="94" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="sbF-b9-UgM" userLabel="Lists Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
             <rect key="frame" x="0.0" y="0.0" width="607" height="632"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <clipView key="contentView" copiesOnScroll="NO" id="DiR-cs-bNm">
@@ -27,7 +27,7 @@
                         <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                         <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <tableColumns>
-                            <tableColumn identifier="lists-column" width="602" minWidth="40" maxWidth="1000" id="nEb-zt-Aq7">
+                            <tableColumn identifier="lists-column" width="604" minWidth="40" maxWidth="1000" id="nEb-zt-Aq7">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -41,7 +41,7 @@
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
                                     <tableCellView id="KKL-9M-yAp" customClass="TWPListCellView">
-                                        <rect key="frame" x="1" y="1" width="602" height="92"/>
+                                        <rect key="frame" x="1" y="1" width="604" height="92"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwq-Nh-2aJ" userLabel="Avatar" customClass="TWPUserAvatarWell">

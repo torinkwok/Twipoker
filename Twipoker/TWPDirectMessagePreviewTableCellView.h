@@ -22,15 +22,26 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardView.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation TWPDashboardView
+@class TWPUserAvatarWell;
+@class TWPDirectMessageSession;
 
-- ( void ) awakeFromNib
+// Notifications Name
+NSString extern* const TWPDirectMessagePreviewTableCellViewMouseDown;
+
+@interface TWPDirectMessagePreviewTableCellView : NSTableCellView
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+@private
+    TWPDirectMessageSession __strong* _session;
     }
+
+@property ( weak ) IBOutlet TWPUserAvatarWell* userAvatar;
+@property ( weak ) IBOutlet NSTextField* userNameLabel;
+@property ( weak ) IBOutlet NSTextField* dateLabel;
+@property ( weak ) IBOutlet NSTextField* contentPreview;
+
+@property ( strong, readwrite ) TWPDirectMessageSession* session;
 
 @end
 
