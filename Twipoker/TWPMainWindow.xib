@@ -184,7 +184,8 @@
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaw-Hp-Dzh">
                                                             <rect key="frame" x="73" y="9" width="267" height="34"/>
-                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Preview of the most recent direct  message" id="kjV-Qp-NrA">
+                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Preview of the most recent direct 
+message" id="kjV-Qp-NrA">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
