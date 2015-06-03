@@ -94,7 +94,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
                     </imageView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-yU-kQO" customClass="TWPNavigationBar">
-                        <rect key="frame" x="288" y="710" width="606" height="60"/>
+                        <rect key="frame" x="288" y="710" width="605" height="60"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
                                 <rect key="frame" x="20" y="18" width="27" height="25"/>
@@ -123,7 +123,7 @@
                         </subviews>
                     </customView>
                     <customView appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-W1-aLM" customClass="TWPStackContentView">
-                        <rect key="frame" x="288" y="47" width="606" height="665"/>
+                        <rect key="frame" x="288" y="48" width="605" height="663"/>
                         <connections>
                             <outlet property="controller" destination="HUR-ik-D4y" id="wSL-fX-a3x"/>
                             <outlet property="navigationBar" destination="Cjl-yU-kQO" id="EHL-b3-fwc"/>
@@ -226,7 +226,7 @@
                         </scroller>
                     </scrollView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uqD-zv-Dco">
-                        <rect key="frame" x="288" y="0.0" width="606" height="50"/>
+                        <rect key="frame" x="288" y="0.0" width="605" height="49"/>
                     </customView>
                 </subviews>
             </view>
@@ -301,30 +301,38 @@
         </customObject>
         <viewController id="vWY-3e-KRa" customClass="TWPTweetingBoxController">
             <connections>
+                <outlet property="tweetingBaseView" destination="qNf-Vk-xrz" id="vG2-4c-wUe"/>
+                <outlet property="tweetingCompleteView" destination="TVG-i4-ptU" id="nKl-A6-EV1"/>
                 <outlet property="view" destination="uqD-zv-Dco" id="tUI-Jz-Wlw"/>
             </connections>
         </viewController>
-        <customView id="qNf-Vk-xrz">
-            <rect key="frame" x="0.0" y="0.0" width="606" height="50"/>
+        <customView id="qNf-Vk-xrz" customClass="TWPTweetingBaseView">
+            <rect key="frame" x="0.0" y="0.0" width="605" height="49"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wn7-Wz-5UH">
-                    <rect key="frame" x="12" y="8" width="35" height="35"/>
+                    <rect key="frame" x="12" y="7" width="35" height="35"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="NWL-2f-uLm"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqQ-Vk-bRd">
-                    <rect key="frame" x="56" y="8" width="538" height="34"/>
+                    <rect key="frame" x="56" y="8" width="537" height="33"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="What's happening" drawsBackground="YES" id="Qd7-BU-7A2">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="cOq-XO-bjh">
+                    <rect key="frame" x="0.0" y="46" width="606" height="4"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
             </subviews>
-            <point key="canvasLocation" x="-80" y="-1204"/>
+            <point key="canvasLocation" x="-112" y="-1256.5"/>
         </customView>
-        <customView id="TVG-i4-ptU">
-            <rect key="frame" x="0.0" y="-1" width="606" height="201"/>
+        <customView id="TVG-i4-ptU" customClass="TWPTweetingCompleteView">
+            <rect key="frame" x="0.0" y="0.0" width="605" height="201"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ara-bI-9mJ">
@@ -332,22 +340,22 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="0Ut-Yg-PDL"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AaA-rO-rdw">
-                    <rect key="frame" x="56" y="60" width="538" height="133"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="What's happening" drawsBackground="YES" id="Edw-Vq-uqW">
+                    <rect key="frame" x="55" y="60" width="538" height="133"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="Edw-Vq-uqW">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5v-Oj-sTR">
-                    <rect key="frame" x="447" y="13" width="76" height="32"/>
+                    <rect key="frame" x="446" y="13" width="76" height="32"/>
                     <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NL-pb-6v4">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrL-99-Ybv">
-                    <rect key="frame" x="517" y="13" width="83" height="32"/>
+                    <rect key="frame" x="516" y="13" width="83" height="32"/>
                     <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rEK-97-AuS">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -357,7 +365,7 @@ Gw
                     </buttonCell>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="-86" y="-1019.5"/>
+            <point key="canvasLocation" x="-112" y="-1083.5"/>
         </customView>
     </objects>
     <resources>

@@ -24,13 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class TWPTweetingBaseView;
-@class TWPTweetingCompleteView;
-
-@interface TWPTweetingBoxController : NSViewController
-
-@property ( weak ) IBOutlet TWPTweetingBaseView* tweetingBaseView;
-@property ( weak ) IBOutlet TWPTweetingCompleteView* tweetingCompleteView;
+@interface TWPTweetingBaseView : NSView
 
 @end
 

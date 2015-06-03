@@ -22,15 +22,19 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPTweetingBaseView.h"
 
-@class TWPTweetingBaseView;
-@class TWPTweetingCompleteView;
+@implementation TWPTweetingBaseView
 
-@interface TWPTweetingBoxController : NSViewController
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
 
-@property ( weak ) IBOutlet TWPTweetingBaseView* tweetingBaseView;
-@property ( weak ) IBOutlet TWPTweetingCompleteView* tweetingCompleteView;
+    // Drawing code here.
+    NSColor* fillColor = [ NSColor colorWithSRGBRed: 250.f / 255 green: 250.f / 255 blue: 250.f / 255 alpha: 1.f ];
+    [ fillColor setFill ];
+    NSRectFill( _DirtyRect );
+    }
 
 @end
 

@@ -22,15 +22,15 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPTweetingCompleteView.h"
 
-@class TWPTweetingBaseView;
-@class TWPTweetingCompleteView;
+@implementation TWPTweetingCompleteView
 
-@interface TWPTweetingBoxController : NSViewController
-
-@property ( weak ) IBOutlet TWPTweetingBaseView* tweetingBaseView;
-@property ( weak ) IBOutlet TWPTweetingCompleteView* tweetingCompleteView;
+- (void)drawRect:(NSRect)dirtyRect {
+    [super drawRect:dirtyRect];
+    
+    // Drawing code here.
+}
 
 @end
 
