@@ -116,13 +116,6 @@
                                     <action selector="goForwardAction:" target="HUR-ik-D4y" id="fyz-EQ-Lu8"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmE-n4-O8w" userLabel="Craft Tweet Button">
-                                <rect key="frame" x="556" y="10" width="30" height="40"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="draft-tweet-black" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="hDF-zy-ZtU">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMS-HU-W4h" userLabel="Twitter Logo Button">
                                 <rect key="frame" x="291" y="18" width="25" height="25"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="twitter-logo-blue" id="8Lr-ax-6GU"/>
@@ -184,8 +177,7 @@
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaw-Hp-Dzh">
                                                             <rect key="frame" x="73" y="9" width="267" height="34"/>
-                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Preview of the most recent direct 
-message" id="kjV-Qp-NrA">
+                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Preview of the most recent direct  message" id="kjV-Qp-NrA">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -308,7 +300,6 @@ message" id="kjV-Qp-NrA">
     <resources>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
-        <image name="draft-tweet-black" width="14" height="14"/>
-        <image name="twitter-logo-blue" width="273.3599853515625" height="222.24000549316406"/>
+        <image name="twitter-logo-blue" width="647" height="541"/>
     </resources>
 </document>
