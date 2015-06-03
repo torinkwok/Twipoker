@@ -24,9 +24,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+// TWPCuttingLineView class
 @interface TWPCuttingLineView : NSView
 
-@end
+@end // TWPCuttingLineView class
 
 /*=============================================================================┐
 |                                                                              |

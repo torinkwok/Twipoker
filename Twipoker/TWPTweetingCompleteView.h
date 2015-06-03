@@ -24,9 +24,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+// TWPTweetingCompleteView class
 @interface TWPTweetingCompleteView : NSView
-
-@end
+@end // TWPTweetingCompleteView class
 
 /*=============================================================================┐
 |                                                                              |

@@ -24,6 +24,7 @@
 
 #import "TWPTweetingCompleteView.h"
 
+// TWPTweetingCompleteView class
 @implementation TWPTweetingCompleteView
 
 - ( void ) drawRect: ( NSRect )_DirtyRect
@@ -33,7 +34,7 @@
     // Drawing code here.
     }
 
-@end
+@end // TWPTweetingCompleteView class
 
 /*=============================================================================┐
 |                                                                              |

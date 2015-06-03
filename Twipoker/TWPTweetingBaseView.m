@@ -24,6 +24,7 @@
 
 #import "TWPTweetingBaseView.h"
 
+// TWPTweetingBaseView class
 @implementation TWPTweetingBaseView
 
 - ( void ) drawRect: ( NSRect )_DirtyRect
@@ -36,7 +37,7 @@
     NSRectFill( _DirtyRect );
     }
 
-@end
+@end // TWPTweetingBaseView class
 
 /*=============================================================================┐
 |                                                                              |

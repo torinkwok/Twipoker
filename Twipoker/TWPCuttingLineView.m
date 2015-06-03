@@ -24,6 +24,7 @@
 
 #import "TWPCuttingLineView.h"
 
+// TWPCuttingLineView class
 @implementation TWPCuttingLineView
 
 - ( void ) drawRect: ( NSRect )_DirtyRect
@@ -35,7 +36,7 @@
     NSRectFill( _DirtyRect );
     }
 
-@end
+@end // TWPCuttingLineView class
 
 /*=============================================================================┐
 |                                                                              |

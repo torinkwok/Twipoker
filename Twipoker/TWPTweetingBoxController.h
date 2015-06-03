@@ -26,13 +26,17 @@
 
 @class TWPTweetingBaseView;
 @class TWPTweetingCompleteView;
+@class TWPCuttingLineView;
 
+// TWPTweetingBoxController class
 @interface TWPTweetingBoxController : NSViewController
+
+@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLine;
 
 @property ( weak ) IBOutlet TWPTweetingBaseView* tweetingBaseView;
 @property ( weak ) IBOutlet TWPTweetingCompleteView* tweetingCompleteView;
 
-@end
+@end // TWPTweetingBoxController class
 
 /*=============================================================================┐
 |                                                                              |

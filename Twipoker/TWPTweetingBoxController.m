@@ -25,23 +25,44 @@
 #import "TWPTweetingBoxController.h"
 #import "TWPTweetingBaseView.h"
 #import "TWPTweetingCompleteView.h"
+#import "TWPCuttingLineView.h"
 
+// Private Interfaces
 @interface TWPTweetingBoxController ()
+- ( void ) _addAndFitSubview: ( NSView* )_Subview;
+@end // Private Interfaces
 
-@end
-
+// // TWPTweetingBoxController class
 @implementation TWPTweetingBoxController
+
+@synthesize cuttingLine;
+
+@synthesize tweetingBaseView;
+@synthesize tweetingCompleteView;
 
 - ( void ) viewDidLoad
     {
     [ super viewDidLoad ];
     // Do view setup here.
 
-    [ self.tweetingBaseView setBounds: self.view.bounds ];
-    [ self.view addSubview: self.tweetingBaseView ];
+    [ self _addAndFitSubview: self.tweetingBaseView ];
     }
 
-@end
+#pragma mark Private Interfaces
+- ( void ) _addAndFitSubview: ( NSView* )_Subview
+    {
+    NSRect viewBounds = self.view.bounds;
+    NSRect newBounds = NSMakeRect( viewBounds.origin.x
+                                 , viewBounds.origin.y
+                                 , NSWidth( viewBounds )
+                                 , NSHeight( viewBounds ) - ( NSHeight( self.cuttingLine.frame ) + 1.f )
+                                 );
+                                 
+    [ _Subview setFrame: newBounds ];
+    [ self.view addSubview: _Subview ];
+    }
+
+@end // TWPTweetingBoxController class
 
 /*=============================================================================┐
 |                                                                              |
