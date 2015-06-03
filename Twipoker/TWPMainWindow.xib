@@ -300,6 +300,6 @@
     <resources>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
-        <image name="twitter-logo-blue" width="647" height="541"/>
+        <image name="twitter-logo-blue" width="640" height="541"/>
     </resources>
 </document>
