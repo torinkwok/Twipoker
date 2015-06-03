@@ -79,6 +79,7 @@
 		83ADA8321B1F051A000F7222 /* TWPTweetingBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADA8311B1F051A000F7222 /* TWPTweetingBoxController.m */; };
 		83ADA83A1B1F08D5000F7222 /* TWPTweetingBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADA8391B1F08D5000F7222 /* TWPTweetingBaseView.m */; };
 		83ADA83D1B1F090D000F7222 /* TWPTweetingCompleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADA83C1B1F090D000F7222 /* TWPTweetingCompleteView.m */; };
+		83ADA8401B1F27DB000F7222 /* TWPCuttingLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADA83F1B1F27DB000F7222 /* TWPCuttingLineView.m */; };
 		83B0C06C1B08E4060093E53E /* _TWPMonitoringUserID.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0C06B1B08E4060093E53E /* _TWPMonitoringUserID.m */; };
 		83B74BCB1B07902A000F44BA /* TWPBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B74BCA1B07902A000F44BA /* TWPBrain.m */; };
 		83BE4AA71B056160008ED545 /* OTCList.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BE4AA51B056160008ED545 /* OTCList.m */; };
@@ -307,6 +308,8 @@
 		83ADA8391B1F08D5000F7222 /* TWPTweetingBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetingBaseView.m; path = Twipoker/TWPTweetingBaseView.m; sourceTree = "<group>"; };
 		83ADA83B1B1F090D000F7222 /* TWPTweetingCompleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTweetingCompleteView.h; path = Twipoker/TWPTweetingCompleteView.h; sourceTree = "<group>"; };
 		83ADA83C1B1F090D000F7222 /* TWPTweetingCompleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetingCompleteView.m; path = Twipoker/TWPTweetingCompleteView.m; sourceTree = "<group>"; };
+		83ADA83E1B1F27DB000F7222 /* TWPCuttingLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPCuttingLineView.h; path = Twipoker/TWPCuttingLineView.h; sourceTree = "<group>"; };
+		83ADA83F1B1F27DB000F7222 /* TWPCuttingLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPCuttingLineView.m; path = Twipoker/TWPCuttingLineView.m; sourceTree = "<group>"; };
 		83B0C06A1B08E4060093E53E /* _TWPMonitoringUserID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TWPMonitoringUserID.h; sourceTree = "<group>"; };
 		83B0C06B1B08E4060093E53E /* _TWPMonitoringUserID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TWPMonitoringUserID.m; sourceTree = "<group>"; };
 		83B74BC91B07902A000F44BA /* TWPBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPBrain.h; sourceTree = "<group>"; };
@@ -777,6 +780,8 @@
 				83ADA8391B1F08D5000F7222 /* TWPTweetingBaseView.m */,
 				83ADA83B1B1F090D000F7222 /* TWPTweetingCompleteView.h */,
 				83ADA83C1B1F090D000F7222 /* TWPTweetingCompleteView.m */,
+				83ADA83E1B1F27DB000F7222 /* TWPCuttingLineView.h */,
+				83ADA83F1B1F27DB000F7222 /* TWPCuttingLineView.m */,
 			);
 			name = "Tweeting Box";
 			sourceTree = "<group>";
@@ -1352,6 +1357,7 @@
 				83CFD8711ACF1C820062D73D /* TWPGeneral.m in Sources */,
 				83ADA83D1B1F090D000F7222 /* TWPTweetingCompleteView.m in Sources */,
 				83E9A2E81B02721200CA5926 /* STTwitterOAuth.m in Sources */,
+				83ADA8401B1F27DB000F7222 /* TWPCuttingLineView.m in Sources */,
 				8338CD7D1AE3C5E800370C10 /* TWPLoginUser.m in Sources */,
 				831732921B14900A00B136BF /* TWPDirectMessageSession.m in Sources */,
 				83ADA8321B1F051A000F7222 /* TWPTweetingBoxController.m in Sources */,

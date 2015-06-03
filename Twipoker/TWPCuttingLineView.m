@@ -22,17 +22,16 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetingBaseView.h"
+#import "TWPCuttingLineView.h"
 
-@implementation TWPTweetingBaseView
+@implementation TWPCuttingLineView
 
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
-
+    
     // Drawing code here.
-    NSColor* fillColor = [ NSColor colorWithHTMLColor: @"FAFAFA" ];
-    [ fillColor setFill ];
+    [ [ NSColor colorWithHTMLColor: @"D8D8D8" ] set ];
     NSRectFill( _DirtyRect );
     }
 
