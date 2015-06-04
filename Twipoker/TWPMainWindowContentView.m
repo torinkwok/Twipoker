@@ -45,13 +45,13 @@
 #pragma mark Initializations
 - ( void ) awakeFromNib
     {
-    [ self _addAndFitTweetingView: self.tweetingCompleteView ];
+    [ self _addAndFitTweetingView: self.tweetingBaseView ];
 
-//    [ NSTimer scheduledTimerWithTimeInterval: 5.f
-//                                      target: self
-//                                    selector: @selector( timerFireMethod: )
-//                                    userInfo: nil
-//                                     repeats: NO ];
+    [ NSTimer scheduledTimerWithTimeInterval: 5.f
+                                      target: self
+                                    selector: @selector( timerFireMethod: )
+                                    userInfo: nil
+                                     repeats: NO ];
     }
 
 - ( void ) timerFireMethod: ( NSTimer* )_Timer
@@ -61,27 +61,34 @@
 
 - ( void ) _addAndFitTweetingView: ( TWPTweetingView* )_TweetingView
     {
-    NSRect frameOfNavigationBarController = self.navigationBarController.view.frame;
+    [ self.tweetingBaseView removeFromSuperview ];
+    [ self.tweetingCompleteView removeFromSuperview ];
+    [ self.cuttingLineView removeFromSuperview ];
+    [ self.stackContentViewController.view removeFromSuperview ];
 
-    TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
-    NSRect frameOfStackContentView = NSMakeRect( NSMinX( frameOfNavigationBarController )
-                                               , NSHeight( frameOfNavigationBarController )
-                                               , NSWidth( stackContentView.frame )
-                                               , NSHeight( stackContentView.frame ) );
+    // Navigation bar
+    NSRect frameOfNavigationBar = self.navigationBarController.view.frame;
 
-    frameOfStackContentView.size.height -= ( NSHeight( _TweetingView.frame ) + NSHeight( self.cuttingLineView.frame ) );
-    [ self addSubview: stackContentView ];
-    [ stackContentView setFrame: frameOfStackContentView ];
-
-    NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfStackContentView ), NSHeight( self.navigationBarController.view.frame ) + NSHeight( frameOfStackContentView )
-                                              , NSWidth( self.cuttingLineView.frame ), NSHeight( self.cuttingLineView.frame ) );
-    [ self addSubview: self.cuttingLineView ];
-    [ self.cuttingLineView setFrame: frameOfCuttingLineView ];
-
-    NSRect frameOfTweetingBaseView = NSMakeRect( NSMinX( self.cuttingLineView.frame ), NSMaxY( frameOfCuttingLineView )
-                                               , NSWidth( _TweetingView.frame ), NSHeight( _TweetingView.frame ) );
+    // Tweeting view
+    NSRect frameOfTweetingView = NSMakeRect( NSMinX( frameOfNavigationBar ), NSMinY( self.frame )
+                                           , NSWidth( _TweetingView.frame ), NSHeight( _TweetingView.frame ) );
+    [ _TweetingView setFrame: frameOfTweetingView ];
     [ self addSubview: _TweetingView ];
-    [ _TweetingView setFrame: frameOfTweetingBaseView ];
+
+    // Cutting line
+    NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfTweetingView ), NSHeight( frameOfTweetingView )
+                                              , NSWidth( self.cuttingLineView.frame ), NSHeight( self.cuttingLineView.frame ) );
+    [ self.cuttingLineView setFrame: frameOfCuttingLineView ];
+    [ self addSubview: self.cuttingLineView ];
+
+    // Stack content view
+    TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
+    NSRect frameOfStackContentView = NSMakeRect( NSMinX( frameOfCuttingLineView )
+                                               , NSMaxY( frameOfCuttingLineView )
+                                               , NSWidth( stackContentView.frame )
+                                               , NSMinY( frameOfNavigationBar ) - NSMaxY( frameOfCuttingLineView ) );
+    [ stackContentView setFrame: frameOfStackContentView ];
+    [ self addSubview: stackContentView ];
     }
 
 #pragma mark Custom Drawing
@@ -92,10 +99,10 @@
     NSRectFill( _DirtyRect );
     }
 
-- ( BOOL ) isFlipped
-    {
-    return YES;
-    }
+//- ( BOOL ) isFlipped
+//    {
+//    return YES;
+//    }
 
 @end // TWPMainWindowContentView class
 
