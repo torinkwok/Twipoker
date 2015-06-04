@@ -27,6 +27,12 @@
 // TWPMainWindowContentView class
 @implementation TWPMainWindowContentView
 
+#pragma mark Initializations
+- ( void ) awakeFromNib
+    {
+    
+    }
+
 #pragma mark Custom Drawing
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {

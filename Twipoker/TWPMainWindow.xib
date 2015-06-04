@@ -234,6 +234,13 @@
                         </subviews>
                     </customView>
                 </subviews>
+                <connections>
+                    <outlet property="cuttingLineView" destination="zU3-cQ-xog" id="6MD-iA-mN7"/>
+                    <outlet property="navicationBarController" destination="Gr0-CG-Iha" id="wwy-CH-gQ3"/>
+                    <outlet property="stackContentViewController" destination="HUR-ik-D4y" id="ewN-Vh-20V"/>
+                    <outlet property="tweetingBaseView" destination="qNf-Vk-xrz" id="wA8-4S-0es"/>
+                    <outlet property="tweetingCompleteView" destination="TVG-i4-ptU" id="Fra-bL-CWv"/>
+                </connections>
             </view>
             <point key="canvasLocation" x="-111.5" y="-1732.5"/>
         </window>
