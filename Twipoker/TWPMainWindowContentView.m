@@ -33,6 +33,11 @@
 #import "TWPTweetingBaseView.h"
 #import "TWPTweetingCompleteView.h"
 
+// Private Interfaces
+@interface TWPMainWindowContentView ()
+- ( void ) _addAndFitTweetingView: ( TWPTweetingView* )_TweetingView;
+@end // Private Interfaces
+
 // TWPMainWindowContentView class
 @implementation TWPMainWindowContentView
 
@@ -47,19 +52,17 @@
 - ( void ) awakeFromNib
     {
     [ self _addAndFitTweetingView: self.tweetingBaseView ];
-
-    [ NSTimer scheduledTimerWithTimeInterval: 10.f
-                                      target: self
-                                    selector: @selector( timerFireMethod: )
-                                    userInfo: nil
-                                     repeats: NO ];
     }
 
-- ( void ) timerFireMethod: ( NSTimer* )_Timer
+#pragma mark Custom Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    [ self _addAndFitTweetingView: self.tweetingCompleteView ];
+    NSColor* color = [ NSColor colorWithHTMLColor: @"52AAEE" ];
+    [ color set ];
+    NSRectFill( _DirtyRect );
     }
 
+#pragma mark Private Interfaces
 - ( void ) _addAndFitTweetingView: ( TWPTweetingView* )_TweetingView
     {
     [ self.tweetingBaseView removeFromSuperview ];
@@ -107,14 +110,6 @@
     [ timelineScrollView setFrame: fixedFrameOfTimelineScrollView ];
     [ self addSubview: stackContentView ];
     // ------
-    }
-
-#pragma mark Custom Drawing
-- ( void ) drawRect: ( NSRect )_DirtyRect
-    {
-    NSColor* color = [ NSColor colorWithHTMLColor: @"52AAEE" ];
-    [ color set ];
-    NSRectFill( _DirtyRect );
     }
 
 @end // TWPMainWindowContentView class

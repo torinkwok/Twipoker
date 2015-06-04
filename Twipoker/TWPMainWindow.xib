@@ -296,13 +296,6 @@
                 <outlet property="view" destination="Zwj-uj-ZVJ" id="2WP-UN-rmj"/>
             </connections>
         </customObject>
-        <viewController id="vWY-3e-KRa" customClass="TWPTweetingBoxController">
-            <connections>
-                <outlet property="cuttingLine" destination="zU3-cQ-xog" id="gL3-Dk-udY"/>
-                <outlet property="tweetingBaseView" destination="qNf-Vk-xrz" id="vG2-4c-wUe"/>
-                <outlet property="tweetingCompleteView" destination="TVG-i4-ptU" id="nKl-A6-EV1"/>
-            </connections>
-        </viewController>
         <customView id="qNf-Vk-xrz" customClass="TWPTweetingBaseView">
             <rect key="frame" x="0.0" y="0.0" width="606" height="49"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -311,7 +304,7 @@
                     <rect key="frame" x="12" y="7" width="35" height="35"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="NWL-2f-uLm"/>
                 </imageView>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqQ-Vk-bRd">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqQ-Vk-bRd">
                     <rect key="frame" x="57" y="8" width="537" height="33"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="What's happening" drawsBackground="YES" id="Qd7-BU-7A2">
                         <font key="font" metaFont="system"/>
@@ -330,7 +323,7 @@
                     <rect key="frame" x="12" y="159" width="35" height="35"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="0Ut-Yg-PDL"/>
                 </imageView>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AaA-rO-rdw">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AaA-rO-rdw">
                     <rect key="frame" x="56" y="60" width="538" height="133"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="Edw-Vq-uqW">
                         <font key="font" metaFont="system"/>
