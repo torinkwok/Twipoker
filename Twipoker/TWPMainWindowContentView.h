@@ -24,9 +24,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+// TWPMainWindowContentView class
 @interface TWPMainWindowContentView : NSView
 
-@end
+@end // TWPMainWindowContentView class
 
 /*=============================================================================┐
 |                                                                              |

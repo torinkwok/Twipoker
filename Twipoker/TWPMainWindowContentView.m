@@ -24,16 +24,23 @@
 
 #import "TWPMainWindowContentView.h"
 
+// TWPMainWindowContentView class
 @implementation TWPMainWindowContentView
 
+#pragma mark Custom Drawing
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    NSColor* color = [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ];
+    NSColor* color = [ NSColor colorWithHTMLColor: @"52AAEE" ];
     [ color set ];
     NSRectFill( _DirtyRect );
     }
 
-@end
+- ( BOOL ) isFlipped
+    {
+    return YES;
+    }
+
+@end // TWPMainWindowContentView class
 
 /*=============================================================================┐
 |                                                                              |
