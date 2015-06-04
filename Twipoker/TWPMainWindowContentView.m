@@ -24,6 +24,7 @@
 
 #import "TWPMainWindowContentView.h"
 
+#import "TWPTimelineScrollView.h"
 #import "TWPNavigationBarController.h"
 #import "TWPStackContentView.h"
 #import "TWPStackContentViewController.h"
@@ -47,7 +48,7 @@
     {
     [ self _addAndFitTweetingView: self.tweetingBaseView ];
 
-    [ NSTimer scheduledTimerWithTimeInterval: 5.f
+    [ NSTimer scheduledTimerWithTimeInterval: 10.f
                                       target: self
                                     selector: @selector( timerFireMethod: )
                                     userInfo: nil
@@ -87,8 +88,25 @@
                                                , NSMaxY( frameOfCuttingLineView )
                                                , NSWidth( stackContentView.frame )
                                                , NSMinY( frameOfNavigationBar ) - NSMaxY( frameOfCuttingLineView ) );
+
+    // ------
+    // TODO: An ugly solution to fix layout issue of timeline scroll view
+    TWPTimelineScrollView* timelineScrollView = ( TWPTimelineScrollView* )( stackContentView.subviews.firstObject );
+    NSRect oldFrameOfTimelineScrollView = timelineScrollView.frame;     // Current value: {0, -1.5}, {607, 660}}
     [ stackContentView setFrame: frameOfStackContentView ];
+    NSRect newFrameOfTimelineScrollView = timelineScrollView.frame;     // Current value {{0, -153.5}, {607, 660}}
+
+    // Current value: Current value:
+    // { {0, -1.5}, {607, NSHeight( newFrameOfTimelineScrollView ) - ( oldframeOfTimelineScrollView.origin.y - newFrameOfTimelineScrollView.origin.y )} }
+    // =
+    // { {0, -1.5}, {607, NSHeight( newFrameOfTimelineScrollView ) - ( -1.5 - (-153.5) )} }
+    NSRect fixedFrameOfTimelineScrollView = oldFrameOfTimelineScrollView;
+    fixedFrameOfTimelineScrollView.size.height =
+        NSHeight( newFrameOfTimelineScrollView ) - ( oldFrameOfTimelineScrollView.origin.y - newFrameOfTimelineScrollView.origin.y );
+
+    [ timelineScrollView setFrame: fixedFrameOfTimelineScrollView ];
     [ self addSubview: stackContentView ];
+    // ------
     }
 
 #pragma mark Custom Drawing
