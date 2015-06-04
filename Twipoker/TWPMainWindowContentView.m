@@ -99,11 +99,6 @@
     NSRectFill( _DirtyRect );
     }
 
-//- ( BOOL ) isFlipped
-//    {
-//    return YES;
-//    }
-
 @end // TWPMainWindowContentView class
 
 /*=============================================================================┐
