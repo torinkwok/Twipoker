@@ -25,6 +25,7 @@
 #import "TWPMainWindowContentView.h"
 
 #import "TWPNavigationBarController.h"
+#import "TWPStackContentView.h"
 #import "TWPStackContentViewController.h"
 
 #import "TWPCuttingLineView.h"
@@ -62,7 +63,11 @@
     {
     NSRect frameOfStackContentView = self.stackContentViewController.view.frame;
     frameOfStackContentView.size.height -= ( NSHeight( _TweetingView.frame ) + NSHeight( self.cuttingLineView.frame ) );
-    [ self.stackContentViewController.view setFrame: frameOfStackContentView ];
+    TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
+    [ stackContentView setFrame: frameOfStackContentView ];
+
+    NSLog( @"%@: %@", stackContentView, NSStringFromRect( stackContentView.frame ) );
+    NSLog( @"%@", NSStringFromRect( [ ( TWPStackContentView* )( self.stackContentViewController.view ) boundsOfElementView ] ) );
 
     NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfStackContentView ), NSHeight( self.navigationBarController.view.frame ) + NSHeight( frameOfStackContentView )
                                               , NSWidth( self.cuttingLineView.frame ), NSHeight( self.cuttingLineView.frame ) );
