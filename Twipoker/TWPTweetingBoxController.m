@@ -49,18 +49,6 @@
     }
 
 #pragma mark Private Interfaces
-- ( void ) _addAndFitSubview: ( NSView* )_Subview
-    {
-    NSRect viewBounds = self.view.bounds;
-    NSRect newBounds = NSMakeRect( viewBounds.origin.x
-                                 , viewBounds.origin.y
-                                 , NSWidth( viewBounds )
-                                 , NSHeight( viewBounds ) - ( NSHeight( self.cuttingLine.frame ) + 1.f )
-                                 );
-                                 
-    [ _Subview setFrame: newBounds ];
-    [ self.view addSubview: _Subview ];
-    }
 
 @end // TWPTweetingBoxController class
 

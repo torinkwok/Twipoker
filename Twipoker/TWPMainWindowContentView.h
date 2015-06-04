@@ -34,7 +34,7 @@
 // TWPMainWindowContentView class
 @interface TWPMainWindowContentView : NSView
 
-@property ( weak ) IBOutlet TWPNavigationBarController* navicationBarController;
+@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
 @property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
 
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineView;

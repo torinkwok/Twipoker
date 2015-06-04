@@ -24,13 +24,55 @@
 
 #import "TWPMainWindowContentView.h"
 
+#import "TWPNavigationBarController.h"
+#import "TWPStackContentViewController.h"
+
+#import "TWPCuttingLineView.h"
+#import "TWPTweetingBaseView.h"
+#import "TWPTweetingCompleteView.h"
+
 // TWPMainWindowContentView class
 @implementation TWPMainWindowContentView
+
+@synthesize navigationBarController;
+@synthesize stackContentViewController;
+
+@synthesize cuttingLineView;
+@synthesize tweetingBaseView;
+@synthesize tweetingCompleteView;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
     {
-    
+    [ self _addAndFitTweetingView: self.tweetingCompleteView ];
+
+//    [ NSTimer scheduledTimerWithTimeInterval: 5.f
+//                                      target: self
+//                                    selector: @selector( timerFireMethod: )
+//                                    userInfo: nil
+//                                     repeats: NO ];
+    }
+
+//- ( void ) timerFireMethod: ( NSTimer* )_Timer
+//    {
+//    [ self _addAndFitTweetingView: self.tweetingCompleteView ];
+//    }
+
+- ( void ) _addAndFitTweetingView: ( TWPTweetingView* )_TweetingView
+    {
+    NSRect frameOfStackContentView = self.stackContentViewController.view.frame;
+    frameOfStackContentView.size.height -= ( NSHeight( _TweetingView.frame ) + NSHeight( self.cuttingLineView.frame ) );
+    [ self.stackContentViewController.view setFrame: frameOfStackContentView ];
+
+    NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfStackContentView ), NSHeight( self.navigationBarController.view.frame ) + NSHeight( frameOfStackContentView )
+                                              , NSWidth( self.cuttingLineView.frame ), NSHeight( self.cuttingLineView.frame ) );
+    [ self addSubview: self.cuttingLineView ];
+    [ self.cuttingLineView setFrame: frameOfCuttingLineView ];
+
+    NSRect frameOfTweetingBaseView = NSMakeRect( NSMinX( self.cuttingLineView.frame ), NSMaxY( frameOfCuttingLineView )
+                                               , NSWidth( _TweetingView.frame ), NSHeight( _TweetingView.frame ) );
+    [ self addSubview: _TweetingView ];
+    [ _TweetingView setFrame: frameOfTweetingBaseView ];
     }
 
 #pragma mark Custom Drawing

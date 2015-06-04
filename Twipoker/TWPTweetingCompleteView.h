@@ -22,10 +22,10 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPTweetingView.h"
 
 // TWPTweetingCompleteView class
-@interface TWPTweetingCompleteView : NSView
+@interface TWPTweetingCompleteView : TWPTweetingView
 @end // TWPTweetingCompleteView class
 
 /*=============================================================================┐
