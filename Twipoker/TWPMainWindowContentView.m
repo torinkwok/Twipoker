@@ -64,7 +64,6 @@
     [ self.tweetingBaseView removeFromSuperview ];
     [ self.tweetingCompleteView removeFromSuperview ];
     [ self.cuttingLineView removeFromSuperview ];
-    [ self.stackContentViewController.view removeFromSuperview ];
 
     // Navigation bar
     NSRect frameOfNavigationBar = self.navigationBarController.view.frame;
@@ -83,6 +82,7 @@
 
     // Stack content view
     TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
+    [ stackContentView removeFromSuperview ];
     NSRect frameOfStackContentView = NSMakeRect( NSMinX( frameOfCuttingLineView )
                                                , NSMaxY( frameOfCuttingLineView )
                                                , NSWidth( stackContentView.frame )

@@ -61,6 +61,12 @@
     return rect;
     }
 
+- ( void ) setFrame:(NSRect)frame
+    {
+    [ super setFrame: frame ];
+    NSLog( @"%@", NSStringFromRect( frame ) );
+    }
+
 @end
 
 /*=============================================================================┐

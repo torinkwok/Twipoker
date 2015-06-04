@@ -56,6 +56,15 @@
         }
     }
 
+- ( void ) setFrame: ( NSRect )_Frame
+    {
+    NSLog( @"%s: %@", __PRETTY_FUNCTION__, NSStringFromRect( _Frame ) );
+    NSRect newFrame = _Frame;
+    newFrame.origin.y = 0;
+    [ super setFrame: newFrame ];
+    NSLog( @"%s: %@", __PRETTY_FUNCTION__, NSStringFromRect( newFrame ) );
+    }
+
 @end // TWPTimelineScrollView class
 
 /*=============================================================================┐
