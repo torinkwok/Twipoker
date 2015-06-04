@@ -54,20 +54,24 @@
 //                                     repeats: NO ];
     }
 
-//- ( void ) timerFireMethod: ( NSTimer* )_Timer
-//    {
-//    [ self _addAndFitTweetingView: self.tweetingCompleteView ];
-//    }
+- ( void ) timerFireMethod: ( NSTimer* )_Timer
+    {
+    [ self _addAndFitTweetingView: self.tweetingCompleteView ];
+    }
 
 - ( void ) _addAndFitTweetingView: ( TWPTweetingView* )_TweetingView
     {
-    NSRect frameOfStackContentView = self.stackContentViewController.view.frame;
-    frameOfStackContentView.size.height -= ( NSHeight( _TweetingView.frame ) + NSHeight( self.cuttingLineView.frame ) );
-    TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
-    [ stackContentView setFrame: frameOfStackContentView ];
+    NSRect frameOfNavigationBarController = self.navigationBarController.view.frame;
 
-    NSLog( @"%@: %@", stackContentView, NSStringFromRect( stackContentView.frame ) );
-    NSLog( @"%@", NSStringFromRect( [ ( TWPStackContentView* )( self.stackContentViewController.view ) boundsOfElementView ] ) );
+    TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
+    NSRect frameOfStackContentView = NSMakeRect( NSMinX( frameOfNavigationBarController )
+                                               , NSHeight( frameOfNavigationBarController )
+                                               , NSWidth( stackContentView.frame )
+                                               , NSHeight( stackContentView.frame ) );
+
+    frameOfStackContentView.size.height -= ( NSHeight( _TweetingView.frame ) + NSHeight( self.cuttingLineView.frame ) );
+    [ self addSubview: stackContentView ];
+    [ stackContentView setFrame: frameOfStackContentView ];
 
     NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfStackContentView ), NSHeight( self.navigationBarController.view.frame ) + NSHeight( frameOfStackContentView )
                                               , NSWidth( self.cuttingLineView.frame ), NSHeight( self.cuttingLineView.frame ) );

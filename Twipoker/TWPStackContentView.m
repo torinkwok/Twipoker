@@ -55,28 +55,10 @@
 #pragma mark Utilities
 - ( NSRect ) boundsOfElementView
     {
-    NSLog( @"%@: %@", self, NSStringFromRect( self.frame ) );
-
     NSRect rect = NSInsetRect( self.bounds, 0, -1.5 );
     rect.size.width += 1.f;
 
     return rect;
-    }
-
-- ( void ) setFrame:(NSRect)frame
-    {
-    [ super setFrame:frame ];
-    NSLog( @"New Frame: %@", NSStringFromRect( frame ) );
-    }
-
-//- ( BOOL ) isFlipped
-//    {
-//    return YES;
-//    }
-
-- ( void ) resizeWithOldSuperviewSize: ( NSSize )_OldBoundsSize
-    {
-    [ super resizeWithOldSuperviewSize: _OldBoundsSize ];
     }
 
 @end

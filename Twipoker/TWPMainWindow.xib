@@ -122,13 +122,6 @@
                             </imageView>
                         </subviews>
                     </customView>
-                    <customView appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-W1-aLM" customClass="TWPStackContentView">
-                        <rect key="frame" x="288" y="0.0" width="606" height="708"/>
-                        <connections>
-                            <outlet property="controller" destination="HUR-ik-D4y" id="wSL-fX-a3x"/>
-                            <outlet property="navigationBar" destination="Cjl-yU-kQO" id="EHL-b3-fwc"/>
-                        </connections>
-                    </customView>
                     <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="103-qB-6B1">
                         <rect key="frame" x="20" y="703" width="246" height="22"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search Twitter" usesSingleLineMode="YES" bezelStyle="round" id="EOV-LU-pMO">
@@ -368,6 +361,15 @@ Gw
         <customView id="zU3-cQ-xog" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="606" height="1"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        </customView>
+        <customView appearanceType="aqua" id="9t8-W1-aLM" customClass="TWPStackContentView">
+            <rect key="frame" x="0.0" y="0.0" width="606" height="708"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <connections>
+                <outlet property="controller" destination="HUR-ik-D4y" id="wSL-fX-a3x"/>
+                <outlet property="navigationBar" destination="Cjl-yU-kQO" id="EHL-b3-fwc"/>
+            </connections>
+            <point key="canvasLocation" x="447" y="-1731"/>
         </customView>
     </objects>
     <resources>
