@@ -29,7 +29,7 @@
 
 @class TWPCuttingLineView;
 @class TWPTweetingBaseBox;
-@class TWPTweetingCompleteView;
+@class TWPTweetingCompleteBox;
 
 // TWPMainWindowContentView class
 @interface TWPMainWindowContentView : NSView
@@ -39,7 +39,7 @@
 
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineView;
 @property ( weak ) IBOutlet TWPTweetingBaseBox* tweetingBaseView;
-@property ( weak ) IBOutlet TWPTweetingCompleteView* tweetingCompleteView;
+@property ( weak ) IBOutlet TWPTweetingCompleteBox* tweetingCompleteView;
 
 @end // TWPMainWindowContentView class
 

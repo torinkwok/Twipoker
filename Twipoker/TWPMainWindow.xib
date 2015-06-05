@@ -318,7 +318,7 @@
             </subviews>
             <point key="canvasLocation" x="-427" y="-1231.5"/>
         </customView>
-        <customView id="TVG-i4-ptU" customClass="TWPTweetingCompleteView">
+        <customView id="TVG-i4-ptU" customClass="TWPTweetingCompleteBox">
             <rect key="frame" x="0.0" y="0.0" width="606" height="201"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>

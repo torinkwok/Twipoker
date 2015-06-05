@@ -31,7 +31,7 @@
 
 #import "TWPCuttingLineView.h"
 #import "TWPTweetingBaseBox.h"
-#import "TWPTweetingCompleteView.h"
+#import "TWPTweetingCompleteBox.h"
 
 // Private Interfaces
 @interface TWPMainWindowContentView ()
