@@ -30,7 +30,7 @@
 #import "TWPStackContentViewController.h"
 
 #import "TWPCuttingLineView.h"
-#import "TWPTweetingBaseView.h"
+#import "TWPTweetingBaseBox.h"
 #import "TWPTweetingCompleteView.h"
 
 // Private Interfaces

@@ -28,7 +28,7 @@
 @class TWPStackContentViewController;
 
 @class TWPCuttingLineView;
-@class TWPTweetingBaseView;
+@class TWPTweetingBaseBox;
 @class TWPTweetingCompleteView;
 
 // TWPMainWindowContentView class
@@ -38,7 +38,7 @@
 @property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
 
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineView;
-@property ( weak ) IBOutlet TWPTweetingBaseView* tweetingBaseView;
+@property ( weak ) IBOutlet TWPTweetingBaseBox* tweetingBaseView;
 @property ( weak ) IBOutlet TWPTweetingCompleteView* tweetingCompleteView;
 
 @end // TWPMainWindowContentView class

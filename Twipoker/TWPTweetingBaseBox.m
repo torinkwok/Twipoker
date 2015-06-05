@@ -22,11 +22,22 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetingBox.h"
+#import "TWPTweetingBaseBox.h"
 
-// TWPTweetingBaseView class
-@interface TWPTweetingBaseView : TWPTweetingBox
-@end // TWPTweetingBaseView class
+// TWPTweetingBaseBox class
+@implementation TWPTweetingBaseBox
+
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
+
+    // Drawing code here.
+    NSColor* fillColor = [ NSColor colorWithHTMLColor: @"FAFAFA" ];
+    [ fillColor setFill ];
+    NSRectFill( _DirtyRect );
+    }
+
+@end // TWPTweetingBaseBox class
 
 /*=============================================================================┐
 |                                                                              |

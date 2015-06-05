@@ -296,7 +296,7 @@
                 <outlet property="view" destination="Zwj-uj-ZVJ" id="2WP-UN-rmj"/>
             </connections>
         </customObject>
-        <customView id="qNf-Vk-xrz" customClass="TWPTweetingBaseView">
+        <customView id="qNf-Vk-xrz" customClass="TWPTweetingBaseBox">
             <rect key="frame" x="0.0" y="0.0" width="606" height="49"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
