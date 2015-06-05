@@ -56,6 +56,11 @@
         }
     }
 
+- ( void ) setFrame: ( NSRect )_Frame
+    {
+    [ super setFrame: _Frame ];
+    }
+
 @end // TWPTimelineScrollView class
 
 /*=============================================================================┐

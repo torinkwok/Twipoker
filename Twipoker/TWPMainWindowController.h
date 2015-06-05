@@ -27,6 +27,8 @@
 // TWPMainWindowController class
 @interface TWPMainWindowController : NSWindowController
 
+@property ( weak ) IBOutlet NSTextField* tweetTextField;
+
 + ( instancetype ) mainWindowController;
 
 @end // TWPMainWindowController

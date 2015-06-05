@@ -6,14 +6,15 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPMainWindowController">
             <connections>
+                <outlet property="tweetTextField" destination="AaA-rO-rdw" id="O38-Lg-9Ja"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="ddi-Sa-xhf"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="TWPMainWindow">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES" fullSizeContentView="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
             <rect key="contentRect" x="411" y="479" width="893" height="767"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="893" height="630"/>
@@ -94,7 +95,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
                     </imageView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-yU-kQO" customClass="TWPNavigationBar">
-                        <rect key="frame" x="288" y="710" width="606" height="60"/>
+                        <rect key="frame" x="288" y="707" width="606" height="60"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
                                 <rect key="frame" x="20" y="18" width="27" height="25"/>
@@ -116,25 +117,11 @@
                                     <action selector="goForwardAction:" target="HUR-ik-D4y" id="fyz-EQ-Lu8"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DmE-n4-O8w" userLabel="Craft Tweet Button">
-                                <rect key="frame" x="556" y="10" width="30" height="40"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="draft-tweet-black" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="hDF-zy-ZtU">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMS-HU-W4h" userLabel="Twitter Logo Button">
                                 <rect key="frame" x="291" y="18" width="25" height="25"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="twitter-logo-blue" id="8Lr-ax-6GU"/>
                             </imageView>
                         </subviews>
-                    </customView>
-                    <customView appearanceType="aqua" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-W1-aLM" customClass="TWPStackContentView">
-                        <rect key="frame" x="288" y="0.0" width="606" height="712"/>
-                        <connections>
-                            <outlet property="controller" destination="HUR-ik-D4y" id="wSL-fX-a3x"/>
-                            <outlet property="navigationBar" destination="Cjl-yU-kQO" id="EHL-b3-fwc"/>
-                        </connections>
                     </customView>
                     <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="103-qB-6B1">
                         <rect key="frame" x="20" y="703" width="246" height="22"/>
@@ -183,9 +170,8 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaw-Hp-Dzh">
-                                                            <rect key="frame" x="73" y="9" width="267" height="34"/>
-                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Preview of the most recent direct 
-message" id="kjV-Qp-NrA">
+                                                            <rect key="frame" x="73" y="9" width="204" height="34"/>
+                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Preview of the most recent direct  message" id="kjV-Qp-NrA">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -234,6 +220,13 @@ message" id="kjV-Qp-NrA">
                         </scroller>
                     </scrollView>
                 </subviews>
+                <connections>
+                    <outlet property="cuttingLineView" destination="zU3-cQ-xog" id="6MD-iA-mN7"/>
+                    <outlet property="navigationBarController" destination="Gr0-CG-Iha" id="mjL-rQ-alA"/>
+                    <outlet property="stackContentViewController" destination="HUR-ik-D4y" id="ewN-Vh-20V"/>
+                    <outlet property="tweetingBaseView" destination="qNf-Vk-xrz" id="wA8-4S-0es"/>
+                    <outlet property="tweetingCompleteView" destination="TVG-i4-ptU" id="Fra-bL-CWv"/>
+                </connections>
             </view>
             <point key="canvasLocation" x="-111.5" y="-1732.5"/>
         </window>
@@ -304,11 +297,107 @@ message" id="kjV-Qp-NrA">
                 <outlet property="view" destination="Zwj-uj-ZVJ" id="2WP-UN-rmj"/>
             </connections>
         </customObject>
+        <customView id="qNf-Vk-xrz" customClass="TWPTweetingBaseBox">
+            <rect key="frame" x="0.0" y="0.0" width="606" height="49"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wn7-Wz-5UH">
+                    <rect key="frame" x="12" y="7" width="35" height="35"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="NWL-2f-uLm"/>
+                </imageView>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqQ-Vk-bRd">
+                    <rect key="frame" x="57" y="8" width="537" height="33"/>
+                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="What's happening" drawsBackground="YES" id="Qd7-BU-7A2" customClass="TWPBaseTweetingTextFieldCell">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="EiT-Mj-1SZ" id="0dz-OT-d0c"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-427" y="-1231.5"/>
+        </customView>
+        <customView id="TVG-i4-ptU" customClass="TWPTweetingCompleteBox">
+            <rect key="frame" x="0.0" y="0.0" width="606" height="201"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ara-bI-9mJ">
+                    <rect key="frame" x="12" y="159" width="35" height="35"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="0Ut-Yg-PDL"/>
+                </imageView>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AaA-rO-rdw">
+                    <rect key="frame" x="56" y="60" width="538" height="133"/>
+                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="Edw-Vq-uqW">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="TVG-i4-ptU" id="wR9-Qa-AT1"/>
+                    </connections>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5v-Oj-sTR">
+                    <rect key="frame" x="446" y="13" width="76" height="32"/>
+                    <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NL-pb-6v4">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="tweetAction:" target="TVG-i4-ptU" id="9rT-6p-9Uo"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrL-99-Ybv">
+                    <rect key="frame" x="516" y="13" width="83" height="32"/>
+                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rEK-97-AuS">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="collapsedTweetingBoxAction:" target="TVG-i4-ptU" id="ar0-yZ-ajG"/>
+                    </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Qx-6O-yYh">
+                    <rect key="frame" x="56" y="20" width="20" height="20"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="tweet_with_pic" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="r67-KR-rjb">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="uploadMediaAction:" target="TVG-i4-ptU" id="lQg-LS-58p"/>
+                    </connections>
+                </button>
+            </subviews>
+            <connections>
+                <outlet property="cancelButton" destination="wrL-99-Ybv" id="eiD-05-loL"/>
+                <outlet property="tweetButton" destination="v5v-Oj-sTR" id="fDQ-CN-ftF"/>
+                <outlet property="tweetTextField" destination="AaA-rO-rdw" id="Cyq-jS-yIW"/>
+                <outlet property="uploadMediaButton" destination="2Qx-6O-yYh" id="Oiz-IZ-Pha"/>
+            </connections>
+            <point key="canvasLocation" x="-427" y="-1058.5"/>
+        </customView>
+        <customView id="zU3-cQ-xog" customClass="TWPCuttingLineView">
+            <rect key="frame" x="0.0" y="0.0" width="606" height="1"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        </customView>
+        <customView appearanceType="aqua" id="9t8-W1-aLM" customClass="TWPStackContentView">
+            <rect key="frame" x="0.0" y="0.0" width="606" height="708"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <connections>
+                <outlet property="controller" destination="HUR-ik-D4y" id="wSL-fX-a3x"/>
+                <outlet property="navigationBar" destination="Cjl-yU-kQO" id="EHL-b3-fwc"/>
+            </connections>
+            <point key="canvasLocation" x="267" y="-902"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
-        <image name="draft-tweet-black" width="14" height="14"/>
-        <image name="twitter-logo-blue" width="273.3599853515625" height="222.24000549316406"/>
+        <image name="tweet_with_pic" width="52" height="44"/>
+        <image name="twitter-logo-blue" width="640" height="541"/>
     </resources>
 </document>

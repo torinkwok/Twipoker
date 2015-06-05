@@ -24,6 +24,7 @@
 
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
+#import "TWPTweetUpdateObject.h"
 
 #import "_TWPMonitoringUserID.h"
 
@@ -82,6 +83,26 @@ TWPBrain static __strong* sWiseBrain;
     return sWiseBrain;
     }
 
+#pragma mark Operations
+- ( void ) pushTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObj
+              successBlock: ( void (^)( OTCTweet* _PushedTweet ) )_SuccessBlock
+                errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postStatusUpdate: _TweetUpdateObj.tweetText
+       inReplyToStatusID: nil latitude: nil longitude: nil placeID: nil displayCoordinates: nil trimUser: @NO
+            successBlock:
+        ^( NSDictionary* _Status )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _Status ] );
+            } errorBlock:
+                ^( NSError* _Error)
+                    {
+                    if ( _ErrorBlock ) _ErrorBlock( _Error );
+                    } ];
+
+    }
+
 #pragma mark Registration of Limbs
 - ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb
              forUserIDs: ( NSArray* )_UserIDs
@@ -130,6 +151,7 @@ TWPBrain static __strong* sWiseBrain;
         {
         [ self->_uniqueTweetsQueue addObject: _ReceivedTweet ];
 
+        NSNumber* currentLoginUserID = @( [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue );
         NSNumber* authorID = [ NSNumber numberWithLongLong: _ReceivedTweet.author.ID ];
 
         for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
@@ -139,7 +161,7 @@ TWPBrain static __strong* sWiseBrain;
                 {
                 if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask )
                     {
-                    if ( [ self->_friendsList containsObject: authorID ]
+                    if ( ( [ self->_friendsList containsObject: authorID ] || authorID == currentLoginUserID )
                             && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
                         [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
                     }

@@ -24,16 +24,116 @@
 
 #import "TWPMainWindowContentView.h"
 
+#import "TWPTimelineScrollView.h"
+#import "TWPNavigationBarController.h"
+#import "TWPStackContentView.h"
+#import "TWPStackContentViewController.h"
+
+#import "TWPTweetingBoxNotificationNames.h"
+#import "TWPCuttingLineView.h"
+#import "TWPTweetingBaseBox.h"
+#import "TWPTweetingCompleteBox.h"
+
+// Private Interfaces
+@interface TWPMainWindowContentView ()
+- ( void ) _addAndFitTweetingView: ( TWPTweetingBox* )_TweetingView;
+@end // Private Interfaces
+
+// TWPMainWindowContentView class
 @implementation TWPMainWindowContentView
 
+@synthesize navigationBarController;
+@synthesize stackContentViewController;
+
+@synthesize cuttingLineView;
+@synthesize tweetingBaseView;
+@synthesize tweetingCompleteView;
+
+#pragma mark Initializations
+- ( void ) awakeFromNib
+    {
+    [ self _addAndFitTweetingView: self.tweetingBaseView ];
+
+    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                selector: @selector( tweetingBoxShouldBeExpanded: )
+                                                    name: TWPTweetingBoxShouldBeExpanded
+                                                  object: nil ];
+
+    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                selector: @selector( tweetingBoxShouldBeCollapsed: )
+                                                    name: TWPTweetingBoxShouldBeCollapsed
+                                                  object: nil ];
+    }
+
+- ( void ) tweetingBoxShouldBeExpanded: ( NSNotification* )_Notif
+    {
+    [ self _addAndFitTweetingView: self.tweetingCompleteView ];
+    }
+
+- ( void ) tweetingBoxShouldBeCollapsed: ( NSNotification* )_Notif
+    {
+    [ self _addAndFitTweetingView: self.tweetingBaseView ];
+    }
+
+#pragma mark Custom Drawing
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    NSColor* color = [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ];
+    NSColor* color = [ NSColor colorWithHTMLColor: @"52AAEE" ];
     [ color set ];
     NSRectFill( _DirtyRect );
     }
 
-@end
+#pragma mark Private Interfaces
+- ( void ) _addAndFitTweetingView: ( TWPTweetingBox* )_TweetingView
+    {
+    [ self.tweetingBaseView removeFromSuperview ];
+    [ self.tweetingCompleteView removeFromSuperview ];
+    [ self.cuttingLineView removeFromSuperview ];
+
+    // Navigation bar
+    NSRect frameOfNavigationBar = self.navigationBarController.view.frame;
+
+    // Tweeting view
+    NSRect frameOfTweetingView = NSMakeRect( NSMinX( frameOfNavigationBar ), NSMinY( self.frame )
+                                           , NSWidth( _TweetingView.frame ), NSHeight( _TweetingView.frame ) );
+    [ _TweetingView setFrame: frameOfTweetingView ];
+    [ self addSubview: _TweetingView ];
+
+    // Cutting line
+    NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfTweetingView ), NSHeight( frameOfTweetingView )
+                                              , NSWidth( self.cuttingLineView.frame ), NSHeight( self.cuttingLineView.frame ) );
+    [ self.cuttingLineView setFrame: frameOfCuttingLineView ];
+    [ self addSubview: self.cuttingLineView ];
+
+    // Stack content view
+    TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
+    [ stackContentView removeFromSuperview ];
+    NSRect frameOfStackContentView = NSMakeRect( NSMinX( frameOfCuttingLineView )
+                                               , NSMaxY( frameOfCuttingLineView )
+                                               , NSWidth( stackContentView.frame )
+                                               , NSMinY( frameOfNavigationBar ) - NSMaxY( frameOfCuttingLineView ) );
+
+    // ------
+    // TODO: An ugly solution to fix layout issue of timeline scroll view
+    TWPTimelineScrollView* timelineScrollView = ( TWPTimelineScrollView* )( stackContentView.subviews.firstObject );
+    NSRect oldFrameOfTimelineScrollView = timelineScrollView.frame;     // Current value: {0, -1.5}, {607, 660}}
+    [ stackContentView setFrame: frameOfStackContentView ];
+    NSRect newFrameOfTimelineScrollView = timelineScrollView.frame;     // Current value {{0, -153.5}, {607, 660}}
+
+    // Current value: Current value:
+    // { {0, -1.5}, {607, NSHeight( newFrameOfTimelineScrollView ) - ( oldframeOfTimelineScrollView.origin.y - newFrameOfTimelineScrollView.origin.y )} }
+    // =
+    // { {0, -1.5}, {607, NSHeight( newFrameOfTimelineScrollView ) - ( -1.5 - (-153.5) )} }
+    NSRect fixedFrameOfTimelineScrollView = oldFrameOfTimelineScrollView;
+    fixedFrameOfTimelineScrollView.size.height =
+        NSHeight( newFrameOfTimelineScrollView ) - ( oldFrameOfTimelineScrollView.origin.y - newFrameOfTimelineScrollView.origin.y );
+
+    [ timelineScrollView setFrame: fixedFrameOfTimelineScrollView ];
+    [ self addSubview: stackContentView ];
+    // ------
+    }
+
+@end // TWPMainWindowContentView class
 
 /*=============================================================================┐
 |                                                                              |

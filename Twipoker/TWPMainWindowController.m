@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPMainWindowController.h"
+#import "TWPLoginUsersManager.h"
 
 // TWPMainWindowController class
 @implementation TWPMainWindowController

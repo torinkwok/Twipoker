@@ -22,26 +22,14 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
-@class TWPNavigationBarController;
-@class TWPStackContentViewController;
+@interface TWPTweetUpdateObject : NSObject
 
-@class TWPCuttingLineView;
-@class TWPTweetingBaseBox;
-@class TWPTweetingCompleteBox;
+@property ( copy, readwrite ) NSString* tweetText;
+@property ( strong, readwrite ) NSArray* mediaURLs;
 
-// TWPMainWindowContentView class
-@interface TWPMainWindowContentView : NSView
-
-@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
-@property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
-
-@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineView;
-@property ( weak ) IBOutlet TWPTweetingBaseBox* tweetingBaseView;
-@property ( weak ) IBOutlet TWPTweetingCompleteBox* tweetingCompleteView;
-
-@end // TWPMainWindowContentView class
+@end
 
 /*=============================================================================┐
 |                                                                              |

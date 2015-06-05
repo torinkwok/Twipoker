@@ -22,26 +22,33 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPTweetingBox.h"
 
-@class TWPNavigationBarController;
-@class TWPStackContentViewController;
+@class TWPTweetUpdateObject;
 
-@class TWPCuttingLineView;
-@class TWPTweetingBaseBox;
-@class TWPTweetingCompleteBox;
+// TWPTweetingCompleteBox class
+@interface TWPTweetingCompleteBox : TWPTweetingBox <NSTextFieldDelegate>
+    {
+@private
+    TWPTweetUpdateObject __strong* _tweetUpdateObject;
+    }
 
-// TWPMainWindowContentView class
-@interface TWPMainWindowContentView : NSView
+@property ( strong ) TWPTweetUpdateObject* tweetUpdateObject;
 
-@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
-@property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
+@property ( weak ) IBOutlet NSTextField* tweetTextField;
 
-@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineView;
-@property ( weak ) IBOutlet TWPTweetingBaseBox* tweetingBaseView;
-@property ( weak ) IBOutlet TWPTweetingCompleteBox* tweetingCompleteView;
+@property ( weak ) IBOutlet NSButton* uploadMediaButton;
 
-@end // TWPMainWindowContentView class
+@property ( weak ) IBOutlet NSButton* tweetButton;
+@property ( weak ) IBOutlet NSButton* cancelButton;
+
+#pragma mark IBActions
+- ( IBAction ) uploadMediaAction: ( id )_Sender;
+
+- ( IBAction ) tweetAction: ( id )_Sender;
+- ( IBAction ) collapsedTweetingBoxAction: ( id )_Sender;
+
+@end // TWPTweetingCompleteBox class
 
 /*=============================================================================┐
 |                                                                              |

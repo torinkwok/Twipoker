@@ -61,6 +61,11 @@
     return rect;
     }
 
+- ( void ) setFrame:(NSRect)frame
+    {
+    [ super setFrame: frame ];
+    }
+
 @end
 
 /*=============================================================================┐

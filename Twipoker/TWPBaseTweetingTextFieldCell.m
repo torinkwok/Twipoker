@@ -22,26 +22,33 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPBaseTweetingTextFieldCell.h"
+#import "TWPTweetingBoxNotificationNames.h"
 
-@class TWPNavigationBarController;
-@class TWPStackContentViewController;
+// TWPBaseTweetingTextFieldCell class
+@implementation TWPBaseTweetingTextFieldCell
 
-@class TWPCuttingLineView;
-@class TWPTweetingBaseBox;
-@class TWPTweetingCompleteBox;
+#pragma mark Overrides
+- ( void ) selectWithFrame: ( NSRect )_Rect
+                    inView: ( NSView* )_ControlView
+                    editor: ( NSText* )_FieldEditor
+                  delegate: ( id )_DelegateObj
+                     start: ( NSInteger )_SelStart
+                    length: ( NSInteger )_SelLength
+    {
+    [ super selectWithFrame: _Rect
+                     inView: _ControlView
+                     editor: _FieldEditor
+                   delegate: _DelegateObj
+                      start: _SelStart
+                     length: _SelLength ];
 
-// TWPMainWindowContentView class
-@interface TWPMainWindowContentView : NSView
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTweetingBoxShouldBeExpanded
+                                                           object: self
+                                                         userInfo: nil ];
+    }
 
-@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
-@property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
-
-@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineView;
-@property ( weak ) IBOutlet TWPTweetingBaseBox* tweetingBaseView;
-@property ( weak ) IBOutlet TWPTweetingCompleteBox* tweetingCompleteView;
-
-@end // TWPMainWindowContentView class
+@end // TWPBaseTweetingTextFieldCell class
 
 /*=============================================================================┐
 |                                                                              |

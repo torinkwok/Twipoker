@@ -22,26 +22,18 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPTweetingBox.h"
 
-@class TWPNavigationBarController;
-@class TWPStackContentViewController;
+@implementation TWPTweetingBox
 
-@class TWPCuttingLineView;
-@class TWPTweetingBaseBox;
-@class TWPTweetingCompleteBox;
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
+    
+    // Drawing code here.
+    }
 
-// TWPMainWindowContentView class
-@interface TWPMainWindowContentView : NSView
-
-@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
-@property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
-
-@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineView;
-@property ( weak ) IBOutlet TWPTweetingBaseBox* tweetingBaseView;
-@property ( weak ) IBOutlet TWPTweetingCompleteBox* tweetingCompleteView;
-
-@end // TWPMainWindowContentView class
+@end
 
 /*=============================================================================┐
 |                                                                              |

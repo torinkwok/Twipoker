@@ -26,6 +26,8 @@
 
 @protocol TWPLimb;
 
+@class TWPTweetUpdateObject;
+
 typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     { TWPBrainSignalTypeNewTweetMask        = 1U
     , TWPBrainSignalTypeMentionedMeMask     = 1U << 1
@@ -59,6 +61,11 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 
 #pragma mark Initializations
 + ( instancetype ) wiseBrain;
+
+#pragma mark Operations
+- ( void ) pushTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObj
+              successBlock: ( void (^)( OTCTweet* _PushedTweet ) )_SuccessBlock
+                errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
 #pragma mark Registration of Limbs
 - ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb forUserIDs: ( NSArray* )_UserIDs brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
