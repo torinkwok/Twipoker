@@ -358,7 +358,7 @@ Gw
 </string>
                     </buttonCell>
                     <connections>
-                        <action selector="collapsedTweetingBoxAction:" target="-2" id="TU5-gz-Lhz"/>
+                        <action selector="collapsedTweetingBoxAction:" target="TVG-i4-ptU" id="ar0-yZ-ajG"/>
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Qx-6O-yYh">

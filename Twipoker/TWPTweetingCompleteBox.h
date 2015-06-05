@@ -44,7 +44,9 @@
 
 #pragma mark IBActions
 - ( IBAction ) uploadMediaAction: ( id )_Sender;
+
 - ( IBAction ) tweetAction: ( id )_Sender;
+- ( IBAction ) collapsedTweetingBoxAction: ( id )_Sender;
 
 @end // TWPTweetingCompleteBox class
 

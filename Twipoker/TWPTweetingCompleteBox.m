@@ -25,6 +25,7 @@
 #import "TWPTweetingCompleteBox.h"
 #import "TWPBrain.h"
 #import "TWPTweetUpdateObject.h"
+#import "TWPTweetingBoxNotificationNames.h"
 
 // TWPTweetingCompleteBox class
 @implementation TWPTweetingCompleteBox
@@ -83,8 +84,36 @@
 - ( IBAction ) tweetAction: ( id )_Sender
     {
     [ [ TWPBrain wiseBrain ] pushTweetUpdate: self->_tweetUpdateObject
-                            successBlock: nil
-                            errorBlock: nil ];
+                                successBlock:
+        ^( OTCTweet* _PushedTweet )
+            {
+            // TODO:
+            NSLog( @"Just pushed Tweet: %@", _PushedTweet );
+            } errorBlock:
+                ^( NSError* _Error )
+                    {
+                    // TODO:
+                    NSLog( @"%@", _Error );
+                    } ];
+
+    [ self.tweetTextField setStringValue: @"" ];
+    [ self _clearTweetUpdateObject ];
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTweetingBoxShouldBeCollapsed
+                                                           object: self
+                                                         userInfo: nil ];
+    }
+
+- ( void ) _clearTweetUpdateObject
+    {
+    self->_tweetUpdateObject.tweetText = nil;
+    self->_tweetUpdateObject.mediaURLs = nil;
+    }
+
+- ( IBAction ) collapsedTweetingBoxAction: ( id )_Sender
+    {
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTweetingBoxShouldBeCollapsed
+                                                           object: self
+                                                         userInfo: nil ];
     }
 
 @end // TWPTweetingCompleteBox class
