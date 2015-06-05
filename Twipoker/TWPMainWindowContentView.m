@@ -29,6 +29,7 @@
 #import "TWPStackContentView.h"
 #import "TWPStackContentViewController.h"
 
+#import "TWPTweetingBoxNotificationNames.h"
 #import "TWPCuttingLineView.h"
 #import "TWPTweetingBaseBox.h"
 #import "TWPTweetingCompleteBox.h"
@@ -50,6 +51,26 @@
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
+    {
+    [ self _addAndFitTweetingView: self.tweetingBaseView ];
+
+    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                selector: @selector( tweetingBoxShouldBeExpanded: )
+                                                    name: TWPTweetingBoxShouldBeExpanded
+                                                  object: nil ];
+
+    [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                selector: @selector( tweetingBoxShouldBeCollapsed: )
+                                                    name: TWPTweetingBoxShouldBeCollapsed
+                                                  object: nil ];
+    }
+
+- ( void ) tweetingBoxShouldBeExpanded: ( NSNotification* )_Notif
+    {
+    [ self _addAndFitTweetingView: self.tweetingCompleteView ];
+    }
+
+- ( void ) tweetingBoxShouldBeCollapsed: ( NSNotification* )_Notif
     {
     [ self _addAndFitTweetingView: self.tweetingBaseView ];
     }

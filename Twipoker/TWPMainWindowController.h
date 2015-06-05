@@ -29,6 +29,10 @@
 
 + ( instancetype ) mainWindowController;
 
+#pragma mark IBActions
+- ( IBAction ) collapsedTweetingBoxAction: ( id )_Sender;
+- ( IBAction ) tweetAction: ( id )_Sender;
+
 @end // TWPMainWindowController
 
 /*=============================================================================┐

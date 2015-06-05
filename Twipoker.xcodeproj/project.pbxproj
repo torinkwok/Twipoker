@@ -83,6 +83,7 @@
 		83B0C06C1B08E4060093E53E /* _TWPMonitoringUserID.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0C06B1B08E4060093E53E /* _TWPMonitoringUserID.m */; };
 		83B5550B1B217C0200E354D0 /* TWPBaseTweetingTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5550A1B217C0200E354D0 /* TWPBaseTweetingTextFieldCell.m */; };
 		83B5550E1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5550D1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.m */; };
+		83B555111B21839F00E354D0 /* TWPTweetingBoxNotificationNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B555101B21839F00E354D0 /* TWPTweetingBoxNotificationNames.m */; };
 		83B74BCB1B07902A000F44BA /* TWPBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B74BCA1B07902A000F44BA /* TWPBrain.m */; };
 		83BE4AA71B056160008ED545 /* OTCList.m in Sources */ = {isa = PBXBuildFile; fileRef = 83BE4AA51B056160008ED545 /* OTCList.m */; };
 		83C07A971AF22B0600184CCB /* draft-tweet-black.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 83C07A961AF22B0600184CCB /* draft-tweet-black.tiff */; };
@@ -318,6 +319,8 @@
 		83B5550A1B217C0200E354D0 /* TWPBaseTweetingTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPBaseTweetingTextFieldCell.m; path = Twipoker/TWPBaseTweetingTextFieldCell.m; sourceTree = "<group>"; };
 		83B5550C1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPCompleteTweetingTextFieldCell.h; path = Twipoker/TWPCompleteTweetingTextFieldCell.h; sourceTree = "<group>"; };
 		83B5550D1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPCompleteTweetingTextFieldCell.m; path = Twipoker/TWPCompleteTweetingTextFieldCell.m; sourceTree = "<group>"; };
+		83B5550F1B21839F00E354D0 /* TWPTweetingBoxNotificationNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTweetingBoxNotificationNames.h; path = Twipoker/TWPTweetingBoxNotificationNames.h; sourceTree = "<group>"; };
+		83B555101B21839F00E354D0 /* TWPTweetingBoxNotificationNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetingBoxNotificationNames.m; path = Twipoker/TWPTweetingBoxNotificationNames.m; sourceTree = "<group>"; };
 		83B74BC91B07902A000F44BA /* TWPBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPBrain.h; sourceTree = "<group>"; };
 		83B74BCA1B07902A000F44BA /* TWPBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPBrain.m; sourceTree = "<group>"; };
 		83BE4AA41B056160008ED545 /* OTCList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCList.h; sourceTree = "<group>"; };
@@ -780,6 +783,8 @@
 		83ADA82F1B1F04F3000F7222 /* Tweeting Box */ = {
 			isa = PBXGroup;
 			children = (
+				83B5550F1B21839F00E354D0 /* TWPTweetingBoxNotificationNames.h */,
+				83B555101B21839F00E354D0 /* TWPTweetingBoxNotificationNames.m */,
 				83ADA8701B2032BA000F7222 /* TWPTweetingBox.h */,
 				83ADA8711B2032BA000F7222 /* TWPTweetingBox.m */,
 				83ADA8381B1F08D5000F7222 /* TWPTweetingBaseBox.h */,
@@ -1341,6 +1346,7 @@
 				83F232171AE130A900A05D1D /* TWPLoginUsersManager.m in Sources */,
 				83ADA8721B2032BA000F7222 /* TWPTweetingBox.m in Sources */,
 				83E9A2F51B02724600CA5926 /* OTCStreamingEvent.m in Sources */,
+				83B555111B21839F00E354D0 /* TWPTweetingBoxNotificationNames.m in Sources */,
 				83EE64D01B11B6B400A515A7 /* TWPListsNameLabel.m in Sources */,
 				83AAF7081AED2B6D007A3A48 /* TWPDashboardView.m in Sources */,
 				83B5550B1B217C0200E354D0 /* TWPBaseTweetingTextFieldCell.m in Sources */,

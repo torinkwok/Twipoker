@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPMainWindowController.h"
+#import "TWPTweetingBoxNotificationNames.h"
 
 // TWPMainWindowController class
 @implementation TWPMainWindowController
@@ -47,6 +48,19 @@
 - ( void ) awakeFromNib
     {
     // TODO:
+    }
+
+#pragma mark IBActions
+- ( IBAction ) collapsedTweetingBoxAction: ( id )_Sender
+    {
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTweetingBoxShouldBeCollapsed
+                                                           object: self
+                                                         userInfo: nil ];
+    }
+
+- ( IBAction ) tweetAction: ( id )_Sender
+    {
+    // TODO;
     }
 
 @end // TWPMainWindowController

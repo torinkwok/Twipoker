@@ -22,33 +22,11 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPBaseTweetingTextFieldCell.h"
 #import "TWPTweetingBoxNotificationNames.h"
 
-// TWPBaseTweetingTextFieldCell class
-@implementation TWPBaseTweetingTextFieldCell
-
-#pragma mark Overrides
-- ( void ) selectWithFrame: ( NSRect )_Rect
-                    inView: ( NSView* )_ControlView
-                    editor: ( NSText* )_FieldEditor
-                  delegate: ( id )_DelegateObj
-                     start: ( NSInteger )_SelStart
-                    length: ( NSInteger )_SelLength
-    {
-    [ super selectWithFrame: _Rect
-                     inView: _ControlView
-                     editor: _FieldEditor
-                   delegate: _DelegateObj
-                      start: _SelStart
-                     length: _SelLength ];
-
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTweetingBoxShouldBeExpanded
-                                                           object: self
-                                                         userInfo: nil ];
-    }
-
-@end // TWPBaseTweetingTextFieldCell class
+// Notification Names
+NSString* const TWPTweetingBoxShouldBeExpanded = @"TweetingBox.Notif.BoxShouldBeExpanded";
+NSString* const TWPTweetingBoxShouldBeCollapsed = @"TweetingBox.Notif.BoxShouldBeCollapsed";
 
 /*=============================================================================┐
 |                                                                              |
