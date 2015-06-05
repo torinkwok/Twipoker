@@ -23,14 +23,25 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTweetingCompleteBox.h"
+#import "TWPBrain.h"
+#import "TWPTweetUpdateObject.h"
 
 // TWPTweetingCompleteBox class
 @implementation TWPTweetingCompleteBox
 
+@synthesize tweetUpdateObject = _tweetUpdateObject;
+
 @synthesize tweetTextField;
+
+@synthesize uploadMediaButton;
 
 @synthesize tweetButton;
 @synthesize cancelButton;
+
+- ( void ) awakeFromNib
+    {
+    self->_tweetUpdateObject = [ [ TWPTweetUpdateObject alloc ] init ];
+    }
 
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
@@ -46,7 +57,34 @@
 - ( void ) controlTextDidChange: ( NSNotification* )_Notif
     {
     NSTextField* fieldEditor = _Notif.userInfo[ @"NSFieldEditor" ];
-    [ self.tweetButton setEnabled: ( ( NSTextField* )( fieldEditor.delegate ) ).stringValue.length > 0 ];
+
+    NSString* currentText = ( ( NSTextField* )( fieldEditor.delegate ) ).stringValue;
+    [ self->_tweetUpdateObject setTweetText: currentText ];
+    [ self.tweetButton setEnabled: currentText.length > 0 ];
+    }
+
+#pragma mark IBActions
+- ( IBAction ) uploadMediaAction: ( id )_Sender
+    {
+    NSOpenPanel* openPanel = [ NSOpenPanel openPanel ];
+
+    // Supported image formats: PNG, JPEG, WEBP and GIF. Animated GIFs are supported.
+    // Supported video formats: MP4
+    [ openPanel setAllowedFileTypes: @[ @"jpeg", @"jpg", @"png", @"webp", @"gif", @"mp4" ] ];
+    [ openPanel setAllowsMultipleSelection: NO ];
+    [ openPanel beginSheetModalForWindow: self.window
+                       completionHandler:
+        ^( NSInteger _Result )
+            {
+            // TODO:
+            } ];
+    }
+
+- ( IBAction ) tweetAction: ( id )_Sender
+    {
+    [ [ TWPBrain wiseBrain ] pushTweetUpdate: self->_tweetUpdateObject
+                            successBlock: nil
+                            errorBlock: nil ];
     }
 
 @end // TWPTweetingCompleteBox class

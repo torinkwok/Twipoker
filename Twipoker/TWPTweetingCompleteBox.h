@@ -24,13 +24,27 @@
 
 #import "TWPTweetingBox.h"
 
+@class TWPTweetUpdateObject;
+
 // TWPTweetingCompleteBox class
 @interface TWPTweetingCompleteBox : TWPTweetingBox <NSTextFieldDelegate>
+    {
+@private
+    TWPTweetUpdateObject __strong* _tweetUpdateObject;
+    }
+
+@property ( strong ) TWPTweetUpdateObject* tweetUpdateObject;
 
 @property ( weak ) IBOutlet NSTextField* tweetTextField;
 
+@property ( weak ) IBOutlet NSButton* uploadMediaButton;
+
 @property ( weak ) IBOutlet NSButton* tweetButton;
 @property ( weak ) IBOutlet NSButton* cancelButton;
+
+#pragma mark IBActions
+- ( IBAction ) uploadMediaAction: ( id )_Sender;
+- ( IBAction ) tweetAction: ( id )_Sender;
 
 @end // TWPTweetingCompleteBox class
 

@@ -345,7 +345,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="tweetAction:" target="-2" id="YIa-i6-Lo0"/>
+                        <action selector="tweetAction:" target="TVG-i4-ptU" id="9rT-6p-9Uo"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrL-99-Ybv">
@@ -367,19 +367,16 @@ Gw
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nf7-Cf-7ws">
-                    <rect key="frame" x="80" y="20" width="20" height="20"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="tweet_with_video" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="lAe-GJ-Ikp">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
+                    <connections>
+                        <action selector="uploadMediaAction:" target="TVG-i4-ptU" id="lQg-LS-58p"/>
+                    </connections>
                 </button>
             </subviews>
             <connections>
                 <outlet property="cancelButton" destination="wrL-99-Ybv" id="eiD-05-loL"/>
                 <outlet property="tweetButton" destination="v5v-Oj-sTR" id="fDQ-CN-ftF"/>
                 <outlet property="tweetTextField" destination="AaA-rO-rdw" id="Cyq-jS-yIW"/>
+                <outlet property="uploadMediaButton" destination="2Qx-6O-yYh" id="Oiz-IZ-Pha"/>
             </connections>
             <point key="canvasLocation" x="-427" y="-1058.5"/>
         </customView>
@@ -401,7 +398,6 @@ Gw
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
         <image name="tweet_with_pic" width="52" height="44"/>
-        <image name="tweet_with_video" width="52" height="44"/>
         <image name="twitter-logo-blue" width="640" height="541"/>
     </resources>
 </document>

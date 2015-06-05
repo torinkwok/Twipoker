@@ -22,44 +22,14 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPMainWindowController.h"
-#import "TWPTweetingBoxNotificationNames.h"
-#import "TWPLoginUsersManager.h"
+#import <Foundation/Foundation.h>
 
-// TWPMainWindowController class
-@implementation TWPMainWindowController
+@interface TWPTweetUpdateObject : NSObject
 
-#pragma mark Initializers
-+ ( instancetype ) mainWindowController
-    {
-    return [ [ [ self class ] alloc ] init ];
-    }
+@property ( copy, readwrite ) NSString* tweetText;
+@property ( strong, readwrite ) NSArray* mediaURLs;
 
-- ( instancetype ) init
-    {
-    if ( self = [ super initWithWindowNibName: @"TWPMainWindow" ] )
-        {
-        // TODO:
-        }
-
-    return self;
-    }
-
-#pragma mark Conforms <NSNibAwaking> protocol
-- ( void ) awakeFromNib
-    {
-    // TODO:
-    }
-
-#pragma mark IBActions
-- ( IBAction ) collapsedTweetingBoxAction: ( id )_Sender
-    {
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTweetingBoxShouldBeCollapsed
-                                                           object: self
-                                                         userInfo: nil ];
-    }
-
-@end // TWPMainWindowController
+@end
 
 /*=============================================================================┐
 |                                                                              |

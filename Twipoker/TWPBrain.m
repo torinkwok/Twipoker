@@ -24,6 +24,7 @@
 
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
+#import "TWPTweetUpdateObject.h"
 
 #import "_TWPMonitoringUserID.h"
 
@@ -80,6 +81,26 @@ TWPBrain static __strong* sWiseBrain;
         }
 
     return sWiseBrain;
+    }
+
+#pragma mark Operations
+- ( void ) pushTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObj
+              successBlock: ( void (^)( OTCTweet* _PushedTweet ) )_SuccessBlock
+                errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postStatusUpdate: _TweetUpdateObj.tweetText
+       inReplyToStatusID: nil latitude: nil longitude: nil placeID: nil displayCoordinates: nil trimUser: @NO
+            successBlock:
+        ^( NSDictionary* _Status )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _Status ] );
+            } errorBlock:
+                ^( NSError* _Error)
+                    {
+                    if ( _ErrorBlock ) _ErrorBlock( _Error );
+                    } ];
+
     }
 
 #pragma mark Registration of Limbs
