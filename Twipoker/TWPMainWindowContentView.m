@@ -35,7 +35,7 @@
 
 // Private Interfaces
 @interface TWPMainWindowContentView ()
-- ( void ) _addAndFitTweetingView: ( TWPTweetingView* )_TweetingView;
+- ( void ) _addAndFitTweetingView: ( TWPTweetingBox* )_TweetingView;
 @end // Private Interfaces
 
 // TWPMainWindowContentView class
@@ -63,7 +63,7 @@
     }
 
 #pragma mark Private Interfaces
-- ( void ) _addAndFitTweetingView: ( TWPTweetingView* )_TweetingView
+- ( void ) _addAndFitTweetingView: ( TWPTweetingBox* )_TweetingView
     {
     [ self.tweetingBaseView removeFromSuperview ];
     [ self.tweetingCompleteView removeFromSuperview ];

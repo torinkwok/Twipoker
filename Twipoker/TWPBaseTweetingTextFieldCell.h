@@ -24,9 +24,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+// Notification Names
+NSString extern* const TWPTweetingBoxShouldBeExpanded;
+
+// TWPBaseTweetingTextFieldCell class
 @interface TWPBaseTweetingTextFieldCell : NSTextFieldCell
 
-@end
+@end // TWPBaseTweetingTextFieldCell class
 
 /*=============================================================================┐
 |                                                                              |

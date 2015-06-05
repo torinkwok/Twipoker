@@ -22,10 +22,10 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetingView.h"
+#import "TWPTweetingBox.h"
 
 // TWPTweetingCompleteView class
-@interface TWPTweetingCompleteView : TWPTweetingView
+@interface TWPTweetingCompleteView : TWPTweetingBox
 @end // TWPTweetingCompleteView class
 
 /*=============================================================================┐
