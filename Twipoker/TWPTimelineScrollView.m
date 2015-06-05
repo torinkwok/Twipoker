@@ -58,11 +58,7 @@
 
 - ( void ) setFrame: ( NSRect )_Frame
     {
-//    NSLog( @"Before: %@: %@", self, NSStringFromRect( self.frame ) );
-
     [ super setFrame: _Frame ];
-
-//    NSLog( @"After: %@: %@\n\n", self, NSStringFromRect( _Frame ) );
     }
 
 @end // TWPTimelineScrollView class

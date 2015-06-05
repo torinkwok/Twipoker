@@ -25,7 +25,13 @@
 #import "TWPTweetingBox.h"
 
 // TWPTweetingCompleteBox class
-@interface TWPTweetingCompleteBox : TWPTweetingBox
+@interface TWPTweetingCompleteBox : TWPTweetingBox <NSTextFieldDelegate>
+
+@property ( weak ) IBOutlet NSTextField* tweetTextField;
+
+@property ( weak ) IBOutlet NSButton* tweetButton;
+@property ( weak ) IBOutlet NSButton* cancelButton;
+
 @end // TWPTweetingCompleteBox class
 
 /*=============================================================================┐

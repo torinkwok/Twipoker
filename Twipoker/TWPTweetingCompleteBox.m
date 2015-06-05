@@ -27,6 +27,11 @@
 // TWPTweetingCompleteBox class
 @implementation TWPTweetingCompleteBox
 
+@synthesize tweetTextField;
+
+@synthesize tweetButton;
+@synthesize cancelButton;
+
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
@@ -35,6 +40,13 @@
     NSColor* fillColor = [ NSColor colorWithHTMLColor: @"FAFAFA" ];
     [ fillColor setFill ];
     NSRectFill( _DirtyRect );
+    }
+
+#pragma mark Conforms to <NSTextFieldDelegate>
+- ( void ) controlTextDidChange: ( NSNotification* )_Notif
+    {
+    NSTextField* fieldEditor = _Notif.userInfo[ @"NSFieldEditor" ];
+    [ self.tweetButton setEnabled: ( ( NSTextField* )( fieldEditor.delegate ) ).stringValue.length > 0 ];
     }
 
 @end // TWPTweetingCompleteBox class

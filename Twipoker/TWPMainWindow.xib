@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPMainWindowController">
             <connections>
+                <outlet property="tweetTextField" destination="AaA-rO-rdw" id="O38-Lg-9Ja"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="ddi-Sa-xhf"/>
             </connections>
         </customObject>
@@ -333,13 +334,19 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="TVG-i4-ptU" id="wR9-Qa-AT1"/>
+                    </connections>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5v-Oj-sTR">
                     <rect key="frame" x="446" y="13" width="76" height="32"/>
-                    <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NL-pb-6v4">
+                    <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NL-pb-6v4">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="tweetAction:" target="-2" id="YIa-i6-Lo0"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrL-99-Ybv">
                     <rect key="frame" x="516" y="13" width="83" height="32"/>
@@ -355,6 +362,11 @@ Gw
                     </connections>
                 </button>
             </subviews>
+            <connections>
+                <outlet property="cancelButton" destination="wrL-99-Ybv" id="eiD-05-loL"/>
+                <outlet property="tweetButton" destination="v5v-Oj-sTR" id="fDQ-CN-ftF"/>
+                <outlet property="tweetTextField" destination="AaA-rO-rdw" id="Cyq-jS-yIW"/>
+            </connections>
             <point key="canvasLocation" x="-427" y="-1058.5"/>
         </customView>
         <customView id="zU3-cQ-xog" customClass="TWPCuttingLineView">

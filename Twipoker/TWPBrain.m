@@ -130,6 +130,7 @@ TWPBrain static __strong* sWiseBrain;
         {
         [ self->_uniqueTweetsQueue addObject: _ReceivedTweet ];
 
+        NSNumber* currentLoginUserID = @( [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue );
         NSNumber* authorID = [ NSNumber numberWithLongLong: _ReceivedTweet.author.ID ];
 
         for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
@@ -139,7 +140,7 @@ TWPBrain static __strong* sWiseBrain;
                 {
                 if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask )
                     {
-                    if ( [ self->_friendsList containsObject: authorID ]
+                    if ( ( [ self->_friendsList containsObject: authorID ] || authorID == currentLoginUserID )
                             && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
                         [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
                     }

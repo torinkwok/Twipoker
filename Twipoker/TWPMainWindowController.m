@@ -24,6 +24,7 @@
 
 #import "TWPMainWindowController.h"
 #import "TWPTweetingBoxNotificationNames.h"
+#import "TWPLoginUsersManager.h"
 
 // TWPMainWindowController class
 @implementation TWPMainWindowController
@@ -60,7 +61,18 @@
 
 - ( IBAction ) tweetAction: ( id )_Sender
     {
-    // TODO;
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postStatusUpdate: self.tweetTextField.stringValue
+       inReplyToStatusID: nil latitude: nil longitude: nil placeID: nil displayCoordinates: nil trimUser: @NO
+            successBlock:
+        ^( NSDictionary* _Status )
+            {
+
+            } errorBlock:
+                ^( NSError* _Error)
+                    {
+                    NSLog( @"%@", _Error );
+                    } ];
     }
 
 @end // TWPMainWindowController
