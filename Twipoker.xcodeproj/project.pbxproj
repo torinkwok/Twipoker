@@ -37,6 +37,8 @@
 		8349A6441AD2263C00487896 /* NSActionCell+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A6431AD2263C00487896 /* NSActionCell+TwipokerDrawing.m */; };
 		8349A6471AD24C9700487896 /* NSControl+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A6461AD24C9700487896 /* NSControl+TwipokerDrawing.m */; };
 		8349A64C1AD2D30100487896 /* TWPWhyNotPasswordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A64B1AD2D30100487896 /* TWPWhyNotPasswordButton.m */; };
+		8351C1D61B21DB8E0019BF98 /* tweet_with_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 8351C1D41B21DB8E0019BF98 /* tweet_with_pic.png */; };
+		8351C1D71B21DB8E0019BF98 /* tweet_with_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 8351C1D51B21DB8E0019BF98 /* tweet_with_video.png */; };
 		835361491AE5310200CF1988 /* TWPDebugLoginUsersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835361481AE5310200CF1988 /* TWPDebugLoginUsersView.xib */; };
 		8353614E1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353614D1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m */; };
 		835361511AE5635200CF1988 /* TWPDebugLoginUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 835361501AE5635200CF1988 /* TWPDebugLoginUsersView.m */; };
@@ -232,6 +234,8 @@
 		8349A6461AD24C9700487896 /* NSControl+TwipokerDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSControl+TwipokerDrawing.m"; path = "Twipoker/NSControl+TwipokerDrawing.m"; sourceTree = "<group>"; };
 		8349A64A1AD2D30100487896 /* TWPWhyNotPasswordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPWhyNotPasswordButton.h; path = Twipoker/TWPWhyNotPasswordButton.h; sourceTree = "<group>"; };
 		8349A64B1AD2D30100487896 /* TWPWhyNotPasswordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPWhyNotPasswordButton.m; path = Twipoker/TWPWhyNotPasswordButton.m; sourceTree = "<group>"; };
+		8351C1D41B21DB8E0019BF98 /* tweet_with_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tweet_with_pic.png; sourceTree = "<group>"; };
+		8351C1D51B21DB8E0019BF98 /* tweet_with_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tweet_with_video.png; sourceTree = "<group>"; };
 		835361481AE5310200CF1988 /* TWPDebugLoginUsersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TWPDebugLoginUsersView.xib; sourceTree = "<group>"; };
 		8353614C1AE5363700CF1988 /* TWPDebugLoginUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugLoginUsersViewController.h; sourceTree = "<group>"; };
 		8353614D1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginUsersViewController.m; sourceTree = "<group>"; };
@@ -938,6 +942,8 @@
 				83C07A981AF22FA000184CCB /* twitter-logo-blue.png */,
 				83C07A961AF22B0600184CCB /* draft-tweet-black.tiff */,
 				830A39931B1B07D2002EA4E2 /* direct_message_start.png */,
+				8351C1D41B21DB8E0019BF98 /* tweet_with_pic.png */,
+				8351C1D51B21DB8E0019BF98 /* tweet_with_video.png */,
 				83C07A851AF221ED00184CCB /* navigation-bar */,
 				83D3FF2A1ACB144B009D40EE /* Images.xcassets */,
 				83CFD88C1ACF1FFD0062D73D /* icon_16x16.png */,
@@ -1230,6 +1236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83CFD8971ACF1FFD0062D73D /* icon_16x16@2x.png in Resources */,
+				8351C1D71B21DB8E0019BF98 /* tweet_with_video.png in Resources */,
 				83D12E8C1AEFE2F5009ECC13 /* TWPTwitterUserView.xib in Resources */,
 				83D3FF1D1ACB144B009D40EE /* InfoPlist.strings in Resources */,
 				831447D21ACFF19300BFECE4 /* TWPDebugLoginView.xib in Resources */,
@@ -1257,6 +1264,7 @@
 				83CFD89E1ACF1FFD0062D73D /* logo_512x512.png in Resources */,
 				83CFD8991ACF1FFD0062D73D /* icon_32x32@2x.png in Resources */,
 				83AAF6DF1AECE964007A3A48 /* TWPMeView.xib in Resources */,
+				8351C1D61B21DB8E0019BF98 /* tweet_with_pic.png in Resources */,
 				83CFD8961ACF1FFD0062D73D /* icon_16x16.png in Resources */,
 				83CFD89B1ACF1FFD0062D73D /* icon_128x128@2x.png in Resources */,
 				83CFD89C1ACF1FFD0062D73D /* icon_256x256.png in Resources */,
