@@ -78,19 +78,42 @@
 #pragma mark IBActions
 - ( IBAction ) favOrUnfavAction: ( id )_Sender
     {
-    NSLog( @"%@", self );
-    if ( self.retweetButton.state == NSOffState )
+    NSLog( @"Current State: %ld", self.favButton.state );
+    NSCellStateValue state = self.favButton.state;
+
+    switch ( state )
         {
-        [ [ TWPBrain wiseBrain ] favTweet: self.tweet
-                             successBlock:
-            ^( OTCTweet* _FavedTweet )
-                {
-                NSLog( @"%@", _FavedTweet );
-                [ self setTweet: _FavedTweet ];
-                } errorBlock: ^( NSError* _Error )
-                                {
-                                NSLog( @"%@", _Error );
-                                } ];
+        case NSOnState:
+            {
+            [ [ TWPBrain wiseBrain ] favTweet: self.tweet
+                                 successBlock:
+                ^( OTCTweet* _FavedTweet )
+                    {
+                #if DEBUG
+                    NSLog( @"Just faved Tweet: %@", _FavedTweet );
+                #endif
+                    [ self setTweet: _FavedTweet ];
+                    } errorBlock: ^( NSError* _Error )
+                                    {
+                                    NSLog( @"%@", _Error );
+                                    } ];
+            } break;
+
+        case NSOffState:
+            {
+            [ [ TWPBrain wiseBrain ] unfavTweet: self.tweet
+                                   successBlock:
+                ^( OTCTweet* _UnfavedTweet )
+                    {
+                #if DEBUG
+                    NSLog( @"Just unfaved Tweet: %@", _UnfavedTweet );
+                #endif
+                    [ self setTweet: _UnfavedTweet ];
+                    } errorBlock: ^( NSError* _Error )
+                                    {
+                                    NSLog( @"%@", _Error );
+                                    } ];
+            }
         }
     }
 

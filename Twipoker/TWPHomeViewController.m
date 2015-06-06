@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPHomeViewController.h"
+#import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
 
 @interface TWPHomeViewController ()
@@ -36,7 +37,8 @@
     {
     if ( self = [ super initWithNibName: @"TWPHomeView" bundle: [ NSBundle mainBundle ] ] )
         {
-        [ [ TWPBrain wiseBrain ] registerLimb: self forUserIDs: nil brainSignal: TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask ];
+        [ [ TWPBrain wiseBrain ] registerLimb: self forUserIDs: nil brainSignal:
+            TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask | TWPBrainSignalTypeTimelineEventMask ];
 
         [ self.twitterAPI getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
             ^( NSArray* _TweetObjects )
@@ -126,6 +128,30 @@
             [ self.timelineTableView reloadData ];
             break;
             }
+        }
+    }
+
+- ( void )    brain: ( TWPBrain* )_Brain
+    didReceiveEvent: ( OTCStreamingEvent* )_DetectedEvent
+    {
+    OTCStreamingEventType eventType = _DetectedEvent.eventType;
+    id targetObject = _DetectedEvent.targetObject;
+
+    switch ( eventType )
+        {
+        case OTCStreamingEventTypeFavorite:
+            {
+            NSUInteger favedTweetIndex = [ self->_data indexOfObject: targetObject ];
+            [ self->_data[ favedTweetIndex ] setFavoritedByMe: YES ];
+            } break;
+
+        case OTCStreamingEventTypeUnfavorite:
+            {
+            NSUInteger unfavedTweetIndex = [ self->_data indexOfObject: targetObject ];
+            [ self->_data[ unfavedTweetIndex ] setFavoritedByMe: NO ];
+            } break;
+
+        default: ;
         }
     }
 

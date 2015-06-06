@@ -393,6 +393,7 @@
 		83CC14FA1B2317A40046B544 /* TWPRetweetButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPRetweetButton.m; path = Twipoker/TWPRetweetButton.m; sourceTree = "<group>"; };
 		83CC14FC1B2317B40046B544 /* TWPFavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPFavButton.h; path = Twipoker/TWPFavButton.h; sourceTree = "<group>"; };
 		83CC14FD1B2317B40046B544 /* TWPFavButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPFavButton.m; path = Twipoker/TWPFavButton.m; sourceTree = "<group>"; };
+		83CC14FF1B236E0D0046B544 /* OTCMutableTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTCMutableTweet.h; sourceTree = "<group>"; };
 		83CCEDCA1AF7B35200DC364C /* TWPRepliesTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPRepliesTimelineViewController.h; path = Twipoker/TWPRepliesTimelineViewController.h; sourceTree = "<group>"; };
 		83CCEDCB1AF7B35200DC364C /* TWPRepliesTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPRepliesTimelineViewController.m; path = Twipoker/TWPRepliesTimelineViewController.m; sourceTree = "<group>"; };
 		83CCEDCD1AF7C22300DC364C /* TWPRepliesTimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPRepliesTimelineView.xib; path = Twipoker/TWPRepliesTimelineView.xib; sourceTree = "<group>"; };
@@ -691,6 +692,7 @@
 				83924DBB1AE104A900C25895 /* OTCResolvedObject.m */,
 				83924DBC1AE104A900C25895 /* OTCTweet.h */,
 				83924DBD1AE104A900C25895 /* OTCTweet.m */,
+				83CC14FF1B236E0D0046B544 /* OTCMutableTweet.h */,
 				83E9A2EE1B02724500CA5926 /* OTCDirectMessage.h */,
 				83E9A2EF1B02724600CA5926 /* OTCDirectMessage.m */,
 				83924DBE1AE104A900C25895 /* OTCTwitterUser.h */,

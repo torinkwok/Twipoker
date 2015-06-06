@@ -84,6 +84,25 @@ TWPBrain static __strong* sWiseBrain;
     }
 
 #pragma mark Operations
+- ( void ) showDetailsOfTweet: ( NSString* )_TweetIDString
+                 successBlock: ( void (^)( OTCTweet* _Tweet ) )_SuccessBlock
+                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        getStatusesShowID: _TweetIDString
+                 trimUser: @NO
+         includeMyRetweet: @YES
+          includeEntities: @YES
+             successBlock:
+        ^( NSDictionary* _StatusJSON )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _StatusJSON ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
+    }
+
 - ( void ) pushTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObj
               successBlock: ( void (^)( OTCTweet* _PushedTweet ) )_SuccessBlock
                 errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
@@ -92,14 +111,13 @@ TWPBrain static __strong* sWiseBrain;
         postStatusUpdate: _TweetUpdateObj.tweetText
        inReplyToStatusID: nil latitude: nil longitude: nil placeID: nil displayCoordinates: nil trimUser: @NO
             successBlock:
-        ^( NSDictionary* _Status )
+        ^( NSDictionary* _StatusJSON )
             {
-            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _Status ] );
-            } errorBlock:
-                ^( NSError* _Error)
-                    {
-                    if ( _ErrorBlock ) _ErrorBlock( _Error );
-                    } ];
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _StatusJSON ] );
+            } errorBlock: ^( NSError* _Error)
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
 
     }
 
@@ -111,14 +129,31 @@ TWPBrain static __strong* sWiseBrain;
         postFavoriteCreateWithStatusID: _Tweet.tweetIDString
                        includeEntities: @YES
                           successBlock:
-        ^( NSDictionary* _FavedStatus )
+        ^( NSDictionary* _FavedStatusJSON )
             {
-            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _FavedStatus ] );
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _FavedStatusJSON ] );
             } errorBlock: ^( NSError* _Error )
                             {
                             if ( _ErrorBlock ) _ErrorBlock( _Error );
                             } ];
 
+    }
+
+- ( void ) unfavTweet: ( OTCTweet* )_Tweet
+         successBlock: ( void (^)( OTCTweet* _FavedTweet ) )_SuccessBlock
+           errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postFavoriteDestroyWithStatusID: _Tweet.tweetIDString
+                        includeEntities: @YES
+                           successBlock:
+        ^( NSDictionary* _UnfavedStatusJSON )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _UnfavedStatusJSON ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
     }
 
 #pragma mark Registration of Limbs

@@ -63,6 +63,10 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 + ( instancetype ) wiseBrain;
 
 #pragma mark Operations
+- ( void ) showDetailsOfTweet: ( NSString* )_TweetIDString
+                 successBlock: ( void (^)( OTCTweet* _Tweet ) )_SuccessBlock
+                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
 - ( void ) pushTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObj
               successBlock: ( void (^)( OTCTweet* _PushedTweet ) )_SuccessBlock
                 errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
@@ -70,6 +74,10 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 - ( void ) favTweet: ( OTCTweet* )_Tweet
        successBlock: ( void (^)( OTCTweet* _FavedTweet ) )_SuccessBlock
          errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
+- ( void ) unfavTweet: ( OTCTweet* )_Tweet
+         successBlock: ( void (^)( OTCTweet* _FavedTweet ) )_SuccessBlock
+           errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
 #pragma mark Registration of Limbs
 - ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb forUserIDs: ( NSArray* )_UserIDs brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
