@@ -22,15 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPFavTweetButton.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation TWPFavTweetButton
-
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
-}
+@interface TWPFavButton : NSButton
 
 @end
 

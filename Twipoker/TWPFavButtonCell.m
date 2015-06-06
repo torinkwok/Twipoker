@@ -22,9 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPFavButtonCell.h"
 
-@interface TWPFavTweetButton : NSButton
+@implementation TWPFavButtonCell
 
 @end
 

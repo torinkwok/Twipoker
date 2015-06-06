@@ -85,18 +85,24 @@
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoq-hk-sAZ" customClass="TWPFavTweetButton">
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoq-hk-sAZ" customClass="TWPFavButton">
                                                         <rect key="frame" x="66" y="1" width="14" height="14"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-fav-button-normal" imagePosition="only" alignment="center" alternateImage="twitter-fav-button-highlighting" imageScaling="proportionallyDown" inset="2" id="c68-GZ-ias" customClass="TWPFavTweetButtonCell">
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-fav-button-normal" imagePosition="only" alignment="center" alternateImage="twitter-fav-button-highlighting" imageScaling="proportionallyDown" inset="2" id="c68-GZ-ias" customClass="TWPFavButtonCell">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
                                                 </subviews>
+                                                <connections>
+                                                    <outlet property="favButton" destination="qoq-hk-sAZ" id="hV9-V4-9Kp"/>
+                                                    <outlet property="replyButton" destination="vc3-JV-3jd" id="NDv-q6-NUw"/>
+                                                    <outlet property="retweetButton" destination="rUX-Ck-hwg" id="J1w-e5-f62"/>
+                                                </connections>
                                             </customView>
                                         </subviews>
                                         <connections>
                                             <outlet property="authorAvatarWell" destination="AUA-3k-7Zo" id="mMX-wH-mTI"/>
+                                            <outlet property="tweetOperationsPanel" destination="keF-c2-Eeb" id="Gla-vn-M2l"/>
                                             <outlet property="tweetTextLabel" destination="RUo-13-Uhb" id="KsU-R1-3o6"/>
                                             <outlet property="userNameLabel" destination="rT6-rl-xjK" id="789-ne-8mN"/>
                                         </connections>

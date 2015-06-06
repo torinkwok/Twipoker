@@ -24,7 +24,25 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TWPReplyButton;
+@class TWPRetweetButton;
+@class TWPFavButton;
+
 @interface TWPTweetOperationsPanelView : NSView
+    {
+@private
+    OTCTweet __strong* _tweet;
+    }
+
+@property ( strong, readwrite ) OTCTweet* tweet;
+
+@property ( weak ) IBOutlet TWPReplyButton* replyButton;
+@property ( weak ) IBOutlet TWPRetweetButton* retweetButton;
+@property ( weak ) IBOutlet TWPFavButton* favButton;
+
+#pragma mark Initializations
++ ( instancetype ) panelWithTweet: ( OTCTweet* )_Tweet;
+- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
 
 @end
 
