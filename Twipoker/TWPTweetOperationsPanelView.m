@@ -24,6 +24,7 @@
 
 #import "TWPTweetOperationsPanelView.h"
 #import "TWPLoginUsersManager.h"
+#import "TWPBrain.h"
 
 #import "TWPReplyButton.h"
 #import "TWPRetweetButton.h"
@@ -59,6 +60,8 @@
     {
     if ( self->_tweet != _Tweet )
         {
+        self->_tweet = _Tweet;
+
         SInt64 currentUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
         [ self.retweetButton setEnabled: _Tweet.author.ID != currentUserID ];
 
@@ -70,6 +73,25 @@
 - ( OTCTweet* ) tweet
     {
     return self->_tweet;
+    }
+
+#pragma mark IBActions
+- ( IBAction ) favOrUnfavAction: ( id )_Sender
+    {
+    NSLog( @"%@", self );
+    if ( self.retweetButton.state == NSOffState )
+        {
+        [ [ TWPBrain wiseBrain ] favTweet: self.tweet
+                             successBlock:
+            ^( OTCTweet* _FavedTweet )
+                {
+                NSLog( @"%@", _FavedTweet );
+                [ self setTweet: _FavedTweet ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                NSLog( @"%@", _Error );
+                                } ];
+        }
     }
 
 @end

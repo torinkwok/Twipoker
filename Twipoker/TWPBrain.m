@@ -103,6 +103,24 @@ TWPBrain static __strong* sWiseBrain;
 
     }
 
+- ( void ) favTweet: ( OTCTweet* )_Tweet
+       successBlock: ( void (^)( OTCTweet* _FavedTweet ) )_SuccessBlock
+         errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postFavoriteCreateWithStatusID: _Tweet.tweetIDString
+                       includeEntities: @YES
+                          successBlock:
+        ^( NSDictionary* _FavedStatus )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _FavedStatus ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
+
+    }
+
 #pragma mark Registration of Limbs
 - ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb
              forUserIDs: ( NSArray* )_UserIDs

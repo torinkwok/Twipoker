@@ -44,6 +44,9 @@
 + ( instancetype ) panelWithTweet: ( OTCTweet* )_Tweet;
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
 
+#pragma mark IBActions
+- ( IBAction ) favOrUnfavAction: ( id )_Sender;
+
 @end
 
 /*=============================================================================┐
