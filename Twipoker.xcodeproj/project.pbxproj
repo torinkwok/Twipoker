@@ -95,6 +95,16 @@
 		83C3DABE1B133AC6005973EE /* TWPTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C3DABD1B133AC6005973EE /* TWPTimelineViewController.m */; };
 		83C3DAC41B138613005973EE /* TWPTwitterListTimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C3DAC31B138613005973EE /* TWPTwitterListTimelineView.xib */; };
 		83C3DAC71B1387FF005973EE /* TWPTwitterListTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C3DAC61B1387FF005973EE /* TWPTwitterListTimelineViewController.m */; };
+		83CC14DB1B22F7A80046B544 /* twitter-fav-button-highlighting.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D11B22F7A80046B544 /* twitter-fav-button-highlighting.png */; };
+		83CC14DC1B22F7A80046B544 /* twitter-fav-button-highlighting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D21B22F7A80046B544 /* twitter-fav-button-highlighting@2x.png */; };
+		83CC14DD1B22F7A80046B544 /* twitter-fav-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D31B22F7A80046B544 /* twitter-fav-button-normal.png */; };
+		83CC14DE1B22F7A80046B544 /* twitter-fav-button-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D41B22F7A80046B544 /* twitter-fav-button-normal@2x.png */; };
+		83CC14DF1B22F7A80046B544 /* twitter-reply-button-highlighting.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D51B22F7A80046B544 /* twitter-reply-button-highlighting.png */; };
+		83CC14E01B22F7A80046B544 /* twitter-reply-button-highlighting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D61B22F7A80046B544 /* twitter-reply-button-highlighting@2x.png */; };
+		83CC14E11B22F7A80046B544 /* twitter-reply-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D71B22F7A80046B544 /* twitter-reply-button-normal.png */; };
+		83CC14E21B22F7A80046B544 /* twitter-reply-button-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D81B22F7A80046B544 /* twitter-reply-button-normal@2x.png */; };
+		83CC14E31B22F7A80046B544 /* twitter-retweet-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D91B22F7A80046B544 /* twitter-retweet-button-normal.png */; };
+		83CC14E41B22F7A80046B544 /* twitter-retweet-button-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14DA1B22F7A80046B544 /* twitter-retweet-button-normal@2x.png */; };
 		83CCEDCC1AF7B35200DC364C /* TWPRepliesTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CCEDCB1AF7B35200DC364C /* TWPRepliesTimelineViewController.m */; };
 		83CCEDCE1AF7C22300DC364C /* TWPRepliesTimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83CCEDCD1AF7C22300DC364C /* TWPRepliesTimelineView.xib */; };
 		83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFD8381ACF1C820062D73D /* TWPDebug.m */; };
@@ -348,6 +358,16 @@
 		83C3DAC31B138613005973EE /* TWPTwitterListTimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPTwitterListTimelineView.xib; path = Twipoker/TWPTwitterListTimelineView.xib; sourceTree = "<group>"; };
 		83C3DAC51B1387FF005973EE /* TWPTwitterListTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTwitterListTimelineViewController.h; path = Twipoker/TWPTwitterListTimelineViewController.h; sourceTree = "<group>"; };
 		83C3DAC61B1387FF005973EE /* TWPTwitterListTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTwitterListTimelineViewController.m; path = Twipoker/TWPTwitterListTimelineViewController.m; sourceTree = "<group>"; };
+		83CC14D11B22F7A80046B544 /* twitter-fav-button-highlighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-fav-button-highlighting.png"; sourceTree = "<group>"; };
+		83CC14D21B22F7A80046B544 /* twitter-fav-button-highlighting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-fav-button-highlighting@2x.png"; sourceTree = "<group>"; };
+		83CC14D31B22F7A80046B544 /* twitter-fav-button-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-fav-button-normal.png"; sourceTree = "<group>"; };
+		83CC14D41B22F7A80046B544 /* twitter-fav-button-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-fav-button-normal@2x.png"; sourceTree = "<group>"; };
+		83CC14D51B22F7A80046B544 /* twitter-reply-button-highlighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-reply-button-highlighting.png"; sourceTree = "<group>"; };
+		83CC14D61B22F7A80046B544 /* twitter-reply-button-highlighting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-reply-button-highlighting@2x.png"; sourceTree = "<group>"; };
+		83CC14D71B22F7A80046B544 /* twitter-reply-button-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-reply-button-normal.png"; sourceTree = "<group>"; };
+		83CC14D81B22F7A80046B544 /* twitter-reply-button-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-reply-button-normal@2x.png"; sourceTree = "<group>"; };
+		83CC14D91B22F7A80046B544 /* twitter-retweet-button-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-retweet-button-normal.png"; sourceTree = "<group>"; };
+		83CC14DA1B22F7A80046B544 /* twitter-retweet-button-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-retweet-button-normal@2x.png"; sourceTree = "<group>"; };
 		83CCEDCA1AF7B35200DC364C /* TWPRepliesTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPRepliesTimelineViewController.h; path = Twipoker/TWPRepliesTimelineViewController.h; sourceTree = "<group>"; };
 		83CCEDCB1AF7B35200DC364C /* TWPRepliesTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPRepliesTimelineViewController.m; path = Twipoker/TWPRepliesTimelineViewController.m; sourceTree = "<group>"; };
 		83CCEDCD1AF7C22300DC364C /* TWPRepliesTimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPRepliesTimelineView.xib; path = Twipoker/TWPRepliesTimelineView.xib; sourceTree = "<group>"; };
@@ -842,6 +862,23 @@
 			name = "Twitter List Timeline";
 			sourceTree = "<group>";
 		};
+		83CC14D01B22F7930046B544 /* tweet-operations */ = {
+			isa = PBXGroup;
+			children = (
+				83CC14D11B22F7A80046B544 /* twitter-fav-button-highlighting.png */,
+				83CC14D21B22F7A80046B544 /* twitter-fav-button-highlighting@2x.png */,
+				83CC14D31B22F7A80046B544 /* twitter-fav-button-normal.png */,
+				83CC14D41B22F7A80046B544 /* twitter-fav-button-normal@2x.png */,
+				83CC14D51B22F7A80046B544 /* twitter-reply-button-highlighting.png */,
+				83CC14D61B22F7A80046B544 /* twitter-reply-button-highlighting@2x.png */,
+				83CC14D71B22F7A80046B544 /* twitter-reply-button-normal.png */,
+				83CC14D81B22F7A80046B544 /* twitter-reply-button-normal@2x.png */,
+				83CC14D91B22F7A80046B544 /* twitter-retweet-button-normal.png */,
+				83CC14DA1B22F7A80046B544 /* twitter-retweet-button-normal@2x.png */,
+			);
+			name = "tweet-operations";
+			sourceTree = "<group>";
+		};
 		83CCEDC91AF7B2F500DC364C /* Replies Timeline View */ = {
 			isa = PBXGroup;
 			children = (
@@ -949,6 +986,7 @@
 				830A39931B1B07D2002EA4E2 /* direct_message_start.png */,
 				8351C1D41B21DB8E0019BF98 /* tweet_with_pic.png */,
 				8351C1D51B21DB8E0019BF98 /* tweet_with_video.png */,
+				83CC14D01B22F7930046B544 /* tweet-operations */,
 				83C07A851AF221ED00184CCB /* navigation-bar */,
 				83D3FF2A1ACB144B009D40EE /* Images.xcassets */,
 				83CFD88C1ACF1FFD0062D73D /* icon_16x16.png */,
@@ -1240,6 +1278,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83CC14E41B22F7A80046B544 /* twitter-retweet-button-normal@2x.png in Resources */,
+				83CC14DF1B22F7A80046B544 /* twitter-reply-button-highlighting.png in Resources */,
 				83CFD8971ACF1FFD0062D73D /* icon_16x16@2x.png in Resources */,
 				8351C1D71B21DB8E0019BF98 /* tweet_with_video.png in Resources */,
 				83D12E8C1AEFE2F5009ECC13 /* TWPTwitterUserView.xib in Resources */,
@@ -1259,21 +1299,29 @@
 				83CFD89D1ACF1FFD0062D73D /* icon_256x256@2x.png in Resources */,
 				830A39941B1B07D2002EA4E2 /* direct_message_start.png in Resources */,
 				83AAF6DB1AECE930007A3A48 /* TWPNotificationsView.xib in Resources */,
+				83CC14DB1B22F7A80046B544 /* twitter-fav-button-highlighting.png in Resources */,
 				83924DA91AE1033700C25895 /* MASPreferencesWindow.xib in Resources */,
 				83AAF6D71AECE907007A3A48 /* TWPListsView.xib in Resources */,
 				83CCEDCE1AF7C22300DC364C /* TWPRepliesTimelineView.xib in Resources */,
 				835361491AE5310200CF1988 /* TWPDebugLoginUsersView.xib in Resources */,
 				83CFD8981ACF1FFD0062D73D /* icon_32x32.png in Resources */,
+				83CC14E01B22F7A80046B544 /* twitter-reply-button-highlighting@2x.png in Resources */,
 				83CFD8721ACF1C820062D73D /* TWPLoginPanel-Info.plist in Resources */,
 				83F231B51AE1147A00A05D1D /* TWPMainWindow.xib in Resources */,
+				83CC14E11B22F7A80046B544 /* twitter-reply-button-normal.png in Resources */,
 				83CFD89E1ACF1FFD0062D73D /* logo_512x512.png in Resources */,
 				83CFD8991ACF1FFD0062D73D /* icon_32x32@2x.png in Resources */,
+				83CC14DC1B22F7A80046B544 /* twitter-fav-button-highlighting@2x.png in Resources */,
+				83CC14E21B22F7A80046B544 /* twitter-reply-button-normal@2x.png in Resources */,
+				83CC14DD1B22F7A80046B544 /* twitter-fav-button-normal.png in Resources */,
 				83AAF6DF1AECE964007A3A48 /* TWPMeView.xib in Resources */,
 				8351C1D61B21DB8E0019BF98 /* tweet_with_pic.png in Resources */,
+				83CC14E31B22F7A80046B544 /* twitter-retweet-button-normal.png in Resources */,
 				83CFD8961ACF1FFD0062D73D /* icon_16x16.png in Resources */,
 				83CFD89B1ACF1FFD0062D73D /* icon_128x128@2x.png in Resources */,
 				83CFD89C1ACF1FFD0062D73D /* icon_256x256.png in Resources */,
 				83AAF6D51AECE8F6007A3A48 /* TWPFavoritesView.xib in Resources */,
+				83CC14DE1B22F7A80046B544 /* twitter-fav-button-normal@2x.png in Resources */,
 				830A39961B1B0863002EA4E2 /* TWPDirectMessagesStartAPrivateConversation.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

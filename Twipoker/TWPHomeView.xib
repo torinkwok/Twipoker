@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="PPe-7P-f8B" userLabel="Home Timeline Table View" customClass="TWPTimelineTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="605" height="0.0"/>
+                        <rect key="frame" x="0.0" y="0.0" width="607" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -63,7 +63,7 @@
                                                 </connections>
                                             </textField>
                                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rT6-rl-xjK" customClass="TWPTimelineUserNameLabel">
-                                                <rect key="frame" x="110" y="86" width="481" height="22"/>
+                                                <rect key="frame" x="110" y="86" width="228" height="22"/>
                                                 <connections>
                                                     <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="DPZ-XO-MCM"/>
                                                 </connections>
