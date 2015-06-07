@@ -6,6 +6,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPRetweetOperationsViewController">
             <connections>
+                <outlet property="quoteRetweetButton" destination="SN0-u3-WZx" id="5IB-dO-agq"/>
+                <outlet property="retweetButton" destination="tFw-Qt-okP" id="mIa-GZ-tqW"/>
                 <outlet property="view" destination="c22-O7-iKe" id="hlW-X2-gbg"/>
             </connections>
         </customObject>

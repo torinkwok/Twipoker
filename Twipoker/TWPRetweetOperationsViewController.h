@@ -26,6 +26,9 @@
 
 @interface TWPRetweetOperationsViewController : NSViewController
 
+//@property ( weak ) IBOutlet NSButton* retweetButton;
+//@property ( weak ) IBOutlet NSButton* quoteRetweetButton;
+
 + ( instancetype ) controller;
 
 @end

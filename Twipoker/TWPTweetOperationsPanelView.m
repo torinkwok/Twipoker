@@ -29,6 +29,7 @@
 #import "TWPReplyButton.h"
 #import "TWPRetweetButton.h"
 #import "TWPFavButton.h"
+#import "TWPRetweetOperationsViewController.h"
 
 @implementation TWPTweetOperationsPanelView
 
@@ -55,6 +56,18 @@
     return self;
     }
 
+- ( void ) awakeFromNib
+    {
+//    NSButton* popoverRetweetButton = self.retweetButton.retweetOperationsViewController.retweetButton;
+//    NSButton* popoverQuoteRetweetButton = self.retweetButton.retweetOperationsViewController.quoteRetweetButton;
+
+//    [ popoverRetweetButton setAction: @selector( retweetAction: ) ];
+//    [ popoverQuoteRetweetButton setAction: @selector( quoteRetweetAction: ) ];
+//
+//    [ popoverRetweetButton setTarget: self ];
+//    [ popoverQuoteRetweetButton setTarget: self ];
+    }
+
 #pragma mark Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
@@ -73,6 +86,11 @@
     }
 
 #pragma mark IBActions
+- ( IBAction ) showRetweetPopoverAction: ( id )_Sender
+    {
+    [ self.retweetButton showRetweetPopover ];
+    }
+
 - ( IBAction ) favOrUnfavAction: ( id )_Sender
     {
     NSCellStateValue state = self.favButton.state;
@@ -113,9 +131,14 @@
         }
     }
 
-- ( IBAction ) showRetweetPopoverAction: ( id )_Sender
+- ( IBAction ) retweetAction: ( id )_Sender
     {
-    [ self.retweetButton showRetweetPopover ];
+    NSLog( @"Retweet %@", self->_tweet );
+    }
+
+- ( IBAction ) quoteRetweetAction: ( id )_Sender
+    {
+    NSLog( @"Quote Retweet %@", self->_tweet );
     }
 
 @end

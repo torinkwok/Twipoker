@@ -45,8 +45,11 @@
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
 
 #pragma mark IBActions
-- ( IBAction ) favOrUnfavAction: ( id )_Sender;
 - ( IBAction ) showRetweetPopoverAction: ( id )_Sender;
+
+- ( IBAction ) favOrUnfavAction: ( id )_Sender;
+- ( IBAction ) retweetAction: ( id )_Sender;
+- ( IBAction ) quoteRetweetAction: ( id )_Sender;
 
 @end
 

@@ -24,13 +24,22 @@
 
 #import "TWPRetweetButton.h"
 #import "TWPRetweetOperationsPopover.h"
+#import "TWPRetweetOperationsViewController.h"
 
 @implementation TWPRetweetButton
+
+@dynamic retweetOperationsViewController;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
     {
     self->_popover = [ [ TWPRetweetOperationsPopover alloc ] init ];
+    }
+
+#pragma mark Accessros
+- ( TWPRetweetOperationsViewController* ) retweetOperationsViewController
+    {
+    return ( TWPRetweetOperationsViewController* )( self->_popover.contentViewController );
     }
 
 #pragma mark Custom Drawing

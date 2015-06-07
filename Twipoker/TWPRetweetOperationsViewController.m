@@ -39,7 +39,7 @@
 - ( instancetype ) init
     {
     if ( self = [ super initWithNibName: @"TWPRetweetOperationsView" bundle: [ NSBundle mainBundle ] ] )
-            NSLog( @"%@", self.view );
+        ;
 
     return self;
     }
@@ -47,7 +47,7 @@
 - ( void ) viewDidLoad
     {
     [ super viewDidLoad ];
-    NSLog( @"%@", self.view );
+
     // Do view setup here.
     }
 
