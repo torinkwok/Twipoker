@@ -23,10 +23,20 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPRetweetOperationsPopover.h"
+#import "TWPRetweetOperationsViewController.h"
 
 @implementation TWPRetweetOperationsPopover
 
+- ( instancetype ) init
+    {
+    if ( self = [ super init ] )
+        {
+        self.contentViewController = [ TWPRetweetOperationsViewController controller ];
+        self.behavior = NSPopoverBehaviorTransient;
+        }
 
+    return self;
+    }
 
 @end
 

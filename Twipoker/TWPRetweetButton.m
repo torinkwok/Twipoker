@@ -23,15 +23,14 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPRetweetButton.h"
-#import "TWPRetweetOperationsPopoverController.h"
+#import "TWPRetweetOperationsPopover.h"
 
 @implementation TWPRetweetButton
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
     {
-    self->_popoverController = [ TWPRetweetOperationsPopoverController controller ];
-    NSLog( @"%@", self->_popoverController.popover );
+    self->_popover = [ [ TWPRetweetOperationsPopover alloc ] init ];
     }
 
 #pragma mark Custom Drawing
@@ -44,9 +43,9 @@
 
 - ( void ) showRetweetPopover
     {
-    [ self->_popoverController.popover showRelativeToRect: self.bounds
-                                                   ofView: self
-                                            preferredEdge: NSMaxYEdge ];
+    [ self->_popover showRelativeToRect: self.bounds
+                                 ofView: self
+                          preferredEdge: NSMaxYEdge ];
     }
 
 @end

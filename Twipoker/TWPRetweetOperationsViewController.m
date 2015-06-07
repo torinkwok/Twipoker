@@ -22,20 +22,15 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPRetweetOperationsPopoverController.h"
+#import "TWPRetweetOperationsViewController.h"
 
-@interface TWPRetweetOperationsPopoverController ()
+@interface TWPRetweetOperationsViewController ()
 
 @end
 
-@implementation TWPRetweetOperationsPopoverController
+@implementation TWPRetweetOperationsViewController
 
-- ( void ) viewDidLoad
-    {
-    [ super viewDidLoad ];
-    // Do view setup here.
-    }
-
+#pragma mark Initializations
 + ( instancetype ) controller
     {
     return [ [ [ self class ] alloc ] init ];
@@ -43,10 +38,17 @@
 
 - ( instancetype ) init
     {
-    if ( self = [ super initWithNibName: @"TWPRetweetOperationsPopover" bundle: [ NSBundle mainBundle ] ] )
-        ;
+    if ( self = [ super initWithNibName: @"TWPRetweetOperationsView" bundle: [ NSBundle mainBundle ] ] )
+            NSLog( @"%@", self.view );
 
     return self;
+    }
+
+- ( void ) viewDidLoad
+    {
+    [ super viewDidLoad ];
+    NSLog( @"%@", self.view );
+    // Do view setup here.
     }
 
 @end

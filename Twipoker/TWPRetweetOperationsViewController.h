@@ -24,9 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TWPRetweetOperationsPopoverController : NSViewController
-
-@property ( weak ) IBOutlet NSPopover* popover;
+@interface TWPRetweetOperationsViewController : NSViewController
 
 + ( instancetype ) controller;
 
