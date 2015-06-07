@@ -62,18 +62,15 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 #pragma mark Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
-    if ( self->_tweet != _Tweet )
-        {
-        self->_tweet = _Tweet;
+    self->_tweet = _Tweet;
 
-        [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
-        [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
-        [ [ self tweetTextLabel ] setTweet: self->_tweet ];
+    [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
+    [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
+    [ [ self tweetTextLabel ] setTweet: self->_tweet ];
 
-        [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
+    [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
 
-        [ self setNeedsDisplay: YES ];
-        }
+    [ self setNeedsDisplay: YES ];
     }
 
 - ( OTCTweet* ) tweet

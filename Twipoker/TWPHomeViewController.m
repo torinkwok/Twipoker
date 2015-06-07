@@ -142,15 +142,27 @@
         case OTCStreamingEventTypeFavorite:
             {
             NSUInteger favedTweetIndex = [ self->_data indexOfObject: targetObject ];
-            [ self->_data[ favedTweetIndex ] setFavoritedByMe: YES ];
-            [ self.timelineTableView reloadData ];
+
+            if ( favedTweetIndex != NSNotFound )
+                {
+                [ self->_data[ favedTweetIndex ] setFavoritedByMe: YES ];
+                [ self.timelineTableView reloadData ];
+                }
+            else
+                NSLog( @"Failed to find this target object" );
             } break;
 
         case OTCStreamingEventTypeUnfavorite:
             {
             NSUInteger unfavedTweetIndex = [ self->_data indexOfObject: targetObject ];
-            [ self->_data[ unfavedTweetIndex ] setFavoritedByMe: NO ];
-            [ self.timelineTableView reloadData ];
+
+            if ( unfavedTweetIndex != NSNotFound )
+                {
+                [ self->_data[ unfavedTweetIndex ] setFavoritedByMe: NO ];
+                [ self.timelineTableView reloadData ];
+                }
+            else
+                NSLog( @"Failed to find this target object" );                
             } break;
 
         default: ;
