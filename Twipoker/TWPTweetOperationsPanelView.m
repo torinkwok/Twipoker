@@ -58,16 +58,13 @@
 #pragma mark Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
-    if ( self->_tweet != _Tweet )
-        {
-        self->_tweet = _Tweet;
+    self->_tweet = _Tweet;
 
-        SInt64 currentUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
-        [ self.retweetButton setEnabled: _Tweet.author.ID != currentUserID ];
+    SInt64 currentUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
+    [ self.retweetButton setEnabled: _Tweet.author.ID != currentUserID ];
 
-        [ self.favButton setState: _Tweet.isFavoritedByMe ];
-        [ self.retweetButton setState: _Tweet.isRetweetedByMe ];
-        }
+    [ self.favButton setState: _Tweet.isFavoritedByMe ];
+    [ self.retweetButton setState: _Tweet.isRetweetedByMe ];
     }
 
 - ( OTCTweet* ) tweet

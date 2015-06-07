@@ -143,12 +143,14 @@
             {
             NSUInteger favedTweetIndex = [ self->_data indexOfObject: targetObject ];
             [ self->_data[ favedTweetIndex ] setFavoritedByMe: YES ];
+            [ self.timelineTableView reloadData ];
             } break;
 
         case OTCStreamingEventTypeUnfavorite:
             {
             NSUInteger unfavedTweetIndex = [ self->_data indexOfObject: targetObject ];
             [ self->_data[ unfavedTweetIndex ] setFavoritedByMe: NO ];
+            [ self.timelineTableView reloadData ];
             } break;
 
         default: ;
