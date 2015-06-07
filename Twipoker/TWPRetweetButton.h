@@ -24,7 +24,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TWPRetweetOperationsPopoverController;
+
 @interface TWPRetweetButton : NSButton
+    {
+@private
+    TWPRetweetOperationsPopoverController __strong* _popoverController;
+    }
+
+- ( void ) showRetweetPopover;
 
 @end
 

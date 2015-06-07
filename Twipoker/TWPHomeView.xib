@@ -84,6 +84,9 @@
                                                             <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="showRetweetPopoverAction:" target="keF-c2-Eeb" id="0HH-ol-dBI"/>
+                                                        </connections>
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoq-hk-sAZ" customClass="TWPFavButton">
                                                         <rect key="frame" x="66" y="1" width="14" height="14"/>

@@ -75,7 +75,6 @@
 #pragma mark IBActions
 - ( IBAction ) favOrUnfavAction: ( id )_Sender
     {
-    NSLog( @"Current State: %ld", self.favButton.state );
     NSCellStateValue state = self.favButton.state;
 
     switch ( state )
@@ -110,8 +109,13 @@
                                     {
                                     NSLog( @"%@", _Error );
                                     } ];
-            }
+            } break;
         }
+    }
+
+- ( IBAction ) showRetweetPopoverAction: ( id )_Sender
+    {
+    [ self.retweetButton showRetweetPopover ];
     }
 
 @end

@@ -22,31 +22,32 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPRetweetOperationsPopoverController.h"
 
-@class TWPReplyButton;
-@class TWPRetweetButton;
-@class TWPFavButton;
+@interface TWPRetweetOperationsPopoverController ()
 
-@interface TWPTweetOperationsPanelView : NSView
+@end
+
+@implementation TWPRetweetOperationsPopoverController
+
+- ( void ) viewDidLoad
     {
-@private
-    OTCTweet __strong* _tweet;
+    [ super viewDidLoad ];
+    // Do view setup here.
     }
 
-@property ( strong, readwrite ) OTCTweet* tweet;
++ ( instancetype ) controller
+    {
+    return [ [ [ self class ] alloc ] init ];
+    }
 
-@property ( weak ) IBOutlet TWPReplyButton* replyButton;
-@property ( weak ) IBOutlet TWPRetweetButton* retweetButton;
-@property ( weak ) IBOutlet TWPFavButton* favButton;
+- ( instancetype ) init
+    {
+    if ( self = [ super initWithNibName: @"TWPRetweetOperationsPopover" bundle: [ NSBundle mainBundle ] ] )
+        ;
 
-#pragma mark Initializations
-+ ( instancetype ) panelWithTweet: ( OTCTweet* )_Tweet;
-- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
-
-#pragma mark IBActions
-- ( IBAction ) favOrUnfavAction: ( id )_Sender;
-- ( IBAction ) showRetweetPopoverAction: ( id )_Sender;
+    return self;
+    }
 
 @end
 

@@ -23,14 +23,31 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPRetweetButton.h"
+#import "TWPRetweetOperationsPopoverController.h"
 
 @implementation TWPRetweetButton
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
+#pragma mark Initializations
+- ( void ) awakeFromNib
+    {
+    self->_popoverController = [ TWPRetweetOperationsPopoverController controller ];
+    NSLog( @"%@", self->_popoverController.popover );
+    }
+
+#pragma mark Custom Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
     
     // Drawing code here.
-}
+    }
+
+- ( void ) showRetweetPopover
+    {
+    [ self->_popoverController.popover showRelativeToRect: self.bounds
+                                                   ofView: self
+                                            preferredEdge: NSMaxYEdge ];
+    }
 
 @end
 
