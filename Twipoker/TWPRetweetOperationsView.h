@@ -24,9 +24,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TWPRetweetOperationsViewController : NSViewController
+@interface TWPRetweetOperationsView : NSView
 
-+ ( instancetype ) controller;
+@property ( weak ) IBOutlet NSButton* retweetButton;
+@property ( weak ) IBOutlet NSButton* quoteRetweetButton;
 
 @end
 

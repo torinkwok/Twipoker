@@ -58,8 +58,8 @@
 
 - ( void ) awakeFromNib
     {
-    NSButton* popoverRetweetButton = self.retweetButton.retweetOperationsViewController.retweetButton;
-    NSButton* popoverQuoteRetweetButton = self.retweetButton.retweetOperationsViewController.quoteRetweetButton;
+    NSButton* popoverRetweetButton = self.retweetButton.retweetButton;
+    NSButton* popoverQuoteRetweetButton = self.retweetButton.quoteRetweetButton;
 
     NSLog( @"%@", popoverRetweetButton.title );
     NSLog( @"%@\n\n", popoverQuoteRetweetButton.title );

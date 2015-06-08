@@ -22,11 +22,19 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPRetweetOperationsView.h"
 
-@interface TWPRetweetOperationsViewController : NSViewController
+@implementation TWPRetweetOperationsView
 
-+ ( instancetype ) controller;
+@synthesize retweetButton;
+@synthesize quoteRetweetButton;
+
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
+    
+    // Drawing code here.
+    }
 
 @end
 

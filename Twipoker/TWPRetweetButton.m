@@ -24,11 +24,13 @@
 
 #import "TWPRetweetButton.h"
 #import "TWPRetweetOperationsPopover.h"
+#import "TWPRetweetOperationsView.h"
 #import "TWPRetweetOperationsViewController.h"
 
 @implementation TWPRetweetButton
 
-@dynamic retweetOperationsViewController;
+@dynamic retweetButton;
+@dynamic quoteRetweetButton;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
@@ -37,11 +39,20 @@
     }
 
 #pragma mark Accessros
-- ( TWPRetweetOperationsViewController* ) retweetOperationsViewController
+- ( NSButton* ) retweetButton
     {
     TWPRetweetOperationsViewController* controller = ( TWPRetweetOperationsViewController* )( self->_popover.contentViewController );
-    NSLog( @"%@", controller.view );
-    return controller;
+    TWPRetweetOperationsView* view = ( TWPRetweetOperationsView* )( controller.view );
+    NSLog( @"%@", view.retweetButton );
+    return view.retweetButton;
+    }
+
+- ( NSButton* ) quoteRetweetButton
+    {
+    TWPRetweetOperationsViewController* controller = ( TWPRetweetOperationsViewController* )( self->_popover.contentViewController );
+    TWPRetweetOperationsView* view = ( TWPRetweetOperationsView* )( controller.view );
+    NSLog( @"%@", view.quoteRetweetButton );
+    return view.quoteRetweetButton;
     }
 
 #pragma mark Custom Drawing

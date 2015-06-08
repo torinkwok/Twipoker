@@ -6,14 +6,12 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPRetweetOperationsViewController">
             <connections>
-                <outlet property="quoteRetweetButton" destination="SN0-u3-WZx" id="5IB-dO-agq"/>
-                <outlet property="retweetButton" destination="tFw-Qt-okP" id="mIa-GZ-tqW"/>
                 <outlet property="view" destination="c22-O7-iKe" id="hlW-X2-gbg"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
+        <customView id="c22-O7-iKe" customClass="TWPRetweetOperationsView">
             <rect key="frame" x="0.0" y="0.0" width="139" height="55"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -32,6 +30,10 @@
                     </buttonCell>
                 </button>
             </subviews>
+            <connections>
+                <outlet property="quoteRetweetButton" destination="SN0-u3-WZx" id="CkO-bB-GJm"/>
+                <outlet property="retweetButton" destination="tFw-Qt-okP" id="96x-SL-Ta4"/>
+            </connections>
             <point key="canvasLocation" x="-174.5" y="-377.5"/>
         </customView>
     </objects>
