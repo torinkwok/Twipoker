@@ -31,6 +31,7 @@ NSString static* const kImageNameRetweeted = @"twitter-retweet-button-highlighti
 @implementation TWPRetweetSwitcher
 
 @dynamic tweet;
+@dynamic isSelected;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
@@ -50,6 +51,11 @@ NSString static* const kImageNameRetweeted = @"twitter-retweet-button-highlighti
 - ( OTCTweet* ) tweet
     {
     return self->_tweet;
+    }
+
+- ( BOOL ) isSelected
+    {
+    return self->_tweet.isRetweetedByMe;
     }
 
 #pragma mark Custom Drawing

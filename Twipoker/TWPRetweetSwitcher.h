@@ -33,6 +33,7 @@
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;
+@property ( assign, readonly, ) BOOL isSelected;
 
 @end
 

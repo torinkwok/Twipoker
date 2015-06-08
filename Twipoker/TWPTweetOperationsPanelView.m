@@ -76,7 +76,7 @@
     [ self.retweetSwitcher setEnabled: _Tweet.author.ID != currentUserID ];
 
     [ self.retweetSwitcher setTweet: _Tweet ];
-    [ self.favSwitcher setState: _Tweet.isFavoritedByMe ];
+    [ self.favSwitcher setTweet: _Tweet ];
     }
 
 - ( OTCTweet* ) tweet
@@ -94,41 +94,36 @@
 
 - ( IBAction ) favOrUnfavAction: ( id )_Sender
     {
-    NSCellStateValue state = self.favSwitcher.state;
-
-    switch ( state )
+    if ( self.favSwitcher.isSelected )
         {
-        case NSOnState:
-            {
-            [ [ TWPBrain wiseBrain ] favTweet: self.tweet
-                                 successBlock:
-                ^( OTCTweet* _FavedTweet )
-                    {
-                #if DEBUG
-                    NSLog( @"Just faved Tweet: %@", _FavedTweet );
-                #endif
-                    [ self setTweet: _FavedTweet ];
-                    } errorBlock: ^( NSError* _Error )
-                                    {
-                                    NSLog( @"%@", _Error );
-                                    } ];
-            } break;
+        [ [ TWPBrain wiseBrain ] unfavTweet: self.tweet
+                               successBlock:
+            ^( OTCTweet* _UnfavedTweet )
+                {
+            #if DEBUG
+                NSLog( @"Just unfaved Tweet: %@", _UnfavedTweet );
+            #endif
+                [ self setTweet: _UnfavedTweet ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                NSLog( @"%@", _Error );
+                                } ];
+        }
+    else
+        {
+        [ [ TWPBrain wiseBrain ] favTweet: self.tweet
+                             successBlock:
+            ^( OTCTweet* _FavedTweet )
+                {
+            #if DEBUG
+                NSLog( @"Just faved Tweet: %@", _FavedTweet );
+            #endif
+                [ self setTweet: _FavedTweet ];
+                } errorBlock: ^( NSError* _Error )
+                                {
+                                NSLog( @"%@", _Error );
+                                } ];
 
-        case NSOffState:
-            {
-            [ [ TWPBrain wiseBrain ] unfavTweet: self.tweet
-                                   successBlock:
-                ^( OTCTweet* _UnfavedTweet )
-                    {
-                #if DEBUG
-                    NSLog( @"Just unfaved Tweet: %@", _UnfavedTweet );
-                #endif
-                    [ self setTweet: _UnfavedTweet ];
-                    } errorBlock: ^( NSError* _Error )
-                                    {
-                                    NSLog( @"%@", _Error );
-                                    } ];
-            } break;
         }
     }
 

@@ -1,3 +1,4 @@
+
 /*=============================================================================┐
 |             _  _  _       _                                                  |  
 |            (_)(_)(_)     | |                            _                    |██
@@ -24,13 +25,40 @@
 
 #import "TWPFavSwitcher.h"
 
+NSString static* const kImageNameUnfaved = @"twitter-fav-button-normal";
+NSString static* const kImageNameFaved = @"twitter-fav-button-highlighting";
+
 @implementation TWPFavSwitcher
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
+@dynamic tweet;
+@dynamic isSelected;
+
+#pragma mark Accessors
+- ( void ) setTweet: ( OTCTweet* )_Tweet
+    {
+    self->_tweet = _Tweet;
+
+    [ self setImage: self->_tweet.isFavoritedByMe ? [ NSImage imageNamed: kImageNameFaved ]
+                                                  : [ NSImage imageNamed: kImageNameUnfaved ] ];
+    }
+
+- ( OTCTweet* ) tweet
+    {
+    return self->_tweet;
+    }
+
+- ( BOOL ) isSelected
+    {
+    return self->_tweet.isFavoritedByMe;
+    }
+
+#pragma mark Custom Drawings
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
     
     // Drawing code here.
-}
+    }
 
 @end
 

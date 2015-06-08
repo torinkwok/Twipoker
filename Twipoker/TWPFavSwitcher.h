@@ -25,6 +25,13 @@
 #import <Cocoa/Cocoa.h>
 
 @interface TWPFavSwitcher : NSButton
+    {
+@private
+    OTCTweet __strong* _tweet;
+    }
+
+@property ( strong, readwrite ) OTCTweet* tweet;
+@property ( assign, readonly, ) BOOL isSelected;
 
 @end
 

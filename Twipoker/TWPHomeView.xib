@@ -80,7 +80,7 @@
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUX-Ck-hwg" customClass="TWPRetweetSwitcher">
                                                         <rect key="frame" x="32" y="-2" width="18" height="18"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-retweet-button-normal" imagePosition="overlaps" alignment="center" alternateImage="twitter-retweet-button-highlighting" imageScaling="proportionallyDown" inset="2" id="INg-8z-7OR" customClass="TWPRetweetSwitcherCell">
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-retweet-button-normal" imagePosition="only" alignment="center" alternateImage="twitter-retweet-button-highlighting" imageScaling="proportionallyDown" inset="2" id="INg-8z-7OR" customClass="TWPRetweetSwitcherCell">
                                                             <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -91,7 +91,7 @@
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoq-hk-sAZ" customClass="TWPFavSwitcher">
                                                         <rect key="frame" x="66" y="1" width="14" height="14"/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-fav-button-normal" imagePosition="only" alignment="center" alternateImage="twitter-fav-button-highlighting" imageScaling="proportionallyDown" inset="2" id="c68-GZ-ias" customClass="TWPFavSwitcherCell">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
