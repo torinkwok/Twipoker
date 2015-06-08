@@ -22,9 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPFavButtonCell.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation TWPFavButtonCell
+@interface TWPFavSwitcher : NSButton
 
 @end
 

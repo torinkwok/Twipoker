@@ -21,16 +21,9 @@
 └==============================================================================┘██
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
+#import <Cocoa/Cocoa.h>
 
-#import "TWPFavButton.h"
-
-@implementation TWPFavButton
-
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
-}
+@interface TWPFavSwitcherCell : NSButtonCell
 
 @end
 

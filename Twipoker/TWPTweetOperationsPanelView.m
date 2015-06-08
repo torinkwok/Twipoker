@@ -28,7 +28,7 @@
 
 #import "TWPReplyButton.h"
 #import "TWPRetweetSwitcher.h"
-#import "TWPFavButton.h"
+#import "TWPFavSwitcher.h"
 #import "TWPRetweetOperationsPopover.h"
 #import "TWPRetweetOperationsViewController.h"
 

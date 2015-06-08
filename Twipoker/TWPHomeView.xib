@@ -88,9 +88,9 @@
                                                             <action selector="showRetweetPopoverAction:" target="keF-c2-Eeb" id="0HH-ol-dBI"/>
                                                         </connections>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoq-hk-sAZ" customClass="TWPFavButton">
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoq-hk-sAZ" customClass="TWPFavSwitcher">
                                                         <rect key="frame" x="66" y="1" width="14" height="14"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-fav-button-normal" imagePosition="only" alignment="center" alternateImage="twitter-fav-button-highlighting" imageScaling="proportionallyDown" inset="2" id="c68-GZ-ias" customClass="TWPFavButtonCell">
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-fav-button-normal" imagePosition="only" alignment="center" alternateImage="twitter-fav-button-highlighting" imageScaling="proportionallyDown" inset="2" id="c68-GZ-ias" customClass="TWPFavSwitcherCell">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
