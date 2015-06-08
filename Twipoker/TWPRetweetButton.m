@@ -39,7 +39,9 @@
 #pragma mark Accessros
 - ( TWPRetweetOperationsViewController* ) retweetOperationsViewController
     {
-    return ( TWPRetweetOperationsViewController* )( self->_popover.contentViewController );
+    TWPRetweetOperationsViewController* controller = ( TWPRetweetOperationsViewController* )( self->_popover.contentViewController );
+    NSLog( @"%@", controller.view );
+    return controller;
     }
 
 #pragma mark Custom Drawing

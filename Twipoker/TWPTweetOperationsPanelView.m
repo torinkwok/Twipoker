@@ -58,14 +58,16 @@
 
 - ( void ) awakeFromNib
     {
-//    NSButton* popoverRetweetButton = self.retweetButton.retweetOperationsViewController.retweetButton;
-//    NSButton* popoverQuoteRetweetButton = self.retweetButton.retweetOperationsViewController.quoteRetweetButton;
+    NSButton* popoverRetweetButton = self.retweetButton.retweetOperationsViewController.retweetButton;
+    NSButton* popoverQuoteRetweetButton = self.retweetButton.retweetOperationsViewController.quoteRetweetButton;
 
-//    [ popoverRetweetButton setAction: @selector( retweetAction: ) ];
-//    [ popoverQuoteRetweetButton setAction: @selector( quoteRetweetAction: ) ];
-//
-//    [ popoverRetweetButton setTarget: self ];
-//    [ popoverQuoteRetweetButton setTarget: self ];
+    NSLog( @"%@", popoverRetweetButton.title );
+    NSLog( @"%@\n\n", popoverQuoteRetweetButton.title );
+    [ popoverRetweetButton setAction: @selector( retweetAction: ) ];
+    [ popoverQuoteRetweetButton setAction: @selector( quoteRetweetAction: ) ];
+
+    [ popoverRetweetButton setTarget: self ];
+    [ popoverQuoteRetweetButton setTarget: self ];
     }
 
 #pragma mark Accessors
