@@ -25,7 +25,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class TWPReplyButton;
-@class TWPRetweetButton;
+@class TWPRetweetSwitcher;
 @class TWPFavButton;
 
 @class TWPRetweetOperationsPopover;
@@ -40,7 +40,7 @@
 @property ( strong, readwrite ) OTCTweet* tweet;
 
 @property ( weak ) IBOutlet TWPReplyButton* replyButton;
-@property ( weak ) IBOutlet TWPRetweetButton* retweetButton;
+@property ( weak ) IBOutlet TWPRetweetSwitcher* retweetButton;
 @property ( weak ) IBOutlet TWPFavButton* favButton;
 
 #pragma mark Initializations

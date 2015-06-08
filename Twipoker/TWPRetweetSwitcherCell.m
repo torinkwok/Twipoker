@@ -22,9 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import "TWPRetweetSwitcherCell.h"
 
-@interface TWPRetweetButtonCell : NSButtonCell
+@implementation TWPRetweetSwitcherCell
 
 @end
 

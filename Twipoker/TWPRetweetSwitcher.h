@@ -26,7 +26,7 @@
 
 @class TWPRetweetOperationsPopover;
 
-@interface TWPRetweetButton : NSButton
+@interface TWPRetweetSwitcher : NSButton
 @end
 
 /*=============================================================================┐

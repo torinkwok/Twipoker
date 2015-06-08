@@ -22,23 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPRetweetButton.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation TWPRetweetButton
-
-#pragma mark Initializations
-- ( void ) awakeFromNib
-    {
-    // TODO:
-    }
-
-#pragma mark Custom Drawing
-- ( void ) drawRect: ( NSRect )_DirtyRect
-    {
-    [ super drawRect: _DirtyRect ];
-    
-    // Drawing code here.
-    }
+@interface TWPRetweetSwitcherCell : NSButtonCell
 
 @end
 

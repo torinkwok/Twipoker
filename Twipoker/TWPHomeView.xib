@@ -78,9 +78,9 @@
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUX-Ck-hwg" customClass="TWPRetweetButton">
+                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUX-Ck-hwg" customClass="TWPRetweetSwitcher">
                                                         <rect key="frame" x="32" y="-2" width="18" height="18"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-retweet-button-normal" imagePosition="overlaps" alignment="center" alternateImage="twitter-retweet-button-highlighting" imageScaling="proportionallyDown" inset="2" id="INg-8z-7OR" customClass="TWPRetweetButtonCell">
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-retweet-button-normal" imagePosition="overlaps" alignment="center" alternateImage="twitter-retweet-button-highlighting" imageScaling="proportionallyDown" inset="2" id="INg-8z-7OR" customClass="TWPRetweetSwitcherCell">
                                                             <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
