@@ -38,7 +38,7 @@
 
 @synthesize replyButton;
 @synthesize retweetSwitcher;
-@synthesize favButton;
+@synthesize favSwitcher;
 
 #pragma mark Initializations
 + ( instancetype ) panelWithTweet: ( OTCTweet* )_Tweet
@@ -75,7 +75,7 @@
     SInt64 currentUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
     [ self.retweetSwitcher setEnabled: _Tweet.author.ID != currentUserID ];
 
-    [ self.favButton setState: _Tweet.isFavoritedByMe ];
+    [ self.favSwitcher setState: _Tweet.isFavoritedByMe ];
     [ self.retweetSwitcher setState: _Tweet.isRetweetedByMe ];
     }
 
@@ -94,7 +94,7 @@
 
 - ( IBAction ) favOrUnfavAction: ( id )_Sender
     {
-    NSCellStateValue state = self.favButton.state;
+    NSCellStateValue state = self.favSwitcher.state;
 
     switch ( state )
         {

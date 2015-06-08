@@ -41,7 +41,7 @@
 
 @property ( weak ) IBOutlet TWPReplyButton* replyButton;
 @property ( weak ) IBOutlet TWPRetweetSwitcher* retweetSwitcher;
-@property ( weak ) IBOutlet TWPFavSwitcher* favButton;
+@property ( weak ) IBOutlet TWPFavSwitcher* favSwitcher;
 
 #pragma mark Initializations
 + ( instancetype ) panelWithTweet: ( OTCTweet* )_Tweet;
