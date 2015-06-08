@@ -75,8 +75,8 @@
     SInt64 currentUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
     [ self.retweetSwitcher setEnabled: _Tweet.author.ID != currentUserID ];
 
+    [ self.retweetSwitcher setTweet: _Tweet ];
     [ self.favSwitcher setState: _Tweet.isFavoritedByMe ];
-    [ self.retweetSwitcher setState: _Tweet.isRetweetedByMe ];
     }
 
 - ( OTCTweet* ) tweet

@@ -27,6 +27,13 @@
 @class TWPRetweetOperationsPopover;
 
 @interface TWPRetweetSwitcher : NSButton
+    {
+@private
+    OTCTweet __strong* _tweet;
+    }
+
+@property ( strong, readwrite ) OTCTweet* tweet;
+
 @end
 
 /*=============================================================================┐

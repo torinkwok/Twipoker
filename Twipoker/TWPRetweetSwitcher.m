@@ -24,12 +24,32 @@
 
 #import "TWPRetweetSwitcher.h"
 
+// They are named in main bundle
+NSString static* const kImageNameUnretweeted = @"twitter-retweet-button-normal";
+NSString static* const kImageNameRetweeted = @"twitter-retweet-button-highlighting";
+
 @implementation TWPRetweetSwitcher
+
+@dynamic tweet;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
     {
     // TODO:
+    }
+
+#pragma mark Accessors
+- ( void ) setTweet: ( OTCTweet* )_Tweet
+    {
+    self->_tweet = _Tweet;
+
+    [ self setImage: self->_tweet.isRetweetedByMe ? [ NSImage imageNamed: kImageNameRetweeted ]
+                                                  : [ NSImage imageNamed: kImageNameUnretweeted ] ];
+    }
+
+- ( OTCTweet* ) tweet
+    {
+    return self->_tweet;
     }
 
 #pragma mark Custom Drawing
