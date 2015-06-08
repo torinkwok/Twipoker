@@ -28,10 +28,13 @@
 @class TWPRetweetButton;
 @class TWPFavButton;
 
+@class TWPRetweetOperationsPopover;
+
 @interface TWPTweetOperationsPanelView : NSView
     {
 @private
     OTCTweet __strong* _tweet;
+    TWPRetweetOperationsPopover __strong* _popover;
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;
@@ -46,10 +49,7 @@
 
 #pragma mark IBActions
 - ( IBAction ) showRetweetPopoverAction: ( id )_Sender;
-
 - ( IBAction ) favOrUnfavAction: ( id )_Sender;
-- ( IBAction ) retweetAction: ( id )_Sender;
-- ( IBAction ) quoteRetweetAction: ( id )_Sender;
 
 @end
 

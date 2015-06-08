@@ -27,16 +27,6 @@
 @class TWPRetweetOperationsPopover;
 
 @interface TWPRetweetButton : NSButton
-    {
-@private
-    TWPRetweetOperationsPopover __strong* _popover;
-    }
-
-@property ( strong, readonly ) NSButton* retweetButton;
-@property ( strong, readonly ) NSButton* quoteRetweetButton;
-
-- ( void ) showRetweetPopover;
-
 @end
 
 /*=============================================================================┐

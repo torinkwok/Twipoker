@@ -29,6 +29,7 @@
 #import "TWPReplyButton.h"
 #import "TWPRetweetButton.h"
 #import "TWPFavButton.h"
+#import "TWPRetweetOperationsPopover.h"
 #import "TWPRetweetOperationsViewController.h"
 
 @implementation TWPTweetOperationsPanelView
@@ -51,30 +52,26 @@
         {
         [ self setTweet: _Tweet ];
         [ self setNeedsDisplay: YES ];
+
+        self->_popover = [ TWPRetweetOperationsPopover popoverWithTweet: self->_tweet ];
         }
 
     return self;
     }
 
-- ( void ) awakeFromNib
-    {
-    NSButton* popoverRetweetButton = self.retweetButton.retweetButton;
-    NSButton* popoverQuoteRetweetButton = self.retweetButton.quoteRetweetButton;
-
-    NSLog( @"%@", popoverRetweetButton.title );
-    NSLog( @"%@\n\n", popoverQuoteRetweetButton.title );
-    [ popoverRetweetButton setAction: @selector( retweetAction: ) ];
-    [ popoverQuoteRetweetButton setAction: @selector( quoteRetweetAction: ) ];
-
-    [ popoverRetweetButton setTarget: self ];
-    [ popoverQuoteRetweetButton setTarget: self ];
-    }
-
 #pragma mark Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
+    // self->_tweet
     self->_tweet = _Tweet;
 
+    // self->_popover
+    if ( !self->_popover )
+        self->_popover = [ TWPRetweetOperationsPopover popoverWithTweet: self->_tweet ];
+    else
+        [ self->_popover setTweet: self->_tweet ];
+
+    // Buttons
     SInt64 currentUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
     [ self.retweetButton setEnabled: _Tweet.author.ID != currentUserID ];
 
@@ -90,7 +87,9 @@
 #pragma mark IBActions
 - ( IBAction ) showRetweetPopoverAction: ( id )_Sender
     {
-    [ self.retweetButton showRetweetPopover ];
+    [ self->_popover showRelativeToRect: self.retweetButton.bounds
+                                 ofView: self.retweetButton
+                          preferredEdge: NSMaxYEdge ];
     }
 
 - ( IBAction ) favOrUnfavAction: ( id )_Sender
@@ -131,16 +130,6 @@
                                     } ];
             } break;
         }
-    }
-
-- ( IBAction ) retweetAction: ( id )_Sender
-    {
-    NSLog( @"Retweet %@", self->_tweet );
-    }
-
-- ( IBAction ) quoteRetweetAction: ( id )_Sender
-    {
-    NSLog( @"Quote Retweet %@", self->_tweet );
     }
 
 @end

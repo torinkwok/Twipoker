@@ -23,36 +23,13 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPRetweetButton.h"
-#import "TWPRetweetOperationsPopover.h"
-#import "TWPRetweetOperationsView.h"
-#import "TWPRetweetOperationsViewController.h"
 
 @implementation TWPRetweetButton
-
-@dynamic retweetButton;
-@dynamic quoteRetweetButton;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
     {
-    self->_popover = [ [ TWPRetweetOperationsPopover alloc ] init ];
-    }
-
-#pragma mark Accessros
-- ( NSButton* ) retweetButton
-    {
-    TWPRetweetOperationsViewController* controller = ( TWPRetweetOperationsViewController* )( self->_popover.contentViewController );
-    TWPRetweetOperationsView* view = ( TWPRetweetOperationsView* )( controller.view );
-    NSLog( @"%@", view.retweetButton );
-    return view.retweetButton;
-    }
-
-- ( NSButton* ) quoteRetweetButton
-    {
-    TWPRetweetOperationsViewController* controller = ( TWPRetweetOperationsViewController* )( self->_popover.contentViewController );
-    TWPRetweetOperationsView* view = ( TWPRetweetOperationsView* )( controller.view );
-    NSLog( @"%@", view.quoteRetweetButton );
-    return view.quoteRetweetButton;
+    // TODO:
     }
 
 #pragma mark Custom Drawing
@@ -61,13 +38,6 @@
     [ super drawRect: _DirtyRect ];
     
     // Drawing code here.
-    }
-
-- ( void ) showRetweetPopover
-    {
-    [ self->_popover showRelativeToRect: self.bounds
-                                 ofView: self
-                          preferredEdge: NSMaxYEdge ];
     }
 
 @end

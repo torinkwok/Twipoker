@@ -24,7 +24,22 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class OTCTweet;
+
 @interface TWPRetweetOperationsPopover : NSPopover
+    {
+@private
+    OTCTweet __strong* _tweet;
+    }
+
+@property ( strong, readwrite ) OTCTweet* tweet;
+
++ ( instancetype ) popoverWithTweet: ( OTCTweet* )_Tweet;
+- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
+
+#pragma mark IBActions
+- ( IBAction ) retweetAction: ( id )_Sender;
+- ( IBAction ) quoteRetweetAction: ( id )_Sender;
 
 @end
 
