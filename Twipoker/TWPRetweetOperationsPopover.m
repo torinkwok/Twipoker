@@ -76,11 +76,13 @@
 - ( IBAction ) retweetAction: ( id )_Sender
     {
     NSLog( @"Retweet %@", self->_tweet );
+    [ self close ];
     }
 
 - ( IBAction ) quoteRetweetAction: ( id )_Sender
     {
     NSLog( @"Quote Retweet %@", self->_tweet );
+    [ self close ];
     }
 
 #pragma mark Private Interfaces
