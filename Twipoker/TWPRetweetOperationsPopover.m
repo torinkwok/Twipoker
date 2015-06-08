@@ -28,7 +28,8 @@
 
 // Private Interfaces
 @interface TWPRetweetOperationsPopover ()
-- ( TWPRetweetOperationsView* ) _operationsView;
+- ( NSButton* ) _retweetButton;
+- ( NSButton* ) _quoteRetweetButton;
 @end // Private Interfaces
 
 @implementation TWPRetweetOperationsPopover
@@ -45,14 +46,14 @@
     {
     if ( self = [ super init ] )
         {
-        self->_tweet = _Tweet;
+        self.tweet = _Tweet;
 
         self.contentViewController = [ TWPRetweetOperationsViewController controller ];
-        [ [ self _operationsView ].retweetButton setTarget: self ];
-        [ [ self _operationsView ].retweetButton setAction: @selector( retweetAction: ) ];
+        [ [ self _retweetButton ] setTarget: self ];
+        [ [ self _retweetButton ] setAction: @selector( retweetAction: ) ];
 
-        [ [ self _operationsView ].quoteRetweetButton setTarget: self ];
-        [ [ self _operationsView ].quoteRetweetButton setAction: @selector( quoteRetweetAction: ) ];
+        [ [ self _quoteRetweetButton ] setTarget: self ];
+        [ [ self _quoteRetweetButton ] setAction: @selector( quoteRetweetAction: ) ];
 
         self.behavior = NSPopoverBehaviorTransient;
         }
@@ -83,9 +84,14 @@
     }
 
 #pragma mark Private Interfaces
-- ( TWPRetweetOperationsView* ) _operationsView
+- ( NSButton* ) _retweetButton
     {
-    return ( TWPRetweetOperationsView* )( self.contentViewController.view );
+    return ( ( TWPRetweetOperationsView* )( self.contentViewController.view ) ).retweetButton;
+    }
+
+- ( NSButton* ) _quoteRetweetButton
+    {
+    return ( ( TWPRetweetOperationsView* )( self.contentViewController.view ) ).quoteRetweetButton;
     }
 
 @end
