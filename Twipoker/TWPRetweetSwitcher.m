@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPRetweetSwitcher.h"
+#import "TWPLoginUsersManager.h"
 
 // They are named in main bundle
 NSString static* const kImageNameUnretweeted = @"twitter-retweet-button-normal";
@@ -46,6 +47,9 @@ NSString static* const kImageNameRetweeted = @"twitter-retweet-button-highlighti
 
     [ self setImage: self->_tweet.isRetweetedByMe ? [ NSImage imageNamed: kImageNameRetweeted ]
                                                   : [ NSImage imageNamed: kImageNameUnretweeted ] ];
+
+    SInt64 currentUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
+    [ self setEnabled: self->_tweet.author.ID != currentUserID ];
     }
 
 - ( OTCTweet* ) tweet

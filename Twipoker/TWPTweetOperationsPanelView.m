@@ -72,9 +72,6 @@
         [ self->_popover setTweet: self->_tweet ];
 
     // Buttons
-    SInt64 currentUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
-    [ self.retweetSwitcher setEnabled: _Tweet.author.ID != currentUserID ];
-
     [ self.retweetSwitcher setTweet: _Tweet ];
     [ self.favSwitcher setTweet: _Tweet ];
     }
