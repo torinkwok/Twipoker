@@ -102,7 +102,7 @@
                                                 <connections>
                                                     <outlet property="favButton" destination="qoq-hk-sAZ" id="hV9-V4-9Kp"/>
                                                     <outlet property="replyButton" destination="vc3-JV-3jd" id="NDv-q6-NUw"/>
-                                                    <outlet property="retweetButton" destination="rUX-Ck-hwg" id="J1w-e5-f62"/>
+                                                    <outlet property="retweetSwitcher" destination="rUX-Ck-hwg" id="J1w-e5-f62"/>
                                                 </connections>
                                             </customView>
                                         </subviews>

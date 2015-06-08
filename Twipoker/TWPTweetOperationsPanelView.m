@@ -37,7 +37,7 @@
 @dynamic tweet;
 
 @synthesize replyButton;
-@synthesize retweetButton;
+@synthesize retweetSwitcher;
 @synthesize favButton;
 
 #pragma mark Initializations
@@ -73,10 +73,10 @@
 
     // Buttons
     SInt64 currentUserID = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
-    [ self.retweetButton setEnabled: _Tweet.author.ID != currentUserID ];
+    [ self.retweetSwitcher setEnabled: _Tweet.author.ID != currentUserID ];
 
     [ self.favButton setState: _Tweet.isFavoritedByMe ];
-    [ self.retweetButton setState: _Tweet.isRetweetedByMe ];
+    [ self.retweetSwitcher setState: _Tweet.isRetweetedByMe ];
     }
 
 - ( OTCTweet* ) tweet
@@ -87,8 +87,8 @@
 #pragma mark IBActions
 - ( IBAction ) showRetweetPopoverAction: ( id )_Sender
     {
-    [ self->_popover showRelativeToRect: self.retweetButton.bounds
-                                 ofView: self.retweetButton
+    [ self->_popover showRelativeToRect: self.retweetSwitcher.bounds
+                                 ofView: self.retweetSwitcher
                           preferredEdge: NSMaxYEdge ];
     }
 

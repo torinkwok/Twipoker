@@ -40,7 +40,7 @@
 @property ( strong, readwrite ) OTCTweet* tweet;
 
 @property ( weak ) IBOutlet TWPReplyButton* replyButton;
-@property ( weak ) IBOutlet TWPRetweetSwitcher* retweetButton;
+@property ( weak ) IBOutlet TWPRetweetSwitcher* retweetSwitcher;
 @property ( weak ) IBOutlet TWPFavSwitcher* favButton;
 
 #pragma mark Initializations
