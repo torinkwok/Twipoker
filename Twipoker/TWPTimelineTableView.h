@@ -22,7 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @protocol TWPTimelineTableViewDataSource;
 @protocol TWPTimelineTableViewDelegate;

@@ -22,7 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 #pragma mark NSActionCell + TwipokerDrawing
 @interface NSActionCell ( TwipokerDrawing )

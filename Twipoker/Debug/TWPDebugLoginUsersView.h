@@ -22,7 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 NSString extern* const kColumnIdentifierUserID;
 NSString extern* const kColumnIdentifierOAuthAccessToken;

@@ -22,7 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 // TWPBaseTweetingTextFieldCell class
 @interface TWPBaseTweetingTextFieldCell : NSTextFieldCell
