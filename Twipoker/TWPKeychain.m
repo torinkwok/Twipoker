@@ -22,7 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Security/Security.h>
+@import Security;
 
 void TWPFillErrorParamWithSecErrorCode( OSStatus _ResultCode, NSError** _ErrorParam )
     {
