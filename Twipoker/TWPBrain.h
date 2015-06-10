@@ -30,12 +30,14 @@
 
 typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     { TWPBrainSignalTypeNewTweetMask        = 1U
-    , TWPBrainSignalTypeMentionedMeMask     = 1U << 1
-    , TWPBrainSignalTypeTweetDeletionMask   = 1U << 2
-    , TWPBrainSignalTypeTimelineEventMask   = 1U << 3
-    , TWPBrainSignalTypeDirectMessagesMask  = 1U << 4
-    , TWPBrainSignalTypeDisconnectionMask   = 1U << 5
-    , TWPBrainSignalTypeUserUpdateMask      = 1U << 6
+    , TWPBrainSignalTypeRetweetMask         = 1U << 1
+    , TWPBrainSignalTypeMentionedMeMask     = 1U << 2
+    , TWPBrainSignalTypeTweetDeletionMask   = 1U << 3
+    , TWPBrainSignalTypeTimelineEventMask   = 1U << 4
+    , TWPBrainSignalTypeDirectMessagesMask  = 1U << 5
+    , TWPBrainSignalTypeDisconnectionMask   = 1U << 6
+    , TWPBrainSignalTypeUserUpdateMask      = 1U << 7
+    , TWPBrainSignalTypeQuotedTweetMask     = 1U << 8
     };
 
 // TWPBrain class
@@ -90,6 +92,7 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 
 @optional
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet;
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveRetweet: ( OTCTweet* )_Retweet;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweetDeletion: ( NSString* )_DeletedTweetID byUser: ( NSString* )_UserID on: ( NSDate* )_DeletionDate;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveMention: ( OTCTweet* )_Metion;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveDirectMessage: ( OTCDirectMessage* )_DirectMessage;

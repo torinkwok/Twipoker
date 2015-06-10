@@ -198,6 +198,8 @@ TWPBrain static __strong* sWiseBrain;
     [ self->_friendsList addObjectsFromArray: _Friends ];
     }
 
+// When parsing Tweets,
+// keep in mind that Retweets are streamed as a status with another status nested inside it.
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
     if ( ![ self->_uniqueTweetsQueue containsObject: _ReceivedTweet ] )
@@ -213,11 +215,15 @@ TWPBrain static __strong* sWiseBrain;
                     || !_MntID.userID /* Current authenticating user */ )
                 {
                 if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask )
-                    {
-                    if ( ( [ self->_friendsList containsObject: authorID ] || authorID == currentLoginUserID )
-                            && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
-                        [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
-                    }
+                    if ( _ReceivedTweet.type == OTCTweetTypeNormalTweet )
+                        if ( ( [ self->_friendsList containsObject: authorID ] || authorID == currentLoginUserID )
+                                && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
+                            [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
+
+                if ( _MntID.signalMask & TWPBrainSignalTypeRetweetMask )
+                    if ( _ReceivedTweet.type == OTCTweetTypeRetweet )
+                        if ( [ _MntID.limb respondsToSelector: @selector( brain:didReceiveRetweet: ) ] )
+                            [ _MntID.limb brain: self didReceiveRetweet: _ReceivedTweet ];
 
                 if( _MntID.signalMask & TWPBrainSignalTypeMentionedMeMask )
                     {

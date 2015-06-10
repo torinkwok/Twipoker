@@ -38,7 +38,8 @@
     if ( self = [ super initWithNibName: @"TWPHomeView" bundle: [ NSBundle mainBundle ] ] )
         {
         [ [ TWPBrain wiseBrain ] registerLimb: self forUserIDs: nil brainSignal:
-            TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask | TWPBrainSignalTypeTimelineEventMask ];
+            TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask
+                | TWPBrainSignalTypeTimelineEventMask | TWPBrainSignalTypeRetweetMask ];
 
         [ self.twitterAPI getHomeTimelineSinceID: nil count: self.numberOfTweetsWillBeLoadedOnce successBlock:
             ^( NSArray* _TweetObjects )
@@ -109,10 +110,17 @@
     }
 
 #pragma mark Conforms to <TWPLimb>
-- ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet
+- ( void )    brain: ( TWPBrain* )_Brain
+    didReceiveTweet: ( OTCTweet* )_Tweet
     {
     [ self->_data insertObject: _Tweet atIndex: 0 ];
     [ self.timelineTableView reloadData ];
+    }
+
+- ( void )      brain: ( TWPBrain* )_Brain
+    didReceiveRetweet: ( OTCTweet* )_Retweet
+    {
+    NSLog( @"Retweet: %@", _Retweet );
     }
 
 - ( void )            brain: ( TWPBrain* )_Brain
