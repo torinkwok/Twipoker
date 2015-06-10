@@ -130,18 +130,20 @@
         {
         if ( originalAuthorID.longLongValue != [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue )
             {
-            // or it's myself (e.i. someone retweeted my own Tweet)
+            // or it's myself (i.e. someone retweeted my own Tweet)
             [ self->_data insertObject: _Retweet atIndex: 0 ];
             [ self.timelineTableView reloadData ];
             }
         }
 
     if ( [ _Retweet.author.IDString isEqualToString: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
+        // Cache this Retweet for querying the nested original Tweet
         [ self->_data insertObject: _Retweet atIndex: 0 ];
 
     NSUInteger favedTweetIndex = [ self->_data indexOfObject: originalTweet ];
     if ( favedTweetIndex != NSNotFound )
         {
+        // Retweeted was created, so the original Tweet has been retweeted
         [ self->_data[ favedTweetIndex ] setRetweetedByMe: YES ];
         [ self.timelineTableView reloadData ];
         }
@@ -152,15 +154,21 @@
                      byUser: ( NSString* )_UserID
                          on: ( NSDate* )_DeletionDate
     {
+    // Handling Tweet deletion/unretweet
     for ( OTCTweet* tweet in self->_data )
         {
+        // The deleted Tweet was indeed cached in self->_data
         if ( [ tweet.tweetIDString isEqualToString: _DeletedTweetID ] )
             {
+            // Determining if the deleted tweet was representing a retweet,
+            // that means this delete action is actually an unretweet action
             if ( tweet.type == OTCTweetTypeRetweet )
                 {
+                // Find out the original Tweet nested in deleted Tweet
                 NSUInteger favedTweetIndex = [ self->_data indexOfObject: tweet.originalTweet ];
 
                 if ( favedTweetIndex != NSNotFound )
+                    // Retweet was deleted, so the original Tweet has been unretweeted
                     [ self->_data[ favedTweetIndex ] setRetweetedByMe: NO ];
                 }
 
