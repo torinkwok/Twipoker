@@ -73,7 +73,9 @@
     {
     NSLog( @"%@", _Notif );
 
+    // The original Test that would be nested in the Tweet we're finding
     OTCTweet* originalTweetShouldBeUnretweeted = _Notif.userInfo[ kOriginalTweet ];
+    // The Tweet we're finding
     OTCTweet* tweetShouldBeDestroyed = nil;
     for ( OTCTweet* _Tweet in self->_data )
         {
@@ -86,6 +88,7 @@
             }
         }
 
+    // if we found out it...
     if ( tweetShouldBeDestroyed )
         {
         [ [ TWPBrain wiseBrain ] destroyTweet: tweetShouldBeDestroyed
@@ -93,7 +96,7 @@
                 ^( OTCTweet* _DestroyedTweet )
                     {
                 #if DEBUG
-                    NSLog( @"Just destroyed Tweet: %@", _DestroyedTweet );
+                    NSLog( @"Just unretweeted Tweet: %@", _DestroyedTweet );
                 #endif
                     } errorBlock: ^( NSError* _Error )
                                     {
