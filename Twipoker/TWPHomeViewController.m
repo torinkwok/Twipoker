@@ -122,17 +122,27 @@
     {
     NSLog( @"Retweet: %@", _Retweet );
 
+    OTCTweet* originalTweet = _Retweet.originalTweet;
     NSNumber* originalAuthorID = @( _Retweet.originalTweet.author.ID );
 
-    // If the original author has been already followed by me,
-    // or it's myself (e.i. someone retweeted my own Tweet)
-    BOOL shouldInsert =
-        [ [ TWPBrain wiseBrain ].friendsList containsObject: originalAuthorID ]
-            || originalAuthorID.longLongValue == [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
-
-    if ( !shouldInsert )
+    // If the original author has been already followed by me...
+    if ( ![ [ TWPBrain wiseBrain ].friendsList containsObject: originalAuthorID ] )
         {
+        if ( originalAuthorID.longLongValue != [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue )
+            {
+            // or it's myself (e.i. someone retweeted my own Tweet)
+            [ self->_data insertObject: _Retweet atIndex: 0 ];
+            [ self.timelineTableView reloadData ];
+            }
+        }
+
+    if ( [ _Retweet.author.IDString isEqualToString: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
         [ self->_data insertObject: _Retweet atIndex: 0 ];
+
+    NSUInteger favedTweetIndex = [ self->_data indexOfObject: originalTweet ];
+    if ( favedTweetIndex != NSNotFound )
+        {
+        [ self->_data[ favedTweetIndex ] setRetweetedByMe: YES ];
         [ self.timelineTableView reloadData ];
         }
     }
@@ -146,8 +156,17 @@
         {
         if ( [ tweet.tweetIDString isEqualToString: _DeletedTweetID ] )
             {
+            if ( tweet.type == OTCTweetTypeRetweet )
+                {
+                NSUInteger favedTweetIndex = [ self->_data indexOfObject: tweet.originalTweet ];
+
+                if ( favedTweetIndex != NSNotFound )
+                    [ self->_data[ favedTweetIndex ] setRetweetedByMe: NO ];
+                }
+
             [ self->_data removeObject: tweet ];
             [ self.timelineTableView reloadData ];
+
             break;
             }
         }
