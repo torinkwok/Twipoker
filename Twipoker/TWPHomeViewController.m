@@ -121,6 +121,20 @@
     didReceiveRetweet: ( OTCTweet* )_Retweet
     {
     NSLog( @"Retweet: %@", _Retweet );
+
+    NSNumber* originalAuthorID = @( _Retweet.originalTweet.author.ID );
+
+    // If the original author has been already followed by me,
+    // or it's myself (e.i. someone retweeted my own Tweet)
+    BOOL shouldInsert =
+        [ [ TWPBrain wiseBrain ].friendsList containsObject: originalAuthorID ]
+            || originalAuthorID.longLongValue == [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID.longLongValue;
+
+    if ( !shouldInsert )
+        {
+        [ self->_data insertObject: _Retweet atIndex: 0 ];
+        [ self.timelineTableView reloadData ];
+        }
     }
 
 - ( void )            brain: ( TWPBrain* )_Brain

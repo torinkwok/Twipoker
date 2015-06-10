@@ -32,6 +32,7 @@
 @implementation TWPBrain
 
 @synthesize currentTwitterUser;
+@synthesize friendsList = _friendsList;
 
 #pragma mark Initializations
 + ( instancetype ) wiseBrain

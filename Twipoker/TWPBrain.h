@@ -60,6 +60,7 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     }
 
 @property ( strong, readwrite ) OTCTwitterUser* currentTwitterUser;
+@property ( strong, readonly ) NSSet* friendsList;
 
 #pragma mark Initializations
 + ( instancetype ) wiseBrain;
