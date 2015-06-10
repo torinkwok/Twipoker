@@ -25,6 +25,7 @@
 #import "TWPHomeViewController.h"
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
+#import "TWPTweetOperationsNotificationNames.h"
 
 @interface TWPHomeViewController ()
 
@@ -65,6 +66,40 @@
     [ super viewDidLoad ];
 
     // Do view setup here.
+    }
+
+#pragma makr Conforms to <TWPTimelineScrollViewDataSource>
+- ( void ) tweetOperationShouldBeUnretweeted: ( NSNotification* )_Notif
+    {
+    NSLog( @"%@", _Notif );
+
+    OTCTweet* originalTweetShouldBeUnretweeted = _Notif.userInfo[ kOriginalTweet ];
+    OTCTweet* tweetShouldBeDestroyed = nil;
+    for ( OTCTweet* _Tweet in self->_data )
+        {
+        if ( _Tweet.type == OTCTweetTypeRetweet
+                && [ _Tweet.originalTweet isEqualToTweet: originalTweetShouldBeUnretweeted ]
+                && [ _Tweet.author.IDString isEqualToString: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID ] )
+            {
+            tweetShouldBeDestroyed = _Tweet;
+            break;
+            }
+        }
+
+    if ( tweetShouldBeDestroyed )
+        {
+        [ [ TWPBrain wiseBrain ] destroyTweet: tweetShouldBeDestroyed
+                                 successBlock:
+                ^( OTCTweet* _DestroyedTweet )
+                    {
+                #if DEBUG
+                    NSLog( @"Just destroyed Tweet: %@", _DestroyedTweet );
+                #endif
+                    } errorBlock: ^( NSError* _Error )
+                                    {
+                                    NSLog( @"%@", _Error );
+                                    } ];
+        }
     }
 
 #pragma mark Conforms to <TWPTimelineScrollViewDelegate>

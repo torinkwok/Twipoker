@@ -25,6 +25,8 @@
 #import "TWPRetweetOperationsPopover.h"
 #import "TWPRetweetOperationsView.h"
 #import "TWPRetweetOperationsViewController.h"
+#import "TWPRetweetSwitcher.h"
+#import "TWPBrain.h"
 
 // Private Interfaces
 @interface TWPRetweetOperationsPopover ()
@@ -75,7 +77,19 @@
 #pragma mark IBActions
 - ( IBAction ) retweetAction: ( id )_Sender
     {
-    NSLog( @"Retweet %@", self->_tweet );
+    [ [ TWPBrain wiseBrain ] retweet: self.tweet
+                        successBlock:
+        ^( OTCTweet* _Retweet )
+            {
+        #if DEBUG
+            NSLog( @"Retweet: %@", _Retweet );
+        #endif
+            [ self setTweet: _Retweet ];
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            NSLog( @"%@", _Error );
+                            } ];
+
     [ self close ];
     }
 

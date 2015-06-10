@@ -38,6 +38,7 @@
 		8349A6441AD2263C00487896 /* NSActionCell+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A6431AD2263C00487896 /* NSActionCell+TwipokerDrawing.m */; };
 		8349A6471AD24C9700487896 /* NSControl+TwipokerDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A6461AD24C9700487896 /* NSControl+TwipokerDrawing.m */; };
 		8349A64C1AD2D30100487896 /* TWPWhyNotPasswordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349A64B1AD2D30100487896 /* TWPWhyNotPasswordButton.m */; };
+		835001ED1B28DD5C0067499E /* TWPTweetOperationsNotificationNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 835001EC1B28DD5C0067499E /* TWPTweetOperationsNotificationNames.m */; };
 		8351C1D61B21DB8E0019BF98 /* tweet_with_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 8351C1D41B21DB8E0019BF98 /* tweet_with_pic.png */; };
 		8351C1D71B21DB8E0019BF98 /* tweet_with_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 8351C1D51B21DB8E0019BF98 /* tweet_with_video.png */; };
 		8351C1DA1B21EAF20019BF98 /* TWPTweetUpdateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8351C1D91B21EAF20019BF98 /* TWPTweetUpdateObject.m */; };
@@ -260,6 +261,8 @@
 		8349A6461AD24C9700487896 /* NSControl+TwipokerDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSControl+TwipokerDrawing.m"; path = "Twipoker/NSControl+TwipokerDrawing.m"; sourceTree = "<group>"; };
 		8349A64A1AD2D30100487896 /* TWPWhyNotPasswordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPWhyNotPasswordButton.h; path = Twipoker/TWPWhyNotPasswordButton.h; sourceTree = "<group>"; };
 		8349A64B1AD2D30100487896 /* TWPWhyNotPasswordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPWhyNotPasswordButton.m; path = Twipoker/TWPWhyNotPasswordButton.m; sourceTree = "<group>"; };
+		835001E91B28DD180067499E /* TWPTweetOperationsNotificationNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTweetOperationsNotificationNames.h; path = Twipoker/TWPTweetOperationsNotificationNames.h; sourceTree = "<group>"; };
+		835001EC1B28DD5C0067499E /* TWPTweetOperationsNotificationNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetOperationsNotificationNames.m; path = Twipoker/TWPTweetOperationsNotificationNames.m; sourceTree = "<group>"; };
 		8351C1D41B21DB8E0019BF98 /* tweet_with_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tweet_with_pic.png; sourceTree = "<group>"; };
 		8351C1D51B21DB8E0019BF98 /* tweet_with_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tweet_with_video.png; sourceTree = "<group>"; };
 		8351C1D81B21EAF20019BF98 /* TWPTweetUpdateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTweetUpdateObject.h; path = Twipoker/TWPTweetUpdateObject.h; sourceTree = "<group>"; };
@@ -924,6 +927,8 @@
 			isa = PBXGroup;
 			children = (
 				83D8FFCB1B24415800D1F825 /* xib */,
+				835001E91B28DD180067499E /* TWPTweetOperationsNotificationNames.h */,
+				835001EC1B28DD5C0067499E /* TWPTweetOperationsNotificationNames.m */,
 				83CC14E91B2316800046B544 /* TWPTweetOperationsPanelView.h */,
 				83CC14EA1B2316800046B544 /* TWPTweetOperationsPanelView.m */,
 				83D8FFD31B245A7C00D1F825 /* TWPRetweetOperationsViewController.h */,
@@ -1456,6 +1461,7 @@
 				830A39991B1B0883002EA4E2 /* TWPDirectMessagesStartAPrivateConversationView.m in Sources */,
 				83924D951AE1030B00C25895 /* INAppStoreWindow.m in Sources */,
 				83F231BD1AE114A600A05D1D /* FBKVOController.m in Sources */,
+				835001ED1B28DD5C0067499E /* TWPTweetOperationsNotificationNames.m in Sources */,
 				83B5550E1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.m in Sources */,
 				83CC14F81B2317880046B544 /* TWPReplyButton.m in Sources */,
 				83CFD8761ACF1C820062D73D /* TWPLoginPanelController.m in Sources */,

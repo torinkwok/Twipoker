@@ -82,6 +82,14 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
          successBlock: ( void (^)( OTCTweet* _FavedTweet ) )_SuccessBlock
            errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
+- ( void ) retweet: ( OTCTweet* )_Tweet
+      successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
+        errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
+- ( void ) destroyTweet: ( OTCTweet* )_Tweet
+           successBlock: ( void (^)( OTCTweet* _DestroyedTweet ) )_SuccessBlock
+             errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
 #pragma mark Registration of Limbs
 - ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb forUserIDs: ( NSArray* )_UserIDs brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
 - ( void ) removeLimb: ( NSObject <TWPLimb>* )_Limb forUserIDs: ( NSArray* )_UserIDs brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;

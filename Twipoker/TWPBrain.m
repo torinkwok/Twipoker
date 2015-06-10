@@ -157,6 +157,40 @@ TWPBrain static __strong* sWiseBrain;
                             } ];
     }
 
+- ( void ) retweet: ( OTCTweet* )_Tweet
+      successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
+        errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postStatusRetweetWithID: _Tweet.tweetIDString
+                       trimUser: @NO
+                   successBlock:
+        ^( NSDictionary* _UnfavedStatusJSON )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _UnfavedStatusJSON ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
+    }
+
+- ( void ) destroyTweet: ( OTCTweet* )_Tweet
+           successBlock: ( void (^)( OTCTweet* _DestroyedTweet ) )_SuccessBlock
+             errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postStatusesDestroy: _Tweet.tweetIDString
+                   trimUser: @NO
+               successBlock:
+        ^( NSDictionary* _DestroyedTweetJSON )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _DestroyedTweetJSON ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
+    }
+
 #pragma mark Registration of Limbs
 - ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb
              forUserIDs: ( NSArray* )_UserIDs

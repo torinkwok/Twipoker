@@ -25,6 +25,7 @@
 #import "TWPTweetOperationsPanelView.h"
 #import "TWPLoginUsersManager.h"
 #import "TWPBrain.h"
+#import "TWPTweetOperationsNotificationNames.h"
 
 #import "TWPReplyButton.h"
 #import "TWPRetweetSwitcher.h"
@@ -84,9 +85,14 @@
 #pragma mark IBActions
 - ( IBAction ) showRetweetPopoverAction: ( id )_Sender
     {
-    [ self->_popover showRelativeToRect: self.retweetSwitcher.bounds
-                                 ofView: self.retweetSwitcher
-                          preferredEdge: NSMaxYEdge ];
+    if ( self.retweetSwitcher.isSelected )
+        [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTweetOperationShouldBeUnretweeted
+                                                               object: self
+                                                             userInfo: @{ kOriginalTweet : self->_tweet ?: [ NSNull null ] } ];
+    else
+        [ self->_popover showRelativeToRect: self.retweetSwitcher.bounds
+                                     ofView: self.retweetSwitcher
+                              preferredEdge: NSMaxYEdge ];
     }
 
 - ( IBAction ) favOrUnfavAction: ( id )_Sender

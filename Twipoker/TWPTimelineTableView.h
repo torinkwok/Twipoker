@@ -38,6 +38,9 @@
 @property ( assign, readwrite ) BOOL isLoadingOlderTweets;
 @property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
 
+@required
+- ( void ) tweetOperationShouldBeUnretweeted: ( NSNotification* )_Notif;
+
 @end // <TWPTimelineTableViewDataSource> protocol
 
 #pragma mark <TWPTimelineTableViewDelegate>

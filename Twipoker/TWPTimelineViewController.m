@@ -24,6 +24,7 @@
 
 #import "TWPTimelineViewController.h"
 #import "TWPTweetCellView.h"
+#import "TWPTweetOperationsNotificationNames.h"
 
 @implementation TWPTimelineViewController
 
@@ -37,6 +38,13 @@
         {
         self->_isLoadingOlderTweets = NO;
         self->_numberOfTweetsWillBeLoadedOnce = 20;
+
+        SEL delegateSel = @selector( tweetOperationShouldBeUnretweeted: );
+        if ( [ self respondsToSelector: delegateSel ] )
+            [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                        selector: delegateSel
+                                                            name: TWPTweetOperationShouldBeUnretweeted
+                                                          object: nil ];
         }
 
     return self;
