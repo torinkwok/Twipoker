@@ -26,10 +26,23 @@
 
 @implementation TWPDashboardView
 
+@synthesize homeTab;
+@synthesize favoriteTab;
+@synthesize listsTab;
+@synthesize notificationTab;
+@synthesize meTab;
+@synthesize messagesTab;
+
 - ( void ) awakeFromNib
     {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
+    // TODO:
+    }
+
+#pragma mark IBActions
+- ( IBAction ) tabClickedAction: ( id )_Sender
+    {
+    if ( [ self.delegate respondsToSelector: @selector( dashboardView:selectedTabDidChange: ) ] )
+        [ self.delegate dashboardView: self selectedTabDidChange: ( TWPDashboardTab* )_Sender ];
     }
 
 @end

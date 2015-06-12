@@ -26,9 +26,9 @@
 
 @class TWPViewsStack;
 
-@interface TWPDashboardCellView : NSTableCellView
+@interface TWPDashboardTab : NSButton
 
-@property ( weak, readwrite ) TWPViewsStack* associatedViewsStack;
+@property ( weak ) IBOutlet TWPViewsStack* associatedViewsStack;
 
 @end
 

@@ -24,9 +24,34 @@
 
 @import Cocoa;
 
-@interface TWPDashboardView : NSTableView
+@protocol TWPDashboardViewDelegate;
+@class TWPDashboardTab;
 
-@end
+// TWPDashboardView class
+@interface TWPDashboardView : NSView
+
+@property( weak ) IBOutlet TWPDashboardTab* homeTab;
+@property( weak ) IBOutlet TWPDashboardTab* favoriteTab;
+@property( weak ) IBOutlet TWPDashboardTab* listsTab;
+@property( weak ) IBOutlet TWPDashboardTab* notificationTab;
+@property( weak ) IBOutlet TWPDashboardTab* meTab;
+@property( weak ) IBOutlet TWPDashboardTab* messagesTab;
+
+@property ( weak, readwrite ) IBOutlet id <TWPDashboardViewDelegate> delegate;
+
+#pragma mark IBActions
+- ( IBAction ) tabClickedAction: ( id )_Sender;
+
+@end // TWPDashboardView class
+
+// TWPDashboardViewDelegate protocol
+@protocol TWPDashboardViewDelegate <NSObject>
+
+@required
+- ( void ) dashboardView: ( TWPDashboardView* )_DashboardView
+    selectedTabDidChange: ( TWPDashboardTab* )_NewSelectedTab;
+
+@end // TWPDashboardViewDelegate protocol
 
 /*=============================================================================┐
 |                                                                              |

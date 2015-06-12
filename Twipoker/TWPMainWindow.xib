@@ -56,65 +56,86 @@
                             </imageView>
                         </subviews>
                     </customView>
-                    <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="66" horizontalPageScroll="10" verticalLineScroll="66" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uak-CR-Afr" userLabel="Dashboard Scroll View - Table View">
-                        <rect key="frame" x="0.0" y="183" width="106" height="480"/>
-                        <clipView key="contentView" misplaced="YES" id="V0v-xt-iVw">
-                            <rect key="frame" x="1" y="1" width="287" height="533"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="64" rowSizeStyle="automatic" viewBased="YES" id="y2h-Qf-hPL" customClass="TWPDashboardView">
-                                    <rect key="frame" x="0.0" y="0.0" width="288" height="0.0"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    <tableColumns>
-                                        <tableColumn identifier="tabs" width="103" minWidth="40" maxWidth="1000" id="jeb-Iz-fid" userLabel="Tabs Column">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="YSh-W4-kNZ">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <prototypeCellViews>
-                                                <tableCellView id="UBU-sD-AnM" customClass="TWPDashboardCellView">
-                                                    <rect key="frame" x="1" y="1" width="106" height="64"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjF-28-4tv">
-                                                            <rect key="frame" x="33" y="12" width="40" height="40"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="mIZ-lm-YMe"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <connections>
-                                                        <outlet property="imageView" destination="gjF-28-4tv" id="Zb4-od-Py2"/>
-                                                    </connections>
-                                                </tableCellView>
-                                            </prototypeCellViews>
-                                        </tableColumn>
-                                    </tableColumns>
-                                    <connections>
-                                        <outlet property="dataSource" destination="HUR-ik-D4y" id="wYD-2k-96n"/>
-                                        <outlet property="delegate" destination="HUR-ik-D4y" id="woo-Z0-KDj"/>
-                                    </connections>
-                                </tableView>
-                            </subviews>
-                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="r5t-C0-Ovf">
-                            <rect key="frame" x="-100" y="-100" width="0.0" height="16"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Rsg-mm-wNN">
-                            <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
+                        <rect key="frame" x="0.0" y="0.0" width="107" height="767"/>
+                        <subviews>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
+                                <rect key="frame" x="0.0" y="597" width="107" height="72"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="home-tab" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="emi-ef-6Ye">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tabClickedAction:" target="vge-3d-5qI" id="OBm-uO-RiJ"/>
+                                    <outlet property="associatedViewsStack" destination="i5X-Cg-E7K" id="bvm-Rg-7eT"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htO-L6-7ln" customClass="TWPDashboardTab">
+                                <rect key="frame" x="0.0" y="526" width="107" height="72"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="favorite-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hpB-Ks-3ZN">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tabClickedAction:" target="vge-3d-5qI" id="3OT-Gx-IHU"/>
+                                    <outlet property="associatedViewsStack" destination="k9K-Hk-Xzb" id="vDc-Kw-S0O"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blT-GV-cVR" customClass="TWPDashboardTab">
+                                <rect key="frame" x="0.0" y="455" width="107" height="72"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="lists-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OiP-5y-ZJv">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tabClickedAction:" target="vge-3d-5qI" id="nzw-3G-pCH"/>
+                                    <outlet property="associatedViewsStack" destination="jhD-Ze-QK8" id="sgs-ha-hTn"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-j2-Kng" customClass="TWPDashboardTab">
+                                <rect key="frame" x="0.0" y="384" width="107" height="72"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="notif-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="S7d-Nf-xIV">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tabClickedAction:" target="vge-3d-5qI" id="oaV-wS-CTX"/>
+                                    <outlet property="associatedViewsStack" destination="A4Q-KL-bMh" id="6qS-SL-5do"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
+                                <rect key="frame" x="0.0" y="313" width="107" height="72"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="me-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="3qq-XN-k35">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tabClickedAction:" target="vge-3d-5qI" id="ojZ-3D-wSV"/>
+                                    <outlet property="associatedViewsStack" destination="uTU-qJ-3dF" id="xUo-mp-Ecs"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="af4-QX-slZ" customClass="TWPDashboardTab">
+                                <rect key="frame" x="0.0" y="242" width="107" height="72"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="messages-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="DaF-ie-LJX">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tabClickedAction:" target="vge-3d-5qI" id="lIK-3H-Cxb"/>
+                                    <outlet property="associatedViewsStack" destination="4cS-D0-vD7" id="UkT-Dn-UOD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <connections>
+                            <outlet property="delegate" destination="HUR-ik-D4y" id="jUJ-5f-Sjq"/>
+                            <outlet property="favoriteTab" destination="htO-L6-7ln" id="Mtf-KI-3rp"/>
+                            <outlet property="homeTab" destination="H1h-r2-oOp" id="Dn5-Gv-RmC"/>
+                            <outlet property="listsTab" destination="blT-GV-cVR" id="Pbi-dn-aG1"/>
+                            <outlet property="meTab" destination="noB-a2-2cI" id="ZBh-k1-CIY"/>
+                            <outlet property="messagesTab" destination="af4-QX-slZ" id="nCt-Qd-zyb"/>
+                            <outlet property="notificationTab" destination="MPM-j2-Kng" id="aan-WN-yZC"/>
+                        </connections>
+                    </customView>
                 </subviews>
                 <connections>
                     <outlet property="cuttingLineView" destination="zU3-cQ-xog" id="6MD-iA-mN7"/>
@@ -128,7 +149,6 @@
         </window>
         <customObject id="HUR-ik-D4y" customClass="TWPStackContentViewController">
             <connections>
-                <outlet property="dashboardView" destination="y2h-Qf-hPL" id="hqM-Dg-AqE"/>
                 <outlet property="favoritesDashboardStack" destination="k9K-Hk-Xzb" id="dxH-fp-hcg"/>
                 <outlet property="homeDashboardStack" destination="i5X-Cg-E7K" id="c2I-Ug-frY"/>
                 <outlet property="listsDashboardStack" destination="jhD-Ze-QK8" id="piV-M9-8Ce"/>
@@ -288,6 +308,12 @@ Gw
     <resources>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="favorite-tab" width="196" height="194"/>
+        <image name="home-tab" width="208" height="210"/>
+        <image name="lists-tab" width="222" height="200"/>
+        <image name="me-tab" width="216" height="226"/>
+        <image name="messages-tab" width="230" height="218"/>
+        <image name="notif-tab" width="196" height="208"/>
         <image name="tweet_with_pic" width="52" height="44"/>
         <image name="twitter-logo-blue" width="640" height="541"/>
     </resources>

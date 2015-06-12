@@ -22,11 +22,22 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardCellView.h"
+#import "TWPDashboardTab.h"
+#import "TWPViewsStack.h"
 
-@implementation TWPDashboardCellView
+@implementation TWPDashboardTab
 
-@synthesize associatedViewsStack;
+- ( void ) awakeFromNib
+    {
+    [ self setButtonType: NSMomentaryChangeButton ];
+    }
+
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
+    
+    // Drawing code here.
+    }
 
 @end
 

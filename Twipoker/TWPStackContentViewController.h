@@ -24,6 +24,8 @@
 
 @import Cocoa;
 
+#import "TWPDashboardView.h"
+
 // KVO Key Paths
 NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath;
 
@@ -31,7 +33,7 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
 @class TWPNavigationBarController;
 @class TWPDashboardView;
 
-@interface TWPStackContentViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
+@interface TWPStackContentViewController : NSViewController <TWPDashboardViewDelegate>
     {
 @private
     NSArray __strong* _dashboardTabIcons;
