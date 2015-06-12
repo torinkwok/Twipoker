@@ -41,6 +41,7 @@
 
 #pragma mark IBActions
 - ( IBAction ) tabClickedAction: ( id )_Sender;
+- ( IBAction ) tweetButtonClickedAction: ( id )_Sender;
 
 @end // TWPDashboardView class
 

@@ -45,6 +45,11 @@
         [ self.delegate dashboardView: self selectedTabDidChange: ( TWPDashboardTab* )_Sender ];
     }
 
+- ( IBAction ) tweetButtonClickedAction: ( id )_Sender
+    {
+    NSLog( @"Compose Tweet: %@", _Sender );
+    }
+
 @end
 
 /*=============================================================================┐

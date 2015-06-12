@@ -46,7 +46,7 @@
 
         NSURL* avatarURL = self->_twitterUser.originalAvatarImageURLOverSSL;
         self->_dataTask = [ self->_URLSession dataTaskWithURL: avatarURL
-                          completionHandler:
+                                            completionHandler:
             ^( NSData* _Data, NSURLResponse* _Response, NSError* _Error )
                 {
                 NSImage* avatarImage = [ [ NSImage alloc ] initWithData: _Data ];

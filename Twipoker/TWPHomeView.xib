@@ -51,7 +51,7 @@
                                                 </connections>
                                             </imageView>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUo-13-Uhb" userLabel="Tweet Text" customClass="TWPTweetTextField">
-                                                <rect key="frame" x="110" y="27" width="428" height="51"/>
+                                                <rect key="frame" x="110" y="27" width="431" height="51"/>
                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="4i5-T8-sHn">
                                                     <font key="font" metaFont="system"/>
                                                     <string key="title">OS X 的 Keychain Services 的接口简直跟 POSIX 一样难用。所以最近写了一个全特性的 Objective-C 封装，完全面向对象， Cocoa 风格的 API 设计，文档齐全。http://nstongg.tumblr.com/post/112465955064/waxsealcore …</string>
@@ -135,7 +135,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="5Mj-1U-HAf"/>
             </connections>
-            <point key="canvasLocation" x="-245.5" y="-2569"/>
+            <point key="canvasLocation" x="-246" y="-2569"/>
         </scrollView>
     </objects>
     <resources>
