@@ -25,7 +25,9 @@
 @import Cocoa;
 
 @protocol TWPDashboardViewDelegate;
+
 @class TWPDashboardTab;
+@class TWPTweetBoxController;
 
 // TWPDashboardView class
 @interface TWPDashboardView : NSView
@@ -38,6 +40,8 @@
 @property( weak ) IBOutlet TWPDashboardTab* messagesTab;
 
 @property ( weak, readwrite ) IBOutlet id <TWPDashboardViewDelegate> delegate;
+
+@property ( strong, readwrite ) TWPTweetBoxController* tweetBoxController;
 
 #pragma mark IBActions
 - ( IBAction ) tabClickedAction: ( id )_Sender;

@@ -22,11 +22,47 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetingBox.h"
+#import "TWPTweetBoxController.h"
 
-// TWPTweetingBaseBox class
-@interface TWPTweetingBaseBox : TWPTweetingBox
-@end // TWPTweetingBaseBox class
+@interface TWPTweetBoxController ()
+
+@end
+
+@implementation TWPTweetBoxController
+
+#pragma mark Initializations
++ ( instancetype ) tweetBoxControllerWithTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObject
+    {
+    return [ [ [ self class ] alloc ] initWithTweetUpdate: _TweetUpdateObject ];
+    }
+
+- ( instancetype ) initWithTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObject
+    {
+    if ( self = [ super initWithWindowNibName: @"TWPTweetingBox" ] )
+        ;
+
+    return self;
+    }
+
+- ( void ) windowDidLoad
+    {
+    [ super windowDidLoad ];
+    
+    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    }
+
+#pragma mark IBActions
+- ( IBAction ) postButtonClickedAction: ( id )_Sender
+    {
+    [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseOK ];
+    }
+
+- ( IBAction ) cancelButtonClickedAction: ( id )_Sender
+    {
+    [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseCancel ];
+    }
+
+@end
 
 /*=============================================================================┐
 |                                                                              |

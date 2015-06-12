@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDashboardView.h"
+#import "TWPTweetBoxController.h"
 
 @implementation TWPDashboardView
 
@@ -47,7 +48,13 @@
 
 - ( IBAction ) tweetButtonClickedAction: ( id )_Sender
     {
-    NSLog( @"Compose Tweet: %@", _Sender );
+    self.tweetBoxController = [ TWPTweetBoxController tweetBoxControllerWithTweetUpdate: nil ];
+    [ self.window beginSheet: self.tweetBoxController.window
+           completionHandler:
+        ^( NSModalResponse _ReturnCode )
+            {
+
+            } ];
     }
 
 @end

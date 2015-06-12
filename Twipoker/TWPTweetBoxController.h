@@ -22,22 +22,21 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetingBaseBox.h"
+#import <Cocoa/Cocoa.h>
 
-// TWPTweetingBaseBox class
-@implementation TWPTweetingBaseBox
+@class TWPTweetUpdateObject;
 
-- ( void ) drawRect: ( NSRect )_DirtyRect
-    {
-    [ super drawRect: _DirtyRect ];
+@interface TWPTweetBoxController : NSWindowController
 
-    // Drawing code here.
-    NSColor* fillColor = [ NSColor colorWithHTMLColor: @"FAFAFA" ];
-    [ fillColor setFill ];
-    NSRectFill( _DirtyRect );
-    }
+#pragma mark Initializations
++ ( instancetype ) tweetBoxControllerWithTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObject;
+- ( instancetype ) initWithTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObject;
 
-@end // TWPTweetingBaseBox class
+#pragma mark IBActions
+- ( IBAction ) postButtonClickedAction: ( id )_Sender;
+- ( IBAction ) cancelButtonClickedAction: ( id )_Sender;
+
+@end
 
 /*=============================================================================┐
 |                                                                              |
