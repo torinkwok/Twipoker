@@ -34,7 +34,7 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
 @interface TWPStackContentViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
     {
 @private
-    NSArray __strong* _dashboardTabs;
+    NSArray __strong* _dashboardTabIcons;
     }
 
 @property ( weak ) IBOutlet TWPDashboardView* dashboardView;

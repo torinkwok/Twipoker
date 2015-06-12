@@ -26,9 +26,11 @@
 
 // Notification Names
 NSString extern* const TWPTweetOperationShouldBeUnretweeted;
+NSString extern* const TWPTweetOperationShouldReply;
 
 // User Info Keys
 NSString extern* const kOriginalTweet;
+//NSString extern* const
 
 /*=============================================================================┐
 |                                                                              |

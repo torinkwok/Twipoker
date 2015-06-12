@@ -73,13 +73,13 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
     {
     if ( self = [ super init ] )
         {
-        self->_dashboardTabs = @[ NSLocalizedString( @"Home", nil )
-                                , NSLocalizedString( @"Favorites", nil )
-                                , NSLocalizedString( @"Lists", nil )
-                                , NSLocalizedString( @"Notifications", nil )
-                                , NSLocalizedString( @"Me", nil )
-                                , NSLocalizedString( @"Messages", nil )
-                                ];
+        self->_dashboardTabIcons = @[ [ NSImage imageNamed: @"home-tab" ]
+                                    , [ NSImage imageNamed: @"favorite-tab" ]
+                                    , [ NSImage imageNamed: @"lists-tab" ]
+                                    , [ NSImage imageNamed: @"notif-tab" ]
+                                    , [ NSImage imageNamed: @"me-tab" ]
+                                    , [ NSImage imageNamed: @"messages-tab" ]
+                                    ];
 
         [ [ NSNotificationCenter defaultCenter ] addObserver: self
                                                     selector: @selector( shouldDisplayDetailOfTweet: )
@@ -130,7 +130,7 @@ NSString static* const kColumnIDTabs = @"tabs";
 #pragma mark Conforms to <NSTableViewDataSource>
 - ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
     {
-    return self->_dashboardTabs.count;
+    return self->_dashboardTabIcons.count;
     }
 
 - ( id )            tableView: ( NSTableView* )_TableView
@@ -140,7 +140,7 @@ NSString static* const kColumnIDTabs = @"tabs";
     id result = nil;
 
     if ( [ _TableColumn.identifier isEqualToString: kColumnIDTabs ] )
-        result = self->_dashboardTabs[ _Row ];
+        result = self->_dashboardTabIcons[ _Row ];
 
     return result;
     }
@@ -152,8 +152,9 @@ NSString static* const kColumnIDTabs = @"tabs";
     {
     TWPDashboardCellView* dashboardCellView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
 
-    NSString* tabName = [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ];
-    [ dashboardCellView.textField setStringValue: tabName ];
+    NSImage* tabIcon = [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ];
+    NSLog( @"%@", dashboardCellView.imageView );
+    [ dashboardCellView.imageView setImage: tabIcon ];
 
     TWPViewsStack* viewsStack = nil;
     switch ( _Row )
@@ -193,7 +194,7 @@ NSString static* const kColumnIDTabs = @"tabs";
 - ( BOOL ) tableView: ( NSTableView* )_TableView
      shouldSelectRow: ( NSInteger )_Row
     {
-//    if ( [ self->_dashboardTabs[ _Row ] isEqualToString: @"Messages" ] )
+//    if ( [ self->_dashboardTabIcons[ _Row ] isEqualToString: @"Messages" ] )
 //        return NO;
 //    else
         return YES;

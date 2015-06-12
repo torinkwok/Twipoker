@@ -13,7 +13,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <scrollView identifier="home" borderType="none" autohidesScrollers="YES" horizontalLineScroll="118" horizontalPageScroll="10" verticalLineScroll="118" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="QOb-yw-H2P" userLabel="Home Timeline Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
-            <rect key="frame" x="0.0" y="0.0" width="607" height="632"/>
+            <rect key="frame" x="0.0" y="0.0" width="554" height="632"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <clipView key="contentView" copiesOnScroll="NO" id="kdS-Lj-wiA">
                 <rect key="frame" x="1" y="1" width="605" height="630"/>
@@ -26,7 +26,7 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <tableColumns>
-                            <tableColumn identifier="home-timeline" width="604" minWidth="40" maxWidth="1000" id="pNV-YN-HfV">
+                            <tableColumn identifier="home-timeline" width="551" minWidth="40" maxWidth="1000" id="pNV-YN-HfV">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -40,7 +40,7 @@
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
                                     <tableCellView id="feT-IJ-5DR" customClass="TWPTweetCellView">
-                                        <rect key="frame" x="1" y="1" width="604" height="116"/>
+                                        <rect key="frame" x="1" y="1" width="551" height="116"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUA-3k-7Zo" userLabel="Avatar" customClass="TWPUserAvatarWell">
@@ -51,7 +51,7 @@
                                                 </connections>
                                             </imageView>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUo-13-Uhb" userLabel="Tweet Text" customClass="TWPTweetTextField">
-                                                <rect key="frame" x="110" y="27" width="481" height="51"/>
+                                                <rect key="frame" x="110" y="27" width="428" height="51"/>
                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="4i5-T8-sHn">
                                                     <font key="font" metaFont="system"/>
                                                     <string key="title">OS X 的 Keychain Services 的接口简直跟 POSIX 一样难用。所以最近写了一个全特性的 Objective-C 封装，完全面向对象， Cocoa 风格的 API 设计，文档齐全。http://nstongg.tumblr.com/post/112465955064/waxsealcore …</string>
@@ -69,7 +69,7 @@
                                                 </connections>
                                             </customView>
                                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="keF-c2-Eeb" customClass="TWPTweetOperationsPanelView">
-                                                <rect key="frame" x="509" y="91" width="80" height="16"/>
+                                                <rect key="frame" x="459" y="91" width="80" height="16"/>
                                                 <subviews>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vc3-JV-3jd" customClass="TWPReplyButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
