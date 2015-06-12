@@ -28,10 +28,10 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
                     </imageView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-yU-kQO" customClass="TWPNavigationBar">
-                        <rect key="frame" x="106" y="707" width="554" height="60"/>
+                        <rect key="frame" x="106" y="714" width="554" height="53"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
-                                <rect key="frame" x="20" y="18" width="27" height="25"/>
+                                <rect key="frame" x="20" y="14" width="27" height="25"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoLeftTemplate" imagePosition="only" alignment="center" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="hWp-8T-ztY">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IjZ-GZ-rhx" userLabel="Go Forward Button">
-                                <rect key="frame" x="48" y="18" width="27" height="25"/>
+                                <rect key="frame" x="48" y="14" width="27" height="25"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoRightTemplate" imagePosition="only" alignment="center" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="QPG-sT-bpd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMS-HU-W4h" userLabel="Twitter Logo Button">
-                                <rect key="frame" x="265" y="18" width="25" height="25"/>
+                                <rect key="frame" x="265" y="14" width="25" height="25"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="twitter-logo-blue" id="8Lr-ax-6GU"/>
                             </imageView>
                         </subviews>
@@ -88,7 +88,7 @@
                                                     <subviews>
                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjF-28-4tv">
                                                             <rect key="frame" x="33" y="12" width="40" height="40"/>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="bottomLeft" imageScaling="proportionallyDown" id="mIZ-lm-YMe"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="mIZ-lm-YMe"/>
                                                         </imageView>
                                                     </subviews>
                                                     <connections>
@@ -187,12 +187,7 @@
                 <outlet property="DMPreviewViewContorller" destination="f4H-bM-VHT" id="451-GU-mrU"/>
             </connections>
         </customObject>
-        <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController">
-            <connections>
-                <outlet property="DMPreviewTableView" destination="iY4-6u-VrM" id="eeR-90-VL3"/>
-                <outlet property="view" destination="Zwj-uj-ZVJ" id="2WP-UN-rmj"/>
-            </connections>
-        </customObject>
+        <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController"/>
         <customView id="qNf-Vk-xrz" customClass="TWPTweetingBaseBox">
             <rect key="frame" x="0.0" y="0.0" width="606" height="49"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -289,96 +284,6 @@ Gw
             </connections>
             <point key="canvasLocation" x="267" y="-902"/>
         </customView>
-        <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="Zwj-uj-ZVJ" userLabel="DIrect Messages Scroll View - Table View">
-            <rect key="frame" x="0.0" y="0.0" width="288" height="421"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <clipView key="contentView" id="F2g-Mf-VDW">
-                <rect key="frame" x="1" y="1" width="287" height="533"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="70" rowSizeStyle="automatic" viewBased="YES" id="iY4-6u-VrM" customClass="TWPDirectMessagesPreviewTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="288" height="0.0"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <size key="intercellSpacing" width="3" height="2"/>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <tableColumns>
-                            <tableColumn identifier="perview" width="285" minWidth="40" maxWidth="1000" id="JYe-Ft-eXG" userLabel="Tabs Column">
-                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                </tableHeaderCell>
-                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="2QN-Tl-9oJ">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                <prototypeCellViews>
-                                    <tableCellView id="Nae-CX-cQs" customClass="TWPDirectMessagePreviewTableCellView">
-                                        <rect key="frame" x="1" y="1" width="285" height="70"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRl-rH-ieI">
-                                                <rect key="frame" x="73" y="45" width="112" height="17"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="XiaoChenYu" id="K1q-F2-jaL">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaw-Hp-Dzh">
-                                                <rect key="frame" x="73" y="9" width="204" height="34"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Preview of the most recent direct  message" id="kjV-Qp-NrA">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QD4-Mx-eYK" customClass="TWPUserAvatarWell">
-                                                <rect key="frame" x="14" y="9" width="53" height="53"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="k2I-JS-6ik"/>
-                                            </imageView>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8bI-YH-IYu">
-                                                <rect key="frame" x="213" y="45" width="66" height="17"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Feb" id="CVt-Js-5YO">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </subviews>
-                                        <connections>
-                                            <outlet property="contentPreview" destination="zaw-Hp-Dzh" id="87X-3A-VLq"/>
-                                            <outlet property="dateLabel" destination="8bI-YH-IYu" id="eTd-bf-Cuh"/>
-                                            <outlet property="imageView" destination="QD4-Mx-eYK" id="FhJ-Cn-BZE"/>
-                                            <outlet property="textField" destination="JRl-rH-ieI" id="64G-9e-ueU"/>
-                                            <outlet property="userAvatar" destination="QD4-Mx-eYK" id="ScZ-EP-rYh"/>
-                                            <outlet property="userNameLabel" destination="JRl-rH-ieI" id="4SH-VD-Ek9"/>
-                                        </connections>
-                                    </tableCellView>
-                                </prototypeCellViews>
-                            </tableColumn>
-                        </tableColumns>
-                        <connections>
-                            <outlet property="dataSource" destination="f4H-bM-VHT" id="DaH-W9-bRL"/>
-                            <outlet property="delegate" destination="f4H-bM-VHT" id="EME-UM-bbq"/>
-                        </connections>
-                    </tableView>
-                </subviews>
-                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-            </clipView>
-            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="5K6-dH-CN0">
-                <rect key="frame" x="-100" y="-100" width="0.0" height="16"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="gic-pX-sB5">
-                <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </scroller>
-            <point key="canvasLocation" x="-863" y="-1590.5"/>
-        </scrollView>
     </objects>
     <resources>
         <image name="NSGoLeftTemplate" width="9" height="12"/>

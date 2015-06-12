@@ -32,7 +32,7 @@
     [ super drawRect: _DirtyRect ];
     
     // Drawing code here.
-    [ [ NSColor colorWithHTMLColor: @"D8D8D8" ] set ];
+    [ [ NSColor colorWithHTMLColor: @"E5E5E5" ] set ];
     NSRectFill( _DirtyRect );
     }
 
