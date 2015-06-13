@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="PPe-7P-f8B" userLabel="Home Timeline Table View" customClass="TWPTimelineTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="607" height="0.0"/>
+                        <rect key="frame" x="0.0" y="0.0" width="554" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -63,24 +63,24 @@
                                                 </connections>
                                             </textField>
                                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rT6-rl-xjK" customClass="TWPTimelineUserNameLabel">
-                                                <rect key="frame" x="110" y="86" width="228" height="22"/>
+                                                <rect key="frame" x="110" y="86" width="341" height="22"/>
                                                 <connections>
                                                     <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="DPZ-XO-MCM"/>
                                                 </connections>
                                             </customView>
                                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="keF-c2-Eeb" customClass="TWPTweetOperationsPanelView">
-                                                <rect key="frame" x="459" y="91" width="80" height="16"/>
+                                                <rect key="frame" x="472" y="86" width="76" height="22"/>
                                                 <subviews>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vc3-JV-3jd" customClass="TWPReplyButton">
-                                                        <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-reply-button-normal" imagePosition="only" alignment="center" alternateImage="twitter-reply-button-highlighting" imageScaling="proportionallyDown" inset="2" id="XMR-sT-SI6" customClass="TWPReplyButtonCell">
+                                                        <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="XMR-sT-SI6" customClass="TWPReplyButtonCell">
                                                             <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUX-Ck-hwg" customClass="TWPRetweetSwitcher">
-                                                        <rect key="frame" x="32" y="-2" width="18" height="18"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-retweet-button-normal" imagePosition="only" alignment="center" alternateImage="twitter-retweet-button-highlighting" imageScaling="proportionallyDown" inset="2" id="INg-8z-7OR" customClass="TWPRetweetSwitcherCell">
+                                                        <rect key="frame" x="27" y="0.0" width="22" height="22"/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="INg-8z-7OR" customClass="TWPRetweetSwitcherCell">
                                                             <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -88,9 +88,9 @@
                                                             <action selector="showRetweetPopoverAction:" target="keF-c2-Eeb" id="0HH-ol-dBI"/>
                                                         </connections>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoq-hk-sAZ" customClass="TWPFavSwitcher">
-                                                        <rect key="frame" x="66" y="1" width="14" height="14"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter-fav-button-normal" imagePosition="only" alignment="center" alternateImage="twitter-fav-button-highlighting" imageScaling="proportionallyDown" inset="2" id="c68-GZ-ias" customClass="TWPFavSwitcherCell">
+                                                    <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoq-hk-sAZ" customClass="TWPFavSwitcher">
+                                                        <rect key="frame" x="54" y="1" width="22" height="22"/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" focusRingType="none" inset="2" id="c68-GZ-ias" customClass="TWPFavSwitcherCell">
                                                             <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -138,12 +138,4 @@
             <point key="canvasLocation" x="-246" y="-2569"/>
         </scrollView>
     </objects>
-    <resources>
-        <image name="twitter-fav-button-highlighting" width="38" height="34"/>
-        <image name="twitter-fav-button-normal" width="38" height="34"/>
-        <image name="twitter-reply-button-highlighting" width="40" height="28"/>
-        <image name="twitter-reply-button-normal" width="40" height="28"/>
-        <image name="twitter-retweet-button-highlighting" width="50" height="30"/>
-        <image name="twitter-retweet-button-normal" width="50" height="30"/>
-    </resources>
 </document>

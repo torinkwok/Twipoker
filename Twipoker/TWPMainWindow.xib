@@ -31,7 +31,7 @@
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
                                 <rect key="frame" x="20" y="14" width="27" height="25"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoLeftTemplate" imagePosition="only" alignment="center" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="hWp-8T-ztY">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="go-back-arrow-normal" imagePosition="only" alignment="center" alternateImage="go-back-arrow-highlighting" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="hWp-8T-ztY">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -41,7 +41,7 @@
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IjZ-GZ-rhx" userLabel="Go Forward Button">
                                 <rect key="frame" x="48" y="14" width="27" height="25"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoRightTemplate" imagePosition="only" alignment="center" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="QPG-sT-bpd">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="go-forward-arrow-normal" imagePosition="only" alignment="center" alternateImage="go-forward-arrow-highlighting" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="QPG-sT-bpd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -59,8 +59,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="107" height="767"/>
                         <subviews>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
-                                <rect key="frame" x="0.0" y="597" width="107" height="72"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="home-tab" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="emi-ef-6Ye">
+                                <rect key="frame" x="0.0" y="597" width="107" height="83"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="home-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="emi-ef-6Ye">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -71,7 +71,7 @@
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htO-L6-7ln" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="526" width="107" height="72"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="favorite-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hpB-Ks-3ZN">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="fav-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hpB-Ks-3ZN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -230,15 +230,17 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSGoLeftTemplate" width="9" height="12"/>
-        <image name="NSGoRightTemplate" width="9" height="12"/>
-        <image name="compose-tweet" width="28" height="28"/>
-        <image name="favorite-tab" width="196" height="194"/>
-        <image name="home-tab" width="208" height="210"/>
-        <image name="lists-tab" width="222" height="200"/>
-        <image name="me-tab" width="216" height="226"/>
-        <image name="messages-tab" width="230" height="218"/>
-        <image name="notif-tab" width="196" height="208"/>
+        <image name="compose-tweet" width="95" height="113"/>
+        <image name="fav-tab" width="116" height="105"/>
+        <image name="go-back-arrow-highlighting" width="69" height="69"/>
+        <image name="go-back-arrow-normal" width="69" height="69"/>
+        <image name="go-forward-arrow-highlighting" width="69" height="69"/>
+        <image name="go-forward-arrow-normal" width="69" height="69"/>
+        <image name="home-tab" width="113" height="120"/>
+        <image name="lists-tab" width="103" height="101"/>
+        <image name="me-tab" width="93" height="104"/>
+        <image name="messages-tab" width="127" height="121"/>
+        <image name="notif-tab" width="107" height="110"/>
         <image name="twitter-logo-blue" width="640" height="541"/>
     </resources>
 </document>

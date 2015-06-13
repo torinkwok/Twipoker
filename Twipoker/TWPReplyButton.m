@@ -24,7 +24,27 @@
 
 #import "TWPReplyButton.h"
 
+// They are named in main bundle
+NSString static* const kImageNameReply = @"twitter-reply-button-normal";
+NSString static* const kImageNameAlternateReply = @"twitter-reply-button-highlighting";
+
 @implementation TWPReplyButton
+
+#pragma mark Initializations
+- ( void ) awakeFromNib
+    {
+    self.imagePosition = NSImageOverlaps;
+    self.bordered = NO;
+
+    self->_replyImage = [ NSImage imageNamed: kImageNameReply ];
+    self->_replyAlternateImage = [ NSImage imageNamed: kImageNameAlternateReply ];
+
+    [ self->_replyImage setSize: NSMakeSize( 45.f, 45.f ) ];
+    [ self->_replyAlternateImage setSize: NSMakeSize( 45.f, 45.f ) ];
+
+    [ self setImage: self->_replyImage ];
+    [ self setAlternateImage: self->_replyAlternateImage ];
+    }
 
 @end
 

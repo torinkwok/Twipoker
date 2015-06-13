@@ -25,6 +25,11 @@
 @import Cocoa;
 
 @interface TWPReplyButton : NSButton
+    {
+@private
+    NSImage __strong* _replyImage;
+    NSImage __strong* _replyAlternateImage;
+    }
 
 @end
 

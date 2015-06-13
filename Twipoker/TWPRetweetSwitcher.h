@@ -30,6 +30,9 @@
     {
 @private
     OTCTweet __strong* _tweet;
+
+    NSImage __strong* _unretweetedImage;
+    NSImage __strong* _retweetedImage;
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;

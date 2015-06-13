@@ -33,13 +33,24 @@ NSString static* const kImageNameFaved = @"twitter-fav-button-highlighting";
 @dynamic tweet;
 @dynamic isSelected;
 
+- ( void ) awakeFromNib
+    {
+    self.imagePosition = NSImageOverlaps;
+    self.bordered = NO;
+
+    self->_unfavedImage = [ NSImage imageNamed: kImageNameUnfaved ];
+    self->_favedImage = [ NSImage imageNamed: kImageNameFaved ];
+
+    [ self->_unfavedImage setSize: NSMakeSize( 45.f, 45.f ) ];
+    [ self->_favedImage setSize: NSMakeSize( 45.f, 45.f ) ];
+    }
+
 #pragma mark Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
     self->_tweet = _Tweet;
 
-    [ self setImage: self->_tweet.isFavoritedByMe ? [ NSImage imageNamed: kImageNameFaved ]
-                                                  : [ NSImage imageNamed: kImageNameUnfaved ] ];
+    [ self setImage: self->_tweet.isFavoritedByMe ? self->_favedImage : self->_unfavedImage ];
     }
 
 - ( OTCTweet* ) tweet
