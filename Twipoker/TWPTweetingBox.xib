@@ -16,7 +16,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="931" y="562" width="484" height="215"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" id="EiT-Mj-1SZ">
+            <view key="contentView" id="EiT-Mj-1SZ" customClass="TWPTweetingCompleteBox">
                 <rect key="frame" x="0.0" y="0.0" width="484" height="215"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -31,6 +31,9 @@
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <outlet property="delegate" destination="EiT-Mj-1SZ" id="ZkG-r5-nRc"/>
+                        </connections>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQs-SG-qKO">
                         <rect key="frame" x="389" y="10" width="83" height="32"/>
@@ -51,6 +54,9 @@ Gw
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="uploadMediaAction:" target="EiT-Mj-1SZ" id="DNB-X3-B56"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pKB-1v-cvo">
                         <rect key="frame" x="319" y="10" width="76" height="32"/>
@@ -59,10 +65,16 @@ Gw
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="postButtonClickedAction:" target="-2" id="Qhk-8b-ZHX"/>
+                            <action selector="tweetAction:" target="EiT-Mj-1SZ" id="185-wc-QCL"/>
                         </connections>
                     </button>
                 </subviews>
+                <connections>
+                    <outlet property="cancelButton" destination="bQs-SG-qKO" id="8tW-RY-Wwe"/>
+                    <outlet property="tweetButton" destination="pKB-1v-cvo" id="Mw3-tV-FNY"/>
+                    <outlet property="tweetTextField" destination="Zy6-LP-Bqg" id="5Oj-60-zcL"/>
+                    <outlet property="uploadMediaButton" destination="Sfe-Jl-EoZ" id="pgD-ZA-Jee"/>
+                </connections>
             </view>
             <point key="canvasLocation" x="-656" y="-744.5"/>
         </window>

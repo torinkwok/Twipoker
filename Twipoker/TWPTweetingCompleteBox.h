@@ -22,12 +22,12 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetingBox.h"
+@import Cocoa;
 
 @class TWPTweetUpdateObject;
 
 // TWPTweetingCompleteBox class
-@interface TWPTweetingCompleteBox : TWPTweetingBox <NSTextFieldDelegate>
+@interface TWPTweetingCompleteBox : NSView <NSTextFieldDelegate>
     {
 @private
     TWPTweetUpdateObject __strong* _tweetUpdateObject;

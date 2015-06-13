@@ -101,6 +101,7 @@
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTweetingBoxShouldBeCollapsed
                                                            object: self
                                                          userInfo: nil ];
+    [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseOK ];
     }
 
 - ( void ) _clearTweetUpdateObject
