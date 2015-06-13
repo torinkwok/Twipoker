@@ -6,6 +6,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPTweetBoxController">
             <connections>
+                <outlet property="cancelButton" destination="bQs-SG-qKO" id="fGO-M1-DO0"/>
+                <outlet property="tweetButton" destination="pKB-1v-cvo" id="syw-h7-UyI"/>
+                <outlet property="tweetTextField" destination="Zy6-LP-Bqg" id="hRJ-cT-zhf"/>
+                <outlet property="uploadMediaButton" destination="Sfe-Jl-EoZ" id="izQ-f2-Bxv"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="LXg-Ho-kD8"/>
             </connections>
         </customObject>
@@ -32,7 +36,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <outlet property="delegate" destination="EiT-Mj-1SZ" id="ZkG-r5-nRc"/>
+                            <outlet property="delegate" destination="-2" id="rDO-wE-Yio"/>
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQs-SG-qKO">
@@ -55,7 +59,7 @@ Gw
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="uploadMediaAction:" target="EiT-Mj-1SZ" id="DNB-X3-B56"/>
+                            <action selector="uploadMediaAction:" target="-2" id="Psl-hn-H7d"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pKB-1v-cvo">
@@ -65,16 +69,10 @@ Gw
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="tweetAction:" target="EiT-Mj-1SZ" id="185-wc-QCL"/>
+                            <action selector="postButtonClickedAction:" target="-2" id="RGw-wT-nzM"/>
                         </connections>
                     </button>
                 </subviews>
-                <connections>
-                    <outlet property="cancelButton" destination="bQs-SG-qKO" id="8tW-RY-Wwe"/>
-                    <outlet property="tweetButton" destination="pKB-1v-cvo" id="Mw3-tV-FNY"/>
-                    <outlet property="tweetTextField" destination="Zy6-LP-Bqg" id="5Oj-60-zcL"/>
-                    <outlet property="uploadMediaButton" destination="Sfe-Jl-EoZ" id="pgD-ZA-Jee"/>
-                </connections>
             </view>
             <point key="canvasLocation" x="-656" y="-744.5"/>
         </window>

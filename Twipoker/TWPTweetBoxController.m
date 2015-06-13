@@ -23,12 +23,23 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTweetBoxController.h"
+#import "TWPBrain.h"
+#import "TWPTweetUpdateObject.h"
 
 @interface TWPTweetBoxController ()
 
 @end
 
 @implementation TWPTweetBoxController
+
+@synthesize tweetButton;
+@synthesize cancelButton;
+
+@synthesize tweetUpdateObject = _tweetUpdateObject;
+
+@synthesize tweetTextField;
+
+@synthesize uploadMediaButton;
 
 #pragma mark Initializations
 + ( instancetype ) tweetBoxControllerWithTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObject
@@ -51,15 +62,67 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
 
-#pragma mark IBActions
-- ( IBAction ) postButtonClickedAction: ( id )_Sender
+- ( void ) awakeFromNib
     {
-    [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseOK ];
+    self->_tweetUpdateObject = [ [ TWPTweetUpdateObject alloc ] init ];
     }
 
+#pragma mark IBActions
 - ( IBAction ) cancelButtonClickedAction: ( id )_Sender
     {
     [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseCancel ];
+    }
+
+- ( IBAction ) postButtonClickedAction: ( id )_Sender
+    {
+    [ [ TWPBrain wiseBrain ] pushTweetUpdate: self->_tweetUpdateObject
+                                successBlock:
+        ^( OTCTweet* _PushedTweet )
+            {
+            // TODO:
+            NSLog( @"Just pushed Tweet: %@", _PushedTweet );
+            } errorBlock:
+                ^( NSError* _Error )
+                    {
+                    // TODO:
+                    NSLog( @"%@", _Error );
+                    } ];
+
+    [ self.tweetTextField setStringValue: @"" ];
+    [ self _clearTweetUpdateObject ];
+    [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseOK ];
+    }
+
+- ( IBAction ) uploadMediaAction: ( id )_Sender
+    {
+    NSOpenPanel* openPanel = [ NSOpenPanel openPanel ];
+
+    // Supported image formats: PNG, JPEG, WEBP and GIF. Animated GIFs are supported.
+    // Supported video formats: MP4
+    [ openPanel setAllowedFileTypes: @[ @"jpeg", @"jpg", @"png", @"webp", @"gif", @"mp4" ] ];
+    [ openPanel setAllowsMultipleSelection: NO ];
+    [ openPanel beginSheetModalForWindow: self.window
+                       completionHandler:
+        ^( NSInteger _Result )
+            {
+            // TODO:
+            } ];
+    }
+
+- ( void ) _clearTweetUpdateObject
+    {
+    self->_tweetUpdateObject.tweetText = nil;
+    self->_tweetUpdateObject.mediaURLs = nil;
+    }
+
+#pragma mark Conforms to <NSTextFieldDelegate>
+- ( void ) controlTextDidChange: ( NSNotification* )_Notif
+    {
+    NSTextField* fieldEditor = _Notif.userInfo[ @"NSFieldEditor" ];
+
+    NSString* currentText = ( ( NSTextField* )( fieldEditor.delegate ) ).stringValue;
+    [ self->_tweetUpdateObject setTweetText: currentText ];
+    [ self.tweetButton setEnabled: currentText.length > 0 ];
     }
 
 @end
