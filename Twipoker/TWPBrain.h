@@ -83,10 +83,6 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
          successBlock: ( void (^)( OTCTweet* _FavedTweet ) )_SuccessBlock
            errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
-- ( void ) retweet: ( OTCTweet* )_Tweet
-      successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
-        errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
-
 - ( void ) postRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj
                 successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;

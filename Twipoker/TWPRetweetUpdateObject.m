@@ -23,17 +23,25 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPRetweetUpdateObject.h"
+#import "NSString+Twipoker.h"
 
 @implementation TWPRetweetUpdateObject
 
+@synthesize retweetType = _retweetType;
+
 @synthesize tweetToBeRetweeted;
-@synthesize comment;
+@dynamic comment;
 
 #pragma mark Initialzations
 + ( instancetype ) retweetUpdateWithTweet: ( OTCTweet* )_ToBeRetweeted
                                   comment: ( NSString* )_Comment
     {
     return [ [ self alloc ] initWithTweet: _ToBeRetweeted comment: _Comment ];
+    }
+
++ ( instancetype ) retweetUpdateWithTweet: ( OTCTweet* )_ToBeRetweeted
+    {
+    return [ [ self alloc ] initWithTweet: _ToBeRetweeted comment: nil ];
     }
 
 - ( instancetype ) initWithTweet: ( OTCTweet* )_ToBeRetweeted
@@ -49,6 +57,18 @@
         }
 
     return self;
+    }
+
+#pragma mark Accessors
+- ( void ) setComment: ( NSString* )_NewComment
+    {
+    self->_comment = _NewComment;
+    self->_retweetType = [ self->_comment hasAtLeastOneNonChar: @" " ] ? TWPRetweetTypeOfficialQuote : TWPRetweetTypeNormal;
+    }
+
+- ( NSString* ) comment
+    {
+    return self->_comment;
     }
 
 @end

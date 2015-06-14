@@ -163,30 +163,38 @@ TWPBrain static __strong* sWiseBrain;
                             } ];
     }
 
-- ( void ) retweet: ( OTCTweet* )_Tweet
-      successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
-        errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
-    {
-    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
-        postStatusRetweetWithID: _Tweet.tweetIDString
-                       trimUser: @NO
-                   successBlock:
-        ^( NSDictionary* _UnfavedStatusJSON )
-            {
-            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _UnfavedStatusJSON ] );
-            } errorBlock: ^( NSError* _Error )
-                            {
-                            if ( _ErrorBlock ) _ErrorBlock( _Error );
-                            } ];
-    }
-
 - ( void ) postRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj
                 successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
     {
     TWPTweetUpdateObject* quoteTweetUpdate = [ TWPTweetUpdateObject tweetUpdate ];
-    quoteTweetUpdate.tweetText = [ NSString stringWithFormat: @"%@ %@", _RetweetUpdateObj.comment, _RetweetUpdateObj.tweetToBeRetweeted.URLOnWeb ];
-    [ self pushTweetUpdate: quoteTweetUpdate successBlock: _SuccessBlock errorBlock: _ErrorBlock ];
+
+    TWPRetweetType retweetType = _RetweetUpdateObj.retweetType;
+    switch ( retweetType )
+        {
+        case TWPRetweetTypeOfficialQuote:
+            {
+            quoteTweetUpdate.tweetText = [ NSString stringWithFormat: @"%@ %@", _RetweetUpdateObj.comment, _RetweetUpdateObj.tweetToBeRetweeted.URLOnWeb ];
+            [ self pushTweetUpdate: quoteTweetUpdate successBlock: _SuccessBlock errorBlock: _ErrorBlock ];
+            } break;
+
+        case TWPRetweetTypeNormal:
+            {
+            [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+                postStatusRetweetWithID: _RetweetUpdateObj.tweetToBeRetweeted.tweetIDString
+                               trimUser: @NO
+                           successBlock:
+                ^( NSDictionary* _UnfavedStatusJSON )
+                    {
+                    if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _UnfavedStatusJSON ] );
+                    } errorBlock: ^( NSError* _Error )
+                                    {
+                                    if ( _ErrorBlock ) _ErrorBlock( _Error );
+                                    } ];
+            } break;
+
+        default:;
+        }
     }
 
 - ( void ) destroyTweet: ( OTCTweet* )_Tweet

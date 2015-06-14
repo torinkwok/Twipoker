@@ -24,13 +24,26 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM( NSUInteger, TWPRetweetType )
+    { TWPRetweetTypeUnknown         = -1
+    , TWPRetweetTypeNormal          = 0
+    , TWPRetweetTypeOfficialQuote   = 1
+    };
+
 @interface TWPRetweetUpdateObject : NSObject
+    {
+@private
+    NSString __strong* _comment;
+    }
+
+@property ( assign, readonly ) TWPRetweetType retweetType;
 
 @property ( strong, readwrite ) OTCTweet* tweetToBeRetweeted;
 @property ( strong, readwrite ) NSString* comment;
 
 #pragma mark Initialzations
 + ( instancetype ) retweetUpdateWithTweet: ( OTCTweet* )_ToBeRetweeted comment: ( NSString* )_Comment;
++ ( instancetype ) retweetUpdateWithTweet: ( OTCTweet* )_ToBeRetweeted;
 - ( instancetype ) initWithTweet: ( OTCTweet* )_ToBeRetweeted comment: ( NSString* )_Comment;
 
 @end

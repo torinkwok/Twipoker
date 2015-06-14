@@ -91,8 +91,10 @@
 #pragma mark IBActions
 - ( IBAction ) retweetAction: ( id )_Sender
     {
-    [ [ TWPBrain wiseBrain ] retweet: self.tweet
-                        successBlock:
+    TWPRetweetUpdateObject* newRetweetUpdateObject = [ TWPRetweetUpdateObject retweetUpdateWithTweet: self->_tweet ];
+
+    [ [ TWPBrain wiseBrain ] postRetweetUpdate: newRetweetUpdateObject
+                                  successBlock:
         ^( OTCTweet* _Retweet )
             {
         #if DEBUG
@@ -110,9 +112,9 @@
 - ( IBAction ) quoteRetweetAction: ( id )_Sender
     {
     // Create a Tweet update object that replies to self->_tweet
-    TWPRetweetUpdateObject* newTweetUpdateObject = [ TWPRetweetUpdateObject retweetUpdateWithTweet: self->_tweet comment: nil ];
+    TWPRetweetUpdateObject* newRetweetUpdateObject = [ TWPRetweetUpdateObject retweetUpdateWithTweet: self->_tweet comment: nil ];
 
-    self->_quoteRetweetBoxController = [ TWPQuoteRetweetBoxController tweetBoxControllerWithRetweetUpdate: newTweetUpdateObject ];
+    self->_quoteRetweetBoxController = [ TWPQuoteRetweetBoxController tweetBoxControllerWithRetweetUpdate: newRetweetUpdateObject ];
     [ self.attachingView.window beginSheet: self->_quoteRetweetBoxController.window
                          completionHandler:
         ^( NSModalResponse _ReturnCode )
