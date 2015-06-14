@@ -27,6 +27,8 @@
 #import "TWPRetweetOperationsViewController.h"
 #import "TWPRetweetSwitcher.h"
 #import "TWPBrain.h"
+#import "TWPRetweetUpdateObject.h"
+#import "TWPQuoteRetweetBoxController.h"
 
 // Private Interfaces
 @interface TWPRetweetOperationsPopover ()
@@ -35,6 +37,8 @@
 @end // Private Interfaces
 
 @implementation TWPRetweetOperationsPopover
+
+@synthesize attachingView;
 
 @synthesize tweet = _tweet;
 
@@ -61,6 +65,16 @@
         }
 
     return self;
+    }
+
+- ( void ) showRelativeToRect: ( NSRect )_PositioningRect
+                       ofView: ( NSView* )_PositioningView
+                preferredEdge: ( NSRectEdge )_PreferredEdge
+    {
+    self.attachingView = _PositioningView;
+    [ super showRelativeToRect: _PositioningRect
+                        ofView: _PositioningView
+                 preferredEdge: _PreferredEdge ];
     }
 
 #pragma mark Accessors
@@ -95,19 +109,16 @@
 
 - ( IBAction ) quoteRetweetAction: ( id )_Sender
     {
-    [ [ TWPBrain wiseBrain ] quoteRetweet: self.tweet
-                            withComment: @"🍉"
-                        successBlock:
-        ^( OTCTweet* _Retweet )
+    // Create a Tweet update object that replies to self->_tweet
+    TWPRetweetUpdateObject* newTweetUpdateObject = [ TWPRetweetUpdateObject retweetUpdateWithTweet: self->_tweet comment: nil ];
+
+    self->_quoteRetweetBoxController = [ TWPQuoteRetweetBoxController tweetBoxControllerWithRetweetUpdate: newTweetUpdateObject ];
+    [ self.attachingView.window beginSheet: self->_quoteRetweetBoxController.window
+                         completionHandler:
+        ^( NSModalResponse _ReturnCode )
             {
-        #if DEBUG
-            NSLog( @"Retweet: %@", _Retweet );
-        #endif
-            [ self setTweet: _Retweet ];
-            } errorBlock: ^( NSError* _Error )
-                            {
-                            NSLog( @"%@", _Error );
-                            } ];
+            // TODO: Do something
+            } ];
 
     [ self close ];
     }

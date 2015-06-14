@@ -22,44 +22,27 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetUpdateObject.h"
+#import "TWPTweetBoxController.h"
 
-@implementation TWPTweetUpdateObject
+@class TWPRetweetUpdateObject;
 
-@synthesize tweetText;
-@synthesize mediaURLs;
+@interface TWPQuoteRetweetBoxController : NSWindowController <NSTextViewDelegate>
 
-@dynamic replyToTweet;
-@synthesize tweetToBeRetweeted;
+@property ( strong, readwrite ) TWPRetweetUpdateObject* retweetUpdateObject;
+
+#pragma mark Outlets
+@property ( strong ) IBOutlet NSTextView* tweetTextView;
+
+@property ( weak ) IBOutlet NSButton* retweetButton;
+@property ( weak ) IBOutlet NSButton* cancelButton;
 
 #pragma mark Initializations
-+ ( instancetype ) tweetUpdate
-    {
-    return [ [ self alloc ] init ];
-    }
++ ( instancetype ) tweetBoxControllerWithRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj;
+- ( instancetype ) initWithRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj;
 
-- ( instancetype ) init
-    {
-    if ( self = [ super init ] )
-        {
-        self.tweetText = @"";
-        self.mediaURLs = @[];
-        }
-
-    return self;
-    }
-
-#pragma mark Dynmaic Accessors
-- ( void ) setReplyToTweet: ( OTCTweet* )_ReplyToTweet
-    {
-    self->_replyToTweet = _ReplyToTweet;
-    [ self setTweetText: [ NSString stringWithFormat: @"%@ ", self->_replyToTweet.author.screenName ] ];
-    }
-
-- ( OTCTweet* ) replyToTweet
-    {
-    return self->_replyToTweet;
-    }
+#pragma mark IBActions
+- ( IBAction ) retweetButtonClickedAction: ( id )_Sender;
+- ( IBAction ) cancelButtonClickedAction: ( id )_Sender;
 
 @end
 

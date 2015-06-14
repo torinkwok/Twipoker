@@ -27,6 +27,7 @@
 @protocol TWPLimb;
 
 @class TWPTweetUpdateObject;
+@class TWPRetweetUpdateObject;
 
 typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     { TWPBrainSignalTypeNewTweetMask        = 1U
@@ -86,10 +87,9 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
       successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
         errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
-- ( void ) quoteRetweet: ( OTCTweet* )_Tweet
-            withComment: ( NSString* )_Comment
-           successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
-             errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+- ( void ) postRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj
+                successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
+                  errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
 - ( void ) destroyTweet: ( OTCTweet* )_Tweet
            successBlock: ( void (^)( OTCTweet* _DestroyedTweet ) )_SuccessBlock

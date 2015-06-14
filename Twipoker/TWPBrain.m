@@ -25,6 +25,7 @@
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
 #import "TWPTweetUpdateObject.h"
+#import "TWPRetweetUpdateObject.h"
 
 #import "_TWPMonitoringUserID.h"
 
@@ -179,13 +180,12 @@ TWPBrain static __strong* sWiseBrain;
                             } ];
     }
 
-- ( void ) quoteRetweet: ( OTCTweet* )_Tweet
-            withComment: ( NSString* )_Comment
-           successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
-             errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+- ( void ) postRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj
+                successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
+                  errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
     {
     TWPTweetUpdateObject* quoteTweetUpdate = [ TWPTweetUpdateObject tweetUpdate ];
-    quoteTweetUpdate.tweetText = [ NSString stringWithFormat: @"%@ %@", _Comment, _Tweet.URLOnWeb ];
+    quoteTweetUpdate.tweetText = [ NSString stringWithFormat: @"%@ %@", _RetweetUpdateObj.comment, _RetweetUpdateObj.tweetToBeRetweeted.URLOnWeb ];
     [ self pushTweetUpdate: quoteTweetUpdate successBlock: _SuccessBlock errorBlock: _ErrorBlock ];
     }
 

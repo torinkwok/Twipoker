@@ -22,43 +22,79 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetUpdateObject.h"
+#import "TWPQuoteRetweetBoxController.h"
+#import "TWPBrain.h"
+#import "TWPRetweetUpdateObject.h"
 
-@implementation TWPTweetUpdateObject
+@interface TWPQuoteRetweetBoxController ()
 
-@synthesize tweetText;
-@synthesize mediaURLs;
+@end
 
-@dynamic replyToTweet;
-@synthesize tweetToBeRetweeted;
+@implementation TWPQuoteRetweetBoxController
 
-#pragma mark Initializations
-+ ( instancetype ) tweetUpdate
+@synthesize retweetUpdateObject;
+
+- ( void ) windowDidLoad
     {
-    return [ [ self alloc ] init ];
+    [ super windowDidLoad ];
+    
+    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
 
-- ( instancetype ) init
+#pragma mark Initializations
++ ( instancetype ) tweetBoxControllerWithRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj
     {
-    if ( self = [ super init ] )
-        {
-        self.tweetText = @"";
-        self.mediaURLs = @[];
-        }
+    return [ [ [ self class ] alloc ] initWithRetweetUpdate: _RetweetUpdateObj ];
+    }
+
+- ( instancetype ) initWithRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj
+    {
+    if ( self = [ super initWithWindowNibName: @"TWPQuoteRetweetBox" ] )
+        self->retweetUpdateObject = _RetweetUpdateObj;
 
     return self;
     }
 
-#pragma mark Dynmaic Accessors
-- ( void ) setReplyToTweet: ( OTCTweet* )_ReplyToTweet
+#pragma mark IBActions
+- ( IBAction ) retweetButtonClickedAction: ( id )_Sender
     {
-    self->_replyToTweet = _ReplyToTweet;
-    [ self setTweetText: [ NSString stringWithFormat: @"%@ ", self->_replyToTweet.author.screenName ] ];
+    [ [ TWPBrain wiseBrain ] postRetweetUpdate: self.retweetUpdateObject
+                                  successBlock:
+        ^( OTCTweet* _PushedTweet )
+            {
+            // TODO:
+            NSLog( @"Just posted Tweet: %@", _PushedTweet );
+            } errorBlock:
+                ^( NSError* _Error )
+                    {
+                    // TODO:
+                    NSLog( @"%@", _Error );
+                    } ];
+
+    [ self.tweetTextView setString: @"" ];
+    [ self _clearRetweetUpdateObject ];
+    [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseOK ];
     }
 
-- ( OTCTweet* ) replyToTweet
+- ( IBAction ) cancelButtonClickedAction: ( id )_Sender
     {
-    return self->_replyToTweet;
+    [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseCancel ];
+    }
+
+- ( void ) _clearRetweetUpdateObject
+    {
+    self.retweetUpdateObject.tweetToBeRetweeted = nil;
+    self->retweetUpdateObject.comment = nil;
+    }
+
+#pragma mark Conforms to <NSTextViewDelegate>
+- ( void ) textDidChange: ( NSNotification* )_Notif
+    {
+    NSText* text = ( NSText* )( _Notif.object );
+
+    NSString* currentText = text.string;
+    [ self.retweetUpdateObject setComment: currentText ];
+    [ self.retweetButton setEnabled: currentText.length > 0 ];
     }
 
 @end

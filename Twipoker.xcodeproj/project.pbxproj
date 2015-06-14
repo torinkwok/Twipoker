@@ -55,6 +55,9 @@
 		835361491AE5310200CF1988 /* TWPDebugLoginUsersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835361481AE5310200CF1988 /* TWPDebugLoginUsersView.xib */; };
 		8353614E1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353614D1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m */; };
 		835361511AE5635200CF1988 /* TWPDebugLoginUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 835361501AE5635200CF1988 /* TWPDebugLoginUsersView.m */; };
+		838955931B2D8F3D0039300C /* TWPQuoteRetweetBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 838955911B2D8F3D0039300C /* TWPQuoteRetweetBoxController.m */; };
+		838955941B2D8F3D0039300C /* TWPQuoteRetweetBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 838955921B2D8F3D0039300C /* TWPQuoteRetweetBox.xib */; };
+		838955971B2D92DB0039300C /* TWPRetweetUpdateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 838955961B2D92DB0039300C /* TWPRetweetUpdateObject.m */; };
 		838CC0621AF4B27300AE2E9D /* TWPTimelineUserNameLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CC0611AF4B27300AE2E9D /* TWPTimelineUserNameLabel.m */; };
 		83924D921AE1030B00C25895 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = 83924D871AE1030B00C25895 /* INAppStoreWindowSwizzling.c */; };
 		83924D931AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = 83924D8A1AE1030B00C25895 /* INWindowBackgroundView+CoreUIRendering.m */; };
@@ -304,6 +307,11 @@
 		8353614D1AE5363700CF1988 /* TWPDebugLoginUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginUsersViewController.m; sourceTree = "<group>"; };
 		8353614F1AE5635200CF1988 /* TWPDebugLoginUsersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWPDebugLoginUsersView.h; sourceTree = "<group>"; };
 		835361501AE5635200CF1988 /* TWPDebugLoginUsersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWPDebugLoginUsersView.m; sourceTree = "<group>"; };
+		838955901B2D8F3D0039300C /* TWPQuoteRetweetBoxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPQuoteRetweetBoxController.h; path = Twipoker/TWPQuoteRetweetBoxController.h; sourceTree = "<group>"; };
+		838955911B2D8F3D0039300C /* TWPQuoteRetweetBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPQuoteRetweetBoxController.m; path = Twipoker/TWPQuoteRetweetBoxController.m; sourceTree = "<group>"; };
+		838955921B2D8F3D0039300C /* TWPQuoteRetweetBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPQuoteRetweetBox.xib; path = Twipoker/TWPQuoteRetweetBox.xib; sourceTree = "<group>"; };
+		838955951B2D92DB0039300C /* TWPRetweetUpdateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPRetweetUpdateObject.h; path = Twipoker/TWPRetweetUpdateObject.h; sourceTree = "<group>"; };
+		838955961B2D92DB0039300C /* TWPRetweetUpdateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPRetweetUpdateObject.m; path = Twipoker/TWPRetweetUpdateObject.m; sourceTree = "<group>"; };
 		838CC0601AF4B27300AE2E9D /* TWPTimelineUserNameLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineUserNameLabel.h; path = Twipoker/TWPTimelineUserNameLabel.h; sourceTree = "<group>"; };
 		838CC0611AF4B27300AE2E9D /* TWPTimelineUserNameLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineUserNameLabel.m; path = Twipoker/TWPTimelineUserNameLabel.m; sourceTree = "<group>"; };
 		83924D871AE1030B00C25895 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
@@ -894,8 +902,12 @@
 				83B555101B21839F00E354D0 /* TWPTweetingBoxNotificationNames.m */,
 				83C21DA91B2B421900188BB2 /* TWPTweetBoxController.h */,
 				83C21DAA1B2B421900188BB2 /* TWPTweetBoxController.m */,
+				838955901B2D8F3D0039300C /* TWPQuoteRetweetBoxController.h */,
+				838955911B2D8F3D0039300C /* TWPQuoteRetweetBoxController.m */,
 				8351C1D81B21EAF20019BF98 /* TWPTweetUpdateObject.h */,
 				8351C1D91B21EAF20019BF98 /* TWPTweetUpdateObject.m */,
+				838955951B2D92DB0039300C /* TWPRetweetUpdateObject.h */,
+				838955961B2D92DB0039300C /* TWPRetweetUpdateObject.m */,
 				83ADA83B1B1F090D000F7222 /* TWPTweetingCompleteBox.h */,
 				83ADA83C1B1F090D000F7222 /* TWPTweetingCompleteBox.m */,
 				83ADA83E1B1F27DB000F7222 /* TWPCuttingLineView.h */,
@@ -941,6 +953,7 @@
 			isa = PBXGroup;
 			children = (
 				83C21DA71B2B326D00188BB2 /* TWPTweetingBox.xib */,
+				838955921B2D8F3D0039300C /* TWPQuoteRetweetBox.xib */,
 			);
 			name = xib;
 			sourceTree = "<group>";
@@ -1467,6 +1480,7 @@
 				83CFD8981ACF1FFD0062D73D /* icon_32x32.png in Resources */,
 				83CC14E01B22F7A80046B544 /* twitter-reply-button-highlighting@2x.png in Resources */,
 				83CFD8721ACF1C820062D73D /* TWPLoginPanel-Info.plist in Resources */,
+				838955941B2D8F3D0039300C /* TWPQuoteRetweetBox.xib in Resources */,
 				834F29601B2C0348007A85D9 /* go-forward-arrow-highlighting@2x.png in Resources */,
 				83F231B51AE1147A00A05D1D /* TWPMainWindow.xib in Resources */,
 				83CC14E11B22F7A80046B544 /* twitter-reply-button-normal.png in Resources */,
@@ -1573,6 +1587,7 @@
 				830B8F631AF0E303006D2635 /* TWPUserAvatarWell.m in Sources */,
 				83924DAA1AE1033700C25895 /* MASPreferencesWindowController.m in Sources */,
 				83CFD8641ACF1C820062D73D /* TWPDebug.m in Sources */,
+				838955971B2D92DB0039300C /* TWPRetweetUpdateObject.m in Sources */,
 				831447D91AD0008E00BFECE4 /* TWPDebugLoginView.m in Sources */,
 				83CC14FB1B2317A40046B544 /* TWPRetweetSwitcher.m in Sources */,
 				831732981B15CF3B00B136BF /* TWPDirectMessagesPreviewTableView.m in Sources */,
@@ -1621,6 +1636,7 @@
 				83E9A2E21B02721200CA5926 /* NSError+STTwitter.m in Sources */,
 				83C07A9C1AF2313100184CCB /* TWPNavigationBar.m in Sources */,
 				832DDF831B179ADB00E27937 /* TWPDirectMessageSessionView.m in Sources */,
+				838955931B2D8F3D0039300C /* TWPQuoteRetweetBoxController.m in Sources */,
 				830896241AEA1D2A0081D227 /* TWPStackContentView.m in Sources */,
 				83924DD21AE105AB00C25895 /* NSColor+Objectwitter-C.m in Sources */,
 				8336E5631AEE117C008A099C /* TWPViewController.m in Sources */,

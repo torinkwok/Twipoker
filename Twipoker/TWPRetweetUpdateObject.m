@@ -22,43 +22,33 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetUpdateObject.h"
+#import "TWPRetweetUpdateObject.h"
 
-@implementation TWPTweetUpdateObject
+@implementation TWPRetweetUpdateObject
 
-@synthesize tweetText;
-@synthesize mediaURLs;
-
-@dynamic replyToTweet;
 @synthesize tweetToBeRetweeted;
+@synthesize comment;
 
-#pragma mark Initializations
-+ ( instancetype ) tweetUpdate
+#pragma mark Initialzations
++ ( instancetype ) retweetUpdateWithTweet: ( OTCTweet* )_ToBeRetweeted
+                                  comment: ( NSString* )_Comment
     {
-    return [ [ self alloc ] init ];
+    return [ [ self alloc ] initWithTweet: _ToBeRetweeted comment: _Comment ];
     }
 
-- ( instancetype ) init
+- ( instancetype ) initWithTweet: ( OTCTweet* )_ToBeRetweeted
+                         comment: ( NSString* )_Comment
     {
+    if ( !_ToBeRetweeted )
+        return nil;
+
     if ( self = [ super init ] )
         {
-        self.tweetText = @"";
-        self.mediaURLs = @[];
+        self.tweetToBeRetweeted = _ToBeRetweeted;
+        self.comment = _Comment;
         }
 
     return self;
-    }
-
-#pragma mark Dynmaic Accessors
-- ( void ) setReplyToTweet: ( OTCTweet* )_ReplyToTweet
-    {
-    self->_replyToTweet = _ReplyToTweet;
-    [ self setTweetText: [ NSString stringWithFormat: @"%@ ", self->_replyToTweet.author.screenName ] ];
-    }
-
-- ( OTCTweet* ) replyToTweet
-    {
-    return self->_replyToTweet;
     }
 
 @end

@@ -82,7 +82,7 @@
         ^( OTCTweet* _PushedTweet )
             {
             // TODO:
-            NSLog( @"Just pushed Tweet: %@", _PushedTweet );
+            NSLog( @"Just posted Tweet: %@", _PushedTweet );
             } errorBlock:
                 ^( NSError* _Error )
                     {

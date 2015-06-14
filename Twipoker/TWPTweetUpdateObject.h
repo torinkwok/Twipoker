@@ -49,6 +49,8 @@
   */
 @property ( strong, readwrite ) OTCTweet* replyToTweet;
 
+@property ( strong, readwrite ) OTCTweet* tweetToBeRetweeted;
+
 #pragma mark Initializations
 + ( instancetype ) tweetUpdate;
 

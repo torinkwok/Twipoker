@@ -22,44 +22,16 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetUpdateObject.h"
+#import <Foundation/Foundation.h>
 
-@implementation TWPTweetUpdateObject
+@interface TWPRetweetUpdateObject : NSObject
 
-@synthesize tweetText;
-@synthesize mediaURLs;
+@property ( strong, readwrite ) OTCTweet* tweetToBeRetweeted;
+@property ( strong, readwrite ) NSString* comment;
 
-@dynamic replyToTweet;
-@synthesize tweetToBeRetweeted;
-
-#pragma mark Initializations
-+ ( instancetype ) tweetUpdate
-    {
-    return [ [ self alloc ] init ];
-    }
-
-- ( instancetype ) init
-    {
-    if ( self = [ super init ] )
-        {
-        self.tweetText = @"";
-        self.mediaURLs = @[];
-        }
-
-    return self;
-    }
-
-#pragma mark Dynmaic Accessors
-- ( void ) setReplyToTweet: ( OTCTweet* )_ReplyToTweet
-    {
-    self->_replyToTweet = _ReplyToTweet;
-    [ self setTweetText: [ NSString stringWithFormat: @"%@ ", self->_replyToTweet.author.screenName ] ];
-    }
-
-- ( OTCTweet* ) replyToTweet
-    {
-    return self->_replyToTweet;
-    }
+#pragma mark Initialzations
++ ( instancetype ) retweetUpdateWithTweet: ( OTCTweet* )_ToBeRetweeted comment: ( NSString* )_Comment;
+- ( instancetype ) initWithTweet: ( OTCTweet* )_ToBeRetweeted comment: ( NSString* )_Comment;
 
 @end
 

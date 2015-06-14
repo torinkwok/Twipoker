@@ -25,12 +25,16 @@
 @import Cocoa;
 
 @class OTCTweet;
+@class TWPQuoteRetweetBoxController;
 
 @interface TWPRetweetOperationsPopover : NSPopover
     {
 @private
     OTCTweet __strong* _tweet;
+    TWPQuoteRetweetBoxController __strong* _quoteRetweetBoxController;
     }
+
+@property ( weak, readwrite ) NSView* attachingView;
 
 @property ( strong, readwrite ) OTCTweet* tweet;
 
