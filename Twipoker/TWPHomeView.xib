@@ -77,6 +77,9 @@
                                                             <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="replyCurrentTweetAction:" target="keF-c2-Eeb" id="ZZd-X7-axD"/>
+                                                        </connections>
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUX-Ck-hwg" customClass="TWPRetweetSwitcher">
                                                         <rect key="frame" x="27" y="0.0" width="22" height="22"/>

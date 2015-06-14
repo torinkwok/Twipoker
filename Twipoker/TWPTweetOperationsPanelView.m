@@ -33,6 +33,9 @@
 #import "TWPRetweetOperationsPopover.h"
 #import "TWPRetweetOperationsViewController.h"
 
+#import "TWPTweetUpdateObject.h"
+#import "TWPTweetBoxController.h"
+
 @implementation TWPTweetOperationsPanelView
 
 @dynamic tweet;
@@ -128,6 +131,21 @@
                                 } ];
 
         }
+    }
+
+- ( IBAction ) replyCurrentTweetAction: ( id )_Sender
+    {
+    // Create an new empty Tweet update object
+    TWPTweetUpdateObject* newTweetUpdateObject = [ TWPTweetUpdateObject tweetUpdate ];
+    newTweetUpdateObject.replyToTweet = self->_tweet;
+    newTweetUpdateObject.tweetText = self->_tweet.author.screenName;
+    self->_tweetBoxController = [ TWPTweetBoxController tweetBoxControllerWithTweetUpdate: newTweetUpdateObject ];
+    [ self.window beginSheet: self->_tweetBoxController.window
+           completionHandler:
+        ^( NSModalResponse _ReturnCode )
+            {
+            // TODO: Do something
+            } ];
     }
 
 @end

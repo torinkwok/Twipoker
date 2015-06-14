@@ -27,6 +27,7 @@
 @class TWPReplyButton;
 @class TWPRetweetSwitcher;
 @class TWPFavSwitcher;
+@class TWPTweetBoxController;
 
 @class TWPRetweetOperationsPopover;
 
@@ -35,6 +36,7 @@
 @private
     OTCTweet __strong* _tweet;
     TWPRetweetOperationsPopover __strong* _popover;
+    TWPTweetBoxController __strong* _tweetBoxController;
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;
@@ -50,6 +52,7 @@
 #pragma mark IBActions
 - ( IBAction ) showRetweetPopoverAction: ( id )_Sender;
 - ( IBAction ) favOrUnfavAction: ( id )_Sender;
+- ( IBAction ) replyCurrentTweetAction: ( id )_Sender;
 
 @end
 

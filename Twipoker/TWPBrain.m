@@ -110,7 +110,13 @@ TWPBrain static __strong* sWiseBrain;
     {
     [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
         postStatusUpdate: _TweetUpdateObj.tweetText
-       inReplyToStatusID: nil latitude: nil longitude: nil placeID: nil displayCoordinates: nil trimUser: @NO
+       inReplyToStatusID: _TweetUpdateObj.replyToTweet.tweetIDString
+                mediaIDs: _TweetUpdateObj.mediaURLs
+                latitude: nil
+               longitude: nil
+                 placeID: nil
+      displayCoordinates: @NO
+                trimUser: @NO
             successBlock:
         ^( NSDictionary* _StatusJSON )
             {
@@ -119,7 +125,6 @@ TWPBrain static __strong* sWiseBrain;
                             {
                             if ( _ErrorBlock ) _ErrorBlock( _Error );
                             } ];
-
     }
 
 - ( void ) favTweet: ( OTCTweet* )_Tweet
