@@ -37,7 +37,7 @@
 
 @synthesize tweetUpdateObject = _tweetUpdateObject;
 
-@synthesize tweetTextField;
+@synthesize tweetTextView;
 
 @synthesize uploadMediaButton;
 
@@ -66,7 +66,7 @@
     {
     if ( self->_tweetUpdateObject.tweetText )
         // NSParameterAssert( string )
-        [ self.tweetTextField setStringValue: self->_tweetUpdateObject.tweetText ];
+        [ self.tweetTextView setString: self->_tweetUpdateObject.tweetText ];
     }
 
 #pragma mark IBActions
@@ -90,7 +90,7 @@
                     NSLog( @"%@", _Error );
                     } ];
 
-    [ self.tweetTextField setStringValue: @"" ];
+    [ self.tweetTextView setString: @"" ];
     [ self _clearTweetUpdateObject ];
     [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseOK ];
     }
@@ -117,12 +117,12 @@
     self->_tweetUpdateObject.mediaURLs = nil;
     }
 
-#pragma mark Conforms to <NSTextFieldDelegate>
-- ( void ) controlTextDidChange: ( NSNotification* )_Notif
+#pragma mark Conforms to <NSTextViewDelegate>
+- ( void ) textDidChange: ( NSNotification* )_Notif
     {
-    NSTextField* fieldEditor = _Notif.userInfo[ @"NSFieldEditor" ];
+    NSText* text = ( NSText* )( _Notif.object );
 
-    NSString* currentText = ( ( NSTextField* )( fieldEditor.delegate ) ).stringValue;
+    NSString* currentText = text.string;
     [ self->_tweetUpdateObject setTweetText: currentText ];
     [ self.tweetButton setEnabled: currentText.length > 0 ];
     }

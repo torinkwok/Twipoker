@@ -26,7 +26,7 @@
 
 @class TWPTweetUpdateObject;
 
-@interface TWPTweetBoxController : NSWindowController <NSTextFieldDelegate>
+@interface TWPTweetBoxController : NSWindowController <NSTextViewDelegate>
     {
 @private
     TWPTweetUpdateObject __strong* _tweetUpdateObject;
@@ -42,7 +42,7 @@
 
 @property ( strong ) TWPTweetUpdateObject* tweetUpdateObject;
 
-@property ( weak ) IBOutlet NSTextField* tweetTextField;
+@property ( strong ) IBOutlet NSTextView* tweetTextView;
 @property ( weak ) IBOutlet NSButton* uploadMediaButton;
 
 #pragma mark IBActions

@@ -8,7 +8,7 @@
             <connections>
                 <outlet property="cancelButton" destination="bQs-SG-qKO" id="fGO-M1-DO0"/>
                 <outlet property="tweetButton" destination="pKB-1v-cvo" id="syw-h7-UyI"/>
-                <outlet property="tweetTextField" destination="Zy6-LP-Bqg" id="hRJ-cT-zhf"/>
+                <outlet property="tweetTextView" destination="hQT-Sj-IQL" id="gGI-TH-czn"/>
                 <outlet property="uploadMediaButton" destination="Sfe-Jl-EoZ" id="izQ-f2-Bxv"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="LXg-Ho-kD8"/>
             </connections>
@@ -28,17 +28,6 @@
                         <rect key="frame" x="224" y="90" width="35" height="35"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="usm-Fm-fiq"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zy6-LP-Bqg">
-                        <rect key="frame" x="19" y="46" width="447" height="154"/>
-                        <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="cVh-yq-61Q">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <outlet property="delegate" destination="-2" id="rDO-wE-Yio"/>
-                        </connections>
-                    </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQs-SG-qKO">
                         <rect key="frame" x="389" y="10" width="83" height="32"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SqG-Um-mM4">
@@ -72,6 +61,37 @@ Gw
                             <action selector="postButtonClickedAction:" target="-2" id="RGw-wT-nzM"/>
                         </connections>
                     </button>
+                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cg6-L8-scb">
+                        <rect key="frame" x="19" y="46" width="447" height="149"/>
+                        <clipView key="contentView" misplaced="YES" id="wAI-X3-7XZ">
+                            <rect key="frame" x="1" y="1" width="223" height="133"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="hQT-Sj-IQL">
+                                    <rect key="frame" x="0.0" y="0.0" width="223" height="133"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="445" height="147"/>
+                                    <size key="maxSize" width="463" height="10000000"/>
+                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="445" height="147"/>
+                                    <size key="maxSize" width="463" height="10000000"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="BRu-hW-26Z"/>
+                                    </connections>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="xxx-Ow-VWi">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="o9V-2E-bWU">
+                            <rect key="frame" x="224" y="1" width="15" height="133"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-656" y="-744.5"/>
