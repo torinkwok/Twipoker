@@ -50,7 +50,7 @@
 - ( instancetype ) initWithTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObject
     {
     if ( self = [ super initWithWindowNibName: @"TWPTweetingBox" ] )
-        ;
+        self->_tweetUpdateObject = _TweetUpdateObject;
 
     return self;
     }
@@ -64,7 +64,8 @@
 
 - ( void ) awakeFromNib
     {
-    self->_tweetUpdateObject = [ [ TWPTweetUpdateObject alloc ] init ];
+    if ( self->_tweetUpdateObject.tweetText )
+        [ self.tweetTextField setStringValue: self->_tweetUpdateObject.tweetText ];
     }
 
 #pragma mark IBActions

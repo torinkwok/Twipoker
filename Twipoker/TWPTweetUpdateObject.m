@@ -26,6 +26,23 @@
 
 @implementation TWPTweetUpdateObject
 
+#pragma mark Initializations
++ ( instancetype ) tweetUpdate
+    {
+    return [ [ self alloc ] init ];
+    }
+
+- ( instancetype ) init
+    {
+    if ( self = [ super init ] )
+        {
+        self.tweetText = @"";
+        self.mediaURLs = @[];
+        }
+
+    return self;
+    }
+
 @end
 
 /*=============================================================================┐

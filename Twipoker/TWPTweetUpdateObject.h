@@ -29,6 +29,9 @@
 @property ( copy, readwrite ) NSString* tweetText;
 @property ( strong, readwrite ) NSArray* mediaURLs;
 
+#pragma mark Initializations
++ ( instancetype ) tweetUpdate;
+
 @end
 
 /*=============================================================================┐
