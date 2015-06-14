@@ -95,7 +95,20 @@
 
 - ( IBAction ) quoteRetweetAction: ( id )_Sender
     {
-    NSLog( @"Quote Retweet %@", self->_tweet );
+    [ [ TWPBrain wiseBrain ] quoteRetweet: self.tweet
+                            withComment: @"🍉"
+                        successBlock:
+        ^( OTCTweet* _Retweet )
+            {
+        #if DEBUG
+            NSLog( @"Retweet: %@", _Retweet );
+        #endif
+            [ self setTweet: _Retweet ];
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            NSLog( @"%@", _Error );
+                            } ];
+
     [ self close ];
     }
 

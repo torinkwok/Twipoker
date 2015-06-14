@@ -135,9 +135,10 @@
 
 - ( IBAction ) replyCurrentTweetAction: ( id )_Sender
     {
-    // Create an new empty Tweet update object
+    // Create a Tweet update object that replies to self->_tweet
     TWPTweetUpdateObject* newTweetUpdateObject = [ TWPTweetUpdateObject tweetUpdate ];
     newTweetUpdateObject.replyToTweet = self->_tweet;
+
     self->_tweetBoxController = [ TWPTweetBoxController tweetBoxControllerWithTweetUpdate: newTweetUpdateObject ];
     [ self.window beginSheet: self->_tweetBoxController.window
            completionHandler:

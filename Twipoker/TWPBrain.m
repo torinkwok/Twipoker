@@ -179,6 +179,16 @@ TWPBrain static __strong* sWiseBrain;
                             } ];
     }
 
+- ( void ) quoteRetweet: ( OTCTweet* )_Tweet
+            withComment: ( NSString* )_Comment
+           successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
+             errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    TWPTweetUpdateObject* quoteTweetUpdate = [ TWPTweetUpdateObject tweetUpdate ];
+    quoteTweetUpdate.tweetText = [ NSString stringWithFormat: @"%@ %@", _Comment, _Tweet.URLOnWeb ];
+    [ self pushTweetUpdate: quoteTweetUpdate successBlock: _SuccessBlock errorBlock: _ErrorBlock ];
+    }
+
 - ( void ) destroyTweet: ( OTCTweet* )_Tweet
            successBlock: ( void (^)( OTCTweet* _DestroyedTweet ) )_SuccessBlock
              errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
