@@ -26,6 +26,11 @@
 
 @implementation TWPTweetUpdateObject
 
+@synthesize tweetText;
+@synthesize mediaURLs;
+
+@synthesize replyToTweet;
+
 #pragma mark Initializations
 + ( instancetype ) tweetUpdate
     {

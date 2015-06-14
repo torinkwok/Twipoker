@@ -65,6 +65,7 @@
 - ( void ) awakeFromNib
     {
     if ( self->_tweetUpdateObject.tweetText )
+        // NSParameterAssert( string )
         [ self.tweetTextField setStringValue: self->_tweetUpdateObject.tweetText ];
     }
 

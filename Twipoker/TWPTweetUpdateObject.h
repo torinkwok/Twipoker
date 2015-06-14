@@ -26,8 +26,24 @@
 
 @interface TWPTweetUpdateObject : NSObject
 
+/** The actual UTF-8 text of the status update.
+
+  @discussion See [twitter-text](https://github.com/twitter/twitter-text-rb/blob/master/lib/twitter-text/regex.rb)
+              for details on what is currently considered valid characters.
+  */
 @property ( copy, readwrite ) NSString* tweetText;
+
+/** Represents media elements uploaded with the Tweet.
+  */
 @property ( strong, readwrite ) NSArray* mediaURLs;
+
+/** An existing status that the update is in reply to. (nullable)
+
+  @warning This parameter will be ignored unless the author of the Tweet this parameter references
+           is mentioned within the status text. Therefore, you must include @username, 
+           where username is the author of the referenced tweet, within the update.
+  */
+@property ( strong, readwrite ) OTCTweet* replyToTweet;
 
 #pragma mark Initializations
 + ( instancetype ) tweetUpdate;
