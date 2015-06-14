@@ -29,7 +29,7 @@
 @synthesize tweetText;
 @synthesize mediaURLs;
 
-@synthesize replyToTweet;
+@dynamic replyToTweet;
 
 #pragma mark Initializations
 + ( instancetype ) tweetUpdate
@@ -46,6 +46,18 @@
         }
 
     return self;
+    }
+
+#pragma mark Dynmaic Accessors
+- ( void ) setReplyToTweet: ( OTCTweet* )_ReplyToTweet
+    {
+    self->_replyToTweet = _ReplyToTweet;
+    [ self setTweetText: [ NSString stringWithFormat: @"%@ ", self->_replyToTweet.author.screenName ] ];
+    }
+
+- ( OTCTweet* ) replyToTweet
+    {
+    return self->_replyToTweet;
     }
 
 @end

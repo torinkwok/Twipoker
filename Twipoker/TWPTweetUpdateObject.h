@@ -25,6 +25,10 @@
 @import Foundation;
 
 @interface TWPTweetUpdateObject : NSObject
+    {
+@private
+    OTCTweet __strong* _replyToTweet;
+    }
 
 /** The actual UTF-8 text of the status update.
 
