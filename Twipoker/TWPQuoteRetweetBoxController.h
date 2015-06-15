@@ -26,23 +26,13 @@
 
 @class TWPRetweetUpdateObject;
 
-@interface TWPQuoteRetweetBoxController : NSWindowController <NSTextViewDelegate>
+@interface TWPQuoteRetweetBoxController : TWPTweetBoxController
 
 @property ( strong, readwrite ) TWPRetweetUpdateObject* retweetUpdateObject;
-
-#pragma mark Outlets
-@property ( strong ) IBOutlet NSTextView* tweetTextView;
-
-@property ( weak ) IBOutlet NSButton* retweetButton;
-@property ( weak ) IBOutlet NSButton* cancelButton;
 
 #pragma mark Initializations
 + ( instancetype ) tweetBoxControllerWithRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj;
 - ( instancetype ) initWithRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj;
-
-#pragma mark IBActions
-- ( IBAction ) retweetButtonClickedAction: ( id )_Sender;
-- ( IBAction ) cancelButtonClickedAction: ( id )_Sender;
 
 @end
 

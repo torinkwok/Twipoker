@@ -23,7 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDashboardView.h"
-#import "TWPTweetBoxController.h"
+#import "TWPNormalTweetBoxController.h"
 #import "TWPTweetUpdateObject.h"
 
 @implementation TWPDashboardView
@@ -51,7 +51,7 @@
     {
     // Create an new empty Tweet update object
     TWPTweetUpdateObject* newTweetUpdateObject = [ TWPTweetUpdateObject tweetUpdate ];
-    self.tweetBoxController = [ TWPTweetBoxController tweetBoxControllerWithTweetUpdate: newTweetUpdateObject ];
+    self.tweetBoxController = [ TWPNormalTweetBoxController tweetBoxControllerWithTweetUpdate: newTweetUpdateObject ];
     [ self.window beginSheet: self.tweetBoxController.window
            completionHandler:
         ^( NSModalResponse _ReturnCode )

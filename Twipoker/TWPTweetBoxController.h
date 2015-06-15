@@ -22,28 +22,17 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @class TWPTweetUpdateObject;
 
 @interface TWPTweetBoxController : NSWindowController <NSTextViewDelegate>
-    {
-@private
-    TWPTweetUpdateObject __strong* _tweetUpdateObject;
-    }
-
-#pragma mark Initializations
-+ ( instancetype ) tweetBoxControllerWithTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObject;
-- ( instancetype ) initWithTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObject;
 
 #pragma mark Outlets
-@property ( weak ) IBOutlet NSButton* tweetButton;
+@property ( weak ) IBOutlet NSButton* postButton;
 @property ( weak ) IBOutlet NSButton* cancelButton;
 
-@property ( strong ) TWPTweetUpdateObject* tweetUpdateObject;
-
 @property ( strong ) IBOutlet NSTextView* tweetTextView;
-@property ( weak ) IBOutlet NSButton* uploadMediaButton;
 
 #pragma mark IBActions
 - ( IBAction ) postButtonClickedAction: ( id )_Sender;

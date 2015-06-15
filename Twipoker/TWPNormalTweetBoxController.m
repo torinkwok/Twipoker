@@ -22,17 +22,33 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPQuoteRetweetBoxController.h"
+#import "TWPNormalTweetBoxController.h"
 #import "TWPBrain.h"
-#import "TWPRetweetUpdateObject.h"
+#import "TWPTweetUpdateObject.h"
 
-@interface TWPQuoteRetweetBoxController ()
+@interface TWPNormalTweetBoxController ()
 
 @end
 
-@implementation TWPQuoteRetweetBoxController
+@implementation TWPNormalTweetBoxController
 
-@synthesize retweetUpdateObject;
+@synthesize tweetUpdateObject;
+
+@synthesize uploadMediaButton;
+
+#pragma mark Initializations
++ ( instancetype ) tweetBoxControllerWithTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObject
+    {
+    return [ [ [ self class ] alloc ] initWithTweetUpdate: _TweetUpdateObject ];
+    }
+
+- ( instancetype ) initWithTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObject
+    {
+    if ( self = [ super initWithWindowNibName: @"TWPTweetingBox" ] )
+        self.tweetUpdateObject = _TweetUpdateObject;
+
+    return self;
+    }
 
 - ( void ) windowDidLoad
     {
@@ -41,25 +57,23 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
 
-#pragma mark Initializations
-+ ( instancetype ) tweetBoxControllerWithRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj
+- ( void ) awakeFromNib
     {
-    return [ [ [ self class ] alloc ] initWithRetweetUpdate: _RetweetUpdateObj ];
-    }
-
-- ( instancetype ) initWithRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj
-    {
-    if ( self = [ super initWithWindowNibName: @"TWPQuoteRetweetBox" ] )
-        self->retweetUpdateObject = _RetweetUpdateObj;
-
-    return self;
+    if ( self.tweetUpdateObject.tweetText )
+        // NSParameterAssert( string )
+        [ self.tweetTextView setString: self.tweetUpdateObject.tweetText ];
     }
 
 #pragma mark IBActions
+- ( IBAction ) cancelButtonClickedAction: ( id )_Sender
+    {
+    [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseCancel ];
+    }
+
 - ( IBAction ) postButtonClickedAction: ( id )_Sender
     {
-    [ [ TWPBrain wiseBrain ] postRetweetUpdate: self.retweetUpdateObject
-                                  successBlock:
+    [ [ TWPBrain wiseBrain ] pushTweetUpdate: self.tweetUpdateObject
+                                successBlock:
         ^( OTCTweet* _PushedTweet )
             {
             // TODO:
@@ -72,19 +86,30 @@
                     } ];
 
     [ self.tweetTextView setString: @"" ];
-    [ self _clearRetweetUpdateObject ];
+    [ self _clearTweetUpdateObject ];
     [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseOK ];
     }
 
-- ( IBAction ) cancelButtonClickedAction: ( id )_Sender
+- ( IBAction ) uploadMediaAction: ( id )_Sender
     {
-    [ self.window.sheetParent endSheet: self.window returnCode: NSModalResponseCancel ];
+    NSOpenPanel* openPanel = [ NSOpenPanel openPanel ];
+
+    // Supported image formats: PNG, JPEG, WEBP and GIF. Animated GIFs are supported.
+    // Supported video formats: MP4
+    [ openPanel setAllowedFileTypes: @[ @"jpeg", @"jpg", @"png", @"webp", @"gif", @"mp4" ] ];
+    [ openPanel setAllowsMultipleSelection: NO ];
+    [ openPanel beginSheetModalForWindow: self.window
+                       completionHandler:
+        ^( NSInteger _Result )
+            {
+            // TODO:
+            } ];
     }
 
-- ( void ) _clearRetweetUpdateObject
+- ( void ) _clearTweetUpdateObject
     {
-    self.retweetUpdateObject.tweetToBeRetweeted = nil;
-    self->retweetUpdateObject.comment = nil;
+    self.tweetUpdateObject.tweetText = nil;
+    self.tweetUpdateObject.mediaURLs = nil;
     }
 
 #pragma mark Conforms to <NSTextViewDelegate>
@@ -93,7 +118,7 @@
     NSText* text = ( NSText* )( _Notif.object );
 
     NSString* currentText = text.string;
-    [ self.retweetUpdateObject setComment: currentText ];
+    [ self.tweetUpdateObject setTweetText: currentText ];
     [ self.postButton setEnabled: currentText.length > 0 ];
     }
 

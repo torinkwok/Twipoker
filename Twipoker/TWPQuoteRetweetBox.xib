@@ -7,7 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TWPQuoteRetweetBoxController">
             <connections>
                 <outlet property="cancelButton" destination="oPO-Gz-EE7" id="cP8-j1-2mF"/>
-                <outlet property="retweetButton" destination="S1j-cw-RVG" id="r2L-MC-wKQ"/>
+                <outlet property="postButton" destination="S1j-cw-RVG" id="6dT-OC-8a3"/>
                 <outlet property="tweetTextView" destination="pnm-M2-Jkz" id="Cs0-Um-fS5"/>
                 <outlet property="window" destination="4Vw-b3-9A9" id="4HH-z6-pTj"/>
             </connections>
@@ -51,7 +51,7 @@ DQ
                             <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                         </buttonCell>
                         <connections>
-                            <action selector="retweetButtonClickedAction:" target="-2" id="k0o-cT-rJv"/>
+                            <action selector="postButtonClickedAction:" target="-2" id="pz9-2G-f7k"/>
                         </connections>
                     </button>
                     <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Keh-Xr-uN9">
@@ -61,7 +61,7 @@ DQ
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="pnm-M2-Jkz">
-                                    <rect key="frame" x="0.0" y="0.0" width="223" height="133"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="223" height="147"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="445" height="147"/>

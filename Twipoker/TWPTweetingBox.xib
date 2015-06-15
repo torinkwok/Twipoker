@@ -4,12 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6724"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TWPTweetBoxController">
+        <customObject id="-2" userLabel="File's Owner" customClass="TWPNormalTweetBoxController">
             <connections>
                 <outlet property="cancelButton" destination="bQs-SG-qKO" id="fGO-M1-DO0"/>
-                <outlet property="tweetButton" destination="pKB-1v-cvo" id="syw-h7-UyI"/>
+                <outlet property="postButton" destination="pKB-1v-cvo" id="Em4-pj-ZU7"/>
                 <outlet property="tweetTextView" destination="hQT-Sj-IQL" id="gGI-TH-czn"/>
-                <outlet property="uploadMediaButton" destination="Sfe-Jl-EoZ" id="izQ-f2-Bxv"/>
+                <outlet property="uploadMediaButton" destination="Sfe-Jl-EoZ" id="J0q-vc-qqu"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="LXg-Ho-kD8"/>
             </connections>
         </customObject>
@@ -20,7 +20,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="931" y="562" width="484" height="215"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" id="EiT-Mj-1SZ" customClass="TWPTweetingCompleteBox">
+            <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="484" height="215"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -48,7 +48,7 @@ Gw
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="uploadMediaAction:" target="-2" id="Psl-hn-H7d"/>
+                            <action selector="uploadMediaAction:" target="-2" id="VrX-1F-Uzn"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pKB-1v-cvo">
@@ -72,7 +72,7 @@ DQ
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="hQT-Sj-IQL">
-                                    <rect key="frame" x="0.0" y="0.0" width="223" height="133"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="223" height="147"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="445" height="147"/>

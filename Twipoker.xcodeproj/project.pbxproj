@@ -189,6 +189,7 @@
 		83D8FFCA1B24411100D1F825 /* TWPRetweetOperationsPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D8FFC91B24411100D1F825 /* TWPRetweetOperationsPopover.m */; };
 		83D8FFD21B2459FC00D1F825 /* TWPRetweetOperationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D8FFD11B2459FC00D1F825 /* TWPRetweetOperationsView.xib */; };
 		83D8FFD61B245A7C00D1F825 /* TWPRetweetOperationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D8FFD41B245A7C00D1F825 /* TWPRetweetOperationsViewController.m */; };
+		83DD2DB31B2EAC2F000535FF /* TWPNormalTweetBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD2DB21B2EAC2F000535FF /* TWPNormalTweetBoxController.m */; };
 		83E9A2E11B02721200CA5926 /* NSDateFormatter+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E9A2C91B02721200CA5926 /* NSDateFormatter+STTwitter.m */; };
 		83E9A2E21B02721200CA5926 /* NSError+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E9A2CB1B02721200CA5926 /* NSError+STTwitter.m */; };
 		83E9A2E31B02721200CA5926 /* NSString+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E9A2CD1B02721200CA5926 /* NSString+STTwitter.m */; };
@@ -528,6 +529,8 @@
 		83D8FFD11B2459FC00D1F825 /* TWPRetweetOperationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TWPRetweetOperationsView.xib; sourceTree = "<group>"; };
 		83D8FFD31B245A7C00D1F825 /* TWPRetweetOperationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPRetweetOperationsViewController.h; path = Twipoker/TWPRetweetOperationsViewController.h; sourceTree = "<group>"; };
 		83D8FFD41B245A7C00D1F825 /* TWPRetweetOperationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPRetweetOperationsViewController.m; path = Twipoker/TWPRetweetOperationsViewController.m; sourceTree = "<group>"; };
+		83DD2DB11B2EAC2F000535FF /* TWPNormalTweetBoxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPNormalTweetBoxController.h; path = Twipoker/TWPNormalTweetBoxController.h; sourceTree = "<group>"; };
+		83DD2DB21B2EAC2F000535FF /* TWPNormalTweetBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPNormalTweetBoxController.m; path = Twipoker/TWPNormalTweetBoxController.m; sourceTree = "<group>"; };
 		83E9A2C81B02721200CA5926 /* NSDateFormatter+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+STTwitter.h"; path = "Twipoker/Vendor/Objectwitter-C/STTwitter/NSDateFormatter+STTwitter.h"; sourceTree = SOURCE_ROOT; };
 		83E9A2C91B02721200CA5926 /* NSDateFormatter+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+STTwitter.m"; path = "Twipoker/Vendor/Objectwitter-C/STTwitter/NSDateFormatter+STTwitter.m"; sourceTree = SOURCE_ROOT; };
 		83E9A2CA1B02721200CA5926 /* NSError+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+STTwitter.h"; path = "Twipoker/Vendor/Objectwitter-C/STTwitter/NSError+STTwitter.h"; sourceTree = SOURCE_ROOT; };
@@ -905,6 +908,8 @@
 				83B555101B21839F00E354D0 /* TWPTweetingBoxNotificationNames.m */,
 				83C21DA91B2B421900188BB2 /* TWPTweetBoxController.h */,
 				83C21DAA1B2B421900188BB2 /* TWPTweetBoxController.m */,
+				83DD2DB11B2EAC2F000535FF /* TWPNormalTweetBoxController.h */,
+				83DD2DB21B2EAC2F000535FF /* TWPNormalTweetBoxController.m */,
 				838955901B2D8F3D0039300C /* TWPQuoteRetweetBoxController.h */,
 				838955911B2D8F3D0039300C /* TWPQuoteRetweetBoxController.m */,
 				8351C1D81B21EAF20019BF98 /* TWPTweetUpdateObject.h */,
@@ -1568,6 +1573,7 @@
 				835001ED1B28DD5C0067499E /* TWPTweetOperationsNotificationNames.m in Sources */,
 				83B5550E1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.m in Sources */,
 				83CC14F81B2317880046B544 /* TWPReplyButton.m in Sources */,
+				83DD2DB31B2EAC2F000535FF /* TWPNormalTweetBoxController.m in Sources */,
 				83CFD8761ACF1C820062D73D /* TWPLoginPanelController.m in Sources */,
 				83E9A2E11B02721200CA5926 /* NSDateFormatter+STTwitter.m in Sources */,
 				83CFD8851ACF1F070062D73D /* NSAffineTransform+TwipokerDrawing.m in Sources */,

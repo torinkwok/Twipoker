@@ -34,7 +34,7 @@
 #import "TWPRetweetOperationsViewController.h"
 
 #import "TWPTweetUpdateObject.h"
-#import "TWPTweetBoxController.h"
+#import "TWPNormalTweetBoxController.h"
 
 @implementation TWPTweetOperationsPanelView
 
@@ -139,7 +139,7 @@
     TWPTweetUpdateObject* newTweetUpdateObject = [ TWPTweetUpdateObject tweetUpdate ];
     newTweetUpdateObject.replyToTweet = self->_tweet;
 
-    self->_tweetBoxController = [ TWPTweetBoxController tweetBoxControllerWithTweetUpdate: newTweetUpdateObject ];
+    self->_tweetBoxController = [ TWPNormalTweetBoxController tweetBoxControllerWithTweetUpdate: newTweetUpdateObject ];
     [ self.window beginSheet: self->_tweetBoxController.window
            completionHandler:
         ^( NSModalResponse _ReturnCode )
