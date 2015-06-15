@@ -22,7 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 void TWPFillErrorParamWithSecErrorCode( OSStatus _ResultCode, NSError** _ErrorParam );
 

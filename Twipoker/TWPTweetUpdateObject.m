@@ -26,6 +26,41 @@
 
 @implementation TWPTweetUpdateObject
 
+@synthesize tweetText;
+@synthesize mediaURLs;
+
+@dynamic replyToTweet;
+@synthesize tweetToBeRetweeted;
+
+#pragma mark Initializations
++ ( instancetype ) tweetUpdate
+    {
+    return [ [ self alloc ] init ];
+    }
+
+- ( instancetype ) init
+    {
+    if ( self = [ super init ] )
+        {
+        self.tweetText = @"";
+        self.mediaURLs = @[];
+        }
+
+    return self;
+    }
+
+#pragma mark Dynmaic Accessors
+- ( void ) setReplyToTweet: ( OTCTweet* )_ReplyToTweet
+    {
+    self->_replyToTweet = _ReplyToTweet;
+    [ self setTweetText: [ NSString stringWithFormat: @"%@ ", self->_replyToTweet.author.screenName ] ];
+    }
+
+- ( OTCTweet* ) replyToTweet
+    {
+    return self->_replyToTweet;
+    }
+
 @end
 
 /*=============================================================================┐

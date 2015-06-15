@@ -22,9 +22,11 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
-@interface TWPTweetingBox : NSView
+@interface NSString ( Twipoker )
+
+- ( BOOL ) hasAtLeastOneNonChar: ( NSString* )_SingleChar;
 
 @end
 

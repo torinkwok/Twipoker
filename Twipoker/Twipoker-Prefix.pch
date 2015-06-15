@@ -23,7 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
+    @import Cocoa;
 
     #import "TWPGeneral.h"
     #import "Objectwitter-C.h"

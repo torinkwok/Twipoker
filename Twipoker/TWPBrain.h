@@ -22,20 +22,23 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @protocol TWPLimb;
 
 @class TWPTweetUpdateObject;
+@class TWPRetweetUpdateObject;
 
 typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     { TWPBrainSignalTypeNewTweetMask        = 1U
-    , TWPBrainSignalTypeMentionedMeMask     = 1U << 1
-    , TWPBrainSignalTypeTweetDeletionMask   = 1U << 2
-    , TWPBrainSignalTypeTimelineEventMask   = 1U << 3
-    , TWPBrainSignalTypeDirectMessagesMask  = 1U << 4
-    , TWPBrainSignalTypeDisconnectionMask   = 1U << 5
-    , TWPBrainSignalTypeUserUpdateMask      = 1U << 6
+    , TWPBrainSignalTypeRetweetMask         = 1U << 1
+    , TWPBrainSignalTypeMentionedMeMask     = 1U << 2
+    , TWPBrainSignalTypeTweetDeletionMask   = 1U << 3
+    , TWPBrainSignalTypeTimelineEventMask   = 1U << 4
+    , TWPBrainSignalTypeDirectMessagesMask  = 1U << 5
+    , TWPBrainSignalTypeDisconnectionMask   = 1U << 6
+    , TWPBrainSignalTypeUserUpdateMask      = 1U << 7
+    , TWPBrainSignalTypeQuotedTweetMask     = 1U << 8
     };
 
 // TWPBrain class
@@ -58,14 +61,35 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
     }
 
 @property ( strong, readwrite ) OTCTwitterUser* currentTwitterUser;
+@property ( strong, readonly ) NSSet* friendsList;
 
 #pragma mark Initializations
 + ( instancetype ) wiseBrain;
 
 #pragma mark Operations
+- ( void ) showDetailsOfTweet: ( NSString* )_TweetIDString
+                 successBlock: ( void (^)( OTCTweet* _Tweet ) )_SuccessBlock
+                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
 - ( void ) pushTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObj
               successBlock: ( void (^)( OTCTweet* _PushedTweet ) )_SuccessBlock
                 errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
+- ( void ) favTweet: ( OTCTweet* )_Tweet
+       successBlock: ( void (^)( OTCTweet* _FavedTweet ) )_SuccessBlock
+         errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
+- ( void ) unfavTweet: ( OTCTweet* )_Tweet
+         successBlock: ( void (^)( OTCTweet* _FavedTweet ) )_SuccessBlock
+           errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
+- ( void ) postRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj
+                successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
+                  errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
+
+- ( void ) destroyTweet: ( OTCTweet* )_Tweet
+           successBlock: ( void (^)( OTCTweet* _DestroyedTweet ) )_SuccessBlock
+             errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
 
 #pragma mark Registration of Limbs
 - ( void ) registerLimb: ( NSObject <TWPLimb>* )_NewLimb forUserIDs: ( NSArray* )_UserIDs brainSignal: ( TWPBrainSignalTypeMask )_BrainSignals;
@@ -78,6 +102,7 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 
 @optional
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweet: ( OTCTweet* )_Tweet;
+- ( void ) brain: ( TWPBrain* )_Brain didReceiveRetweet: ( OTCTweet* )_Retweet;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveTweetDeletion: ( NSString* )_DeletedTweetID byUser: ( NSString* )_UserID on: ( NSDate* )_DeletionDate;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveMention: ( OTCTweet* )_Metion;
 - ( void ) brain: ( TWPBrain* )_Brain didReceiveDirectMessage: ( OTCDirectMessage* )_DirectMessage;

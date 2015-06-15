@@ -22,16 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetingBox.h"
+#import "TWPRetweetSwitcherCell.h"
 
-@implementation TWPTweetingBox
-
-- ( void ) drawRect: ( NSRect )_DirtyRect
-    {
-    [ super drawRect: _DirtyRect ];
-    
-    // Drawing code here.
-    }
+@implementation TWPRetweetSwitcherCell
 
 @end
 

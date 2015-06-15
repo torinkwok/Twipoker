@@ -47,11 +47,8 @@
 #pragma mark Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
-    if ( self->_tweet != _Tweet )
-        {
-        self->_tweet = _Tweet;
-        [ self setStringValue: self->_tweet.tweetText ];
-        }
+    self->_tweet = _Tweet;
+    [ self setStringValue: self->_tweet.tweetText ];
     }
 
 - ( OTCTweet* ) tweet

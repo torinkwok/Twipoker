@@ -25,6 +25,7 @@
 #import "TWPBrain.h"
 #import "TWPLoginUsersManager.h"
 #import "TWPTweetUpdateObject.h"
+#import "TWPRetweetUpdateObject.h"
 
 #import "_TWPMonitoringUserID.h"
 
@@ -32,6 +33,7 @@
 @implementation TWPBrain
 
 @synthesize currentTwitterUser;
+@synthesize friendsList = _friendsList;
 
 #pragma mark Initializations
 + ( instancetype ) wiseBrain
@@ -84,23 +86,132 @@ TWPBrain static __strong* sWiseBrain;
     }
 
 #pragma mark Operations
+- ( void ) showDetailsOfTweet: ( NSString* )_TweetIDString
+                 successBlock: ( void (^)( OTCTweet* _Tweet ) )_SuccessBlock
+                   errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        getStatusesShowID: _TweetIDString
+                 trimUser: @NO
+         includeMyRetweet: @YES
+          includeEntities: @YES
+             successBlock:
+        ^( NSDictionary* _StatusJSON )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _StatusJSON ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
+    }
+
 - ( void ) pushTweetUpdate: ( TWPTweetUpdateObject* )_TweetUpdateObj
               successBlock: ( void (^)( OTCTweet* _PushedTweet ) )_SuccessBlock
                 errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
     {
     [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
         postStatusUpdate: _TweetUpdateObj.tweetText
-       inReplyToStatusID: nil latitude: nil longitude: nil placeID: nil displayCoordinates: nil trimUser: @NO
+       inReplyToStatusID: _TweetUpdateObj.replyToTweet.tweetIDString
+                mediaIDs: _TweetUpdateObj.mediaURLs
+                latitude: nil
+               longitude: nil
+                 placeID: nil
+      displayCoordinates: @NO
+                trimUser: @NO
             successBlock:
-        ^( NSDictionary* _Status )
+        ^( NSDictionary* _StatusJSON )
             {
-            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _Status ] );
-            } errorBlock:
-                ^( NSError* _Error)
-                    {
-                    if ( _ErrorBlock ) _ErrorBlock( _Error );
-                    } ];
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _StatusJSON ] );
+            } errorBlock: ^( NSError* _Error)
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
+    }
 
+- ( void ) favTweet: ( OTCTweet* )_Tweet
+       successBlock: ( void (^)( OTCTweet* _FavedTweet ) )_SuccessBlock
+         errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postFavoriteCreateWithStatusID: _Tweet.tweetIDString
+                       includeEntities: @YES
+                          successBlock:
+        ^( NSDictionary* _FavedStatusJSON )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _FavedStatusJSON ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
+
+    }
+
+- ( void ) unfavTweet: ( OTCTweet* )_Tweet
+         successBlock: ( void (^)( OTCTweet* _FavedTweet ) )_SuccessBlock
+           errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postFavoriteDestroyWithStatusID: _Tweet.tweetIDString
+                        includeEntities: @YES
+                           successBlock:
+        ^( NSDictionary* _UnfavedStatusJSON )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _UnfavedStatusJSON ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
+    }
+
+- ( void ) postRetweetUpdate: ( TWPRetweetUpdateObject* )_RetweetUpdateObj
+                successBlock: ( void (^)( OTCTweet* _Retweet ) )_SuccessBlock
+                  errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    TWPTweetUpdateObject* quoteTweetUpdate = [ TWPTweetUpdateObject tweetUpdate ];
+
+    TWPRetweetType retweetType = _RetweetUpdateObj.retweetType;
+    switch ( retweetType )
+        {
+        case TWPRetweetTypeOfficialQuote:
+            {
+            quoteTweetUpdate.tweetText = [ NSString stringWithFormat: @"%@ %@", _RetweetUpdateObj.comment, _RetweetUpdateObj.tweetToBeRetweeted.URLOnWeb ];
+            [ self pushTweetUpdate: quoteTweetUpdate successBlock: _SuccessBlock errorBlock: _ErrorBlock ];
+            } break;
+
+        case TWPRetweetTypeNormal:
+            {
+            [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+                postStatusRetweetWithID: _RetweetUpdateObj.tweetToBeRetweeted.tweetIDString
+                               trimUser: @NO
+                           successBlock:
+                ^( NSDictionary* _UnfavedStatusJSON )
+                    {
+                    if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _UnfavedStatusJSON ] );
+                    } errorBlock: ^( NSError* _Error )
+                                    {
+                                    if ( _ErrorBlock ) _ErrorBlock( _Error );
+                                    } ];
+            } break;
+
+        default:;
+        }
+    }
+
+- ( void ) destroyTweet: ( OTCTweet* )_Tweet
+           successBlock: ( void (^)( OTCTweet* _DestroyedTweet ) )_SuccessBlock
+             errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postStatusesDestroy: _Tweet.tweetIDString
+                   trimUser: @NO
+               successBlock:
+        ^( NSDictionary* _DestroyedTweetJSON )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _DestroyedTweetJSON ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
     }
 
 #pragma mark Registration of Limbs
@@ -145,6 +256,8 @@ TWPBrain static __strong* sWiseBrain;
     [ self->_friendsList addObjectsFromArray: _Friends ];
     }
 
+// When parsing Tweets,
+// keep in mind that Retweets are streamed as a status with another status nested inside it.
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
     if ( ![ self->_uniqueTweetsQueue containsObject: _ReceivedTweet ] )
@@ -160,11 +273,15 @@ TWPBrain static __strong* sWiseBrain;
                     || !_MntID.userID /* Current authenticating user */ )
                 {
                 if ( _MntID.signalMask & TWPBrainSignalTypeNewTweetMask )
-                    {
-                    if ( ( [ self->_friendsList containsObject: authorID ] || authorID == currentLoginUserID )
-                            && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
-                        [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
-                    }
+                    if ( _ReceivedTweet.type == OTCTweetTypeNormalTweet )
+                        if ( ( [ self->_friendsList containsObject: authorID ] || authorID == currentLoginUserID )
+                                && [ _MntID.limb respondsToSelector: @selector( brain:didReceiveTweet: ) ] )
+                            [ _MntID.limb brain: self didReceiveTweet: _ReceivedTweet ];
+
+                if ( _MntID.signalMask & TWPBrainSignalTypeRetweetMask )
+                    if ( _ReceivedTweet.type == OTCTweetTypeRetweet )
+                        if ( [ _MntID.limb respondsToSelector: @selector( brain:didReceiveRetweet: ) ] )
+                            [ _MntID.limb brain: self didReceiveRetweet: _ReceivedTweet ];
 
                 if( _MntID.signalMask & TWPBrainSignalTypeMentionedMeMask )
                     {

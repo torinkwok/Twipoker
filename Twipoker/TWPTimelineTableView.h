@@ -22,7 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @protocol TWPTimelineTableViewDataSource;
 @protocol TWPTimelineTableViewDelegate;
@@ -37,6 +37,9 @@
 @required
 @property ( assign, readwrite ) BOOL isLoadingOlderTweets;
 @property ( assign, readwrite ) NSUInteger numberOfTweetsWillBeLoadedOnce;
+
+@required
+- ( void ) tweetOperationShouldBeUnretweeted: ( NSNotification* )_Notif;
 
 @end // <TWPTimelineTableViewDataSource> protocol
 

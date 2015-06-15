@@ -22,22 +22,24 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetingBaseBox.h"
+#import "TWPDashboardTab.h"
+#import "TWPViewsStack.h"
 
-// TWPTweetingBaseBox class
-@implementation TWPTweetingBaseBox
+@implementation TWPDashboardTab
+
+- ( void ) awakeFromNib
+    {
+    [ self setButtonType: NSMomentaryChangeButton ];
+    }
 
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
-
+    
     // Drawing code here.
-    NSColor* fillColor = [ NSColor colorWithHTMLColor: @"FAFAFA" ];
-    [ fillColor setFill ];
-    NSRectFill( _DirtyRect );
     }
 
-@end // TWPTweetingBaseBox class
+@end
 
 /*=============================================================================┐
 |                                                                              |

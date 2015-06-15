@@ -25,7 +25,6 @@
 #import "TWPStackContentViewController.h"
 #import "TWPStackContentView.h"
 #import "TWPDashboardView.h"
-#import "TWPDashboardCellView.h"
 #import "TWPViewsStack.h"
 #import "TWPNavigationBar.h"
 #import "TWPTwitterUserViewController.h"
@@ -42,6 +41,7 @@
 #import "TWPDirectMessagesCoordinator.h"
 #import "TWPDirectMessagePreviewTableCellView.h"
 #import "TWPDirectMessageSessionViewController.h"
+#import "TWPDashboardTab.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -73,14 +73,6 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
     {
     if ( self = [ super init ] )
         {
-        self->_dashboardTabs = @[ NSLocalizedString( @"Home", nil )
-                                , NSLocalizedString( @"Favorites", nil )
-                                , NSLocalizedString( @"Lists", nil )
-                                , NSLocalizedString( @"Notifications", nil )
-                                , NSLocalizedString( @"Me", nil )
-                                , NSLocalizedString( @"Messages", nil )
-                                ];
-
         [ [ NSNotificationCenter defaultCenter ] addObserver: self
                                                     selector: @selector( shouldDisplayDetailOfTweet: )
                                                         name: TWPTweetCellViewShouldDisplayDetailOfTweet
@@ -130,7 +122,7 @@ NSString static* const kColumnIDTabs = @"tabs";
 #pragma mark Conforms to <NSTableViewDataSource>
 - ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
     {
-    return self->_dashboardTabs.count;
+    return self->_dashboardTabIcons.count;
     }
 
 - ( id )            tableView: ( NSTableView* )_TableView
@@ -140,63 +132,21 @@ NSString static* const kColumnIDTabs = @"tabs";
     id result = nil;
 
     if ( [ _TableColumn.identifier isEqualToString: kColumnIDTabs ] )
-        result = self->_dashboardTabs[ _Row ];
+        result = self->_dashboardTabIcons[ _Row ];
 
     return result;
     }
 
-#pragma mark Conforms to <NSTableViewDelegate>
-- ( NSView* ) tableView: ( NSTableView* )_TableView
-     viewForTableColumn: ( NSTableColumn* )_TableColumn
-                    row: ( NSInteger )_Row
+#pragma mark Conforms to <TWPDashboardViewDelegate>
+- ( void ) dashboardView: ( TWPDashboardView* )_DashboardView
+    selectedTabDidChange: ( TWPDashboardTab* )_NewSelectedTab
     {
-    TWPDashboardCellView* dashboardCellView = [ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
-
-    NSString* tabName = [ _TableView.dataSource tableView: _TableView objectValueForTableColumn: _TableColumn row: _Row ];
-    [ dashboardCellView.textField setStringValue: tabName ];
-
-    TWPViewsStack* viewsStack = nil;
-    switch ( _Row )
-        {
-        case 0: viewsStack = self.homeDashboardStack;           break;
-        case 1: viewsStack = self.favoritesDashboardStack;      break;
-        case 2: viewsStack = self.listsDashboardStack;          break;
-        case 3: viewsStack = self.notificationsDashboardStack;  break;
-        case 4: viewsStack = self.meDashboardStack;             break;
-        case 5: viewsStack = self.messagesDashboardStack;       break;
-        }
-
-    dashboardCellView.associatedViewsStack = viewsStack;
-
-    // TODO: [ cellView.imageView set... ];
-
-    return dashboardCellView;
-    }
-
-- ( void ) tableViewSelectionDidChange: ( NSNotification* )_Notif
-    {
-    NSTableView* tabTableView = [ _Notif object ];
-    NSTableColumn* currentTableColumn = [ tabTableView tableColumnWithIdentifier: kColumnIDTabs ];
-    NSInteger selectedRow = [ tabTableView selectedRow ];
-
-    TWPDashboardCellView* cellView = ( TWPDashboardCellView* )[ tabTableView.delegate
-        tableView: tabTableView viewForTableColumn: currentTableColumn row: ( NSInteger )selectedRow ];
-
-    TWPViewsStack* associatedViewsStack = [ cellView associatedViewsStack ];
+    TWPViewsStack* associatedViewsStack = [ _NewSelectedTab associatedViewsStack ];
 
     // self.view is observing this key path,
     // it will be notified after assignment then make appropriate adjustments
     self.currentDashboardStack = associatedViewsStack;
     self.navigationBarController.delegate = self.currentDashboardStack;
-    }
-
-- ( BOOL ) tableView: ( NSTableView* )_TableView
-     shouldSelectRow: ( NSInteger )_Row
-    {
-//    if ( [ self->_dashboardTabs[ _Row ] isEqualToString: @"Messages" ] )
-//        return NO;
-//    else
-        return YES;
     }
 
 #pragma mark IBActions
@@ -245,7 +195,7 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( IBAction ) pushDirectMessageSessionViewToCurrentViewStackAction: ( id )_Sender
     {
-    [ self.dashboardView selectRowIndexes: [ NSIndexSet indexSetWithIndex: 5 ] byExtendingSelection: NO ];
+//    [ self.dashboardView selectRowIndexes: [ NSIndexSet indexSetWithIndex: 5 ] byExtendingSelection: NO ];
 
     NSViewController* dmSessionViewNewController =
         [ TWPDirectMessageSessionViewController sessionViewControllerWithSession: [ ( TWPDirectMessagePreviewTableCellView* )_Sender session ] ];

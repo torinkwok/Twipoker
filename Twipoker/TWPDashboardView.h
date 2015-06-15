@@ -22,11 +22,41 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-@interface TWPDashboardView : NSTableView
+@protocol TWPDashboardViewDelegate;
 
-@end
+@class TWPDashboardTab;
+@class TWPTweetBoxController;
+
+// TWPDashboardView class
+@interface TWPDashboardView : NSView
+
+@property( weak ) IBOutlet TWPDashboardTab* homeTab;
+@property( weak ) IBOutlet TWPDashboardTab* favoriteTab;
+@property( weak ) IBOutlet TWPDashboardTab* listsTab;
+@property( weak ) IBOutlet TWPDashboardTab* notificationTab;
+@property( weak ) IBOutlet TWPDashboardTab* meTab;
+@property( weak ) IBOutlet TWPDashboardTab* messagesTab;
+
+@property ( weak, readwrite ) IBOutlet id <TWPDashboardViewDelegate> delegate;
+
+@property ( strong, readwrite ) TWPTweetBoxController* tweetBoxController;
+
+#pragma mark IBActions
+- ( IBAction ) tabClickedAction: ( id )_Sender;
+- ( IBAction ) tweetButtonClickedAction: ( id )_Sender;
+
+@end // TWPDashboardView class
+
+// TWPDashboardViewDelegate protocol
+@protocol TWPDashboardViewDelegate <NSObject>
+
+@required
+- ( void ) dashboardView: ( TWPDashboardView* )_DashboardView
+    selectedTabDidChange: ( TWPDashboardTab* )_NewSelectedTab;
+
+@end // TWPDashboardViewDelegate protocol
 
 /*=============================================================================┐
 |                                                                              |

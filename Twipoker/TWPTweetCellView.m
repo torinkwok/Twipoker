@@ -26,6 +26,7 @@
 #import "TWPUserAvatarWell.h"
 #import "TWPTimelineUserNameLabel.h"
 #import "TWPTweetTextField.h"
+#import "TWPTweetOperationsPanelView.h"
 
 // Notification Names
 NSString* const TWPTweetCellViewShouldDisplayDetailOfTweet = @"TweetCellView.Notif.ShouldDisplayDetailOfTweet";
@@ -38,6 +39,8 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 @synthesize authorAvatarWell;
 @synthesize userNameLabel;
 @synthesize tweetTextLabel;
+
+@synthesize tweetOperationsPanel;
 
 @dynamic tweet;
 @dynamic author;
@@ -59,16 +62,15 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 #pragma mark Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
-    if ( self->_tweet != _Tweet )
-        {
-        self->_tweet = _Tweet;
+    self->_tweet = _Tweet;
 
-        [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
-        [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
-        [ [ self tweetTextLabel ] setTweet: self->_tweet ];
+    [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
+    [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
+    [ [ self tweetTextLabel ] setTweet: self->_tweet ];
 
-        [ self setNeedsDisplay: YES ];
-        }
+    [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
+
+    [ self setNeedsDisplay: YES ];
     }
 
 - ( OTCTweet* ) tweet

@@ -22,13 +22,14 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @class OTCTweet;
 @class OTCTwitterUser;
 @class TWPUserAvatarWell;
 @class TWPTimelineUserNameLabel;
 @class TWPTweetTextField;
+@class TWPTweetOperationsPanelView;
 
 // Notification Names
 NSString extern* const TWPTweetCellViewShouldDisplayDetailOfTweet;
@@ -47,6 +48,8 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 @property ( weak ) IBOutlet TWPUserAvatarWell* authorAvatarWell;
 @property ( weak ) IBOutlet TWPTimelineUserNameLabel* userNameLabel;
 @property ( weak ) IBOutlet TWPTweetTextField* tweetTextLabel;
+
+@property ( weak ) IBOutlet TWPTweetOperationsPanelView* tweetOperationsPanel;
 
 @property ( strong, readwrite ) OTCTweet* tweet;
 @property ( strong, readonly ) OTCTwitterUser* author;

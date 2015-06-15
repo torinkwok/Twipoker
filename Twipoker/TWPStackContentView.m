@@ -25,7 +25,6 @@
 #import "TWPStackContentView.h"
 #import "TWPStackContentViewController.h"
 #import "TWPDashboardView.h"
-#import "TWPDashboardCellView.h"
 #import "TWPViewsStack.h"
 #import "TWPNavigationBar.h"
 

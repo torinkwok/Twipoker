@@ -22,11 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDashboardCellView.h"
+@import Cocoa;
 
-@implementation TWPDashboardCellView
-
-@synthesize associatedViewsStack;
+@interface TWPRetweetSwitcherCell : NSButtonCell
 
 @end
 
