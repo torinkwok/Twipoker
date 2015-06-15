@@ -8,7 +8,7 @@
 |                                                                              |██
 |                 _______    _             _                 _                 |██
 |                (_______)  (_)           | |               | |                |██
-|                    _ _ _ _ _ ____   ___ | |  _ _____  ____| |                |██
+|                    _ _ _ _ _ ____   ___ | |  _ _____  ___x_| |                |██
 |                   | | | | | |  _ \ / _ \| |_/ ) ___ |/ ___)_|                |██
 |                   | | | | | | |_| | |_| |  _ (| ____| |    _                 |██
 |                   |_|\___/|_|  __/ \___/|_| \_)_____)_|   |_|                |██
@@ -37,7 +37,7 @@
     if ( !_TwitterList )
         return nil;
 
-    if ( self = [ super initWithNibName: @"TWPTwitterListTimelineView" bundle: [ NSBundle mainBundle ] ] )
+    if ( self = [ super initWithNibName: @"TWPTimeline" bundle: [ NSBundle mainBundle ] ] )
         {
         self->_twitterList = _TwitterList;
 

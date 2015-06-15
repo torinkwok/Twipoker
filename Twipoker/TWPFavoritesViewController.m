@@ -34,7 +34,7 @@
 #pragma mark Initialization
 - ( instancetype ) init
     {
-    if ( self = [ super initWithNibName: @"TWPFavoritesView" bundle: [ NSBundle mainBundle ] ] )
+    if ( self = [ super initWithNibName: @"TWPTimeline" bundle: [ NSBundle mainBundle ] ] )
         {
 //        NSString* userID = [ self.twitterAPI.oauthAccessToken componentsSeparatedByString: @"-" ].firstObject;
 //        [ [ TWPBrain wiseBrain ] registerLimb: self forUserID: userID brainSignal: TWPBrainSignalTypeEventMask ];

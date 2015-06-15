@@ -34,7 +34,7 @@
 #pragma mark Initialization
 - ( instancetype ) init
     {
-    if ( self = [ super initWithNibName: @"TWPNotificationsView" bundle: [ NSBundle mainBundle ] ] )
+    if ( self = [ super initWithNibName: @"TWPTimeline" bundle: [ NSBundle mainBundle ] ] )
         {
         [ [ TWPBrain wiseBrain ] registerLimb: self forUserIDs: nil brainSignal: TWPBrainSignalTypeMentionedMeMask ];
         [ self.twitterAPI getMentionsTimelineSinceID: nil
