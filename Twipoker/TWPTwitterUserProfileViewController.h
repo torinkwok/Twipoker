@@ -24,7 +24,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TWPNavigationBarController;
+@class TWPNavigationBarController;
+@class OTCTwitterUser;
+
 @interface TWPTwitterUserProfileViewController : NSViewController
+
+@property ( weak, readwrite ) TWPNavigationBarController* navigationBarController;
+@property ( weak, readwrite ) OTCTwitterUser* twitterUser;
+
+#pragma mark Initializations
++ ( instancetype ) prifileViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser consultNavigationBar: ( TWPNavigationBarController* )_NavigationBarController;
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser consultNavigationBar: ( TWPNavigationBarController* )_NavigationBarController;
 
 @end
 

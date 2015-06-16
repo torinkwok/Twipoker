@@ -23,12 +23,43 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTwitterUserProfileViewController.h"
+#import "TWPNavigationBarController.h"
+#import "TWPTwitterUserProfileView.h"
 
+// Private Interfaces
 @interface TWPTwitterUserProfileViewController ()
+- ( TWPTwitterUserProfileView* ) _profileView;
+@end // Private Interfaces
 
-@end
-
+// TWPTwitterUserProfileViewController class
 @implementation TWPTwitterUserProfileViewController
+
+@dynamic navigationBarController;
+@dynamic twitterUser;
+
+#pragma mark Initializations
++ ( instancetype ) prifileViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+                                   consultNavigationBar: ( TWPNavigationBarController* )_NavigationBarController
+    {
+    return [ [ [ self class ] alloc ] initWithTwitterUser: _TwitterUser consultNavigationBar: _NavigationBarController ];
+    }
+
+- ( instancetype ) initWithCoder: ( NSCoder* )_Coder
+    {
+    return [ self initWithTwitterUser: nil consultNavigationBar: nil ];
+    }
+
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+                  consultNavigationBar: ( TWPNavigationBarController* )_NavigationBarController
+    {
+    if ( self = [ super initWithNibName: @"TWPTwitterUserProfileView" bundle: [ NSBundle mainBundle ] ] )
+        {
+        [ [ self _profileView ] setTwitterUser: _TwitterUser ];
+        [ [ self _profileView ] setNavigationBarController: _NavigationBarController ];
+        }
+
+    return self;
+    }
 
 - ( void ) viewDidLoad
     {
@@ -36,7 +67,34 @@
     // Do view setup here.
     }
 
-@end
+#pragma mark Dynamic Accessors
+- ( void ) setNavigationBarController: ( TWPNavigationBarController* )_NavigationBarController
+    {
+    [ [ self _profileView ] setNavigationBarController: _NavigationBarController ];
+    }
+
+- ( TWPNavigationBarController* ) navigationBarController
+    {
+    return [ [ self _profileView ] navigationBarController ];
+    }
+
+- ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
+    {
+    [ [ self _profileView ] setTwitterUser: _TwitterUser ];
+    }
+
+- ( OTCTwitterUser* ) twitterUser
+    {
+    return [ [ self _profileView ] twitterUser ];
+    }
+
+#pragma mark Private Interfaces
+- ( TWPTwitterUserProfileView* ) _profileView
+    {
+    return ( TWPTwitterUserProfileView* )( self.view );
+    }
+
+@end // TWPTwitterUserProfileViewController class
 
 /*=============================================================================┐
 |                                                                              |

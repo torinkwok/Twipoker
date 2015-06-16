@@ -26,6 +26,8 @@
 
 @implementation TWPTwitterUserProfileView
 
+@dynamic navigationBarController;
+
 @synthesize hideButton;
 @synthesize cuttingLineView;
 
@@ -46,11 +48,27 @@
 @dynamic twitterUser;
 
 #pragma mark Dynamic Accessors
+- ( void ) setNavigationBarController: ( TWPNavigationBarController* )_NavigationBarController
+    {
+    self->_navigationBarController = _NavigationBarController;
+    }
+
+- ( TWPNavigationBarController* ) navigationBarController
+    {
+    return self->_navigationBarController;
+    }
+
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
     self->_twitterUser = _TwitterUser;
 
-    // TODO:
+    if ( self->_twitterUser )
+        {
+        [ self.userDisplayNameField setStringValue: self->_twitterUser.displayName ];
+        [ self.userScreenNameField setStringValue: self->_twitterUser.screenName ];
+
+        [ self.tweetToUserButton setTitle: [ NSString stringWithFormat: @"Tweet to %@", self->_twitterUser.screenName ] ];
+        }
     }
 
 - ( OTCTwitterUser* ) twitterUser

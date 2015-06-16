@@ -149,9 +149,10 @@
                     </customView>
                 </subviews>
                 <connections>
-                    <outlet property="cuttingLineView" destination="zU3-cQ-xog" id="6MD-iA-mN7"/>
+                    <outlet property="cuttingLineBetweenNavBarAndViewsStack" destination="zU3-cQ-xog" id="6MD-iA-mN7"/>
                     <outlet property="navigationBarController" destination="Gr0-CG-Iha" id="mjL-rQ-alA"/>
                     <outlet property="stackContentViewController" destination="HUR-ik-D4y" id="ewN-Vh-20V"/>
+                    <outlet property="twitterUserProfileViewController" destination="V2f-Li-yzk" id="R0D-EW-SX6"/>
                 </connections>
             </view>
             <point key="canvasLocation" x="-46" y="-1732.5"/>
@@ -230,6 +231,7 @@
             </connections>
             <point key="canvasLocation" x="267" y="-902"/>
         </customView>
+        <viewController id="V2f-Li-yzk" customClass="TWPTwitterUserProfileViewController"/>
     </objects>
     <resources>
         <image name="compose-tweet" width="95" height="113"/>

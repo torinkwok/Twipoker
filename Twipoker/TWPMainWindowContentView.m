@@ -28,6 +28,7 @@
 #import "TWPNavigationBarController.h"
 #import "TWPStackContentView.h"
 #import "TWPStackContentViewController.h"
+#import "TWPTwitterUserProfileViewController.h"
 
 #import "TWPTweetingBoxNotificationNames.h"
 #import "TWPCuttingLineView.h"
@@ -43,15 +44,16 @@
 
 @synthesize navigationBarController;
 @synthesize stackContentViewController;
+@synthesize twitterUserProfileViewController;
 
-@synthesize cuttingLineView;
-@synthesize tweetingBaseView;
-@synthesize tweetingCompleteView;
+@synthesize cuttingLineBetweenNavBarAndViewsStack;
+@synthesize cuttingLineBetweetMainViewAndProfileView;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
     {
     [ self _setUpSubviews ];
+    NSLog( @"%@", self.twitterUserProfileViewController.view );
     }
 
 #pragma mark Custom Drawing
@@ -65,17 +67,17 @@
 #pragma mark Private Interfaces
 - ( void ) _setUpSubviews
     {
-    [ self.tweetingCompleteView removeFromSuperview ];
-    [ self.cuttingLineView removeFromSuperview ];
+    [ self.cuttingLineBetweenNavBarAndViewsStack removeFromSuperview ];
 
     // Navigation bar
     NSRect frameOfNavigationBar = self.navigationBarController.view.frame;
 
     // Cutting line
     NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfNavigationBar ), NSHeight( frameOfNavigationBar )
-                                              , NSWidth( self.cuttingLineView.frame ), NSHeight( self.cuttingLineView.frame ) );
-    [ self.cuttingLineView setFrame: frameOfCuttingLineView ];
-    [ self addSubview: self.cuttingLineView ];
+                                              , NSWidth( self.cuttingLineBetweenNavBarAndViewsStack.frame ), NSHeight( self.cuttingLineBetweenNavBarAndViewsStack.frame ) );
+
+    [ self.cuttingLineBetweenNavBarAndViewsStack setFrame: frameOfCuttingLineView ];
+    [ self addSubview: self.cuttingLineBetweenNavBarAndViewsStack ];
 
     // Stack content view
     TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );

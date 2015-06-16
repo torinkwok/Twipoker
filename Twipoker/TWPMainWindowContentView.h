@@ -26,6 +26,7 @@
 
 @class TWPNavigationBarController;
 @class TWPStackContentViewController;
+@class TWPTwitterUserProfileViewController;
 
 @class TWPCuttingLineView;
 @class TWPTweetingBaseBox;
@@ -36,10 +37,10 @@
 
 @property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
 @property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
+@property ( weak ) IBOutlet TWPTwitterUserProfileViewController* twitterUserProfileViewController;
 
-@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineView;
-@property ( weak ) IBOutlet TWPTweetingBaseBox* tweetingBaseView;
-@property ( weak ) IBOutlet TWPTweetingCompleteBox* tweetingCompleteView;
+@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweenNavBarAndViewsStack;
+@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweetMainViewAndProfileView;
 
 @end // TWPMainWindowContentView class
 
