@@ -28,7 +28,7 @@
 #import "TWPViewsStack.h"
 #import "TWPNavigationBar.h"
 #import "TWPTwitterUserViewController.h"
-#import "TWPTimelineUserNameLabel.h"
+#import "TWPTimelineUserNameButton.h"
 #import "TWPTwitterUserViewController.h"
 #import "TWPNavigationBarController.h"
 #import "TWPRepliesTimelineViewController.h"
@@ -169,7 +169,7 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
     {
-    OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameLabel* )_Sender twitterUser ];
+    OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameButton* )_Sender twitterUser ];
 
     NSViewController* twitterUserViewNewController =
         [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];

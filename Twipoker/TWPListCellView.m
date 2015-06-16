@@ -24,7 +24,7 @@
 
 #import "TWPListCellView.h"
 #import "TWPUserAvatarWell.h"
-#import "TWPTimelineUserNameLabel.h"
+#import "TWPTimelineUserNameButton.h"
 #import "TWPTweetTextField.h"
 
 NSString* const TWPListCellViewMouseDown = @"ListCellView.Notif.MouseDown";

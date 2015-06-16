@@ -22,11 +22,17 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTimelineUserNameLabel.h"
+#import "TWPTimelineUserNameButton.h"
+#import "NSColor+Objectwitter-C.h"
 
-@implementation TWPTimelineUserNameLabel
+@implementation TWPTimelineUserNameButton
 
 @dynamic twitterUser;
+
+- ( void ) awakeFromNib
+    {
+//    self.bordered = NO;
+    }
 
 #pragma mark Initialization
 + ( instancetype ) timelineUserNameLabelWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
@@ -60,8 +66,8 @@
 
 - ( void ) _init
     {
-    self->_fontOfDisplayName = [ [ NSFontManager sharedFontManager ] convertWeight: 5.f ofFont: [ NSFont fontWithName: @"Heiti SC" size: 15.f ] ];
-    self->_colorOfDisplayName = [ NSColor blackColor ];
+    self->_fontOfDisplayName = [ [ NSFontManager sharedFontManager ] convertWeight: 2.f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 15.f ] ];
+    self->_colorOfDisplayName = [ NSColor colorWithHTMLColor: @"4A4A4A" ];
 
     self->_fontOfScreenName = [ [ NSFontManager sharedFontManager ] convertWeight: 2.f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 13.f ] ];
     self->_colorOfScreenName = [ NSColor colorWithSRGBRed: 152.f / 255 green: 166.f / 255 blue: 178.f / 255 alpha: 1.f ];
@@ -75,39 +81,36 @@
 
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
-    if ( self->_twitterUser != _TwitterUser )
-        {
-        self->_twitterUser = _TwitterUser;
+    self->_twitterUser = _TwitterUser;
 
-        NSSize displayNameStringSizeWithAttrs =
-            [ self->_twitterUser.displayName sizeWithAttributes: @{ NSFontAttributeName : self->_fontOfDisplayName } ];
+    NSSize displayNameStringSizeWithAttrs =
+        [ self->_twitterUser.displayName sizeWithAttributes: @{ NSFontAttributeName : self->_fontOfDisplayName } ];
 
-        NSSize screenNameStringSizeWithAttrs =
-            [ self->_twitterUser.screenName sizeWithAttributes: @{ NSFontAttributeName : self->_fontOfScreenName } ];
+    NSSize screenNameStringSizeWithAttrs =
+        [ self->_twitterUser.screenName sizeWithAttributes: @{ NSFontAttributeName : self->_fontOfScreenName } ];
 
-        self->_displayNameStringRect = NSMakeRect( NSMinX( self.bounds ), NSMinY( self.bounds )
-                                                 , displayNameStringSizeWithAttrs.width, displayNameStringSizeWithAttrs.height
-                                                 );
+    self->_displayNameStringRect = NSMakeRect( NSMinX( self.bounds ), NSMinY( self.bounds )
+                                             , displayNameStringSizeWithAttrs.width, displayNameStringSizeWithAttrs.height
+                                             );
 
-        self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( self->_displayNameStringRect ) + 3.f
-                                                , NSMinY( self.bounds )
-                                                , screenNameStringSizeWithAttrs.width, screenNameStringSizeWithAttrs.height
-                                                );
+    self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( self->_displayNameStringRect ) + 3.f
+                                            , NSMinY( self.bounds )
+                                            , screenNameStringSizeWithAttrs.width, screenNameStringSizeWithAttrs.height
+                                            );
 
-        self->_screenNameStringRect.origin.y += ( NSHeight( self->_displayNameStringRect ) - NSHeight( self->_screenNameStringRect ) ) / 2;
+    self->_screenNameStringRect.origin.y += ( NSHeight( self->_displayNameStringRect ) - NSHeight( self->_screenNameStringRect ) ) / 2;
 
-        self->_attributedDisplayNameString =
-            [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.displayName
-                                               attributes: @{ NSFontAttributeName : self->_fontOfDisplayName
-                                                            , NSForegroundColorAttributeName : self->_colorOfDisplayName
-                                                            } ];
-        self->_attributedScreenNameString =
-            [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.screenName
-                                               attributes: @{ NSFontAttributeName : self->_fontOfScreenName
-                                                            , NSForegroundColorAttributeName : self->_colorOfScreenName
-                                                            } ];
-        [ self setNeedsDisplay: YES ];
-        }
+    self->_attributedDisplayNameString =
+        [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.displayName
+                                           attributes: @{ NSFontAttributeName : self->_fontOfDisplayName
+                                                        , NSForegroundColorAttributeName : self->_colorOfDisplayName
+                                                        } ];
+    self->_attributedScreenNameString =
+        [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.screenName
+                                           attributes: @{ NSFontAttributeName : self->_fontOfScreenName
+                                                        , NSForegroundColorAttributeName : self->_colorOfScreenName
+                                                        } ];
+    [ self setNeedsDisplay: YES ];
     }
 
 #pragma mark Customize Drawing
@@ -117,26 +120,6 @@
 
     [ self->_attributedDisplayNameString drawInRect: self->_displayNameStringRect ];
     [ self->_attributedScreenNameString drawInRect: self->_screenNameStringRect ];
-    }
-
-#pragma mark Events Handling
-- ( void ) mouseDown: ( NSEvent* )_Event
-    {
-    [ super mouseDown: _Event ];
-    [ NSApp sendAction: self.action to: self.target from: self ];
-    }
-
-- ( NSView* ) hitTest: ( NSPoint )_Point
-    {
-    if ( [ self mouse: [ self convertPoint: _Point fromView: self.superview ] inRect: self.bounds ] )
-        return self;
-    else
-        return [ super hitTest: _Point ];
-    }
-
-- ( BOOL ) acceptsFirstResponder
-    {
-    return YES;
     }
 
 @end

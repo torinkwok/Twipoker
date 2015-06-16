@@ -62,7 +62,7 @@
                                                             <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="s5B-sC-psN"/>
                                                         </connections>
                                                     </textField>
-                                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwo-hv-szg" customClass="TWPTimelineUserNameLabel">
+                                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwo-hv-szg" customClass="TWPTimelineUserNameButton">
                                                         <rect key="frame" x="110" y="86" width="481" height="22"/>
                                                         <connections>
                                                             <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="JyZ-7s-FaB"/>

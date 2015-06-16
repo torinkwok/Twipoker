@@ -61,7 +61,7 @@
                                                     <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="XQ8-P0-sZ4"/>
                                                 </connections>
                                             </textField>
-                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIr-iB-sl7" customClass="TWPTimelineUserNameLabel">
+                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIr-iB-sl7" customClass="TWPTimelineUserNameButton">
                                                 <rect key="frame" x="110" y="86" width="481" height="22"/>
                                                 <connections>
                                                     <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="JKY-0k-Wdt"/>

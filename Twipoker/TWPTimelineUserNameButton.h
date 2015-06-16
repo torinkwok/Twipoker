@@ -24,7 +24,7 @@
 
 @import Cocoa;
 
-@interface TWPTimelineUserNameLabel : NSControl
+@interface TWPTimelineUserNameButton : NSButton
     {
 @private
     OTCTwitterUser __strong* _twitterUser;

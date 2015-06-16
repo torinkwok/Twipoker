@@ -25,7 +25,7 @@
 @import Cocoa;
 
 @class TWPUserAvatarWell;
-@class TWPTimelineUserNameLabel;
+@class TWPTimelineUserNameButton;
 @class TWPTweetTextField;
 
 // Notification Names

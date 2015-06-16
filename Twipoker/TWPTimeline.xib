@@ -62,12 +62,6 @@
                                                     <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="5Sy-qM-3Gh"/>
                                                 </connections>
                                             </textField>
-                                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rT6-rl-xjK" customClass="TWPTimelineUserNameLabel">
-                                                <rect key="frame" x="110" y="86" width="341" height="22"/>
-                                                <connections>
-                                                    <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="DPZ-XO-MCM"/>
-                                                </connections>
-                                            </customView>
                                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="keF-c2-Eeb" customClass="TWPTweetOperationsPanelView">
                                                 <rect key="frame" x="472" y="86" width="76" height="22"/>
                                                 <subviews>
@@ -108,12 +102,19 @@
                                                     <outlet property="retweetSwitcher" destination="rUX-Ck-hwg" id="J1w-e5-f62"/>
                                                 </connections>
                                             </customView>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bD2-rm-Fkf" customClass="TWPTimelineUserNameButton">
+                                                <rect key="frame" x="112" y="84" width="321" height="23"/>
+                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SC2-t4-JSy">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
                                         </subviews>
                                         <connections>
                                             <outlet property="authorAvatarWell" destination="AUA-3k-7Zo" id="mMX-wH-mTI"/>
                                             <outlet property="tweetOperationsPanel" destination="keF-c2-Eeb" id="Gla-vn-M2l"/>
                                             <outlet property="tweetTextLabel" destination="RUo-13-Uhb" id="KsU-R1-3o6"/>
-                                            <outlet property="userNameLabel" destination="rT6-rl-xjK" id="789-ne-8mN"/>
+                                            <outlet property="userNameLabel" destination="bD2-rm-Fkf" id="JEY-x6-dTB"/>
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
