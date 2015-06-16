@@ -82,11 +82,8 @@
         [ self.userDisplayNameField setStringValue: self->_twitterUser.displayName ];
         [ self.userScreenNameField setStringValue: self->_twitterUser.screenName ];
 
-        if ( self->_twitterUser.bio )
-            [ self.bioField setStringValue: self->_twitterUser.bio ];
-
-        if ( self->_twitterUser.location )
-            [ self.locationField setStringValue: self->_twitterUser.location ];
+        [ self.bioField setStringValue: self->_twitterUser.bio ?: @"" ];
+        [ self.locationField setStringValue: self->_twitterUser.location ?: @"" ];
 
         [ self.tweetToUserButton setTitle: [ NSString stringWithFormat: @"Tweet to %@", self->_twitterUser.screenName ] ];
 
