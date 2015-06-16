@@ -25,6 +25,7 @@
 #import "TWPTwitterUserProfileView.h"
 #import "TWPNavigationBarController.h"
 #import "TWPCuttingLineView.h"
+#import "TWPUserAvatarWell.h"
 
 @implementation TWPTwitterUserProfileView
 
@@ -79,6 +80,8 @@
         [ self.userScreenNameField setStringValue: self->_twitterUser.screenName ];
 
         [ self.tweetToUserButton setTitle: [ NSString stringWithFormat: @"Tweet to %@", self->_twitterUser.screenName ] ];
+
+        [ self.userAvatar setTwitterUser: self->_twitterUser ];
         }
     }
 
