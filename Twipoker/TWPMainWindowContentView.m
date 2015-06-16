@@ -96,6 +96,12 @@
     return YES;
     }
 
+#pragma mark IBActions
+- ( IBAction ) testAction: ( id )_Sender
+    {
+    NSLog( @"🐓" );
+    }
+
 @end // TWPMainWindowContentView class
 
 /*=============================================================================┐

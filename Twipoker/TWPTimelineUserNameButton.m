@@ -31,7 +31,7 @@
 
 - ( void ) awakeFromNib
     {
-//    self.bordered = NO;
+    self.bordered = NO;
     }
 
 #pragma mark Initialization
@@ -66,11 +66,11 @@
 
 - ( void ) _init
     {
-    self->_fontOfDisplayName = [ [ NSFontManager sharedFontManager ] convertWeight: 2.f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 15.f ] ];
+    self->_fontOfDisplayName = [ [ NSFontManager sharedFontManager ] convertWeight: .8f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 15.f ] ];
     self->_colorOfDisplayName = [ NSColor colorWithHTMLColor: @"4A4A4A" ];
 
     self->_fontOfScreenName = [ [ NSFontManager sharedFontManager ] convertWeight: 2.f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 13.f ] ];
-    self->_colorOfScreenName = [ NSColor colorWithSRGBRed: 152.f / 255 green: 166.f / 255 blue: 178.f / 255 alpha: 1.f ];
+    self->_colorOfScreenName = [ NSColor colorWithHTMLColor: @"A5A5A5" ];
     }
 
 #pragma mark Accessors
@@ -93,9 +93,10 @@
                                              , displayNameStringSizeWithAttrs.width, displayNameStringSizeWithAttrs.height
                                              );
 
-    self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( self->_displayNameStringRect ) + 3.f
-                                            , NSMinY( self.bounds )
-                                            , screenNameStringSizeWithAttrs.width, screenNameStringSizeWithAttrs.height
+    self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( self->_displayNameStringRect ) + 3.f // Just a little tweak
+                                            , NSMinY( self.bounds ) - 1.f // Just a little tweak
+                                            , screenNameStringSizeWithAttrs.width
+                                            , screenNameStringSizeWithAttrs.height
                                             );
 
     self->_screenNameStringRect.origin.y += ( NSHeight( self->_displayNameStringRect ) - NSHeight( self->_screenNameStringRect ) ) / 2;

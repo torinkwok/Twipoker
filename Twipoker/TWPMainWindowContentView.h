@@ -42,6 +42,9 @@
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweenNavBarAndViewsStack;
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweetMainViewAndProfileView;
 
+#pragma mark IBActions
+- ( IBAction ) testAction: ( id )_Sender;
+
 @end // TWPMainWindowContentView class
 
 /*=============================================================================┐
