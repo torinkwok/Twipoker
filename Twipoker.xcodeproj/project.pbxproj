@@ -95,6 +95,8 @@
 		83ADA83D1B1F090D000F7222 /* TWPTweetingCompleteBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADA83C1B1F090D000F7222 /* TWPTweetingCompleteBox.m */; };
 		83ADA8401B1F27DB000F7222 /* TWPCuttingLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADA83F1B1F27DB000F7222 /* TWPCuttingLineView.m */; };
 		83B0C06C1B08E4060093E53E /* _TWPMonitoringUserID.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0C06B1B08E4060093E53E /* _TWPMonitoringUserID.m */; };
+		83B272061B30094600953C28 /* TWPTwitterUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B272041B30094600953C28 /* TWPTwitterUserProfileViewController.m */; };
+		83B272071B30094600953C28 /* TWPTwitterUserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B272051B30094600953C28 /* TWPTwitterUserProfileView.xib */; };
 		83B5550B1B217C0200E354D0 /* TWPBaseTweetingTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5550A1B217C0200E354D0 /* TWPBaseTweetingTextFieldCell.m */; };
 		83B5550E1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B5550D1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.m */; };
 		83B555111B21839F00E354D0 /* TWPTweetingBoxNotificationNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B555101B21839F00E354D0 /* TWPTweetingBoxNotificationNames.m */; };
@@ -384,6 +386,9 @@
 		83ADA83F1B1F27DB000F7222 /* TWPCuttingLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPCuttingLineView.m; path = Twipoker/TWPCuttingLineView.m; sourceTree = "<group>"; };
 		83B0C06A1B08E4060093E53E /* _TWPMonitoringUserID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TWPMonitoringUserID.h; sourceTree = "<group>"; };
 		83B0C06B1B08E4060093E53E /* _TWPMonitoringUserID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TWPMonitoringUserID.m; sourceTree = "<group>"; };
+		83B272031B30094600953C28 /* TWPTwitterUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTwitterUserProfileViewController.h; path = Twipoker/TWPTwitterUserProfileViewController.h; sourceTree = "<group>"; };
+		83B272041B30094600953C28 /* TWPTwitterUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTwitterUserProfileViewController.m; path = Twipoker/TWPTwitterUserProfileViewController.m; sourceTree = "<group>"; };
+		83B272051B30094600953C28 /* TWPTwitterUserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPTwitterUserProfileView.xib; path = Twipoker/TWPTwitterUserProfileView.xib; sourceTree = "<group>"; };
 		83B555091B217C0200E354D0 /* TWPBaseTweetingTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPBaseTweetingTextFieldCell.h; path = Twipoker/TWPBaseTweetingTextFieldCell.h; sourceTree = "<group>"; };
 		83B5550A1B217C0200E354D0 /* TWPBaseTweetingTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPBaseTweetingTextFieldCell.m; path = Twipoker/TWPBaseTweetingTextFieldCell.m; sourceTree = "<group>"; };
 		83B5550C1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPCompleteTweetingTextFieldCell.h; path = Twipoker/TWPCompleteTweetingTextFieldCell.h; sourceTree = "<group>"; };
@@ -681,6 +686,7 @@
 				83F231B01AE1147A00A05D1D /* TWPMainWindow.m */,
 				8347B7CF1AE799FF003A49AD /* Dashboard */,
 				830B8F601AF0DF72006D2635 /* Stack Content View */,
+				83B272021B3008BE00953C28 /* User Profile */,
 				8347B7CE1AE7999F003A49AD /* Timeline */,
 				83ADA82F1B1F04F3000F7222 /* Tweeting Box */,
 			);
@@ -929,6 +935,24 @@
 				83B0C06B1B08E4060093E53E /* _TWPMonitoringUserID.m */,
 			);
 			name = private;
+			sourceTree = "<group>";
+		};
+		83B272021B3008BE00953C28 /* User Profile */ = {
+			isa = PBXGroup;
+			children = (
+				83B272081B30095900953C28 /* xib */,
+				83B272031B30094600953C28 /* TWPTwitterUserProfileViewController.h */,
+				83B272041B30094600953C28 /* TWPTwitterUserProfileViewController.m */,
+			);
+			name = "User Profile";
+			sourceTree = "<group>";
+		};
+		83B272081B30095900953C28 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				83B272051B30094600953C28 /* TWPTwitterUserProfileView.xib */,
+			);
+			name = xib;
 			sourceTree = "<group>";
 		};
 		83C07A851AF221ED00184CCB /* tabs */ = {
@@ -1466,6 +1490,7 @@
 				83D3FF231ACB144B009D40EE /* Credits.rtf in Resources */,
 				83CFD89A1ACF1FFD0062D73D /* icon_128x128.png in Resources */,
 				83CFD8741ACF1C820062D73D /* TWPLoginPanel.xib in Resources */,
+				83B272071B30094600953C28 /* TWPTwitterUserProfileView.xib in Resources */,
 				83C21D991B2B076C00188BB2 /* me-tab.png in Resources */,
 				83D3FF291ACB144B009D40EE /* TWPMainMenu.xib in Resources */,
 				83AAF6D31AECE8C7007A3A48 /* TWPTimeline.xib in Resources */,
@@ -1544,6 +1569,7 @@
 				83D8FFD61B245A7C00D1F825 /* TWPRetweetOperationsViewController.m in Sources */,
 				83AAF6D11AECE801007A3A48 /* TWPTimelineTableView.m in Sources */,
 				83D12E901AEFE322009ECC13 /* TWPTwitterUserView.m in Sources */,
+				83B272061B30094600953C28 /* TWPTwitterUserProfileViewController.m in Sources */,
 				8338CD801AE3C8AA00370C10 /* TWPLogin+TWPLoginUsersManager.m in Sources */,
 				83C3DABE1B133AC6005973EE /* TWPTimelineViewController.m in Sources */,
 				83D3FF261ACB144B009D40EE /* TWPAppDelegate.m in Sources */,
