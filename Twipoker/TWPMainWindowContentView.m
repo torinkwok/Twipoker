@@ -28,11 +28,11 @@
 #import "TWPNavigationBarController.h"
 #import "TWPStackContentView.h"
 #import "TWPStackContentViewController.h"
-#import "TWPTwitterUserProfileViewController.h"
 
 #import "TWPTweetingBoxNotificationNames.h"
 #import "TWPCuttingLineView.h"
 #import "TWPTweetingCompleteBox.h"
+#import "TWPTimelineUserNameButton.h"
 
 // Private Interfaces
 @interface TWPMainWindowContentView ()
@@ -44,16 +44,13 @@
 
 @synthesize navigationBarController;
 @synthesize stackContentViewController;
-@synthesize twitterUserProfileViewController;
 
 @synthesize cuttingLineBetweenNavBarAndViewsStack;
-@synthesize cuttingLineBetweetMainViewAndProfileView;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
     {
     [ self _setUpSubviews ];
-    NSLog( @"%@", self.twitterUserProfileViewController.view );
     }
 
 #pragma mark Custom Drawing
@@ -94,12 +91,6 @@
 - ( BOOL ) isFlipped
     {
     return YES;
-    }
-
-#pragma mark IBActions
-- ( IBAction ) testAction: ( id )_Sender
-    {
-    NSLog( @"🐓" );
     }
 
 @end // TWPMainWindowContentView class

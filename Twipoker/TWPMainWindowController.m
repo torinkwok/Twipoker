@@ -24,9 +24,18 @@
 
 #import "TWPMainWindowController.h"
 #import "TWPLoginUsersManager.h"
+#import "TWPTwitterUserProfileViewController.h"
+#import "TWPTwitterUserProfileView.h"
+#import "TWPCuttingLineView.h"
+#import "TWPTimelineUserNameButton.h"
 
 // TWPMainWindowController class
 @implementation TWPMainWindowController
+
+@synthesize tweetTextField;
+
+@synthesize twitterUserProfileViewController;
+@synthesize cuttingLineBetweetMainViewAndProfileView;
 
 #pragma mark Initializers
 + ( instancetype ) mainWindowController
@@ -48,6 +57,18 @@
 - ( void ) awakeFromNib
     {
     // TODO:
+    }
+
+#pragma mark IBActions
+- ( IBAction ) testAction: ( id )_Sender
+    {
+    OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameButton* )_Sender twitterUser ];
+    [ self.twitterUserProfileViewController setTwitterUser: twitterUser ];
+
+    TWPTwitterUserProfileView* profileView = ( TWPTwitterUserProfileView* )( self.twitterUserProfileViewController.view );
+    NSRect newWindowFrame = [ self.window frame ];
+    newWindowFrame.size.width += ( NSWidth( self.cuttingLineBetweetMainViewAndProfileView.bounds ) + NSWidth( profileView.bounds ) );
+    [ self.window setFrame: newWindowFrame display: YES ];
     }
 
 @end // TWPMainWindowController

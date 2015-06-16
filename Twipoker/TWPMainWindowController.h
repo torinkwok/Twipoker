@@ -24,12 +24,21 @@
 
 @import Cocoa;
 
+@class TWPTwitterUserProfileViewController;
+@class TWPCuttingLineView;
+
 // TWPMainWindowController class
 @interface TWPMainWindowController : NSWindowController
 
 @property ( weak ) IBOutlet NSTextField* tweetTextField;
 
+@property ( weak ) IBOutlet TWPTwitterUserProfileViewController* twitterUserProfileViewController;
+@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweetMainViewAndProfileView;
+
 + ( instancetype ) mainWindowController;
+
+#pragma mark IBActions
+- ( IBAction ) testAction: ( id )_Sender;
 
 @end // TWPMainWindowController
 

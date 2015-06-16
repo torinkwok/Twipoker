@@ -26,24 +26,19 @@
 
 @class TWPNavigationBarController;
 @class TWPStackContentViewController;
-@class TWPTwitterUserProfileViewController;
 
 @class TWPCuttingLineView;
 @class TWPTweetingBaseBox;
 @class TWPTweetingCompleteBox;
+@class TWPTimelineUserNameButton;
 
 // TWPMainWindowContentView class
 @interface TWPMainWindowContentView : NSView
 
 @property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
 @property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
-@property ( weak ) IBOutlet TWPTwitterUserProfileViewController* twitterUserProfileViewController;
 
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweenNavBarAndViewsStack;
-@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweetMainViewAndProfileView;
-
-#pragma mark IBActions
-- ( IBAction ) testAction: ( id )_Sender;
 
 @end // TWPMainWindowContentView class
 
