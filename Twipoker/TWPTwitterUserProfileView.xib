@@ -77,13 +77,6 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJp-VF-AaL">
-                    <rect key="frame" x="38" y="55" width="274" height="50"/>
-                    <buttonCell key="cell" type="smallSquare" title="I don’t like this guy" bezelStyle="smallSquare" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zk2-6H-86b">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVc-30-vWq">
                     <rect key="frame" x="17" y="719" width="69" height="32"/>
                     <buttonCell key="cell" type="push" title="Hide" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6tP-de-zA1">
@@ -91,9 +84,13 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oeb-Tp-b4p" customClass="TWPCuttingLineView">
-                    <rect key="frame" x="0.0" y="705" width="350" height="1"/>
-                </customView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJp-VF-AaL">
+                    <rect key="frame" x="38" y="82" width="123" height="23"/>
+                    <buttonCell key="cell" type="smallSquare" title="I don’t like this guy" bezelStyle="smallSquare" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zk2-6H-86b">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <connections>
                 <outlet property="addOrRemoveFromListsButton" destination="NTB-wV-AH6" id="WZl-hl-Tek"/>
@@ -110,6 +107,11 @@
                 <outlet property="userScreenNameField" destination="bP3-nf-bot" id="zOO-aT-MxZ"/>
             </connections>
             <point key="canvasLocation" x="142" y="529.5"/>
+        </customView>
+        <customView id="Oeb-Tp-b4p" customClass="TWPCuttingLineView">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="1"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <point key="canvasLocation" x="612" y="230.5"/>
         </customView>
     </objects>
 </document>

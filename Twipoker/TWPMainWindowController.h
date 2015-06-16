@@ -26,11 +26,12 @@
 
 @class TWPTwitterUserProfileViewController;
 @class TWPCuttingLineView;
+@class TWPNavigationBarController;
 
 // TWPMainWindowController class
 @interface TWPMainWindowController : NSWindowController
 
-@property ( weak ) IBOutlet NSTextField* tweetTextField;
+@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
 
 @property ( weak ) IBOutlet TWPTwitterUserProfileViewController* twitterUserProfileViewController;
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweetMainViewAndProfileView;
@@ -38,7 +39,7 @@
 + ( instancetype ) mainWindowController;
 
 #pragma mark IBActions
-- ( IBAction ) testAction: ( id )_Sender;
+- ( IBAction ) showUserProfileAction: ( id )_Sender;
 
 @end // TWPMainWindowController
 

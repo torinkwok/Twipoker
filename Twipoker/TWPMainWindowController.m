@@ -28,11 +28,12 @@
 #import "TWPTwitterUserProfileView.h"
 #import "TWPCuttingLineView.h"
 #import "TWPTimelineUserNameButton.h"
+#import "TWPNavigationBarController.h"
 
 // TWPMainWindowController class
 @implementation TWPMainWindowController
 
-@synthesize tweetTextField;
+@synthesize navigationBarController;
 
 @synthesize twitterUserProfileViewController;
 @synthesize cuttingLineBetweetMainViewAndProfileView;
@@ -56,16 +57,32 @@
 #pragma mark Conforms <NSNibAwaking> protocol
 - ( void ) awakeFromNib
     {
-    // TODO:
+    self.twitterUserProfileViewController.navigationBarController = self.navigationBarController;
     }
 
 #pragma mark IBActions
-- ( IBAction ) testAction: ( id )_Sender
+- ( IBAction ) showUserProfileAction: ( id )_Sender
     {
     OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameButton* )_Sender twitterUser ];
     [ self.twitterUserProfileViewController setTwitterUser: twitterUser ];
 
+    NSRect frameOfCuttingLine = NSMakeRect( NSMaxX( self.navigationBarController.view.frame ), 0.f
+                                          , NSWidth( self.cuttingLineBetweetMainViewAndProfileView.bounds )
+                                          , NSHeight( self.cuttingLineBetweetMainViewAndProfileView.bounds )
+                                          );
+
+    [ self.cuttingLineBetweetMainViewAndProfileView setFrame: frameOfCuttingLine ];
+    [ self.window.contentView addSubview: self.cuttingLineBetweetMainViewAndProfileView ];
+
     TWPTwitterUserProfileView* profileView = ( TWPTwitterUserProfileView* )( self.twitterUserProfileViewController.view );
+    NSRect frameOfProfileView = NSMakeRect( NSMaxX( self.cuttingLineBetweetMainViewAndProfileView.frame ), 0.f
+                                          , NSWidth( profileView.bounds )
+                                          , NSHeight( profileView.bounds )
+                                          );
+
+    [ profileView setFrame: frameOfProfileView ];
+    [ self.window.contentView addSubview: profileView ];
+
     NSRect newWindowFrame = [ self.window frame ];
     newWindowFrame.size.width += ( NSWidth( self.cuttingLineBetweetMainViewAndProfileView.bounds ) + NSWidth( profileView.bounds ) );
     [ self.window setFrame: newWindowFrame display: YES ];

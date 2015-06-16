@@ -23,6 +23,8 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTwitterUserProfileView.h"
+#import "TWPNavigationBarController.h"
+#import "TWPCuttingLineView.h"
 
 @implementation TWPTwitterUserProfileView
 
@@ -51,6 +53,15 @@
 - ( void ) setNavigationBarController: ( TWPNavigationBarController* )_NavigationBarController
     {
     self->_navigationBarController = _NavigationBarController;
+
+    NSRect newFrameOfCuttingLine = NSMakeRect( NSMinX( self.cuttingLineView.frame )
+                                             , NSHeight( self->_navigationBarController.view.frame )
+                                             , NSWidth( self.cuttingLineView.bounds )
+                                             , NSHeight( self.cuttingLineView.bounds )
+                                             );
+
+    [ self.cuttingLineView setFrame: newFrameOfCuttingLine ];
+    [ self addSubview: self.cuttingLineView ];
     }
 
 - ( TWPNavigationBarController* ) navigationBarController
@@ -81,6 +92,11 @@
     {
     [ [ NSColor whiteColor ] set ];
     NSRectFill( _DirtyRect );
+    }
+
+- ( BOOL ) isFlipped
+    {
+    return YES;
     }
 
 @end
