@@ -33,6 +33,11 @@
     self.styleMask |= NSFullSizeContentViewWindowMask;
     }
 
+- ( NSTimeInterval ) animationResizeTime: ( NSRect )_NewFrame
+    {
+    return ( NSTimeInterval ).15f;
+    }
+
 @end
 
 /*=============================================================================┐

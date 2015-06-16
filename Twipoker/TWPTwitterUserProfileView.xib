@@ -20,9 +20,9 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="re4-eg-PW4"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLL-U4-xeU">
-                    <rect key="frame" x="112" y="661" width="148" height="17"/>
+                    <rect key="frame" x="112" y="661" width="171" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="薛定谔的月饼" id="i7R-gq-xVE">
-                        <font key="font" size="13" name="STHeitiSC-Light"/>
+                        <font key="font" size="16" name="LucidaGrande"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -31,7 +31,7 @@
                     <rect key="frame" x="112" y="631" width="148" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="@NSTongG" id="dO5-Ok-MTK">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" red="0.58423030376434326" green="0.5842127799987793" blue="0.58422267436981201" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -83,6 +83,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="hideUserPorfileAction:" target="-1" id="Srd-m0-WLr"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJp-VF-AaL">
                     <rect key="frame" x="38" y="82" width="123" height="23"/>

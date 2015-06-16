@@ -30,6 +30,12 @@
 
 // TWPMainWindowController class
 @interface TWPMainWindowController : NSWindowController
+    {
+@private
+    BOOL _isShowingProfile;
+
+    NSRect _initialFrame;
+    }
 
 @property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
 
@@ -40,6 +46,7 @@
 
 #pragma mark IBActions
 - ( IBAction ) showUserProfileAction: ( id )_Sender;
+- ( IBAction ) hideUserPorfileAction: ( id )_Sender;
 
 @end // TWPMainWindowController
 
