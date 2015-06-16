@@ -39,7 +39,6 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
     NSArray __strong* _dashboardTabIcons;
     }
 
-@property ( weak ) IBOutlet TWPDashboardView* dashboardView;
 @property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
 
 @property ( weak ) IBOutlet TWPViewsStack* homeDashboardStack;
