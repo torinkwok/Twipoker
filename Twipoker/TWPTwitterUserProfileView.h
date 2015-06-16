@@ -43,6 +43,9 @@
 @property ( weak ) IBOutlet TWPUserAvatarWell* userAvatar;
 @property ( weak ) IBOutlet NSTextField* userDisplayNameField;
 @property ( weak ) IBOutlet NSTextField* userScreenNameField;
+@property ( weak ) IBOutlet NSTextField* bioField;
+@property ( weak ) IBOutlet NSTextField* locationField;
+@property ( weak ) IBOutlet NSTextField* homePageField;
 
 @property ( weak ) IBOutlet NSButton* tweetsCountButton;
 @property ( weak ) IBOutlet NSButton* followersCountButton;

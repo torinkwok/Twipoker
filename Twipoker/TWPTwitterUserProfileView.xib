@@ -94,14 +94,41 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J5l-uj-Seg">
+                    <rect key="frame" x="38" y="557" width="276" height="74"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Independent Macintosh Developer ❤️ Born in 1997 - Against stupidity the gods themselves contend in vain" id="R4O-Ww-lEx">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E5e-dD-u6d">
+                    <rect key="frame" x="37" y="521" width="276" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="/var/tmp/p-r-c" id="sxs-y2-N2b">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWu-Rg-NL1">
+                    <rect key="frame" x="37" y="494" width="276" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="nstongg.tumblr.com" id="JUq-nc-mxg">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <connections>
                 <outlet property="addOrRemoveFromListsButton" destination="NTB-wV-AH6" id="WZl-hl-Tek"/>
+                <outlet property="bioField" destination="J5l-uj-Seg" id="wsD-jU-pbJ"/>
                 <outlet property="cuttingLineView" destination="Oeb-Tp-b4p" id="BIg-48-lYd"/>
                 <outlet property="followersCountButton" destination="XGI-9M-NLB" id="arj-HE-DV8"/>
                 <outlet property="followingCountButton" destination="dEO-M5-GuU" id="7Je-81-Fn9"/>
                 <outlet property="hideButton" destination="ZVc-30-vWq" id="eUM-IZ-suv"/>
+                <outlet property="homePageField" destination="yWu-Rg-NL1" id="kdW-3L-YYr"/>
                 <outlet property="iDoNotLikeThisGuyButton" destination="jJp-VF-AaL" id="LGl-I1-x1g"/>
+                <outlet property="locationField" destination="E5e-dD-u6d" id="cWS-CM-YKe"/>
                 <outlet property="sendADirectMessageButton" destination="Goc-hg-YQJ" id="lee-dB-fG5"/>
                 <outlet property="tweetToUserButton" destination="YDB-eI-H5l" id="H89-C1-Qgy"/>
                 <outlet property="tweetsCountButton" destination="5e1-JZ-Xdw" id="E6G-9H-RX6"/>
