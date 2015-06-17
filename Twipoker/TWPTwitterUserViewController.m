@@ -23,24 +23,11 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTwitterUserViewController.h"
-#import "TWPTwitterUserView.h"
 #import "TWPLoginUsersManager.h"
 
 @implementation TWPTwitterUserViewController
 
 @synthesize twitterUser = _twitterUser;
-
-@dynamic twitterUserView;
-
-- ( void ) setTwitterUserView: ( TWPTwitterUserView* )_TwitterUserView
-    {
-    [ self setView: _TwitterUserView ];
-    }
-
-- ( TWPTwitterUserView* ) twitterUserView
-    {
-    return ( TWPTwitterUserView* )self.view;
-    }
 
 #pragma mark Initialization
 + ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
@@ -53,14 +40,13 @@
     if ( !_TwitterUser )
         return nil;
 
-    if ( self = [ super initWithNibName: @"TWPTwitterUserView" bundle: [ NSBundle mainBundle ] ] )
+    if ( self = [ super initWithNibName: @"TWPTimeline" bundle: [ NSBundle mainBundle ] ] )
         {
         self->_twitterUser = _TwitterUser;
 
         [ [ TWPBrain wiseBrain ] registerLimb: self forUserIDs: @[ _TwitterUser.IDString ] brainSignal: TWPBrainSignalTypeNewTweetMask | TWPBrainSignalTypeTweetDeletionMask ];
 
-        [ self.twitterUserView setTwitterUser: _TwitterUser ];
-        [ self.twitterAPI getUserTimelineWithScreenName: self.twitterUserView.twitterUser.screenName
+        [ self.twitterAPI getUserTimelineWithScreenName: self->_twitterUser.screenName
                                                   count: self.numberOfTweetsWillBeLoadedOnce
                                            successBlock:
             ^( NSArray* _TweetObjects )
@@ -102,7 +88,7 @@
         self.isLoadingOlderTweets = YES;
         NSLog( @"%s", __PRETTY_FUNCTION__ );
 
-        [ self.twitterAPI getStatusesUserTimelineForUserID: self.twitterUserView.twitterUser.IDString
+        [ self.twitterAPI getStatusesUserTimelineForUserID: self->_twitterUser.IDString
                                                 screenName: nil
                                                    sinceID: nil
                                                      count: @( self.numberOfTweetsWillBeLoadedOnce ).stringValue

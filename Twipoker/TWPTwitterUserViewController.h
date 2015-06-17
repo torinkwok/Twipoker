@@ -27,8 +27,6 @@
 #import "TWPTimelineViewController.h"
 #import "TWPTimelineScrollView.h"
 
-@class TWPTwitterUserView;
-
 @interface TWPTwitterUserViewController : TWPTimelineViewController
     {
 @private
@@ -36,7 +34,6 @@
     }
 
 @property ( strong, readonly /* TODO: make this property read-write */ ) OTCTwitterUser* twitterUser;
-@property ( weak, readwrite ) TWPTwitterUserView* twitterUserView;
 
 + ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
