@@ -169,7 +169,7 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
     {
-    OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameButton* )_Sender twitterUser ];
+    OTCTwitterUser* twitterUser = [ _Sender twitterUser ];
 
     NSViewController* twitterUserViewNewController =
         [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];
@@ -179,10 +179,10 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( IBAction ) pushRepliesTimleineToCurrentViewsStackAction: ( id )_Sender
     {
-    NSViewController* newRepliesTimelineViewController =
-        [ TWPRepliesTimelineViewController repliesTimelineViewControllerWithTweet: [ ( TWPTweetTextField* )_Sender tweet ] ];
-
-    [ self _pushViewIntoViewsStack: newRepliesTimelineViewController ];
+//    NSViewController* newRepliesTimelineViewController =
+//        [ TWPRepliesTimelineViewController repliesTimelineViewControllerWithTweet: [ ( TWPTweetTextField* )_Sender tweet ] ];
+//
+//    [ self _pushViewIntoViewsStack: newRepliesTimelineViewController ];
     }
 
 - ( IBAction ) pushTwitterListTimelineToCurrentViewsStackAction: ( id )_Sender

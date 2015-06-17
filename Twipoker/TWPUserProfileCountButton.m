@@ -22,86 +22,18 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTwitterUserProfileView.h"
-#import "TWPNavigationBarController.h"
-#import "TWPCuttingLineView.h"
-#import "TWPUserAvatarWell.h"
 #import "TWPUserProfileCountButton.h"
 
-@implementation TWPTwitterUserProfileView
-
-@dynamic refNavBarController;
-
-@synthesize hideButton;
-@synthesize cuttingLineView;
-
-@synthesize userAvatar;
-@synthesize userDisplayNameField;
-@synthesize userScreenNameField;
-@synthesize bioField;
-@synthesize locationField;
-@synthesize websiteField;
-
-@synthesize tweetsCountButton;
-@synthesize followersCountButton;
-@synthesize followingCountButton;
-
-@synthesize tweetToUserButton;
-@synthesize sendADirectMessageButton;
-@synthesize addOrRemoveFromListsButton;
-
-@synthesize iDoNotLikeThisGuyButton;
+@implementation TWPUserProfileCountButton
 
 @dynamic twitterUser;
 
-- ( void ) awakeFromNib
-    {
-    [ self.tweetsCountButton setCountButtonType: TWPUserProfileCountButtonTypeTweets ];
-    [ self.followersCountButton setCountButtonType: TWPUserProfileCountButtonTypeFollowers ];
-    [ self.followingCountButton setCountButtonType: TWPUserProfileCountButtonTypeFollowing ];
-    }
-
 #pragma mark Dynamic Accessors
-- ( void ) setRefNavBarController: ( TWPNavigationBarController* )_NavigationBarController
-    {
-    self->_refNavBarController = _NavigationBarController;
-
-    NSRect newFrameOfCuttingLine = NSMakeRect( NSMinX( self.cuttingLineView.frame )
-                                             , NSHeight( self->_refNavBarController.view.frame )
-                                             , NSWidth( self.cuttingLineView.bounds )
-                                             , NSHeight( self.cuttingLineView.bounds )
-                                             );
-
-    [ self.cuttingLineView setFrame: newFrameOfCuttingLine ];
-    [ self addSubview: self.cuttingLineView ];
-    }
-
-- ( TWPNavigationBarController* ) refNavBarController
-    {
-    return self->_refNavBarController;
-    }
-
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
     self->_twitterUser = _TwitterUser;
 
-    if ( self->_twitterUser )
-        {
-        [ self.userDisplayNameField setStringValue: self->_twitterUser.displayName ];
-        [ self.userScreenNameField setStringValue: self->_twitterUser.screenName ];
-
-        [ self.bioField setStringValue: self->_twitterUser.bio ?: @"" ];
-        [ self.locationField setStringValue: self->_twitterUser.location ?: @"" ];
-        [ self.websiteField setStringValue: self->_twitterUser.website.displayText ?: @"" ];
-
-        [ self.tweetsCountButton setTwitterUser: self->_twitterUser ];
-        [ self.followersCountButton setTwitterUser: self->_twitterUser ];
-        [ self.followingCountButton setTwitterUser: self->_twitterUser ];
-
-        [ self.tweetToUserButton setTitle: [ NSString stringWithFormat: @"Tweet to %@", self->_twitterUser.screenName ] ];
-
-        [ self.userAvatar setTwitterUser: self->_twitterUser ];
-        }
+    // TODO:
     }
 
 - ( OTCTwitterUser* ) twitterUser
@@ -112,13 +44,9 @@
 #pragma mark Custom Drawing
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    [ [ NSColor whiteColor ] set ];
-    NSRectFill( _DirtyRect );
-    }
-
-- ( BOOL ) isFlipped
-    {
-    return YES;
+    [ super drawRect: _DirtyRect ];
+    
+    // Drawing code here.
     }
 
 @end

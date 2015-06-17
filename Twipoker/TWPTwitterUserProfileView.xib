@@ -35,21 +35,24 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-JZ-Xdw">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-JZ-Xdw" customClass="TWPUserProfileCountButton">
                     <rect key="frame" x="38" y="430" width="274" height="50"/>
                     <buttonCell key="cell" type="smallSquare" title="Tweets" bezelStyle="smallSquare" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="afl-8c-f6n">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="mUa-gW-AIa"/>
+                    </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGI-9M-NLB">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGI-9M-NLB" customClass="TWPUserProfileCountButton">
                     <rect key="frame" x="38" y="385" width="274" height="48"/>
                     <buttonCell key="cell" type="smallSquare" title="Followers" bezelStyle="smallSquare" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uAp-hs-7dU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-M5-GuU">
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-M5-GuU" customClass="TWPUserProfileCountButton">
                     <rect key="frame" x="38" y="338" width="274" height="50"/>
                     <buttonCell key="cell" type="smallSquare" title="Following" bezelStyle="smallSquare" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vQz-eQ-bZA">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

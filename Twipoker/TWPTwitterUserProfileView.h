@@ -27,6 +27,7 @@
 @class TWPUserAvatarWell;
 @class TWPCuttingLineView;
 @class TWPNavigationBarController;
+@class TWPUserProfileCountButton;
 
 @interface TWPTwitterUserProfileView : NSView
     {
@@ -47,9 +48,9 @@
 @property ( weak ) IBOutlet NSTextField* locationField;
 @property ( weak ) IBOutlet NSTextField* websiteField;
 
-@property ( weak ) IBOutlet NSButton* tweetsCountButton;
-@property ( weak ) IBOutlet NSButton* followersCountButton;
-@property ( weak ) IBOutlet NSButton* followingCountButton;
+@property ( weak ) IBOutlet TWPUserProfileCountButton* tweetsCountButton;
+@property ( weak ) IBOutlet TWPUserProfileCountButton* followersCountButton;
+@property ( weak ) IBOutlet TWPUserProfileCountButton* followingCountButton;
 
 @property ( weak ) IBOutlet NSButton* tweetToUserButton;
 @property ( weak ) IBOutlet NSButton* sendADirectMessageButton;
