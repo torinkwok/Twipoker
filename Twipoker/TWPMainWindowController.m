@@ -55,7 +55,7 @@
 #pragma mark Conforms <NSNibAwaking> protocol
 - ( void ) awakeFromNib
     {
-    self.twitterUserProfileViewController.navigationBarController = self.navigationBarController;
+    self.twitterUserProfileViewController.refNavBarController = self.navigationBarController;
     self->_initialFrame = self.window.frame;
     }
 

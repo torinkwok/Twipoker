@@ -31,11 +31,11 @@
 @interface TWPTwitterUserProfileView : NSView
     {
 @private
-    TWPNavigationBarController __weak* _navigationBarController;
+    TWPNavigationBarController __weak* _refNavBarController;
     OTCTwitterUser __strong* _twitterUser;
     }
 
-@property ( weak ) TWPNavigationBarController* navigationBarController;
+@property ( weak ) TWPNavigationBarController* refNavBarController;
 
 @property ( weak ) IBOutlet NSButton* hideButton;
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineView;

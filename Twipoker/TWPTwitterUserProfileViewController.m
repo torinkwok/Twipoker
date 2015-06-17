@@ -34,14 +34,14 @@
 // TWPTwitterUserProfileViewController class
 @implementation TWPTwitterUserProfileViewController
 
-@dynamic navigationBarController;
+@dynamic refNavBarController;
 @dynamic twitterUser;
 
 #pragma mark Initializations
 + ( instancetype ) prifileViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
-                                   consultNavigationBar: ( TWPNavigationBarController* )_NavigationBarController
+                                   consultNavigationBar: ( TWPNavigationBarController* )_NavBarController
     {
-    return [ [ [ self class ] alloc ] initWithTwitterUser: _TwitterUser consultNavigationBar: _NavigationBarController ];
+    return [ [ [ self class ] alloc ] initWithTwitterUser: _TwitterUser consultNavigationBar: _NavBarController ];
     }
 
 - ( instancetype ) initWithCoder: ( NSCoder* )_Coder
@@ -50,12 +50,12 @@
     }
 
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
-                  consultNavigationBar: ( TWPNavigationBarController* )_NavigationBarController
+                  consultNavigationBar: ( TWPNavigationBarController* )_NavBarController
     {
     if ( self = [ super initWithNibName: @"TWPTwitterUserProfileView" bundle: [ NSBundle mainBundle ] ] )
         {
         [ [ self _profileView ] setTwitterUser: _TwitterUser ];
-        [ [ self _profileView ] setNavigationBarController: _NavigationBarController ];
+        [ [ self _profileView ] setRefNavBarController: _NavBarController ];
         }
 
     return self;
@@ -68,14 +68,14 @@
     }
 
 #pragma mark Dynamic Accessors
-- ( void ) setNavigationBarController: ( TWPNavigationBarController* )_NavigationBarController
+- ( void ) setRefNavBarController: ( TWPNavigationBarController* )_NavBarController
     {
-    [ [ self _profileView ] setNavigationBarController: _NavigationBarController ];
+    [ [ self _profileView ] setRefNavBarController: _NavBarController ];
     }
 
-- ( TWPNavigationBarController* ) navigationBarController
+- ( TWPNavigationBarController* ) refNavBarController
     {
-    return [ [ self _profileView ] navigationBarController ];
+    return [ [ self _profileView ] refNavBarController ];
     }
 
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser

@@ -29,7 +29,7 @@
 
 @implementation TWPTwitterUserProfileView
 
-@dynamic navigationBarController;
+@dynamic refNavBarController;
 
 @synthesize hideButton;
 @synthesize cuttingLineView;
@@ -54,12 +54,12 @@
 @dynamic twitterUser;
 
 #pragma mark Dynamic Accessors
-- ( void ) setNavigationBarController: ( TWPNavigationBarController* )_NavigationBarController
+- ( void ) setRefNavBarController: ( TWPNavigationBarController* )_NavigationBarController
     {
-    self->_navigationBarController = _NavigationBarController;
+    self->_refNavBarController = _NavigationBarController;
 
     NSRect newFrameOfCuttingLine = NSMakeRect( NSMinX( self.cuttingLineView.frame )
-                                             , NSHeight( self->_navigationBarController.view.frame )
+                                             , NSHeight( self->_refNavBarController.view.frame )
                                              , NSWidth( self.cuttingLineView.bounds )
                                              , NSHeight( self.cuttingLineView.bounds )
                                              );
@@ -68,9 +68,9 @@
     [ self addSubview: self.cuttingLineView ];
     }
 
-- ( TWPNavigationBarController* ) navigationBarController
+- ( TWPNavigationBarController* ) refNavBarController
     {
-    return self->_navigationBarController;
+    return self->_refNavBarController;
     }
 
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
