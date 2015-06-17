@@ -126,7 +126,6 @@
                 <outlet property="followersCountButton" destination="XGI-9M-NLB" id="arj-HE-DV8"/>
                 <outlet property="followingCountButton" destination="dEO-M5-GuU" id="7Je-81-Fn9"/>
                 <outlet property="hideButton" destination="ZVc-30-vWq" id="eUM-IZ-suv"/>
-                <outlet property="homePageField" destination="yWu-Rg-NL1" id="kdW-3L-YYr"/>
                 <outlet property="iDoNotLikeThisGuyButton" destination="jJp-VF-AaL" id="LGl-I1-x1g"/>
                 <outlet property="locationField" destination="E5e-dD-u6d" id="cWS-CM-YKe"/>
                 <outlet property="sendADirectMessageButton" destination="Goc-hg-YQJ" id="lee-dB-fG5"/>
@@ -135,6 +134,7 @@
                 <outlet property="userAvatar" destination="k5N-4k-za8" id="VOI-Ne-vEP"/>
                 <outlet property="userDisplayNameField" destination="LLL-U4-xeU" id="nUe-l3-HW1"/>
                 <outlet property="userScreenNameField" destination="bP3-nf-bot" id="zOO-aT-MxZ"/>
+                <outlet property="websiteField" destination="yWu-Rg-NL1" id="kdW-3L-YYr"/>
             </connections>
             <point key="canvasLocation" x="142" y="529.5"/>
         </customView>

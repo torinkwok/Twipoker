@@ -39,7 +39,7 @@
 @synthesize userScreenNameField;
 @synthesize bioField;
 @synthesize locationField;
-@synthesize homePageField;
+@synthesize websiteField;
 
 @synthesize tweetsCountButton;
 @synthesize followersCountButton;
@@ -84,7 +84,7 @@
 
         [ self.bioField setStringValue: self->_twitterUser.bio ?: @"" ];
         [ self.locationField setStringValue: self->_twitterUser.location ?: @"" ];
-        [ self.homePageField setStringValue: self->_twitterUser.website.displayText ?: @"" ];
+        [ self.websiteField setStringValue: self->_twitterUser.website.displayText ?: @"" ];
 
         [ self.tweetToUserButton setTitle: [ NSString stringWithFormat: @"Tweet to %@", self->_twitterUser.screenName ] ];
 

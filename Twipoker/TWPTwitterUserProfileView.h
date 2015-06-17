@@ -45,7 +45,7 @@
 @property ( weak ) IBOutlet NSTextField* userScreenNameField;
 @property ( weak ) IBOutlet NSTextField* bioField;
 @property ( weak ) IBOutlet NSTextField* locationField;
-@property ( weak ) IBOutlet NSTextField* homePageField;
+@property ( weak ) IBOutlet NSTextField* websiteField;
 
 @property ( weak ) IBOutlet NSButton* tweetsCountButton;
 @property ( weak ) IBOutlet NSButton* followersCountButton;
