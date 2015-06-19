@@ -27,6 +27,7 @@
 #import "TWPTimelineUserNameButton.h"
 #import "TWPTweetTextField.h"
 #import "TWPTweetOperationsPanelView.h"
+#import "TWPActionNotifications.h"
 
 // Notification Names
 NSString* const TWPTweetCellViewShouldDisplayDetailOfTweet = @"TweetCellView.Notif.ShouldDisplayDetailOfTweet";
@@ -100,9 +101,22 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     return hitTestView;
     }
 
-- ( IBAction ) displayUserProfilePanelAction: ( id )_Sender
+#pragma mark IBAction
+- ( IBAction ) userNameLabelClickedAction: ( id )_Sender
     {
-    NSLog( @"🚀" );
+    [ self _postNotifForShowingUserProfile ];
+    }
+
+- ( IBAction ) userAvatarClickedAction: ( id )_Sender
+    {
+    [ self _postNotifForShowingUserProfile ];
+    }
+
+- ( void ) _postNotifForShowingUserProfile
+    {
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
+                                                           object: self
+                                                         userInfo: @{ kTwitterUser : self.author } ];
     }
 
 @end

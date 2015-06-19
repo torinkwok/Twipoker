@@ -96,10 +96,14 @@
     }
 
 #pragma mark IBActions
+- ( IBAction ) hideUserProfileButtonClicked: ( id )_Sender
+    {
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldHideUserProfile
+                                                           object: self ];
+    }
+
 - ( IBAction ) showTweetsButtonClicked: ( id )_Sender
     {
-    NSLog( @"👽" );
-
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserTweets
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.twitterUser } ];

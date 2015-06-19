@@ -26,6 +26,8 @@
 
 // Receiving Notification Names
 NSString extern* const TWPTwipokerShouldShowUserTweets;
+NSString extern* const TWPTwipokerShouldShowUserProfile;
+NSString extern* const TWPTwipokerShouldHideUserProfile;
 
 // Notification User Info Keys
 NSString extern* const kTwitterUser;

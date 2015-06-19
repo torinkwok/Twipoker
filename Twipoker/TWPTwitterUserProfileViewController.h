@@ -38,6 +38,7 @@
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser consultNavigationBar: ( TWPNavigationBarController* )_NavBarController;
 
 #pragma mark IBActions
+- ( IBAction ) hideUserProfileButtonClicked: ( id )_Sender;
 - ( IBAction ) showTweetsButtonClicked: ( id )_Sender;
 
 @end

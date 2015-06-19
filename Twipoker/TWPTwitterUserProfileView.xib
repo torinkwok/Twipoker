@@ -87,7 +87,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="hideUserPorfileAction:" target="-1" id="Srd-m0-WLr"/>
+                        <action selector="hideUserProfileButtonClicked:" target="-2" id="wIq-fr-H5j"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJp-VF-AaL">

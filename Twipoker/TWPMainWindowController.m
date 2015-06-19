@@ -22,6 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
+#import "TWPActionNotifications.h"
 #import "TWPMainWindowController.h"
 #import "TWPLoginUsersManager.h"
 #import "TWPTwitterUserProfileViewController.h"
@@ -29,6 +30,14 @@
 #import "TWPCuttingLineView.h"
 #import "TWPTimelineUserNameButton.h"
 #import "TWPNavigationBarController.h"
+
+// Private Interfaces
+@interface TWPMainWindowController ()
+
+- ( void ) _showUserProfile: ( NSNotification* )_Notif;
+- ( void ) _hideUserProfile: ( NSNotification* )_Notif;
+
+@end // Private Interfaces
 
 // TWPMainWindowController class
 @implementation TWPMainWindowController
@@ -47,9 +56,21 @@
 - ( instancetype ) init
     {
     if ( self = [ super initWithWindowNibName: @"TWPMainWindow" ] )
+        {
         self->_isShowingProfile = NO;
 
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _showUserProfile: ) name: TWPTwipokerShouldShowUserProfile object: nil ];
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _hideUserProfile: ) name: TWPTwipokerShouldHideUserProfile object: nil ];
+        }
+
     return self;
+    }
+
+#pragma mark Deallocator
+- ( void ) dealloc
+    {
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserProfile object: nil ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldHideUserProfile object: nil ];
     }
 
 #pragma mark Conforms <NSNibAwaking> protocol
@@ -59,10 +80,10 @@
     self->_initialFrame = self.window.frame;
     }
 
-#pragma mark IBActions
-- ( IBAction ) showUserProfileAction: ( id )_Sender
+#pragma mark Private Interfaces
+- ( void ) _showUserProfile: ( NSNotification* )_Notif
     {
-    OTCTwitterUser* twitterUser = [ ( TWPTimelineUserNameButton* )_Sender twitterUser ];
+    OTCTwitterUser* twitterUser = _Notif.userInfo[ kTwitterUser ];
     [ self.twitterUserProfileViewController setTwitterUser: twitterUser ];
 
     if ( !self->_isShowingProfile )
@@ -92,7 +113,7 @@
         }
     }
 
-- ( IBAction ) hideUserPorfileAction: ( id )_Sender
+- ( void ) _hideUserProfile: ( NSNotification* )_Notif
     {
     NSRect newFrame = NSMakeRect( NSMinX( self.window.frame ), NSMinY( self.window.frame ), NSWidth( self->_initialFrame ), NSHeight( self->_initialFrame ) );
     [ self.window setFrame: newFrame display: YES animate: YES ];

@@ -58,7 +58,9 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet;
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
 
-- ( IBAction ) displayUserProfilePanelAction: ( id )_Sender;
+#pragma mark IBAction
+- ( IBAction ) userNameLabelClickedAction: ( id )_Sender;
+- ( IBAction ) userAvatarClickedAction: ( id )_Sender;
 
 @end // TWPTweetCellView class
 

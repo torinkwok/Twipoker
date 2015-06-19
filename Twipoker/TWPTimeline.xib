@@ -47,7 +47,7 @@
                                                 <rect key="frame" x="17" y="33" width="70" height="70"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="6e1-qO-y4I"/>
                                                 <connections>
-                                                    <action selector="displayUserProfilePanelAction:" target="feT-IJ-5DR" id="8vM-JX-Wio"/>
+                                                    <action selector="userAvatarClickedAction:" target="feT-IJ-5DR" id="79b-pe-D2X"/>
                                                 </connections>
                                             </imageView>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUo-13-Uhb" userLabel="Tweet Text" customClass="TWPTweetTextField">
@@ -109,7 +109,7 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="showUserProfileAction:" target="-1" id="Jv8-fe-pPJ"/>
+                                                    <action selector="userNameLabelClickedAction:" target="feT-IJ-5DR" id="1rL-LZ-tin"/>
                                                 </connections>
                                             </button>
                                         </subviews>

@@ -44,10 +44,6 @@
 
 + ( instancetype ) mainWindowController;
 
-#pragma mark IBActions
-- ( IBAction ) showUserProfileAction: ( id )_Sender;
-- ( IBAction ) hideUserPorfileAction: ( id )_Sender;
-
 @end // TWPMainWindowController
 
 /*=============================================================================┐
