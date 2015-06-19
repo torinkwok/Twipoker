@@ -54,15 +54,27 @@ NSString* const kTwitterUser = @"StackContentView.Notif.UserInfoKey.TwitterUser"
 NSString* const kTwitterList = @"StackContentView.Notif.UserInfoKey.TwitterList";
 NSString* const kDirectMessageSession = @"StackContentView.Notif.UserInfoKey.DirectMessageSession";
 
-#pragma mark TWPStackContentViewController + Private Category
+// Private Interfaces
 @interface TWPStackContentViewController ()
 
 // `currentDashboardStack` property was set as read only in the declaration.
 // Make it internally writable.
 @property ( weak, readwrite ) TWPViewsStack* currentDashboardStack;
 
-@end // TWPStackContentViewController + Private Category
+// Notification selector
+- ( void ) _listCellMouseDown: ( NSNotification* )_Notif;
+- ( void ) _dmPreviewTableCellMouseDown: ( NSNotification* )_Notif;
+- ( void ) _shouldShowUserTweets: ( NSNotification* )_Notif;
 
+// Pushing views
+- ( void ) _pushViewIntoViewsStack: ( NSViewController* )_ViewContorller;
+- ( void ) _pushUserTimleineToCurrentViewsStack: ( OTCTwitterUser* )_TwitterUser;
+- ( void ) _pushTwitterListTimelineToCurrentViewsStack: ( OTCList* )_TwitterList;
+- ( void ) _pushDirectMessageSessionViewToCurrentViewStack: ( TWPDirectMessageSession* )_DirectMessageSession;
+
+@end // Private Interfaces
+
+// TWPStackContentViewController class
 @implementation TWPStackContentViewController
 
 @synthesize navigationBarController;
@@ -81,25 +93,9 @@ NSString* const kDirectMessageSession = @"StackContentView.Notif.UserInfoKey.Dir
     {
     if ( self = [ super init ] )
         {
-        [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                    selector: @selector( shouldDisplayDetailOfTweet: )
-                                                        name: TWPTweetCellViewShouldDisplayDetailOfTweet
-                                                      object: nil ];
-
-        [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                    selector: @selector( _listCellMouseDown: )
-                                                        name: TWPListCellViewMouseDown
-                                                      object: nil ];
-
-        [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                    selector: @selector( _dmPreviewTableCellMouseDown: )
-                                                        name: TWPDirectMessagePreviewTableCellViewMouseDown
-                                                      object: nil ];
-
-        [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                    selector: @selector( _shouldShowUserTweetsNotif: )
-                                                        name: TWPStackContentViewShouldShowUserTweets
-                                                      object: nil ];
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _listCellMouseDown: ) name: TWPListCellViewMouseDown object: nil ];
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _dmPreviewTableCellMouseDown: ) name: TWPDirectMessagePreviewTableCellViewMouseDown object: nil ];
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserTweets: ) name: TWPStackContentViewShouldShowUserTweets object: nil ];
         }
 
     return self;
@@ -107,18 +103,9 @@ NSString* const kDirectMessageSession = @"StackContentView.Notif.UserInfoKey.Dir
 
 - ( void ) dealloc
     {
-    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTweetCellViewShouldDisplayDetailOfTweet object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPListCellViewMouseDown object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPDirectMessagePreviewTableCellViewMouseDown object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPStackContentViewShouldShowUserTweets object: nil ];
-    }
-
-- ( void ) shouldDisplayDetailOfTweet: ( NSNotification* )_Notif
-    {
-    NSLog( @"%@", _Notif );
-//    OTCTweet* tweet = _Notif.userInfo[ TWPTweetCellViewTweetUserInfoKey ];
-//    TWPRepliesTimelineViewController* newView = [ TWPRepliesTimelineViewController repliesTimelineViewControllerWithTweet: tweet ];
-//    [ self _pushViewIntoViewsStack: newView ];
     }
 
 - ( void ) viewWillAppear
@@ -165,13 +152,22 @@ NSString static* const kColumnIDTabs = @"tabs";
     }
 
 #pragma mark IBActions
-- ( void ) _pushViewIntoViewsStack: ( NSViewController* )_ViewContorller
+- ( IBAction ) goBackAction: ( id )_Sender
     {
-    [ self.currentDashboardStack pushView: _ViewContorller ];
+    [ self.currentDashboardStack backwardMoveCursor ];
     self.currentDashboardStack = self.currentDashboardStack;
     [ self.navigationBarController reload ];
     }
 
+- ( IBAction ) goForwardAction: ( id )_Sender
+    {
+    [ self.currentDashboardStack forwardMoveCursor ];
+    self.currentDashboardStack = self.currentDashboardStack;
+    [ self.navigationBarController reload ];
+    }
+
+#pragma mark Private Interfaces
+// Notification selector
 - ( void ) _listCellMouseDown: ( NSNotification* )_Notif
     {
     OTCList* twitterList = _Notif.userInfo[ kTwitterList ];
@@ -180,13 +176,22 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( void ) _dmPreviewTableCellMouseDown: ( NSNotification* )_Notif
     {
-//    [ self _pushDirectMessageSessionViewToCurrentViewStack:
+    TWPDirectMessageSession* directMessageSession = _Notif.userInfo[ kDirectMessageSession ];
+    [ self _pushDirectMessageSessionViewToCurrentViewStack: directMessageSession ];
     }
 
-- ( void ) _shouldShowUserTweetsNotif: ( NSNotification* )_Notif
+- ( void ) _shouldShowUserTweets: ( NSNotification* )_Notif
     {
     OTCTwitterUser* twitterUser = _Notif.userInfo[ kTwitterUser ];
     [ self _pushUserTimleineToCurrentViewsStack: twitterUser ];
+    }
+
+// Pushing views
+- ( void ) _pushViewIntoViewsStack: ( NSViewController* )_ViewContorller
+    {
+    [ self.currentDashboardStack pushView: _ViewContorller ];
+    self.currentDashboardStack = self.currentDashboardStack;
+    [ self.navigationBarController reload ];
     }
 
 - ( void ) _pushUserTimleineToCurrentViewsStack: ( OTCTwitterUser* )_TwitterUser
@@ -207,29 +212,13 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( void ) _pushDirectMessageSessionViewToCurrentViewStack: ( TWPDirectMessageSession* )_DirectMessageSession
     {
-//    [ self.dashboardView selectRowIndexes: [ NSIndexSet indexSetWithIndex: 5 ] byExtendingSelection: NO ];
-
     NSViewController* dmSessionViewNewController =
         [ TWPDirectMessageSessionViewController sessionViewControllerWithSession: _DirectMessageSession ];
 
     [ self _pushViewIntoViewsStack: dmSessionViewNewController ];
     }
 
-- ( IBAction ) goBackAction: ( id )_Sender
-    {
-    [ self.currentDashboardStack backwardMoveCursor ];
-    self.currentDashboardStack = self.currentDashboardStack;
-    [ self.navigationBarController reload ];
-    }
-
-- ( IBAction ) goForwardAction: ( id )_Sender
-    {
-    [ self.currentDashboardStack forwardMoveCursor ];
-    self.currentDashboardStack = self.currentDashboardStack;
-    [ self.navigationBarController reload ];
-    }
-
-@end
+@end // TWPStackContentViewController class
 
 /*=============================================================================┐
 |                                                                              |

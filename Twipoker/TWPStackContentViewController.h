@@ -41,6 +41,7 @@ NSString extern* const kDirectMessageSession;
 @class TWPNavigationBarController;
 @class TWPDashboardView;
 
+// TWPStackContentViewController class
 @interface TWPStackContentViewController : NSViewController <TWPDashboardViewDelegate>
     {
 @private
@@ -62,7 +63,7 @@ NSString extern* const kDirectMessageSession;
 - ( IBAction ) goBackAction: ( id )_Sender;
 - ( IBAction ) goForwardAction: ( id )_Sender;
 
-@end
+@end // TWPStackContentViewController class
 
 /*=============================================================================┐
 |                                                                              |
