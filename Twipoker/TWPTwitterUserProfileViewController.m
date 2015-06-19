@@ -25,7 +25,7 @@
 #import "TWPTwitterUserProfileViewController.h"
 #import "TWPNavigationBarController.h"
 #import "TWPTwitterUserProfileView.h"
-#import "TWPStackContentViewController.h"
+#import "TWPActionNotifications.h"
 
 // Private Interfaces
 @interface TWPTwitterUserProfileViewController ()
@@ -100,7 +100,7 @@
     {
     NSLog( @"👽" );
 
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPStackContentViewShouldShowUserTweets
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserTweets
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.twitterUser } ];
     }

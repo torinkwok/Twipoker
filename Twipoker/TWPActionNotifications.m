@@ -22,71 +22,15 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPListCellView.h"
-#import "TWPUserAvatarWell.h"
-#import "TWPTimelineUserNameButton.h"
-#import "TWPTweetTextField.h"
 #import "TWPActionNotifications.h"
 
-NSString* const TWPListCellViewMouseDown = @"ListCellView.Notif.MouseDown";
+// Receiving Notification Names
+NSString* const TWPTwipokerShouldShowUserTweets = @"GlobalAction.Notif.ShowUserTweets";
 
-@implementation TWPListCellView
-
-@synthesize creatorAvatar;
-@synthesize listNameLabel;
-@synthesize listDescriptionLabel;
-@synthesize membersCountLabel;
-
-@dynamic twitterList;
-
-#pragma mark Initialization
-+ ( instancetype ) listCellWithTwitterList: ( OTCList* )_TwitterList
-    {
-    return [ [ [ self class ] alloc ] initWithTwitterList: _TwitterList ];
-    }
-
-- ( instancetype ) initWithTwitterList: ( OTCList* )_TwitterList
-    {
-    if ( self = [ super init ] )
-        [ self setTwitterList: _TwitterList ];
-
-    return self;
-    }
-
-#pragma mark Accessors
-- ( void ) setTwitterList: ( OTCList* )_TwitterList
-    {
-    if ( self->_twitterList != _TwitterList )
-        {
-        self->_twitterList = _TwitterList;
-
-        [ [ self creatorAvatar ] setTwitterUser: self->_twitterList.creator ];
-        [ [ self listNameLabel ] setStringValue: self->_twitterList.shortenName ];
-        [ [ self listDescriptionLabel ] setStringValue: self->_twitterList.descriptionSetByCreator ];
-        [ [ self membersCountLabel ] setStringValue: [ NSString stringWithFormat: @"%lu Members", self->_twitterList.memberCount ] ];
-        }
-    }
-
-- ( OTCList* ) twitterList
-    {
-    return self->_twitterList;
-    }
-
-- ( OTCTwitterUser* ) creator
-    {
-    return self->_twitterList.creator;
-    }
-
-#pragma mark Events Handling
-- ( void ) mouseDown: ( NSEvent* )_Event
-    {
-    [ super mouseDown: _Event ];
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPListCellViewMouseDown
-                                                           object: self
-                                                         userInfo: @{ kTwitterList : self.twitterList } ];
-    }
-
-@end
+// Notification User Info Keys
+NSString* const kTwitterUser = @"GlobalAction.Notif.UserInfoKey.TwitterUser";
+NSString* const kTwitterList = @"GlobalAction.Notif.UserInfoKey.TwitterList";
+NSString* const kDirectMessageSession = @"GlobalAction.Notif.UserInfoKey.DirectMessageSession";
 
 /*=============================================================================┐
 |                                                                              |

@@ -29,14 +29,6 @@
 // KVO Key Paths
 NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath;
 
-// Receiving Notification Names
-NSString extern* const TWPStackContentViewShouldShowUserTweets;
-
-// Notification User Info Keys
-NSString extern* const kTwitterUser;
-NSString extern* const kTwitterList;
-NSString extern* const kDirectMessageSession;
-
 @class TWPViewsStack;
 @class TWPNavigationBarController;
 @class TWPDashboardView;

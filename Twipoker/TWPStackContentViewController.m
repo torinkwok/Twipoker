@@ -22,6 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
+#import "TWPActionNotifications.h"
 #import "TWPStackContentViewController.h"
 #import "TWPStackContentView.h"
 #import "TWPDashboardView.h"
@@ -45,14 +46,6 @@
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
-
-// Receiving Notification Names
-NSString* const TWPStackContentViewShouldShowUserTweets = @"StackContentView.Notif.ShowUserTweets";
-
-// Notification User Info Keys
-NSString* const kTwitterUser = @"StackContentView.Notif.UserInfoKey.TwitterUser";
-NSString* const kTwitterList = @"StackContentView.Notif.UserInfoKey.TwitterList";
-NSString* const kDirectMessageSession = @"StackContentView.Notif.UserInfoKey.DirectMessageSession";
 
 // Private Interfaces
 @interface TWPStackContentViewController ()
@@ -95,7 +88,7 @@ NSString* const kDirectMessageSession = @"StackContentView.Notif.UserInfoKey.Dir
         {
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _listCellMouseDown: ) name: TWPListCellViewMouseDown object: nil ];
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _dmPreviewTableCellMouseDown: ) name: TWPDirectMessagePreviewTableCellViewMouseDown object: nil ];
-        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserTweets: ) name: TWPStackContentViewShouldShowUserTweets object: nil ];
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserTweets: ) name: TWPTwipokerShouldShowUserTweets object: nil ];
         }
 
     return self;
@@ -105,7 +98,7 @@ NSString* const kDirectMessageSession = @"StackContentView.Notif.UserInfoKey.Dir
     {
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPListCellViewMouseDown object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPDirectMessagePreviewTableCellViewMouseDown object: nil ];
-    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPStackContentViewShouldShowUserTweets object: nil ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserTweets object: nil ];
     }
 
 - ( void ) viewWillAppear
