@@ -25,6 +25,7 @@
 #import "TWPDirectMessagePreviewTableCellView.h"
 #import "TWPDirectMessageSession.h"
 #import "TWPUserAvatarWell.h"
+#import "TWPStackContentViewController.h"
 
 // Notifications Name
 NSString* const TWPDirectMessagePreviewTableCellViewMouseDown = @"DirectMessagePreviewTable.Notif.MouseDown";
@@ -64,7 +65,8 @@ NSString* const TWPDirectMessagePreviewTableCellViewMouseDown = @"DirectMessageP
 //    NSLog( @"%@", _Event );
 
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPDirectMessagePreviewTableCellViewMouseDown
-                                                           object: self ];
+                                                           object: self
+                                                         userInfo: @{ kDirectMessageSession: self.session } ];
     }
 
 @end

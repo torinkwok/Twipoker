@@ -51,6 +51,8 @@ NSString* const TWPStackContentViewShouldShowUserTweets = @"StackContentView.Not
 
 // Notification User Info Keys
 NSString* const kTwitterUser = @"StackContentView.Notif.UserInfoKey.TwitterUser";
+NSString* const kTwitterList = @"StackContentView.Notif.UserInfoKey.TwitterList";
+NSString* const kDirectMessageSession = @"StackContentView.Notif.UserInfoKey.DirectMessageSession";
 
 #pragma mark TWPStackContentViewController + Private Category
 @interface TWPStackContentViewController ()
@@ -107,6 +109,8 @@ NSString* const kTwitterUser = @"StackContentView.Notif.UserInfoKey.TwitterUser"
     {
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTweetCellViewShouldDisplayDetailOfTweet object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPListCellViewMouseDown object: nil ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPDirectMessagePreviewTableCellViewMouseDown object: nil ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPStackContentViewShouldShowUserTweets object: nil ];
     }
 
 - ( void ) shouldDisplayDetailOfTweet: ( NSNotification* )_Notif
@@ -170,12 +174,13 @@ NSString static* const kColumnIDTabs = @"tabs";
 
 - ( void ) _listCellMouseDown: ( NSNotification* )_Notif
     {
-    [ self pushTwitterListTimelineToCurrentViewsStackAction: ( TWPListCellView* )( _Notif.object ) ];
+    OTCList* twitterList = _Notif.userInfo[ kTwitterList ];
+    [ self _pushTwitterListTimelineToCurrentViewsStack: twitterList ];
     }
 
 - ( void ) _dmPreviewTableCellMouseDown: ( NSNotification* )_Notif
     {
-    [ self pushDirectMessageSessionViewToCurrentViewStackAction: ( TWPDirectMessagePreviewTableCellView* )( _Notif.object ) ];
+//    [ self _pushDirectMessageSessionViewToCurrentViewStack:
     }
 
 - ( void ) _shouldShowUserTweetsNotif: ( NSNotification* )_Notif
@@ -192,28 +197,20 @@ NSString static* const kColumnIDTabs = @"tabs";
     [ self _pushViewIntoViewsStack: twitterUserViewNewController ];
     }
 
-- ( IBAction ) _pushRepliesTimleineToCurrentViewsStackAction: ( id )_Sender
-    {
-//    NSViewController* newRepliesTimelineViewController =
-//        [ TWPRepliesTimelineViewController repliesTimelineViewControllerWithTweet: [ ( TWPTweetTextField* )_Sender tweet ] ];
-//
-//    [ self _pushViewIntoViewsStack: newRepliesTimelineViewController ];
-    }
-
-- ( IBAction ) pushTwitterListTimelineToCurrentViewsStackAction: ( id )_Sender
+- ( void ) _pushTwitterListTimelineToCurrentViewsStack: ( OTCList* )_TwitterList
     {
     NSViewController* twitterListTimelineNewController =
-        [ TWPTwitterListTimelineViewController twitterListViewControllerWithTwitterList: [ ( TWPListCellView* )_Sender twitterList ] ];
+        [ TWPTwitterListTimelineViewController twitterListViewControllerWithTwitterList: _TwitterList ];
 
     [ self _pushViewIntoViewsStack: twitterListTimelineNewController ];
     }
 
-- ( IBAction ) pushDirectMessageSessionViewToCurrentViewStackAction: ( id )_Sender
+- ( void ) _pushDirectMessageSessionViewToCurrentViewStack: ( TWPDirectMessageSession* )_DirectMessageSession
     {
 //    [ self.dashboardView selectRowIndexes: [ NSIndexSet indexSetWithIndex: 5 ] byExtendingSelection: NO ];
 
     NSViewController* dmSessionViewNewController =
-        [ TWPDirectMessageSessionViewController sessionViewControllerWithSession: [ ( TWPDirectMessagePreviewTableCellView* )_Sender session ] ];
+        [ TWPDirectMessageSessionViewController sessionViewControllerWithSession: _DirectMessageSession ];
 
     [ self _pushViewIntoViewsStack: dmSessionViewNewController ];
     }

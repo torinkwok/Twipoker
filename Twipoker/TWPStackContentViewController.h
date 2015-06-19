@@ -34,6 +34,8 @@ NSString extern* const TWPStackContentViewShouldShowUserTweets;
 
 // Notification User Info Keys
 NSString extern* const kTwitterUser;
+NSString extern* const kTwitterList;
+NSString extern* const kDirectMessageSession;
 
 @class TWPViewsStack;
 @class TWPNavigationBarController;
@@ -57,10 +59,6 @@ NSString extern* const kTwitterUser;
 @property ( weak, readonly ) TWPViewsStack* currentDashboardStack;
 
 #pragma mark IBActions
-- ( IBAction ) pushRepliesTimleineToCurrentViewsStackAction: ( id )_Sender;
-- ( IBAction ) pushTwitterListTimelineToCurrentViewsStackAction: ( id )_Sender;
-- ( IBAction ) pushDirectMessageSessionViewToCurrentViewStackAction: ( id )_Sender;
-
 - ( IBAction ) goBackAction: ( id )_Sender;
 - ( IBAction ) goForwardAction: ( id )_Sender;
 

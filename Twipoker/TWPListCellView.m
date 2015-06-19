@@ -26,6 +26,7 @@
 #import "TWPUserAvatarWell.h"
 #import "TWPTimelineUserNameButton.h"
 #import "TWPTweetTextField.h"
+#import "TWPStackContentViewController.h"
 
 NSString* const TWPListCellViewMouseDown = @"ListCellView.Notif.MouseDown";
 
@@ -81,7 +82,8 @@ NSString* const TWPListCellViewMouseDown = @"ListCellView.Notif.MouseDown";
     {
     [ super mouseDown: _Event ];
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPListCellViewMouseDown
-                                                           object: self ];
+                                                           object: self
+                                                         userInfo: @{ kTwitterList : self.twitterList } ];
     }
 
 @end
