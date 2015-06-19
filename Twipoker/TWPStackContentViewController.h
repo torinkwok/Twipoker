@@ -29,6 +29,12 @@
 // KVO Key Paths
 NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath;
 
+// Receiving Notification Names
+NSString extern* const TWPStackContentViewShouldShowUserTweets;
+
+// Notification User Info Keys
+NSString extern* const kTwitterUser;
+
 @class TWPViewsStack;
 @class TWPNavigationBarController;
 @class TWPDashboardView;
@@ -51,7 +57,6 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
 @property ( weak, readonly ) TWPViewsStack* currentDashboardStack;
 
 #pragma mark IBActions
-- ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender;
 - ( IBAction ) pushRepliesTimleineToCurrentViewsStackAction: ( id )_Sender;
 - ( IBAction ) pushTwitterListTimelineToCurrentViewsStackAction: ( id )_Sender;
 - ( IBAction ) pushDirectMessageSessionViewToCurrentViewStackAction: ( id )_Sender;

@@ -46,6 +46,12 @@
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
 
+// Receiving Notification Names
+NSString* const TWPStackContentViewShouldShowUserTweets = @"StackContentView.Notif.ShowUserTweets";
+
+// Notification User Info Keys
+NSString* const kTwitterUser = @"StackContentView.Notif.UserInfoKey.TwitterUser";
+
 #pragma mark TWPStackContentViewController + Private Category
 @interface TWPStackContentViewController ()
 
@@ -86,6 +92,11 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
         [ [ NSNotificationCenter defaultCenter ] addObserver: self
                                                     selector: @selector( _dmPreviewTableCellMouseDown: )
                                                         name: TWPDirectMessagePreviewTableCellViewMouseDown
+                                                      object: nil ];
+
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self
+                                                    selector: @selector( _shouldShowUserTweetsNotif: )
+                                                        name: TWPStackContentViewShouldShowUserTweets
                                                       object: nil ];
         }
 
@@ -167,17 +178,21 @@ NSString static* const kColumnIDTabs = @"tabs";
     [ self pushDirectMessageSessionViewToCurrentViewStackAction: ( TWPDirectMessagePreviewTableCellView* )( _Notif.object ) ];
     }
 
-- ( IBAction ) pushUserTimleineToCurrentViewsStackAction: ( id )_Sender
+- ( void ) _shouldShowUserTweetsNotif: ( NSNotification* )_Notif
     {
-    OTCTwitterUser* twitterUser = [ _Sender twitterUser ];
+    OTCTwitterUser* twitterUser = _Notif.userInfo[ kTwitterUser ];
+    [ self _pushUserTimleineToCurrentViewsStack: twitterUser ];
+    }
 
+- ( void ) _pushUserTimleineToCurrentViewsStack: ( OTCTwitterUser* )_TwitterUser
+    {
     NSViewController* twitterUserViewNewController =
-        [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: twitterUser ];
+        [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: _TwitterUser ];
 
     [ self _pushViewIntoViewsStack: twitterUserViewNewController ];
     }
 
-- ( IBAction ) pushRepliesTimleineToCurrentViewsStackAction: ( id )_Sender
+- ( IBAction ) _pushRepliesTimleineToCurrentViewsStackAction: ( id )_Sender
     {
 //    NSViewController* newRepliesTimelineViewController =
 //        [ TWPRepliesTimelineViewController repliesTimelineViewControllerWithTweet: [ ( TWPTweetTextField* )_Sender tweet ] ];

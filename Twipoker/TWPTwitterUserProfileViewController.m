@@ -25,6 +25,7 @@
 #import "TWPTwitterUserProfileViewController.h"
 #import "TWPNavigationBarController.h"
 #import "TWPTwitterUserProfileView.h"
+#import "TWPStackContentViewController.h"
 
 // Private Interfaces
 @interface TWPTwitterUserProfileViewController ()
@@ -92,6 +93,16 @@
 - ( TWPTwitterUserProfileView* ) _profileView
     {
     return ( TWPTwitterUserProfileView* )( self.view );
+    }
+
+#pragma mark IBActions
+- ( IBAction ) showTweetsButtonClicked: ( id )_Sender
+    {
+    NSLog( @"👽" );
+
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPStackContentViewShouldShowUserTweets
+                                                           object: self
+                                                         userInfo: @{ kTwitterUser : self.twitterUser } ];
     }
 
 @end // TWPTwitterUserProfileViewController class

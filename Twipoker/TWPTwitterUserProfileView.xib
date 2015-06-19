@@ -42,7 +42,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="pushUserTimleineToCurrentViewsStackAction:" target="-1" id="mUa-gW-AIa"/>
+                        <action selector="showTweetsButtonClicked:" target="-2" id="xNi-Kk-dPy"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGI-9M-NLB" customClass="TWPUserProfileCountButton">

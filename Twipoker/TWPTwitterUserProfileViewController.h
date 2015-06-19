@@ -22,7 +22,7 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @class TWPNavigationBarController;
 @class TWPNavigationBarController;
@@ -36,6 +36,9 @@
 #pragma mark Initializations
 + ( instancetype ) prifileViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser consultNavigationBar: ( TWPNavigationBarController* )_NavBarController;
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser consultNavigationBar: ( TWPNavigationBarController* )_NavBarController;
+
+#pragma mark IBActions
+- ( IBAction ) showTweetsButtonClicked: ( id )_Sender;
 
 @end
 
