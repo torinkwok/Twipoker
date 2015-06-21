@@ -38,6 +38,11 @@
     NSRectFill( _DirtyRect );
     }
 
+- ( BOOL ) acceptsFirstResponder
+    {
+    return YES;
+    }
+
 - ( BOOL ) mouseDownCanMoveWindow
     {
     return YES;

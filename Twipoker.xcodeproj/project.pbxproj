@@ -124,6 +124,9 @@
 		83C21DAB1B2B421900188BB2 /* TWPTweetBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C21DAA1B2B421900188BB2 /* TWPTweetBoxController.m */; };
 		83C3DABE1B133AC6005973EE /* TWPTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C3DABD1B133AC6005973EE /* TWPTimelineViewController.m */; };
 		83C3DAC71B1387FF005973EE /* TWPTwitterListTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C3DAC61B1387FF005973EE /* TWPTwitterListTimelineViewController.m */; };
+		83C603AA1B36BECB000CF3A1 /* TWPNavBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83C603A91B36BECB000CF3A1 /* TWPNavBar.xib */; };
+		83C603AD1B36BEE6000CF3A1 /* TWPNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C603AC1B36BEE6000CF3A1 /* TWPNavBarController.m */; };
+		83C603B01B36BF37000CF3A1 /* TWPNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C603AF1B36BF37000CF3A1 /* TWPNavBar.m */; };
 		83CC14DB1B22F7A80046B544 /* twitter-fav-button-highlighting.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D11B22F7A80046B544 /* twitter-fav-button-highlighting.png */; };
 		83CC14DC1B22F7A80046B544 /* twitter-fav-button-highlighting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D21B22F7A80046B544 /* twitter-fav-button-highlighting@2x.png */; };
 		83CC14DD1B22F7A80046B544 /* twitter-fav-button-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CC14D31B22F7A80046B544 /* twitter-fav-button-normal.png */; };
@@ -428,6 +431,11 @@
 		83C3DABD1B133AC6005973EE /* TWPTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineViewController.m; path = Twipoker/TWPTimelineViewController.m; sourceTree = "<group>"; };
 		83C3DAC51B1387FF005973EE /* TWPTwitterListTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTwitterListTimelineViewController.h; path = Twipoker/TWPTwitterListTimelineViewController.h; sourceTree = "<group>"; };
 		83C3DAC61B1387FF005973EE /* TWPTwitterListTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTwitterListTimelineViewController.m; path = Twipoker/TWPTwitterListTimelineViewController.m; sourceTree = "<group>"; };
+		83C603A91B36BECB000CF3A1 /* TWPNavBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPNavBar.xib; path = Twipoker/TWPNavBar.xib; sourceTree = "<group>"; };
+		83C603AB1B36BEE6000CF3A1 /* TWPNavBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPNavBarController.h; path = Twipoker/TWPNavBarController.h; sourceTree = "<group>"; };
+		83C603AC1B36BEE6000CF3A1 /* TWPNavBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPNavBarController.m; path = Twipoker/TWPNavBarController.m; sourceTree = "<group>"; };
+		83C603AE1B36BF37000CF3A1 /* TWPNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPNavBar.h; path = Twipoker/TWPNavBar.h; sourceTree = "<group>"; };
+		83C603AF1B36BF37000CF3A1 /* TWPNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPNavBar.m; path = Twipoker/TWPNavBar.m; sourceTree = "<group>"; };
 		83CC14D11B22F7A80046B544 /* twitter-fav-button-highlighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-fav-button-highlighting.png"; sourceTree = "<group>"; };
 		83CC14D21B22F7A80046B544 /* twitter-fav-button-highlighting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-fav-button-highlighting@2x.png"; sourceTree = "<group>"; };
 		83CC14D31B22F7A80046B544 /* twitter-fav-button-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-fav-button-normal.png"; sourceTree = "<group>"; };
@@ -686,6 +694,7 @@
 				83F231B01AE1147A00A05D1D /* TWPMainWindow.m */,
 				8347B7CF1AE799FF003A49AD /* Dashboard */,
 				830B8F601AF0DF72006D2635 /* Stack Content View */,
+				83C603A71B36BE94000CF3A1 /* Nav Bar */,
 				83B272021B3008BE00953C28 /* User Profile */,
 				8347B7CE1AE7999F003A49AD /* Timeline */,
 				83ADA82F1B1F04F3000F7222 /* Tweeting Box */,
@@ -995,6 +1004,26 @@
 				83C3DAC61B1387FF005973EE /* TWPTwitterListTimelineViewController.m */,
 			);
 			name = "Twitter List Timeline";
+			sourceTree = "<group>";
+		};
+		83C603A71B36BE94000CF3A1 /* Nav Bar */ = {
+			isa = PBXGroup;
+			children = (
+				83C603A81B36BEB2000CF3A1 /* xib */,
+				83C603AB1B36BEE6000CF3A1 /* TWPNavBarController.h */,
+				83C603AC1B36BEE6000CF3A1 /* TWPNavBarController.m */,
+				83C603AE1B36BF37000CF3A1 /* TWPNavBar.h */,
+				83C603AF1B36BF37000CF3A1 /* TWPNavBar.m */,
+			);
+			name = "Nav Bar";
+			sourceTree = "<group>";
+		};
+		83C603A81B36BEB2000CF3A1 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				83C603A91B36BECB000CF3A1 /* TWPNavBar.xib */,
+			);
+			name = xib;
 			sourceTree = "<group>";
 		};
 		83CC14D01B22F7930046B544 /* tweet-operations */ = {
@@ -1484,6 +1513,7 @@
 				83D3FF1D1ACB144B009D40EE /* InfoPlist.strings in Resources */,
 				83D8FFD21B2459FC00D1F825 /* TWPRetweetOperationsView.xib in Resources */,
 				831447D21ACFF19300BFECE4 /* TWPDebugLoginView.xib in Resources */,
+				83C603AA1B36BECB000CF3A1 /* TWPNavBar.xib in Resources */,
 				83D3FF2B1ACB144B009D40EE /* Images.xcassets in Resources */,
 				83C07A991AF22FA000184CCB /* twitter-logo-blue.png in Resources */,
 				83C21DA41B2B2CCB00188BB2 /* compose-tweet.png in Resources */,
@@ -1616,6 +1646,7 @@
 				830896211AEA1D1D0081D227 /* TWPTweetCellView.m in Sources */,
 				83E9A2FF1B02726800CA5926 /* STHTTPRequest.m in Sources */,
 				83F231BE1AE114A600A05D1D /* NSObject+FBKVOController.m in Sources */,
+				83C603B01B36BF37000CF3A1 /* TWPNavBar.m in Sources */,
 				83CFD8781ACF1C820062D73D /* TWPWindow.m in Sources */,
 				83CFD86D1ACF1C820062D73D /* TWPButton.m in Sources */,
 				83E9A2FE1B02726800CA5926 /* JSONSyntaxHighlight.m in Sources */,
@@ -1668,6 +1699,7 @@
 				83CFD8711ACF1C820062D73D /* TWPGeneral.m in Sources */,
 				83ADA83D1B1F090D000F7222 /* TWPTweetingCompleteBox.m in Sources */,
 				83E9A2E81B02721200CA5926 /* STTwitterOAuth.m in Sources */,
+				83C603AD1B36BEE6000CF3A1 /* TWPNavBarController.m in Sources */,
 				83ADA8401B1F27DB000F7222 /* TWPCuttingLineView.m in Sources */,
 				8338CD7D1AE3C5E800370C10 /* TWPLoginUser.m in Sources */,
 				831732921B14900A00B136BF /* TWPDirectMessageSession.m in Sources */,
