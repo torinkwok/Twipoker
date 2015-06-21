@@ -17,19 +17,19 @@
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="TWPMainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
-            <rect key="contentRect" x="411" y="389" width="660" height="767"/>
+            <rect key="contentRect" x="411" y="389" width="660" height="718"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="660" height="630"/>
             <view key="contentView" id="EiT-Mj-1SZ" userLabel="Content View" customClass="TWPMainWindowContentView">
-                <rect key="frame" x="0.0" y="0.0" width="660" height="767"/>
+                <rect key="frame" x="0.0" y="1" width="660" height="718"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-H2-zZU">
-                        <rect key="frame" x="-107" y="730" width="34" height="34"/>
+                        <rect key="frame" x="-107" y="681" width="34" height="34"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
                     </imageView>
                     <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-yU-kQO" customClass="TWPNavigationBar">
-                        <rect key="frame" x="106" y="714" width="554" height="53"/>
+                        <rect key="frame" x="106" y="665" width="554" height="53"/>
                         <subviews>
                             <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
                                 <rect key="frame" x="20" y="14" width="27" height="25"/>
@@ -73,7 +73,7 @@
                         </constraints>
                     </customView>
                     <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
-                        <rect key="frame" x="0.0" y="0.0" width="107" height="767"/>
+                        <rect key="frame" x="0.0" y="-49" width="107" height="767"/>
                         <subviews>
                             <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="597" width="107" height="83"/>
@@ -166,7 +166,7 @@
                                 </connections>
                             </button>
                             <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNM-IO-3zG">
-                                <rect key="frame" x="0.0" y="3" width="107" height="72"/>
+                                <rect key="frame" x="0.0" y="46" width="107" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="Roc-iq-tcu"/>
                                     <constraint firstAttribute="width" constant="107" id="f7X-Py-D9Q"/>
@@ -208,7 +208,7 @@
                     <outlet property="stackContentViewController" destination="HUR-ik-D4y" id="ewN-Vh-20V"/>
                 </connections>
             </view>
-            <point key="canvasLocation" x="-46" y="-1732.5"/>
+            <point key="canvasLocation" x="-32" y="-1715"/>
         </window>
         <customView id="flx-KC-83G" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="1" height="767"/>
