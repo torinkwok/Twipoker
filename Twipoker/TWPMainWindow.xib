@@ -242,6 +242,18 @@
                 <outlet property="view" destination="EiT-Mj-1SZ" id="M03-z3-fFb"/>
             </connections>
         </viewController>
+        <viewController id="Q6I-Hl-mD8" customClass="TWPDashboardViewController">
+            <connections>
+                <outlet property="composeButton" destination="HNM-IO-3zG" id="zKv-wj-6CG"/>
+                <outlet property="dmTab" destination="af4-QX-slZ" id="fcQ-Bu-16W"/>
+                <outlet property="favTab" destination="htO-L6-7ln" id="fLX-Bh-duT"/>
+                <outlet property="homeTab" destination="H1h-r2-oOp" id="ZNb-Ju-GaO"/>
+                <outlet property="listsTab" destination="blT-GV-cVR" id="EEA-IJ-V6C"/>
+                <outlet property="meTab" destination="noB-a2-2cI" id="CAv-u8-amS"/>
+                <outlet property="notifTab" destination="MPM-j2-Kng" id="vO5-fr-2Wv"/>
+                <outlet property="view" destination="vge-3d-5qI" id="SPq-Hx-GKf"/>
+            </connections>
+        </viewController>
     </objects>
     <resources>
         <image name="compose-tweet" width="95" height="113"/>

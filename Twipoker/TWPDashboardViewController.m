@@ -22,29 +22,23 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPMainWindowContentViewController.h"
+#import "TWPDashboardViewController.h"
+#import "TWPDashboardTab.h"
 
-#import "TWPDashboardView.h"
-#import "TWPTimelineScrollView.h"
-#import "TWPNavigationBarController.h"
-#import "TWPStackContentView.h"
-#import "TWPStackContentViewController.h"
-
-#import "TWPTweetingBoxNotificationNames.h"
-#import "TWPCuttingLineView.h"
-#import "TWPTweetingCompleteBox.h"
-#import "TWPTimelineUserNameButton.h"
-
-@interface TWPMainWindowContentViewController ()
+@interface TWPDashboardViewController ()
 
 @end
 
-@implementation TWPMainWindowContentViewController
+@implementation TWPDashboardViewController
 
-@synthesize navigationBarController;
-@synthesize stackContentViewController;
+@synthesize homeTab = _homeTab;
+@synthesize favTab = _favTab;
+@synthesize listsTab = _listsTab;
+@synthesize notifTab = _notifTab;
+@synthesize meTab = _meTab;
+@synthesize dmTab = _dmTab;
 
-@synthesize cuttingLineBetweenNavBarAndViewsStack;
+@synthesize composeButton = _composeButton;
 
 - ( void ) viewDidLoad
     {
@@ -52,69 +46,43 @@
 
     [ self.view removeConstraints: self.view.constraints ];
 
-    NSView* navBar = self.navigationBarController.view;
-    NSView* horizontalCuttingLine = self.cuttingLineBetweenNavBarAndViewsStack;
-    NSView* stackContentView = self.stackContentViewController.view;
-    NSView* dashboardView = self.dashboardView;
+    [ self.homeTab setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self.favTab setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self.listsTab setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self.notifTab setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self.meTab setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self.dmTab setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self.composeButton setTranslatesAutoresizingMaskIntoConstraints: NO ];
 
-    [ navBar setTranslatesAutoresizingMaskIntoConstraints: NO ];
-    [ horizontalCuttingLine setTranslatesAutoresizingMaskIntoConstraints: NO ];
-    [ stackContentView setTranslatesAutoresizingMaskIntoConstraints: NO ];
-    [ dashboardView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( _homeTab, _favTab, _listsTab, _notifTab, _meTab, _dmTab, _composeButton );
 
-    [ self.view addSubview: navBar ];
-    [ self.view addSubview: horizontalCuttingLine ];
-    [ self.view addSubview: stackContentView ];
-
-    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( navBar, horizontalCuttingLine, stackContentView, dashboardView );
+    // FIXME: Fucking bug
+    NSArray* verticalConstraints = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"V:|-topSpace-"
+                                      "[_homeTab(==homeTabHeight)][_favTab(==favTabHeight)][_listsTab(==listsTabHeight)]"
+                                      "[_notifTab(==notifTabHeight)][_meTab(==meTabHeight)][_dmTab(==dmTabHeight)]"
+                                      "-(>=paddingBetweenOperationsAndCompose)-[_composeButton(==composeButtonHeight)]|"
+                            options: 0
+                            metrics: @{ @"topSpace" : @( NSMaxY( self.view.frame ) - NSMaxY( _homeTab.frame ) )
+                                      , @"homeTabHeight" : @( NSHeight( _homeTab.frame ) )
+                                      , @"favTabHeight" : @( NSHeight( _favTab.frame ) )
+                                      , @"listsTabHeight" : @( NSHeight( _listsTab.frame ) )
+                                      , @"notifTabHeight" : @( NSHeight( _notifTab.frame ) )
+                                      , @"meTabHeight" : @( NSHeight( _meTab.frame ) )
+                                      , @"dmTabHeight" : @( NSHeight( _dmTab.frame ) )
+                                      , @"composeButtonHeight" : @( NSHeight( _composeButton.frame ) )
+                                      , @"paddingBetweenOperationsAndCompose" : @( NSMinY( _dmTab.frame ) - NSMaxY( _composeButton.frame ) )
+                                      }
+                              views: viewsDict ];
 
     NSArray* horizontalConstraints0 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][navBar(>=navBarWidth)]|"
+        constraintsWithVisualFormat: @"H:|_homeTab(==homeTabWidth)|"
                             options: 0
-                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
-                                      , @"navBarWidth" : @( NSWidth( navBar.frame ) )
-                                      , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                      , @"stackContentViewWidth" : @( NSWidth( stackContentView.frame ) )
-                                      , @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
-                                      }
+                            metrics: @{ @"homeTabWidth" : @( NSWidth( _homeTab.frame ) ) }
                               views: viewsDict ];
 
-    NSArray* verticalConstraints0 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|[dashboardView(>=dashboardViewHeight)]|"
-                            options: 0
-                            metrics: @{ @"dashboardViewHeight" : @( NSHeight( dashboardView.frame ) )
-                                      , @"navBarHeight" : @( NSHeight( navBar.frame ) )
-                                      , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                      , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
-                                      }
-                              views: viewsDict ];
-
-    NSArray* verticalConstraints1 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|[navBar(==navBarHeight)][horizontalCuttingLine(==cuttingLineHeight)][stackContentView(>=stackContentViewHeight)]|"
-                            options: 0
-                            metrics: @{ @"navBarHeight" : @( NSHeight( navBar.frame ) )
-                                      , @"cuttingLineHeight" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                      , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
-                                      }
-                              views: viewsDict ];
-
-    NSArray* horizontalConstraints1 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][horizontalCuttingLine(==navBar)]|"
-                            options: 0
-                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) ) }
-                              views: viewsDict ];
-
-    NSArray* horizontalConstraints2 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][stackContentView(==navBar)]"
-                            options: 0
-                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) ) }
-                              views: viewsDict ];
-
+    [ self.view addConstraints: verticalConstraints ];
     [ self.view addConstraints: horizontalConstraints0 ];
-    [ self.view addConstraints: verticalConstraints0 ];
-    [ self.view addConstraints: verticalConstraints1 ];
-    [ self.view addConstraints: horizontalConstraints1 ];
-    [ self.view addConstraints: horizontalConstraints2 ];
     }
 
 @end
