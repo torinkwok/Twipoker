@@ -39,7 +39,6 @@
     NSRectFill( _DirtyRect );
     }
 
-
 @end // TWPMainWindowContentView class
 
 /*=============================================================================┐

@@ -35,11 +35,6 @@
 @synthesize meTab;
 @synthesize messagesTab;
 
-- ( void ) awakeFromNib
-    {
-    // TODO:
-    }
-
 #pragma mark IBActions
 - ( IBAction ) tabClickedAction: ( id )_Sender
     {

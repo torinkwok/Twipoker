@@ -35,9 +35,6 @@
 @property ( weak ) IBOutlet TWPStackContentViewController* controller;
 @property ( strong, readwrite ) FBKVOController* KVOController;
 
-#pragma mark Utilities
-- ( NSRect ) boundsOfElementView;
-
 @end
 
 /*=============================================================================┐
