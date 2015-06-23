@@ -61,7 +61,7 @@
         constraintsWithVisualFormat: @"V:|-topSpace-"
                                       "[_homeTab(==homeTabHeight)][_favTab(==favTabHeight)][_listsTab(==listsTabHeight)]"
                                       "[_notifTab(==notifTabHeight)][_meTab(==meTabHeight)][_dmTab(==dmTabHeight)]"
-                                      "-(>=paddingBetweenOperationsAndCompose)-[_composeButton(==composeButtonHeight)]|"
+                                      "-(>=paddingBetweenOperationsAndCompose@priority)-[_composeButton(==composeButtonHeight)]|"
                             options: 0
                             metrics: @{ @"topSpace" : @( NSMaxY( self.view.frame ) - NSMaxY( _homeTab.frame ) )
                                       , @"homeTabHeight" : @( NSHeight( _homeTab.frame ) )
@@ -71,18 +71,40 @@
                                       , @"meTabHeight" : @( NSHeight( _meTab.frame ) )
                                       , @"dmTabHeight" : @( NSHeight( _dmTab.frame ) )
                                       , @"composeButtonHeight" : @( NSHeight( _composeButton.frame ) )
+                                      , @"priority" : @( NSLayoutPriorityDefaultHigh )
                                       , @"paddingBetweenOperationsAndCompose" : @( NSMinY( _dmTab.frame ) - NSMaxY( _composeButton.frame ) )
                                       }
                               views: viewsDict ];
 
-    NSArray* horizontalConstraints0 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|_homeTab(==homeTabWidth)|"
-                            options: 0
-                            metrics: @{ @"homeTabWidth" : @( NSWidth( _homeTab.frame ) ) }
-                              views: viewsDict ];
+    NSArray* horizontalConstraintsHomeTab = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[_homeTab(==homeTabWidth)]|" options: 0 metrics: @{ @"homeTabWidth" : @( NSWidth( _homeTab.frame ) ) } views: viewsDict ];
+
+    NSArray* horizontalConstraintsFavTab = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[_favTab(==favTabWidth)]|" options: 0 metrics: @{ @"favTabWidth" : @( NSWidth( _favTab.frame ) ) } views: viewsDict ];
+
+    NSArray* horizontalConstraintsListsTab = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[_listsTab(==listsTabWidth)]|" options: 0 metrics: @{ @"listsTabWidth" : @( NSWidth( _listsTab.frame ) ) } views: viewsDict ];
+
+    NSArray* horizontalConstraintsNotifTab = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[_notifTab(==notifTabWidth)]|" options: 0 metrics: @{ @"notifTabWidth" : @( NSWidth( _notifTab.frame ) ) } views: viewsDict ];
+
+    NSArray* horizontalConstraintsMeTab = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[_meTab(==meTabWidth)]|" options: 0 metrics: @{ @"meTabWidth" : @( NSWidth( _meTab.frame ) ) } views: viewsDict ];
+
+    NSArray* horizontalConstraintsDMTab = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[_dmTab(==dmTabWidth)]|" options: 0 metrics: @{ @"dmTabWidth" : @( NSWidth( _dmTab.frame ) ) } views: viewsDict ];
+
+    NSArray* horizontalConstraintsComposeButton = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[_composeButton(==composeButtonWidth)]|" options: 0 metrics: @{ @"composeButtonWidth" : @( NSWidth( _composeButton.frame ) ) } views: viewsDict ];
 
     [ self.view addConstraints: verticalConstraints ];
-    [ self.view addConstraints: horizontalConstraints0 ];
+    [ self.view addConstraints: horizontalConstraintsHomeTab ];
+    [ self.view addConstraints: horizontalConstraintsFavTab ];
+    [ self.view addConstraints: horizontalConstraintsListsTab ];
+    [ self.view addConstraints: horizontalConstraintsNotifTab ];
+    [ self.view addConstraints: horizontalConstraintsMeTab ];
+    [ self.view addConstraints: horizontalConstraintsDMTab ];
+    [ self.view addConstraints: horizontalConstraintsComposeButton ];
     }
 
 @end

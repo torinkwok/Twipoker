@@ -17,19 +17,19 @@
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="TWPMainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
-            <rect key="contentRect" x="411" y="389" width="660" height="690"/>
+            <rect key="contentRect" x="411" y="389" width="660" height="691"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="660" height="690"/>
             <view key="contentView" id="EiT-Mj-1SZ" userLabel="Content View" customClass="TWPMainWindowContentView">
-                <rect key="frame" x="0.0" y="5" width="660" height="690"/>
+                <rect key="frame" x="0.0" y="-1" width="660" height="691"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-H2-zZU">
-                        <rect key="frame" x="-107" y="653" width="34" height="34"/>
+                        <rect key="frame" x="-107" y="654" width="34" height="34"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
                     </imageView>
                     <customView identifier="nav-bar" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-yU-kQO" customClass="TWPNavigationBar">
-                        <rect key="frame" x="106" y="637" width="554" height="53"/>
+                        <rect key="frame" x="106" y="638" width="554" height="53"/>
                         <subviews>
                             <button identifier="go-back" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
                                 <rect key="frame" x="20" y="14" width="27" height="25"/>
@@ -126,7 +126,7 @@
                                     <outlet property="associatedViewsStack" destination="4cS-D0-vD7" id="UkT-Dn-UOD"/>
                                 </connections>
                             </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNM-IO-3zG">
+                            <button identifier="compose-button" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNM-IO-3zG">
                                 <rect key="frame" x="0.0" y="1" width="107" height="72"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="compose-tweet" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="222-33-2rl">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -151,7 +151,7 @@
                     </customView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-32" y="-1715"/>
+            <point key="canvasLocation" x="-32" y="-1714.5"/>
         </window>
         <customView identifier="vertical-cuttingline" id="flx-KC-83G" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="1" height="767"/>
