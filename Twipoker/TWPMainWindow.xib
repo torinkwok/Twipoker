@@ -28,15 +28,11 @@
                         <rect key="frame" x="-107" y="653" width="34" height="34"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
                     </imageView>
-                    <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-yU-kQO" customClass="TWPNavigationBar">
+                    <customView identifier="nav-bar" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-yU-kQO" customClass="TWPNavigationBar">
                         <rect key="frame" x="106" y="637" width="554" height="53"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
+                            <button identifier="go-back" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
                                 <rect key="frame" x="20" y="14" width="27" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="MNU-pR-jXO"/>
-                                    <constraint firstAttribute="width" constant="27" id="sme-3b-s2V"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="go-back-arrow-normal" imagePosition="only" alignment="center" alternateImage="go-back-arrow-highlighting" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="hWp-8T-ztY">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -45,12 +41,8 @@
                                     <action selector="goBackAction:" target="HUR-ik-D4y" id="rfd-26-qyC"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IjZ-GZ-rhx" userLabel="Go Forward Button">
+                            <button identifier="go-forward" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IjZ-GZ-rhx" userLabel="Go Forward Button">
                                 <rect key="frame" x="48" y="14" width="27" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="27" id="bzk-qE-xyd"/>
-                                    <constraint firstAttribute="height" constant="25" id="rNn-aI-zJ3"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="go-forward-arrow-normal" imagePosition="only" alignment="center" alternateImage="go-forward-arrow-highlighting" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="QPG-sT-bpd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -59,34 +51,17 @@
                                     <action selector="goForwardAction:" target="HUR-ik-D4y" id="fyz-EQ-Lu8"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMS-HU-W4h" userLabel="Twitter Logo Button">
+                            <imageView identifier="twitter-logo" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMS-HU-W4h" userLabel="Twitter Logo Button">
                                 <rect key="frame" x="265" y="14" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="hap-zw-OqP"/>
-                                </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="twitter-logo-blue" id="8Lr-ax-6GU"/>
                             </imageView>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="YCM-gZ-AcP" firstAttribute="top" secondItem="hMS-HU-W4h" secondAttribute="top" id="4aq-qG-VcM"/>
-                            <constraint firstItem="YCM-gZ-AcP" firstAttribute="leading" secondItem="Cjl-yU-kQO" secondAttribute="leading" constant="20" symbolic="YES" id="CIZ-Ce-gze"/>
-                            <constraint firstAttribute="centerX" secondItem="hMS-HU-W4h" secondAttribute="centerX" constant="-0.5" id="Ji1-8n-FXt"/>
-                            <constraint firstAttribute="centerY" secondItem="hMS-HU-W4h" secondAttribute="centerY" id="gzD-LV-Gu9"/>
-                            <constraint firstItem="YCM-gZ-AcP" firstAttribute="top" secondItem="IjZ-GZ-rhx" secondAttribute="top" id="liI-ce-M25"/>
-                            <constraint firstItem="YCM-gZ-AcP" firstAttribute="top" secondItem="Cjl-yU-kQO" secondAttribute="top" constant="14" id="lkF-Wk-hh8"/>
-                            <constraint firstItem="YCM-gZ-AcP" firstAttribute="bottom" secondItem="hMS-HU-W4h" secondAttribute="bottom" id="tRe-W8-vBz"/>
-                            <constraint firstItem="IjZ-GZ-rhx" firstAttribute="leading" secondItem="YCM-gZ-AcP" secondAttribute="trailing" constant="1" id="unU-30-FpC"/>
-                        </constraints>
                     </customView>
-                    <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
+                    <customView identifier="dashboard" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
                         <rect key="frame" x="0.0" y="0.0" width="107" height="691"/>
                         <subviews>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
+                            <button identifier="home-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="521" width="107" height="83"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="107" id="Rxb-nz-UYY"/>
-                                    <constraint firstAttribute="height" constant="83" id="WOu-m4-Nsi"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="home-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="emi-ef-6Ye">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -96,12 +71,8 @@
                                     <outlet property="associatedViewsStack" destination="i5X-Cg-E7K" id="bvm-Rg-7eT"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htO-L6-7ln" customClass="TWPDashboardTab">
+                            <button identifier="fav-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htO-L6-7ln" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="450" width="107" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="107" id="re2-uT-jgO"/>
-                                    <constraint firstAttribute="height" constant="72" id="tIi-tc-RjH"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="fav-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hpB-Ks-3ZN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -111,12 +82,8 @@
                                     <outlet property="associatedViewsStack" destination="k9K-Hk-Xzb" id="vDc-Kw-S0O"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blT-GV-cVR" customClass="TWPDashboardTab">
+                            <button identifier="lists-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blT-GV-cVR" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="379" width="107" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="YhW-Bx-OkI"/>
-                                    <constraint firstAttribute="width" constant="107" id="kid-Oa-2aS"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="lists-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OiP-5y-ZJv">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -126,12 +93,8 @@
                                     <outlet property="associatedViewsStack" destination="jhD-Ze-QK8" id="sgs-ha-hTn"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-j2-Kng" customClass="TWPDashboardTab">
+                            <button identifier="notif-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-j2-Kng" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="308" width="107" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="IBl-WC-Amv"/>
-                                    <constraint firstAttribute="width" constant="107" id="Y6T-e6-fFh"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="notif-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="S7d-Nf-xIV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -141,12 +104,8 @@
                                     <outlet property="associatedViewsStack" destination="A4Q-KL-bMh" id="6qS-SL-5do"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
+                            <button identifier="me-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="237" width="107" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="Ra7-DU-ANx"/>
-                                    <constraint firstAttribute="width" constant="107" id="uis-WR-9v0"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="me-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="3qq-XN-k35">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -156,12 +115,8 @@
                                     <outlet property="associatedViewsStack" destination="uTU-qJ-3dF" id="xUo-mp-Ecs"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="af4-QX-slZ" customClass="TWPDashboardTab">
+                            <button identifier="dm-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="af4-QX-slZ" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="166" width="107" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="6LG-IV-SZS"/>
-                                    <constraint firstAttribute="width" constant="107" id="r0m-BR-n59"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="messages-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="DaF-ie-LJX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -171,12 +126,8 @@
                                     <outlet property="associatedViewsStack" destination="4cS-D0-vD7" id="UkT-Dn-UOD"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNM-IO-3zG">
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNM-IO-3zG">
                                 <rect key="frame" x="0.0" y="1" width="107" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="Roc-iq-tcu"/>
-                                    <constraint firstAttribute="width" constant="107" id="f7X-Py-D9Q"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="compose-tweet" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="222-33-2rl">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -188,9 +139,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="HNM-IO-3zG" secondAttribute="bottom" constant="1" id="0kT-41-hFF"/>
-                        </constraints>
                         <connections>
                             <outlet property="delegate" destination="HUR-ik-D4y" id="jUJ-5f-Sjq"/>
                             <outlet property="favoriteTab" destination="htO-L6-7ln" id="Mtf-KI-3rp"/>
@@ -202,16 +150,10 @@
                         </connections>
                     </customView>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="vge-3d-5qI" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="SDl-CB-Ah6"/>
-                    <constraint firstAttribute="trailing" secondItem="Cjl-yU-kQO" secondAttribute="trailing" id="Sup-zS-6GU"/>
-                    <constraint firstAttribute="bottom" secondItem="vge-3d-5qI" secondAttribute="bottom" id="fl8-Xl-Msw"/>
-                    <constraint firstItem="Cjl-yU-kQO" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="trailing" constant="-1" id="gow-PF-XKX"/>
-                </constraints>
             </view>
             <point key="canvasLocation" x="-32" y="-1715"/>
         </window>
-        <customView id="flx-KC-83G" customClass="TWPCuttingLineView">
+        <customView identifier="vertical-cuttingline" id="flx-KC-83G" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="1" height="767"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <point key="canvasLocation" x="401.5" y="-1732.5"/>
@@ -278,11 +220,11 @@
             </connections>
         </customObject>
         <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController"/>
-        <customView id="zU3-cQ-xog" customClass="TWPCuttingLineView">
+        <customView identifier="horizontal-cuttingline" id="zU3-cQ-xog" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="606" height="1"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>
-        <customView appearanceType="aqua" id="9t8-W1-aLM" customClass="TWPStackContentView">
+        <customView identifier="stack-content-view" appearanceType="aqua" id="9t8-W1-aLM" customClass="TWPStackContentView">
             <rect key="frame" x="0.0" y="0.0" width="606" height="708"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <connections>

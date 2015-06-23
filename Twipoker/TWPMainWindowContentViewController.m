@@ -57,6 +57,11 @@
     NSView* stackContentView = self.stackContentViewController.view;
     NSView* dashboardView = self.dashboardView;
 
+    [ navBar setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ horizontalCuttingLine setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ stackContentView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ dashboardView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+
     [ self.view addSubview: navBar ];
     [ self.view addSubview: horizontalCuttingLine ];
 //    [ self.view addSubview: stackContentView ];
@@ -85,7 +90,7 @@
                               views: viewsDict ];
 
     NSArray* verticalConstraints1 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|[navBar(==navBarHeight)][horizontalCuttingLine(==cuttingLineHeight)]|"
+        constraintsWithVisualFormat: @"V:[navBar(==navBarHeight)][horizontalCuttingLine(==cuttingLineHeight)]"
                             options: 0
                             metrics: @{ @"navBarHeight" : @( NSHeight( navBar.frame ) )
                                       , @"cuttingLineHeight" : @( NSHeight( horizontalCuttingLine.frame ) )
@@ -93,19 +98,19 @@
                                       }
                               views: viewsDict ];
 
-//    NSArray* horizontalConstraints1 = [ NSLayoutConstraint
-//        constraintsWithVisualFormat: @"H:|[dashboardView][horizontalCuttingLine(>=horizontalCuttingLineWidth)]|"
-//                            options: 0
-//                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
-//                                      , @"stackContentViewWidth" : @( NSWidth( stackContentView.frame ) )
-//                                      , @"horizontalCuttingLineWidth" : @( NSWidth( horizontalCuttingLine.frame ) )
-//                                      }
-//                              views: viewsDict ];
+    NSArray* horizontalConstraints1 = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:[dashboardView(==dashboardViewWidth)][horizontalCuttingLine(>=horizontalCuttingLineWidth)]"
+                            options: 0
+                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
+                                      , @"stackContentViewWidth" : @( NSWidth( stackContentView.frame ) )
+                                      , @"horizontalCuttingLineWidth" : @( NSWidth( horizontalCuttingLine.frame ) )
+                                      }
+                              views: viewsDict ];
 
     [ self.view addConstraints: horizontalConstraints0 ];
     [ self.view addConstraints: verticalConstraints0 ];
     [ self.view addConstraints: verticalConstraints1 ];
-//    [ self.view addConstraints: horizontalConstraints1 ];
+    [ self.view addConstraints: horizontalConstraints1 ];
 
 //    [ self.cuttingLineBetweenNavBarAndViewsStack removeFromSuperview ];
 //
