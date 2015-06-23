@@ -64,7 +64,7 @@
 
     [ self.view addSubview: navBar ];
     [ self.view addSubview: horizontalCuttingLine ];
-//    [ self.view addSubview: stackContentView ];
+    [ self.view addSubview: stackContentView ];
 
     NSDictionary* viewsDict = NSDictionaryOfVariableBindings( navBar, horizontalCuttingLine, stackContentView, dashboardView );
 
@@ -90,7 +90,7 @@
                               views: viewsDict ];
 
     NSArray* verticalConstraints1 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:[navBar(==navBarHeight)][horizontalCuttingLine(==cuttingLineHeight)]"
+        constraintsWithVisualFormat: @"V:|[navBar(==navBarHeight)][horizontalCuttingLine(==cuttingLineHeight)][stackContentView(>=stackContentViewHeight)]|"
                             options: 0
                             metrics: @{ @"navBarHeight" : @( NSHeight( navBar.frame ) )
                                       , @"cuttingLineHeight" : @( NSHeight( horizontalCuttingLine.frame ) )
@@ -99,42 +99,24 @@
                               views: viewsDict ];
 
     NSArray* horizontalConstraints1 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:[dashboardView(==dashboardViewWidth)][horizontalCuttingLine(>=horizontalCuttingLineWidth)]"
+        constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][horizontalCuttingLine(==navBar)]|"
                             options: 0
-                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
-                                      , @"stackContentViewWidth" : @( NSWidth( stackContentView.frame ) )
-                                      , @"horizontalCuttingLineWidth" : @( NSWidth( horizontalCuttingLine.frame ) )
-                                      }
+                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) ) }
+                              views: viewsDict ];
+
+    NSArray* horizontalConstraints2 = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][stackContentView(==navBar)]"
+                            options: 0
+                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) ) }
                               views: viewsDict ];
 
     [ self.view addConstraints: horizontalConstraints0 ];
     [ self.view addConstraints: verticalConstraints0 ];
     [ self.view addConstraints: verticalConstraints1 ];
     [ self.view addConstraints: horizontalConstraints1 ];
+    [ self.view addConstraints: horizontalConstraints2 ];
 
-//    [ self.cuttingLineBetweenNavBarAndViewsStack removeFromSuperview ];
-//
-//    // Navigation bar
-//    NSRect frameOfNavigationBar = self.navigationBarController.view.frame;
-//
-//    // Cutting line
-//    NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfNavigationBar ), NSHeight( frameOfNavigationBar )
-//                                              , NSWidth( self.cuttingLineBetweenNavBarAndViewsStack.frame ), NSHeight( self.cuttingLineBetweenNavBarAndViewsStack.frame ) );
-//
-//    [ self.cuttingLineBetweenNavBarAndViewsStack setFrame: frameOfCuttingLineView ];
-//    [ self addSubview: self.cuttingLineBetweenNavBarAndViewsStack ];
-//
-//    // Stack content view
-//    TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
-//    NSRect frameOfStackContentView = NSMakeRect( NSMinX( frameOfCuttingLineView )
-//                                               , NSMaxY( frameOfCuttingLineView )
-//                                               , NSWidth( stackContentView.frame )
-//                                               , NSHeight( self.bounds ) - NSHeight( frameOfNavigationBar ) - NSHeight( frameOfCuttingLineView )
-//                                               );
-//
-//    [ stackContentView setFrame: frameOfStackContentView ];
-//    [ self addSubview: stackContentView ];
-//    [ self.view.window visualizeConstraints: self.view.constraints ];
+    [ self.view.window visualizeConstraints: self.view.constraints ];
     }
 
 @end

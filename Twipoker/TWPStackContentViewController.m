@@ -104,18 +104,25 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
 
 - ( void ) viewDidLoad
     {
+    [ super viewDidLoad ];
+
+    [ self.view removeConstraints: self.view.constraints ];
+
     self.currentDashboardStack = self.homeDashboardStack;
     self.navigationBarController.delegate = self.currentDashboardStack;
 
     NSView* currentView = self.currentDashboardStack.currentView.view;
     NSView* dashboardView = self.dashboardView;
 
+    [ currentView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ dashboardView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+
     if ( currentView.superview != self.view )
         [ self.view addSubview: currentView ];
 
     NSDictionary* viewsDict = NSDictionaryOfVariableBindings( currentView, dashboardView );
     NSArray* horizontalConstraints = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][currentView(>=currentViewWidth)]|"
+        constraintsWithVisualFormat: @"H:|[currentView(>=currentViewWidth)]|"
                             options: 0
                             metrics: @{ @"dashboardViewWidth" : @( NSWidth( self.dashboardView.frame ) )
                                       , @"currentViewWidth" : @( NSWidth( currentView.frame ) )
@@ -123,7 +130,7 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
                               views: viewsDict ];
 
     NSArray* verticalConstraints = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|-50-[currentView(>=currentViewHeight)]|"
+        constraintsWithVisualFormat: @"V:|[currentView(>=currentViewHeight)]|"
                             options: 0
                             metrics: @{ @"currentViewHeight" : @( NSHeight( currentView.frame ) ) }
                               views: viewsDict ];

@@ -65,6 +65,12 @@
 //    [ super setFrame: frame ];
 //    }
 
+- ( void ) drawRect:(NSRect)dirtyRect
+    {
+    [ [ NSColor grayColor ] set ];
+    NSRectFill( dirtyRect );
+    }
+
 @end
 
 /*=============================================================================┐
