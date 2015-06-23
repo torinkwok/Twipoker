@@ -19,7 +19,6 @@
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
             <rect key="contentRect" x="411" y="389" width="645" height="691"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <value key="minSize" type="size" width="660" height="690"/>
             <view key="contentView" id="EiT-Mj-1SZ" userLabel="Content View" customClass="TWPMainWindowContentView">
                 <rect key="frame" x="1" y="0.0" width="645" height="691"/>
                 <autoresizingMask key="autoresizingMask"/>
