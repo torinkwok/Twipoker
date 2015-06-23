@@ -170,6 +170,18 @@
                 <outlet property="view" destination="9t8-W1-aLM" id="08g-c7-EMV"/>
             </connections>
         </customObject>
+        <viewController id="Q6I-Hl-mD8" customClass="TWPDashboardViewController">
+            <connections>
+                <outlet property="composeButton" destination="HNM-IO-3zG" id="zKv-wj-6CG"/>
+                <outlet property="dmTab" destination="af4-QX-slZ" id="fcQ-Bu-16W"/>
+                <outlet property="favTab" destination="htO-L6-7ln" id="fLX-Bh-duT"/>
+                <outlet property="homeTab" destination="H1h-r2-oOp" id="ZNb-Ju-GaO"/>
+                <outlet property="listsTab" destination="blT-GV-cVR" id="EEA-IJ-V6C"/>
+                <outlet property="meTab" destination="noB-a2-2cI" id="CAv-u8-amS"/>
+                <outlet property="notifTab" destination="MPM-j2-Kng" id="vO5-fr-2Wv"/>
+                <outlet property="view" destination="vge-3d-5qI" id="SPq-Hx-GKf"/>
+            </connections>
+        </viewController>
         <customObject id="qYt-FS-RIP" customClass="TWPHomeViewController"/>
         <customObject id="D4R-Db-Yb8" customClass="TWPFavoritesViewController"/>
         <customObject id="NMQ-Oj-KgN" customClass="TWPListsViewController"/>
@@ -236,22 +248,10 @@
         <viewController id="dBG-Jj-N3g" customClass="TWPMainWindowContentViewController">
             <connections>
                 <outlet property="cuttingLineBetweenNavBarAndViewsStack" destination="zU3-cQ-xog" id="s50-GQ-uni"/>
-                <outlet property="dashboardView" destination="vge-3d-5qI" id="Kbg-UM-wi9"/>
+                <outlet property="dashboardViewController" destination="Q6I-Hl-mD8" id="LAf-Wr-Oye"/>
                 <outlet property="navigationBarController" destination="Gr0-CG-Iha" id="bKq-W0-i2p"/>
                 <outlet property="stackContentViewController" destination="HUR-ik-D4y" id="pnT-bl-Kv9"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="M03-z3-fFb"/>
-            </connections>
-        </viewController>
-        <viewController id="Q6I-Hl-mD8" customClass="TWPDashboardViewController">
-            <connections>
-                <outlet property="composeButton" destination="HNM-IO-3zG" id="zKv-wj-6CG"/>
-                <outlet property="dmTab" destination="af4-QX-slZ" id="fcQ-Bu-16W"/>
-                <outlet property="favTab" destination="htO-L6-7ln" id="fLX-Bh-duT"/>
-                <outlet property="homeTab" destination="H1h-r2-oOp" id="ZNb-Ju-GaO"/>
-                <outlet property="listsTab" destination="blT-GV-cVR" id="EEA-IJ-V6C"/>
-                <outlet property="meTab" destination="noB-a2-2cI" id="CAv-u8-amS"/>
-                <outlet property="notifTab" destination="MPM-j2-Kng" id="vO5-fr-2Wv"/>
-                <outlet property="view" destination="vge-3d-5qI" id="SPq-Hx-GKf"/>
             </connections>
         </viewController>
     </objects>

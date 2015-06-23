@@ -24,7 +24,7 @@
 
 @import Cocoa;
 
-@class TWPDashboardView;
+@class TWPDashboardViewController;
 @class TWPNavigationBarController;
 @class TWPStackContentViewController;
 
@@ -35,7 +35,7 @@
 
 @interface TWPMainWindowContentViewController : NSViewController
 
-@property ( weak ) IBOutlet TWPDashboardView* dashboardView;
+@property ( weak ) IBOutlet TWPDashboardViewController* dashboardViewController;
 @property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
 @property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
 

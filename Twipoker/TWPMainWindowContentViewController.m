@@ -24,7 +24,7 @@
 
 #import "TWPMainWindowContentViewController.h"
 
-#import "TWPDashboardView.h"
+#import "TWPDashboardViewController.h"
 #import "TWPTimelineScrollView.h"
 #import "TWPNavigationBarController.h"
 #import "TWPStackContentView.h"
@@ -41,6 +41,7 @@
 
 @implementation TWPMainWindowContentViewController
 
+@synthesize dashboardViewController;
 @synthesize navigationBarController;
 @synthesize stackContentViewController;
 
@@ -55,7 +56,7 @@
     NSView* navBar = self.navigationBarController.view;
     NSView* horizontalCuttingLine = self.cuttingLineBetweenNavBarAndViewsStack;
     NSView* stackContentView = self.stackContentViewController.view;
-    NSView* dashboardView = self.dashboardView;
+    NSView* dashboardView = self.dashboardViewController.view;
 
     [ navBar setTranslatesAutoresizingMaskIntoConstraints: NO ];
     [ horizontalCuttingLine setTranslatesAutoresizingMaskIntoConstraints: NO ];
