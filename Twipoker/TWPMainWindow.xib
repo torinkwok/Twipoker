@@ -311,6 +311,11 @@
             <point key="canvasLocation" x="267" y="-902"/>
         </customView>
         <viewController id="V2f-Li-yzk" customClass="TWPTwitterUserProfileViewController"/>
+        <viewController id="Psy-dj-9pw" customClass="TWPMainWindowContentViewController">
+            <connections>
+                <outlet property="view" destination="EiT-Mj-1SZ" id="Xzd-MS-qJR"/>
+            </connections>
+        </viewController>
     </objects>
     <resources>
         <image name="compose-tweet" width="95" height="113"/>

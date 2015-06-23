@@ -209,6 +209,7 @@
 		83E9A2FD1B02726800CA5926 /* BAVPlistNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E9A2F81B02726800CA5926 /* BAVPlistNode.m */; };
 		83E9A2FE1B02726800CA5926 /* JSONSyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E9A2FA1B02726800CA5926 /* JSONSyntaxHighlight.m */; };
 		83E9A2FF1B02726800CA5926 /* STHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E9A2FC1B02726800CA5926 /* STHTTPRequest.m */; };
+		83EB82501B393DEE005A9A35 /* TWPMainWindowContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EB824F1B393DEE005A9A35 /* TWPMainWindowContentViewController.m */; };
 		83EE64CD1B11B52200A515A7 /* TWPListsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE64CC1B11B52200A515A7 /* TWPListsTableView.m */; };
 		83EE64D01B11B6B400A515A7 /* TWPListsNameLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE64CF1B11B6B400A515A7 /* TWPListsNameLabel.m */; };
 		83EE64D31B11B82D00A515A7 /* TWPListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE64D21B11B82D00A515A7 /* TWPListCellView.m */; };
@@ -577,6 +578,8 @@
 		83E9A2FA1B02726800CA5926 /* JSONSyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONSyntaxHighlight.m; sourceTree = "<group>"; };
 		83E9A2FB1B02726800CA5926 /* STHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STHTTPRequest.h; sourceTree = "<group>"; };
 		83E9A2FC1B02726800CA5926 /* STHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STHTTPRequest.m; sourceTree = "<group>"; };
+		83EB824E1B393DEE005A9A35 /* TWPMainWindowContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPMainWindowContentViewController.h; path = Twipoker/TWPMainWindowContentViewController.h; sourceTree = "<group>"; };
+		83EB824F1B393DEE005A9A35 /* TWPMainWindowContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPMainWindowContentViewController.m; path = Twipoker/TWPMainWindowContentViewController.m; sourceTree = "<group>"; };
 		83EE64CB1B11B52200A515A7 /* TWPListsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPListsTableView.h; path = Twipoker/TWPListsTableView.h; sourceTree = "<group>"; };
 		83EE64CC1B11B52200A515A7 /* TWPListsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPListsTableView.m; path = Twipoker/TWPListsTableView.m; sourceTree = "<group>"; };
 		83EE64CE1B11B6B400A515A7 /* TWPListsNameLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPListsNameLabel.h; path = Twipoker/TWPListsNameLabel.h; sourceTree = "<group>"; };
@@ -688,6 +691,8 @@
 				83924D281AE0FC6F00C25895 /* xib */,
 				83F231B21AE1147A00A05D1D /* TWPMainWindowController.h */,
 				83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */,
+				83EB824E1B393DEE005A9A35 /* TWPMainWindowContentViewController.h */,
+				83EB824F1B393DEE005A9A35 /* TWPMainWindowContentViewController.m */,
 				831732931B1504A100B136BF /* TWPMainWindowContentView.h */,
 				831732941B1504A100B136BF /* TWPMainWindowContentView.m */,
 				83F231AF1AE1147A00A05D1D /* TWPMainWindow.h */,
@@ -1634,6 +1639,7 @@
 				83C21DA11B2B1AE800188BB2 /* TWPDashboardTab.m in Sources */,
 				83CFD86E1ACF1C820062D73D /* TWPButtonCell.m in Sources */,
 				83CC14FE1B2317B40046B544 /* TWPFavSwitcher.m in Sources */,
+				83EB82501B393DEE005A9A35 /* TWPMainWindowContentViewController.m in Sources */,
 				83E9A2E91B02721200CA5926 /* STTwitterOS.m in Sources */,
 				83EE64CD1B11B52200A515A7 /* TWPListsTableView.m in Sources */,
 				8349A6441AD2263C00487896 /* NSActionCell+TwipokerDrawing.m in Sources */,
