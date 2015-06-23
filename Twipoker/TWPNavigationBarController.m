@@ -35,63 +35,66 @@
 @synthesize goForwardButton = _goForwardButton;
 
 #pragma mark Initializations
-//- ( void ) viewDidLoad
-//    {
-//    [ self.view removeConstraints: self.view.constraints ];
-//
-//    [ self->_twitterLogo setTranslatesAutoresizingMaskIntoConstraints: NO ];
-//    [ self->_goBackButton setTranslatesAutoresizingMaskIntoConstraints: NO ];
-//    [ self->_goForwardButton setTranslatesAutoresizingMaskIntoConstraints: NO ];
-//
-//    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( _twitterLogo, _goBackButton, _goForwardButton );
-//
-//    NSArray* horizontalConstraints = [ NSLayoutConstraint
-//        constraintsWithVisualFormat: @"H:|-(==leadingSpace)"
-//                                      "-[_goBackButton(==buttonsWidth)]"
-//                                      "-(==paddingWithGoBackAndForward)"
-//                                      "-[_goForwardButton(==goBackButton)]"
-//                                      "-(>=paddingWithGoForwardAndLogo)"
-//                                      "-[_twitterLogo(==twitterLogoWidth)]"
-//                                      "-(>=paddingWithGoForwardAndLogo)-|"
-//                            options: 0
-//                            metrics: @{ @"leadingSpace" : @( NSMinX( _goBackButton.frame ) )
-//                                      , @"buttonsWidth" : @( NSWidth( _goBackButton.frame ) )
-//                                      , @"goBackButton" : @( NSWidth( _goForwardButton.frame ) )
-//                                      , @"twitterLogoWidth" : @( NSWidth( _twitterLogo.frame ) )
-//                                      , @"paddingWithGoBackAndForward" : @( NSMinX( _goForwardButton.frame ) - NSMaxX( _goBackButton.frame ) )
-//                                      , @"paddingWithGoForwardAndLogo" : @( NSMinX( _twitterLogo.frame ) - NSMaxX( _goForwardButton.frame ) )
-//                                      }
-//                              views: viewsDict ];
-//
-//    NSArray* verticalConstraintsGoBackButton = [ NSLayoutConstraint
-//        constraintsWithVisualFormat: @"V:|-(==space)-[_goBackButton(==goBackButtonHeight)]-(==space)-|"
-//                            options: 0
-//                            metrics: @{ @"space" : @( ( NSHeight( self.view.frame ) - NSHeight( _goBackButton.frame ) ) / 2 )
-//                                      , @"goBackButtonHeight" : @( NSHeight( _goBackButton.frame ) )
-//                                      }
-//                              views: viewsDict ];
-//
-//    NSArray* verticalConstraintsGoForwardButton = [ NSLayoutConstraint
-//        constraintsWithVisualFormat: @"V:|-(==space)-[_goForwardButton(==_goBackButton)]-(==space)-|"
-//                            options: 0
-//                            metrics: @{ @"space" : @( ( NSHeight( self.view.frame ) - NSHeight( _goForwardButton.frame ) ) / 2 ) }
-//                              views: viewsDict ];
-//
-//    NSArray* verticalConstraintsTwitterLogo = [ NSLayoutConstraint
-//        constraintsWithVisualFormat: @"V:|-(==space)-[_twitterLogo(==twitterLogoHeight)]-(==space)-|"
-//                            options: 0
-//                            metrics: @{ @"space" : @( ( NSHeight( self.view.frame ) - NSHeight( _twitterLogo.frame ) ) / 2 )
-//                                      , @"twitterLogoHeight" : @( NSHeight( _twitterLogo.frame ) )
-//                                      }
-//                              views: viewsDict ];
-//
-//    [ self.view addConstraints: horizontalConstraints ];
-//    [ self.view addConstraints: verticalConstraintsGoBackButton ];
-//    [ self.view addConstraints: verticalConstraintsGoForwardButton ];
-//    [ self.view addConstraints: verticalConstraintsTwitterLogo ];
-//
-////    [ self.view.window visualizeConstraints: self.view.constraints ];
-//    }
+- ( void ) viewDidLoad
+    {
+    [ self.view removeConstraints: self.view.constraints ];
+
+    [ self->_twitterLogo setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self->_goBackButton setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self->_goForwardButton setTranslatesAutoresizingMaskIntoConstraints: NO ];
+
+    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( _twitterLogo, _goBackButton, _goForwardButton );
+
+    NSNumber* paddingCenteredLogoHorizontally = @( NSMinX( _twitterLogo.frame ) - NSMaxX( _goForwardButton.frame ) );
+    NSNumber* paddingBetweenGoForwardAndLogo = @( paddingCenteredLogoHorizontally.doubleValue - NSMaxX( _goForwardButton.frame ) );
+    NSArray* horizontalConstraints0 = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|-(==leadingSpace)"
+                                      "-[_goBackButton(==buttonsWidth)]"
+                                      "-(==paddingBetweenButtons)"
+                                      "-[_goForwardButton(==goBackButton)]"
+                                      "-(>=paddingBetweenGoForwardAndLogo)"
+                                      "-[_twitterLogo(==twitterLogoWidth)]"
+                                      "-(>=paddingCenteredLogoHorizontally)-|"
+                            options: 0
+                            metrics: @{ @"leadingSpace" : @( NSMinX( _goBackButton.frame ) )
+                                      , @"buttonsWidth" : @( NSWidth( _goBackButton.frame ) )
+                                      , @"goBackButton" : @( NSWidth( _goForwardButton.frame ) )
+                                      , @"twitterLogoWidth" : @( NSWidth( _twitterLogo.frame ) )
+                                      , @"paddingBetweenButtons" : @( NSMinX( _goForwardButton.frame ) - NSMaxX( _goBackButton.frame ) )
+                                      , @"paddingBetweenGoForwardAndLogo" : paddingCenteredLogoHorizontally
+                                      , @"paddingCenteredLogoHorizontally" : paddingCenteredLogoHorizontally
+                                      }
+                              views: viewsDict ];
+
+    NSArray* verticalConstraintsGoBackButton = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"V:|-(==space)-[_goBackButton(==goBackButtonHeight)]-(==space)-|"
+                            options: 0
+                            metrics: @{ @"space" : @( ( NSHeight( self.view.frame ) - NSHeight( _goBackButton.frame ) ) / 2 )
+                                      , @"goBackButtonHeight" : @( NSHeight( _goBackButton.frame ) )
+                                      }
+                              views: viewsDict ];
+
+    NSArray* verticalConstraintsGoForwardButton = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"V:|-(==space)-[_goForwardButton(==_goBackButton)]-(==space)-|"
+                            options: 0
+                            metrics: @{ @"space" : @( ( NSHeight( self.view.frame ) - NSHeight( _goForwardButton.frame ) ) / 2 ) }
+                              views: viewsDict ];
+
+    NSArray* verticalConstraintsTwitterLogo = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"V:|-(==space)-[_twitterLogo(==twitterLogoHeight)]-(==space)-|"
+                            options: 0
+                            metrics: @{ @"space" : @( ( NSHeight( self.view.frame ) - NSHeight( _twitterLogo.frame ) ) / 2 )
+                                      , @"twitterLogoHeight" : @( NSHeight( _twitterLogo.frame ) )
+                                      }
+                              views: viewsDict ];
+
+    [ self.view addConstraints: horizontalConstraints0 ];
+    [ self.view addConstraints: verticalConstraintsGoBackButton ];
+    [ self.view addConstraints: verticalConstraintsGoForwardButton ];
+    [ self.view addConstraints: verticalConstraintsTwitterLogo ];
+
+//    [ self.view.window visualizeConstraints: self.view.constraints ];
+    }
 
 #pragma mark Accessors
 - ( void ) setDelegate: ( TWPViewsStack* )_NewDelegate
