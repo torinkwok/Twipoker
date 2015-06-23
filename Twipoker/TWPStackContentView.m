@@ -35,35 +35,35 @@
 @synthesize controller;
 @synthesize KVOController;
 
-#pragma mark Initialization
-- ( void ) awakeFromNib
-    {
-    self.KVOController = [ FBKVOController controllerWithObserver: self ];
-    [ self.KVOController observe: self.controller
-                         keyPath: TWPStackContentViewControllerCurrentDashboardStackKeyPath
-                         options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                           block:
-        ( FBKVONotificationBlock )^( id _Observer, id _Object, NSDictionary* _Changes )
-            {
-            TWPViewsStack __weak* newViewsStack = _Changes[ @"new" ];
-            [ newViewsStack.currentView.view setFrame: [ self boundsOfElementView ] ];
-            [ self setSubviews: @[ newViewsStack.currentView.view ] ];
-            } ];
-    }
-
-#pragma mark Utilities
-- ( NSRect ) boundsOfElementView
-    {
-    NSRect rect = NSInsetRect( self.bounds, 0, -1.5 );
-    rect.size.width += 1.f;
-
-    return rect;
-    }
-
-- ( void ) setFrame:(NSRect)frame
-    {
-    [ super setFrame: frame ];
-    }
+//#pragma mark Initialization
+//- ( void ) awakeFromNib
+//    {
+//    self.KVOController = [ FBKVOController controllerWithObserver: self ];
+//    [ self.KVOController observe: self.controller
+//                         keyPath: TWPStackContentViewControllerCurrentDashboardStackKeyPath
+//                         options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+//                           block:
+//        ( FBKVONotificationBlock )^( id _Observer, id _Object, NSDictionary* _Changes )
+//            {
+//            TWPViewsStack __weak* newViewsStack = _Changes[ @"new" ];
+//            [ newViewsStack.currentView.view setFrame: [ self boundsOfElementView ] ];
+//            [ self setSubviews: @[ newViewsStack.currentView.view ] ];
+//            } ];
+//    }
+//
+//#pragma mark Utilities
+//- ( NSRect ) boundsOfElementView
+//    {
+//    NSRect rect = NSInsetRect( self.bounds, 0, -1.5 );
+//    rect.size.width += 1.f;
+//
+//    return rect;
+//    }
+//
+//- ( void ) setFrame:(NSRect)frame
+//    {
+//    [ super setFrame: frame ];
+//    }
 
 @end
 

@@ -43,6 +43,7 @@
 #import "TWPDirectMessagePreviewTableCellView.h"
 #import "TWPDirectMessageSessionViewController.h"
 #import "TWPDashboardTab.h"
+#import "TWPDashboardView.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -101,15 +102,34 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserTweets object: nil ];
     }
 
-- ( void ) viewWillAppear
+- ( void ) viewDidLoad
     {
-    dispatch_once_t static onceToken;
-    dispatch_once( &onceToken
-        , ( dispatch_block_t )^( void )
-            {
-            self.currentDashboardStack = self.homeDashboardStack;
-            self.navigationBarController.delegate = self.currentDashboardStack;
-            } );
+    self.currentDashboardStack = self.homeDashboardStack;
+    self.navigationBarController.delegate = self.currentDashboardStack;
+
+    NSView* currentView = self.currentDashboardStack.currentView.view;
+    NSView* dashboardView = self.dashboardView;
+
+    if ( currentView.superview != self.view )
+        [ self.view addSubview: currentView ];
+
+    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( currentView, dashboardView );
+    NSArray* horizontalConstraints = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][currentView(>=currentViewWidth)]|"
+                            options: 0
+                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( self.dashboardView.frame ) )
+                                      , @"currentViewWidth" : @( NSWidth( currentView.frame ) )
+                                      }
+                              views: viewsDict ];
+
+    NSArray* verticalConstraints = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"V:|-50-[currentView(>=currentViewHeight)]|"
+                            options: 0
+                            metrics: @{ @"currentViewHeight" : @( NSHeight( currentView.frame ) ) }
+                              views: viewsDict ];
+
+    [ self.view.window.contentView addConstraints: horizontalConstraints ];
+    [ self.view.window.contentView addConstraints: verticalConstraints ];
     }
 
 NSString static* const kColumnIDTabs = @"tabs";

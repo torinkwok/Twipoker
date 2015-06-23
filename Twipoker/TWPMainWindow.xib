@@ -28,10 +28,10 @@
                         <rect key="frame" x="-107" y="653" width="34" height="34"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
                     </imageView>
-                    <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-yU-kQO" customClass="TWPNavigationBar">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-yU-kQO" customClass="TWPNavigationBar">
                         <rect key="frame" x="106" y="637" width="554" height="53"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
                                 <rect key="frame" x="20" y="14" width="27" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="MNU-pR-jXO"/>
@@ -45,7 +45,7 @@
                                     <action selector="goBackAction:" target="HUR-ik-D4y" id="rfd-26-qyC"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IjZ-GZ-rhx" userLabel="Go Forward Button">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IjZ-GZ-rhx" userLabel="Go Forward Button">
                                 <rect key="frame" x="48" y="14" width="27" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="27" id="bzk-qE-xyd"/>
@@ -59,7 +59,7 @@
                                     <action selector="goForwardAction:" target="HUR-ik-D4y" id="fyz-EQ-Lu8"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMS-HU-W4h" userLabel="Twitter Logo Button">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hMS-HU-W4h" userLabel="Twitter Logo Button">
                                 <rect key="frame" x="265" y="14" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="hap-zw-OqP"/>
@@ -68,19 +68,21 @@
                             </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="YCM-gZ-AcP" firstAttribute="leading" secondItem="Cjl-yU-kQO" secondAttribute="leading" constant="20" symbolic="YES" id="3jb-ut-9OB"/>
+                            <constraint firstItem="YCM-gZ-AcP" firstAttribute="bottom" secondItem="hMS-HU-W4h" secondAttribute="bottom" id="7vk-ux-ak6"/>
                             <constraint firstAttribute="centerX" secondItem="hMS-HU-W4h" secondAttribute="centerX" constant="-0.5" id="Ji1-8n-FXt"/>
+                            <constraint firstItem="YCM-gZ-AcP" firstAttribute="top" secondItem="IjZ-GZ-rhx" secondAttribute="top" id="JpW-Oa-aOp"/>
+                            <constraint firstItem="YCM-gZ-AcP" firstAttribute="top" secondItem="hMS-HU-W4h" secondAttribute="top" id="L2M-8o-4YZ"/>
+                            <constraint firstItem="YCM-gZ-AcP" firstAttribute="top" secondItem="Cjl-yU-kQO" secondAttribute="top" constant="14" id="bsE-ZD-uIt"/>
                             <constraint firstAttribute="centerY" secondItem="hMS-HU-W4h" secondAttribute="centerY" id="gzD-LV-Gu9"/>
+                            <constraint firstItem="IjZ-GZ-rhx" firstAttribute="leading" secondItem="YCM-gZ-AcP" secondAttribute="trailing" constant="1" id="zcr-LT-dQa"/>
                         </constraints>
                     </customView>
-                    <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
                         <rect key="frame" x="0.0" y="-77" width="107" height="767"/>
                         <subviews>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="597" width="107" height="83"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="107" id="Rxb-nz-UYY"/>
-                                    <constraint firstAttribute="height" constant="83" id="WOu-m4-Nsi"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="home-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="emi-ef-6Ye">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -90,7 +92,7 @@
                                     <outlet property="associatedViewsStack" destination="i5X-Cg-E7K" id="bvm-Rg-7eT"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htO-L6-7ln" customClass="TWPDashboardTab">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="htO-L6-7ln" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="526" width="107" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="107" id="re2-uT-jgO"/>
@@ -105,7 +107,7 @@
                                     <outlet property="associatedViewsStack" destination="k9K-Hk-Xzb" id="vDc-Kw-S0O"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blT-GV-cVR" customClass="TWPDashboardTab">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="blT-GV-cVR" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="455" width="107" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="YhW-Bx-OkI"/>
@@ -120,7 +122,7 @@
                                     <outlet property="associatedViewsStack" destination="jhD-Ze-QK8" id="sgs-ha-hTn"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-j2-Kng" customClass="TWPDashboardTab">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="MPM-j2-Kng" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="384" width="107" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="IBl-WC-Amv"/>
@@ -135,7 +137,7 @@
                                     <outlet property="associatedViewsStack" destination="A4Q-KL-bMh" id="6qS-SL-5do"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="313" width="107" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="Ra7-DU-ANx"/>
@@ -150,7 +152,7 @@
                                     <outlet property="associatedViewsStack" destination="uTU-qJ-3dF" id="xUo-mp-Ecs"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="af4-QX-slZ" customClass="TWPDashboardTab">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="af4-QX-slZ" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="242" width="107" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="6LG-IV-SZS"/>
@@ -165,7 +167,7 @@
                                     <outlet property="associatedViewsStack" destination="4cS-D0-vD7" id="UkT-Dn-UOD"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNM-IO-3zG">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="HNM-IO-3zG">
                                 <rect key="frame" x="0.0" y="77" width="107" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="Roc-iq-tcu"/>
@@ -183,7 +185,23 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="HNM-IO-3zG" secondAttribute="bottom" constant="1" id="0kT-41-hFF"/>
+                            <constraint firstAttribute="bottom" secondItem="HNM-IO-3zG" secondAttribute="bottom" constant="77" id="0kT-41-hFF"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="1op-nf-V7v"/>
+                            <constraint firstAttribute="trailing" secondItem="noB-a2-2cI" secondAttribute="trailing" id="3db-Hd-VVb"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="leading" secondItem="blT-GV-cVR" secondAttribute="leading" id="Dbn-K4-AWs"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="top" secondItem="blT-GV-cVR" secondAttribute="bottom" constant="70" id="Dds-on-PSF"/>
+                            <constraint firstItem="H1h-r2-oOp" firstAttribute="trailing" secondItem="htO-L6-7ln" secondAttribute="trailing" id="MFo-5H-7DT"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="leading" secondItem="af4-QX-slZ" secondAttribute="leading" id="Ocd-ik-3sa"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="bottom" secondItem="af4-QX-slZ" secondAttribute="top" constant="1" id="PP7-AU-03f"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="top" secondItem="vge-3d-5qI" secondAttribute="top" constant="382" id="a2v-OT-5di"/>
+                            <constraint firstItem="H1h-r2-oOp" firstAttribute="top" secondItem="vge-3d-5qI" secondAttribute="top" constant="87" id="bD2-Fr-91K"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="leading" secondItem="HNM-IO-3zG" secondAttribute="leading" id="ceo-UM-CjS"/>
+                            <constraint firstItem="H1h-r2-oOp" firstAttribute="bottom" secondItem="htO-L6-7ln" secondAttribute="top" constant="1" id="fIC-Ig-yV4"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="leading" secondItem="htO-L6-7ln" secondAttribute="leading" id="qHH-Gi-Lkz"/>
+                            <constraint firstItem="blT-GV-cVR" firstAttribute="top" secondItem="H1h-r2-oOp" secondAttribute="bottom" constant="70" id="qt7-hN-dCV"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="top" secondItem="MPM-j2-Kng" secondAttribute="bottom" constant="-1" id="rW9-JD-JCT"/>
+                            <constraint firstItem="H1h-r2-oOp" firstAttribute="leading" secondItem="htO-L6-7ln" secondAttribute="leading" id="sll-Wg-JJz"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="leading" secondItem="MPM-j2-Kng" secondAttribute="leading" id="t79-1m-LCP"/>
                         </constraints>
                         <connections>
                             <outlet property="delegate" destination="HUR-ik-D4y" id="jUJ-5f-Sjq"/>
@@ -197,9 +215,11 @@
                     </customView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Cjl-yU-kQO" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="106" id="5st-Cb-kpb"/>
+                    <constraint firstItem="Cjl-yU-kQO" firstAttribute="top" secondItem="vge-3d-5qI" secondAttribute="top" id="H06-TP-1oA"/>
                     <constraint firstItem="vge-3d-5qI" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="SDl-CB-Ah6"/>
                     <constraint firstAttribute="trailing" secondItem="Cjl-yU-kQO" secondAttribute="trailing" id="Sup-zS-6GU"/>
-                    <constraint firstAttribute="bottom" secondItem="vge-3d-5qI" secondAttribute="bottom" id="fl8-Xl-Msw"/>
+                    <constraint firstAttribute="bottom" secondItem="vge-3d-5qI" secondAttribute="bottom" constant="-77" id="fl8-Xl-Msw"/>
                     <constraint firstItem="Cjl-yU-kQO" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="trailing" constant="-1" id="gow-PF-XKX"/>
                 </constraints>
                 <connections>
@@ -217,6 +237,7 @@
         </customView>
         <customObject id="HUR-ik-D4y" customClass="TWPStackContentViewController">
             <connections>
+                <outlet property="dashboardView" destination="vge-3d-5qI" id="kXt-KT-x9G"/>
                 <outlet property="favoritesDashboardStack" destination="k9K-Hk-Xzb" id="dxH-fp-hcg"/>
                 <outlet property="homeDashboardStack" destination="i5X-Cg-E7K" id="c2I-Ug-frY"/>
                 <outlet property="listsDashboardStack" destination="jhD-Ze-QK8" id="piV-M9-8Ce"/>
