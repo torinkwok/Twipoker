@@ -24,16 +24,6 @@
 
 #import "TWPMainWindowContentView.h"
 
-#import "TWPTimelineScrollView.h"
-#import "TWPNavigationBarController.h"
-#import "TWPStackContentView.h"
-#import "TWPStackContentViewController.h"
-
-#import "TWPTweetingBoxNotificationNames.h"
-#import "TWPCuttingLineView.h"
-#import "TWPTweetingCompleteBox.h"
-#import "TWPTimelineUserNameButton.h"
-
 // Private Interfaces
 @interface TWPMainWindowContentView ()
 - ( void ) _setUpSubviews;
@@ -41,11 +31,6 @@
 
 // TWPMainWindowContentView class
 @implementation TWPMainWindowContentView
-
-@synthesize navigationBarController;
-@synthesize stackContentViewController;
-
-@synthesize cuttingLineBetweenNavBarAndViewsStack;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
@@ -64,34 +49,34 @@
 #pragma mark Private Interfaces
 - ( void ) _setUpSubviews
     {
-    [ self.cuttingLineBetweenNavBarAndViewsStack removeFromSuperview ];
-
-    // Navigation bar
-    NSRect frameOfNavigationBar = self.navigationBarController.view.frame;
-
-    // Cutting line
-    NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfNavigationBar ), NSHeight( frameOfNavigationBar )
-                                              , NSWidth( self.cuttingLineBetweenNavBarAndViewsStack.frame ), NSHeight( self.cuttingLineBetweenNavBarAndViewsStack.frame ) );
-
-    [ self.cuttingLineBetweenNavBarAndViewsStack setFrame: frameOfCuttingLineView ];
-    [ self addSubview: self.cuttingLineBetweenNavBarAndViewsStack ];
-
-    // Stack content view
-    TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
-    NSRect frameOfStackContentView = NSMakeRect( NSMinX( frameOfCuttingLineView )
-                                               , NSMaxY( frameOfCuttingLineView )
-                                               , NSWidth( stackContentView.frame )
-                                               , NSHeight( self.bounds ) - NSHeight( frameOfNavigationBar ) - NSHeight( frameOfCuttingLineView )
-                                               );
-
-    [ stackContentView setFrame: frameOfStackContentView ];
-    [ self addSubview: stackContentView ];
+//    [ self.cuttingLineBetweenNavBarAndViewsStack removeFromSuperview ];
+//
+//    // Navigation bar
+//    NSRect frameOfNavigationBar = self.navigationBarController.view.frame;
+//
+//    // Cutting line
+//    NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfNavigationBar ), NSHeight( frameOfNavigationBar )
+//                                              , NSWidth( self.cuttingLineBetweenNavBarAndViewsStack.frame ), NSHeight( self.cuttingLineBetweenNavBarAndViewsStack.frame ) );
+//
+//    [ self.cuttingLineBetweenNavBarAndViewsStack setFrame: frameOfCuttingLineView ];
+//    [ self addSubview: self.cuttingLineBetweenNavBarAndViewsStack ];
+//
+//    // Stack content view
+//    TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
+//    NSRect frameOfStackContentView = NSMakeRect( NSMinX( frameOfCuttingLineView )
+//                                               , NSMaxY( frameOfCuttingLineView )
+//                                               , NSWidth( stackContentView.frame )
+//                                               , NSHeight( self.bounds ) - NSHeight( frameOfNavigationBar ) - NSHeight( frameOfCuttingLineView )
+//                                               );
+//
+//    [ stackContentView setFrame: frameOfStackContentView ];
+//    [ self addSubview: stackContentView ];
     }
 
-- ( BOOL ) isFlipped
-    {
-    return YES;
-    }
+//- ( BOOL ) isFlipped
+//    {
+//    return YES;
+//    }
 
 @end // TWPMainWindowContentView class
 
