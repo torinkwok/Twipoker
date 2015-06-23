@@ -26,17 +26,10 @@
 
 // Private Interfaces
 @interface TWPMainWindowContentView ()
-- ( void ) _setUpSubviews;
 @end // Private Interfaces
 
 // TWPMainWindowContentView class
 @implementation TWPMainWindowContentView
-
-#pragma mark Initializations
-- ( void ) awakeFromNib
-    {
-    [ self _setUpSubviews ];
-    }
 
 #pragma mark Custom Drawing
 - ( void ) drawRect: ( NSRect )_DirtyRect
@@ -46,37 +39,6 @@
     NSRectFill( _DirtyRect );
     }
 
-#pragma mark Private Interfaces
-- ( void ) _setUpSubviews
-    {
-//    [ self.cuttingLineBetweenNavBarAndViewsStack removeFromSuperview ];
-//
-//    // Navigation bar
-//    NSRect frameOfNavigationBar = self.navigationBarController.view.frame;
-//
-//    // Cutting line
-//    NSRect frameOfCuttingLineView = NSMakeRect( NSMinX( frameOfNavigationBar ), NSHeight( frameOfNavigationBar )
-//                                              , NSWidth( self.cuttingLineBetweenNavBarAndViewsStack.frame ), NSHeight( self.cuttingLineBetweenNavBarAndViewsStack.frame ) );
-//
-//    [ self.cuttingLineBetweenNavBarAndViewsStack setFrame: frameOfCuttingLineView ];
-//    [ self addSubview: self.cuttingLineBetweenNavBarAndViewsStack ];
-//
-//    // Stack content view
-//    TWPStackContentView* stackContentView = ( TWPStackContentView* )( self.stackContentViewController.view );
-//    NSRect frameOfStackContentView = NSMakeRect( NSMinX( frameOfCuttingLineView )
-//                                               , NSMaxY( frameOfCuttingLineView )
-//                                               , NSWidth( stackContentView.frame )
-//                                               , NSHeight( self.bounds ) - NSHeight( frameOfNavigationBar ) - NSHeight( frameOfCuttingLineView )
-//                                               );
-//
-//    [ stackContentView setFrame: frameOfStackContentView ];
-//    [ self addSubview: stackContentView ];
-    }
-
-//- ( BOOL ) isFlipped
-//    {
-//    return YES;
-//    }
 
 @end // TWPMainWindowContentView class
 
