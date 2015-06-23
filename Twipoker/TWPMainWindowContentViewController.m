@@ -116,7 +116,7 @@
     [ self.view addConstraints: horizontalConstraints1 ];
     [ self.view addConstraints: horizontalConstraints2 ];
 
-    [ self.view.window visualizeConstraints: self.view.constraints ];
+//    [ self.view.window visualizeConstraints: self.view.constraints ];
     }
 
 @end

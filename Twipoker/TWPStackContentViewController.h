@@ -41,7 +41,6 @@ NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath
     }
 
 @property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
-@property ( weak ) IBOutlet TWPDashboardView* dashboardView;
 
 @property ( weak ) IBOutlet TWPViewsStack* homeDashboardStack;
 @property ( weak ) IBOutlet TWPViewsStack* favoritesDashboardStack;

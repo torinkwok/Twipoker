@@ -160,7 +160,6 @@
         </customView>
         <customObject id="HUR-ik-D4y" customClass="TWPStackContentViewController">
             <connections>
-                <outlet property="dashboardView" destination="vge-3d-5qI" id="EpM-AB-k8g"/>
                 <outlet property="favoritesDashboardStack" destination="k9K-Hk-Xzb" id="dxH-fp-hcg"/>
                 <outlet property="homeDashboardStack" destination="i5X-Cg-E7K" id="c2I-Ug-frY"/>
                 <outlet property="listsDashboardStack" destination="jhD-Ze-QK8" id="piV-M9-8Ce"/>

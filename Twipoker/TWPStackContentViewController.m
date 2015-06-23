@@ -102,7 +102,7 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserTweets object: nil ];
     }
 
-- ( void ) viewDidLoad
+- ( void ) viewWillAppear
     {
     [ super viewDidLoad ];
 
@@ -112,21 +112,17 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
     self.navigationBarController.delegate = self.currentDashboardStack;
 
     NSView* currentView = self.currentDashboardStack.currentView.view;
-    NSView* dashboardView = self.dashboardView;
 
     [ currentView setTranslatesAutoresizingMaskIntoConstraints: NO ];
-    [ dashboardView setTranslatesAutoresizingMaskIntoConstraints: NO ];
 
     if ( currentView.superview != self.view )
         [ self.view addSubview: currentView ];
 
-    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( currentView, dashboardView );
+    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( currentView );
     NSArray* horizontalConstraints = [ NSLayoutConstraint
         constraintsWithVisualFormat: @"H:|[currentView(>=currentViewWidth)]|"
                             options: 0
-                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( self.dashboardView.frame ) )
-                                      , @"currentViewWidth" : @( NSWidth( currentView.frame ) )
-                                      }
+                            metrics: @{ @"currentViewWidth" : @( NSWidth( currentView.frame ) ) }
                               views: viewsDict ];
 
     NSArray* verticalConstraints = [ NSLayoutConstraint
