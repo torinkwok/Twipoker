@@ -46,15 +46,12 @@
     NSDictionary* viewsDict = NSDictionaryOfVariableBindings( _twitterLogo, _goBackButton, _goForwardButton );
 
     NSNumber* paddingCenteredLogoHorizontally = @( NSMinX( _twitterLogo.frame ) - NSMaxX( _goForwardButton.frame ) );
-    NSNumber* paddingBetweenGoForwardAndLogo = @( paddingCenteredLogoHorizontally.doubleValue - NSMaxX( _goForwardButton.frame ) );
-    NSArray* horizontalConstraints0 = [ NSLayoutConstraint
+    NSArray* horizontalConstraintsButtons = [ NSLayoutConstraint
         constraintsWithVisualFormat: @"H:|-(==leadingSpace)"
                                       "-[_goBackButton(==buttonsWidth)]"
                                       "-(==paddingBetweenButtons)"
                                       "-[_goForwardButton(==goBackButton)]"
-                                      "-(>=paddingBetweenGoForwardAndLogo)"
-                                      "-[_twitterLogo(==twitterLogoWidth)]"
-                                      "-(>=paddingCenteredLogoHorizontally)-|"
+                                      "-(>=tralingSpace)-|"
                             options: 0
                             metrics: @{ @"leadingSpace" : @( NSMinX( _goBackButton.frame ) )
                                       , @"buttonsWidth" : @( NSWidth( _goBackButton.frame ) )
@@ -63,6 +60,16 @@
                                       , @"paddingBetweenButtons" : @( NSMinX( _goForwardButton.frame ) - NSMaxX( _goBackButton.frame ) )
                                       , @"paddingBetweenGoForwardAndLogo" : paddingCenteredLogoHorizontally
                                       , @"paddingCenteredLogoHorizontally" : paddingCenteredLogoHorizontally
+                                      , @"tralingSpace" : @( NSWidth( self.view.frame ) - NSMaxX( _goForwardButton.frame ) )
+                                      }
+                              views: viewsDict ];
+
+    NSArray* logoWidthConstraint = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:[_twitterLogo(==twitterLogoWidth)]"
+                            options: NSLayoutFormatAlignAllCenterX | NSLayoutFormatAlignAllCenterY
+                            metrics: @{ @"leadingSpace" : @( NSMinX( _twitterLogo.frame ) )
+                                      , @"twitterLogoWidth" : @( NSWidth( _twitterLogo.frame ) )
+                                      , @"trailingSpace" : @( NSWidth( self.view.frame ) - NSMaxX( _twitterLogo.frame ) )
                                       }
                               views: viewsDict ];
 
@@ -88,12 +95,21 @@
                                       }
                               views: viewsDict ];
 
-    [ self.view addConstraints: horizontalConstraints0 ];
+    NSLayoutConstraint* centerXConstraint = [ NSLayoutConstraint
+        constraintWithItem: self.view attribute: NSLayoutAttributeCenterX relatedBy: NSLayoutRelationEqual toItem: _twitterLogo attribute: NSLayoutAttributeCenterX multiplier: 1.f constant: 0.f ];
+
+    NSLayoutConstraint* centerYConstraint = [ NSLayoutConstraint
+        constraintWithItem: self.view attribute: NSLayoutAttributeCenterY relatedBy: NSLayoutRelationEqual toItem: _twitterLogo attribute: NSLayoutAttributeCenterY multiplier: 1.f constant: 0.f ];
+
+
+    [ self.view addConstraints: horizontalConstraintsButtons ];
+    [ self.view addConstraints: logoWidthConstraint ];
     [ self.view addConstraints: verticalConstraintsGoBackButton ];
     [ self.view addConstraints: verticalConstraintsGoForwardButton ];
     [ self.view addConstraints: verticalConstraintsTwitterLogo ];
 
-//    [ self.view.window visualizeConstraints: self.view.constraints ];
+    [ self.view addConstraint: centerXConstraint ];
+    [ self.view addConstraint: centerYConstraint ];
     }
 
 #pragma mark Accessors

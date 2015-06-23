@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                             <imageView identifier="twitter-logo" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMS-HU-W4h" userLabel="Twitter Logo Button">
-                                <rect key="frame" x="265" y="14" width="25" height="25"/>
+                                <rect key="frame" x="264" y="14" width="26" height="25"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="twitter-logo-blue" id="8Lr-ax-6GU"/>
                             </imageView>
                         </subviews>
