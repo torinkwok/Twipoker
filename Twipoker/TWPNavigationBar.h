@@ -25,7 +25,6 @@
 @import Cocoa;
 
 @interface TWPNavigationBar : NSView
-
 @end
 
 /*=============================================================================┐

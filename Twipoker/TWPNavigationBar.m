@@ -26,11 +26,6 @@
 
 @implementation TWPNavigationBar
 
-#pragma mark Initialzation
-- ( void ) awakeFromNib
-    {
-    }
-
 #pragma mark Overrides for Custom Appearance
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {

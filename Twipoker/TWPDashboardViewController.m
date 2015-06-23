@@ -42,8 +42,6 @@
 
 - ( void ) viewDidLoad
     {
-    [ super viewDidLoad ];
-
     [ self.view removeConstraints: self.view.constraints ];
 
     [ self.homeTab setTranslatesAutoresizingMaskIntoConstraints: NO ];
