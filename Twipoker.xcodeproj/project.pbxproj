@@ -635,10 +635,10 @@
 				830B8F5C1AF0CC12006D2635 /* TWPStackContentViewController.m */,
 				830896221AEA1D2A0081D227 /* TWPStackContentView.h */,
 				830896231AEA1D2A0081D227 /* TWPStackContentView.m */,
-				83C07A9A1AF2313100184CCB /* TWPNavigationBar.h */,
-				83C07A9B1AF2313100184CCB /* TWPNavigationBar.m */,
 				83D3E1B61AF61DC200E42842 /* TWPNavigationBarController.h */,
 				83D3E1B71AF61DC200E42842 /* TWPNavigationBarController.m */,
+				83C07A9A1AF2313100184CCB /* TWPNavigationBar.h */,
+				83C07A9B1AF2313100184CCB /* TWPNavigationBar.m */,
 			);
 			name = "Stack Content View";
 			sourceTree = "<group>";

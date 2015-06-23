@@ -27,9 +27,15 @@
 
 @implementation TWPNavigationBarController
 
-#pragma mark Accessors
 @dynamic delegate;
 
+#pragma mark Initializations
+- ( void ) viewDidLoad
+    {
+    
+    }
+
+#pragma mark Accessors
 - ( void ) setDelegate: ( TWPViewsStack* )_NewDelegate
     {
     if ( self->_delegate != _NewDelegate )
