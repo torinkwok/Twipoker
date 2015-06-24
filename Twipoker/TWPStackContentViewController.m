@@ -126,13 +126,13 @@
     NSArray* horizontalConstraints = [ NSLayoutConstraint
         constraintsWithVisualFormat: @"H:|[docView(>=docViewWidth)]|"
                             options: 0
-                            metrics: @{ @"docViewWidth" : @( docView.minimumSizeInNib.width /*NSWidth( docView.frame)*/ ) }
+                            metrics: @{ @"docViewWidth" : @( docView.minimumSizeInNib.width ) }
                               views: viewsDict ];
 
     NSArray* verticalConstraints = [ NSLayoutConstraint
         constraintsWithVisualFormat: @"V:|[docView(>=currentViewHeight)]|"
                             options: 0
-                            metrics: @{ @"currentViewHeight" : @( docView.minimumSizeInNib.height /*NSHeight( docView.frame )*/ ) }
+                            metrics: @{ @"currentViewHeight" : @( docView.minimumSizeInNib.height ) }
                               views: viewsDict ];
 
     [ self.view addConstraints: horizontalConstraints ];
