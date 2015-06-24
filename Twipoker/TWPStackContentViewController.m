@@ -44,6 +44,7 @@
 #import "TWPDirectMessageSessionViewController.h"
 #import "TWPDashboardTab.h"
 #import "TWPDashboardView.h"
+#import "TWPTimelineScrollView.h"
 
 // KVO Key Paths
 NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
@@ -106,39 +107,39 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
     {
     [ super viewDidLoad ];
 
-    [ self.view removeConstraints: self.view.constraints ];
-
     self.currentDashboardStack = self.homeDashboardStack;
     self.navigationBarController.delegate = self.currentDashboardStack;
-
-    NSView* currentView = self.currentDashboardStack.currentView.view;
-
-    [ currentView setTranslatesAutoresizingMaskIntoConstraints: NO ];
-
-    if ( currentView.superview != self.view )
-        [ self.view addSubview: currentView ];
-
-    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( currentView );
-    NSArray* horizontalConstraints = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[currentView(>=currentViewWidth)]|"
-                            options: 0
-                            metrics: @{ @"currentViewWidth" : @( NSWidth( currentView.frame ) ) }
-                              views: viewsDict ];
-
-    NSArray* verticalConstraints = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|[currentView(>=currentViewHeight)]|"
-                            options: 0
-                            metrics: @{ @"currentViewHeight" : @( NSHeight( currentView.frame ) ) }
-                              views: viewsDict ];
-
-    [ self.view.window.contentView addConstraints: horizontalConstraints ];
-    [ self.view.window.contentView addConstraints: verticalConstraints ];
     }
 
 #pragma mark Conforms to <TWPDashboardViewDelegate>
 - ( void ) setCurrentDashboardStack: ( TWPViewsStack* )_CurrentDashboardStack
     {
     self->_currentDashboardStack = _CurrentDashboardStack;
+
+    [ self.view removeConstraints: self.view.constraints ];
+    [ self.view setSubviews: @[] ];
+
+    TWPTimelineScrollView* docView = ( TWPTimelineScrollView* )( self->_currentDashboardStack.currentView.view );
+    [ docView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self.view addSubview: docView ];
+
+    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( docView );
+    NSArray* horizontalConstraints = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[docView(>=docViewWidth)]|"
+                            options: 0
+                            metrics: @{ @"docViewWidth" : @( docView.minimumSize.width /*NSWidth( docView.frame)*/ ) }
+                              views: viewsDict ];
+
+    NSArray* verticalConstraints = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"V:|[docView(>=currentViewHeight)]|"
+                            options: 0
+                            metrics: @{ @"currentViewHeight" : @( docView.minimumSize.height /*NSHeight( docView.frame )*/ ) }
+                              views: viewsDict ];
+
+    [ self.view addConstraints: horizontalConstraints ];
+    [ self.view addConstraints: verticalConstraints ];
+
+//    [ self.view.window visualizeConstraints: self.view.constraints ];
     }
 
 - ( TWPViewsStack* ) currentDashboardStack

@@ -24,37 +24,11 @@
 
 @import Cocoa;
 
-@class TWPTimelineTableView;
-@protocol TWPTimelineScrollViewDelegate;
+@interface NSView ( TwipokerAutoLayout )
 
-// Notification Names
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
+@property ( assign, readwrite ) NSSize minimumSizeInNib;
 
-// TWPTimelineScrollView class
-@interface TWPTimelineScrollView : NSScrollView
-    {
-@private
-    NSSize _minimumSize;
-    }
-
-#pragma mark Accessors
-@property ( weak, readwrite ) IBOutlet id <TWPTimelineScrollViewDelegate> delegate;
-@property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
-@property ( assign, readonly ) NSSize minimumSize;
-
-@end // TWPTimelineScrollView class
-
-// TWPTimelineScrollViewDelegate protocol
-@protocol TWPTimelineScrollViewDelegate <NSObject>
-
-@optional
-
-// Tells the delegate that the data source of timeline table (document view of this scroll view)
-// should fetch older tweets
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
-
-@end // TWPTimelineScrollViewDelegate protocol
+@end
 
 /*=============================================================================┐
 |                                                                              |

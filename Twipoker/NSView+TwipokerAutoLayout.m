@@ -22,39 +22,28 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-@import Cocoa;
+#import <objc/runtime.h>
 
-@class TWPTimelineTableView;
-@protocol TWPTimelineScrollViewDelegate;
+#import "NSView+TwipokerAutoLayout.h"
 
-// Notification Names
-NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
+@implementation NSView ( TwipokerAutoLayout )
 
-// TWPTimelineScrollView class
-@interface TWPTimelineScrollView : NSScrollView
-    {
-@private
-    NSSize _minimumSize;
-    }
+@dynamic minimumSizeInNib;
 
 #pragma mark Accessors
-@property ( weak, readwrite ) IBOutlet id <TWPTimelineScrollViewDelegate> delegate;
-@property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
-@property ( assign, readonly ) NSSize minimumSize;
+void static* const kMinimumSizeKey = @"TwipokerAutoLayout.staticKey.minimumSize";
+- ( void ) setMinimumSizeInNib: ( NSSize )_NewSize
+    {
+    objc_setAssociatedObject( self, kMinimumSizeKey, [ NSValue valueWithSize: _NewSize ], OBJC_ASSOCIATION_ASSIGN );
+    }
 
-@end // TWPTimelineScrollView class
+- ( NSSize ) minimumSizeInNib
+    {
+    NSValue* sizeWrapper = objc_getAssociatedObject( self, kMinimumSizeKey );
+    return sizeWrapper.sizeValue;
+    ]
 
-// TWPTimelineScrollViewDelegate protocol
-@protocol TWPTimelineScrollViewDelegate <NSObject>
-
-@optional
-
-// Tells the delegate that the data source of timeline table (document view of this scroll view)
-// should fetch older tweets
-- ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
-       shouldFetchOlderTweets: ( NSClipView* )_ClipView;
-
-@end // TWPTimelineScrollViewDelegate protocol
+@end
 
 /*=============================================================================┐
 |                                                                              |

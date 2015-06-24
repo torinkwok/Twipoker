@@ -30,6 +30,12 @@
 #pragma mark Accessors
 @synthesize delegate;
 @dynamic timelineTableView;
+@synthesize minimumSize = _minimumSize;
+
+- ( void ) awakeFromNib
+    {
+    self->_minimumSize = self.frame.size;
+    }
 
 - ( TWPTimelineTableView* ) timelineTableView
     {
