@@ -24,17 +24,7 @@
 
 @import Cocoa;
 
-@class TWPViewsStack;
-@class TWPNavigationBar;
-@class TWPStackContentViewController;
-
 @interface TWPStackContentView : NSView
-
-@property ( weak ) IBOutlet TWPNavigationBar* navigationBar;
-
-@property ( weak ) IBOutlet TWPStackContentViewController* controller;
-@property ( strong, readwrite ) FBKVOController* KVOController;
-
 @end
 
 /*=============================================================================┐

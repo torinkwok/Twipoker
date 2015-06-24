@@ -46,8 +46,7 @@
 #import "TWPDashboardView.h"
 #import "TWPTimelineScrollView.h"
 
-// KVO Key Paths
-NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"self.currentDashboardStack";
+#import "NSView+TwipokerAutoLayout.h"
 
 // Private Interfaces
 @interface TWPStackContentViewController ()
@@ -127,19 +126,17 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
     NSArray* horizontalConstraints = [ NSLayoutConstraint
         constraintsWithVisualFormat: @"H:|[docView(>=docViewWidth)]|"
                             options: 0
-                            metrics: @{ @"docViewWidth" : @( docView.minimumSize.width /*NSWidth( docView.frame)*/ ) }
+                            metrics: @{ @"docViewWidth" : @( docView.minimumSizeInNib.width /*NSWidth( docView.frame)*/ ) }
                               views: viewsDict ];
 
     NSArray* verticalConstraints = [ NSLayoutConstraint
         constraintsWithVisualFormat: @"V:|[docView(>=currentViewHeight)]|"
                             options: 0
-                            metrics: @{ @"currentViewHeight" : @( docView.minimumSize.height /*NSHeight( docView.frame )*/ ) }
+                            metrics: @{ @"currentViewHeight" : @( docView.minimumSizeInNib.height /*NSHeight( docView.frame )*/ ) }
                               views: viewsDict ];
 
     [ self.view addConstraints: horizontalConstraints ];
     [ self.view addConstraints: verticalConstraints ];
-
-//    [ self.view.window visualizeConstraints: self.view.constraints ];
     }
 
 - ( TWPViewsStack* ) currentDashboardStack

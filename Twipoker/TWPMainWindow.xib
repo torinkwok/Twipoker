@@ -238,10 +238,6 @@
         <customView identifier="stack-content-view" appearanceType="aqua" id="9t8-W1-aLM" customClass="TWPStackContentView">
             <rect key="frame" x="0.0" y="0.0" width="606" height="708"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <connections>
-                <outlet property="controller" destination="HUR-ik-D4y" id="wSL-fX-a3x"/>
-                <outlet property="navigationBar" destination="Cjl-yU-kQO" id="EHL-b3-fwc"/>
-            </connections>
             <point key="canvasLocation" x="267" y="-902"/>
         </customView>
         <viewController id="V2f-Li-yzk" customClass="TWPTwitterUserProfileViewController"/>

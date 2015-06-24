@@ -31,17 +31,18 @@
 @dynamic minimumSizeInNib;
 
 #pragma mark Accessors
-void static* const kMinimumSizeKey = @"TwipokerAutoLayout.staticKey.minimumSize";
+void static* kMinimumSizeKey = @"TwipokerAutoLayout.staticKey.minimumSize";
 - ( void ) setMinimumSizeInNib: ( NSSize )_NewSize
     {
-    objc_setAssociatedObject( self, kMinimumSizeKey, [ NSValue valueWithSize: _NewSize ], OBJC_ASSOCIATION_ASSIGN );
+    NSValue* sizeWrapper = [ NSValue valueWithSize: _NewSize ];
+    objc_setAssociatedObject( self, kMinimumSizeKey, sizeWrapper, OBJC_ASSOCIATION_RETAIN );
     }
 
 - ( NSSize ) minimumSizeInNib
     {
     NSValue* sizeWrapper = objc_getAssociatedObject( self, kMinimumSizeKey );
     return sizeWrapper.sizeValue;
-    ]
+    }
 
 @end
 

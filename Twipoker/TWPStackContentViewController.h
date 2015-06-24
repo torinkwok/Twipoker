@@ -26,9 +26,6 @@
 
 #import "TWPDashboardView.h"
 
-// KVO Key Paths
-NSString extern* const TWPStackContentViewControllerCurrentDashboardStackKeyPath;
-
 @class TWPViewsStack;
 @class TWPNavigationBarController;
 @class TWPDashboardView;

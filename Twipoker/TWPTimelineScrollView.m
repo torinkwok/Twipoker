@@ -24,17 +24,18 @@
 
 #import "TWPTimelineScrollView.h"
 
+#import "NSView+TwipokerAutoLayout.h"
+
 // TWPTimelineScrollView class
 @implementation TWPTimelineScrollView
 
 #pragma mark Accessors
 @synthesize delegate;
 @dynamic timelineTableView;
-@synthesize minimumSize = _minimumSize;
 
 - ( void ) awakeFromNib
     {
-    self->_minimumSize = self.frame.size;
+    [ self setMinimumSizeInNib: self.frame.size ];
     }
 
 - ( TWPTimelineTableView* ) timelineTableView

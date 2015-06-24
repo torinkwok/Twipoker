@@ -32,15 +32,10 @@ NSString extern* const TWPTimelineScrollViewTypeUserInfoKey;
 
 // TWPTimelineScrollView class
 @interface TWPTimelineScrollView : NSScrollView
-    {
-@private
-    NSSize _minimumSize;
-    }
 
 #pragma mark Accessors
 @property ( weak, readwrite ) IBOutlet id <TWPTimelineScrollViewDelegate> delegate;
 @property ( weak, readonly ) TWPTimelineTableView* timelineTableView;
-@property ( assign, readonly ) NSSize minimumSize;
 
 @end // TWPTimelineScrollView class
 
