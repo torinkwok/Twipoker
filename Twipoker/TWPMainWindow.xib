@@ -6,9 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPMainWindowController">
             <connections>
-                <outlet property="cuttingLineBetweetMainViewAndProfileView" destination="flx-KC-83G" id="DQ5-Ll-Gve"/>
-                <outlet property="navigationBarController" destination="Gr0-CG-Iha" id="D7x-Xn-UWw"/>
-                <outlet property="twitterUserProfileViewController" destination="V2f-Li-yzk" id="DhS-C1-e4F"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="ddi-Sa-xhf"/>
             </connections>
         </customObject>
@@ -244,9 +241,11 @@
         <viewController id="dBG-Jj-N3g" customClass="TWPMainWindowContentViewController">
             <connections>
                 <outlet property="cuttingLineBetweenNavBarAndViewsStack" destination="zU3-cQ-xog" id="s50-GQ-uni"/>
+                <outlet property="cuttingLineBetweetMainViewAndProfileView" destination="zU3-cQ-xog" id="rpW-h9-vt0"/>
                 <outlet property="dashboardViewController" destination="Q6I-Hl-mD8" id="LAf-Wr-Oye"/>
                 <outlet property="navigationBarController" destination="Gr0-CG-Iha" id="bKq-W0-i2p"/>
                 <outlet property="stackContentViewController" destination="HUR-ik-D4y" id="pnT-bl-Kv9"/>
+                <outlet property="twitterUserProfileViewController" destination="V2f-Li-yzk" id="cSo-HB-zcW"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="M03-z3-fFb"/>
             </connections>
         </viewController>

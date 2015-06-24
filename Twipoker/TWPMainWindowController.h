@@ -24,26 +24,9 @@
 
 @import Cocoa;
 
-@class TWPTwitterUserProfileViewController;
-@class TWPCuttingLineView;
-@class TWPNavigationBarController;
-
 // TWPMainWindowController class
 @interface TWPMainWindowController : NSWindowController
-    {
-@private
-    BOOL _isShowingProfile;
-
-    NSRect _initialFrame;
-    }
-
-@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
-
-@property ( weak ) IBOutlet TWPTwitterUserProfileViewController* twitterUserProfileViewController;
-@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweetMainViewAndProfileView;
-
 + ( instancetype ) mainWindowController;
-
 @end // TWPMainWindowController
 
 /*=============================================================================┐

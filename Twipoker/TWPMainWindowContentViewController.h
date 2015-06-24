@@ -33,10 +33,21 @@
 @class TWPTweetingCompleteBox;
 @class TWPTimelineUserNameButton;
 
-@interface TWPMainWindowContentViewController : NSViewController
+@class TWPTwitterUserProfileViewController;
 
-@property ( weak ) IBOutlet TWPDashboardViewController* dashboardViewController;
+@interface TWPMainWindowContentViewController : NSViewController
+    {
+@private
+    BOOL _isShowingProfile;
+
+    NSRect _initialFrame;
+    }
+
+@property ( weak ) IBOutlet TWPTwitterUserProfileViewController* twitterUserProfileViewController;
+@property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweetMainViewAndProfileView;
+
 @property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
+@property ( weak ) IBOutlet TWPDashboardViewController* dashboardViewController;
 @property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
 
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweenNavBarAndViewsStack;
