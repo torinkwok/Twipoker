@@ -13,7 +13,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <scrollView identifier="lists-timeline-scrollview" borderType="none" autohidesScrollers="YES" horizontalLineScroll="94" horizontalPageScroll="10" verticalLineScroll="94" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="sbF-b9-UgM" userLabel="Lists Scroll View - Home Timeline Table View" customClass="TWPTimelineScrollView">
-            <rect key="frame" x="0.0" y="0.0" width="607" height="632"/>
+            <rect key="frame" x="0.0" y="0.0" width="554" height="632"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <clipView key="contentView" copiesOnScroll="NO" id="DiR-cs-bNm">
                 <rect key="frame" x="1" y="1" width="605" height="630"/>
@@ -27,7 +27,7 @@
                         <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                         <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <tableColumns>
-                            <tableColumn identifier="lists-column" width="604" minWidth="40" maxWidth="1000" id="nEb-zt-Aq7">
+                            <tableColumn identifier="lists-column" width="551" minWidth="40" maxWidth="1000" id="nEb-zt-Aq7">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -41,35 +41,47 @@
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
                                     <tableCellView id="KKL-9M-yAp" customClass="TWPListCellView">
-                                        <rect key="frame" x="1" y="1" width="604" height="92"/>
+                                        <rect key="frame" x="1" y="1" width="551" height="92"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwq-Nh-2aJ" userLabel="Avatar" customClass="TWPUserAvatarWell">
-                                                <rect key="frame" x="464" y="-16" width="70" height="70"/>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fwq-Nh-2aJ" userLabel="Avatar" customClass="TWPUserAvatarWell">
+                                                <rect key="frame" x="461" y="11" width="70" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="70" id="6Kx-Tv-FO3"/>
+                                                    <constraint firstAttribute="height" constant="70" id="Azn-u1-TZq"/>
+                                                </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="MGV-NU-RXC"/>
                                             </imageView>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aBX-gU-zgk" userLabel="Tweet Text">
-                                                <rect key="frame" x="13" y="37" width="411" height="17"/>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aBX-gU-zgk" userLabel="Tweet Text">
+                                                <rect key="frame" x="18" y="37" width="411" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="vK7-mF-q5C"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="407" id="x9f-Jx-oW2"/>
+                                                </constraints>
                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Octocat!" id="x5f-D2-Xsi">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f7t-fL-zAY" userLabel="Avatar" customClass="TWPUserAvatarWell">
-                                                <rect key="frame" x="514" y="10" width="73" height="73"/>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f7t-fL-zAY" userLabel="Avatar" customClass="TWPUserAvatarWell">
+                                                <rect key="frame" x="458" y="83" width="73" height="0.0"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="39f-lQ-Bw7"/>
                                             </imageView>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbG-ZS-gYI">
-                                                <rect key="frame" x="13" y="56" width="518" height="27"/>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rbG-ZS-gYI">
+                                                <rect key="frame" x="18" y="56" width="411" height="27"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="27" id="R3O-Lk-D6D"/>
+                                                    <constraint firstAttribute="width" constant="407" id="Vkt-VR-8e0"/>
+                                                </constraints>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="bbr-5X-fYb">
                                                     <font key="font" size="14" name="HelveticaNeue-Medium"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoQ-vc-oR7" userLabel="Tweet Text">
-                                                <rect key="frame" x="13" y="10" width="128" height="17"/>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yoQ-vc-oR7" userLabel="Tweet Text">
+                                                <rect key="frame" x="18" y="10" width="128" height="17"/>
                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="9999999 Members" id="CK1-J0-Xad">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -77,6 +89,27 @@
                                                 </textFieldCell>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="f7t-fL-zAY" firstAttribute="leading" secondItem="rbG-ZS-gYI" secondAttribute="trailing" constant="31" id="4O7-BJ-T5c"/>
+                                            <constraint firstAttribute="trailing" secondItem="fwq-Nh-2aJ" secondAttribute="trailing" constant="20" id="9qa-oE-Tcv"/>
+                                            <constraint firstItem="rbG-ZS-gYI" firstAttribute="top" secondItem="KKL-9M-yAp" secondAttribute="top" constant="9" id="BkG-Sl-4BX"/>
+                                            <constraint firstItem="aBX-gU-zgk" firstAttribute="top" secondItem="rbG-ZS-gYI" secondAttribute="bottom" constant="2" id="DC8-uB-fva"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f7t-fL-zAY" secondAttribute="bottom" constant="10" id="Eyq-pq-zmC"/>
+                                            <constraint firstItem="aBX-gU-zgk" firstAttribute="leading" secondItem="KKL-9M-yAp" secondAttribute="leading" constant="20" id="NSL-Qg-4nW"/>
+                                            <constraint firstItem="fwq-Nh-2aJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rbG-ZS-gYI" secondAttribute="trailing" constant="34" id="S7V-r9-xce"/>
+                                            <constraint firstItem="yoQ-vc-oR7" firstAttribute="top" secondItem="aBX-gU-zgk" secondAttribute="bottom" constant="10" id="SGB-r5-3rf"/>
+                                            <constraint firstItem="rbG-ZS-gYI" firstAttribute="leading" secondItem="KKL-9M-yAp" secondAttribute="leading" constant="20" id="TyO-ST-H0k"/>
+                                            <constraint firstItem="fwq-Nh-2aJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aBX-gU-zgk" secondAttribute="trailing" constant="34" id="Yx7-Zn-sFn"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fwq-Nh-2aJ" secondAttribute="bottom" constant="11" id="eGI-Ik-E14"/>
+                                            <constraint firstAttribute="trailing" secondItem="yoQ-vc-oR7" secondAttribute="trailing" constant="407" id="ewr-5P-Gii"/>
+                                            <constraint firstItem="fwq-Nh-2aJ" firstAttribute="top" secondItem="KKL-9M-yAp" secondAttribute="top" constant="11" id="gCG-DS-P9L"/>
+                                            <constraint firstItem="fwq-Nh-2aJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yoQ-vc-oR7" secondAttribute="trailing" constant="317" id="gyT-SH-aV0"/>
+                                            <constraint firstAttribute="trailing" secondItem="f7t-fL-zAY" secondAttribute="trailing" constant="20" id="hXD-xm-5U0"/>
+                                            <constraint firstAttribute="bottom" secondItem="yoQ-vc-oR7" secondAttribute="bottom" constant="10" id="idE-Gb-5Bx"/>
+                                            <constraint firstItem="f7t-fL-zAY" firstAttribute="top" secondItem="KKL-9M-yAp" secondAttribute="top" constant="9" id="lWq-pV-lzb"/>
+                                            <constraint firstItem="f7t-fL-zAY" firstAttribute="leading" secondItem="aBX-gU-zgk" secondAttribute="trailing" constant="31" id="rWg-w9-uDo"/>
+                                            <constraint firstItem="yoQ-vc-oR7" firstAttribute="leading" secondItem="KKL-9M-yAp" secondAttribute="leading" constant="20" id="rb2-UT-Dnf"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="creatorAvatar" destination="f7t-fL-zAY" id="Gew-i5-2ck"/>
                                             <outlet property="listDescriptionLabel" destination="aBX-gU-zgk" id="6BD-2O-1gN"/>
@@ -103,7 +136,7 @@
                 <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
-            <point key="canvasLocation" x="-245.5" y="-2569"/>
+            <point key="canvasLocation" x="-246" y="-2569"/>
         </scrollView>
     </objects>
 </document>
