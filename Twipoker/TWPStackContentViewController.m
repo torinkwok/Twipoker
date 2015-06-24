@@ -80,7 +80,7 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
 @synthesize meDashboardStack;
 @synthesize messagesDashboardStack;
 
-@synthesize currentDashboardStack;
+@dynamic currentDashboardStack;
 
 #pragma mark Initialization
 - ( instancetype ) init
@@ -135,24 +135,15 @@ NSString* const TWPStackContentViewControllerCurrentDashboardStackKeyPath = @"se
     [ self.view.window.contentView addConstraints: verticalConstraints ];
     }
 
-NSString static* const kColumnIDTabs = @"tabs";
-
-#pragma mark Conforms to <NSTableViewDataSource>
-- ( NSInteger ) numberOfRowsInTableView: ( NSTableView* )_TableView
+#pragma mark Conforms to <TWPDashboardViewDelegate>
+- ( void ) setCurrentDashboardStack: ( TWPViewsStack* )_CurrentDashboardStack
     {
-    return self->_dashboardTabIcons.count;
+    self->_currentDashboardStack = _CurrentDashboardStack;
     }
 
-- ( id )            tableView: ( NSTableView* )_TableView
-    objectValueForTableColumn: ( NSTableColumn* )_TableColumn
-                          row: ( NSInteger )_Row
+- ( TWPViewsStack* ) currentDashboardStack
     {
-    id result = nil;
-
-    if ( [ _TableColumn.identifier isEqualToString: kColumnIDTabs ] )
-        result = self->_dashboardTabIcons[ _Row ];
-
-    return result;
+    return self->_currentDashboardStack;
     }
 
 #pragma mark Conforms to <TWPDashboardViewDelegate>
@@ -183,7 +174,7 @@ NSString static* const kColumnIDTabs = @"tabs";
     }
 
 #pragma mark Private Interfaces
-// Notification selector
+// Notification selectors
 - ( void ) _listCellMouseDown: ( NSNotification* )_Notif
     {
     OTCList* twitterList = _Notif.userInfo[ kTwitterList ];
