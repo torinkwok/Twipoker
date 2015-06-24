@@ -12,14 +12,14 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <scrollView identifier="timeline-scrollview" borderType="none" autohidesScrollers="YES" horizontalLineScroll="118" horizontalPageScroll="10" verticalLineScroll="118" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="QOb-yw-H2P" customClass="TWPTimelineScrollView">
+        <scrollView identifier="timeline-scrollview" borderType="none" autohidesScrollers="YES" horizontalLineScroll="133" horizontalPageScroll="10" verticalLineScroll="133" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="QOb-yw-H2P" customClass="TWPTimelineScrollView">
             <rect key="frame" x="0.0" y="0.0" width="554" height="632"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <clipView key="contentView" copiesOnScroll="NO" id="kdS-Lj-wiA">
                 <rect key="frame" x="1" y="1" width="605" height="630"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="116" rowSizeStyle="automatic" viewBased="YES" id="PPe-7P-f8B" userLabel="Home Timeline Table View" customClass="TWPTimelineTableView">
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="131" rowSizeStyle="automatic" viewBased="YES" id="PPe-7P-f8B" userLabel="Home Timeline Table View" customClass="TWPTimelineTableView">
                         <rect key="frame" x="0.0" y="0.0" width="554" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
@@ -40,18 +40,26 @@
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
                                     <tableCellView id="feT-IJ-5DR" customClass="TWPTweetCellView">
-                                        <rect key="frame" x="1" y="1" width="554" height="116"/>
+                                        <rect key="frame" x="1" y="1" width="551" height="131"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <imageView identifier="avatar" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUA-3k-7Zo" userLabel="Avatar" customClass="TWPUserAvatarWell">
-                                                <rect key="frame" x="20" y="36" width="70" height="70"/>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AUA-3k-7Zo" userLabel="Avatar" customClass="TWPUserAvatarWell">
+                                                <rect key="frame" x="20" y="51" width="70" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="70" id="Add-Je-1eI"/>
+                                                    <constraint firstAttribute="height" constant="70" id="NPS-bb-MkR"/>
+                                                </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="6e1-qO-y4I"/>
                                                 <connections>
                                                     <action selector="userAvatarClickedAction:" target="feT-IJ-5DR" id="79b-pe-D2X"/>
                                                 </connections>
                                             </imageView>
-                                            <textField identifier="tweet-text" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUo-13-Uhb" userLabel="Tweet Text" customClass="TWPTweetTextField">
-                                                <rect key="frame" x="110" y="27" width="423" height="51"/>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUo-13-Uhb" userLabel="Tweet Text" customClass="TWPTweetTextField">
+                                                <rect key="frame" x="110" y="27" width="431" height="68"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="51" id="Ldk-Wz-ZbU"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="427" id="uNQ-31-0eD"/>
+                                                </constraints>
                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="4i5-T8-sHn">
                                                     <font key="font" size="13" name="LucidaGrande"/>
                                                     <string key="title">OS X 的 Keychain Services 的接口简直跟 POSIX 一样难用。所以最近写了一个全特性的 Objective-C 封装，完全面向对象， Cocoa 风格的 API 设计，文档齐全。http://nstongg.tumblr.com/post/112465955064/waxsealcore …</string>
@@ -62,11 +70,15 @@
                                                     <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="5Sy-qM-3Gh"/>
                                                 </connections>
                                             </textField>
-                                            <customView identifier="operations-panel" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="keF-c2-Eeb" customClass="TWPTweetOperationsPanelView">
-                                                <rect key="frame" x="455" y="86" width="76" height="22"/>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="keF-c2-Eeb" customClass="TWPTweetOperationsPanelView">
+                                                <rect key="frame" x="455" y="101" width="76" height="22"/>
                                                 <subviews>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vc3-JV-3jd" customClass="TWPReplyButton">
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="vc3-JV-3jd" customClass="TWPReplyButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="22" id="Pa6-pk-vdD"/>
+                                                            <constraint firstAttribute="width" constant="22" id="d82-0a-AYt"/>
+                                                        </constraints>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="XMR-sT-SI6" customClass="TWPReplyButtonCell">
                                                             <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -96,14 +108,24 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="vc3-JV-3jd" firstAttribute="top" secondItem="keF-c2-Eeb" secondAttribute="top" id="0tS-GV-Kr4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="vc3-JV-3jd" secondAttribute="bottom" id="Q9h-5n-lWt"/>
+                                                    <constraint firstItem="vc3-JV-3jd" firstAttribute="leading" secondItem="keF-c2-Eeb" secondAttribute="leading" id="TY1-Xy-iuB"/>
+                                                    <constraint firstAttribute="width" constant="76" id="kEJ-12-Jwz"/>
+                                                    <constraint firstAttribute="width" constant="76" id="z7G-Dt-dPj"/>
+                                                </constraints>
                                                 <connections>
                                                     <outlet property="favSwitcher" destination="qoq-hk-sAZ" id="hV9-V4-9Kp"/>
                                                     <outlet property="replyButton" destination="vc3-JV-3jd" id="NDv-q6-NUw"/>
                                                     <outlet property="retweetSwitcher" destination="rUX-Ck-hwg" id="J1w-e5-f62"/>
                                                 </connections>
                                             </customView>
-                                            <button identifier="user-name-label" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bD2-rm-Fkf" customClass="TWPTimelineUserNameButton">
-                                                <rect key="frame" x="112" y="84" width="321" height="23"/>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bD2-rm-Fkf" customClass="TWPTimelineUserNameButton">
+                                                <rect key="frame" x="112" y="99" width="321" height="23"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="321" id="XvF-Hf-Dd0"/>
+                                                </constraints>
                                                 <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SC2-t4-JSy">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -113,6 +135,21 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="RUo-13-Uhb" firstAttribute="top" secondItem="bD2-rm-Fkf" secondAttribute="bottom" constant="5" id="9kJ-LO-BY1"/>
+                                            <constraint firstItem="bD2-rm-Fkf" firstAttribute="top" secondItem="feT-IJ-5DR" secondAttribute="top" constant="10" id="D8d-uW-hq5"/>
+                                            <constraint firstItem="RUo-13-Uhb" firstAttribute="top" secondItem="keF-c2-Eeb" secondAttribute="bottom" constant="6" id="KKY-An-ztf"/>
+                                            <constraint firstItem="RUo-13-Uhb" firstAttribute="leading" secondItem="AUA-3k-7Zo" secondAttribute="trailing" constant="22" id="KWQ-Rc-erP"/>
+                                            <constraint firstAttribute="bottom" secondItem="RUo-13-Uhb" secondAttribute="bottom" constant="27" id="Nqr-XM-tEG"/>
+                                            <constraint firstItem="keF-c2-Eeb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bD2-rm-Fkf" secondAttribute="trailing" constant="22" id="VSc-Md-TJI"/>
+                                            <constraint firstAttribute="trailing" secondItem="RUo-13-Uhb" secondAttribute="trailing" constant="12" id="dBd-mO-pUM"/>
+                                            <constraint firstItem="bD2-rm-Fkf" firstAttribute="leading" secondItem="AUA-3k-7Zo" secondAttribute="trailing" constant="22" id="g52-tL-yOM"/>
+                                            <constraint firstItem="AUA-3k-7Zo" firstAttribute="leading" secondItem="feT-IJ-5DR" secondAttribute="leading" constant="20" id="jMc-JM-ymw"/>
+                                            <constraint firstItem="keF-c2-Eeb" firstAttribute="top" secondItem="feT-IJ-5DR" secondAttribute="top" constant="8" id="tco-iw-LBG"/>
+                                            <constraint firstAttribute="trailing" secondItem="keF-c2-Eeb" secondAttribute="trailing" constant="20" id="tsZ-oA-r9S"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AUA-3k-7Zo" secondAttribute="bottom" constant="51" id="xr7-jo-L5A"/>
+                                            <constraint firstItem="AUA-3k-7Zo" firstAttribute="top" secondItem="feT-IJ-5DR" secondAttribute="top" constant="10" id="zJS-HC-CVl"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="authorAvatarWell" destination="AUA-3k-7Zo" id="mMX-wH-mTI"/>
                                             <outlet property="tweetOperationsPanel" destination="keF-c2-Eeb" id="Gla-vn-M2l"/>
