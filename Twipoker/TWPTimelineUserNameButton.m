@@ -123,6 +123,11 @@
     [ self->_attributedScreenNameString drawInRect: self->_screenNameStringRect ];
     }
 
+//- ( NSSize ) intrinsicContentSize
+//    {
+//    return NSMakeSize( NSViewNoInstrinsicMetric, NSViewNoInstrinsicMetric );
+//    }
+
 @end
 
 /*=============================================================================┐
