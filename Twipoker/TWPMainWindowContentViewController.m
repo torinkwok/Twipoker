@@ -119,8 +119,6 @@
     [ self.view addSubview: stackContentView ];
     [ self.view addSubview: dashboardView ];
 
-    NSLayoutConstraint* interestingConstraint = nil;
-
     NSDictionary* viewsDict =
         NSDictionaryOfVariableBindings( navBar, horizontalCuttingLine, stackContentView, dashboardView, profileView, verticalCuttingLine );
 
@@ -192,24 +190,14 @@
                                           }
                                   views: viewsDict ];
 
-        for ( NSLayoutConstraint* _Constraint in horizontalConstraints0 )
-            {
-            if ( _Constraint.firstItem == navBar && _Constraint.relation == NSLayoutRelationGreaterThanOrEqual )
-                {
-                interestingConstraint = _Constraint;
-                break;
-                }
-            }
-
-        [ interestingConstraint setConstant: NSWidth( stackContentView.frame ) ];
-
         NSArray* horizontalConstraints1 = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)]"
-                                          "[horizontalCuttingLine(==navBar)]"
+                                          "[horizontalCuttingLine(>=horizontalCuttingLineWidth)]"
                                           "[verticalCuttingLine(==cuttingLineWidth)]"
                                           "[profileView(==profileViewWidth)]|"
                                 options: 0
                                 metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width )
+                                          , @"horizontalCuttingLineWidth" : @( horizontalCuttingLine.minimumSizeInNib.width )
                                           , @"cuttingLineWidth" : @( horizontalCuttingLine.minimumSizeInNib.height )
                                           , @"profileViewWidth" : @( profileView.minimumSizeInNib.width )
                                           }
@@ -217,12 +205,13 @@
 
         NSArray* horizontalConstraints2 = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)]"
-                                          "[stackContentView(==navBar)]"
+                                          "[stackContentView(>=stackContentViewWidth)]"
                                           "[verticalCuttingLine(==cuttingLineWidth)]"
                                           "[profileView(==profileViewWidth)]|"
                                 options: 0
                                 metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width )
                                           , @"cuttingLineWidth" : @( horizontalCuttingLine.minimumSizeInNib.height )
+                                          , @"stackContentViewWidth" : @( stackContentView.minimumSizeInNib.width )
                                           , @"profileViewWidth" : @( profileView.minimumSizeInNib.width )
                                           }
                                   views: viewsDict ];
@@ -253,6 +242,12 @@
                                 options: 0
                                 metrics: @{ @"profileViewHeight" : @( profileView.minimumSizeInNib.height ) }
                                   views: viewsDict ];
+
+        for ( NSLayoutConstraint* _Constraint in horizontalConstraints0 )
+            if ( ( _Constraint.firstItem == navBar && _Constraint.relation == NSLayoutRelationGreaterThanOrEqual )
+                    || ( _Constraint.firstItem == horizontalCuttingLine && _Constraint.relation == NSLayoutRelationGreaterThanOrEqual )
+                    || ( _Constraint.firstItem == stackContentView &&  _Constraint.relation == NSLayoutRelationGreaterThanOrEqual ) )
+                [ _Constraint setConstant: NSWidth( stackContentView.frame ) ];
 
         self->_savedWidth = navBar.minimumSizeInNib.width;
         NSLog( @"Saved width: %g", self->_savedWidth );
