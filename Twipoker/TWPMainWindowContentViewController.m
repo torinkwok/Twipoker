@@ -47,6 +47,8 @@
 
 @implementation TWPMainWindowContentViewController
 
+@dynamic isShowingProfile;
+
 @synthesize dashboardViewController;
 @synthesize stackContentViewController;
 
@@ -67,8 +69,6 @@
     {
     if ( self = [ super initWithCoder: _Coder ] )
         {
-        self->_isShowingProfile = NO;
-
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _showUserProfile: ) name: TWPTwipokerShouldShowUserProfile object: nil ];
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _hideUserProfile: ) name: TWPTwipokerShouldHideUserProfile object: nil ];
         }
@@ -79,72 +79,7 @@
 - ( void ) viewDidLoad
     {
     [ super viewDidLoad ];
-
-    [ self.view removeConstraints: self.view.constraints ];
-
-    NSView* navBar = self.navigationBarController.view;
-    NSView* horizontalCuttingLine = self.cuttingLineBetweenNavBarAndViewsStack;
-    NSView* stackContentView = self.stackContentViewController.view;
-    NSView* dashboardView = self.dashboardViewController.view;
-
-    [ navBar setTranslatesAutoresizingMaskIntoConstraints: NO ];
-    [ horizontalCuttingLine setTranslatesAutoresizingMaskIntoConstraints: NO ];
-    [ stackContentView setTranslatesAutoresizingMaskIntoConstraints: NO ];
-    [ dashboardView setTranslatesAutoresizingMaskIntoConstraints: NO ];
-
-    [ self.view addSubview: navBar ];
-    [ self.view addSubview: horizontalCuttingLine ];
-    [ self.view addSubview: stackContentView ];
-
-    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( navBar, horizontalCuttingLine, stackContentView, dashboardView );
-
-    NSArray* horizontalConstraints0 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][navBar(>=navBarWidth)]|"
-                            options: 0
-                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
-                                      , @"navBarWidth" : @( NSWidth( navBar.frame ) )
-                                      , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                      , @"stackContentViewWidth" : @( NSWidth( stackContentView.frame ) )
-                                      , @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
-                                      }
-                              views: viewsDict ];
-
-    NSArray* verticalConstraints0 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|[dashboardView(>=dashboardViewHeight)]|"
-                            options: 0
-                            metrics: @{ @"dashboardViewHeight" : @( NSHeight( dashboardView.frame ) )
-                                      , @"navBarHeight" : @( NSHeight( navBar.frame ) )
-                                      , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                      , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
-                                      }
-                              views: viewsDict ];
-
-    NSArray* verticalConstraints1 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|[navBar(==navBarHeight)][horizontalCuttingLine(==cuttingLineHeight)][stackContentView(>=stackContentViewHeight)]|"
-                            options: 0
-                            metrics: @{ @"navBarHeight" : @( NSHeight( navBar.frame ) )
-                                      , @"cuttingLineHeight" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                      , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
-                                      }
-                              views: viewsDict ];
-
-    NSArray* horizontalConstraints1 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][horizontalCuttingLine(==navBar)]|"
-                            options: 0
-                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) ) }
-                              views: viewsDict ];
-
-    NSArray* horizontalConstraints2 = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][stackContentView(==navBar)]"
-                            options: 0
-                            metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) ) }
-                              views: viewsDict ];
-
-    [ self.view addConstraints: horizontalConstraints0 ];
-    [ self.view addConstraints: verticalConstraints0 ];
-    [ self.view addConstraints: verticalConstraints1 ];
-    [ self.view addConstraints: horizontalConstraints1 ];
-    [ self.view addConstraints: horizontalConstraints2 ];
+    [ self setShowingProfile: NO ];
     }
 
 #pragma mark Deallocator
@@ -154,48 +89,183 @@
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldHideUserProfile object: nil ];
     }
 
+#pragma mark Accessors
+- ( void ) setShowingProfile: ( BOOL )_IsShowingProfile
+    {
+    self->_isShowingProfile = _IsShowingProfile;
+
+    [ self.view removeConstraints: self.view.constraints ];
+    [ self.view setSubviews: @[] ];
+
+    NSView* navBar = self.navigationBarController.view;
+    NSView* horizontalCuttingLine = self.cuttingLineBetweenNavBarAndViewsStack;
+    NSView* stackContentView = self.stackContentViewController.view;
+    NSView* dashboardView = self.dashboardViewController.view;
+    NSView* profileView = self.twitterUserProfileViewController.view;
+    NSView* verticalCuttingLine = self.cuttingLineBetweetMainViewAndProfileView;
+
+    [ navBar setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ horizontalCuttingLine setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ stackContentView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ dashboardView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ profileView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ verticalCuttingLine setTranslatesAutoresizingMaskIntoConstraints: NO ];
+
+    [ self.view addSubview: navBar ];
+    [ self.view addSubview: horizontalCuttingLine ];
+    [ self.view addSubview: stackContentView ];
+    [ self.view addSubview: dashboardView ];
+
+    NSDictionary* viewsDict =
+        NSDictionaryOfVariableBindings( navBar, horizontalCuttingLine, stackContentView, dashboardView, profileView, verticalCuttingLine );
+
+    if ( !self->_isShowingProfile )
+        {
+        NSArray* horizontalConstraints0 = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][navBar(>=navBarWidth)]|"
+                                options: 0
+                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
+                                          , @"navBarWidth" : @( NSWidth( navBar.frame ) )
+                                          , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
+                                          , @"stackContentViewWidth" : @( NSWidth( stackContentView.frame ) )
+                                          }
+                                  views: viewsDict ];
+
+        NSArray* horizontalConstraints1 = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][horizontalCuttingLine(==navBar)]|"
+                                options: 0
+                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) ) }
+                                  views: viewsDict ];
+
+        NSArray* horizontalConstraints2 = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][stackContentView(==navBar)]|"
+                                options: 0
+                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) ) }
+                                  views: viewsDict ];
+
+
+        NSArray* verticalConstraints0 = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"V:|[dashboardView(>=dashboardViewHeight)]|"
+                                options: 0
+                                metrics: @{ @"dashboardViewHeight" : @( NSHeight( dashboardView.frame ) )
+                                          , @"navBarHeight" : @( NSHeight( navBar.frame ) )
+                                          , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
+                                          , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
+                                          }
+                                  views: viewsDict ];
+
+        NSArray* verticalConstraints1 = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"V:|[navBar(==navBarHeight)][horizontalCuttingLine(==cuttingLineHeight)][stackContentView(>=stackContentViewHeight)]|"
+                                options: 0
+                                metrics: @{ @"navBarHeight" : @( NSHeight( navBar.frame ) )
+                                          , @"cuttingLineHeight" : @( NSHeight( horizontalCuttingLine.frame ) )
+                                          , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
+                                          }
+                                  views: viewsDict ];
+
+        [ self.view addConstraints: horizontalConstraints0 ];
+        [ self.view addConstraints: horizontalConstraints1 ];
+        [ self.view addConstraints: horizontalConstraints2 ];
+        [ self.view addConstraints: verticalConstraints0 ];
+        [ self.view addConstraints: verticalConstraints1 ];
+        }
+    else
+        {
+        [ self.view addSubview: profileView ];
+        [ self.view addSubview: verticalCuttingLine ];
+
+        NSArray* horizontalConstraints0 = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)]"
+                                          "[navBar(>=navBarWidth)]"
+                                          "[verticalCuttingLine(==cuttingLineWidth)]"
+                                          "[profileView(==profileViewWidth)]|"
+                                options: 0
+                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
+                                          , @"navBarWidth" : @( NSWidth( navBar.frame ) )
+                                          , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
+                                          , @"stackContentViewWidth" : @( NSWidth( stackContentView.frame ) )
+                                          , @"profileViewWidth" : @( NSWidth( profileView.frame ) )
+                                          }
+                                  views: viewsDict ];
+
+        NSArray* horizontalConstraints1 = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)]"
+                                          "[horizontalCuttingLine(==navBar)]"
+                                          "[verticalCuttingLine(==cuttingLineWidth)]"
+                                          "[profileView(==profileViewWidth)]|"
+                                options: 0
+                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
+                                          , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
+                                          , @"profileViewWidth" : @( NSWidth( profileView.frame ) )
+                                          }
+                                  views: viewsDict ];
+
+        NSArray* horizontalConstraints2 = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)]"
+                                          "[stackContentView(==navBar)]"
+                                          "[verticalCuttingLine(==cuttingLineWidth)]"
+                                          "[profileView(==profileViewWidth)]|"
+                                options: 0
+                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
+                                          , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
+                                          , @"profileViewWidth" : @( NSWidth( profileView.frame ) )
+                                          }
+                                  views: viewsDict ];
+
+        NSArray* verticalConstraints0 = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"V:|[dashboardView(>=dashboardViewHeight)]|"
+                                options: 0
+                                metrics: @{ @"dashboardViewHeight" : @( NSHeight( dashboardView.frame ) ) }
+                                  views: viewsDict ];
+
+        NSArray* verticalConstraints1 = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"V:|[navBar(==navBarHeight)][horizontalCuttingLine(==cuttingLineHeight)][stackContentView(>=stackContentViewHeight)]|"
+                                options: 0
+                                metrics: @{ @"navBarHeight" : @( NSHeight( navBar.frame ) )
+                                          , @"cuttingLineHeight" : @( NSHeight( horizontalCuttingLine.frame ) )
+                                          , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
+                                          }
+                                  views: viewsDict ];
+
+        NSArray* heightConstraintsVerticalCuttingLine = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"V:|[verticalCuttingLine(>=verticalCuttingLineHeight)]|"
+                                options: 0
+                                metrics: @{ @"verticalCuttingLineHeight" : @( NSHeight( verticalCuttingLine.frame ) ) }
+                                  views: viewsDict ];
+
+        NSArray* heightConstraintsProfileView = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"V:|[profileView(>=profileViewHeight)]|"
+                                options: 0
+                                metrics: @{ @"profileViewHeight" : @( NSHeight( profileView.frame ) ) }
+                                  views: viewsDict ];
+
+        [ self.view addConstraints: horizontalConstraints0 ];
+        [ self.view addConstraints: horizontalConstraints1 ];
+        [ self.view addConstraints: horizontalConstraints2 ];
+        [ self.view addConstraints: verticalConstraints0 ];
+        [ self.view addConstraints: verticalConstraints1 ];
+        [ self.view addConstraints: heightConstraintsVerticalCuttingLine ];
+        [ self.view addConstraints: heightConstraintsProfileView ];
+        }
+    }
+
+- ( BOOL ) isShowingProfile
+    {
+    return self->_isShowingProfile;
+    }
+
 #pragma mark Private Interfaces
 - ( void ) _showUserProfile: ( NSNotification* )_Notif
     {
     OTCTwitterUser* twitterUser = _Notif.userInfo[ kTwitterUser ];
     [ self.twitterUserProfileViewController setTwitterUser: twitterUser ];
 
-    if ( !self->_isShowingProfile )
-        {
-        NSRect frameOfCuttingLine = NSMakeRect( NSMaxX( self.navigationBarController.view.frame ), 0.f
-                                              , NSWidth( self.cuttingLineBetweetMainViewAndProfileView.bounds )
-                                              , NSHeight( self.cuttingLineBetweetMainViewAndProfileView.bounds )
-                                              );
-
-        [ self.cuttingLineBetweetMainViewAndProfileView setFrame: frameOfCuttingLine ];
-        [ self.view addSubview: self.cuttingLineBetweetMainViewAndProfileView ];
-
-        TWPTwitterUserProfileView* profileView = ( TWPTwitterUserProfileView* )( self.twitterUserProfileViewController.view );
-        NSRect frameOfProfileView = NSMakeRect( NSMaxX( self.cuttingLineBetweetMainViewAndProfileView.frame ), 0.f
-                                              , NSWidth( profileView.bounds )
-                                              , NSHeight( profileView.bounds )
-                                              );
-
-        [ profileView setFrame: frameOfProfileView ];
-        [ self.view addSubview: profileView ];
-
-        NSRect newWindowFrame = [ self.view.window frame ];
-        newWindowFrame.size.width += ( NSWidth( self.cuttingLineBetweetMainViewAndProfileView.bounds ) + NSWidth( profileView.bounds ) );
-        [ self.view.window setFrame: newWindowFrame display: YES animate: YES ];
-
-        self->_isShowingProfile = YES;
-        }
+    [ self setShowingProfile: YES ];
     }
 
 - ( void ) _hideUserProfile: ( NSNotification* )_Notif
     {
-    NSRect newFrame = NSMakeRect( NSMinX( self.view.window.frame ), NSMinY( self.view.window.frame ), NSWidth( self->_initialFrame ), NSHeight( self->_initialFrame ) );
-    [ self.view.window setFrame: newFrame display: YES animate: YES ];
-
-    [ self.twitterUserProfileViewController.view removeFromSuperview ];
-    [ self.cuttingLineBetweetMainViewAndProfileView removeFromSuperview ];
-
-    self->_isShowingProfile = NO;
+    [ self setShowingProfile: NO ];
     }
 
 @end

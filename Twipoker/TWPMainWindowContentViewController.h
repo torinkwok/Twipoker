@@ -39,9 +39,10 @@
     {
 @private
     BOOL _isShowingProfile;
-
     NSRect _initialFrame;
     }
+
+@property ( assign, readwrite, setter = setShowingProfile: ) BOOL isShowingProfile;
 
 @property ( weak ) IBOutlet TWPTwitterUserProfileViewController* twitterUserProfileViewController;
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweetMainViewAndProfileView;

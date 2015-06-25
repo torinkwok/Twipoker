@@ -241,7 +241,7 @@
         <viewController id="dBG-Jj-N3g" customClass="TWPMainWindowContentViewController">
             <connections>
                 <outlet property="cuttingLineBetweenNavBarAndViewsStack" destination="zU3-cQ-xog" id="s50-GQ-uni"/>
-                <outlet property="cuttingLineBetweetMainViewAndProfileView" destination="zU3-cQ-xog" id="rpW-h9-vt0"/>
+                <outlet property="cuttingLineBetweetMainViewAndProfileView" destination="flx-KC-83G" id="uyI-dC-SUg"/>
                 <outlet property="dashboardViewController" destination="Q6I-Hl-mD8" id="LAf-Wr-Oye"/>
                 <outlet property="navigationBarController" destination="Gr0-CG-Iha" id="bKq-W0-i2p"/>
                 <outlet property="stackContentViewController" destination="HUR-ik-D4y" id="pnT-bl-Kv9"/>
