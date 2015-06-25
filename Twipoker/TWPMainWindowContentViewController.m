@@ -28,6 +28,7 @@
 #import "TWPTimelineScrollView.h"
 #import "TWPNavigationBarController.h"
 #import "TWPStackContentView.h"
+#import "TWPViewsStack.h"
 #import "TWPStackContentViewController.h"
 
 #import "TWPTweetingBoxNotificationNames.h"
@@ -182,11 +183,10 @@
                                           "[verticalCuttingLine(==cuttingLineWidth)]"
                                           "[profileView(==profileViewWidth)]|"
                                 options: 0
-                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
-                                          , @"navBarWidth" : @( NSWidth( navBar.frame ) )
-                                          , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                          , @"stackContentViewWidth" : @( NSWidth( stackContentView.frame ) )
-                                          , @"profileViewWidth" : @( NSWidth( profileView.frame ) )
+                                metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width )
+                                          , @"navBarWidth" : @( navBar.minimumSizeInNib.width )
+                                          , @"cuttingLineWidth" : @( horizontalCuttingLine.minimumSizeInNib.height )
+                                          , @"profileViewWidth" : @( profileView.minimumSizeInNib.width )
                                           }
                                   views: viewsDict ];
 
@@ -196,9 +196,9 @@
                                           "[verticalCuttingLine(==cuttingLineWidth)]"
                                           "[profileView(==profileViewWidth)]|"
                                 options: 0
-                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
-                                          , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                          , @"profileViewWidth" : @( NSWidth( profileView.frame ) )
+                                metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width )
+                                          , @"cuttingLineWidth" : @( horizontalCuttingLine.minimumSizeInNib.height )
+                                          , @"profileViewWidth" : @( profileView.minimumSizeInNib.width )
                                           }
                                   views: viewsDict ];
 
@@ -208,37 +208,37 @@
                                           "[verticalCuttingLine(==cuttingLineWidth)]"
                                           "[profileView(==profileViewWidth)]|"
                                 options: 0
-                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
-                                          , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                          , @"profileViewWidth" : @( NSWidth( profileView.frame ) )
+                                metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width )
+                                          , @"cuttingLineWidth" : @( horizontalCuttingLine.minimumSizeInNib.height )
+                                          , @"profileViewWidth" : @( profileView.minimumSizeInNib.width )
                                           }
                                   views: viewsDict ];
 
         NSArray* verticalConstraints0 = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"V:|[dashboardView(>=dashboardViewHeight)]|"
                                 options: 0
-                                metrics: @{ @"dashboardViewHeight" : @( NSHeight( dashboardView.frame ) ) }
+                                metrics: @{ @"dashboardViewHeight" : @( dashboardView.minimumSizeInNib.height ) }
                                   views: viewsDict ];
 
         NSArray* verticalConstraints1 = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"V:|[navBar(==navBarHeight)][horizontalCuttingLine(==cuttingLineHeight)][stackContentView(>=stackContentViewHeight)]|"
                                 options: 0
-                                metrics: @{ @"navBarHeight" : @( NSHeight( navBar.frame ) )
-                                          , @"cuttingLineHeight" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                          , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
+                                metrics: @{ @"navBarHeight" : @( navBar.minimumSizeInNib.height )
+                                          , @"cuttingLineHeight" : @( horizontalCuttingLine.minimumSizeInNib.height )
+                                          , @"stackContentViewHeight" : @( stackContentView.minimumSizeInNib.height )
                                           }
                                   views: viewsDict ];
 
         NSArray* heightConstraintsVerticalCuttingLine = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"V:|[verticalCuttingLine(>=verticalCuttingLineHeight)]|"
                                 options: 0
-                                metrics: @{ @"verticalCuttingLineHeight" : @( NSHeight( verticalCuttingLine.frame ) ) }
+                                metrics: @{ @"verticalCuttingLineHeight" : @( verticalCuttingLine.minimumSizeInNib.height ) }
                                   views: viewsDict ];
 
         NSArray* heightConstraintsProfileView = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"V:|[profileView(>=profileViewHeight)]|"
                                 options: 0
-                                metrics: @{ @"profileViewHeight" : @( NSHeight( profileView.frame ) ) }
+                                metrics: @{ @"profileViewHeight" : @( profileView.minimumSizeInNib.height ) }
                                   views: viewsDict ];
 
         [ self.view addConstraints: horizontalConstraints0 ];

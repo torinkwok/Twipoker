@@ -102,11 +102,13 @@
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserTweets object: nil ];
     }
 
+- ( void ) viewDidLoad
+    {
+    self.currentDashboardStack = self.homeDashboardStack;
+    }
+
 - ( void ) viewWillAppear
     {
-    [ super viewDidLoad ];
-
-    self.currentDashboardStack = self.homeDashboardStack;
     self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
