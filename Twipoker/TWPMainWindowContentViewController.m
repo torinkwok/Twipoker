@@ -135,15 +135,19 @@
                                   views: viewsDict ];
 
         NSArray* horizontalConstraints1 = [ NSLayoutConstraint
-            constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][horizontalCuttingLine(==navBar)]|"
+            constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][horizontalCuttingLine(>=horizontalCuttingLineWidth)]|"
                                 options: 0
-                                metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width ) }
+                                metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width )
+                                          , @"horizontalCuttingLineWidth" : @( horizontalCuttingLine.minimumSizeInNib.width )
+                                          }
                                   views: viewsDict ];
 
         NSArray* horizontalConstraints2 = [ NSLayoutConstraint
-            constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][stackContentView(==navBar)]|"
+            constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][stackContentView(>=stackContentViewWidth)]|"
                                 options: 0
-                                metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width ) }
+                                metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width )
+                                          , @"stackContentViewWidth" : @( stackContentView.minimumSizeInNib.width )
+                                          }
                                   views: viewsDict ];
 
 
@@ -165,6 +169,26 @@
                                           , @"stackContentViewHeight" : @( stackContentView.minimumSizeInNib.height )
                                           }
                                   views: viewsDict ];
+
+//        for ( NSLayoutConstraint* _Constraint in horizontalConstraints0 )
+//            if ( ( _Constraint.firstItem == navBar && _Constraint.relation == NSLayoutRelationGreaterThanOrEqual )
+//                    || ( _Constraint.firstItem == horizontalCuttingLine && _Constraint.relation == NSLayoutRelationGreaterThanOrEqual )
+//                    || ( _Constraint.firstItem == stackContentView &&  _Constraint.relation == NSLayoutRelationGreaterThanOrEqual ) )
+//                [ _Constraint setConstant: self->_savedWidth ];
+//
+//        for ( NSLayoutConstraint* _Constraint in horizontalConstraints1 )
+//            if ( ( _Constraint.firstItem == navBar && _Constraint.relation == NSLayoutRelationGreaterThanOrEqual )
+//                    || ( _Constraint.firstItem == horizontalCuttingLine && _Constraint.relation == NSLayoutRelationGreaterThanOrEqual )
+//                    || ( _Constraint.firstItem == stackContentView &&  _Constraint.relation == NSLayoutRelationGreaterThanOrEqual ) )
+//                [ _Constraint setConstant: self->_savedWidth ];
+//
+//        for ( NSLayoutConstraint* _Constraint in horizontalConstraints2 )
+//            if ( ( _Constraint.firstItem == navBar && _Constraint.relation == NSLayoutRelationGreaterThanOrEqual )
+//                    || ( _Constraint.firstItem == horizontalCuttingLine && _Constraint.relation == NSLayoutRelationGreaterThanOrEqual )
+//                    || ( _Constraint.firstItem == stackContentView &&  _Constraint.relation == NSLayoutRelationGreaterThanOrEqual ) )
+//                [ _Constraint setConstant: self->_savedWidth ];
+
+//        self->_savedWidth = navBar.minimumSizeInNib.width;
 
         [ self.view addConstraints: horizontalConstraints0 ];
         [ self.view addConstraints: horizontalConstraints1 ];
@@ -250,7 +274,6 @@
                 [ _Constraint setConstant: NSWidth( stackContentView.frame ) ];
 
         self->_savedWidth = navBar.minimumSizeInNib.width;
-        NSLog( @"Saved width: %g", self->_savedWidth );
 
         [ self.view addConstraints: horizontalConstraints0 ];
         [ self.view addConstraints: horizontalConstraints1 ];

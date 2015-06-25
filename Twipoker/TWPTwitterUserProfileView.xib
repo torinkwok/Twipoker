@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6724" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6724" systemVersion="15A178w" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6724"/>
     </dependencies>
@@ -12,15 +12,17 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY" customClass="TWPTwitterUserProfileView">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="691"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="622"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k5N-4k-za8" customClass="TWPUserAvatarWell">
-                    <rect key="frame" x="35" y="572" width="60" height="60"/>
+                    <rect key="frame" x="35" y="503" width="60" height="60"/>
+                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="re4-eg-PW4"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLL-U4-xeU">
-                    <rect key="frame" x="112" y="612" width="171" height="17"/>
+                    <rect key="frame" x="112" y="543" width="171" height="17"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="薛定谔的月饼" id="i7R-gq-xVE">
                         <font key="font" size="16" name="LucidaGrande"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -28,7 +30,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bP3-nf-bot">
-                    <rect key="frame" x="112" y="584" width="148" height="17"/>
+                    <rect key="frame" x="112" y="515" width="148" height="17"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="@NSTongG" id="dO5-Ok-MTK">
                         <font key="font" size="15" name="LucidaGrande"/>
                         <color key="textColor" red="0.58423030376434326" green="0.5842127799987793" blue="0.58422267436981201" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
@@ -36,7 +39,8 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-JZ-Xdw" customClass="TWPUserProfileCountButton">
-                    <rect key="frame" x="38" y="366" width="274" height="50"/>
+                    <rect key="frame" x="38" y="297" width="274" height="50"/>
+                    <animations/>
                     <buttonCell key="cell" type="smallSquare" title="Tweets" bezelStyle="smallSquare" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="afl-8c-f6n">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -46,42 +50,48 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGI-9M-NLB" customClass="TWPUserProfileCountButton">
-                    <rect key="frame" x="38" y="321" width="274" height="48"/>
+                    <rect key="frame" x="38" y="252" width="274" height="48"/>
+                    <animations/>
                     <buttonCell key="cell" type="smallSquare" title="Followers" bezelStyle="smallSquare" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uAp-hs-7dU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEO-M5-GuU" customClass="TWPUserProfileCountButton">
-                    <rect key="frame" x="38" y="274" width="274" height="50"/>
+                    <rect key="frame" x="38" y="205" width="274" height="50"/>
+                    <animations/>
                     <buttonCell key="cell" type="smallSquare" title="Following" bezelStyle="smallSquare" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vQz-eQ-bZA">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDB-eI-H5l">
-                    <rect key="frame" x="38" y="166" width="274" height="50"/>
+                    <rect key="frame" x="38" y="142" width="274" height="50"/>
+                    <animations/>
                     <buttonCell key="cell" type="smallSquare" title="Tweet to @NSTongG" bezelStyle="smallSquare" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GLY-k3-ZNo">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Goc-hg-YQJ">
-                    <rect key="frame" x="38" y="121" width="274" height="48"/>
+                    <rect key="frame" x="38" y="97" width="274" height="48"/>
+                    <animations/>
                     <buttonCell key="cell" type="smallSquare" title="Send a Direct Message" bezelStyle="smallSquare" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dbi-15-nt5">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTB-wV-AH6">
-                    <rect key="frame" x="38" y="74" width="274" height="50"/>
+                    <rect key="frame" x="38" y="50" width="274" height="50"/>
+                    <animations/>
                     <buttonCell key="cell" type="smallSquare" title="Add or remove from lists…" bezelStyle="smallSquare" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aum-xB-scC">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVc-30-vWq">
-                    <rect key="frame" x="17" y="643" width="69" height="32"/>
+                    <rect key="frame" x="17" y="574" width="69" height="32"/>
+                    <animations/>
                     <buttonCell key="cell" type="push" title="Hide" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6tP-de-zA1">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -91,14 +101,16 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJp-VF-AaL">
-                    <rect key="frame" x="38" y="18" width="123" height="23"/>
+                    <rect key="frame" x="38" y="11" width="123" height="23"/>
+                    <animations/>
                     <buttonCell key="cell" type="smallSquare" title="I don’t like this guy" bezelStyle="smallSquare" imagePosition="overlaps" alignment="left" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zk2-6H-86b">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J5l-uj-Seg">
-                    <rect key="frame" x="38" y="493" width="276" height="74"/>
+                    <rect key="frame" x="38" y="424" width="276" height="74"/>
+                    <animations/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Independent Macintosh Developer ❤️ Born in 1997 - Against stupidity the gods themselves contend in vain" id="R4O-Ww-lEx">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -106,7 +118,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E5e-dD-u6d">
-                    <rect key="frame" x="37" y="457" width="276" height="17"/>
+                    <rect key="frame" x="37" y="388" width="276" height="17"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="/var/tmp/p-r-c" id="sxs-y2-N2b">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -114,7 +127,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWu-Rg-NL1">
-                    <rect key="frame" x="37" y="430" width="276" height="17"/>
+                    <rect key="frame" x="37" y="361" width="276" height="17"/>
+                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="nstongg.tumblr.com" id="JUq-nc-mxg">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -122,6 +136,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
+            <animations/>
             <connections>
                 <outlet property="addOrRemoveFromListsButton" destination="NTB-wV-AH6" id="WZl-hl-Tek"/>
                 <outlet property="bioField" destination="J5l-uj-Seg" id="wsD-jU-pbJ"/>
@@ -144,6 +159,7 @@
         <customView id="Oeb-Tp-b4p" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="350" height="1"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <animations/>
             <point key="canvasLocation" x="612" y="230.5"/>
         </customView>
     </objects>
