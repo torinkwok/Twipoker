@@ -127,8 +127,8 @@
             constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][navBar(>=navBarWidth)]|"
                                 options: 0
                                 metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width )
-                                          , @"navBarWidth" : @( NSWidth( navBar.frame ) )
-                                          , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
+                                          , @"navBarWidth" : @( navBar.minimumSizeInNib.width )
+                                          , @"cuttingLineWidth" : @( horizontalCuttingLine.minimumSizeInNib.height )
                                           , @"stackContentViewWidth" : @( stackContentView.minimumSizeInNib.width )
                                           }
                                   views: viewsDict ];
@@ -150,17 +150,17 @@
             constraintsWithVisualFormat: @"V:|[dashboardView(>=dashboardViewHeight)]|"
                                 options: 0
                                 metrics: @{ @"dashboardViewHeight" : @( dashboardView.minimumSizeInNib.height )
-                                          , @"navBarHeight" : @( NSHeight( navBar.frame ) )
-                                          , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                          , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
+                                          , @"navBarHeight" : @( navBar.minimumSizeInNib.height )
+                                          , @"cuttingLineWidth" : @( horizontalCuttingLine.minimumSizeInNib.height )
+                                          , @"stackContentViewHeight" : @( stackContentView.minimumSizeInNib.height )
                                           }
                                   views: viewsDict ];
 
         NSArray* verticalConstraints1 = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"V:|[navBar(==navBarHeight)][horizontalCuttingLine(==cuttingLineHeight)][stackContentView(>=stackContentViewHeight)]|"
                                 options: 0
-                                metrics: @{ @"navBarHeight" : @( NSHeight( navBar.frame ) )
-                                          , @"cuttingLineHeight" : @( NSHeight( horizontalCuttingLine.frame ) )
+                                metrics: @{ @"navBarHeight" : @( navBar.minimumSizeInNib.height )
+                                          , @"cuttingLineHeight" : @( horizontalCuttingLine.minimumSizeInNib.height )
                                           , @"stackContentViewHeight" : @( stackContentView.minimumSizeInNib.height )
                                           }
                                   views: viewsDict ];
