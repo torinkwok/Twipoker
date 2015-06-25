@@ -39,7 +39,7 @@
     {
 @private
     BOOL _isShowingProfile;
-    NSRect _initialFrame;
+    CGFloat _savedWidth;
     }
 
 @property ( assign, readwrite, setter = setShowingProfile: ) BOOL isShowingProfile;

@@ -65,7 +65,7 @@
 - ( void ) awakeFromNib
     {
     self.twitterUserProfileViewController.refNavBarController = self.navigationBarController;
-    self->_initialFrame = self.view.frame;
+    self->_savedWidth = self.navigationBarController.view.minimumSizeInNib.width;
     }
 
 - ( instancetype ) initWithCoder: ( NSCoder* )_Coder
@@ -118,6 +118,8 @@
     [ self.view addSubview: horizontalCuttingLine ];
     [ self.view addSubview: stackContentView ];
     [ self.view addSubview: dashboardView ];
+
+    NSLayoutConstraint* interestingConstraint = nil;
 
     NSDictionary* viewsDict =
         NSDictionaryOfVariableBindings( navBar, horizontalCuttingLine, stackContentView, dashboardView, profileView, verticalCuttingLine );
@@ -190,6 +192,17 @@
                                           }
                                   views: viewsDict ];
 
+        for ( NSLayoutConstraint* _Constraint in horizontalConstraints0 )
+            {
+            if ( _Constraint.firstItem == navBar && _Constraint.relation == NSLayoutRelationGreaterThanOrEqual )
+                {
+                interestingConstraint = _Constraint;
+                break;
+                }
+            }
+
+        [ interestingConstraint setConstant: NSWidth( stackContentView.frame ) ];
+
         NSArray* horizontalConstraints1 = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)]"
                                           "[horizontalCuttingLine(==navBar)]"
@@ -240,6 +253,9 @@
                                 options: 0
                                 metrics: @{ @"profileViewHeight" : @( profileView.minimumSizeInNib.height ) }
                                   views: viewsDict ];
+
+        self->_savedWidth = navBar.minimumSizeInNib.width;
+        NSLog( @"Saved width: %g", self->_savedWidth );
 
         [ self.view addConstraints: horizontalConstraints0 ];
         [ self.view addConstraints: horizontalConstraints1 ];
