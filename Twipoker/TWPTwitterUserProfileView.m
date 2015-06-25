@@ -28,6 +28,8 @@
 #import "TWPUserAvatarWell.h"
 #import "TWPUserProfileCountButton.h"
 
+#import "NSView+TwipokerAutoLayout.h"
+
 @implementation TWPTwitterUserProfileView
 
 @dynamic refNavBarController;
@@ -59,6 +61,8 @@
     [ self.tweetsCountButton setCountButtonType: TWPUserProfileCountButtonTypeTweets ];
     [ self.followersCountButton setCountButtonType: TWPUserProfileCountButtonTypeFollowers ];
     [ self.followingCountButton setCountButtonType: TWPUserProfileCountButtonTypeFollowing ];
+
+    [ self setMinimumSizeInNib: self.frame.size ];
     }
 
 #pragma mark Dynamic Accessors

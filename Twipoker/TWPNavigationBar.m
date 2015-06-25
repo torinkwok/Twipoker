@@ -24,7 +24,15 @@
 
 #import "TWPNavigationBar.h"
 
+#import "NSView+TwipokerAutoLayout.h"
+
 @implementation TWPNavigationBar
+
+#pragma mark Initializations
+- ( void ) awakeFromNib
+    {
+    [ self setMinimumSizeInNib: self.frame.size ];
+    }
 
 #pragma mark Overrides for Custom Appearance
 - ( void ) drawRect: ( NSRect )_DirtyRect

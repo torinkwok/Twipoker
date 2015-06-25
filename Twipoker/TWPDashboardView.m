@@ -26,6 +26,8 @@
 #import "TWPNormalTweetBoxController.h"
 #import "TWPTweetUpdateObject.h"
 
+#import "NSView+TwipokerAutoLayout.h"
+
 @implementation TWPDashboardView
 
 @synthesize homeTab;
@@ -34,6 +36,12 @@
 @synthesize notificationTab;
 @synthesize meTab;
 @synthesize messagesTab;
+
+#pragma mark Initializations
+- ( void ) awakeFromNib
+    {
+    [ self setMinimumSizeInNib: self.frame.size ];
+    }
 
 #pragma mark IBActions
 - ( IBAction ) tabClickedAction: ( id )_Sender

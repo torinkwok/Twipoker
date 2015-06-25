@@ -149,8 +149,8 @@
             </view>
             <point key="canvasLocation" x="-24.5" y="-1714.5"/>
         </window>
-        <customView identifier="vertical-cuttingline" id="flx-KC-83G" customClass="TWPCuttingLineView">
-            <rect key="frame" x="0.0" y="0.0" width="1" height="767"/>
+        <customView identifier="vertical-cuttingline" id="flx-KC-83G" userLabel="Vertical Cutting Line View" customClass="TWPCuttingLineView">
+            <rect key="frame" x="0.0" y="0.0" width="1" height="691"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <point key="canvasLocation" x="401.5" y="-1732.5"/>
         </customView>
@@ -228,7 +228,7 @@
             </connections>
         </customObject>
         <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController"/>
-        <customView identifier="horizontal-cuttingline" id="zU3-cQ-xog" customClass="TWPCuttingLineView">
+        <customView identifier="horizontal-cuttingline" id="zU3-cQ-xog" userLabel="Horizontal Cutting Line View" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="606" height="1"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>

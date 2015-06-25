@@ -24,9 +24,18 @@
 
 #import "TWPCuttingLineView.h"
 
+#import "NSView+TwipokerAutoLayout.h"
+
 // TWPCuttingLineView class
 @implementation TWPCuttingLineView
 
+#pragma mark Initializations
+- ( void ) awakeFromNib
+    {
+    [ self setMinimumSizeInNib: self.frame.size ];
+    }
+
+#pragma mark Custom Drawing
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];

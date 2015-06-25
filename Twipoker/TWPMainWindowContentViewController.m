@@ -40,6 +40,8 @@
 #import "TWPTwitterUserProfileViewController.h"
 #import "TWPTwitterUserProfileView.h"
 
+#import "NSView+TwipokerAutoLayout.h"
+
 @interface TWPMainWindowContentViewController ()
 - ( void ) _showUserProfile: ( NSNotification* )_Notif;
 - ( void ) _hideUserProfile: ( NSNotification* )_Notif;
@@ -76,7 +78,7 @@
     return self;
     }
 
-- ( void ) viewDidLoad
+- ( void ) viewWillAppear
     {
     [ super viewDidLoad ];
     [ self setShowingProfile: NO ];
@@ -124,30 +126,30 @@
         NSArray* horizontalConstraints0 = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][navBar(>=navBarWidth)]|"
                                 options: 0
-                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) )
+                                metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width )
                                           , @"navBarWidth" : @( NSWidth( navBar.frame ) )
                                           , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                          , @"stackContentViewWidth" : @( NSWidth( stackContentView.frame ) )
+                                          , @"stackContentViewWidth" : @( stackContentView.minimumSizeInNib.width )
                                           }
                                   views: viewsDict ];
 
         NSArray* horizontalConstraints1 = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][horizontalCuttingLine(==navBar)]|"
                                 options: 0
-                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) ) }
+                                metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width ) }
                                   views: viewsDict ];
 
         NSArray* horizontalConstraints2 = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"H:|[dashboardView(==dashboardViewWidth)][stackContentView(==navBar)]|"
                                 options: 0
-                                metrics: @{ @"dashboardViewWidth" : @( NSWidth( dashboardView.frame ) ) }
+                                metrics: @{ @"dashboardViewWidth" : @( dashboardView.minimumSizeInNib.width ) }
                                   views: viewsDict ];
 
 
         NSArray* verticalConstraints0 = [ NSLayoutConstraint
             constraintsWithVisualFormat: @"V:|[dashboardView(>=dashboardViewHeight)]|"
                                 options: 0
-                                metrics: @{ @"dashboardViewHeight" : @( NSHeight( dashboardView.frame ) )
+                                metrics: @{ @"dashboardViewHeight" : @( dashboardView.minimumSizeInNib.height )
                                           , @"navBarHeight" : @( NSHeight( navBar.frame ) )
                                           , @"cuttingLineWidth" : @( NSHeight( horizontalCuttingLine.frame ) )
                                           , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
@@ -159,7 +161,7 @@
                                 options: 0
                                 metrics: @{ @"navBarHeight" : @( NSHeight( navBar.frame ) )
                                           , @"cuttingLineHeight" : @( NSHeight( horizontalCuttingLine.frame ) )
-                                          , @"stackContentViewHeight" : @( NSHeight( stackContentView.frame ) )
+                                          , @"stackContentViewHeight" : @( stackContentView.minimumSizeInNib.height )
                                           }
                                   views: viewsDict ];
 
