@@ -33,11 +33,8 @@
     }
 
 @property ( weak, readwrite ) TWPViewsStack* delegate;
-
 @property ( weak ) IBOutlet NSImageView* twitterLogo;
-
-@property ( weak ) IBOutlet NSButton* goBackButton;
-@property ( weak ) IBOutlet NSButton* goForwardButton;
+@property ( weak ) IBOutlet NSButton* backButton;
 
 - ( void ) reload;
 

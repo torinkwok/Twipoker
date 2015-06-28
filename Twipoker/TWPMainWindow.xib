@@ -27,30 +27,20 @@
                     <customView identifier="nav-bar" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cjl-yU-kQO" customClass="TWPNavigationBar">
                         <rect key="frame" x="91" y="638" width="554" height="53"/>
                         <subviews>
-                            <button identifier="go-back" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCM-gZ-AcP" userLabel="Go Back Button">
-                                <rect key="frame" x="20" y="14" width="27" height="25"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="go-back-arrow-normal" imagePosition="only" alignment="center" alternateImage="go-back-arrow-highlighting" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="hWp-8T-ztY">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="goBackAction:" target="HUR-ik-D4y" id="rfd-26-qyC"/>
-                                </connections>
-                            </button>
-                            <button identifier="go-forward" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IjZ-GZ-rhx" userLabel="Go Forward Button">
-                                <rect key="frame" x="48" y="14" width="27" height="25"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="go-forward-arrow-normal" imagePosition="only" alignment="center" alternateImage="go-forward-arrow-highlighting" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="QPG-sT-bpd">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="goForwardAction:" target="HUR-ik-D4y" id="fyz-EQ-Lu8"/>
-                                </connections>
-                            </button>
                             <imageView identifier="twitter-logo" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMS-HU-W4h" userLabel="Twitter Logo Button">
                                 <rect key="frame" x="264" y="14" width="26" height="25"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="twitter-logo-blue" id="8Lr-ax-6GU"/>
                             </imageView>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ulH-iK-UuR">
+                                <rect key="frame" x="12" y="8" width="76" height="34"/>
+                                <buttonCell key="cell" type="bevel" title="Back" bezelStyle="regularSquare" image="NSGoLeftTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cqq-6N-pWX">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="goBackAction:" target="HUR-ik-D4y" id="NZE-qO-JhW"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </customView>
                     <customView identifier="dashboard" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
@@ -216,8 +206,7 @@
         </customObject>
         <customObject id="Gr0-CG-Iha" customClass="TWPNavigationBarController">
             <connections>
-                <outlet property="goBackButton" destination="YCM-gZ-AcP" id="EvN-bO-Bg4"/>
-                <outlet property="goForwardButton" destination="IjZ-GZ-rhx" id="VZ4-ok-Z6c"/>
+                <outlet property="backButton" destination="ulH-iK-UuR" id="37W-Su-ura"/>
                 <outlet property="twitterLogo" destination="hMS-HU-W4h" id="3un-2n-vc1"/>
                 <outlet property="view" destination="Cjl-yU-kQO" id="Z6Q-WQ-cOB"/>
             </connections>
@@ -251,12 +240,9 @@
         </viewController>
     </objects>
     <resources>
+        <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="compose-tweet" width="95" height="113"/>
         <image name="fav-tab" width="116" height="105"/>
-        <image name="go-back-arrow-highlighting" width="69" height="69"/>
-        <image name="go-back-arrow-normal" width="69" height="69"/>
-        <image name="go-forward-arrow-highlighting" width="69" height="69"/>
-        <image name="go-forward-arrow-normal" width="69" height="69"/>
         <image name="home-tab" width="113" height="120"/>
         <image name="lists-tab" width="103" height="101"/>
         <image name="me-tab" width="93" height="104"/>

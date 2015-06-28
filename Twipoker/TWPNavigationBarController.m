@@ -31,8 +31,7 @@
 
 @synthesize twitterLogo = _twitterLogo;
 
-@synthesize goBackButton = _goBackButton;
-@synthesize goForwardButton = _goForwardButton;
+@synthesize backButton = _backButton;
 
 #pragma mark Initializations
 - ( void ) viewDidLoad
@@ -40,27 +39,18 @@
     [ self.view removeConstraints: self.view.constraints ];
 
     [ self->_twitterLogo setTranslatesAutoresizingMaskIntoConstraints: NO ];
-    [ self->_goBackButton setTranslatesAutoresizingMaskIntoConstraints: NO ];
-    [ self->_goForwardButton setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self->_backButton setTranslatesAutoresizingMaskIntoConstraints: NO ];
 
-    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( _twitterLogo, _goBackButton, _goForwardButton );
+    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( _twitterLogo, _backButton );
 
-    NSNumber* paddingCenteredLogoHorizontally = @( NSMinX( _twitterLogo.frame ) - NSMaxX( _goForwardButton.frame ) );
     NSArray* horizontalConstraintsButtons = [ NSLayoutConstraint
         constraintsWithVisualFormat: @"H:|-(==leadingSpace)"
-                                      "-[_goBackButton(==buttonsWidth)]"
-                                      "-(==paddingBetweenButtons)"
-                                      "-[_goForwardButton(==goBackButton)]"
+                                      "-[_backButton(==buttonsWidth)]"
                                       "-(>=tralingSpace)-|"
                             options: 0
-                            metrics: @{ @"leadingSpace" : @( NSMinX( _goBackButton.frame ) )
-                                      , @"buttonsWidth" : @( NSWidth( _goBackButton.frame ) )
-                                      , @"goBackButton" : @( NSWidth( _goForwardButton.frame ) )
-                                      , @"twitterLogoWidth" : @( NSWidth( _twitterLogo.frame ) )
-                                      , @"paddingBetweenButtons" : @( NSMinX( _goForwardButton.frame ) - NSMaxX( _goBackButton.frame ) )
-                                      , @"paddingBetweenGoForwardAndLogo" : paddingCenteredLogoHorizontally
-                                      , @"paddingCenteredLogoHorizontally" : paddingCenteredLogoHorizontally
-                                      , @"tralingSpace" : @( NSWidth( self.view.frame ) - NSMaxX( _goForwardButton.frame ) )
+                            metrics: @{ @"leadingSpace" : @( NSMinX( _backButton.frame ) )
+                                      , @"buttonsWidth" : @( NSWidth( _backButton.frame ) )
+                                      , @"tralingSpace" : @( NSWidth( self.view.frame ) - NSMaxX( _backButton.frame ) )
                                       }
                               views: viewsDict ];
 
@@ -74,17 +64,11 @@
                               views: viewsDict ];
 
     NSArray* verticalConstraintsGoBackButton = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|-(==space)-[_goBackButton(==goBackButtonHeight)]-(==space)-|"
+        constraintsWithVisualFormat: @"V:|-(==space)-[_backButton(==goBackButtonHeight)]-(==space)-|"
                             options: 0
-                            metrics: @{ @"space" : @( ( NSHeight( self.view.frame ) - NSHeight( _goBackButton.frame ) ) / 2 )
-                                      , @"goBackButtonHeight" : @( NSHeight( _goBackButton.frame ) )
+                            metrics: @{ @"space" : @( ( NSHeight( self.view.frame ) - NSHeight( _backButton.frame ) ) / 2 )
+                                      , @"goBackButtonHeight" : @( NSHeight( _backButton.frame ) )
                                       }
-                              views: viewsDict ];
-
-    NSArray* verticalConstraintsGoForwardButton = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|-(==space)-[_goForwardButton(==_goBackButton)]-(==space)-|"
-                            options: 0
-                            metrics: @{ @"space" : @( ( NSHeight( self.view.frame ) - NSHeight( _goForwardButton.frame ) ) / 2 ) }
                               views: viewsDict ];
 
     NSArray* verticalConstraintsTwitterLogo = [ NSLayoutConstraint
@@ -105,7 +89,6 @@
     [ self.view addConstraints: horizontalConstraintsButtons ];
     [ self.view addConstraints: logoWidthConstraint ];
     [ self.view addConstraints: verticalConstraintsGoBackButton ];
-    [ self.view addConstraints: verticalConstraintsGoForwardButton ];
     [ self.view addConstraints: verticalConstraintsTwitterLogo ];
 
     [ self.view addConstraint: centerXConstraint ];
@@ -129,11 +112,10 @@
 
 - ( void ) reload
     {
-    BOOL goBackButtonNewState = self->_delegate.cursor > -1;
-    BOOL goForwardButtonNewState = self->_delegate.cursor != self->_delegate.viewsStack.count - 1;
-
-    [ self.goBackButton setEnabled: goBackButtonNewState ];
-    [ self.goForwardButton setEnabled: goForwardButtonNewState ];
+//    BOOL goBackButtonNewState = self->_delegate.cursor > -1;
+//    BOOL goForwardButtonNewState = self->_delegate.cursor != self->_delegate.viewsStack.count - 1;
+//
+//    [ self.backButton setEnabled: goBackButtonNewState ];
     }
 
 @end

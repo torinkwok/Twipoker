@@ -166,13 +166,6 @@
     [ self.navigationBarController reload ];
     }
 
-- ( IBAction ) goForwardAction: ( id )_Sender
-    {
-    [ self.currentDashboardStack forwardMoveCursor ];
-    self.currentDashboardStack = self.currentDashboardStack;
-    [ self.navigationBarController reload ];
-    }
-
 #pragma mark Private Interfaces
 // Notification selectors
 - ( void ) _listCellMouseDown: ( NSNotification* )_Notif
