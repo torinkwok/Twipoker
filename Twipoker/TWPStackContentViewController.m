@@ -206,6 +206,18 @@
     [ self _pushViewIntoViewsStack: dmSessionViewNewController ];
     }
 
+#pragma mark Conforms to <TWPNavBarControllerDelegate>
+- ( NSView* ) totemView
+    {
+//    return [ self.currentDashboardStack
+    return nil;
+    }
+
+- ( id ) navButtonTitle
+    {
+    return nil;
+    }
+
 @end // TWPStackContentViewController class
 
 /*=============================================================================┐

@@ -22,36 +22,100 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-@import Cocoa;
+#import "TWPNavBarTotemView.h"
 
-#import "TWPDashboardView.h"
-#import "TWPNavBarController.h"
+// TWPNavBarTotemView class
+@implementation TWPNavBarTotemView
 
-@class TWPViewsStack;
-@class TWPDashboardView;
+@dynamic content;
 
-// TWPStackContentViewController class
-@interface TWPStackContentViewController : NSViewController
-    <TWPDashboardViewDelegate, TWPNavBarControllerDelegate>
+#pragma mark Initializations
+- ( void ) awakeFromNib
     {
-@private
-    TWPViewsStack __strong* _currentDashboardStack;
+    self->_imageContentView = [ [ NSImageView alloc ] initWithFrame: NSMakeRect( 0, 0, 30.f, 30.f ) ];
+
+    self->_textContentView = [ [ NSTextField alloc ] initWithFrame: NSZeroRect ];
+    [ self->_textContentView setDrawsBackground: NO ];
+    [ self->_textContentView setBordered: NO ];
+    [ self->_textContentView setFont: [ NSFont fontWithName: @"Lucida Grande" size: 15.f ] ];
+    [ self->_textContentView setStringValue: @"" ];
     }
 
-@property ( weak ) IBOutlet TWPViewsStack* homeDashboardStack;
-@property ( weak ) IBOutlet TWPViewsStack* favoritesDashboardStack;
-@property ( weak ) IBOutlet TWPViewsStack* listsDashboardStack;
-@property ( weak ) IBOutlet TWPViewsStack* notificationsDashboardStack;
-@property ( weak ) IBOutlet TWPViewsStack* meDashboardStack;
-@property ( weak ) IBOutlet TWPViewsStack* messagesDashboardStack;
+#pragma mark Dynamic Accessors
+- ( void ) setContent: ( id )_Content
+    {
+    if ( self->_content != _Content )
+        {
+        self->_content = _Content;
 
-@property ( weak, readonly ) TWPViewsStack* currentDashboardStack;
+        [ self setSubviews: @[] ];
+        [ self removeConstraints: self.constraints ];
 
-#pragma mark IBActions
-// FIXME: It shouldn't be here
-- ( IBAction ) goBackAction: ( id )_Sender;
+        NSView* contentView = nil;
+        if ( [ self->_content isKindOfClass: [ NSImage class ] ] )
+            {
+            [ self->_imageContentView setImage: ( NSImage* )( self->_content ) ];
+            [ self addSubview: self->_imageContentView ];
+            contentView = self->_imageContentView;
+            self->_typeStatus = TWPNavBarTotemViewTypeStatusImage;
+            }
 
-@end // TWPStackContentViewController class
+        else if ( [ self->_content isKindOfClass: [ NSString class ] ] )
+            {
+            NSSize sizeWithAttributes = [ self->_content sizeWithAttributes:
+                @{ NSFontAttributeName : [ NSFont fontWithName: @"Lucida Grande" size: 15.f ] } ];
+
+            [ self->_textContentView setFrame: NSMakeRect( NSMinX( self->_textContentView.frame )
+                                                         , NSMinY( self->_textContentView.frame )
+                                                         , sizeWithAttributes.width
+                                                         , sizeWithAttributes.height
+                                                         ) ];
+
+            [ self->_textContentView setStringValue: ( NSString* )( self->_content ) ];
+            [ self addSubview: self->_textContentView ];
+            contentView = self->_textContentView;
+            self->_typeStatus = TWPNavBarTotemViewTypeStatusText;
+            }
+
+        [ contentView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+        NSLayoutConstraint* centerVerticallyConstraint = [ NSLayoutConstraint
+            constraintWithItem: self
+                     attribute: NSLayoutAttributeCenterY
+                     relatedBy: NSLayoutRelationEqual
+                        toItem: contentView
+                     attribute: NSLayoutAttributeCenterY
+                    multiplier: 1.f
+                      constant: 0.f ];
+
+        NSLayoutConstraint* centerHorizontallyConstraint = [ NSLayoutConstraint
+            constraintWithItem: self
+                     attribute: NSLayoutAttributeCenterX
+                     relatedBy: NSLayoutRelationEqual
+                        toItem: contentView
+                     attribute: NSLayoutAttributeCenterX
+                    multiplier: 1.f
+                      constant: 0.f ];
+
+        [ self addConstraint: centerVerticallyConstraint ];
+        [ self addConstraint: centerHorizontallyConstraint ];
+        }
+    }
+
+- ( id ) content
+    {
+    return self->_content;
+    }
+
+#pragma mark Custom Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
+    
+    [ [ NSColor whiteColor ] set ];
+    NSRectFill( _DirtyRect );
+    }
+
+@end // TWPNavBarTotemView class
 
 /*=============================================================================┐
 |                                                                              |

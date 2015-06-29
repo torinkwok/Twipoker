@@ -24,34 +24,26 @@
 
 @import Cocoa;
 
-#import "TWPDashboardView.h"
-#import "TWPNavBarController.h"
+typedef NS_ENUM( NSUInteger, TWPNavBarTotemViewTypeStatus )
+    { TWPNavBarTotemViewTypeStatusImage = 0
+    , TWPNavBarTotemViewTypeStatusText = 1
+    };
 
-@class TWPViewsStack;
-@class TWPDashboardView;
-
-// TWPStackContentViewController class
-@interface TWPStackContentViewController : NSViewController
-    <TWPDashboardViewDelegate, TWPNavBarControllerDelegate>
+// TWPNavBarTotemView class
+@interface TWPNavBarTotemView : NSView
     {
 @private
-    TWPViewsStack __strong* _currentDashboardStack;
+    id __strong _content;
+
+    TWPNavBarTotemViewTypeStatus _typeStatus;
+
+    NSImageView __strong* _imageContentView;
+    NSTextField __strong* _textContentView;
     }
 
-@property ( weak ) IBOutlet TWPViewsStack* homeDashboardStack;
-@property ( weak ) IBOutlet TWPViewsStack* favoritesDashboardStack;
-@property ( weak ) IBOutlet TWPViewsStack* listsDashboardStack;
-@property ( weak ) IBOutlet TWPViewsStack* notificationsDashboardStack;
-@property ( weak ) IBOutlet TWPViewsStack* meDashboardStack;
-@property ( weak ) IBOutlet TWPViewsStack* messagesDashboardStack;
+@property ( strong, readwrite ) id content;
 
-@property ( weak, readonly ) TWPViewsStack* currentDashboardStack;
-
-#pragma mark IBActions
-// FIXME: It shouldn't be here
-- ( IBAction ) goBackAction: ( id )_Sender;
-
-@end // TWPStackContentViewController class
+@end // TWPNavBarTotemView class
 
 /*=============================================================================┐
 |                                                                              |

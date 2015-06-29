@@ -82,6 +82,7 @@
 		839B51A61B418D64005035E6 /* TWPNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B51A51B418D64005035E6 /* TWPNavBar.m */; };
 		839B51A91B419894005035E6 /* TWPNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B51A81B419894005035E6 /* TWPNavBarController.m */; };
 		839B51AC1B4199A1005035E6 /* TWPNavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B51AB1B4199A1005035E6 /* TWPNavButton.m */; };
+		839B51AF1B41AF55005035E6 /* TWPNavBarTotemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B51AE1B41AF55005035E6 /* TWPNavBarTotemView.m */; };
 		83AAF6D11AECE801007A3A48 /* TWPTimelineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */; };
 		83AAF6D31AECE8C7007A3A48 /* TWPTimeline.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83AAF6D21AECE8C7007A3A48 /* TWPTimeline.xib */; };
 		83AAF6D71AECE907007A3A48 /* TWPListsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83AAF6D61AECE907007A3A48 /* TWPListsView.xib */; };
@@ -366,6 +367,8 @@
 		839B51A81B419894005035E6 /* TWPNavBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPNavBarController.m; path = Twipoker/TWPNavBarController.m; sourceTree = "<group>"; };
 		839B51AA1B4199A1005035E6 /* TWPNavButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPNavButton.h; path = Twipoker/TWPNavButton.h; sourceTree = "<group>"; };
 		839B51AB1B4199A1005035E6 /* TWPNavButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPNavButton.m; path = Twipoker/TWPNavButton.m; sourceTree = "<group>"; };
+		839B51AD1B41AF55005035E6 /* TWPNavBarTotemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPNavBarTotemView.h; path = Twipoker/TWPNavBarTotemView.h; sourceTree = "<group>"; };
+		839B51AE1B41AF55005035E6 /* TWPNavBarTotemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPNavBarTotemView.m; path = Twipoker/TWPNavBarTotemView.m; sourceTree = "<group>"; };
 		83AAF6CF1AECE801007A3A48 /* TWPTimelineTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineTableView.h; path = Twipoker/TWPTimelineTableView.h; sourceTree = "<group>"; };
 		83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineTableView.m; path = Twipoker/TWPTimelineTableView.m; sourceTree = "<group>"; };
 		83AAF6D21AECE8C7007A3A48 /* TWPTimeline.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPTimeline.xib; path = Twipoker/TWPTimeline.xib; sourceTree = "<group>"; };
@@ -699,6 +702,8 @@
 				839B51A81B419894005035E6 /* TWPNavBarController.m */,
 				839B51A41B418D64005035E6 /* TWPNavBar.h */,
 				839B51A51B418D64005035E6 /* TWPNavBar.m */,
+				839B51AD1B41AF55005035E6 /* TWPNavBarTotemView.h */,
+				839B51AE1B41AF55005035E6 /* TWPNavBarTotemView.m */,
 				8347B7CF1AE799FF003A49AD /* Dashboard */,
 				830B8F601AF0DF72006D2635 /* Stack Content View */,
 				83B272021B3008BE00953C28 /* User Profile */,
@@ -1616,6 +1621,7 @@
 				83CFD8761ACF1C820062D73D /* TWPLoginPanelController.m in Sources */,
 				83E9A2E11B02721200CA5926 /* NSDateFormatter+STTwitter.m in Sources */,
 				83CFD8851ACF1F070062D73D /* NSAffineTransform+TwipokerDrawing.m in Sources */,
+				839B51AF1B41AF55005035E6 /* TWPNavBarTotemView.m in Sources */,
 				83C21DA11B2B1AE800188BB2 /* TWPDashboardTab.m in Sources */,
 				83CFD86E1ACF1C820062D73D /* TWPButtonCell.m in Sources */,
 				83CC14FE1B2317B40046B544 /* TWPFavSwitcher.m in Sources */,
