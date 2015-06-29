@@ -14,10 +14,10 @@
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="TWPMainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
-            <rect key="contentRect" x="411" y="389" width="645" height="623"/>
+            <rect key="contentRect" x="411" y="389" width="587" height="623"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ" userLabel="Content View" customClass="TWPMainWindowContentView">
-                <rect key="frame" x="0.0" y="5" width="645" height="623"/>
+                <rect key="frame" x="0.0" y="0.0" width="587" height="623"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-H2-zZU">
@@ -121,9 +121,9 @@
                         </connections>
                     </customView>
                     <customView identifier="stack-content-view" appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-W1-aLM" customClass="TWPStackContentView">
-                        <rect key="frame" x="92" y="0.0" width="554" height="623"/>
+                        <rect key="frame" x="92" y="0.0" width="496" height="623"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="554" id="AYH-I7-foe"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="495" id="AYH-I7-foe"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="623" id="p39-HW-UYC"/>
                         </constraints>
                     </customView>
@@ -138,7 +138,7 @@
                     <constraint firstAttribute="bottom" secondItem="vge-3d-5qI" secondAttribute="bottom" id="wac-7w-qIK"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="-24.5" y="-1748.5"/>
+            <point key="canvasLocation" x="-53.5" y="-1748.5"/>
         </window>
         <customView identifier="vertical-cuttingline" id="flx-KC-83G" userLabel="Vertical Cutting Line View" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="1" height="691"/>
