@@ -14,18 +14,18 @@
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="TWPMainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
-            <rect key="contentRect" x="411" y="389" width="472" height="543"/>
+            <rect key="contentRect" x="411" y="389" width="472" height="587"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ" userLabel="Content View" customClass="TWPMainWindowContentView">
-                <rect key="frame" x="0.0" y="0.0" width="472" height="543"/>
+                <rect key="frame" x="0.0" y="0.0" width="472" height="587"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-H2-zZU">
-                        <rect key="frame" x="-142" y="586" width="34" height="34"/>
+                        <rect key="frame" x="-142" y="630" width="34" height="34"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
                     </imageView>
                     <customView identifier="dashboard" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
-                        <rect key="frame" x="0.0" y="0.0" width="72" height="543"/>
+                        <rect key="frame" x="0.0" y="0.0" width="72" height="587"/>
                         <subviews>
                             <button identifier="home-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="402" width="72" height="74"/>
@@ -62,7 +62,7 @@
                             </button>
                             <button identifier="me-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="134" width="72" height="68"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="me-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="3qq-XN-k35">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="me-tab" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="3qq-XN-k35">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -127,14 +127,34 @@
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="543" id="p39-HW-UYC"/>
                         </constraints>
                     </customView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="CB6-PQ-tWI" customClass="TWPNavBar">
+                        <rect key="frame" x="72" y="543" width="400" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="4y4-AY-K7r"/>
+                            <constraint firstAttribute="height" constant="44" id="h9A-cd-LHS"/>
+                        </constraints>
+                    </customView>
+                    <customView identifier="horizontal-cuttingline" translatesAutoresizingMaskIntoConstraints="NO" id="Zv7-Nz-kW4" userLabel="Horizontal Cutting Line View" customClass="TWPCuttingLineView">
+                        <rect key="frame" x="72" y="542" width="400" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="WQw-bl-Cxv"/>
+                            <constraint firstAttribute="height" constant="1" id="rN4-kt-C1X"/>
+                        </constraints>
+                    </customView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Zv7-Nz-kW4" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="trailing" id="7OG-0I-pBJ"/>
+                    <constraint firstItem="CB6-PQ-tWI" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="8kX-Lq-9Od"/>
+                    <constraint firstItem="CB6-PQ-tWI" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="trailing" id="ESs-VM-nzw"/>
                     <constraint firstItem="vge-3d-5qI" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="EVN-jq-zh5"/>
                     <constraint firstItem="9t8-W1-aLM" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="trailing" id="G0T-uh-bBe"/>
                     <constraint firstAttribute="bottom" secondItem="9t8-W1-aLM" secondAttribute="bottom" id="GMP-VS-oUQ"/>
+                    <constraint firstAttribute="trailing" secondItem="Zv7-Nz-kW4" secondAttribute="trailing" id="OVb-Zk-IOO"/>
                     <constraint firstItem="vge-3d-5qI" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="SAN-1i-FyL"/>
+                    <constraint firstItem="9t8-W1-aLM" firstAttribute="top" secondItem="Zv7-Nz-kW4" secondAttribute="bottom" constant="-1" id="YCn-ge-gqA"/>
+                    <constraint firstAttribute="trailing" secondItem="CB6-PQ-tWI" secondAttribute="trailing" id="cei-mc-GyU"/>
                     <constraint firstAttribute="trailing" secondItem="9t8-W1-aLM" secondAttribute="trailing" id="dpx-V7-y0Z"/>
-                    <constraint firstItem="9t8-W1-aLM" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="mP9-l0-g6j"/>
+                    <constraint firstItem="Zv7-Nz-kW4" firstAttribute="top" secondItem="CB6-PQ-tWI" secondAttribute="bottom" id="hZb-jm-n5P"/>
                     <constraint firstAttribute="bottom" secondItem="vge-3d-5qI" secondAttribute="bottom" id="wac-7w-qIK"/>
                 </constraints>
             </view>
@@ -210,13 +230,8 @@
             </connections>
         </customObject>
         <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController"/>
-        <customView identifier="horizontal-cuttingline" id="zU3-cQ-xog" userLabel="Horizontal Cutting Line View" customClass="TWPCuttingLineView">
-            <rect key="frame" x="0.0" y="0.0" width="606" height="1"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-        </customView>
         <viewController id="dBG-Jj-N3g" customClass="TWPMainWindowContentViewController">
             <connections>
-                <outlet property="cuttingLineBetweenNavBarAndViewsStack" destination="zU3-cQ-xog" id="s50-GQ-uni"/>
                 <outlet property="cuttingLineBetweetMainViewAndProfileView" destination="flx-KC-83G" id="uyI-dC-SUg"/>
                 <outlet property="dashboardViewController" destination="Q6I-Hl-mD8" id="LAf-Wr-Oye"/>
                 <outlet property="stackContentViewController" destination="HUR-ik-D4y" id="pnT-bl-Kv9"/>
