@@ -44,6 +44,7 @@
 #import "TWPDashboardTab.h"
 #import "TWPDashboardView.h"
 #import "TWPTimelineScrollView.h"
+#import "TWPTwitterUserProfileViewController.h"
 
 #import "NSView+TwipokerAutoLayout.h"
 
@@ -62,6 +63,7 @@
 // Pushing views
 - ( void ) _pushViewIntoViewsStack: ( NSViewController* )_ViewContorller;
 - ( void ) _pushUserTimleineToCurrentViewsStack: ( OTCTwitterUser* )_TwitterUser;
+- ( void ) _pushUserProfileToCurrentViewsStack: ( OTCTwitterUser* )_TwitterUser;
 - ( void ) _pushTwitterListTimelineToCurrentViewsStack: ( OTCList* )_TwitterList;
 - ( void ) _pushDirectMessageSessionViewToCurrentViewStack: ( TWPDirectMessageSession* )_DirectMessageSession;
 
@@ -86,7 +88,8 @@
         {
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _listCellMouseDown: ) name: TWPListCellViewMouseDown object: nil ];
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _dmPreviewTableCellMouseDown: ) name: TWPDirectMessagePreviewTableCellViewMouseDown object: nil ];
-        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserTweets: ) name: /*TWPTwipokerShouldShowUserTweets*/ TWPTwipokerShouldShowUserProfile object: nil ];
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserProfile: ) name: TWPTwipokerShouldShowUserProfile object: nil ];
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserTweets: ) name: TWPTwipokerShouldShowUserTweets object: nil ];
         }
 
     return self;
@@ -96,6 +99,7 @@
     {
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPListCellViewMouseDown object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPDirectMessagePreviewTableCellViewMouseDown object: nil ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserProfile object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserTweets object: nil ];
     }
 
@@ -178,6 +182,12 @@
     [ self _pushUserTimleineToCurrentViewsStack: twitterUser ];
     }
 
+- ( void ) _shouldShowUserProfile: ( NSNotification* )_Notif
+    {
+    OTCTwitterUser* twitterUser = _Notif.userInfo[ kTwitterUser ];
+    [ self _pushUserProfileToCurrentViewsStack: twitterUser ];
+    }
+
 // Pushing views
 - ( void ) _pushViewIntoViewsStack: ( TWPViewController* )_ViewContorller
     {
@@ -192,6 +202,14 @@
                                                                    totemContent: _TwitterUser.screenName ];
 
     [ self _pushViewIntoViewsStack: twitterUserViewNewController ];
+    }
+
+- ( void ) _pushUserProfileToCurrentViewsStack: ( OTCTwitterUser* )_TwitterUser
+    {
+    TWPTwitterUserProfileViewController* profileViewController =
+        [ TWPTwitterUserProfileViewController profileViewControllerWithTwitterUser: _TwitterUser
+                                                                  withTotemContent: _TwitterUser.screenName ];
+    [ self _pushViewIntoViewsStack: profileViewController ];
     }
 
 - ( void ) _pushTwitterListTimelineToCurrentViewsStack: ( OTCList* )_TwitterList
