@@ -186,7 +186,7 @@
     }
 
 // Pushing views
-- ( void ) _pushViewIntoViewsStack: ( NSViewController* )_ViewContorller
+- ( void ) _pushViewIntoViewsStack: ( TWPViewController* )_ViewContorller
     {
     [ self.currentDashboardStack pushView: _ViewContorller ];
     self.currentDashboardStack = self.currentDashboardStack;

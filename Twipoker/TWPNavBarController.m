@@ -113,26 +113,11 @@
 
 - ( void ) reload
     {
-    id backButtonTitle = nil;
-    if ( [ self.delegate respondsToSelector: @selector( backButtonTitle ) ] )
-        {
-         backButtonTitle = [ self.delegate backButtonTitle ];
+    self->_centerStuff = self.delegate.centerStuff;
+    self->_backButtonTitle = self.delegate.backButtonTitle;
 
-        if ( [ backButtonTitle isKindOfClass: [ NSString class ] ] )
-            [ self.backButton setTitle: backButtonTitle ];
-        else if ( [ backButtonTitle isKindOfClass: [ NSImage class ] ] )
-            [ self.backButton setImage: backButtonTitle ];
-        }
-
-    if ( [ self.delegate respondsToSelector: @selector( centerStuff ) ] )
-        self->_centerStuff = self.delegate.centerStuff;
-
-    [ self.view setNeedsUpdateConstraints: YES ];
-
-//    BOOL goBackButtonNewState = self->_delegate.cursor > -1;
-//    BOOL goForwardButtonNewState = self->_delegate.cursor != self->_delegate.viewsStack.count - 1;
-//
-//    [ self.backButton setEnabled: goBackButtonNewState ];
+    NSLog( @"%@", self->_backButtonTitle );
+    [ self.backButton setHidden: !self->_backButtonTitle ];
     }
 
 @end // TWPNavBarController class

@@ -77,7 +77,19 @@
 
 - ( id ) backButtonTitle
     {
-    return [ [ self _currentView ] navBarTitle ];
+    id title = nil;
+
+    if ( self->_viewsStack.count > 0 )
+        {
+        NSUInteger currentIndex = [ self->_viewsStack indexOfObject: [ self _currentView ] ];
+
+        if ( currentIndex > 0 )
+            title = [ self->_viewsStack objectAtIndex: currentIndex - 1 ];
+        else
+            title = self.baseViewController;
+        }
+
+    return title;
     }
 
 @end

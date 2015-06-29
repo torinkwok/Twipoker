@@ -33,6 +33,7 @@
     {
 @private
     NSView __weak* _centerStuff;
+    NSString __strong* _backButtonTitle;
 
     id <TWPNavBarControllerDelegate> __weak _delegate;
     }
