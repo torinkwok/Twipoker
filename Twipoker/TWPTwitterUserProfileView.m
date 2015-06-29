@@ -23,7 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTwitterUserProfileView.h"
-#import "TWPNavBarController.h"
+
 #import "TWPCuttingLineView.h"
 #import "TWPUserAvatarWell.h"
 #import "TWPUserProfileCountButton.h"
@@ -31,8 +31,6 @@
 #import "NSView+TwipokerAutoLayout.h"
 
 @implementation TWPTwitterUserProfileView
-
-@dynamic refNavBarController;
 
 @synthesize hideButton;
 @synthesize cuttingLineView;
@@ -63,26 +61,6 @@
     [ self.followingCountButton setCountButtonType: TWPUserProfileCountButtonTypeFollowing ];
 
     [ self setMinimumSizeInNib: self.frame.size ];
-    }
-
-#pragma mark Dynamic Accessors
-- ( void ) setRefNavBarController: ( TWPNavBarController* )_NavigationBarController
-    {
-    self->_refNavBarController = _NavigationBarController;
-
-    NSRect newFrameOfCuttingLine = NSMakeRect( NSMinX( self.cuttingLineView.frame )
-                                             , NSHeight( self->_refNavBarController.view.frame )
-                                             , NSWidth( self.cuttingLineView.bounds )
-                                             , NSHeight( self.cuttingLineView.bounds )
-                                             );
-
-    [ self.cuttingLineView setFrame: newFrameOfCuttingLine ];
-    [ self addSubview: self.cuttingLineView ];
-    }
-
-- ( TWPNavBarController* ) refNavBarController
-    {
-    return self->_refNavBarController;
     }
 
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser

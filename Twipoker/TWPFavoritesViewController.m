@@ -59,12 +59,6 @@
                                 {
                                 [ self presentError: _Error ];
                                 } ];
-
-        NSImageView* totemImage = [ [ NSImageView alloc ] init ];
-        NSImage* favImage = [ NSImage imageNamed: @"fav-tab" ];
-        totemImage.image = favImage;
-        [ self setTotemView: totemImage ];
-        [ self setNavBarTitle: favImage ];
         }
 
     return self;

@@ -69,29 +69,6 @@
     return currentViewController;
     }
 
-#pragma mark Conforms to <TWPNavBarControllerDelegate>
-- ( NSView* ) centerStuff
-    {
-    return [ [ self _currentView ] totemView ];
-    }
-
-- ( id ) backButtonTitle
-    {
-    id title = nil;
-
-    if ( self->_viewsStack.count > 0 )
-        {
-        NSUInteger currentIndex = [ self->_viewsStack indexOfObject: [ self _currentView ] ];
-
-        if ( currentIndex > 0 )
-            title = [ self->_viewsStack objectAtIndex: currentIndex - 1 ];
-        else
-            title = self.baseViewController;
-        }
-
-    return title;
-    }
-
 @end
 
 /*=============================================================================┐

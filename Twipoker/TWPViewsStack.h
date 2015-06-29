@@ -22,11 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPNavBarController.h"
-
 @class TWPViewController;
 
-@interface TWPViewsStack : NSObject <TWPNavBarControllerDelegate>
+@interface TWPViewsStack : NSObject
     {
 @private
     NSMutableArray __strong* _viewsStack;

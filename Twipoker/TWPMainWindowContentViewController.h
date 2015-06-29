@@ -25,7 +25,6 @@
 @import Cocoa;
 
 @class TWPDashboardViewController;
-@class TWPNavBarController;
 @class TWPStackContentViewController;
 
 @class TWPCuttingLineView;
@@ -33,21 +32,16 @@
 @class TWPTweetingCompleteBox;
 @class TWPTimelineUserNameButton;
 
-@class TWPTwitterUserProfileViewController;
-
 @interface TWPMainWindowContentViewController : NSViewController
     {
 @private
-    BOOL _isShowingProfile;
     CGFloat _savedWidth;
     }
 
 @property ( assign, readwrite, setter = setShowingProfile: ) BOOL isShowingProfile;
 
-@property ( weak ) IBOutlet TWPTwitterUserProfileViewController* twitterUserProfileViewController;
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweetMainViewAndProfileView;
 
-@property ( weak ) IBOutlet TWPNavBarController* navigationBarController;
 @property ( weak ) IBOutlet TWPDashboardViewController* dashboardViewController;
 @property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
 

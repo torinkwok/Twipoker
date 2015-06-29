@@ -38,8 +38,6 @@
         NSImageView* totemImage = [ [ NSImageView alloc ] init ];
         NSImage* meImage = [ NSImage imageNamed: @"me-tab" ];
         totemImage.image = meImage;
-        [ self setTotemView: totemImage ];
-        [ self setNavBarTitle: meImage ];
         }
 
     return self;

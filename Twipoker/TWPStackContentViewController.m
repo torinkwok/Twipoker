@@ -27,11 +27,10 @@
 #import "TWPStackContentView.h"
 #import "TWPDashboardView.h"
 #import "TWPViewsStack.h"
-#import "TWPNavigationBar.h"
 #import "TWPTwitterUserViewController.h"
 #import "TWPTimelineUserNameButton.h"
 #import "TWPTwitterUserViewController.h"
-#import "TWPNavBarController.h"
+
 #import "TWPRepliesTimelineViewController.h"
 #import "TWPTweetCellView.h"
 #import "TWPTweetTextField.h"
@@ -71,8 +70,6 @@
 // TWPStackContentViewController class
 @implementation TWPStackContentViewController
 
-@synthesize navigationBarController;
-
 @synthesize homeDashboardStack;
 @synthesize favoritesDashboardStack;
 @synthesize listsDashboardStack;
@@ -105,14 +102,12 @@
 - ( void ) viewWillAppear
     {
     self.currentDashboardStack = self.homeDashboardStack;
-    self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
 #pragma mark Conforms to <TWPDashboardViewDelegate>
 - ( void ) setCurrentDashboardStack: ( TWPViewsStack* )_CurrentDashboardStack
     {
     self->_currentDashboardStack = _CurrentDashboardStack;
-    self.navigationBarController.delegate = self->_currentDashboardStack;
 
     [ self.view removeConstraints: self.view.constraints ];
     [ self.view setSubviews: @[] ];
@@ -152,14 +147,12 @@
     // self.view is observing this key path,
     // it will be notified after assignment then make appropriate adjustments
     self.currentDashboardStack = associatedViewsStack;
-    self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
 #pragma mark IBActions
 - ( IBAction ) goBackAction: ( id )_Sender
     {
     self.currentDashboardStack = self.currentDashboardStack;
-    [ self.navigationBarController reload ];
     }
 
 #pragma mark Private Interfaces
@@ -187,7 +180,6 @@
     {
     [ self.currentDashboardStack pushView: _ViewContorller ];
     self.currentDashboardStack = self.currentDashboardStack;
-    [ self.navigationBarController reload ];
     }
 
 - ( void ) _pushUserTimleineToCurrentViewsStack: ( OTCTwitterUser* )_TwitterUser
