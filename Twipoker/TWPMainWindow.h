@@ -24,8 +24,9 @@
 
 @import Cocoa;
 
+// TWPMainWindow class
 @interface TWPMainWindow : NSWindow
-@end
+@end // TWPMainWindow class
 
 /*=============================================================================┐
 |                                                                              |

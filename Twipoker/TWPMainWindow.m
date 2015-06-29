@@ -24,6 +24,7 @@
 
 #import "TWPMainWindow.h"
 
+// TWPMainWindow class
 @implementation TWPMainWindow
 
 - ( void ) awakeFromNib
@@ -38,7 +39,7 @@
     return ( NSTimeInterval ).15f;
     }
 
-@end
+@end // TWPMainWindow class
 
 /*=============================================================================┐
 |                                                                              |
