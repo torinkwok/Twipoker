@@ -30,15 +30,20 @@
 @dynamic content;
 
 #pragma mark Initializations
-- ( void ) awakeFromNib
+- ( instancetype ) initWithFrame: ( NSRect )_FrameRect
     {
-    self->_imageContentView = [ [ NSImageView alloc ] initWithFrame: NSMakeRect( 0, 0, 30.f, 30.f ) ];
+    if ( self = [ super initWithFrame: _FrameRect ] )
+        {
+        self->_imageContentView = [ [ NSImageView alloc ] initWithFrame: NSMakeRect( 0, 0, 20.f, 20.f ) ];
 
-    self->_textContentView = [ [ NSTextField alloc ] initWithFrame: NSZeroRect ];
-    [ self->_textContentView setDrawsBackground: NO ];
-    [ self->_textContentView setBordered: NO ];
-    [ self->_textContentView setFont: [ NSFont fontWithName: @"Lucida Grande" size: 15.f ] ];
-    [ self->_textContentView setStringValue: @"" ];
+        self->_textContentView = [ [ NSTextField alloc ] initWithFrame: NSMakeRect( 0, 0, 30, 20 ) ];
+        [ self->_textContentView setDrawsBackground: NO ];
+        [ self->_textContentView setBordered: NO ];
+        [ self->_textContentView setFont: [ NSFont fontWithName: @"Lucida Grande" size: 15.f ] ];
+        [ self->_textContentView setStringValue: @"" ];
+        }
+
+    return self;
     }
 
 #pragma mark Dynamic Accessors
@@ -98,6 +103,8 @@
 
         [ self addConstraint: centerVerticallyConstraint ];
         [ self addConstraint: centerHorizontallyConstraint ];
+
+        [ self.window visualizeConstraints: self.constraints ];
         }
     }
 

@@ -261,9 +261,26 @@
         <viewController id="oPd-64-3A3" customClass="TWPNavBarController">
             <connections>
                 <outlet property="navButton" destination="Hrj-GZ-Uas" id="XBj-br-fE3"/>
+                <outlet property="totemView" destination="T3v-QU-CeL" id="OD6-j6-cjI"/>
                 <outlet property="view" destination="CB6-PQ-tWI" id="4mu-V1-R6F"/>
             </connections>
         </viewController>
+        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="F8o-AT-Tga">
+            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="woS-29-Wzk"/>
+            <point key="canvasLocation" x="62" y="-2141"/>
+        </imageView>
+        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yB1-QL-W4l">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="22"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="FHK-ma-r9E">
+                <font key="font" metaFont="system"/>
+                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+            <point key="canvasLocation" x="225" y="-2135"/>
+        </textField>
     </objects>
     <resources>
         <image name="compose-tweet" width="95" height="113"/>

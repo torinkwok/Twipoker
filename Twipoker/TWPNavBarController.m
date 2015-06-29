@@ -24,6 +24,7 @@
 
 #import "TWPNavBarController.h"
 #import "TWPNavButton.h"
+#import "TWPNavBarTotemView.h"
 
 @interface TWPNavBarController ()
 
@@ -33,6 +34,12 @@
 @implementation TWPNavBarController
 
 @synthesize navButton;
+@synthesize totemView;
+
+- ( void ) awakeFromNib
+    {
+    [ self.totemView setContent: [ NSImage imageNamed: @"home-tab" ] ];
+    }
 
 #pragma mark Initializations
 - ( void ) viewDidLoad

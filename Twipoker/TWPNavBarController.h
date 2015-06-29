@@ -25,11 +25,13 @@
 @import Cocoa;
 
 @class TWPNavButton;
+@class TWPNavBarTotemView;
 
 // TWPNavBarController class
 @interface TWPNavBarController : NSViewController
 
 @property ( weak ) IBOutlet TWPNavButton* navButton;
+@property ( weak ) IBOutlet TWPNavBarTotemView* totemView;
 
 @end // TWPNavBarController class
 
