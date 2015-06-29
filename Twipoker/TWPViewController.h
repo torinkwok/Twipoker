@@ -34,6 +34,8 @@
 
 @property ( strong, readwrite ) STTwitterAPI* twitterAPI;
 
+@property ( strong, readwrite ) id totemContent;
+
 @end
 
 /*=============================================================================┐

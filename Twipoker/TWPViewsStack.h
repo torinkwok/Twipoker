@@ -24,6 +24,7 @@
 
 @class TWPViewController;
 
+// TWPViewsStack class
 @interface TWPViewsStack : NSObject
     {
 @private
@@ -40,8 +41,9 @@
 - ( void ) popView;
 
 - ( TWPViewController* ) currentView;
+- ( TWPViewController* ) viewBeforeCurrentView;
 
-@end
+@end // TWPViewsStack class
 
 /*=============================================================================┐
 |                                                                              |

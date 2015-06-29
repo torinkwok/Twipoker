@@ -29,6 +29,7 @@
 
 @class TWPViewsStack;
 @class TWPDashboardView;
+@class TWPNavBarController;
 
 // TWPStackContentViewController class
 @interface TWPStackContentViewController : NSViewController
@@ -37,6 +38,8 @@
 @private
     TWPViewsStack __strong* _currentDashboardStack;
     }
+
+@property ( weak ) IBOutlet TWPNavBarController* navBarController;
 
 @property ( weak ) IBOutlet TWPViewsStack* homeDashboardStack;
 @property ( weak ) IBOutlet TWPViewsStack* favoritesDashboardStack;

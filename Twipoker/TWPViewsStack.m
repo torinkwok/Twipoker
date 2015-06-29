@@ -25,6 +25,12 @@
 #import "TWPViewsStack.h"
 #import "TWPViewController.h"
 
+// Private Interfaces
+@interface TWPViewsStack ()
+- ( TWPViewController* ) _currentView;
+@end // Private Interfaces
+
+// TWPViewsStack class
 @implementation TWPViewsStack
 
 @synthesize baseViewController = _baseViewController;
@@ -57,6 +63,20 @@
     return [ self _currentView ];
     }
 
+- ( TWPViewController* ) viewBeforeCurrentView
+    {
+    TWPViewController* interestingView = nil;
+    TWPViewController* current = [ self _currentView ];
+    NSUInteger currentIndex = [ self->_viewsStack indexOfObject: current ];
+    if ( currentIndex > 0 )
+        interestingView = [ self->_viewsStack objectAtIndex: currentIndex - 1 ];
+    else
+        interestingView = self.baseViewController;
+
+    return interestingView;
+    }
+
+#pragma mark Private Interfaces
 - ( TWPViewController* ) _currentView
     {
     TWPViewController* currentViewController = nil;
@@ -69,7 +89,7 @@
     return currentViewController;
     }
 
-@end
+@end // TWPViewsStack class
 
 /*=============================================================================┐
 |                                                                              |

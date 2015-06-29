@@ -59,6 +59,8 @@
                                 {
                                 [ self presentError: _Error ];
                                 } ];
+
+        [ self setTotemContent: [ NSImage imageNamed: @"fav-tab" ] ];
         }
 
     return self;

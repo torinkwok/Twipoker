@@ -24,6 +24,8 @@
 
 @import Cocoa;
 
+@protocol TWPNavBarControllerDelegate;
+
 @class TWPNavButton;
 @class TWPNavBarTotemView;
 
@@ -33,14 +35,18 @@
 @property ( weak ) IBOutlet TWPNavButton* navButton;
 @property ( weak ) IBOutlet TWPNavBarTotemView* totemView;
 
+@property ( weak ) IBOutlet id <TWPNavBarControllerDelegate> delegate;
+
+- ( void ) reload;
+
 @end // TWPNavBarController class
 
 // TWPNavBarControllerDelegate protocol
 @protocol TWPNavBarControllerDelegate <NSObject>
 
 @required
-- ( NSView* ) totemView;
-- ( id ) navButtonTitle;
+- ( id ) totemContent;
+- ( id ) navBarBackButtonTitleContent;
 
 @end // TWPNavBarControllerDelegate protocol
 

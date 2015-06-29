@@ -35,8 +35,11 @@
 
 @property ( strong, readonly /* TODO: make this property read-write */ ) OTCTwitterUser* twitterUser;
 
-+ ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
-- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser;
++ ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+                                               totemContent: ( id )_TotemContent;
+
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+                          totemContent: ( id )_TotemContent;
 
 @end
 

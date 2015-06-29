@@ -29,6 +29,8 @@
 
 @dynamic twitterAPI;
 
+@synthesize totemContent = _totemContent;
+
 - ( instancetype ) initWithNibName: ( NSString* )_NibNameOrNil
                             bundle: ( NSBundle* )_NibBundleOrNil
     {

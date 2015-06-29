@@ -196,6 +196,7 @@
                 <outlet property="listsDashboardStack" destination="jhD-Ze-QK8" id="piV-M9-8Ce"/>
                 <outlet property="meDashboardStack" destination="uTU-qJ-3dF" id="0zS-11-lgA"/>
                 <outlet property="messagesDashboardStack" destination="4cS-D0-vD7" id="3ld-Cq-hfG"/>
+                <outlet property="navBarController" destination="oPd-64-3A3" id="ugJ-Gi-Zx6"/>
                 <outlet property="notificationsDashboardStack" destination="A4Q-KL-bMh" id="bdR-3a-REp"/>
                 <outlet property="view" destination="9t8-W1-aLM" id="08g-c7-EMV"/>
             </connections>
@@ -264,6 +265,7 @@
         </viewController>
         <viewController id="oPd-64-3A3" customClass="TWPNavBarController">
             <connections>
+                <outlet property="delegate" destination="HUR-ik-D4y" id="bwY-p7-vyA"/>
                 <outlet property="navButton" destination="Hrj-GZ-Uas" id="XBj-br-fE3"/>
                 <outlet property="totemView" destination="T3v-QU-CeL" id="OD6-j6-cjI"/>
                 <outlet property="view" destination="CB6-PQ-tWI" id="4mu-V1-R6F"/>

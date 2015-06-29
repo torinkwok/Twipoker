@@ -86,7 +86,7 @@
         {
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _listCellMouseDown: ) name: TWPListCellViewMouseDown object: nil ];
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _dmPreviewTableCellMouseDown: ) name: TWPDirectMessagePreviewTableCellViewMouseDown object: nil ];
-        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserTweets: ) name: TWPTwipokerShouldShowUserTweets object: nil ];
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserTweets: ) name: /*TWPTwipokerShouldShowUserTweets*/ TWPTwipokerShouldShowUserProfile object: nil ];
         }
 
     return self;
@@ -180,12 +180,14 @@
     {
     [ self.currentDashboardStack pushView: _ViewContorller ];
     self.currentDashboardStack = self.currentDashboardStack;
+    [ self.navBarController reload ];
     }
 
 - ( void ) _pushUserTimleineToCurrentViewsStack: ( OTCTwitterUser* )_TwitterUser
     {
     NSViewController* twitterUserViewNewController =
-        [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: _TwitterUser ];
+        [ TWPTwitterUserViewController twitterUserViewControllerWithTwitterUser: _TwitterUser
+                                                                   totemContent: _TwitterUser.screenName ];
 
     [ self _pushViewIntoViewsStack: twitterUserViewNewController ];
     }
@@ -207,15 +209,14 @@
     }
 
 #pragma mark Conforms to <TWPNavBarControllerDelegate>
-- ( NSView* ) totemView
+- ( id ) totemContent
     {
-//    return [ self.currentDashboardStack
-    return nil;
+    return self.currentDashboardStack.currentView.totemContent;
     }
 
-- ( id ) navButtonTitle
+- ( id ) navBarBackButtonTitleContent
     {
-    return nil;
+    return self.currentDashboardStack.viewBeforeCurrentView.totemContent;
     }
 
 @end // TWPStackContentViewController class

@@ -36,10 +36,23 @@
 @synthesize navButton;
 @synthesize totemView;
 
-- ( void ) awakeFromNib
+@synthesize delegate = _delegate;
+
+- ( void ) reload
     {
-    [ self.totemView setContent: [ NSImage imageNamed: @"home-tab" ] ];
-    [ self.totemView setContent: @"home-tabf0d0afdafjakjd" ];
+    id totemContent = [ self.delegate totemContent ];
+    [ self.totemView setContent: totemContent ];
+
+    id navBarBackButtonTitleContent = [ self.delegate navBarBackButtonTitleContent ];
+    [ self.navButton setHidden: ( BOOL )!totemContent ];
+    if ( navBarBackButtonTitleContent )
+        {
+        if ( [ navBarBackButtonTitleContent isKindOfClass: [ NSString class ] ] )
+            [ self.navButton setTitle: ( NSString* )navBarBackButtonTitleContent ];
+
+        else if ( [ navBarBackButtonTitleContent isKindOfClass: [ NSImage class ] ] )
+            [ self.navButton setImage: ( NSImage* )navBarBackButtonTitleContent ];
+        }
     }
 
 #pragma mark Initializations

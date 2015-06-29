@@ -31,11 +31,13 @@
 
 #pragma mark Initialization
 + ( instancetype ) twitterUserViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+                                               totemContent: ( id )_TotemContent
     {
-    return [ [ [ self class ] alloc ] initWithTwitterUser: _TwitterUser ];
+    return [ [ [ self class ] alloc ] initWithTwitterUser: _TwitterUser totemContent: _TotemContent ];
     }
 
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+                          totemContent: ( id )_TotemContent
     {
     if ( !_TwitterUser )
         return nil;
@@ -62,6 +64,8 @@
                                 {
                                 [ self presentError: _Error ];
                                 } ];
+
+        [ self setTotemContent: _TotemContent ];
         }
 
     return self;
