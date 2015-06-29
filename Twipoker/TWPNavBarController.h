@@ -33,6 +33,15 @@
 
 @end // TWPNavBarController class
 
+// TWPNavBarControllerDelegate protocol
+@protocol TWPNavBarControllerDelegate <NSObject>
+
+@required
+- ( NSView* ) totemView;
+- ( id ) navButtonTitle;
+
+@end // TWPNavBarControllerDelegate protocol
+
 /*=============================================================================┐
 |                                                                              |
 |                                        `-://++/:-`    ..                     |
