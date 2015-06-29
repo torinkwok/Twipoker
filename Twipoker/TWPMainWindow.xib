@@ -129,6 +129,15 @@
                     </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="CB6-PQ-tWI" customClass="TWPNavBar">
                         <rect key="frame" x="72" y="543" width="400" height="44"/>
+                        <subviews>
+                            <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hrj-GZ-Uas" customClass="TWPNavButton">
+                                <rect key="frame" x="16" y="8" width="48" height="28"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FgQ-5c-azN">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="4y4-AY-K7r"/>
                             <constraint firstAttribute="height" constant="44" id="h9A-cd-LHS"/>
@@ -236,6 +245,12 @@
                 <outlet property="dashboardViewController" destination="Q6I-Hl-mD8" id="LAf-Wr-Oye"/>
                 <outlet property="stackContentViewController" destination="HUR-ik-D4y" id="pnT-bl-Kv9"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="M03-z3-fFb"/>
+            </connections>
+        </viewController>
+        <viewController id="oPd-64-3A3" customClass="TWPNavBarController">
+            <connections>
+                <outlet property="navButton" destination="Hrj-GZ-Uas" id="XBj-br-fE3"/>
+                <outlet property="view" destination="CB6-PQ-tWI" id="4mu-V1-R6F"/>
             </connections>
         </viewController>
     </objects>
