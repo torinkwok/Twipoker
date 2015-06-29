@@ -39,6 +39,7 @@
 - ( void ) awakeFromNib
     {
     [ self.totemView setContent: [ NSImage imageNamed: @"home-tab" ] ];
+    [ self.totemView setContent: @"home-tabf0d0afdafjakjd" ];
     }
 
 #pragma mark Initializations

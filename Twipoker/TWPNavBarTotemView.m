@@ -29,22 +29,8 @@
 
 @dynamic content;
 
-#pragma mark Initializations
-- ( instancetype ) initWithFrame: ( NSRect )_FrameRect
-    {
-    if ( self = [ super initWithFrame: _FrameRect ] )
-        {
-        self->_imageContentView = [ [ NSImageView alloc ] initWithFrame: NSMakeRect( 0, 0, 20.f, 20.f ) ];
-
-        self->_textContentView = [ [ NSTextField alloc ] initWithFrame: NSMakeRect( 0, 0, 30, 20 ) ];
-        [ self->_textContentView setDrawsBackground: NO ];
-        [ self->_textContentView setBordered: NO ];
-        [ self->_textContentView setFont: [ NSFont fontWithName: @"Lucida Grande" size: 15.f ] ];
-        [ self->_textContentView setStringValue: @"" ];
-        }
-
-    return self;
-    }
+@synthesize imageContentView = _imageContentView;
+@synthesize textContentView = _textContentView;
 
 #pragma mark Dynamic Accessors
 - ( void ) setContent: ( id )_Content
@@ -82,15 +68,8 @@
             self->_typeStatus = TWPNavBarTotemViewTypeStatusText;
             }
 
+        NSDictionary* viewsDict = NSDictionaryOfVariableBindings( contentView );
         [ contentView setTranslatesAutoresizingMaskIntoConstraints: NO ];
-        NSLayoutConstraint* centerVerticallyConstraint = [ NSLayoutConstraint
-            constraintWithItem: self
-                     attribute: NSLayoutAttributeCenterY
-                     relatedBy: NSLayoutRelationEqual
-                        toItem: contentView
-                     attribute: NSLayoutAttributeCenterY
-                    multiplier: 1.f
-                      constant: 0.f ];
 
         NSLayoutConstraint* centerHorizontallyConstraint = [ NSLayoutConstraint
             constraintWithItem: self
@@ -101,10 +80,16 @@
                     multiplier: 1.f
                       constant: 0.f ];
 
-        [ self addConstraint: centerVerticallyConstraint ];
-        [ self addConstraint: centerHorizontallyConstraint ];
+        NSArray* centerVerticallyConstraints = [ NSLayoutConstraint
+            constraintsWithVisualFormat: @"V:|-(>=space)-[contentView(==contentViewHeight)]-(>=space)-|"
+                                options: 0
+                                metrics: @{ @"space" : @( ( NSHeight( self.frame ) - NSHeight( contentView.frame ) ) / 2 )
+                                          , @"contentViewHeight" : @( NSHeight( contentView.frame ) )
+                                          }
+                                  views: viewsDict ];
 
-        [ self.window visualizeConstraints: self.constraints ];
+        [ self addConstraint: centerHorizontallyConstraint ];
+        [ self addConstraints: centerVerticallyConstraints ];
         }
     }
 

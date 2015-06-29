@@ -36,12 +36,12 @@ typedef NS_ENUM( NSUInteger, TWPNavBarTotemViewTypeStatus )
     id __strong _content;
 
     TWPNavBarTotemViewTypeStatus _typeStatus;
-
-    NSImageView __strong* _imageContentView;
-    NSTextField __strong* _textContentView;
     }
 
 @property ( strong, readwrite ) id content;
+
+@property ( weak ) IBOutlet NSImageView* imageContentView;
+@property ( weak ) IBOutlet NSTextField* textContentView;
 
 @end // TWPNavBarTotemView class
 

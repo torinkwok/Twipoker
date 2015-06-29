@@ -143,6 +143,10 @@
                                     <constraint firstAttribute="height" constant="44" id="0jn-hm-fdR"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="163" id="d7T-a5-1Pa"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="imageContentView" destination="F8o-AT-Tga" id="tfg-vZ-VtM"/>
+                                    <outlet property="textContentView" destination="yB1-QL-W4l" id="JGY-ZP-5hw"/>
+                                </connections>
                             </customView>
                         </subviews>
                         <constraints>
@@ -266,7 +270,7 @@
             </connections>
         </viewController>
         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="F8o-AT-Tga">
-            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+            <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="woS-29-Wzk"/>
             <point key="canvasLocation" x="62" y="-2141"/>
@@ -274,9 +278,9 @@
         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yB1-QL-W4l">
             <rect key="frame" x="0.0" y="0.0" width="120" height="22"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="FHK-ma-r9E">
-                <font key="font" metaFont="system"/>
-                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="FHK-ma-r9E">
+                <font key="font" size="13" name="LucidaGrande"/>
+                <color key="textColor" red="0.35686274509803922" green="0.36078431372549019" blue="0.34901960784313724" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
             </textFieldCell>
             <point key="canvasLocation" x="225" y="-2135"/>
