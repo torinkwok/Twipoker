@@ -39,7 +39,7 @@
     }
 
 @property ( weak, readwrite ) id <TWPNavBarControllerDelegate> delegate;
-@property ( weak ) IBOutlet NSImageView* twitterLogo;
+
 @property ( weak ) IBOutlet NSButton* backButton;
 
 - ( void ) reload;

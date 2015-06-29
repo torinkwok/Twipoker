@@ -102,13 +102,9 @@
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserTweets object: nil ];
     }
 
-- ( void ) viewDidLoad
-    {
-    self.currentDashboardStack = self.homeDashboardStack;
-    }
-
 - ( void ) viewWillAppear
     {
+    self.currentDashboardStack = self.homeDashboardStack;
     self.navigationBarController.delegate = self.currentDashboardStack;
     }
 
@@ -116,6 +112,7 @@
 - ( void ) setCurrentDashboardStack: ( TWPViewsStack* )_CurrentDashboardStack
     {
     self->_currentDashboardStack = _CurrentDashboardStack;
+    self.navigationBarController.delegate = self->_currentDashboardStack;
 
     [ self.view removeConstraints: self.view.constraints ];
     [ self.view setSubviews: @[] ];
