@@ -25,7 +25,7 @@
 @import Cocoa;
 
 @class TWPDashboardViewController;
-@class TWPNavigationBarController;
+@class TWPNavBarController;
 @class TWPStackContentViewController;
 
 @class TWPCuttingLineView;
@@ -47,7 +47,7 @@
 @property ( weak ) IBOutlet TWPTwitterUserProfileViewController* twitterUserProfileViewController;
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineBetweetMainViewAndProfileView;
 
-@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
+@property ( weak ) IBOutlet TWPNavBarController* navigationBarController;
 @property ( weak ) IBOutlet TWPDashboardViewController* dashboardViewController;
 @property ( weak ) IBOutlet TWPStackContentViewController* stackContentViewController;
 

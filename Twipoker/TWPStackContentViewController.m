@@ -31,7 +31,7 @@
 #import "TWPTwitterUserViewController.h"
 #import "TWPTimelineUserNameButton.h"
 #import "TWPTwitterUserViewController.h"
-#import "TWPNavigationBarController.h"
+#import "TWPNavBarController.h"
 #import "TWPRepliesTimelineViewController.h"
 #import "TWPTweetCellView.h"
 #import "TWPTweetTextField.h"

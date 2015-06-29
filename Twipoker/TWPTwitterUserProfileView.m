@@ -23,7 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTwitterUserProfileView.h"
-#import "TWPNavigationBarController.h"
+#import "TWPNavBarController.h"
 #import "TWPCuttingLineView.h"
 #import "TWPUserAvatarWell.h"
 #import "TWPUserProfileCountButton.h"
@@ -66,7 +66,7 @@
     }
 
 #pragma mark Dynamic Accessors
-- ( void ) setRefNavBarController: ( TWPNavigationBarController* )_NavigationBarController
+- ( void ) setRefNavBarController: ( TWPNavBarController* )_NavigationBarController
     {
     self->_refNavBarController = _NavigationBarController;
 
@@ -80,7 +80,7 @@
     [ self addSubview: self.cuttingLineView ];
     }
 
-- ( TWPNavigationBarController* ) refNavBarController
+- ( TWPNavBarController* ) refNavBarController
     {
     return self->_refNavBarController;
     }

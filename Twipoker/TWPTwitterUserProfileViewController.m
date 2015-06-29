@@ -23,7 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTwitterUserProfileViewController.h"
-#import "TWPNavigationBarController.h"
+#import "TWPNavBarController.h"
 #import "TWPTwitterUserProfileView.h"
 #import "TWPActionNotifications.h"
 
@@ -40,7 +40,7 @@
 
 #pragma mark Initializations
 + ( instancetype ) prifileViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
-                                   consultNavigationBar: ( TWPNavigationBarController* )_NavBarController
+                                   consultNavigationBar: ( TWPNavBarController* )_NavBarController
     {
     return [ [ [ self class ] alloc ] initWithTwitterUser: _TwitterUser consultNavigationBar: _NavBarController ];
     }
@@ -51,7 +51,7 @@
     }
 
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
-                  consultNavigationBar: ( TWPNavigationBarController* )_NavBarController
+                  consultNavigationBar: ( TWPNavBarController* )_NavBarController
     {
     if ( self = [ super initWithNibName: @"TWPTwitterUserProfileView" bundle: [ NSBundle mainBundle ] ] )
         {
@@ -69,12 +69,12 @@
     }
 
 #pragma mark Dynamic Accessors
-- ( void ) setRefNavBarController: ( TWPNavigationBarController* )_NavBarController
+- ( void ) setRefNavBarController: ( TWPNavBarController* )_NavBarController
     {
     [ [ self _profileView ] setRefNavBarController: _NavBarController ];
     }
 
-- ( TWPNavigationBarController* ) refNavBarController
+- ( TWPNavBarController* ) refNavBarController
     {
     return [ [ self _profileView ] refNavBarController ];
     }

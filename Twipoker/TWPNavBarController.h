@@ -26,7 +26,7 @@
 
 @class TWPViewsStack;
 
-@interface TWPNavigationBarController : NSViewController
+@interface TWPNavBarController : NSViewController
     {
 @private
     TWPViewsStack __weak* _delegate;

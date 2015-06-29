@@ -22,10 +22,10 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPNavigationBarController.h"
+#import "TWPNavBarController.h"
 #import "TWPViewsStack.h"
 
-@implementation TWPNavigationBarController
+@implementation TWPNavBarController
 
 @dynamic delegate;
 

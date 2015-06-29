@@ -204,7 +204,7 @@
                 <outlet property="baseViewController" destination="jJM-iy-4nF" id="cHb-Nx-ciu"/>
             </connections>
         </customObject>
-        <customObject id="Gr0-CG-Iha" customClass="TWPNavigationBarController">
+        <customObject id="Gr0-CG-Iha" customClass="TWPNavBarController">
             <connections>
                 <outlet property="backButton" destination="ulH-iK-UuR" id="37W-Su-ura"/>
                 <outlet property="twitterLogo" destination="hMS-HU-W4h" id="3un-2n-vc1"/>

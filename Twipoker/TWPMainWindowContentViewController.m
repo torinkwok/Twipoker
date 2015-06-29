@@ -26,7 +26,7 @@
 
 #import "TWPDashboardViewController.h"
 #import "TWPTimelineScrollView.h"
-#import "TWPNavigationBarController.h"
+#import "TWPNavBarController.h"
 #import "TWPStackContentView.h"
 #import "TWPViewsStack.h"
 #import "TWPStackContentViewController.h"

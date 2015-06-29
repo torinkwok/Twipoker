@@ -26,17 +26,17 @@
 
 @class TWPUserAvatarWell;
 @class TWPCuttingLineView;
-@class TWPNavigationBarController;
+@class TWPNavBarController;
 @class TWPUserProfileCountButton;
 
 @interface TWPTwitterUserProfileView : NSView
     {
 @private
-    TWPNavigationBarController __weak* _refNavBarController;
+    TWPNavBarController __weak* _refNavBarController;
     OTCTwitterUser __strong* _twitterUser;
     }
 
-@property ( weak ) TWPNavigationBarController* refNavBarController;
+@property ( weak ) TWPNavBarController* refNavBarController;
 
 @property ( weak ) IBOutlet NSButton* hideButton;
 @property ( weak ) IBOutlet TWPCuttingLineView* cuttingLineView;

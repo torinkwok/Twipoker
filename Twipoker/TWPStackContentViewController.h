@@ -27,7 +27,7 @@
 #import "TWPDashboardView.h"
 
 @class TWPViewsStack;
-@class TWPNavigationBarController;
+@class TWPNavBarController;
 @class TWPDashboardView;
 
 // TWPStackContentViewController class
@@ -37,7 +37,7 @@
     TWPViewsStack __strong* _currentDashboardStack;
     }
 
-@property ( weak ) IBOutlet TWPNavigationBarController* navigationBarController;
+@property ( weak ) IBOutlet TWPNavBarController* navigationBarController;
 
 @property ( weak ) IBOutlet TWPViewsStack* homeDashboardStack;
 @property ( weak ) IBOutlet TWPViewsStack* favoritesDashboardStack;

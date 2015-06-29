@@ -24,18 +24,18 @@
 
 @import Cocoa;
 
-@class TWPNavigationBarController;
-@class TWPNavigationBarController;
+@class TWPNavBarController;
+@class TWPNavBarController;
 @class OTCTwitterUser;
 
 @interface TWPTwitterUserProfileViewController : NSViewController
 
-@property ( weak, readwrite ) TWPNavigationBarController* refNavBarController;
+@property ( weak, readwrite ) TWPNavBarController* refNavBarController;
 @property ( weak, readwrite ) OTCTwitterUser* twitterUser;
 
 #pragma mark Initializations
-+ ( instancetype ) prifileViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser consultNavigationBar: ( TWPNavigationBarController* )_NavBarController;
-- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser consultNavigationBar: ( TWPNavigationBarController* )_NavBarController;
++ ( instancetype ) prifileViewControllerWithTwitterUser: ( OTCTwitterUser* )_TwitterUser consultNavigationBar: ( TWPNavBarController* )_NavBarController;
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser consultNavigationBar: ( TWPNavBarController* )_NavBarController;
 
 #pragma mark IBActions
 - ( IBAction ) hideUserProfileButtonClicked: ( id )_Sender;
