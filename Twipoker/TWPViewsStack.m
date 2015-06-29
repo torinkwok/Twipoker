@@ -68,7 +68,7 @@
     TWPViewController* interestingView = nil;
     TWPViewController* current = [ self _currentView ];
     NSUInteger currentIndex = [ self->_viewsStack indexOfObject: current ];
-    if ( currentIndex > 0 )
+    if ( currentIndex > 0 && currentIndex != NSNotFound )
         interestingView = [ self->_viewsStack objectAtIndex: currentIndex - 1 ];
     else
         interestingView = self.baseViewController;

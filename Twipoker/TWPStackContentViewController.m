@@ -152,7 +152,9 @@
 #pragma mark IBActions
 - ( IBAction ) goBackAction: ( id )_Sender
     {
+    [ self.currentDashboardStack popView ];
     self.currentDashboardStack = self.currentDashboardStack;
+    [ self.navBarController reload ];
     }
 
 #pragma mark Private Interfaces

@@ -136,6 +136,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="goBackAction:" target="HUR-ik-D4y" id="83V-o1-H4H"/>
+                                </connections>
                             </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="T3v-QU-CeL" customClass="TWPNavBarTotemView">
                                 <rect key="frame" x="119" y="0.0" width="163" height="44"/>
