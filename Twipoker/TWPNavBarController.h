@@ -47,6 +47,7 @@
 @required
 - ( id ) totemContent;
 - ( id ) navBarBackButtonTitleContent;
+- ( BOOL ) atTheEnd;
 
 @end // TWPNavBarControllerDelegate protocol
 

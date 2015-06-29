@@ -44,15 +44,22 @@
     [ self.totemView setContent: totemContent ];
 
     id navBarBackButtonTitleContent = [ self.delegate navBarBackButtonTitleContent ];
-    [ self.navButton setHidden: ( BOOL )!totemContent ];
     if ( navBarBackButtonTitleContent )
         {
         if ( [ navBarBackButtonTitleContent isKindOfClass: [ NSString class ] ] )
+            {
             [ self.navButton setTitle: ( NSString* )navBarBackButtonTitleContent ];
+            [ self.navButton setImage: nil ];
+            }
 
         else if ( [ navBarBackButtonTitleContent isKindOfClass: [ NSImage class ] ] )
+            {
+            [ self.navButton setTitle: @"" ];
             [ self.navButton setImage: ( NSImage* )navBarBackButtonTitleContent ];
+            }
         }
+
+    [ self.navButton setHidden: [ self.delegate atTheEnd ] ];
     }
 
 #pragma mark Initializations

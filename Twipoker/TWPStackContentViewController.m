@@ -131,6 +131,8 @@
 
     [ self.view addConstraints: horizontalConstraints ];
     [ self.view addConstraints: verticalConstraints ];
+
+    [ self.navBarController reload ];
     }
 
 - ( TWPViewsStack* ) currentDashboardStack
@@ -154,7 +156,6 @@
     {
     [ self.currentDashboardStack popView ];
     self.currentDashboardStack = self.currentDashboardStack;
-    [ self.navBarController reload ];
     }
 
 #pragma mark Private Interfaces
@@ -182,7 +183,6 @@
     {
     [ self.currentDashboardStack pushView: _ViewContorller ];
     self.currentDashboardStack = self.currentDashboardStack;
-    [ self.navBarController reload ];
     }
 
 - ( void ) _pushUserTimleineToCurrentViewsStack: ( OTCTwitterUser* )_TwitterUser
@@ -219,6 +219,11 @@
 - ( id ) navBarBackButtonTitleContent
     {
     return self.currentDashboardStack.viewBeforeCurrentView.totemContent;
+    }
+
+- ( BOOL ) atTheEnd
+    {
+    return self.currentDashboardStack.viewsStack.count == 0;
     }
 
 @end // TWPStackContentViewController class

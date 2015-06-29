@@ -51,7 +51,6 @@
 @property ( weak, readonly ) TWPViewsStack* currentDashboardStack;
 
 #pragma mark IBActions
-// FIXME: It shouldn't be here
 - ( IBAction ) goBackAction: ( id )_Sender;
 
 @end // TWPStackContentViewController class
