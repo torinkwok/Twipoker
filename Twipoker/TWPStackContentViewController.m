@@ -161,7 +161,6 @@
 #pragma mark IBActions
 - ( IBAction ) goBackAction: ( id )_Sender
     {
-    [ self.currentDashboardStack backwardMoveCursor ];
     self.currentDashboardStack = self.currentDashboardStack;
     [ self.navigationBarController reload ];
     }

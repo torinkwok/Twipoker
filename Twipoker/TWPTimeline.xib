@@ -19,14 +19,14 @@
                 <rect key="frame" x="1" y="1" width="605" height="630"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="131" rowSizeStyle="automatic" viewBased="YES" id="PPe-7P-f8B" userLabel="Home Timeline Table View" customClass="TWPTimelineTableView">
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="131" rowSizeStyle="automatic" viewBased="YES" id="PPe-7P-f8B" customClass="TWPTimelineTableView">
                         <rect key="frame" x="0.0" y="0.0" width="554" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="gridColor" red="0.88235294119999996" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <tableColumns>
-                            <tableColumn identifier="home-timeline" width="551" minWidth="40" maxWidth="1000" id="pNV-YN-HfV">
+                            <tableColumn identifier="" width="551" minWidth="40" maxWidth="1000" id="pNV-YN-HfV">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

@@ -56,6 +56,12 @@
                                 {
                                 [ self presentError: _Error ];
                                 } ];
+
+        NSImageView* totemImage = [ [ NSImageView alloc ] init ];
+        NSImage* homeImage = [ NSImage imageNamed: @"home-tab" ];
+        totemImage.image = homeImage;
+        [ self setTotemView: totemImage ];
+        [ self setNavBarTitle: homeImage ];
         }
 
     return self;

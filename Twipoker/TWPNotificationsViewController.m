@@ -53,6 +53,12 @@
                                     {
                                     [ self presentError: _Error ];
                                     } ];
+
+        NSImageView* totemImage = [ [ NSImageView alloc ] init ];
+        NSImage* notifImage = [ NSImage imageNamed: @"notif-tab" ];
+        totemImage.image = notifImage;
+        [ self setTotemView: totemImage ];
+        [ self setNavBarTitle: notifImage ];
         }
 
     return self;

@@ -22,9 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-@import Cocoa;
+#import "TWPViewController.h"
 
-@interface TWPMeViewController : NSViewController
+@interface TWPMeViewController : TWPViewController
 
 @end
 

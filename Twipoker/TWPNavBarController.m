@@ -25,6 +25,7 @@
 #import "TWPNavBarController.h"
 #import "TWPViewsStack.h"
 
+// TWPNavBarController class
 @implementation TWPNavBarController
 
 @dynamic delegate;
@@ -96,7 +97,7 @@
     }
 
 #pragma mark Accessors
-- ( void ) setDelegate: ( TWPViewsStack* )_NewDelegate
+- ( void ) setDelegate: ( id <TWPNavBarControllerDelegate> )_NewDelegate
     {
     if ( self->_delegate != _NewDelegate )
         {
@@ -112,13 +113,29 @@
 
 - ( void ) reload
     {
+    id backButtonTitle = nil;
+    if ( [ self.delegate respondsToSelector: @selector( backButtonTitle ) ] )
+        {
+         backButtonTitle = [ self.delegate backButtonTitle ];
+
+        if ( [ backButtonTitle isKindOfClass: [ NSString class ] ] )
+            [ self.backButton setTitle: backButtonTitle ];
+        else if ( [ backButtonTitle isKindOfClass: [ NSImage class ] ] )
+            [ self.backButton setImage: backButtonTitle ];
+        }
+
+    if ( [ self.delegate respondsToSelector: @selector( centerStuff ) ] )
+        self->_centerStuff = self.delegate.centerStuff;
+
+    [ self.view setNeedsUpdateConstraints: YES ];
+
 //    BOOL goBackButtonNewState = self->_delegate.cursor > -1;
 //    BOOL goForwardButtonNewState = self->_delegate.cursor != self->_delegate.viewsStack.count - 1;
 //
 //    [ self.backButton setEnabled: goBackButtonNewState ];
     }
 
-@end
+@end // TWPNavBarController class
 
 /*=============================================================================┐
 |                                                                              |

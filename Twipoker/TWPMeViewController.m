@@ -34,7 +34,13 @@
 - ( instancetype ) init
     {
     if ( self = [ super initWithNibName: @"TWPMeView" bundle: [ NSBundle mainBundle ] ] )
-        ; // TODO:
+        {
+        NSImageView* totemImage = [ [ NSImageView alloc ] init ];
+        NSImage* meImage = [ NSImage imageNamed: @"me-tab" ];
+        totemImage.image = meImage;
+        [ self setTotemView: totemImage ];
+        [ self setNavBarTitle: meImage ];
+        }
 
     return self;
     }

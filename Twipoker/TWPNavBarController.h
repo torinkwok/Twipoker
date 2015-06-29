@@ -26,19 +26,32 @@
 
 @class TWPViewsStack;
 
+@protocol TWPNavBarControllerDelegate;
+
+// TWPNavBarController class
 @interface TWPNavBarController : NSViewController
     {
 @private
-    TWPViewsStack __weak* _delegate;
+    NSView __weak* _centerStuff;
+
+    id <TWPNavBarControllerDelegate> __weak _delegate;
     }
 
-@property ( weak, readwrite ) TWPViewsStack* delegate;
+@property ( weak, readwrite ) id <TWPNavBarControllerDelegate> delegate;
 @property ( weak ) IBOutlet NSImageView* twitterLogo;
 @property ( weak ) IBOutlet NSButton* backButton;
 
 - ( void ) reload;
 
-@end
+@end // TWPNavBarController class
+
+// TWPNavBarControllerDelegate protocol
+@protocol TWPNavBarControllerDelegate <NSObject>
+
+- ( NSView* ) centerStuff;
+- ( id ) backButtonTitle;
+
+@end // TWPNavBarControllerDelegate protocol
 
 /*=============================================================================┐
 |                                                                              |

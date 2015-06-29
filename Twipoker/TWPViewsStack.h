@@ -22,31 +22,26 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-@import Foundation;
+#import "TWPNavBarController.h"
 
-@interface TWPViewsStack : NSObject
+@class TWPViewController;
+
+@interface TWPViewsStack : NSObject <TWPNavBarControllerDelegate>
     {
 @private
     NSMutableArray __strong* _viewsStack;
-    NSInteger _cursor;
     }
 
 // Base View
-@property ( weak ) IBOutlet NSViewController* baseViewController;
+@property ( weak ) IBOutlet TWPViewController* baseViewController;
 
 // Views Stack
 @property ( strong, readonly ) NSMutableArray* viewsStack;
 
-// Views Stack Cursor
-@property ( assign, readonly ) NSInteger cursor;
+- ( void ) pushView: ( TWPViewController* )_ViewController;
+- ( void ) popView;
 
-- ( void ) pushView: ( NSViewController* )_ViewController;
-- ( NSViewController* ) popView;
-
-- ( NSViewController* ) backwardMoveCursor;
-- ( NSViewController* ) forwardMoveCursor;
-
-- ( NSViewController* ) currentView;
+- ( TWPViewController* ) currentView;
 
 @end
 

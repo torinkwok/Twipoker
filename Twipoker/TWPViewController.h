@@ -34,6 +34,9 @@
 
 @property ( strong, readwrite ) STTwitterAPI* twitterAPI;
 
+@property ( strong, readwrite ) NSView* totemView;
+@property ( strong, readwrite ) id navBarTitle;
+
 @end
 
 /*=============================================================================┐

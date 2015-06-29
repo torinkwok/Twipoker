@@ -53,6 +53,12 @@
                                 {
                                 [ self presentError: _Error ];
                                 } ];
+
+        NSImageView* totemImage = [ [ NSImageView alloc ] init ];
+        NSImage* listsImage = [ NSImage imageNamed: @"lists-tab" ];
+        totemImage.image = listsImage;
+        [ self setTotemView: totemImage ];
+        [ self setNavBarTitle: listsImage ];
         }
 
     return self;
