@@ -14,21 +14,21 @@
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="TWPMainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
-            <rect key="contentRect" x="411" y="389" width="492" height="623"/>
+            <rect key="contentRect" x="411" y="389" width="472" height="543"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ" userLabel="Content View" customClass="TWPMainWindowContentView">
-                <rect key="frame" x="0.0" y="0.0" width="492" height="623"/>
+                <rect key="frame" x="0.0" y="0.0" width="472" height="543"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-H2-zZU">
-                        <rect key="frame" x="-122" y="586" width="34" height="34"/>
+                        <rect key="frame" x="-142" y="586" width="34" height="34"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
                     </imageView>
                     <customView identifier="dashboard" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
-                        <rect key="frame" x="0.0" y="0.0" width="92" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="72" height="543"/>
                         <subviews>
                             <button identifier="home-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
-                                <rect key="frame" x="0.0" y="427" width="92" height="83"/>
+                                <rect key="frame" x="0.0" y="402" width="72" height="74"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="home-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="emi-ef-6Ye">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -38,19 +38,8 @@
                                     <outlet property="associatedViewsStack" destination="i5X-Cg-E7K" id="bvm-Rg-7eT"/>
                                 </connections>
                             </button>
-                            <button identifier="fav-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htO-L6-7ln" customClass="TWPDashboardTab">
-                                <rect key="frame" x="0.0" y="356" width="92" height="72"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="fav-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hpB-Ks-3ZN">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="tabClickedAction:" target="vge-3d-5qI" id="3OT-Gx-IHU"/>
-                                    <outlet property="associatedViewsStack" destination="k9K-Hk-Xzb" id="vDc-Kw-S0O"/>
-                                </connections>
-                            </button>
                             <button identifier="lists-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blT-GV-cVR" customClass="TWPDashboardTab">
-                                <rect key="frame" x="0.0" y="285" width="92" height="72"/>
+                                <rect key="frame" x="0.0" y="268" width="72" height="68"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="lists-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OiP-5y-ZJv">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -61,7 +50,7 @@
                                 </connections>
                             </button>
                             <button identifier="notif-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-j2-Kng" customClass="TWPDashboardTab">
-                                <rect key="frame" x="0.0" y="214" width="92" height="72"/>
+                                <rect key="frame" x="0.0" y="201" width="72" height="68"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="notif-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="S7d-Nf-xIV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -72,7 +61,7 @@
                                 </connections>
                             </button>
                             <button identifier="me-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
-                                <rect key="frame" x="0.0" y="143" width="92" height="72"/>
+                                <rect key="frame" x="0.0" y="134" width="72" height="68"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="me-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="3qq-XN-k35">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -83,7 +72,7 @@
                                 </connections>
                             </button>
                             <button identifier="dm-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="af4-QX-slZ" customClass="TWPDashboardTab">
-                                <rect key="frame" x="0.0" y="72" width="92" height="72"/>
+                                <rect key="frame" x="0.0" y="67" width="72" height="68"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="messages-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="DaF-ie-LJX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -94,7 +83,7 @@
                                 </connections>
                             </button>
                             <button identifier="compose-button" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNM-IO-3zG">
-                                <rect key="frame" x="0.0" y="0.0" width="92" height="72"/>
+                                <rect key="frame" x="0.0" y="0.0" width="72" height="68"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="compose-tweet" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="222-33-2rl">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -105,10 +94,21 @@
                                     <action selector="tweetButtonClickedAction:" target="vge-3d-5qI" id="x7m-ca-qij"/>
                                 </connections>
                             </button>
+                            <button identifier="fav-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htO-L6-7ln" customClass="TWPDashboardTab">
+                                <rect key="frame" x="0.0" y="335" width="72" height="68"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="fav-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hpB-Ks-3ZN">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tabClickedAction:" target="vge-3d-5qI" id="3OT-Gx-IHU"/>
+                                    <outlet property="associatedViewsStack" destination="k9K-Hk-Xzb" id="vDc-Kw-S0O"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="623" id="bBH-os-S6v"/>
-                            <constraint firstAttribute="width" constant="92" id="mdb-qI-0nt"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="543" id="bBH-os-S6v"/>
+                            <constraint firstAttribute="width" constant="72" id="mdb-qI-0nt"/>
                         </constraints>
                         <connections>
                             <outlet property="delegate" destination="HUR-ik-D4y" id="jUJ-5f-Sjq"/>
@@ -121,10 +121,10 @@
                         </connections>
                     </customView>
                     <customView identifier="stack-content-view" appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-W1-aLM" customClass="TWPStackContentView">
-                        <rect key="frame" x="92" y="0.0" width="400" height="623"/>
+                        <rect key="frame" x="72" y="0.0" width="400" height="543"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="AYH-I7-foe"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="623" id="p39-HW-UYC"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="543" id="p39-HW-UYC"/>
                         </constraints>
                     </customView>
                 </subviews>
@@ -138,7 +138,7 @@
                     <constraint firstAttribute="bottom" secondItem="vge-3d-5qI" secondAttribute="bottom" id="wac-7w-qIK"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="-101" y="-1748.5"/>
+            <point key="canvasLocation" x="-91" y="-1748.5"/>
         </window>
         <customView identifier="vertical-cuttingline" id="flx-KC-83G" userLabel="Vertical Cutting Line View" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="1" height="691"/>
