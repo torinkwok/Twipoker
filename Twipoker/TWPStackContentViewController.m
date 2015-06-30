@@ -215,7 +215,7 @@
 - ( void ) _pushTwitterListTimelineToCurrentViewsStack: ( OTCList* )_TwitterList
     {
     NSViewController* twitterListTimelineNewController =
-        [ TWPTwitterListTimelineViewController twitterListViewControllerWithTwitterList: _TwitterList ];
+        [ TWPTwitterListTimelineViewController twitterListViewControllerWithTwitterList: _TwitterList withTotemContent: _TwitterList.shortenName ];
 
     [ self _pushViewIntoViewsStack: twitterListTimelineNewController ];
     }

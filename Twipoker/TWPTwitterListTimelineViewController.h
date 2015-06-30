@@ -35,8 +35,11 @@
 
 @property ( strong, readonly ) OTCList* twitterList;
 
-+ ( instancetype ) twitterListViewControllerWithTwitterList: ( OTCList* )_TwitterList;
-- ( instancetype ) initWithTwitterList: ( OTCList* )_TwitterList;
++ ( instancetype ) twitterListViewControllerWithTwitterList: ( OTCList* )_TwitterList
+                                           withTotemContent: ( id )_TotemContent;
+
+- ( instancetype ) initWithTwitterList: ( OTCList* )_TwitterList
+                      withTotemContent: ( id )_TotemContent;
 
 @end
 

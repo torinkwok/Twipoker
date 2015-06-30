@@ -28,11 +28,13 @@
 @implementation TWPTwitterListTimelineViewController
 
 + ( instancetype ) twitterListViewControllerWithTwitterList: ( OTCList* )_TwitterList
+                                           withTotemContent: ( id )_TotemContent
     {
-    return [ [ [ self class ] alloc ] initWithTwitterList: _TwitterList ];
+    return [ [ [ self class ] alloc ] initWithTwitterList: _TwitterList withTotemContent: _TotemContent ];
     }
 
 - ( instancetype ) initWithTwitterList: ( OTCList* )_TwitterList
+                      withTotemContent: ( id )_TotemContent
     {
     if ( !_TwitterList )
         return nil;
@@ -61,6 +63,8 @@
                                 {
                                 [ self presentError: _Error ];
                                 } ];
+
+        [ self setTotemContent: _TotemContent ];
         }
 
     return self;
