@@ -45,17 +45,41 @@
         self->_twitterUser = _TwitterUser;
 
         NSURL* avatarURL = self->_twitterUser.originalAvatarImageURLOverSSL;
-        self->_dataTask = [ self->_URLSession dataTaskWithURL: avatarURL
-                                            completionHandler:
-            ^( NSData* _Data, NSURLResponse* _Response, NSError* _Error )
+
+        NSURLRequest* avatarRequest = [ NSURLRequest requestWithURL: avatarURL ];
+        NSCachedURLResponse* cachedRequest = [ [ NSURLCache sharedURLCache ] cachedResponseForRequest: avatarRequest ];
+
+        void (^handleImageData)( NSData*, NSURLResponse*, NSError* ) =
+            ^( NSData* _ImageData, NSURLResponse* _Response, NSError* _Error )
                 {
-                NSImage* avatarImage = [ [ NSImage alloc ] initWithData: _Data ];
+                NSImage* avatarImage = [ [ NSImage alloc ] initWithData: _ImageData ];
                 [ self performSelectorOnMainThread: @selector( setImage: ) withObject: avatarImage waitUntilDone: NO ];
-                } ];
+                };
 
-        [ self->_dataTask resume ];
+        if ( cachedRequest )
+            handleImageData( cachedRequest.data, cachedRequest.response, nil );
+        else
+            {
+            self->_dataTask = [ self->_URLSession dataTaskWithURL: avatarURL
+                                                completionHandler:
+                ^( NSData* _ImageData, NSURLResponse* _Response, NSError* _Error )
+                    {
+                    if ( _ImageData && _Response )
+                        {
+                        handleImageData( _ImageData, _Response, _Error );
 
-        // [ self setNeedsDisplay: YES ];
+                        NSCachedURLResponse* cache =
+                            [ [ NSCachedURLResponse alloc ] initWithResponse: _Response
+                                                                        data: _ImageData
+                                                                    userInfo: nil
+                                                               storagePolicy: NSURLCacheStorageAllowed ];
+
+                        [ [ NSURLCache sharedURLCache ] storeCachedResponse: cache forRequest: avatarRequest ];
+                        }
+                    } ];
+
+            [ self->_dataTask resume ];
+            }
         }
     }
 
