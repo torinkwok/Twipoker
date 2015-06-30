@@ -250,10 +250,17 @@ TWPBrain static __strong* sWiseBrain;
     }
 
 #pragma mark Conforms to <OTCSTTwitterStreamingAPIDelegate> protocol
+- ( void )  twitterAPI: ( STTwitterAPI* )_TwitterAPI
+                stream: ( STTwitterAPIStreamType )_StreamType
+    hasBeenEstablished: ( NSData* )_FirstTimeTransaction
+    {
+    [ self _zeroReconnectionTimeInterval ];
+//    NSLog( @"%@, stream type: %ld, data: %@", _TwitterAPI, _StreamType, [[NSString alloc] initWithData:_FirstTimeTransaction encoding:NSUTF8StringEncoding] );
+    }
+
 - ( void )      twitterAPI: ( STTwitterAPI* )_TwitterAPI
     didReceiveFriendsLists: ( NSArray* )_Friends
     {
-    [ self _zeroReconnectionTimeInterval ];
     [ self->_friendsList addObjectsFromArray: _Friends ];
     }
 
@@ -261,7 +268,6 @@ TWPBrain static __strong* sWiseBrain;
 // keep in mind that Retweets are streamed as a status with another status nested inside it.
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
-    [ self _zeroReconnectionTimeInterval ];
     if ( ![ self->_uniqueTweetsQueue containsObject: _ReceivedTweet ] )
         {
         [ self->_uniqueTweetsQueue addObject: _ReceivedTweet ];
@@ -311,7 +317,6 @@ TWPBrain static __strong* sWiseBrain;
 - ( void )             twitterAPI: ( STTwitterAPI* )_TwitterAPI
     streamingEventHasBeenDetected: ( OTCStreamingEvent* )_DetectedEvent
     {
-    [ self _zeroReconnectionTimeInterval ];
     OTCTwitterUser* sourceUser = _DetectedEvent.sourceUser;
     OTCTwitterUser* targetUser = _DetectedEvent.targetUser;
 
@@ -347,7 +352,6 @@ TWPBrain static __strong* sWiseBrain;
                  byUser: ( NSString* )_UserID
                      on: ( NSDate* )_DeletionDate
     {
-    [ self _zeroReconnectionTimeInterval ];
     for ( OTCTweet* tweet in self->_uniqueTweetsQueue )
         {
         if ( [ tweet.tweetIDString isEqualToString: _DeletedTweetID ] )
@@ -372,7 +376,6 @@ TWPBrain static __strong* sWiseBrain;
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI
      sentOrReceivedDM: ( OTCDirectMessage* )_DirectMessage
     {
-    [ self _zeroReconnectionTimeInterval ];
     NSNumber* senderID = [ NSNumber numberWithLongLong: _DirectMessage.sender.ID ];
 
     for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
