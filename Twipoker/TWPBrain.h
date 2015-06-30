@@ -67,6 +67,7 @@ typedef NS_ENUM ( NSUInteger, TWPBrainSignalTypeMask )
 + ( instancetype ) wiseBrain;
 
 #pragma mark Operations
+
 - ( void ) showDetailsOfTweet: ( NSString* )_TweetIDString
                  successBlock: ( void (^)( OTCTweet* _Tweet ) )_SuccessBlock
                    errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock;
