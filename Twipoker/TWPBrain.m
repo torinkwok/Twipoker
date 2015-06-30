@@ -29,6 +29,9 @@
 
 #import "_TWPMonitoringUserID.h"
 
+#define START_TIME_INTERVAL ( 5.f );
+NSTimeInterval static sReconnectTimeInterval = START_TIME_INTERVAL;
+
 // TWPBrain class
 @implementation TWPBrain
 
@@ -53,16 +56,13 @@ TWPBrain static __strong* sWiseBrain;
             // the current authenticating user’s view of Twitter.
             self->_authingUserTimelineStream = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
             self->_authingUserTimelineStream.delegate = self;
+            [ self _beginToMonitorUserStream: self->_authingUserTimelineStream ];
 
-            [ self->_authingUserTimelineStream fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO
-                                                                                   includeReplies: @NO
-                                                                                  keywordsToTrack: nil
-                                                                            locationBoundingBoxes: nil ];
             // Global Timeline
             // Streams of the public data flowing through Twitter.
             self->_publicTimelineFilterStream = [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI;
             self->_publicTimelineFilterStream.delegate = self;
-            [ self->_publicTimelineFilterStream fetchStatusesFilterKeyword: @"@NSTongG" users: nil locationBoundingBoxes: nil ];
+            [ self _beginToMonitorFilterStream: self->_publicTimelineFilterStream ];
 
             self->_friendsList = [ NSMutableSet set ];
             self->_monitoringUserIDs = [ NSMutableSet set ];
@@ -253,6 +253,7 @@ TWPBrain static __strong* sWiseBrain;
 - ( void )      twitterAPI: ( STTwitterAPI* )_TwitterAPI
     didReceiveFriendsLists: ( NSArray* )_Friends
     {
+    [ self _zeroReconnectionTimeInterval ];
     [ self->_friendsList addObjectsFromArray: _Friends ];
     }
 
@@ -260,6 +261,7 @@ TWPBrain static __strong* sWiseBrain;
 // keep in mind that Retweets are streamed as a status with another status nested inside it.
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI didReceiveTweet: ( OTCTweet* )_ReceivedTweet
     {
+    [ self _zeroReconnectionTimeInterval ];
     if ( ![ self->_uniqueTweetsQueue containsObject: _ReceivedTweet ] )
         {
         [ self->_uniqueTweetsQueue addObject: _ReceivedTweet ];
@@ -309,6 +311,7 @@ TWPBrain static __strong* sWiseBrain;
 - ( void )             twitterAPI: ( STTwitterAPI* )_TwitterAPI
     streamingEventHasBeenDetected: ( OTCStreamingEvent* )_DetectedEvent
     {
+    [ self _zeroReconnectionTimeInterval ];
     OTCTwitterUser* sourceUser = _DetectedEvent.sourceUser;
     OTCTwitterUser* targetUser = _DetectedEvent.targetUser;
 
@@ -344,6 +347,7 @@ TWPBrain static __strong* sWiseBrain;
                  byUser: ( NSString* )_UserID
                      on: ( NSDate* )_DeletionDate
     {
+    [ self _zeroReconnectionTimeInterval ];
     for ( OTCTweet* tweet in self->_uniqueTweetsQueue )
         {
         if ( [ tweet.tweetIDString isEqualToString: _DeletedTweetID ] )
@@ -368,6 +372,7 @@ TWPBrain static __strong* sWiseBrain;
 - ( void ) twitterAPI: ( STTwitterAPI* )_TwitterAPI
      sentOrReceivedDM: ( OTCDirectMessage* )_DirectMessage
     {
+    [ self _zeroReconnectionTimeInterval ];
     NSNumber* senderID = [ NSNumber numberWithLongLong: _DirectMessage.sender.ID ];
 
     for ( _TWPMonitoringUserID* _MntID in self->_monitoringUserIDs )
@@ -382,6 +387,52 @@ TWPBrain static __strong* sWiseBrain;
                 }
             }
         }
+    }
+
+- ( void )   twitterAPI: ( STTwitterAPI* )_TwitterAPI
+    fuckingErrorOccured: ( NSError* )_Error
+    {
+    if ( sReconnectTimeInterval <= 320.f )
+        {
+        NSLog( @"Interval: %g", sReconnectTimeInterval );
+        [ NSTimer scheduledTimerWithTimeInterval: sReconnectTimeInterval
+                                          target: self
+                                        selector: @selector( reconnectionAttempt: )
+                                        userInfo: @{ @"api" : _TwitterAPI }
+                                         repeats: YES ];
+        sReconnectTimeInterval *= 2;
+        }
+    }
+
+- ( void ) reconnectionAttempt: ( NSTimer* )_Timer
+    {
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
+
+    NSDictionary* userInfo = [ _Timer userInfo ];
+    STTwitterAPI* twitterAPIWithProblem = userInfo[ @"api" ];
+
+    if ( twitterAPIWithProblem == self->_authingUserTimelineStream )
+        [ self _beginToMonitorUserStream: twitterAPIWithProblem ];
+
+    else if ( twitterAPIWithProblem == self->_publicTimelineFilterStream )
+        [ self _beginToMonitorFilterStream: twitterAPIWithProblem ];
+
+    [ _Timer invalidate ];
+    }
+
+- ( void ) _beginToMonitorUserStream: ( STTwitterAPI* )_TwitterAPI
+    {
+    [ _TwitterAPI fetchUserStreamIncludeMessagesFromFollowedAccounts: @NO includeReplies: @NO keywordsToTrack: nil locationBoundingBoxes: nil ];
+    }
+
+- ( void ) _beginToMonitorFilterStream: ( STTwitterAPI* )_TwitterAPI
+    {
+    [ _TwitterAPI fetchStatusesFilterKeyword: @"@NSTongG" users: nil locationBoundingBoxes: nil ];
+    }
+
+- ( void ) _zeroReconnectionTimeInterval
+    {
+    sReconnectTimeInterval = START_TIME_INTERVAL;
     }
 
 @end // TWPBrain class
