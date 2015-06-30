@@ -43,7 +43,7 @@
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
                       withTotemContent: ( id )_TotemContent
     {
-    if ( self = [ super initWithNibName: @"TWPTwitterUserProfileView" bundle: [ NSBundle mainBundle ] ] )
+    if ( self = [ self /* yep, it's "self" */ init ] )
         {
         self->_twitterUser = _TwitterUser;
 
@@ -54,10 +54,28 @@
     return self;
     }
 
-- ( void ) viewDidLoad
+- ( instancetype ) initWithCoder:(NSCoder *)coder
     {
-    [ super viewDidLoad ];
-    // Do view setup here.
+    return [ [ [ super class ] alloc ] init ];
+    }
+
+- ( instancetype ) init
+    {
+    if ( self = [ super initWithNibName: @"TWPTwitterUserProfileView" bundle: [ NSBundle mainBundle ] ] )
+        [ self setTotemContent: [ NSImage imageNamed: @"me-tab" ] ];
+
+    return self;
+    }
+
+- ( void ) viewWillAppear
+    {
+    // If there is not any explicitly specified Twitter user,
+    // use current Twitter user
+    if ( !self->_twitterUser )
+        {
+        self->_twitterUser = [ [ TWPBrain wiseBrain ] currentTwitterUser ];
+        [ ( TWPTwitterUserProfileView* )( self.view ) setTwitterUser: self->_twitterUser ];
+        }
     }
 
 #pragma mark IBActions

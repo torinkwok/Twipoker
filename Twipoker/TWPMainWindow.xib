@@ -244,7 +244,7 @@
         </customObject>
         <customObject id="uTU-qJ-3dF" userLabel="Me - Views Stack" customClass="TWPViewsStack">
             <connections>
-                <outlet property="baseViewController" destination="27k-py-6ek" id="HoY-Sv-05N"/>
+                <outlet property="baseViewController" destination="A1U-WG-bIi" id="Edw-J8-dD2"/>
             </connections>
         </customObject>
         <customObject id="4cS-D0-vD7" userLabel="Messages - Views Stack" customClass="TWPViewsStack">
@@ -290,6 +290,7 @@
             </textFieldCell>
             <point key="canvasLocation" x="225" y="-2135"/>
         </textField>
+        <viewController id="A1U-WG-bIi" customClass="TWPTwitterUserProfileViewController"/>
     </objects>
     <resources>
         <image name="compose-tweet" width="95" height="113"/>
