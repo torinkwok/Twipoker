@@ -22,18 +22,32 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#ifdef __OBJC__
-    @import Cocoa;
-    #import "TWPGeneral.h"
-    #import "TWPArtwork.h"
-    #import "Objectwitter-C.h"
-    #import "FBKVOController.h"
-#endif
+#import "TWPArtwork.h"
 
-#define __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__ \
-    @throw [ NSException exceptionWithName: NSGenericException \
-                                    reason: [ NSString stringWithFormat: @"unimplemented pure virtual method `%@` in `%@` from instance: %p", NSStringFromSelector( _cmd ), NSStringFromClass( [ self class ] ), self ] \
-                                  userInfo: nil ]
+#pragma mark Dashboard
+// Home tab
+NSString* const TWPArtworkHomeTabWhite = @"home-tab-white";
+NSString* const TWPArtworkHomeTabGray = @"home-tab-gray";
+
+// Fav tab
+NSString* const TWPArtworkFavTabWhite = @"fav-tab-white";
+NSString* const TWPArtworkFavTabGray = @"fav-tab-gray";
+
+// Lists tab
+NSString* const TWPArtworkListsTabWhite = @"lists-tab-white";
+NSString* const TWPArtworkListsTabGray = @"lists-tab-gray";
+
+// Notif tab
+NSString* const TWPArtworkNotifTabWhite = @"notif-tab-white";
+NSString* const TWPArtworkNotifTabGray = @"notif-tab-gray";
+
+// Me tab
+NSString* const TWPArtworkMeTabWhite = @"me-tab-white";
+NSString* const TWPArtworkMeTabGray = @"me-tab-gray";
+
+// Messages tab
+NSString* const TWPArtworkMessagesTabWhite = @"messages-tab-white";
+NSString* const TWPArtworkMessagesTabGray = @"messages-tab-gray";
 
 /*=============================================================================┐
 |                                                                              |

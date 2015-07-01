@@ -60,7 +60,7 @@
                                 [ self presentError: _Error ];
                                 } ];
 
-        [ self setTotemContent: [ NSImage imageNamed: @"fav-tab-gray" ] ];
+        [ self setTotemContent: [ NSImage imageNamed: TWPArtworkFavTabGray ] ];
         }
 
     return self;

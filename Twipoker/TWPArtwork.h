@@ -22,18 +22,32 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#ifdef __OBJC__
-    @import Cocoa;
-    #import "TWPGeneral.h"
-    #import "TWPArtwork.h"
-    #import "Objectwitter-C.h"
-    #import "FBKVOController.h"
-#endif
+@import Foundation;
 
-#define __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__ \
-    @throw [ NSException exceptionWithName: NSGenericException \
-                                    reason: [ NSString stringWithFormat: @"unimplemented pure virtual method `%@` in `%@` from instance: %p", NSStringFromSelector( _cmd ), NSStringFromClass( [ self class ] ), self ] \
-                                  userInfo: nil ]
+#pragma mark Dashboard
+// Home tab
+NSString extern* const TWPArtworkHomeTabWhite;
+NSString extern* const TWPArtworkHomeTabGray;
+
+// Fav tab
+NSString extern* const TWPArtworkFavTabWhite;
+NSString extern* const TWPArtworkFavTabGray;
+
+// Lists tab
+NSString extern* const TWPArtworkListsTabWhite;
+NSString extern* const TWPArtworkListsTabGray;
+
+// Notif tab
+NSString extern* const TWPArtworkNotifTabWhite;
+NSString extern* const TWPArtworkNotifTabGray;
+
+// Me tab
+NSString extern* const TWPArtworkMeTabWhite;
+NSString extern* const TWPArtworkMeTabGray;
+
+// Messages tab
+NSString extern* const TWPArtworkMessagesTabWhite;
+NSString extern* const TWPArtworkMessagesTabGray;
 
 /*=============================================================================┐
 |                                                                              |

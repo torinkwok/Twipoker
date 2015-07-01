@@ -54,7 +54,7 @@
                                 [ self presentError: _Error ];
                                 } ];
 
-        [ self setTotemContent: [ NSImage imageNamed: @"lists-tab-gray" ] ];
+        [ self setTotemContent: [ NSImage imageNamed: TWPArtworkListsTabGray ] ];
         }
 
     return self;

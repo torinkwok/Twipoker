@@ -57,7 +57,7 @@
                                 [ self presentError: _Error ];
                                 } ];
 
-        [ self setTotemContent: [ NSImage imageNamed: @"home-tab-gray" ] ];
+        [ self setTotemContent: [ NSImage imageNamed: TWPArtworkHomeTabGray ] ];
         }
 
     return self;

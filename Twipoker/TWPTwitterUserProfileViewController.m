@@ -62,7 +62,7 @@
 - ( instancetype ) init
     {
     if ( self = [ super initWithNibName: @"TWPTwitterUserProfileView" bundle: [ NSBundle mainBundle ] ] )
-        [ self setTotemContent: [ NSImage imageNamed: @"me-tab-gray" ] ];
+        [ self setTotemContent: [ NSImage imageNamed: TWPArtworkMeTabGray ] ];
 
     return self;
     }

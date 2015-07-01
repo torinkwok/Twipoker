@@ -54,7 +54,7 @@
                                     [ self presentError: _Error ];
                                     } ];
 
-        [ self setTotemContent: [ NSImage imageNamed: @"notif-tab-gray" ] ];
+        [ self setTotemContent: [ NSImage imageNamed: TWPArtworkNotifTabGray ] ];
         }
 
     return self;
