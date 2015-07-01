@@ -49,9 +49,9 @@
                                     <outlet property="associatedViewsStack" destination="jhD-Ze-QK8" id="sgs-ha-hTn"/>
                                 </connections>
                             </button>
-                            <button identifier="notif-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-j2-Kng" customClass="TWPDashboardTab">
+                            <button identifier="notif-tab-white" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-j2-Kng" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="201" width="72" height="68"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="notif-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="S7d-Nf-xIV">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="notif-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="S7d-Nf-xIV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -293,11 +293,11 @@
     </objects>
     <resources>
         <image name="compose-tweet" width="95" height="113"/>
-        <image name="fav-tab-white" width="43" height="38"/>
+        <image name="fav-tab-white" width="40" height="35"/>
         <image name="home-tab-white" width="45" height="42"/>
-        <image name="lists-tab-white" width="128" height="128"/>
+        <image name="lists-tab-white" width="38" height="31"/>
         <image name="me-tab" width="93" height="104"/>
         <image name="messages-tab" width="127" height="121"/>
-        <image name="notif-tab" width="107" height="110"/>
+        <image name="notif-tab-white" width="40" height="41"/>
     </resources>
 </document>

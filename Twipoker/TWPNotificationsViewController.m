@@ -54,7 +54,7 @@
                                     [ self presentError: _Error ];
                                     } ];
 
-        [ self setTotemContent: [ NSImage imageNamed: @"notif-tab" ] ];
+        [ self setTotemContent: [ NSImage imageNamed: @"notif-tab-white" ] ];
         }
 
     return self;
