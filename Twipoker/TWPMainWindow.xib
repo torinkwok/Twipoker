@@ -60,9 +60,9 @@
                                     <outlet property="associatedViewsStack" destination="A4Q-KL-bMh" id="6qS-SL-5do"/>
                                 </connections>
                             </button>
-                            <button identifier="me-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
+                            <button identifier="me-tab-white" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="134" width="72" height="68"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="me-tab" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="3qq-XN-k35">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="me-tab-white" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="3qq-XN-k35">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -296,8 +296,8 @@
         <image name="fav-tab-white" width="40" height="35"/>
         <image name="home-tab-white" width="45" height="42"/>
         <image name="lists-tab-white" width="38" height="31"/>
-        <image name="me-tab" width="93" height="104"/>
+        <image name="me-tab-white" width="25" height="35"/>
         <image name="messages-tab" width="127" height="121"/>
-        <image name="notif-tab-white" width="40" height="41"/>
+        <image name="notif-tab-white" width="37" height="38"/>
     </resources>
 </document>
