@@ -40,7 +40,7 @@ NSString static* const kImageNameAlternateReply = @"twitter-reply-button-highlig
     self->_replyAlternateImage = [ NSImage imageNamed: kImageNameAlternateReply ];
 
     [ self->_replyImage setSize: NSMakeSize( 15.f, 13.f ) ];
-    [ self->_replyAlternateImage setSize: NSMakeSize( 17.f, 15.f ) ];
+    [ self->_replyAlternateImage setSize: NSMakeSize( 15.f, 13.f ) ];
 
     [ self setImage: self->_replyImage ];
     [ self setAlternateImage: self->_replyAlternateImage ];
