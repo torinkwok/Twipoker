@@ -28,8 +28,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="72" height="587"/>
                         <subviews>
                             <button identifier="home-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
-                                <rect key="frame" x="0.0" y="402" width="72" height="74"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="home-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="emi-ef-6Ye">
+                                <rect key="frame" x="0.0" y="402" width="72" height="68"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="home-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="emi-ef-6Ye">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -294,7 +294,7 @@
     <resources>
         <image name="compose-tweet" width="95" height="113"/>
         <image name="fav-tab" width="116" height="105"/>
-        <image name="home-tab" width="113" height="120"/>
+        <image name="home-tab-white" width="45" height="42"/>
         <image name="lists-tab" width="103" height="101"/>
         <image name="me-tab" width="93" height="104"/>
         <image name="messages-tab" width="127" height="121"/>
