@@ -41,8 +41,8 @@ NSString static* const kImageNameFaved = @"twitter-fav-button-highlighting";
     self->_unfavedImage = [ NSImage imageNamed: kImageNameUnfaved ];
     self->_favedImage = [ NSImage imageNamed: kImageNameFaved ];
 
-    [ self->_unfavedImage setSize: NSMakeSize( 45.f, 45.f ) ];
-    [ self->_favedImage setSize: NSMakeSize( 45.f, 45.f ) ];
+    [ self->_unfavedImage setSize: NSMakeSize( 16.f, 14.f ) ];
+    [ self->_favedImage setSize: NSMakeSize( 16.f, 14.f ) ];
     }
 
 #pragma mark Accessors
