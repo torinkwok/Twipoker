@@ -43,8 +43,8 @@ NSString static* const kImageNameRetweeted = @"twitter-retweet-button-highlighti
     self->_unretweetedImage = [ NSImage imageNamed: kImageNameUnretweeted ];
     self->_retweetedImage = [ NSImage imageNamed: kImageNameRetweeted ];
 
-    [ self->_unretweetedImage setSize: NSMakeSize( 45.f, 45.f ) ];
-    [ self->_retweetedImage setSize: NSMakeSize( 45.f, 45.f ) ];
+    [ self->_unretweetedImage setSize: NSMakeSize( 17.f, 15.f ) ];
+    [ self->_retweetedImage setSize: NSMakeSize( 17.f, 15.f ) ];
     }
 
 #pragma mark Accessors
