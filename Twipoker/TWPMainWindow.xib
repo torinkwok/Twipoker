@@ -73,7 +73,7 @@
                             </button>
                             <button identifier="dm-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="af4-QX-slZ" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="67" width="72" height="68"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="messages-tab" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="DaF-ie-LJX">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="messages-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="DaF-ie-LJX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -292,12 +292,12 @@
         <viewController id="A1U-WG-bIi" customClass="TWPTwitterUserProfileViewController"/>
     </objects>
     <resources>
-        <image name="compose-tweet" width="95" height="113"/>
+        <image name="compose-tweet" width="27" height="37"/>
         <image name="fav-tab-white" width="38" height="34"/>
         <image name="home-tab-white" width="45" height="42"/>
         <image name="lists-tab-white" width="35" height="30"/>
         <image name="me-tab-white" width="27" height="37"/>
-        <image name="messages-tab" width="127" height="121"/>
+        <image name="messages-tab-white" width="33" height="34"/>
         <image name="notif-tab-white" width="35" height="36"/>
     </resources>
 </document>
