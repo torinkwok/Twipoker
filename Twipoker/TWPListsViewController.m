@@ -54,7 +54,7 @@
                                 [ self presentError: _Error ];
                                 } ];
 
-        [ self setTotemContent: [ NSImage imageNamed: @"lists-tab" ] ];
+        [ self setTotemContent: [ NSImage imageNamed: @"lists-tab-white" ] ];
         }
 
     return self;

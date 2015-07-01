@@ -60,7 +60,7 @@
                                 [ self presentError: _Error ];
                                 } ];
 
-        [ self setTotemContent: [ NSImage imageNamed: @"fav-tab" ] ];
+        [ self setTotemContent: [ NSImage imageNamed: @"fav-tab-white" ] ];
         }
 
     return self;
