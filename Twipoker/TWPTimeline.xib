@@ -73,7 +73,7 @@
                                                 <subviews>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vc3-JV-3jd" customClass="TWPReplyButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="XMR-sT-SI6" customClass="TWPReplyButtonCell">
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="XMR-sT-SI6" customClass="TWPReplyButtonCell">
                                                             <behavior key="behavior" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
