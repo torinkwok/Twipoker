@@ -29,6 +29,16 @@
 
 #import "_TWPMonitoringUserID.h"
 
+// Private Interfaces
+@interface TWPBrain ()
+
+- ( void ) _reconnectionAttempt: ( NSTimer* )_Timer;
+
+- ( void ) _beginToMonitorUserStream: ( STTwitterAPI* )_TwitterAPI;
+- ( void ) _beginToMonitorFilterStream: ( STTwitterAPI* )_TwitterAPI;
+
+@end // Private Interfaces
+
 #define START_TIME_INTERVAL ( 5.f );
 
 // TWPBrain class
@@ -257,23 +267,6 @@ TWPBrain static __strong* sWiseBrain;
     }
 
 #pragma mark Conforms to <OTCSTTwitterStreamingAPIDelegate> protocol
-- ( void )  twitterAPI: ( STTwitterAPI* )_TwitterAPI
-                stream: ( STTwitterAPIStreamType )_StreamType
-    hasBeenEstablished: ( NSData* )_FirstTimeTransaction
-    {
-    if ( _TwitterAPI == self->_authingUserTimelineStream )
-        {
-        NSLog( @"Successfully established user stream🍺" );
-        _userStreamReconnectTimeInterval = START_TIME_INTERVAL;
-        }
-
-    else if ( _TwitterAPI == self->_publicTimelineFilterStream )
-        {
-        NSLog( @"Successfully established filter stream: %@🍺", [ [ NSString alloc ] initWithData: _FirstTimeTransaction encoding: NSUTF8StringEncoding ] );
-        _filterStreamReconnectTimeInterval = START_TIME_INTERVAL;
-        }
-    }
-
 - ( void )      twitterAPI: ( STTwitterAPI* )_TwitterAPI
     didReceiveFriendsLists: ( NSArray* )_Friends
     {
@@ -408,6 +401,24 @@ TWPBrain static __strong* sWiseBrain;
         }
     }
 
+- ( void )  twitterAPI: ( STTwitterAPI* )_TwitterAPI
+                stream: ( STTwitterAPIStreamType )_StreamType
+    hasBeenEstablished: ( NSData* )_FirstTimeTransaction
+    {
+    if ( _TwitterAPI == self->_authingUserTimelineStream )
+        {
+        NSLog( @"Successfully established USER stream🍺" );
+        _userStreamReconnectTimeInterval = START_TIME_INTERVAL;
+        }
+
+    else if ( _TwitterAPI == self->_publicTimelineFilterStream )
+        {
+        NSString* transaction = [ [ NSString alloc ] initWithData: _FirstTimeTransaction encoding: NSUTF8StringEncoding ];
+        NSLog( @"Successfully established FILTER stream🍺: %@", [ transaction isEqualToString: @"\r\n" ] ? @"\\r\\n" : transaction );
+        _filterStreamReconnectTimeInterval = START_TIME_INTERVAL;
+        }
+    }
+
 - ( void )   twitterAPI: ( STTwitterAPI* )_TwitterAPI
     fuckingErrorOccured: ( NSError* )_Error
     {
@@ -416,10 +427,10 @@ TWPBrain static __strong* sWiseBrain;
         if ( _userStreamReconnectTimeInterval >= 320.f )
             _userStreamReconnectTimeInterval = START_TIME_INTERVAL;
 
-        NSLog( @"Error occured. User stream (👳🏽) reconnection time interval is: %g sec", _userStreamReconnectTimeInterval );
+        NSLog( @"Streaming error occured. Will try to reconnect USER stream (👳🏽) in %g sec.", _userStreamReconnectTimeInterval );
         [ NSTimer scheduledTimerWithTimeInterval: _userStreamReconnectTimeInterval
                                           target: self
-                                        selector: @selector( reconnectionAttempt: )
+                                        selector: @selector( _reconnectionAttempt: )
                                         userInfo: @{ @"api" : _TwitterAPI }
                                          repeats: YES ];
         // Backoff exponentially
@@ -431,10 +442,10 @@ TWPBrain static __strong* sWiseBrain;
         if ( _filterStreamReconnectTimeInterval >= 320.f )
             _filterStreamReconnectTimeInterval = START_TIME_INTERVAL;
 
-        NSLog( @"Error occured. Filter stream (👨‍👨‍👧‍👦) reconnection time interval is: %g sec", _filterStreamReconnectTimeInterval );
+        NSLog( @"Streaming error occured. Will try to reconnect FILTER stream (👨‍👨‍👧‍👦) in %g sec.", _filterStreamReconnectTimeInterval );
         [ NSTimer scheduledTimerWithTimeInterval: _filterStreamReconnectTimeInterval
                                           target: self
-                                        selector: @selector( reconnectionAttempt: )
+                                        selector: @selector( _reconnectionAttempt: )
                                         userInfo: @{ @"api" : _TwitterAPI }
                                          repeats: YES ];
         // Backoff exponentially
@@ -442,14 +453,15 @@ TWPBrain static __strong* sWiseBrain;
         }
     }
 
-- ( void ) reconnectionAttempt: ( NSTimer* )_Timer
+#pragma mark Private Interfaces
+- ( void ) _reconnectionAttempt: ( NSTimer* )_Timer
     {
     NSDictionary* userInfo = [ _Timer userInfo ];
     STTwitterAPI* twitterAPIWithProblem = userInfo[ @"api" ];
 
     NSLog( @"%@. Renconnecting the %@ stream (%@)…"
          , _Timer
-         , ( twitterAPIWithProblem == self->_authingUserTimelineStream ) ? @"user" : @"filter"
+         , ( twitterAPIWithProblem == self->_authingUserTimelineStream ) ? @"USER" : @"FILTER"
          , ( twitterAPIWithProblem == self->_authingUserTimelineStream ) ? @"👳🏽" : @"👨‍👨‍👧‍👦"
          );
 

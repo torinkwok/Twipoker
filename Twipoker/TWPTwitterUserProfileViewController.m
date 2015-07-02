@@ -24,7 +24,6 @@
 
 #import "TWPTwitterUserProfileViewController.h"
 #import "TWPTwitterUserProfileView.h"
-#import "TWPActionNotifications.h"
 
 @interface TWPTwitterUserProfileViewController ()
 

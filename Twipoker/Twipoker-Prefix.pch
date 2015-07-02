@@ -26,6 +26,7 @@
     @import Cocoa;
     #import "TWPGeneral.h"
     #import "TWPArtwork.h"
+    #import "TWPActionNotifications.h"
     #import "Objectwitter-C.h"
     #import "FBKVOController.h"
 #endif
