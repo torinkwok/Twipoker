@@ -38,7 +38,7 @@
 #import "TWPDirectMessageSession.h"
 #import "TWPLoginUsersManager.h"
 #import "TWPDirectMessagesCoordinator.h"
-#import "TWPDirectMessagePreviewTableCellView.h"
+#import "TWPDirectMessagePreviewCellView.h"
 #import "TWPDirectMessageSessionViewController.h"
 #import "TWPDashboardTab.h"
 #import "TWPDashboardView.h"
@@ -56,7 +56,6 @@
 
 // Notification selector
 - ( void ) _listCellMouseDown: ( NSNotification* )_Notif;
-- ( void ) _dmPreviewTableCellMouseDown: ( NSNotification* )_Notif;
 - ( void ) _shouldShowUserTweets: ( NSNotification* )_Notif;
 
 // Pushing views
@@ -86,7 +85,6 @@
     if ( self = [ super init ] )
         {
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _listCellMouseDown: ) name: TWPListCellViewMouseDown object: nil ];
-        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _dmPreviewTableCellMouseDown: ) name: TWPDirectMessagePreviewTableCellViewMouseDown object: nil ];
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserProfile: ) name: TWPTwipokerShouldShowUserProfile object: nil ];
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserTweets: ) name: TWPTwipokerShouldShowUserTweets object: nil ];
         }
@@ -97,7 +95,6 @@
 - ( void ) dealloc
     {
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPListCellViewMouseDown object: nil ];
-    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPDirectMessagePreviewTableCellViewMouseDown object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserProfile object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserTweets object: nil ];
     }
@@ -169,11 +166,11 @@
     [ self _pushTwitterListTimelineToCurrentViewsStack: twitterList ];
     }
 
-- ( void ) _dmPreviewTableCellMouseDown: ( NSNotification* )_Notif
-    {
-    TWPDirectMessageSession* directMessageSession = _Notif.userInfo[ kDirectMessageSession ];
-    [ self _pushDirectMessageSessionViewToCurrentViewStack: directMessageSession ];
-    }
+//- ( void ) _dmPreviewTableCellMouseDown: ( NSNotification* )_Notif
+//    {
+//    TWPDirectMessageSession* directMessageSession = _Notif.userInfo[ kDirectMessageSession ];
+//    [ self _pushDirectMessageSessionViewToCurrentViewStack: directMessageSession ];
+//    }
 
 - ( void ) _shouldShowUserTweets: ( NSNotification* )_Notif
     {

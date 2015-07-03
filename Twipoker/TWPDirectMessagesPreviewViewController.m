@@ -26,22 +26,26 @@
 #import "TWPDirectMessagesPreviewViewController.h"
 #import "TWPDirectMessageSession.h"
 #import "TWPLoginUsersManager.h"
-#import "TWPDirectMessagePreviewTableCellView.h"
+#import "TWPDirectMessagePreviewCellView.h"
 #import "TWPUserAvatarWell.h"
 
+// Private Interfaces
 @interface TWPDirectMessagesPreviewViewController ()
+@end // Private Interfaces
 
-@end
-
+// TWPDirectMessagesPreviewViewController class
 @implementation TWPDirectMessagesPreviewViewController
 
 @synthesize DMPreviewTableView;
 
 #pragma mark Initialization
-- ( instancetype ) init
+- ( instancetype ) initWithCoder: ( NSCoder* )_Coder
     {
-    if ( self = [ super initWithNibName: @"TWPDirectMessageSessionView" bundle: [ NSBundle mainBundle ] ] )
+    if ( self = [ super initWithNibName: @"TWPDirectMessagesPreviewView" bundle: [ NSBundle mainBundle ] ] )
+        {
         self->_directMessageSessions = [ NSMutableArray array ];
+        [ self setTotemContent: [ NSImage imageNamed: TWPArtworkMessagesTabGray ] ];
+        }
 
     return self;
     }
@@ -49,6 +53,7 @@
 - ( void ) viewDidLoad
     {
     [ super viewDidLoad ];
+    self->_directMessageSessions = [ NSMutableArray arrayWithArray: [ [ TWPDirectMessagesCoordinator defaultCenter ] allDirectMessageSessions ] ];
     [ [ TWPDirectMessagesCoordinator defaultCenter ] registerObserver: self otherSideUser: nil ];
     }
 
@@ -71,8 +76,8 @@
      viewForTableColumn: ( NSTableColumn* )_TableColumn
                     row: ( NSInteger )_Row
     {
-    TWPDirectMessagePreviewTableCellView* previewCellView =
-        ( TWPDirectMessagePreviewTableCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
+    TWPDirectMessagePreviewCellView* previewCellView =
+        ( TWPDirectMessagePreviewCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
 
     TWPDirectMessageSession* DMSession = ( TWPDirectMessageSession* )( self->_directMessageSessions[ _Row ] );
     previewCellView.session = DMSession;
@@ -124,7 +129,7 @@
         }
     }
 
-@end
+@end // TWPDirectMessagesPreviewViewController class
 
 /*=============================================================================┐
 |                                                                              |

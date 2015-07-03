@@ -220,7 +220,7 @@
         <customObject id="D4R-Db-Yb8" customClass="TWPFavoritesViewController"/>
         <customObject id="NMQ-Oj-KgN" customClass="TWPListsViewController"/>
         <customObject id="h3J-yb-VMt" customClass="TWPNotificationsViewController"/>
-        <customObject id="jJM-iy-4nF" customClass="TWPDirectMessagesStartAPrivateConversationViewController"/>
+        <viewController id="G6k-fP-2p2" customClass="TWPDirectMessagesPreviewViewController"/>
         <customObject id="i5X-Cg-E7K" userLabel="Home - Views Stack" customClass="TWPViewsStack">
             <connections>
                 <outlet property="baseViewController" destination="qYt-FS-RIP" id="LF0-KP-2wa"/>
@@ -248,7 +248,7 @@
         </customObject>
         <customObject id="4cS-D0-vD7" userLabel="Messages - Views Stack" customClass="TWPViewsStack">
             <connections>
-                <outlet property="baseViewController" destination="jJM-iy-4nF" id="cHb-Nx-ciu"/>
+                <outlet property="baseViewController" destination="G6k-fP-2p2" id="z0M-1Z-HG6"/>
             </connections>
         </customObject>
         <customObject id="DoC-kn-lPg" customClass="TWPDirectMessagesCoordinator"/>

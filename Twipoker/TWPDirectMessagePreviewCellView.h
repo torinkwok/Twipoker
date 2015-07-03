@@ -22,15 +22,28 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDirectMessagesStartAPrivateConversationView.h"
+@import Cocoa;
 
-@implementation TWPDirectMessagesStartAPrivateConversationView
+@class TWPUserAvatarWell;
+@class TWPTimelineUserNameButton;
+@class TWPDirectMessageSession;
 
-- ( void ) drawRect: ( NSRect )_DirtyRect
+@interface TWPDirectMessagePreviewCellView : NSTableCellView
     {
-    [ [ NSColor whiteColor ] set ];
-    NSRectFill( _DirtyRect );
+@private
+    TWPDirectMessageSession __strong* _session;
     }
+
+@property ( weak ) IBOutlet TWPUserAvatarWell* senderAvatar;
+@property ( weak ) IBOutlet TWPTimelineUserNameButton* senderUserNameLabel;
+@property ( weak ) IBOutlet NSTextField* mostDateLabel;
+@property ( weak ) IBOutlet NSTextField* mostTweetPreview;
+
+@property ( strong, readwrite ) TWPDirectMessageSession* session;
+
+#pragma mark IBAction
+- ( IBAction ) userNameLabelClickedAction: ( id )_Sender;
+- ( IBAction ) userAvatarClickedAction: ( id )_Sender;
 
 @end
 

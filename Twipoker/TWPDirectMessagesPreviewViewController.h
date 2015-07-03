@@ -25,6 +25,7 @@
 #import "TWPViewController.h"
 #import "TWPDirectMessagesCoordinator.h"
 
+// TWPDirectMessagesPreviewViewController class
 @interface TWPDirectMessagesPreviewViewController : TWPViewController
     <NSTableViewDataSource, NSTableViewDelegate, TWPDirectMessagesCoordinatorObserver >
     {
@@ -34,7 +35,7 @@
 
 @property ( weak ) IBOutlet NSTableView* DMPreviewTableView;
 
-@end
+@end // TWPDirectMessagesPreviewViewController class
 
 /*=============================================================================┐
 |                                                                              |
