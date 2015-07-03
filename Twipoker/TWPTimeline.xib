@@ -40,11 +40,11 @@
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
                                     <tableCellView id="Ivh-Fg-vDh" customClass="TWPTweetCellView">
-                                        <rect key="frame" x="1" y="1" width="397" height="140"/>
+                                        <rect key="frame" x="1" y="1" width="398" height="140"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bD2-rm-Fkf" customClass="TWPTimelineUserNameButton">
-                                                <rect key="frame" x="105" y="103" width="183.5" height="23"/>
+                                                <rect key="frame" x="105" y="103" width="183" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="182.5" id="dsg-0z-i6k"/>
                                                     <constraint firstAttribute="height" constant="21" id="yb5-xa-O0p"/>
@@ -113,7 +113,7 @@
                                                 </connections>
                                             </customView>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUo-13-Uhb" userLabel="Tweet Text" customClass="TWPTweetTextField">
-                                                <rect key="frame" x="103" y="-8" width="276.5" height="102"/>
+                                                <rect key="frame" x="103" y="-8" width="277" height="102"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="79" id="MhJ-at-9Ad"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="272" id="QTX-aL-ul7"/>
@@ -134,7 +134,7 @@
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AUA-3k-7Zo" secondAttribute="bottom" constant="55" id="4rm-I2-kjI"/>
                                             <constraint firstItem="keF-c2-Eeb" firstAttribute="top" secondItem="Ivh-Fg-vDh" secondAttribute="top" constant="15" id="B9G-wN-3PH"/>
                                             <constraint firstItem="AUA-3k-7Zo" firstAttribute="top" secondItem="Ivh-Fg-vDh" secondAttribute="top" constant="15" id="Cft-Jn-ytN"/>
-                                            <constraint firstAttribute="trailing" secondItem="keF-c2-Eeb" secondAttribute="trailing" constant="20" id="DUM-jd-Q9N"/>
+                                            <constraint firstAttribute="trailing" secondItem="keF-c2-Eeb" secondAttribute="trailing" constant="21" id="DUM-jd-Q9N"/>
                                             <constraint firstAttribute="trailing" secondItem="RUo-13-Uhb" secondAttribute="trailing" constant="20" id="EmJ-Jx-gPE"/>
                                             <constraint firstAttribute="bottom" secondItem="RUo-13-Uhb" secondAttribute="bottom" constant="-8" id="KUi-er-ygx"/>
                                             <constraint firstItem="RUo-13-Uhb" firstAttribute="top" secondItem="keF-c2-Eeb" secondAttribute="bottom" constant="9" id="Lt3-AP-awm"/>

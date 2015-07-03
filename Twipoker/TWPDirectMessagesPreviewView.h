@@ -22,30 +22,12 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDirectMessagesPreviewTableView.h"
-#import "TWPDirectMessagePreviewTableCellView.h"
-#import "TWPUserAvatarWell.h"
+@import Cocoa;
 
-@implementation TWPDirectMessagesPreviewTableView
+// TWPDirectMessagesPreviewView class
+@interface TWPDirectMessagesPreviewView : NSTableView
 
-- ( void ) awakeFromNib
-    {
-    [ self setBackgroundColor:
-        [ NSColor colorWithSRGBRed: 82.f / 255 green: 170.f / 255 blue: 238.f / 255 alpha: 1.f ] ];
-    }
-
-- ( BOOL ) validateProposedFirstResponder: ( NSResponder* )_Responder
-                                 forEvent: ( NSEvent* )_Event
-    {
-    if ( [ _Responder isKindOfClass: [ TWPDirectMessagePreviewTableCellView class ] ]
-            || [ _Responder isKindOfClass: [ TWPUserAvatarWell class ] ]
-            || [ _Responder isKindOfClass: [ NSTextField class ] ] )
-        return YES;
-    else
-        return [ super validateProposedFirstResponder: _Responder forEvent: _Event ];
-    }
-
-@end
+@end // TWPDirectMessagesPreviewView class
 
 /*=============================================================================┐
 |                                                                              |

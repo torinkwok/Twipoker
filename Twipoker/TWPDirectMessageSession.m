@@ -83,7 +83,7 @@
 
 - ( void ) _loadMessages
     {
-    // Retrieve the direct messages sent/received by the other side user
+    // Retrieve the direct messages sent/received by a specified "other side" user
     NSArray* allDMs =  [ [ TWPDirectMessagesCoordinator defaultCenter ] allDMs ];
     for ( OTCDirectMessage* _DM in allDMs )
         if ( [ self->_otherSideUser isEqualToUser: _DM.sender ]

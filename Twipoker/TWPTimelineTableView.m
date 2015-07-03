@@ -35,7 +35,6 @@
                                  forEvent: ( NSEvent* )_Event
     {
     if ( [ _Responder isKindOfClass: [ TWPTweetCellView class ] ]
-            || [ _Responder isKindOfClass: [ TWPTweetTextField class ] ]
             || [ _Responder isKindOfClass: [ TWPUserAvatarWell class ] ] )
         return YES;
     else

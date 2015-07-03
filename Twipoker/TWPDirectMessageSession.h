@@ -32,7 +32,7 @@
     }
 
 // Maybe empty
-@property ( strong, readonly ) NSMutableArray* allDirectMessages;
+@property ( strong, readonly ) NSMutableArray* allDirectMessages; // self->_DMs
 @property ( strong, readonly ) OTCTwitterUser* otherSideUser;
 @property ( strong, readonly ) OTCDirectMessage* mostRecentMessage;
 

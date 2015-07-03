@@ -251,12 +251,7 @@
                 <outlet property="baseViewController" destination="jJM-iy-4nF" id="cHb-Nx-ciu"/>
             </connections>
         </customObject>
-        <customObject id="DoC-kn-lPg" customClass="TWPDirectMessagesCoordinator">
-            <connections>
-                <outlet property="DMPreviewViewContorller" destination="f4H-bM-VHT" id="451-GU-mrU"/>
-            </connections>
-        </customObject>
-        <customObject id="f4H-bM-VHT" customClass="TWPDirectMessagesPreviewViewController"/>
+        <customObject id="DoC-kn-lPg" customClass="TWPDirectMessagesCoordinator"/>
         <viewController id="dBG-Jj-N3g" customClass="TWPMainWindowContentViewController">
             <connections>
                 <outlet property="cuttingLineBetweetMainViewAndProfileView" destination="flx-KC-83G" id="uyI-dC-SUg"/>

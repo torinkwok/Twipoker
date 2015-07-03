@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6724" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6724"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TWPDirectMessagesPreviewViewController">
+            <connections>
+                <outlet property="DMPreviewTableView" destination="qai-YV-KXf" id="mM9-Da-Ncj"/>
+                <outlet property="view" destination="Oec-ac-9k7" id="3tk-xy-sJp"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <scrollView borderType="none" horizontalLineScroll="83" horizontalPageScroll="10" verticalLineScroll="83" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="Oec-ac-9k7" customClass="TWPTimelineScrollView">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="567"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <clipView key="contentView" copiesOnScroll="NO" id="rNO-gW-ni6">
+                <rect key="frame" x="1" y="17" width="238" height="117"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="81" rowSizeStyle="automatic" viewBased="YES" id="qai-YV-KXf" customClass="TWPDirectMessagesPreviewView">
+                        <rect key="frame" x="0.0" y="0.0" width="400.5" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <size key="intercellSpacing" width="3" height="2"/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <tableColumns>
+                            <tableColumn width="397.6640625" minWidth="10" maxWidth="3.4028234663852886e+38" id="7E1-iz-geT">
+                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </tableHeaderCell>
+                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="npN-Ds-MGM">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                <prototypeCellViews>
+                                    <tableCellView id="fXd-hM-ghn" customClass="TWPTweetCellView">
+                                        <rect key="frame" x="1" y="1" width="398" height="81"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rkH-0F-UXh" customClass="TWPTimelineUserNameButton">
+                                                <rect key="frame" x="105" y="44" width="183.5" height="23"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="182.5" id="isk-D4-GQo"/>
+                                                    <constraint firstAttribute="height" constant="21" id="tP0-Rr-fzH"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hfk-ru-tb3">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="userNameLabelClickedAction:" target="fXd-hM-ghn" id="yJz-4K-YoQ"/>
+                                                </connections>
+                                            </button>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6YJ-hB-uwB" userLabel="Avatar" customClass="TWPUserAvatarWell">
+                                                <rect key="frame" x="20" y="6" width="70" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="70" id="pO1-P6-HSf"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="vML-Wf-KEC"/>
+                                                <connections>
+                                                    <action selector="userAvatarClickedAction:" target="fXd-hM-ghn" id="ORA-4v-tgV"/>
+                                                </connections>
+                                            </imageView>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0f-SW-UKV" userLabel="Tweet Text" customClass="TWPTweetTextField">
+                                                <rect key="frame" x="103" y="15" width="277" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="272" id="BYv-ny-IH6"/>
+                                                    <constraint firstAttribute="height" constant="20" id="nlk-It-OPT"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="发了消息给你。" id="lAG-1p-oyy">
+                                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.45882352939999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="yee-ha-PIU"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="C0f-SW-UKV" secondAttribute="bottom" constant="15" id="0YX-H8-Elo"/>
+                                            <constraint firstAttribute="bottom" secondItem="6YJ-hB-uwB" secondAttribute="bottom" constant="6" id="3bh-QN-clS"/>
+                                            <constraint firstAttribute="trailing" secondItem="C0f-SW-UKV" secondAttribute="trailing" constant="20" id="5VJ-1g-SG1"/>
+                                            <constraint firstItem="rkH-0F-UXh" firstAttribute="top" secondItem="fXd-hM-ghn" secondAttribute="top" constant="15" id="6kq-AA-EAW"/>
+                                            <constraint firstItem="rkH-0F-UXh" firstAttribute="leading" secondItem="C0f-SW-UKV" secondAttribute="leading" id="VCy-Zd-8UU"/>
+                                            <constraint firstItem="6YJ-hB-uwB" firstAttribute="leading" secondItem="fXd-hM-ghn" secondAttribute="leading" constant="20" id="ahP-TF-6r3"/>
+                                            <constraint firstItem="C0f-SW-UKV" firstAttribute="leading" secondItem="6YJ-hB-uwB" secondAttribute="trailing" constant="15" id="igI-i8-B7t"/>
+                                            <constraint firstItem="6YJ-hB-uwB" firstAttribute="top" secondItem="fXd-hM-ghn" secondAttribute="top" constant="5" id="z1J-Yd-ZYH"/>
+                                            <constraint firstItem="C0f-SW-UKV" firstAttribute="top" secondItem="rkH-0F-UXh" secondAttribute="bottom" constant="10" id="zMB-Pf-AXb"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="authorAvatarWell" destination="6YJ-hB-uwB" id="Dyh-Tv-jZV"/>
+                                            <outlet property="tweetTextLabel" destination="C0f-SW-UKV" id="dQq-jq-vMP"/>
+                                            <outlet property="userNameLabel" destination="rkH-0F-UXh" id="Zdl-EW-jc9"/>
+                                        </connections>
+                                    </tableCellView>
+                                </prototypeCellViews>
+                            </tableColumn>
+                        </tableColumns>
+                        <connections>
+                            <outlet property="dataSource" destination="-2" id="Bcf-43-uDo"/>
+                            <outlet property="delegate" destination="-2" id="qH1-IU-I9F"/>
+                        </connections>
+                    </tableView>
+                </subviews>
+                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </clipView>
+            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="xvF-GN-anV">
+                <rect key="frame" x="1" y="119" width="223" height="15"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="vaR-om-OCV">
+                <rect key="frame" x="224" y="17" width="15" height="102"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <point key="canvasLocation" x="-166" y="-2610.5"/>
+        </scrollView>
+    </objects>
+</document>
