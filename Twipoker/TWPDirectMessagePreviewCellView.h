@@ -36,7 +36,7 @@
 
 @property ( weak ) IBOutlet TWPUserAvatarWell* senderAvatar;
 @property ( weak ) IBOutlet TWPTimelineUserNameButton* senderUserNameLabel;
-@property ( weak ) IBOutlet NSTextField* mostDateLabel;
+@property ( weak ) IBOutlet NSTextField* mostRecentDateLabel;
 @property ( weak ) IBOutlet NSTextField* mostTweetPreview;
 
 @property ( strong, readwrite ) TWPDirectMessageSession* session;

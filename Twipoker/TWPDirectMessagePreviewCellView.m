@@ -31,7 +31,7 @@
 
 @synthesize senderAvatar;
 @synthesize senderUserNameLabel;
-@synthesize mostDateLabel;
+@synthesize mostRecentDateLabel;
 @synthesize mostTweetPreview;
 
 @dynamic session;
@@ -50,7 +50,7 @@
     [ self.senderUserNameLabel setTwitterUser: self->_session.otherSideUser ];
 
     OTCDirectMessage* mostRecentDM = [ self->_session mostRecentMessage ];
-    [ mostDateLabel setStringValue: mostRecentDM.dateCreated.description ];
+    [ mostRecentDateLabel setStringValue: mostRecentDM.dateCreated.description ];
     [ mostTweetPreview setStringValue: mostRecentDM.tweetText ];
 
     [ self setNeedsDisplay: YES ];

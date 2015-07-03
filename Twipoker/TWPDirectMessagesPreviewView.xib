@@ -57,7 +57,7 @@
                                                     <action selector="userNameLabelClickedAction:" target="fXd-hM-ghn" id="uDZ-SH-Kwp"/>
                                                 </connections>
                                             </button>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0f-SW-UKV" userLabel="Tweet Text" customClass="TWPTweetTextField">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0f-SW-UKV" userLabel="Tweet Text" customClass="TWPTweetTextField">
                                                 <rect key="frame" x="103" y="16" width="277" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="UHY-rh-A22"/>
@@ -72,6 +72,18 @@
                                                     <action selector="pushRepliesTimleineToCurrentViewsStackAction:" target="-1" id="yee-ha-PIU"/>
                                                 </connections>
                                             </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BjF-zA-S3v">
+                                                <rect key="frame" x="342" y="61" width="38" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="34" id="wIU-6K-ato"/>
+                                                    <constraint firstAttribute="height" constant="17" id="yZU-wd-Oim"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="pli-yF-A3S">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6YJ-hB-uwB" userLabel="Avatar" customClass="TWPUserAvatarWell">
                                                 <rect key="frame" x="20" y="10" width="70" height="70"/>
                                                 <constraints>
@@ -85,9 +97,10 @@
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rkH-0F-UXh" secondAttribute="trailing" priority="750" constant="111" id="9VK-aC-hHv"/>
+                                            <constraint firstItem="C0f-SW-UKV" firstAttribute="top" secondItem="BjF-zA-S3v" secondAttribute="bottom" constant="25" id="8FT-7W-Cdd"/>
                                             <constraint firstItem="rkH-0F-UXh" firstAttribute="top" secondItem="fXd-hM-ghn" secondAttribute="top" constant="10" id="D8W-OO-PTD"/>
                                             <constraint firstAttribute="bottom" secondItem="6YJ-hB-uwB" secondAttribute="bottom" constant="10" id="F83-RG-mGc"/>
+                                            <constraint firstItem="BjF-zA-S3v" firstAttribute="top" secondItem="fXd-hM-ghn" secondAttribute="top" constant="12" id="IWn-D2-uaA"/>
                                             <constraint firstItem="6YJ-hB-uwB" firstAttribute="top" secondItem="fXd-hM-ghn" secondAttribute="top" constant="10" id="PIU-PX-s0m"/>
                                             <constraint firstItem="C0f-SW-UKV" firstAttribute="leading" secondItem="6YJ-hB-uwB" secondAttribute="trailing" constant="15" id="WAf-0N-ySY"/>
                                             <constraint firstItem="C0f-SW-UKV" firstAttribute="top" secondItem="rkH-0F-UXh" secondAttribute="bottom" constant="23" id="a3e-13-bKD"/>
@@ -95,8 +108,11 @@
                                             <constraint firstAttribute="bottom" secondItem="C0f-SW-UKV" secondAttribute="bottom" constant="16" id="ghV-yM-rwd"/>
                                             <constraint firstAttribute="trailing" secondItem="C0f-SW-UKV" secondAttribute="trailing" constant="20" id="hhS-XG-CJm"/>
                                             <constraint firstItem="rkH-0F-UXh" firstAttribute="leading" secondItem="6YJ-hB-uwB" secondAttribute="trailing" constant="15" id="tbZ-PO-GAe"/>
+                                            <constraint firstItem="BjF-zA-S3v" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rkH-0F-UXh" secondAttribute="trailing" priority="750" constant="16" id="ti6-0a-6N8"/>
+                                            <constraint firstAttribute="trailing" secondItem="BjF-zA-S3v" secondAttribute="trailing" constant="20" id="wlj-nB-GIP"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="mostRecentDateLabel" destination="BjF-zA-S3v" id="Wib-8C-Bxe"/>
                                             <outlet property="mostTweetPreview" destination="C0f-SW-UKV" id="vh5-Na-NOF"/>
                                             <outlet property="senderAvatar" destination="6YJ-hB-uwB" id="TTi-RZ-qcV"/>
                                             <outlet property="senderUserNameLabel" destination="rkH-0F-UXh" id="EVI-Dp-bYZ"/>
