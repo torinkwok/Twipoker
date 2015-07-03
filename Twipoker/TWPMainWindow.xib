@@ -274,7 +274,7 @@
             </connections>
         </viewController>
         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="F8o-AT-Tga">
-            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="woS-29-Wzk"/>
             <point key="canvasLocation" x="61.5" y="-2141.5"/>
