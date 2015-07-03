@@ -407,6 +407,7 @@ TWPBrain static __strong* sWiseBrain;
     {
     NSTimeInterval* updateTimeInterval = NULL;
 
+
     NSString* __logFormat = nil;
     if ( _TwitterAPI == self->_authingUserTimelineStream )
         {
@@ -423,7 +424,9 @@ TWPBrain static __strong* sWiseBrain;
 
     if ( updateTimeInterval )
         {
+        // Print for debugging
         NSLog( @"%@", __logFormat );
+
         *updateTimeInterval = START_TIME_INTERVAL;
         }
     }
@@ -449,7 +452,9 @@ TWPBrain static __strong* sWiseBrain;
 
     if ( updateTimeInterval )
         {
+        // Print for debugging
         NSLog( @"%@", __logFormat );
+
         [ NSTimer scheduledTimerWithTimeInterval: *updateTimeInterval
                                           target: self
                                         selector: @selector( _reconnectionAttempt: )
@@ -469,6 +474,7 @@ TWPBrain static __strong* sWiseBrain;
     }
 
 #pragma mark Private Interfaces
+// The message to send to target when the timer fires
 - ( void ) _reconnectionAttempt: ( NSTimer* )_Timer
     {
     NSDictionary* userInfo = [ _Timer userInfo ];

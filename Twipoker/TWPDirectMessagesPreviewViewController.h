@@ -22,9 +22,10 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
+#import "TWPViewController.h"
 #import "TWPDirectMessagesCoordinator.h"
 
-@interface TWPDirectMessagesPreviewViewController : NSViewController
+@interface TWPDirectMessagesPreviewViewController : TWPViewController
     <NSTableViewDataSource, NSTableViewDelegate, TWPDirectMessagesCoordinatorObserver >
     {
 @private
