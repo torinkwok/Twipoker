@@ -29,7 +29,8 @@
 @class TWPDirectMessageSessionView;
 @class TWPDirectMessageInputBox;
 
-/*  View (frozen in TWPDirectMessagesSessionView.xib) controlled by this class:
+/*  TWPDirectMessageSessionViewController class
+    View (frozen in TWPDirectMessagesSessionView.xib) controlled by this class:
 
     ┌──────────────────────────────────────────────────┐
     │                                                  │
@@ -57,7 +58,8 @@
     └──────────────────────────────────────────────────┘
  */
 @interface TWPDirectMessageSessionViewController : TWPViewController
-    <NSTableViewDataSource, NSTableViewDelegate, TWPDirectMessagesCoordinatorObserver>
+    < NSTableViewDataSource, NSTableViewDelegate
+    , NSTextViewDelegate, TWPDirectMessagesCoordinatorObserver >
     {
 @private
     TWPDirectMessageSession __strong* _session;
@@ -70,7 +72,7 @@
 + ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession withTotemContent: ( id )_TotemContent;
 - ( instancetype ) initWithSession: ( TWPDirectMessageSession* )_DMSession withTotemContent: ( id )_TotemContent;
 
-@end
+@end // TWPDirectMessageSessionViewController class
 
 /*=============================================================================┐
 |                                                                              |

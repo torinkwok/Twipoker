@@ -102,7 +102,7 @@ TWPBrain static __strong* sWiseBrain;
     return sWiseBrain;
     }
 
-#pragma mark Operations
+#pragma mark Tweet
 - ( void ) showDetailsOfTweet: ( NSString* )_TweetIDString
                  successBlock: ( void (^)( OTCTweet* _Tweet ) )_SuccessBlock
                    errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
@@ -225,6 +225,26 @@ TWPBrain static __strong* sWiseBrain;
         ^( NSDictionary* _DestroyedTweetJSON )
             {
             if ( _SuccessBlock ) _SuccessBlock( [ OTCTweet tweetWithJSON: _DestroyedTweetJSON ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
+    }
+
+#pragma mark Direct Messages
+- ( void ) sendDM: ( NSString* )_Message
+        recipient: ( SInt64 )_RecipientID
+     successBlock: ( void (^)( OTCDirectMessage* _SentDM ) )_SuccessBlock
+       errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        postDirectMessage: _Message
+            forScreenName: nil
+                 orUserID: @( _RecipientID ).stringValue
+             successBlock:
+        ^( NSDictionary* _MessageJSON )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCDirectMessage directMessageWithJSON: _MessageJSON ] );
             } errorBlock: ^( NSError* _Error )
                             {
                             if ( _ErrorBlock ) _ErrorBlock( _Error );
@@ -407,7 +427,6 @@ TWPBrain static __strong* sWiseBrain;
     {
     NSTimeInterval* updateTimeInterval = NULL;
 
-
     NSString* __logFormat = nil;
     if ( _TwitterAPI == self->_authingUserTimelineStream )
         {
@@ -440,15 +459,15 @@ TWPBrain static __strong* sWiseBrain;
     if ( _TwitterAPI == self->_authingUserTimelineStream )
         {
         updateTimeInterval = &( self->_userStreamReconnectTimeInterval );
-        __logFormat = @"Streaming error occured. Will try to reconnect USER stream (👳🏽) in %g sec.";
+        __logFormat = @"Streaming error occured: %@.\n Will try to reconnect USER stream (👳🏽) in %g sec.";
         }
     else if ( _TwitterAPI == self->_publicTimelineFilterStream )
         {
         updateTimeInterval = &( self->_filterStreamReconnectTimeInterval );
-        __logFormat = @"Streaming error occured. Will try to reconnect FILTER stream (👨‍👨‍👧‍👦) in %g sec.";
+        __logFormat = @"Streaming error occured %@.\n. Will try to reconnect FILTER stream (👨‍👨‍👧‍👦) in %g sec.";
         }
 
-    __logFormat = [ NSString stringWithFormat: __logFormat, *updateTimeInterval ];
+    __logFormat = [ NSString stringWithFormat: __logFormat, _Error, *updateTimeInterval ];
 
     if ( updateTimeInterval )
         {

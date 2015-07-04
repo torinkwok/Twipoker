@@ -24,6 +24,7 @@
 
 #import "TWPDirectMessageSession.h"
 #import "TWPDirectMessagesCoordinator.h"
+#import "TWPBrain.h"
 
 @implementation TWPDirectMessageSession
 
@@ -97,6 +98,22 @@
             {
             return _LhsDM.tweetID < _RhsDM.tweetID;
             } ];
+    }
+
+#pragma mark Sending Messages
+- ( void ) sendMessage: ( NSString* )_Message recipientID: ( SInt64 )_RecipientID
+    {
+    [ [ TWPBrain wiseBrain ] sendDM: _Message
+                          recipient: _RecipientID
+                       successBlock:
+        ^( OTCDirectMessage* _SentDM )
+            {
+            [ self->_DMs addObject: _SentDM ];
+            [ self _loadMessages ];
+            } errorBlock: ^( NSError* _Error )
+                            {
+
+                            } ];
     }
 
 @end

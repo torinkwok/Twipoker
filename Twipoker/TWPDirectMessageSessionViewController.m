@@ -27,6 +27,14 @@
 #import "TWPDirectMessageSessionCellView.h"
 #import "TWPDirectMessageSessionView.h"
 
+#import "NSString+Twipoker.h"
+
+// Private Interfaces
+@interface TWPDirectMessageSessionViewController ()
+- ( void ) _sendDMInTextView: ( NSTextView* )_TextView;
+@end // Private Interfaces
+
+// TWPDirectMessageSessionViewController class
 @implementation TWPDirectMessageSessionViewController
 
 @synthesize sessionTableView;
@@ -104,7 +112,34 @@
     [ self.sessionTableView reloadData ];
     }
 
-@end
+- ( BOOL )     textView: ( NSTextView* )_TextView
+    doCommandBySelector: ( SEL )_Selector
+    {
+    if ( _Selector == @selector( insertNewline: ) )
+        {
+        [ self _sendDMInTextView: _TextView ];
+
+        // This class will handle the insertNewLine: command by invoking _sendDMInTextView: method
+        // and the _TextView will not attempt to perform it.
+        return YES;
+        }
+
+    return NO;
+    }
+
+#pragma mark Private Interfaces
+- ( void ) _sendDMInTextView: ( NSTextView* )_TextView
+    {
+    NSString* message = _TextView.string;
+
+    if ( [ message hasAtLeastOneNonChar: @" " ] )
+        {
+        [ self->_session sendMessage: message recipientID: self->_session.otherSideUser.ID ];
+        [ _TextView setString: @"" ];
+        }
+    }
+
+@end // TWPDirectMessageSessionViewController class
 
 /*=============================================================================┐
 |                                                                              |

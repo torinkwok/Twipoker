@@ -46,6 +46,9 @@
 #pragma mark Reloading Messages
 - ( void ) reloadMessages;
 
+#pragma mark Sending Messages
+- ( void ) sendMessage: ( NSString* )_Message recipientID: ( SInt64 )_RecipientID;
+
 @end
 
 /*=============================================================================┐
