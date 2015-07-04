@@ -87,6 +87,7 @@
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _listCellMouseDown: ) name: TWPListCellViewMouseDown object: nil ];
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserProfile: ) name: TWPTwipokerShouldShowUserProfile object: nil ];
         [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldShowUserTweets: ) name: TWPTwipokerShouldShowUserTweets object: nil ];
+        [ [ NSNotificationCenter defaultCenter ] addObserver: self selector: @selector( _shouldExpandDMSession: ) name: TWPTwipokerShouldExpandDMSession object: nil ];
         }
 
     return self;
@@ -97,6 +98,7 @@
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPListCellViewMouseDown object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserProfile object: nil ];
     [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldShowUserTweets object: nil ];
+    [ [ NSNotificationCenter defaultCenter ] removeObserver: self name: TWPTwipokerShouldExpandDMSession object: nil ];
     }
 
 - ( void ) viewWillAppear
@@ -166,11 +168,11 @@
     [ self _pushTwitterListTimelineToCurrentViewsStack: twitterList ];
     }
 
-//- ( void ) _dmPreviewTableCellMouseDown: ( NSNotification* )_Notif
-//    {
-//    TWPDirectMessageSession* directMessageSession = _Notif.userInfo[ kDirectMessageSession ];
-//    [ self _pushDirectMessageSessionViewToCurrentViewStack: directMessageSession ];
-//    }
+- ( void ) _shouldExpandDMSession: ( NSNotification* )_Notif
+    {
+    TWPDirectMessageSession* directMessageSession = _Notif.userInfo[ kDirectMessageSession ];
+    [ self _pushDirectMessageSessionViewToCurrentViewStack: directMessageSession ];
+    }
 
 - ( void ) _shouldShowUserTweets: ( NSNotification* )_Notif
     {
@@ -218,8 +220,10 @@
 
 - ( void ) _pushDirectMessageSessionViewToCurrentViewStack: ( TWPDirectMessageSession* )_DirectMessageSession
     {
+    OTCTwitterUser* theOtherSideUser = [ _DirectMessageSession otherSideUser ];
     NSViewController* dmSessionViewNewController =
-        [ TWPDirectMessageSessionViewController sessionViewControllerWithSession: _DirectMessageSession ];
+        [ TWPDirectMessageSessionViewController sessionViewControllerWithSession: _DirectMessageSession
+                                                                withTotemContent: theOtherSideUser.displayName ];
 
     [ self _pushViewIntoViewsStack: dmSessionViewNewController ];
     }

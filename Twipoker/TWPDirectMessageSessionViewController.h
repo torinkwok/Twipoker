@@ -67,8 +67,8 @@
 @property ( weak ) IBOutlet TWPDirectMessageInputBox* inputBox; // #1
 
 #pragma mark Initializations
-+ ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession;
-- ( instancetype ) initWithSession: ( TWPDirectMessageSession* )_DMSession;
++ ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession withTotemContent: ( id )_TotemContent;
+- ( instancetype ) initWithSession: ( TWPDirectMessageSession* )_DMSession withTotemContent: ( id )_TotemContent;
 
 @end
 

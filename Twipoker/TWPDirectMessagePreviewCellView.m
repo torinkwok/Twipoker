@@ -90,6 +90,7 @@
 #pragma mark Private Interfaces
 - ( void ) _postNotifForShowingUserProfile
     {
+    [ self.expandDMSessionButton setHidden: YES ];
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.senderUserNameLabel.twitterUser } ];
@@ -97,6 +98,7 @@
 
 - ( void ) _postNotifForExpandingDMSession
     {
+    [ self.expandDMSessionButton setHidden: YES ];
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldExpandDMSession
                                                            object: self
                                                          userInfo: @{ kDirectMessageSession : self->_session } ];

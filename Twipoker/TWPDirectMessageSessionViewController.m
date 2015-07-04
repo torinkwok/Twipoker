@@ -34,14 +34,20 @@
 
 #pragma mark Initializations
 + ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession
+                                   withTotemContent: ( id )_TotemContent
     {
-    return [ [ [ self class ] alloc ] initWithSession: _DMSession ];
+    return [ [ [ self class ] alloc ] initWithSession: _DMSession withTotemContent: _TotemContent ];
     }
 
 - ( instancetype ) initWithSession: ( TWPDirectMessageSession* )_DMSession
+                  withTotemContent: ( id )_TotemContent
+
     {
     if ( self = [ super initWithNibName: @"TWPDirectMessagesSessionView" bundle: [ NSBundle mainBundle ] ] )
+        {
         self->_session = _DMSession;
+        [ self setTotemContent: _TotemContent ];
+        }
 
     return self;
     }
