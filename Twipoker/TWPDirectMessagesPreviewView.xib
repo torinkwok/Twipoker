@@ -58,7 +58,7 @@
                                                 </connections>
                                             </button>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0f-SW-UKV" userLabel="Tweet Text" customClass="TWPTweetTextField">
-                                                <rect key="frame" x="103" y="16" width="277" height="20"/>
+                                                <rect key="frame" x="103" y="16" width="277.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="UHY-rh-A22"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="273" id="uGR-d2-gd9"/>
@@ -95,23 +95,38 @@
                                                     <action selector="userAvatarClickedAction:" target="fXd-hM-ghn" id="f7c-9s-O6Q"/>
                                                 </connections>
                                             </imageView>
+                                            <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pbq-DG-IdY">
+                                                <rect key="frame" x="308" y="0.0" width="90" height="90"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="90" id="33c-XZ-XaH"/>
+                                                    <constraint firstAttribute="width" constant="90" id="EBo-yW-ax5"/>
+                                                </constraints>
+                                                <buttonCell key="cell" type="square" title="Details" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zzs-Y9-h4i">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="C0f-SW-UKV" firstAttribute="top" secondItem="BjF-zA-S3v" secondAttribute="bottom" constant="25" id="8FT-7W-Cdd"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pbq-DG-IdY" secondAttribute="trailing" id="9nL-Sg-Wrd"/>
                                             <constraint firstItem="rkH-0F-UXh" firstAttribute="top" secondItem="fXd-hM-ghn" secondAttribute="top" constant="10" id="D8W-OO-PTD"/>
                                             <constraint firstAttribute="bottom" secondItem="6YJ-hB-uwB" secondAttribute="bottom" constant="10" id="F83-RG-mGc"/>
                                             <constraint firstItem="BjF-zA-S3v" firstAttribute="top" secondItem="fXd-hM-ghn" secondAttribute="top" constant="12" id="IWn-D2-uaA"/>
                                             <constraint firstItem="6YJ-hB-uwB" firstAttribute="top" secondItem="fXd-hM-ghn" secondAttribute="top" constant="10" id="PIU-PX-s0m"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pbq-DG-IdY" secondAttribute="bottom" id="UAb-zF-hbN"/>
                                             <constraint firstItem="C0f-SW-UKV" firstAttribute="leading" secondItem="6YJ-hB-uwB" secondAttribute="trailing" constant="15" id="WAf-0N-ySY"/>
                                             <constraint firstItem="C0f-SW-UKV" firstAttribute="top" secondItem="rkH-0F-UXh" secondAttribute="bottom" constant="23" id="a3e-13-bKD"/>
                                             <constraint firstItem="6YJ-hB-uwB" firstAttribute="leading" secondItem="fXd-hM-ghn" secondAttribute="leading" constant="20" id="fCK-YV-4Xn"/>
                                             <constraint firstAttribute="bottom" secondItem="C0f-SW-UKV" secondAttribute="bottom" constant="16" id="ghV-yM-rwd"/>
                                             <constraint firstAttribute="trailing" secondItem="C0f-SW-UKV" secondAttribute="trailing" constant="20" id="hhS-XG-CJm"/>
+                                            <constraint firstItem="Pbq-DG-IdY" firstAttribute="top" secondItem="fXd-hM-ghn" secondAttribute="top" id="rI7-Vd-h8O"/>
                                             <constraint firstItem="rkH-0F-UXh" firstAttribute="leading" secondItem="6YJ-hB-uwB" secondAttribute="trailing" constant="15" id="tbZ-PO-GAe"/>
                                             <constraint firstItem="BjF-zA-S3v" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rkH-0F-UXh" secondAttribute="trailing" priority="750" constant="16" id="ti6-0a-6N8"/>
                                             <constraint firstAttribute="trailing" secondItem="BjF-zA-S3v" secondAttribute="trailing" constant="20" id="wlj-nB-GIP"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="expandDMSessionButton" destination="Pbq-DG-IdY" id="Ffo-Mb-PCx"/>
                                             <outlet property="mostRecentDateLabel" destination="BjF-zA-S3v" id="Wib-8C-Bxe"/>
                                             <outlet property="mostTweetPreview" destination="C0f-SW-UKV" id="vh5-Na-NOF"/>
                                             <outlet property="senderAvatar" destination="6YJ-hB-uwB" id="TTi-RZ-qcV"/>

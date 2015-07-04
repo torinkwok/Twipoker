@@ -32,12 +32,17 @@
     {
 @private
     TWPDirectMessageSession __strong* _session;
+
+    NSTrackingAreaOptions _trackingAreaOptions;
+    NSTrackingArea __strong* _trackingArea;
     }
 
 @property ( weak ) IBOutlet TWPUserAvatarWell* senderAvatar;
 @property ( weak ) IBOutlet TWPTimelineUserNameButton* senderUserNameLabel;
 @property ( weak ) IBOutlet NSTextField* mostRecentDateLabel;
 @property ( weak ) IBOutlet NSTextField* mostTweetPreview;
+
+@property ( weak ) IBOutlet NSButton* expandDMSessionButton;
 
 @property ( strong, readwrite ) TWPDirectMessageSession* session;
 

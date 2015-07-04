@@ -34,6 +34,8 @@
 @synthesize mostRecentDateLabel;
 @synthesize mostTweetPreview;
 
+@synthesize expandDMSessionButton;
+
 @dynamic session;
 
 #pragma mark Accessors
@@ -58,7 +60,10 @@
 
 - ( void ) awakeFromNib
     {
-    [ self.window visualizeConstraints: self.constraints ];
+    self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp | NSTrackingInVisibleRect;
+    self->_trackingArea = [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
+
+    [ self addTrackingArea: self->_trackingArea ];
     }
 
 #pragma mark IBAction
@@ -78,6 +83,16 @@
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.senderUserNameLabel.twitterUser } ];
+    }
+
+- ( void ) mouseEntered:(NSEvent *)theEvent
+    {
+    [ self.expandDMSessionButton setHidden: NO ];
+    }
+
+- ( void ) mouseExited:(NSEvent *)theEvent
+    {
+    [ self.expandDMSessionButton setHidden: YES ];
     }
 
 @end

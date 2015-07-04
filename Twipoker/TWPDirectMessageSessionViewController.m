@@ -84,7 +84,6 @@
     return sessionCellView;
     }
 
-
 - ( BOOL ) tableView: ( NSTableView* )_TableView
      shouldSelectRow: ( NSInteger )_Row
     {
