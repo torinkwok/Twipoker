@@ -28,7 +28,7 @@
 NSString extern* const TWPTwipokerShouldShowUserTweets;
 NSString extern* const TWPTwipokerShouldShowUserProfile;
 NSString extern* const TWPTwipokerShouldHideUserProfile;
-NSString extern* const TWPTwipokerShouldShowDMSession;
+NSString extern* const TWPTwipokerShouldExpandDMSession;
 
 // Notification User Info Keys
 NSString extern* const kTwitterUser;

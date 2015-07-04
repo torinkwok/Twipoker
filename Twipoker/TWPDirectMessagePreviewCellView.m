@@ -63,7 +63,7 @@
     // The self->_trackingArea will be created with `NSTrackingInVisibleRect` option,
     // in which case the Application Kit handles the re-computation of self->_trackingArea
     self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
-                                    | NSTrackingInVisibleRect | NSTrackingAssumeInside;
+                                    | NSTrackingInVisibleRect | NSTrackingAssumeInside | NSTrackingMouseMoved;
 
     self->_trackingArea =
         [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
@@ -82,12 +82,24 @@
     [ self _postNotifForShowingUserProfile ];
     }
 
+- ( IBAction ) expandDMSessionButtonClickedAction: ( id )_Sender
+    {
+    [ self _postNotifForExpandingDMSession ];
+    }
+
 #pragma mark Private Interfaces
 - ( void ) _postNotifForShowingUserProfile
     {
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.senderUserNameLabel.twitterUser } ];
+    }
+
+- ( void ) _postNotifForExpandingDMSession
+    {
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldExpandDMSession
+                                                           object: self
+                                                         userInfo: @{ kDirectMessageSession : self->_session } ];
     }
 
 #pragma mark Handling Events
@@ -105,8 +117,16 @@
 
 - ( void ) scrollWheel: ( NSEvent* )_Event
     {
-    [ super scrollWheel: _Event ];
     [ self.expandDMSessionButton setHidden: YES ];
+    [ super scrollWheel: _Event ];
+    }
+
+- ( void ) mouseMoved:(nonnull NSEvent *)theEvent
+    {
+    if ( [ self.expandDMSessionButton isHidden ] )
+        [ self.expandDMSessionButton setHidden: NO ];
+
+    [ super mouseMoved: theEvent ];
     }
 
 @end
