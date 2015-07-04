@@ -60,6 +60,8 @@
 
 - ( void ) awakeFromNib
     {
+    // The self->_trackingArea will be created with `NSTrackingInVisibleRect` option,
+    // in which case the Application Kit handles the re-computation of self->_trackingArea
     self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp | NSTrackingInVisibleRect;
     self->_trackingArea = [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
 
