@@ -28,6 +28,7 @@
 NSString* const TWPTwipokerShouldShowUserTweets = @"GlobalAction.Notif.ShouldShowUserTweets";
 NSString* const TWPTwipokerShouldShowUserProfile = @"GlobalAction.Notif.ShouldShowUserProfile";
 NSString* const TWPTwipokerShouldHideUserProfile = @"GlobalAction.Notif.ShouldHideUserProfile";
+NSString* const TWPTwipokerShouldShowDMSession = @"GlobalAction.Notif.ShouldShowDMSession";
 
 // Notification User Info Keys
 NSString* const kTwitterUser = @"GlobalAction.Notif.UserInfoKey.TwitterUser";

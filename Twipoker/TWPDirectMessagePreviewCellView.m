@@ -62,8 +62,11 @@
     {
     // The self->_trackingArea will be created with `NSTrackingInVisibleRect` option,
     // in which case the Application Kit handles the re-computation of self->_trackingArea
-    self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp | NSTrackingInVisibleRect;
-    self->_trackingArea = [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
+    self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
+                                    | NSTrackingInVisibleRect | NSTrackingAssumeInside;
+
+    self->_trackingArea =
+        [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
 
     [ self addTrackingArea: self->_trackingArea ];
     }
@@ -87,13 +90,22 @@
                                                          userInfo: @{ kTwitterUser : self.senderUserNameLabel.twitterUser } ];
     }
 
-- ( void ) mouseEntered:(NSEvent *)theEvent
+#pragma mark Handling Events
+- ( void ) mouseEntered: ( NSEvent* )_Event
     {
+    [ super mouseEntered: _Event ];
     [ self.expandDMSessionButton setHidden: NO ];
     }
 
-- ( void ) mouseExited:(NSEvent *)theEvent
+- ( void ) mouseExited: ( NSEvent* )_Event
     {
+    [ super mouseExited: _Event ];
+    [ self.expandDMSessionButton setHidden: YES ];
+    }
+
+- ( void ) scrollWheel: ( NSEvent* )_Event
+    {
+    [ super scrollWheel: _Event ];
     [ self.expandDMSessionButton setHidden: YES ];
     }
 

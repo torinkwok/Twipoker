@@ -1,0 +1,51 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BF33C3BAAC366188C471139BF2C57C062F55FB51",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "BF33C3BAAC366188C471139BF2C57C062F55FB51" : 0,
+    "F17C12D860420E85866F57474FF628886C65A3EA" : 0,
+    "336CDBD9E1CDFE33BBA325DD45A570E8908345C7" : 0,
+    "18587E881E3ABFA494C4A3627AA8693F7A3692F3" : 0,
+    "F0515DE9ED749C0E1C50A307EAD2A54C575AF047" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "584A5B3E-760A-4063-92F3-71D3C5419DC1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "BF33C3BAAC366188C471139BF2C57C062F55FB51" : "Twipoker",
+    "F17C12D860420E85866F57474FF628886C65A3EA" : "TwipokerTwipoker\/Vendor\/KVOController",
+    "336CDBD9E1CDFE33BBA325DD45A570E8908345C7" : "TwipokerTwipoker\/Vendor\/INAppStoreWindow",
+    "18587E881E3ABFA494C4A3627AA8693F7A3692F3" : "TwipokerTwipoker\/Vendor\/Objectwitter-C",
+    "F0515DE9ED749C0E1C50A307EAD2A54C575AF047" : "TwipokerTwipoker\/Vendor\/TGForkedMASPreferences"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Twipoker",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Twipoker.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Twipoker-Project\/Objectwitter-C",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18587E881E3ABFA494C4A3627AA8693F7A3692F3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Twipoker-Project\/INAppStoreWindow",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "336CDBD9E1CDFE33BBA325DD45A570E8908345C7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TongG\/Twipoker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BF33C3BAAC366188C471139BF2C57C062F55FB51"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Twipoker-Project\/TGForkedMASPreferences",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F0515DE9ED749C0E1C50A307EAD2A54C575AF047"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Twipoker-Project\/KVOController",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F17C12D860420E85866F57474FF628886C65A3EA"
+    }
+  ]
+}
