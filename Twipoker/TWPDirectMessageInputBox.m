@@ -24,13 +24,18 @@
 
 #import "TWPDirectMessageInputBox.h"
 
+#import "NSColor+Objectwitter-C.h"
+
 @implementation TWPDirectMessageInputBox
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
+#pragma mark Custom Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
     
-    // Drawing code here.
-}
+    [ [ NSColor colorWithHTMLColor: @"F6F6F6" ] set ];
+    NSRectFill( _DirtyRect );
+    }
 
 @end
 

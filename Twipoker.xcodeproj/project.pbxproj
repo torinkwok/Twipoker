@@ -24,6 +24,8 @@
 		831732951B1504A100B136BF /* TWPMainWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 831732941B1504A100B136BF /* TWPMainWindowContentView.m */; };
 		831732981B15CF3B00B136BF /* TWPDirectMessagesPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 831732971B15CF3B00B136BF /* TWPDirectMessagesPreviewView.m */; };
 		8317329B1B15E25C00B136BF /* TWPDirectMessagePreviewCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8317329A1B15E25C00B136BF /* TWPDirectMessagePreviewCellView.m */; };
+		831DF0A31B481757004476A5 /* add-attachment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831DF0A11B481757004476A5 /* add-attachment@2x.png */; };
+		831DF0A41B481757004476A5 /* add-attachment.png in Resources */ = {isa = PBXBuildFile; fileRef = 831DF0A21B481757004476A5 /* add-attachment.png */; };
 		8322ED7D1B258C12003D2907 /* TWPRetweetOperationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8322ED7C1B258C12003D2907 /* TWPRetweetOperationsView.m */; };
 		832DDF831B179ADB00E27937 /* TWPDirectMessageSessionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 832DDF821B179ADB00E27937 /* TWPDirectMessageSessionView.m */; };
 		832DDF861B179AFC00E27937 /* TWPDirectMessageSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832DDF851B179AFC00E27937 /* TWPDirectMessageSessionViewController.m */; };
@@ -274,6 +276,8 @@
 		831732971B15CF3B00B136BF /* TWPDirectMessagesPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDirectMessagesPreviewView.m; path = Twipoker/TWPDirectMessagesPreviewView.m; sourceTree = "<group>"; };
 		831732991B15E25C00B136BF /* TWPDirectMessagePreviewCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDirectMessagePreviewCellView.h; path = Twipoker/TWPDirectMessagePreviewCellView.h; sourceTree = "<group>"; };
 		8317329A1B15E25C00B136BF /* TWPDirectMessagePreviewCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDirectMessagePreviewCellView.m; path = Twipoker/TWPDirectMessagePreviewCellView.m; sourceTree = "<group>"; };
+		831DF0A11B481757004476A5 /* add-attachment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-attachment@2x.png"; sourceTree = "<group>"; };
+		831DF0A21B481757004476A5 /* add-attachment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-attachment.png"; sourceTree = "<group>"; };
 		8322ED7B1B258C12003D2907 /* TWPRetweetOperationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPRetweetOperationsView.h; path = Twipoker/TWPRetweetOperationsView.h; sourceTree = "<group>"; };
 		8322ED7C1B258C12003D2907 /* TWPRetweetOperationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPRetweetOperationsView.m; path = Twipoker/TWPRetweetOperationsView.m; sourceTree = "<group>"; };
 		832DDF811B179ADB00E27937 /* TWPDirectMessageSessionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPDirectMessageSessionView.h; path = Twipoker/TWPDirectMessageSessionView.h; sourceTree = "<group>"; };
@@ -1250,6 +1254,8 @@
 		83CFD8871ACF1FB80062D73D /* artwork */ = {
 			isa = PBXGroup;
 			children = (
+				831DF0A21B481757004476A5 /* add-attachment.png */,
+				831DF0A11B481757004476A5 /* add-attachment@2x.png */,
 				834F29531B2C0348007A85D9 /* go-back-arrow-highlighting.png */,
 				834F29541B2C0348007A85D9 /* go-back-arrow-highlighting@2x.png */,
 				834F29551B2C0348007A85D9 /* go-back-arrow-normal.png */,
@@ -1643,7 +1649,9 @@
 				83CC14DD1B22F7A80046B544 /* twitter-fav-button-normal.png in Resources */,
 				834F29611B2C0348007A85D9 /* go-forward-arrow-normal.png in Resources */,
 				8351C1D61B21DB8E0019BF98 /* tweet_with_pic.png in Resources */,
+				831DF0A31B481757004476A5 /* add-attachment@2x.png in Resources */,
 				83627CCF1B4492BB0032505C /* messages-tab-gray@2x.png in Resources */,
+				831DF0A41B481757004476A5 /* add-attachment.png in Resources */,
 				834F295E1B2C0348007A85D9 /* go-back-arrow-normal@2x.png in Resources */,
 				83CC14E31B22F7A80046B544 /* twitter-retweet-button-normal.png in Resources */,
 				83CFD8961ACF1FFD0062D73D /* icon_16x16.png in Resources */,

@@ -58,7 +58,7 @@
                                                 </connections>
                                             </button>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0f-SW-UKV" userLabel="Tweet Text" customClass="TWPTweetTextField">
-                                                <rect key="frame" x="103" y="16" width="278" height="20"/>
+                                                <rect key="frame" x="103" y="16" width="278.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="UHY-rh-A22"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="273" id="uGR-d2-gd9"/>
