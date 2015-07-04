@@ -29,7 +29,8 @@
 
 @implementation TWPDirectMessageSessionViewController
 
-@synthesize sessionView;
+@synthesize sessionTableView;
+@synthesize inputBox;
 
 #pragma mark Initializations
 + ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession
@@ -52,7 +53,6 @@
 
 - ( void ) dealloc
     {
-    NSLog( @"🔥🔥🔥🔥" );
     [ [ TWPDirectMessagesCoordinator defaultCenter ] removeObserver: self ];
     }
 
@@ -96,7 +96,7 @@
     didUpdateSessionWithUser: ( OTCTwitterUser* )_OtherSideUser
     {
     [ self->_session reloadMessages ];
-    [ self.sessionView reloadData ];
+    [ self.sessionTableView reloadData ];
     }
 
 @end

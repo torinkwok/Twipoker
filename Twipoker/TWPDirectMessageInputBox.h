@@ -22,53 +22,9 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPViewController.h"
-#import "TWPDirectMessagesCoordinator.h"
+@import Cocoa;
 
-@class TWPDirectMessageSession;
-@class TWPDirectMessageSessionView;
-@class TWPDirectMessageInputBox;
-
-/*  View (frozen in TWPDirectMessagesSessionView.xib) controlled by this class:
-
-    ┌──────────────────────────────────────────────────┐
-    │                                                  │
-    │   ┌─────────────────────────┐                    │
-    │   │                         │               #0   │
-    │   │                         │                    │
-    │   └─────────────────────────┘                    │
-    │   ┌─────────────────────────┐                    │
-    │   │                         │                    │
-    │   │                         │                    │
-    │   └─────────────────────────┘                    │
-    │                                                  │
-    │                     ┌─────────────────────────┐  │
-    │                     │                         │  │
-    │                     │                         │  │
-    │                     └─────────────────────────┘  │
-    │                     ┌─────────────────────────┐  │
-    │                     │                         │  │
-    │                     │                         │  │
-    │                     └─────────────────────────┘  │
-    ├────────────────────────#1────────────────────────┤
-    │┌────┐┌────────────────────────────────────┐┌────┐│
-    ││ #2 ││                 #3                 ││ #4 ││
-    │└────┘└────────────────────────────────────┘└────┘│
-    └──────────────────────────────────────────────────┘
- */
-@interface TWPDirectMessageSessionViewController : TWPViewController
-    <NSTableViewDataSource, NSTableViewDelegate, TWPDirectMessagesCoordinatorObserver>
-    {
-@private
-    TWPDirectMessageSession __strong* _session;
-    }
-
-@property ( weak ) IBOutlet NSTableView* sessionTableView;      // #0
-@property ( weak ) IBOutlet TWPDirectMessageInputBox* inputBox; // #1
-
-#pragma mark Initializations
-+ ( instancetype ) sessionViewControllerWithSession: ( TWPDirectMessageSession* )_DMSession;
-- ( instancetype ) initWithSession: ( TWPDirectMessageSession* )_DMSession;
+@interface TWPDirectMessageInputBox : NSView
 
 @end
 

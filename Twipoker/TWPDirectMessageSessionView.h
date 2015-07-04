@@ -24,7 +24,7 @@
 
 @import Cocoa;
 
-@interface TWPDirectMessageSessionView : NSTableView
+@interface TWPDirectMessageSessionView : NSView
 @end
 
 /*=============================================================================┐
