@@ -23,9 +23,9 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTweetCellView.h"
+#import "TWPTextView.h"
 #import "TWPUserAvatarWell.h"
 #import "TWPTimelineUserNameButton.h"
-#import "TWPTweetTextField.h"
 #import "TWPTweetOperationsPanelView.h"
 
 // Notification Names
@@ -44,7 +44,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 @synthesize authorAvatarWell;
 @synthesize userNameLabel;
-@synthesize tweetTextLabel;
+@synthesize tweetTextView;
 
 @synthesize tweetOperationsPanel;
 
@@ -74,7 +74,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
     [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
     [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
-    [ [ self tweetTextLabel ] setTweet: self->_tweet ];
+    [ [ self tweetTextView ] setTweet: self->_tweet ];
 
     [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
 

@@ -63,6 +63,8 @@
         [ layoutManager addTextContainer: textContainer ];
 
         ( void )[ [ NSTextView alloc ] initWithFrame: frame textContainer: textContainer ];
+        [ [ self _textView ] setEditable: NO ];
+        [ [ self _textView ] setSelectable: YES ];
         [ self setNeedsUpdateConstraints: YES ];
         }
 
@@ -71,6 +73,7 @@
 
 - ( void ) updateConstraints
     {
+    [ super updateConstraints ];
     [ self removeConstraints: self.constraints ];
 
     NSTextView* textView = [ self _textView ];
