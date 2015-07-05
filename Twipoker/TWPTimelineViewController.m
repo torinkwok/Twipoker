@@ -64,10 +64,12 @@
     return tweetCellView;
     }
 
+// FIXME
 //- ( CGFloat ) tableView: ( nonnull NSTableView*)_TableView
 //            heightOfRow: ( NSInteger )_Row
 //    {
-//    return 50.f;
+//    TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: _TableView viewForTableColumn: _TableView.tableColumns.firstObject row: _Row ];
+//    return tweetCellView.refSize.height;
 //    }
 
 @end

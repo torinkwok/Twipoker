@@ -42,6 +42,7 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
     {
 @private
     OTCTweet __strong* _tweet;
+    NSSize _refSize;
     }
 
 #pragma mark Outlets
@@ -53,6 +54,11 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 
 @property ( strong, readwrite ) OTCTweet* tweet;
 @property ( strong, readonly ) OTCTwitterUser* author;
+
+@property ( weak ) IBOutlet NSLayoutConstraint* fuckingConstraint;
+
+#pragma mark Properties
+@property ( assign, readonly ) NSSize refSize;
 
 #pragma mark Initialization
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet;

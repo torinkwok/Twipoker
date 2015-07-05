@@ -48,6 +48,8 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 @synthesize tweetOperationsPanel;
 
+@synthesize refSize = _refSize;
+
 @dynamic tweet;
 @dynamic author;
 
@@ -76,6 +78,13 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
     [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
 
+// FIXME
+//    NSFont* font = [ self.tweetTextLabel font ];
+//    NSRect bounding = [ self.tweetTextLabel.stringValue boundingRectWithSize: self.tweetTextLabel.frame.size
+//                                                                     options: 0
+//                                                                  attributes: @{ NSFontAttributeName : font } ];
+//    self->_refSize = bounding.size;
+
     [ self setNeedsDisplay: YES ];
     }
 
@@ -89,21 +98,10 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     return self.tweet.author;
     }
 
-#pragma mark Events Handling
-- ( NSView* ) hitTest: ( NSPoint )_Point
+#pragma mark Constraints
+- ( void ) updateConstraints
     {
-    NSPoint location = [ self convertPoint: _Point fromView: self.superview ];
-    NSArray* subviews = [ self subviews ];
-
-    NSView* hitTestView = nil;
-    for ( NSView* subview in subviews )
-        {
-        NSRect subviewFrame = subview.frame;
-        if ( [ self mouse: location inRect: subviewFrame ] )
-            hitTestView = [ subview hitTest: location ];
-        }
-
-    return hitTestView;
+    [ super updateConstraints ];
     }
 
 #pragma mark IBAction

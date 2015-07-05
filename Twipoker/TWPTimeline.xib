@@ -145,6 +145,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="authorAvatarWell" destination="AUA-3k-7Zo" id="VCS-jr-VW6"/>
+                                            <outlet property="fuckingConstraint" destination="QTX-aL-ul7" id="WJG-z1-Nd1"/>
                                             <outlet property="tweetOperationsPanel" destination="keF-c2-Eeb" id="Cr2-yF-3f7"/>
                                             <outlet property="tweetTextLabel" destination="RUo-13-Uhb" id="PJI-NY-UQv"/>
                                             <outlet property="userNameLabel" destination="bD2-rm-Fkf" id="f1i-bd-RlX"/>
