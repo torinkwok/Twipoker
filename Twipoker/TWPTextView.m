@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTextView.h"
+#import "NSColor+Objectwitter-C.h"
 
 // Private Interfaces
 @interface TWPTextView ()
@@ -65,6 +66,8 @@
         ( void )[ [ NSTextView alloc ] initWithFrame: frame textContainer: textContainer ];
         [ [ self _textView ] setEditable: NO ];
         [ [ self _textView ] setSelectable: YES ];
+        [ [ self _textView ] setFont: [ [ NSFontManager sharedFontManager ] convertWeight: .5f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 14.f ] ] ];
+        [ [ self _textView ] setTextColor: [ NSColor colorWithHTMLColor: @"66757F" ] ];
         [ self setNeedsUpdateConstraints: YES ];
         }
 
@@ -73,7 +76,6 @@
 
 - ( void ) updateConstraints
     {
-    [ super updateConstraints ];
     [ self removeConstraints: self.constraints ];
 
     NSTextView* textView = [ self _textView ];
@@ -81,10 +83,11 @@
     [ self addSubview: textView ];
 
     NSDictionary* viewsDict = NSDictionaryOfVariableBindings( textView );
-    NSArray* horizontalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth)]|" options: 0 metrics: @{ @"textViewWidth" : @( NSWidth( textView.frame ) ) } views: viewsDict ];
-    NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight)]|" options: 0 metrics: @{ @"textViewHeight" :  @( NSHeight( textView.frame ) ) } views: viewsDict ];
+    NSArray* horizontalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth@750)]|" options: 0 metrics: @{ @"textViewWidth" : @( NSWidth( textView.frame ) ) } views: viewsDict ];
+    NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight@750)]|" options: 0 metrics: @{ @"textViewHeight" :  @( NSHeight( textView.frame ) ) } views: viewsDict ];
     [ self addConstraints: horizontalConstraints ];
     [ self addConstraints: verticalConstraints ];
+    [ super updateConstraints ];
     }
 
 - ( OTCTweet* ) tweet
