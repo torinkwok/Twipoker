@@ -798,7 +798,6 @@
 		83924D271AE0FC6300C25895 /* main-window */ = {
 			isa = PBXGroup;
 			children = (
-				833B2EE51B46D32500D5E96B /* nav-bar */,
 				83924D281AE0FC6F00C25895 /* xib */,
 				83F231B21AE1147A00A05D1D /* TWPMainWindowController.h */,
 				83F231B31AE1147A00A05D1D /* TWPMainWindowController.m */,
@@ -810,6 +809,7 @@
 				83F231B01AE1147A00A05D1D /* TWPMainWindow.m */,
 				8336E5611AEE117C008A099C /* TWPViewController.h */,
 				8336E5621AEE117C008A099C /* TWPViewController.m */,
+				833B2EE51B46D32500D5E96B /* nav-bar */,
 				8347B7CF1AE799FF003A49AD /* dashboard */,
 				830B8F601AF0DF72006D2635 /* stack-content-view */,
 				83B272021B3008BE00953C28 /* user-profile */,

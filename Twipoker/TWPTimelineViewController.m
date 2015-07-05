@@ -64,6 +64,12 @@
     return tweetCellView;
     }
 
+//- ( CGFloat ) tableView: ( nonnull NSTableView*)_TableView
+//            heightOfRow: ( NSInteger )_Row
+//    {
+//    return 50.f;
+//    }
+
 @end
 
 /*=============================================================================┐
