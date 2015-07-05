@@ -54,7 +54,6 @@
 
     NSDictionary* viewsDict = NSDictionaryOfVariableBindings( _homeTab, _favTab, _listsTab, _notifTab, _meTab, _dmTab, _composeButton );
 
-    // FIXME: Fucking bug
     NSArray* verticalConstraints = [ NSLayoutConstraint
         constraintsWithVisualFormat: @"V:|-topSpace-"
                                       "[_homeTab(==homeTabHeight)][_favTab(==favTabHeight)][_listsTab(==listsTabHeight)]"
