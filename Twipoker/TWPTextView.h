@@ -34,6 +34,7 @@
 
 @property ( strong, readwrite ) OTCTweet* tweet;
 @property ( strong, readonly ) NSTextStorage* tweetTextStorage;
+@property ( assign, readonly ) CGFloat textBlockHeight;
 
 @end // TWPTextView class
 

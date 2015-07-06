@@ -69,7 +69,7 @@
 //            heightOfRow: ( NSInteger )_Row
 //    {
 //    TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: _TableView viewForTableColumn: _TableView.tableColumns.firstObject row: _Row ];
-//    return tweetCellView.refSize.height;
+//    return tweetCellView.refHeight;
 //    }
 
 @end

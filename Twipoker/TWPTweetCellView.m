@@ -48,10 +48,14 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 @synthesize tweetOperationsPanel;
 
-@synthesize refSize = _refSize;
+@synthesize refHeight = _refHeight;
 
 @dynamic tweet;
 @dynamic author;
+
+@synthesize topSpaceConstraint;
+@synthesize spaceBetweenUserNameLabelAndTextView;
+@synthesize bottomSpaceConstraint;
 
 #pragma mark Initialization
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet
@@ -83,7 +87,12 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 //    NSRect bounding = [ self.tweetTextLabel.stringValue boundingRectWithSize: self.tweetTextLabel.frame.size
 //                                                                     options: 0
 //                                                                  attributes: @{ NSFontAttributeName : font } ];
-//    self->_refSize = bounding.size;
+
+    CGFloat height0 = self.topSpaceConstraint.constant;
+    CGFloat height1 = self.spaceBetweenUserNameLabelAndTextView.constant;
+    CGFloat height2 = self.bottomSpaceConstraint.constant;
+    CGFloat height3 = self.tweetTextView.textBlockHeight;
+    self->_refHeight = height0 + height1 + height2 + height3;
 
     [ self setNeedsDisplay: YES ];
     }

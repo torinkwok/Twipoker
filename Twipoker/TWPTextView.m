@@ -35,6 +35,7 @@
 
 @dynamic tweet;
 @synthesize tweetTextStorage = _tweetTextStorage;
+@dynamic textBlockHeight;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
@@ -93,6 +94,16 @@
 - ( OTCTweet* ) tweet
     {
     return self->_tweet;
+    }
+
+- ( CGFloat ) textBlockHeight
+    {
+    NSLayoutManager* firstLayoutManager = self->_tweetTextStorage.layoutManagers.firstObject;
+    NSTextContainer* firstTextContainer = firstLayoutManager.textContainers.firstObject;
+
+    // FIXME
+//    return [ firstLayoutManager usedRectForTextContainer: firstTextContainer ].size.height;
+    return firstTextContainer.containerSize.height;
     }
 
 #pragma mark Private Interfaces
