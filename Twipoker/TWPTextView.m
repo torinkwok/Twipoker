@@ -96,12 +96,19 @@
 
 - ( CGFloat ) textBlockHeight
     {
-    NSLayoutManager* firstLayoutManager = self->_tweetTextStorage.layoutManagers.firstObject;
-    NSTextContainer* firstTextContainer = firstLayoutManager.textContainers.firstObject;
+//    NSLayoutManager* firstLayoutManager = self->_tweetTextStorage.layoutManagers.firstObject;
+//    NSTextContainer* firstTextContainer = firstLayoutManager.textContainers.firstObject;
+
+    NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithAttributedString: self->_tweetTextStorage ];
+    NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( NSWidth( self.bounds ), FLT_MAX ) ];
+    NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
+
+    [ layoutManager addTextContainer: textContainer ];
+    [ textStorage addLayoutManager: layoutManager ];
 
     // FIXME
-    ( void )[ firstLayoutManager glyphRangeForTextContainer: firstTextContainer ];
-    return [ firstLayoutManager usedRectForTextContainer: firstTextContainer ].size.height;
+    ( void )[ layoutManager glyphRangeForTextContainer: textContainer ];
+    return [ layoutManager usedRectForTextContainer: textContainer ].size.height;
 //    return firstTextContainer.containerSize.height;
     }
 
