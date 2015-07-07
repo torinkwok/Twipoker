@@ -203,6 +203,14 @@
 		83D8FFD61B245A7C00D1F825 /* TWPRetweetOperationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D8FFD41B245A7C00D1F825 /* TWPRetweetOperationsViewController.m */; };
 		83DB89801B3B53040043EE52 /* NSView+TwipokerAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DB897F1B3B53040043EE52 /* NSView+TwipokerAutoLayout.m */; };
 		83DD2DB31B2EAC2F000535FF /* TWPNormalTweetBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD2DB21B2EAC2F000535FF /* TWPNormalTweetBoxController.m */; };
+		83DD853D1B4B91B400ED2B44 /* font-lato-black-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83DD85391B4B91B400ED2B44 /* font-lato-black-regular.ttf */; };
+		83DD853E1B4B91B400ED2B44 /* font-lato-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83DD853A1B4B91B400ED2B44 /* font-lato-bold.ttf */; };
+		83DD853F1B4B91B400ED2B44 /* font-lato-light-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83DD853B1B4B91B400ED2B44 /* font-lato-light-regular.ttf */; };
+		83DD85401B4B91B400ED2B44 /* font-lato-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83DD853C1B4B91B400ED2B44 /* font-lato-regular.ttf */; };
+		83DD85411B4B91FF00ED2B44 /* font-lato-black-regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83DD85391B4B91B400ED2B44 /* font-lato-black-regular.ttf */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		83DD85421B4B91FF00ED2B44 /* font-lato-bold.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83DD853A1B4B91B400ED2B44 /* font-lato-bold.ttf */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		83DD85431B4B91FF00ED2B44 /* font-lato-light-regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83DD853B1B4B91B400ED2B44 /* font-lato-light-regular.ttf */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		83DD85441B4B91FF00ED2B44 /* font-lato-regular.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83DD853C1B4B91B400ED2B44 /* font-lato-regular.ttf */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		83E9A2E11B02721200CA5926 /* NSDateFormatter+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E9A2C91B02721200CA5926 /* NSDateFormatter+STTwitter.m */; };
 		83E9A2E21B02721200CA5926 /* NSError+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E9A2CB1B02721200CA5926 /* NSError+STTwitter.m */; };
 		83E9A2E31B02721200CA5926 /* NSString+STTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E9A2CD1B02721200CA5926 /* NSString+STTwitter.m */; };
@@ -243,6 +251,22 @@
 			remoteInfo = Twipoker;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		83DD85291B4B8F9700ED2B44 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				83DD85411B4B91FF00ED2B44 /* font-lato-black-regular.ttf in CopyFiles */,
+				83DD85421B4B91FF00ED2B44 /* font-lato-bold.ttf in CopyFiles */,
+				83DD85431B4B91FF00ED2B44 /* font-lato-light-regular.ttf in CopyFiles */,
+				83DD85441B4B91FF00ED2B44 /* font-lato-regular.ttf in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineScrollView.h; path = Twipoker/TWPTimelineScrollView.h; sourceTree = "<group>"; };
@@ -564,6 +588,10 @@
 		83DB897F1B3B53040043EE52 /* NSView+TwipokerAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+TwipokerAutoLayout.m"; sourceTree = "<group>"; };
 		83DD2DB11B2EAC2F000535FF /* TWPNormalTweetBoxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPNormalTweetBoxController.h; path = Twipoker/TWPNormalTweetBoxController.h; sourceTree = "<group>"; };
 		83DD2DB21B2EAC2F000535FF /* TWPNormalTweetBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPNormalTweetBoxController.m; path = Twipoker/TWPNormalTweetBoxController.m; sourceTree = "<group>"; };
+		83DD85391B4B91B400ED2B44 /* font-lato-black-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "font-lato-black-regular.ttf"; sourceTree = "<group>"; };
+		83DD853A1B4B91B400ED2B44 /* font-lato-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "font-lato-bold.ttf"; sourceTree = "<group>"; };
+		83DD853B1B4B91B400ED2B44 /* font-lato-light-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "font-lato-light-regular.ttf"; sourceTree = "<group>"; };
+		83DD853C1B4B91B400ED2B44 /* font-lato-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "font-lato-regular.ttf"; sourceTree = "<group>"; };
 		83E9A2C81B02721200CA5926 /* NSDateFormatter+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+STTwitter.h"; path = "Twipoker/Vendor/Objectwitter-C/STTwitter/NSDateFormatter+STTwitter.h"; sourceTree = SOURCE_ROOT; };
 		83E9A2C91B02721200CA5926 /* NSDateFormatter+STTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+STTwitter.m"; path = "Twipoker/Vendor/Objectwitter-C/STTwitter/NSDateFormatter+STTwitter.m"; sourceTree = SOURCE_ROOT; };
 		83E9A2CA1B02721200CA5926 /* NSError+STTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+STTwitter.h"; path = "Twipoker/Vendor/Objectwitter-C/STTwitter/NSError+STTwitter.h"; sourceTree = SOURCE_ROOT; };
@@ -1344,6 +1372,7 @@
 				83CFD87A1ACF1CCA0062D73D /* login-panel */,
 				83CFD8361ACF1C820062D73D /* debug */,
 				83D3FF181ACB144B009D40EE /* whole-app */,
+				83DD85371B4B91B400ED2B44 /* fonts */,
 				83CFD8871ACF1FB80062D73D /* artwork */,
 				83D749D81ACF265D00788683 /* vendor */,
 				83D3FF361ACB144B009D40EE /* TwipokerTests */,
@@ -1472,6 +1501,26 @@
 			name = xib;
 			sourceTree = "<group>";
 		};
+		83DD85371B4B91B400ED2B44 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				83DD85381B4B91B400ED2B44 /* Lato Family */,
+			);
+			name = fonts;
+			path = Twipoker/Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
+		83DD85381B4B91B400ED2B44 /* Lato Family */ = {
+			isa = PBXGroup;
+			children = (
+				83DD85391B4B91B400ED2B44 /* font-lato-black-regular.ttf */,
+				83DD853A1B4B91B400ED2B44 /* font-lato-bold.ttf */,
+				83DD853B1B4B91B400ED2B44 /* font-lato-light-regular.ttf */,
+				83DD853C1B4B91B400ED2B44 /* font-lato-regular.ttf */,
+			);
+			path = "Lato Family";
+			sourceTree = "<group>";
+		};
 		83E9A2F61B02726800CA5926 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1508,6 +1557,7 @@
 				83D3FF0B1ACB144B009D40EE /* Sources */,
 				83D3FF0C1ACB144B009D40EE /* Frameworks */,
 				83D3FF0D1ACB144B009D40EE /* Resources */,
+				83DD85291B4B8F9700ED2B44 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1583,8 +1633,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83DD85401B4B91B400ED2B44 /* font-lato-regular.ttf in Resources */,
 				83CC14E41B22F7A80046B544 /* twitter-retweet-button-normal@2x.png in Resources */,
 				83627CBD1B448DD20032505C /* notif-tab-gray@2x.png in Resources */,
+				83DD853E1B4B91B400ED2B44 /* font-lato-bold.ttf in Resources */,
 				83CC14DF1B22F7A80046B544 /* twitter-reply-button-highlighting.png in Resources */,
 				83CC14E81B2305F20046B544 /* twitter-retweet-button-highlighting@2x.png in Resources */,
 				83CFD8971ACF1FFD0062D73D /* icon_16x16@2x.png in Resources */,
@@ -1602,6 +1654,7 @@
 				83D3FF231ACB144B009D40EE /* Credits.rtf in Resources */,
 				83627CA11B4488070032505C /* home-tab-gray@2x.png in Resources */,
 				83CFD89A1ACF1FFD0062D73D /* icon_128x128.png in Resources */,
+				83DD853F1B4B91B400ED2B44 /* font-lato-light-regular.ttf in Resources */,
 				83CFD8741ACF1C820062D73D /* TWPLoginPanel.xib in Resources */,
 				83B272071B30094600953C28 /* TWPTwitterUserProfileView.xib in Resources */,
 				83627CB91B448D5B0032505C /* notif-tab-white.png in Resources */,
@@ -1618,6 +1671,7 @@
 				833B2EE81B46DC8700D5E96B /* TWPDirectMessagesPreviewView.xib in Resources */,
 				834F295B1B2C0348007A85D9 /* go-back-arrow-highlighting.png in Resources */,
 				83627CC11B448E4D0032505C /* me-tab-white@2x.png in Resources */,
+				83DD853D1B4B91B400ED2B44 /* font-lato-black-regular.ttf in Resources */,
 				83CC14DB1B22F7A80046B544 /* twitter-fav-button-highlighting.png in Resources */,
 				83924DA91AE1033700C25895 /* MASPreferencesWindow.xib in Resources */,
 				834F295D1B2C0348007A85D9 /* go-back-arrow-normal.png in Resources */,

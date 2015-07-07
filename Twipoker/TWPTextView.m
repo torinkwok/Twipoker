@@ -71,12 +71,14 @@
         [ [ self _textView ] setSelectable: YES ];
         [ [ self _textView ] setFont: [ [ NSFontManager sharedFontManager ] convertWeight: .5f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 14.f ] ] ];
         [ [ self _textView ] setTextColor: [ NSColor colorWithHTMLColor: @"66757F" ] ];
-        [ [ self _textView ] setFont: [ NSFont fontWithName: @"Lucida Grande" size: 13.f ] ];
+
         [ self setNeedsUpdateConstraints: YES ];
         }
 
     [ [ self _textView ] setString: self->_tweet.tweetText ];
-    [ self->_tweetTextStorage addAttributes: @{ NSParagraphStyleAttributeName : self->_paragraphStyle }
+    [ self->_tweetTextStorage addAttributes: @{ NSParagraphStyleAttributeName : self->_paragraphStyle
+                                              , NSFontAttributeName : [ NSFont fontWithName: @"Lato" size: 14.f ]
+                                              }
                                       range: NSMakeRange( 0, self->_tweetTextStorage.string.length ) ];
     }
 
