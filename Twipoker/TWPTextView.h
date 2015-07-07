@@ -30,10 +30,12 @@
 @private
     OTCTweet __strong* _tweet;
     NSTextStorage __strong* _tweetTextStorage;
+    NSMutableParagraphStyle __strong* _paragraphStyle;
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;
 @property ( strong, readonly ) NSTextStorage* tweetTextStorage;
+@property ( strong, readonly ) NSParagraphStyle* paragraphStyle;    // Derived from the ivar: self->_paragraphStyle
 @property ( assign, readonly ) CGFloat textBlockHeight;
 
 @end // TWPTextView class

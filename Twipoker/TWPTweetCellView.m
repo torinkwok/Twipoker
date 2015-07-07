@@ -82,12 +82,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
     [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
 
-// FIXME
-//    NSFont* font = [ self.tweetTextLabel font ];
-//    NSRect bounding = [ self.tweetTextLabel.stringValue boundingRectWithSize: self.tweetTextLabel.frame.size
-//                                                                     options: 0
-//                                                                  attributes: @{ NSFontAttributeName : font } ];
-
     CGFloat height0 = self.topSpaceConstraint.constant;
     CGFloat height1 = self.spaceBetweenUserNameLabelAndTextView.constant;
     CGFloat height2 = self.bottomSpaceConstraint.constant;

@@ -41,11 +41,11 @@
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
                                     <tableCellView id="Ivh-Fg-vDh" customClass="TWPTweetCellView">
-                                        <rect key="frame" x="1" y="1" width="398" height="140"/>
+                                        <rect key="frame" x="1" y="1" width="397" height="140"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bD2-rm-Fkf" customClass="TWPTimelineUserNameButton">
-                                                <rect key="frame" x="105" y="103" width="183" height="23"/>
+                                                <rect key="frame" x="105" y="103" width="183.5" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="182.5" id="dsg-0z-i6k"/>
                                                     <constraint firstAttribute="height" constant="21" id="yb5-xa-O0p"/>
@@ -72,7 +72,7 @@
                                                 </connections>
                                             </imageView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="keF-c2-Eeb" customClass="TWPTweetOperationsPanelView">
-                                                <rect key="frame" x="302" y="103" width="76" height="22"/>
+                                                <rect key="frame" x="301" y="103" width="76" height="22"/>
                                                 <subviews>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vc3-JV-3jd" customClass="TWPReplyButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -120,7 +120,7 @@
                                                 </connections>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="XO7-Ab-T27" customClass="TWPTextView">
-                                                <rect key="frame" x="105" y="3" width="273" height="91"/>
+                                                <rect key="frame" x="105" y="3" width="272.5" height="91"/>
                                                 <animations/>
                                             </customView>
                                         </subviews>

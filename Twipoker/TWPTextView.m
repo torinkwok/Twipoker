@@ -35,12 +35,14 @@
 
 @dynamic tweet;
 @synthesize tweetTextStorage = _tweetTextStorage;
+@dynamic paragraphStyle;
 @dynamic textBlockHeight;
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
     {
-    // TODO:
+    self->_paragraphStyle = [ [ NSParagraphStyle defaultParagraphStyle ] mutableCopy ];
+    [ self->_paragraphStyle setLineSpacing: 3.5f ];
     }
 
 #pragma mark Dynamic Accessors
@@ -49,7 +51,7 @@
     self->_tweet = _Tweet;
     if ( !self->_tweetTextStorage )
         {
-        self->_tweetTextStorage  = [ [ NSTextStorage alloc ] initWithString: self->_tweet.tweetText ];
+        self->_tweetTextStorage = [ [ NSTextStorage alloc ] initWithString: self->_tweet.tweetText ];
 
         NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
         [ self->_tweetTextStorage addLayoutManager: layoutManager ];
@@ -69,12 +71,36 @@
         [ [ self _textView ] setSelectable: YES ];
         [ [ self _textView ] setFont: [ [ NSFontManager sharedFontManager ] convertWeight: .5f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 14.f ] ] ];
         [ [ self _textView ] setTextColor: [ NSColor colorWithHTMLColor: @"66757F" ] ];
+        [ [ self _textView ] setFont: [ NSFont fontWithName: @"Lucida Grande" size: 13.f ] ];
         [ self setNeedsUpdateConstraints: YES ];
         }
 
     [ [ self _textView ] setString: self->_tweet.tweetText ];
+    [ self->_tweetTextStorage addAttributes: @{ NSParagraphStyleAttributeName : self->_paragraphStyle }
+                                      range: NSMakeRange( 0, self->_tweetTextStorage.string.length ) ];
     }
 
+- ( OTCTweet* ) tweet
+    {
+    return self->_tweet;
+    }
+
+- ( NSParagraphStyle* ) paragraphStyle
+    {
+    return [ self->_paragraphStyle copy ];
+    }
+
+- ( CGFloat ) textBlockHeight
+    {
+    NSLayoutManager* firstLayoutManager = self->_tweetTextStorage.layoutManagers.firstObject;
+    NSTextContainer* firstTextContainer = firstLayoutManager.textContainers.firstObject;
+
+    // FIXME
+//    return [ firstLayoutManager usedRectForTextContainer: firstTextContainer ].size.height;
+    return firstTextContainer.containerSize.height;
+    }
+
+#pragma mark Constraints-Based Auto Layout
 - ( void ) updateConstraints
     {
     [ self removeConstraints: self.constraints ];
@@ -89,21 +115,6 @@
     [ self addConstraints: horizontalConstraints ];
     [ self addConstraints: verticalConstraints ];
     [ super updateConstraints ];
-    }
-
-- ( OTCTweet* ) tweet
-    {
-    return self->_tweet;
-    }
-
-- ( CGFloat ) textBlockHeight
-    {
-    NSLayoutManager* firstLayoutManager = self->_tweetTextStorage.layoutManagers.firstObject;
-    NSTextContainer* firstTextContainer = firstLayoutManager.textContainers.firstObject;
-
-    // FIXME
-//    return [ firstLayoutManager usedRectForTextContainer: firstTextContainer ].size.height;
-    return firstTextContainer.containerSize.height;
     }
 
 #pragma mark Private Interfaces
