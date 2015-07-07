@@ -64,14 +64,14 @@
     return tweetCellView;
     }
 
-// FIXME
+
 - ( CGFloat ) tableView: ( nonnull NSTableView*)_TableView
             heightOfRow: ( NSInteger )_Row
     {
     TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: _TableView viewForTableColumn: _TableView.tableColumns.firstObject row: _Row ];
-
+    CGFloat minimumHeight = NSHeight( tweetCellView.bounds );
     CGFloat refHeight = tweetCellView.refHeight;
-    return ( refHeight > 140.f ) ? refHeight : 140.f;
+    return ( refHeight > minimumHeight ) ? refHeight : minimumHeight;
     }
 
 @end
