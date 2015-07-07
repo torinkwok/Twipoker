@@ -66,10 +66,10 @@
 
 - ( void ) _init
     {
-    self->_fontOfDisplayName = [ [ NSFontManager sharedFontManager ] convertWeight: .8f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 15.f ] ];
+    self->_fontOfDisplayName = [ NSFont fontWithName: @"Lato" size: 16.5f ];
     self->_colorOfDisplayName = [ NSColor colorWithHTMLColor: @"4A4A4A" ];
 
-    self->_fontOfScreenName = [ [ NSFontManager sharedFontManager ] convertWeight: 2.f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 13.f ] ];
+    self->_fontOfScreenName = [ NSFont fontWithName: @"Lato" size: 14.f ];
     self->_colorOfScreenName = [ NSColor colorWithHTMLColor: @"A5A5A5" ];
     }
 
@@ -94,7 +94,7 @@
                                              );
 
     self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( self->_displayNameStringRect ) + 3.f // Just a little tweak
-                                            , NSMinY( self.bounds ) - 1.f // Just a little tweak
+                                            , NSMinY( self.bounds )
                                             , screenNameStringSizeWithAttrs.width
                                             , screenNameStringSizeWithAttrs.height
                                             );
