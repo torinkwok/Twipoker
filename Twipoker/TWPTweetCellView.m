@@ -71,6 +71,11 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     return self;
     }
 
+- ( void ) awakeFromNib
+    {
+//    [ self removeConstraints: self.constraints ];
+    }
+
 #pragma mark Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
@@ -89,6 +94,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     self->_refHeight = height0 + height1 + height2 + height3;
 
     [ self setNeedsDisplay: YES ];
+    [ self setNeedsUpdateConstraints: YES ];
     }
 
 - ( OTCTweet* ) tweet
