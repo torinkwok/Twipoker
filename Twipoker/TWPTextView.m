@@ -75,7 +75,9 @@
         [ self setNeedsUpdateConstraints: YES ];
         }
 
-    [ [ self _textView ] setString: self->_tweet.tweetText ];
+    [ self->_tweetTextStorage replaceCharactersInRange: NSMakeRange( 0, self->_tweetTextStorage.string.length )
+                                            withString: self->_tweet.tweetText ];
+
     [ self->_tweetTextStorage addAttributes: @{ NSParagraphStyleAttributeName : self->_paragraphStyle
                                               , NSFontAttributeName : [ NSFont fontWithName: @"Lato" size: 14.f ]
                                               }
@@ -98,13 +100,15 @@
     NSTextContainer* firstTextContainer = firstLayoutManager.textContainers.firstObject;
 
     // FIXME
-//    return [ firstLayoutManager usedRectForTextContainer: firstTextContainer ].size.height;
-    return firstTextContainer.containerSize.height;
+    ( void )[ firstLayoutManager glyphRangeForTextContainer: firstTextContainer ];
+    return [ firstLayoutManager usedRectForTextContainer: firstTextContainer ].size.height;
+//    return firstTextContainer.containerSize.height;
     }
 
 #pragma mark Constraints-Based Auto Layout
 - ( void ) updateConstraints
     {
+    [ super updateConstraints ];
     [ self removeConstraints: self.constraints ];
 
     NSTextView* textView = [ self _textView ];
@@ -116,7 +120,6 @@
     NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight@750)]|" options: 0 metrics: @{ @"textViewHeight" :  @( NSHeight( textView.frame ) ) } views: viewsDict ];
     [ self addConstraints: horizontalConstraints ];
     [ self addConstraints: verticalConstraints ];
-    [ super updateConstraints ];
     }
 
 #pragma mark Private Interfaces

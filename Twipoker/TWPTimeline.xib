@@ -120,6 +120,10 @@
                                             </customView>
                                             <customView identifier="tweet-text-view" translatesAutoresizingMaskIntoConstraints="NO" id="XO7-Ab-T27" customClass="TWPTextView">
                                                 <rect key="frame" x="105" y="3" width="272" height="89"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="272" id="NoL-R7-E9u"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="89" id="mSh-CW-1hG"/>
+                                                </constraints>
                                                 <animations/>
                                             </customView>
                                         </subviews>

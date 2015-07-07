@@ -73,6 +73,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 - ( void ) awakeFromNib
     {
+//    NSArray* constraints = self.constraints;
 //    [ self removeConstraints: self.constraints ];
     }
 
@@ -90,11 +91,13 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     CGFloat height0 = self.topSpaceConstraint.constant;
     CGFloat height1 = self.spaceBetweenUserNameLabelAndTextView.constant;
     CGFloat height2 = self.bottomSpaceConstraint.constant;
-    CGFloat height3 = self.tweetTextView.textBlockHeight;
-    self->_refHeight = height0 + height1 + height2 + height3;
 
-    [ self setNeedsDisplay: YES ];
-    [ self setNeedsUpdateConstraints: YES ];
+    CGFloat height3 = self.tweetTextView.textBlockHeight;
+    CGFloat height4 = NSHeight( self.userNameLabel.frame );
+
+    self->_refHeight = height0 + height1 + height2 + height3 + height4;
+
+//    [ self setNeedsDisplay: YES ];
     }
 
 - ( OTCTweet* ) tweet
