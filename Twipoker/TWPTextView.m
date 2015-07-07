@@ -68,7 +68,7 @@
 
         ( void )[ [ NSTextView alloc ] initWithFrame: frame textContainer: textContainer ];
         [ [ self _textView ] setEditable: NO ];
-        [ [ self _textView ] setSelectable: YES ];
+        [ [ self _textView ] setSelectable: NO ];
         [ [ self _textView ] setFont: [ [ NSFontManager sharedFontManager ] convertWeight: .5f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 14.f ] ] ];
         [ [ self _textView ] setTextColor: [ NSColor colorWithHTMLColor: @"66757F" ] ];
 

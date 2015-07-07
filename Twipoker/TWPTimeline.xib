@@ -45,10 +45,10 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bD2-rm-Fkf" customClass="TWPTimelineUserNameButton">
-                                                <rect key="frame" x="105" y="99" width="183.5" height="27"/>
+                                                <rect key="frame" x="105" y="101" width="183.5" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="184" id="dsg-0z-i6k"/>
-                                                    <constraint firstAttribute="height" constant="25" id="yb5-xa-O0p"/>
+                                                    <constraint firstAttribute="height" constant="23" id="yb5-xa-O0p"/>
                                                 </constraints>
                                                 <animations/>
                                                 <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SC2-t4-JSy">
@@ -72,7 +72,7 @@
                                                 </connections>
                                             </imageView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="keF-c2-Eeb" customClass="TWPTweetOperationsPanelView">
-                                                <rect key="frame" x="301" y="101" width="76" height="22"/>
+                                                <rect key="frame" x="301" y="103" width="76" height="22"/>
                                                 <subviews>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vc3-JV-3jd" customClass="TWPReplyButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -119,13 +119,13 @@
                                                 </connections>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="XO7-Ab-T27" customClass="TWPTextView">
-                                                <rect key="frame" x="105" y="3" width="272.5" height="87"/>
+                                                <rect key="frame" x="105" y="3" width="272" height="89"/>
                                                 <animations/>
                                             </customView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AUA-3k-7Zo" secondAttribute="bottom" constant="55" id="4rm-I2-kjI"/>
-                                            <constraint firstItem="keF-c2-Eeb" firstAttribute="top" secondItem="Ivh-Fg-vDh" secondAttribute="top" constant="17" id="B9G-wN-3PH"/>
+                                            <constraint firstItem="keF-c2-Eeb" firstAttribute="top" secondItem="Ivh-Fg-vDh" secondAttribute="top" constant="15" id="B9G-wN-3PH"/>
                                             <constraint firstItem="AUA-3k-7Zo" firstAttribute="top" secondItem="Ivh-Fg-vDh" secondAttribute="top" constant="15" id="Cft-Jn-ytN"/>
                                             <constraint firstAttribute="trailing" secondItem="keF-c2-Eeb" secondAttribute="trailing" constant="20" id="DUM-jd-Q9N"/>
                                             <constraint firstAttribute="bottom" secondItem="XO7-Ab-T27" secondAttribute="bottom" constant="3" id="IPf-r3-oeU"/>
@@ -174,7 +174,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="9T8-Kp-bTt"/>
             </connections>
-            <point key="canvasLocation" x="-166" y="-2610.5"/>
+            <point key="canvasLocation" x="-143" y="-2609.5"/>
         </scrollView>
     </objects>
 </document>

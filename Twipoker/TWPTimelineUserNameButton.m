@@ -66,7 +66,7 @@
 
 - ( void ) _init
     {
-    self->_fontOfDisplayName = [ NSFont fontWithName: @"Lato" size: 16.5f ];
+    self->_fontOfDisplayName = [ NSFont fontWithName: @"Lato" size: 14.f ];
     self->_colorOfDisplayName = [ NSColor colorWithHTMLColor: @"4A4A4A" ];
 
     self->_fontOfScreenName = [ NSFont fontWithName: @"Lato" size: 14.f ];
@@ -89,17 +89,22 @@
     NSSize screenNameStringSizeWithAttrs =
         [ self->_twitterUser.screenName sizeWithAttributes: @{ NSFontAttributeName : self->_fontOfScreenName } ];
 
-    self->_displayNameStringRect = NSMakeRect( NSMinX( self.bounds ), NSMinY( self.bounds )
-                                             , displayNameStringSizeWithAttrs.width, displayNameStringSizeWithAttrs.height
+    self->_displayNameStringRect = NSMakeRect( NSMinX( self.bounds )
+//                                             , ( NSHeight( self.bounds ) - displayNameStringSizeWithAttrs.height ) / 2
+                                            , NSMinY( self.bounds )
+                                             , displayNameStringSizeWithAttrs.width
+                                             , displayNameStringSizeWithAttrs.height
                                              );
 
     self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( self->_displayNameStringRect ) + 3.f // Just a little tweak
+//                                            , ( NSHeight( self.bounds ) - screenNameStringSizeWithAttrs.height ) / 2
                                             , NSMinY( self.bounds )
                                             , screenNameStringSizeWithAttrs.width
                                             , screenNameStringSizeWithAttrs.height
                                             );
 
     self->_screenNameStringRect.origin.y += ( NSHeight( self->_displayNameStringRect ) - NSHeight( self->_screenNameStringRect ) ) / 2;
+    self->_displayNameStringRect.origin.y += ( NSHeight( self->_screenNameStringRect ) - NSHeight( self->_displayNameStringRect ) ) / 2;
 
     self->_attributedDisplayNameString =
         [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.displayName
