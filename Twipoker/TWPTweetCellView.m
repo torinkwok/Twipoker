@@ -48,7 +48,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 @synthesize tweetOperationsPanel;
 
-@synthesize refHeight = _refHeight;
+@dynamic refHeight;
 
 @dynamic tweet;
 @dynamic author;
@@ -88,15 +88,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
     [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
 
-    CGFloat height0 = self.topSpaceConstraint.constant;
-    CGFloat height1 = self.spaceBetweenUserNameLabelAndTextView.constant;
-    CGFloat height2 = self.bottomSpaceConstraint.constant;
-
-    CGFloat height3 = self.tweetTextView.textBlockHeight;
-    CGFloat height4 = NSHeight( self.userNameLabel.frame );
-
-    self->_refHeight = height0 + height1 + height2 + height3 + height4;
-
 //    [ self setNeedsDisplay: YES ];
     }
 
@@ -108,6 +99,18 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 - ( OTCTwitterUser* ) author
     {
     return self.tweet.author;
+    }
+
+- ( CGFloat ) refHeight
+    {
+    CGFloat height0 = self.topSpaceConstraint.constant;
+    CGFloat height1 = self.spaceBetweenUserNameLabelAndTextView.constant;
+    CGFloat height2 = self.bottomSpaceConstraint.constant;
+
+    CGFloat height3 = self.tweetTextView.textBlockHeight;
+    CGFloat height4 = NSHeight( self.userNameLabel.frame );
+
+    return height0 + height1 + height2 + height3 + height4;
     }
 
 #pragma mark Constraints

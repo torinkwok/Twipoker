@@ -71,6 +71,7 @@
         [ [ self _textView ] setSelectable: NO ];
         [ [ self _textView ] setFont: [ [ NSFontManager sharedFontManager ] convertWeight: .5f ofFont: [ NSFont fontWithName: @"Lucida Grande" size: 14.f ] ] ];
         [ [ self _textView ] setTextColor: [ NSColor colorWithHTMLColor: @"66757F" ] ];
+        [ [ self _textView ] setBackgroundColor: [ NSColor grayColor ] ];
 
         [ self setNeedsUpdateConstraints: YES ];
         }
@@ -99,6 +100,7 @@
 //    NSLayoutManager* firstLayoutManager = self->_tweetTextStorage.layoutManagers.firstObject;
 //    NSTextContainer* firstTextContainer = firstLayoutManager.textContainers.firstObject;
 
+//    NSLog( @"New Width: %g", NSWidth( [ self _textView ].frame ) );
     NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithAttributedString: self->_tweetTextStorage ];
     NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( NSWidth( self.bounds ), FLT_MAX ) ];
     NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];

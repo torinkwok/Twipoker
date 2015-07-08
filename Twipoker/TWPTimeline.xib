@@ -16,18 +16,19 @@
             <rect key="frame" x="0.0" y="0.0" width="400" height="567"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <clipView key="contentView" copiesOnScroll="NO" id="R46-ic-hek">
-                <rect key="frame" x="1" y="17" width="238" height="117"/>
+                <rect key="frame" x="0.0" y="0.0" width="400" height="567"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="100" rowSizeStyle="automatic" viewBased="YES" id="d7f-2k-ALM" customClass="TWPTimelineTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="400.5" height="567"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="567"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <size key="intercellSpacing" width="3" height="2"/>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
+                        <color key="gridColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <tableColumns>
-                            <tableColumn width="397.6640625" minWidth="10" maxWidth="3.4028234663852886e+38" id="F3M-vt-c48">
+                            <tableColumn width="397.1640625" minWidth="10" maxWidth="3.4028234663852886e+38" id="F3M-vt-c48">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -121,8 +122,8 @@
                                             <customView identifier="tweet-text-view" translatesAutoresizingMaskIntoConstraints="NO" id="XO7-Ab-T27" customClass="TWPTextView">
                                                 <rect key="frame" x="105" y="15" width="272" height="37"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="272" id="NoL-R7-E9u"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="mSh-CW-1hG"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="272" id="NoL-R7-E9u"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="27" id="mSh-CW-1hG"/>
                                                 </constraints>
                                                 <animations/>
                                             </customView>
@@ -171,7 +172,7 @@
                 <animations/>
             </scroller>
             <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="iPr-5e-rU3">
-                <rect key="frame" x="224" y="17" width="15" height="102"/>
+                <rect key="frame" x="384" y="0.0" width="16" height="567"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <animations/>
             </scroller>

@@ -65,13 +65,20 @@
     }
 
 
-- ( CGFloat ) tableView: ( nonnull NSTableView*)_TableView
+- ( CGFloat ) tableView: ( nonnull NSTableView* )_TableView
             heightOfRow: ( NSInteger )_Row
     {
     TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: _TableView viewForTableColumn: _TableView.tableColumns.firstObject row: _Row ];
     CGFloat minimumHeight = NSHeight( tweetCellView.bounds );
     CGFloat refHeight = tweetCellView.refHeight;
+    NSLog( @"New RefHeight: %g", refHeight );
     return ( refHeight > minimumHeight ) ? refHeight : minimumHeight;
+    }
+
+- ( void ) tableViewColumnDidResize: ( nonnull NSNotification* )_Notif
+    {
+//    NSLog( @"%@", _Notif.userInfo[ @"NSOldWidth" ] );
+    [ ( ( NSTableColumn* )_Notif.userInfo[ @"NSTableColumn" ] ).tableView noteHeightOfRowsWithIndexesChanged: [ NSIndexSet indexSetWithIndexesInRange: NSMakeRange( 0, 20 ) ] ];
     }
 
 @end
