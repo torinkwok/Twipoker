@@ -25,6 +25,7 @@
 #import "TWPTimelineViewController.h"
 #import "TWPTweetCellView.h"
 #import "TWPTweetOperationsNotificationNames.h"
+#import "TWPTextView.h"
 
 @implementation TWPTimelineViewController
 
@@ -64,15 +65,28 @@
     return tweetCellView;
     }
 
-
 - ( CGFloat ) tableView: ( nonnull NSTableView* )_TableView
             heightOfRow: ( NSInteger )_Row
     {
     TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: _TableView viewForTableColumn: _TableView.tableColumns.firstObject row: _Row ];
     CGFloat minimumHeight = NSHeight( tweetCellView.bounds );
-    CGFloat refHeight = tweetCellView.refHeight;
-    NSLog( @"New RefHeight: %g", refHeight );
-    return ( refHeight > minimumHeight ) ? refHeight : minimumHeight;
+//    CGFloat refHeight = tweetCellView.refHeight;
+//    NSLog( @"New RefHeight: %g", refHeight );
+//    return ( refHeight > minimumHeight ) ? refHeight : minimumHeight;
+
+    NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithAttributedString: tweetCellView.tweetTextView.tweetTextStorage ];
+    NSSize size = NSMakeSize( _TableView.tableColumns.firstObject.width - 105 - 20, FLT_MAX );
+    NSLog( @"Size: %@", NSStringFromSize( size ) );
+    NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: size ];
+    NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
+
+    [ layoutManager addTextContainer: textContainer ];
+    [ textStorage addLayoutManager: layoutManager ];
+
+    // FIXME
+    ( void )[ layoutManager glyphRangeForTextContainer: textContainer ];
+    CGFloat height = [ tweetCellView fetchFuckingHeight: [ layoutManager usedRectForTextContainer: textContainer ].size.height ];
+    return ( height > minimumHeight ) ? height : minimumHeight;
     }
 
 - ( void ) tableViewColumnDidResize: ( nonnull NSNotification* )_Notif

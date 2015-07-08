@@ -60,7 +60,9 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 @property ( weak ) IBOutlet NSLayoutConstraint* bottomSpaceConstraint;
 
 #pragma mark Properties
-@property ( assign, readonly ) CGFloat refHeight; 
+@property ( assign, readonly ) CGFloat refHeight;
+
+- ( CGFloat ) fetchFuckingHeight: ( CGFloat )_TextViewWidth;
 
 #pragma mark Initialization
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet;
