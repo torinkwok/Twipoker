@@ -70,17 +70,9 @@
     {
     TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: _TableView viewForTableColumn: _TableView.tableColumns.firstObject row: _Row ];
 
-    NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithAttributedString: tweetCellView.tweetTextView.tweetTextStorage ];
-    NSSize size = NSMakeSize( _TableView.tableColumns.firstObject.width - 105 - 20, FLT_MAX );
-
-    NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: size ];
-    NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
-
-    [ layoutManager addTextContainer: textContainer ];
-    [ textStorage addLayoutManager: layoutManager ];
-
-    ( void )[ layoutManager glyphRangeForTextContainer: textContainer ];
-    CGFloat height = [ tweetCellView fetchFuckingHeight: [ layoutManager usedRectForTextContainer: textContainer ].size.height ];
+    CGFloat currentColumnWidth = _TableView.tableColumns.firstObject.width;
+    OTCTweet* tweet = self->_data[ _Row ];
+    CGFloat height = [ tweetCellView fetchFuckingHeight: [ self _calculateTweetTextBlockHeight: tweet width: currentColumnWidth - 105 - 20 ] ];
     return height;
     }
 
@@ -88,9 +80,14 @@
                                        width: ( CGFloat )_Width
     {
     NSFont* font = [ [ NSFontManager sharedFontManager ] convertWeight: .5f ofFont: [ NSFont fontWithName: @"Lato" size: 14.f ] ];
+    NSMutableParagraphStyle* paragraphStyle = [ [ NSParagraphStyle defaultParagraphStyle ] mutableCopy ];
+    [ paragraphStyle setLineSpacing: 3.5f ];
 
     NSTextStorage* textStorage =
-        [ [ NSTextStorage alloc ] initWithString: _Tweet.tweetText attributes: @{ NSFontAttributeName : font } ];
+        [ [ NSTextStorage alloc ] initWithString: _Tweet.tweetText
+                                      attributes: @{ NSFontAttributeName : font
+                                                   , NSParagraphStyleAttributeName : paragraphStyle
+                                                   } ];
 
     NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( _Width, FLT_MAX ) ];
     NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
