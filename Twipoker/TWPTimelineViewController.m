@@ -70,13 +70,10 @@
     {
     TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: _TableView viewForTableColumn: _TableView.tableColumns.firstObject row: _Row ];
     CGFloat minimumHeight = NSHeight( tweetCellView.bounds );
-//    CGFloat refHeight = tweetCellView.refHeight;
-//    NSLog( @"New RefHeight: %g", refHeight );
-//    return ( refHeight > minimumHeight ) ? refHeight : minimumHeight;
 
     NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithAttributedString: tweetCellView.tweetTextView.tweetTextStorage ];
     NSSize size = NSMakeSize( _TableView.tableColumns.firstObject.width - 105 - 20, FLT_MAX );
-    NSLog( @"Size: %@", NSStringFromSize( size ) );
+
     NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: size ];
     NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
 
@@ -91,8 +88,14 @@
 
 - ( void ) tableViewColumnDidResize: ( nonnull NSNotification* )_Notif
     {
-//    NSLog( @"%@", _Notif.userInfo[ @"NSOldWidth" ] );
-    [ ( ( NSTableColumn* )_Notif.userInfo[ @"NSTableColumn" ] ).tableView noteHeightOfRowsWithIndexesChanged: [ NSIndexSet indexSetWithIndexesInRange: NSMakeRange( 0, 20 ) ] ];
+    NSMutableIndexSet* indexesChanged = [ NSMutableIndexSet indexSet ];
+    [ self.timelineTableView enumerateAvailableRowViewsUsingBlock:
+        ^( NSTableRowView* _RowView, NSInteger _Row )
+            {
+            [ indexesChanged addIndex: _Row ];
+            } ];
+
+    [ ( ( NSTableColumn* )_Notif.userInfo[ @"NSTableColumn" ] ).tableView noteHeightOfRowsWithIndexesChanged: indexesChanged ];
     }
 
 @end

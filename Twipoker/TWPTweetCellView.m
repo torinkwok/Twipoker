@@ -113,13 +113,13 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     return height0 + height1 + height2 + height3 + height4;
     }
 
-- ( CGFloat ) fetchFuckingHeight: ( CGFloat )_TextViewWidth
+- ( CGFloat ) fetchFuckingHeight: ( CGFloat )_TextViewHeight
     {
     CGFloat height0 = self.topSpaceConstraint.constant;
     CGFloat height1 = self.spaceBetweenUserNameLabelAndTextView.constant;
     CGFloat height2 = self.bottomSpaceConstraint.constant;
 
-    CGFloat height3 = _TextViewWidth;
+    CGFloat height3 = _TextViewHeight;
     CGFloat height4 = NSHeight( self.userNameLabel.frame );
 
     return height0 + height1 + height2 + height3 + height4;

@@ -62,7 +62,7 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 #pragma mark Properties
 @property ( assign, readonly ) CGFloat refHeight;
 
-- ( CGFloat ) fetchFuckingHeight: ( CGFloat )_TextViewWidth;
+- ( CGFloat ) fetchFuckingHeight: ( CGFloat )_TextViewHeight;
 
 #pragma mark Initialization
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet;
