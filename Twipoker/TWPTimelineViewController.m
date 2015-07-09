@@ -81,55 +81,91 @@
 
     ( void )[ layoutManager glyphRangeForTextContainer: textContainer ];
     CGFloat height = [ tweetCellView fetchFuckingHeight: [ layoutManager usedRectForTextContainer: textContainer ].size.height ];
-
-    return ( height > 100 ) ? height : 100;
+    return height;
     }
 
-//- ( CGFloat ) _calculateTweetHeight: ( CGFloat )_WidthValue
-//                          tableView: ( nonnull NSTableView* )_TableView
-//                                row: ( NSUInteger )_Row
-//    {
-//    }
+- ( CGFloat ) _calculateTweetTextBlockHeight: ( OTCTweet* )_Tweet
+                                       width: ( CGFloat )_Width
+    {
+    NSFont* font = [ [ NSFontManager sharedFontManager ] convertWeight: .5f ofFont: [ NSFont fontWithName: @"Lato" size: 14.f ] ];
+
+    NSTextStorage* textStorage =
+        [ [ NSTextStorage alloc ] initWithString: _Tweet.tweetText attributes: @{ NSFontAttributeName : font } ];
+
+    NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( _Width, FLT_MAX ) ];
+    NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
+
+    [ layoutManager addTextContainer: textContainer ];
+    [ textStorage addLayoutManager: layoutManager ];
+
+    ( void )[ layoutManager glyphRangeForTextContainer: textContainer ];
+    CGFloat height = NSHeight( [ layoutManager usedRectForTextContainer: textContainer ] );
+
+    return height;
+    }
 
 - ( void ) tableViewColumnDidResize: ( nonnull NSNotification* )_Notif
     {
     NSMutableIndexSet* indexesChanged = [ NSMutableIndexSet indexSet ];
-    NSTableView* tableView = [ _Notif.userInfo[ @"NSTableColumn" ] tableView ];
+//    NSTableView* tableView = [ _Notif.userInfo[ @"NSTableColumn" ] tableView ];
+    CGFloat newWidth = [ _Notif.userInfo[ @"NSTableColumn" ] width ];
     CGFloat oldWidth = [ _Notif.userInfo[ @"NSOldWidth" ] doubleValue ];
+
+//    NSLog( @"New Width: %g", newWidth );
+//    NSLog( @"Old Width: %g", oldWidth );
 
     for ( int _Index = 0; _Index < self->_data.count; _Index++ )
         {
-        TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: tableView viewForTableColumn: tableView.tableColumns.firstObject row: _Index ];
+//        CGFloat otherHeight = 15 * 2 + 23 + 10;
 
-        NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithAttributedString: tweetCellView.tweetTextView.tweetTextStorage ];
-        NSSize oldSize = NSMakeSize( oldWidth - 105 - 20, FLT_MAX );
-        NSSize newSize = NSMakeSize( tableView.tableColumns.firstObject.width - 105 - 20, FLT_MAX );
+        CGFloat newTextViewHeight = [ self _calculateTweetTextBlockHeight: self->_data[ _Index ] width: newWidth ];
+        CGFloat oldTextViewHeight = [ self _calculateTweetTextBlockHeight: self->_data[ _Index ] width: oldWidth ];
 
-        ////
-        NSTextContainer* newTextContainer = [ [ NSTextContainer alloc ] initWithContainerSize: newSize ];
-        NSLayoutManager* newLayoutManager = [ [ NSLayoutManager alloc ] init ];
+//        newTextViewHeight = ( newTextViewHeight > 37 ) ? newTextViewHeight : 37;
+//        oldTextViewHeight = ( oldTextViewHeight > 37 ) ? oldTextViewHeight : 37;
 
-        [ newLayoutManager addTextContainer: newTextContainer ];
-        [ textStorage addLayoutManager: newLayoutManager ];
+        NSLog( @"New Width: %g      New Height: %g", newWidth, newTextViewHeight );
+        NSLog( @"Old Width: %g      Old Height: %g", oldWidth, oldTextViewHeight );
 
-        ( void )[ newLayoutManager glyphRangeForTextContainer: newTextContainer ];
-        CGFloat newHeight = [ tweetCellView fetchFuckingHeight: [ newLayoutManager usedRectForTextContainer: newTextContainer ].size.height ];
+        NSLog( @"oldTextViewHeight %@ newTextViewHeight", ( newTextViewHeight != oldTextViewHeight ) ? @"≠" : @"=" );
 
-        newHeight = ( newHeight > 100 ) ? newHeight : 100;
+        printf( "\n\n" );
 
-        ////
-        NSTextContainer* oldTextContainer = [ [ NSTextContainer alloc ] initWithContainerSize: oldSize ];
-        NSLayoutManager* oldLayoutManager = [ [ NSLayoutManager alloc ] init ];
+//        CGFloat newHeight = newTextViewHeight + otherHeight;
+//        CGFloat oldHeight = oldTextViewHeight + otherHeight;
 
-        [ oldLayoutManager addTextContainer: oldTextContainer ];
-        [ textStorage addLayoutManager: oldLayoutManager ];
+//        TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: tableView viewForTableColumn: tableView.tableColumns.firstObject row: _Index ];
 
-        ( void )[ oldLayoutManager glyphRangeForTextContainer: oldTextContainer ];
-        CGFloat oldHeight = [ tweetCellView fetchFuckingHeight: [ oldLayoutManager usedRectForTextContainer: oldTextContainer ].size.height ];
-
-        oldHeight = ( oldHeight > 100 ) ? oldHeight : 100;
-
-        if ( newHeight != oldHeight )
+//        NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithAttributedString: tweetCellView.tweetTextView.tweetTextStorage ];
+//        NSSize oldSize = NSMakeSize( oldWidth - 105 - 20, FLT_MAX );
+//        NSSize newSize = NSMakeSize( tableView.tableColumns.firstObject.width - 105 - 20, FLT_MAX );
+//
+//        ////
+//        NSTextContainer* newTextContainer = [ [ NSTextContainer alloc ] initWithContainerSize: newSize ];
+//        NSLayoutManager* newLayoutManager = [ [ NSLayoutManager alloc ] init ];
+//
+//        [ newLayoutManager addTextContainer: newTextContainer ];
+//        [ textStorage addLayoutManager: newLayoutManager ];
+//
+//        ( void )[ newLayoutManager glyphRangeForTextContainer: newTextContainer ];
+//        CGFloat newHeight = [ tweetCellView fetchFuckingHeight: [ newLayoutManager usedRectForTextContainer: newTextContainer ].size.height ];
+//
+//        newHeight = ( newHeight > 100 ) ? newHeight : 100;
+//
+//        ////
+//        NSTextContainer* oldTextContainer = [ [ NSTextContainer alloc ] initWithContainerSize: oldSize ];
+//        NSLayoutManager* oldLayoutManager = [ [ NSLayoutManager alloc ] init ];
+//
+//        [ oldLayoutManager addTextContainer: oldTextContainer ];
+//        [ textStorage addLayoutManager: oldLayoutManager ];
+//
+//        ( void )[ oldLayoutManager glyphRangeForTextContainer: oldTextContainer ];
+//        CGFloat oldHeight = [ tweetCellView fetchFuckingHeight: [ oldLayoutManager usedRectForTextContainer: oldTextContainer ].size.height ];
+//
+//        oldHeight = ( oldHeight > 100 ) ? oldHeight : 100;
+//        newHeight = ( newHeight > 100 ) ? newHeight : 100;
+//
+        if ( newTextViewHeight != oldTextViewHeight )
             [ indexesChanged addIndex: _Index ];
         }
 
@@ -141,7 +177,11 @@
 
 //    NSMutableIndexSet* indexesChanged = [ NSMutableIndexSet indexSetWithIndexesInRange: NSMakeRange( 0, self->_data.count ) ];
 //    NSLog( @"Indexes Changed: %@\n\n\n\n", indexesChanged );
-    [ ( ( NSTableColumn* )_Notif.userInfo[ @"NSTableColumn" ] ).tableView noteHeightOfRowsWithIndexesChanged: indexesChanged ];
+    if ( indexesChanged.count > 0 )
+        {
+        NSLog( @"%@", indexesChanged );
+        [ ( ( NSTableColumn* )_Notif.userInfo[ @"NSTableColumn" ] ).tableView noteHeightOfRowsWithIndexesChanged: indexesChanged ];
+        }
     }
 
 - ( NSUInteger ) _countOfAvailableRowViews

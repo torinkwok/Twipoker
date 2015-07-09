@@ -119,8 +119,11 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     CGFloat height1 = self.spaceBetweenUserNameLabelAndTextView.constant;
     CGFloat height2 = self.bottomSpaceConstraint.constant;
 
-    CGFloat height3 = _TextViewHeight;
+//    NSLog( @"Default: %g        Current: %g", defaultHeightOfTextViewHeight, _TextViewHeight );
+    CGFloat height3 = ( _TextViewHeight > 37.f ) ? _TextViewHeight : 37.f;
     CGFloat height4 = NSHeight( self.userNameLabel.frame );
+
+//    NSLog( @"%g + %g + %g + %g + %g", height0, height1, height2, height3, height4 );
 
     return height0 + height1 + height2 + height3 + height4;
     }
