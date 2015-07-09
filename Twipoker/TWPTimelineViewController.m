@@ -92,7 +92,7 @@
     NSTextStorage* textStorage =
         [ [ NSTextStorage alloc ] initWithString: _Tweet.tweetText attributes: @{ NSFontAttributeName : font } ];
 
-    NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( _Width - 105 - 20, FLT_MAX ) ];
+    NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( _Width, FLT_MAX ) ];
     NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
 
     [ layoutManager addTextContainer: textContainer ];
@@ -113,8 +113,8 @@
 
     for ( int _Index = 0; _Index < self->_data.count; _Index++ )
         {
-        CGFloat textBlockNewHeight = [ self _calculateTweetTextBlockHeight: self->_data[ _Index ] width: columnNewWidth ];
-        CGFloat textBlockOldHeight = [ self _calculateTweetTextBlockHeight: self->_data[ _Index ] width: columnOldWidth ];
+        CGFloat textBlockNewHeight = [ self _calculateTweetTextBlockHeight: self->_data[ _Index ] width: columnNewWidth - 105 - 20 ];
+        CGFloat textBlockOldHeight = [ self _calculateTweetTextBlockHeight: self->_data[ _Index ] width: columnOldWidth - 105 - 20 ];
 
         if ( textBlockNewHeight != textBlockOldHeight )
             [ indexesChanged addIndex: _Index ];
