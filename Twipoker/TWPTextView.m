@@ -25,6 +25,8 @@
 #import "TWPTextView.h"
 #import "NSColor+Objectwitter-C.h"
 
+NSSize static sDefaultSize;
+
 // Private Interfaces
 @interface TWPTextView ()
 - ( NSTextView* ) _textView;
@@ -37,6 +39,23 @@
 @synthesize tweetTextStorage = _tweetTextStorage;
 @dynamic paragraphStyle;
 @dynamic textBlockHeight;
+
++ ( void ) initialize
+    {
+    sDefaultSize = NSMakeSize( 272.f, 37.f );
+    }
+
+#pragma mark Default Text View Attributes
++ ( void ) setDefaultSize: ( NSSize )_Size
+    {
+    if ( !NSEqualSizes( sDefaultSize, _Size ) )
+        sDefaultSize = _Size;
+    }
+
++ ( NSSize ) defaultSize
+    {
+    return sDefaultSize;
+    }
 
 #pragma mark Initializations
 - ( void ) awakeFromNib
@@ -71,7 +90,6 @@
         [ [ self _textView ] setSelectable: NO ];
         [ [ self _textView ] setFont: [ [ NSFontManager sharedFontManager ] convertWeight: .5f ofFont: [ NSFont fontWithName: @"Lato" size: 14.f ] ] ];
         [ [ self _textView ] setTextColor: [ NSColor colorWithHTMLColor: @"66757F" ] ];
-//        [ [ self _textView ] setBackgroundColor: [ NSColor grayColor ] ];
 
         [ self setNeedsUpdateConstraints: YES ];
         }
@@ -97,10 +115,6 @@
 
 - ( CGFloat ) textBlockHeight
     {
-//    NSLayoutManager* firstLayoutManager = self->_tweetTextStorage.layoutManagers.firstObject;
-//    NSTextContainer* firstTextContainer = firstLayoutManager.textContainers.firstObject;
-
-//    NSLog( @"New Width: %g", NSWidth( [ self _textView ].frame ) );
     NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithAttributedString: self->_tweetTextStorage ];
     NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( NSWidth( self.bounds ), FLT_MAX ) ];
     NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
@@ -108,10 +122,8 @@
     [ layoutManager addTextContainer: textContainer ];
     [ textStorage addLayoutManager: layoutManager ];
 
-    // FIXME
     ( void )[ layoutManager glyphRangeForTextContainer: textContainer ];
     return [ layoutManager usedRectForTextContainer: textContainer ].size.height;
-//    return firstTextContainer.containerSize.height;
     }
 
 #pragma mark Constraints-Based Auto Layout

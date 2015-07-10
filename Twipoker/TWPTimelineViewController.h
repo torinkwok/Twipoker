@@ -26,6 +26,7 @@
 #import "TWPTimelineTableView.h"
 #import "TWPTimelineScrollView.h"
 
+// TWPTimelineViewController class
 @interface TWPTimelineViewController : TWPViewController
     <TWPTimelineScrollViewDelegate
     ,TWPTimelineTableViewDataSource, TWPTimelineTableViewDelegate
@@ -49,7 +50,7 @@
 - ( void ) timelineScrollView: ( TWPTimelineScrollView* )_TimelineScrollView
        shouldFetchOlderTweets: ( NSClipView* )_ClipView;
 
-@end
+@end // TWPTimelineViewController class
 
 /*=============================================================================┐
 |                                                                              |

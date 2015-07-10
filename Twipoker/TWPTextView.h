@@ -38,6 +38,10 @@
 @property ( strong, readonly ) NSParagraphStyle* paragraphStyle;    // Derived from the ivar: self->_paragraphStyle
 @property ( assign, readonly ) CGFloat textBlockHeight;
 
+#pragma mark Default Text View Attributes
++ ( void ) setDefaultSize: ( NSSize )_Size;
++ ( NSSize ) defaultSize;
+
 @end // TWPTextView class
 
 /*=============================================================================┐

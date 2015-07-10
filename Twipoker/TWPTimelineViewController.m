@@ -27,6 +27,12 @@
 #import "TWPTweetOperationsNotificationNames.h"
 #import "TWPTextView.h"
 
+// Private Interfaces
+@interface TWPTimelineViewController ()
+- ( CGFloat ) _calculateTweetTextBlockHeight: ( OTCTweet* )_Tweet width: ( CGFloat )_Width;
+@end // Private Interfaces
+
+// TWPTimelineViewController class
 @implementation TWPTimelineViewController
 
 @synthesize isLoadingOlderTweets = _isLoadingOlderTweets;
@@ -76,6 +82,27 @@
     return height;
     }
 
+- ( void ) tableViewColumnDidResize: ( nonnull NSNotification* )_Notif
+    {
+    NSMutableIndexSet* indexesChanged = [ NSMutableIndexSet indexSet ];
+
+    CGFloat columnNewWidth = [ _Notif.userInfo[ @"NSTableColumn" ] width ];
+    CGFloat columnOldWidth = [ _Notif.userInfo[ @"NSOldWidth" ] doubleValue ];
+
+    for ( int _Index = 0; _Index < self->_data.count; _Index++ )
+        {
+        CGFloat textBlockNewHeight = [ self _calculateTweetTextBlockHeight: self->_data[ _Index ] width: columnNewWidth - 105 - 20 ];
+        CGFloat textBlockOldHeight = [ self _calculateTweetTextBlockHeight: self->_data[ _Index ] width: columnOldWidth - 105 - 20 ];
+
+        if ( textBlockNewHeight != textBlockOldHeight )
+            [ indexesChanged addIndex: _Index ];
+        }
+
+    if ( indexesChanged.count > 0 )
+        [ ( ( NSTableColumn* )_Notif.userInfo[ @"NSTableColumn" ] ).tableView noteHeightOfRowsWithIndexesChanged: indexesChanged ];
+    }
+
+#pragma mark Private Interfaces
 - ( CGFloat ) _calculateTweetTextBlockHeight: ( OTCTweet* )_Tweet
                                        width: ( CGFloat )_Width
     {
@@ -101,27 +128,7 @@
     return height;
     }
 
-- ( void ) tableViewColumnDidResize: ( nonnull NSNotification* )_Notif
-    {
-    NSMutableIndexSet* indexesChanged = [ NSMutableIndexSet indexSet ];
-
-    CGFloat columnNewWidth = [ _Notif.userInfo[ @"NSTableColumn" ] width ];
-    CGFloat columnOldWidth = [ _Notif.userInfo[ @"NSOldWidth" ] doubleValue ];
-
-    for ( int _Index = 0; _Index < self->_data.count; _Index++ )
-        {
-        CGFloat textBlockNewHeight = [ self _calculateTweetTextBlockHeight: self->_data[ _Index ] width: columnNewWidth - 105 - 20 ];
-        CGFloat textBlockOldHeight = [ self _calculateTweetTextBlockHeight: self->_data[ _Index ] width: columnOldWidth - 105 - 20 ];
-
-        if ( textBlockNewHeight != textBlockOldHeight )
-            [ indexesChanged addIndex: _Index ];
-        }
-
-    if ( indexesChanged.count > 0 )
-        [ ( ( NSTableColumn* )_Notif.userInfo[ @"NSTableColumn" ] ).tableView noteHeightOfRowsWithIndexesChanged: indexesChanged ];
-    }
-
-@end
+@end // TWPTimelineViewController class
 
 /*=============================================================================┐
 |                                                                              |
