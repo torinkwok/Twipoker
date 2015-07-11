@@ -71,12 +71,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     return self;
     }
 
-- ( void ) awakeFromNib
-    {
-//    NSArray* constraints = self.constraints;
-//    [ self removeConstraints: self.constraints ];
-    }
-
 #pragma mark Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
@@ -87,8 +81,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     [ [ self tweetTextView ] setTweet: self->_tweet ];
 
     [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
-
-//    [ self setNeedsUpdateConstraints: YES ];
     }
 
 - ( OTCTweet* ) tweet
@@ -101,31 +93,18 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     return self.tweet.author;
     }
 
-- ( CGFloat ) refHeight
-    {
-    CGFloat height0 = self.topSpaceConstraint.constant;
-    CGFloat height1 = self.spaceBetweenUserNameLabelAndTextView.constant;
-    CGFloat height2 = self.bottomSpaceConstraint.constant;
-
-    CGFloat height3 = self.tweetTextView.textBlockHeight;
-    CGFloat height4 = NSHeight( self.userNameLabel.frame );
-
-    return height0 + height1 + height2 + height3 + height4;
-    }
-
 - ( CGFloat ) fetchFuckingHeight: ( CGFloat )_TextViewHeight
     {
-    CGFloat height0 = self.topSpaceConstraint.constant;
-    CGFloat height1 = self.spaceBetweenUserNameLabelAndTextView.constant;
-    CGFloat height2 = self.bottomSpaceConstraint.constant;
+    CGFloat topSpaceConstraintHeight = self.topSpaceConstraint.constant;
+    CGFloat bottomSpaceConstraintHeight = self.bottomSpaceConstraint.constant;
+    CGFloat spaceHeightBetweetUserNameLabelAndTextView = self.spaceBetweenUserNameLabelAndTextView.constant;
 
-//    NSLog( @"Default: %g        Current: %g", defaultHeightOfTextViewHeight, _TextViewHeight );
-    CGFloat height3 = ( _TextViewHeight > 37.f ) ? _TextViewHeight : 37.f;
-    CGFloat height4 = NSHeight( self.userNameLabel.frame );
+    CGFloat tweetTextViewHeight = ( _TextViewHeight > [ TWPTextView defaultSize ].height ) ? _TextViewHeight : [ TWPTextView defaultSize ].height;
+    CGFloat userNameLabelHeight = NSHeight( self.userNameLabel.frame );
 
-//    NSLog( @"%g + %g + %g + %g + %g", height0, height1, height2, height3, height4 );
-
-    return height0 + height1 + height2 + height3 + height4;
+    return topSpaceConstraintHeight + bottomSpaceConstraintHeight
+                + spaceHeightBetweetUserNameLabelAndTextView
+                + tweetTextViewHeight + userNameLabelHeight;
     }
 
 #pragma mark Constraints
