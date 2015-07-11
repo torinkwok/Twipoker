@@ -150,17 +150,29 @@ NSDictionary static* sDefaultTextAttributes;
     return self->_tweetTextStorage.layoutManagers.firstObject.textContainers.firstObject.textView;
     }
 
+NSTextContainer static __strong* sTextContainer;
+NSLayoutManager static __strong* sLayoutManager;
 + ( CGFloat ) _textBlockDynamicHeightWithTextStorage: ( NSTextStorage* )_TextStorage
                                           blockWidth: ( CGFloat )_TextBlockWidth
     {
-    NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( _TextBlockWidth, FLT_MAX ) ];
-    NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
+    dispatch_once_t static onceToken;
 
-    [ layoutManager addTextContainer: textContainer ];
-    [ _TextStorage addLayoutManager: layoutManager ];
+    dispatch_once( &onceToken
+                 , ( dispatch_block_t )^( void )
+                        {
+                        sTextContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSZeroSize ];
+                        sLayoutManager = [ [ NSLayoutManager alloc ] init ];
+                        } );
 
-    ( void )[ layoutManager glyphRangeForTextContainer: textContainer ];
-    CGFloat dynamicHeight = NSHeight( [ layoutManager usedRectForTextContainer: textContainer ] );
+//    NSLog( @"%p", sTextContainer );
+//    NSLog( @"%p\n\n\n", sLayoutManager );
+
+    [ sTextContainer setContainerSize: NSMakeSize( _TextBlockWidth, FLT_MAX ) ];
+    [ sLayoutManager addTextContainer: sTextContainer ];
+    [ _TextStorage addLayoutManager: sLayoutManager ];
+
+    ( void )[ sLayoutManager glyphRangeForTextContainer: sTextContainer ];
+    CGFloat dynamicHeight = NSHeight( [ sLayoutManager usedRectForTextContainer: sTextContainer ] );
 
     return dynamicHeight;
     }
