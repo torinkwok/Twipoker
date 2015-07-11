@@ -78,7 +78,7 @@
 
     CGFloat currentColumnWidth = _TableView.tableColumns.firstObject.width;
     OTCTweet* tweet = self->_data[ _Row ];
-    CGFloat height = [ tweetCellView fetchFuckingHeight: [ self _calculateTweetTextBlockHeight: tweet width: currentColumnWidth - 105 - 20 ] ];
+    CGFloat height = [ tweetCellView dynamicHeightAccordingToTweetTextBlockHeight: [ self _calculateTweetTextBlockHeight: tweet width: currentColumnWidth - 105 - 20 ] ];
     return height;
     }
 

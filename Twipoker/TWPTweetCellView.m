@@ -93,13 +93,13 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     return self.tweet.author;
     }
 
-- ( CGFloat ) fetchFuckingHeight: ( CGFloat )_TextViewHeight
+- ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
     {
     CGFloat topSpaceConstraintHeight = self.topSpaceConstraint.constant;
     CGFloat bottomSpaceConstraintHeight = self.bottomSpaceConstraint.constant;
     CGFloat spaceHeightBetweetUserNameLabelAndTextView = self.spaceBetweenUserNameLabelAndTextView.constant;
 
-    CGFloat tweetTextViewHeight = ( _TextViewHeight > [ TWPTextView defaultSize ].height ) ? _TextViewHeight : [ TWPTextView defaultSize ].height;
+    CGFloat tweetTextViewHeight = ( _TweetTextBlockHeight > [ TWPTextView defaultSize ].height ) ? _TweetTextBlockHeight : [ TWPTextView defaultSize ].height;
     CGFloat userNameLabelHeight = NSHeight( self.userNameLabel.frame );
 
     return topSpaceConstraintHeight + bottomSpaceConstraintHeight
