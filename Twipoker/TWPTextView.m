@@ -26,10 +26,14 @@
 #import "NSColor+Objectwitter-C.h"
 
 NSSize static sDefaultSize;
+NSDictionary static* sDefaultTextAttributes;
 
 // Private Interfaces
 @interface TWPTextView ()
+
 - ( NSTextView* ) _textView;
++ ( CGFloat ) _textBlockDynamicHeightWithTextStorage: ( NSTextStorage* )_TextStorage blockWidth: ( CGFloat )_TextBlockWidth;
+
 @end // Private Interfaces
 
 // TWPTextView class
@@ -37,13 +41,6 @@ NSSize static sDefaultSize;
 
 @dynamic tweet;
 @synthesize tweetTextStorage = _tweetTextStorage;
-@dynamic paragraphStyle;
-@dynamic textBlockHeight;
-
-+ ( void ) initialize
-    {
-    sDefaultSize = NSMakeSize( 272.f, 37.f );
-    }
 
 #pragma mark Default Text View Attributes
 + ( void ) setDefaultSize: ( NSSize )_Size
@@ -58,10 +55,16 @@ NSSize static sDefaultSize;
     }
 
 #pragma mark Initializations
-- ( void ) awakeFromNib
++ ( void ) initialize
     {
-    self->_paragraphStyle = [ [ NSParagraphStyle defaultParagraphStyle ] mutableCopy ];
-    [ self->_paragraphStyle setLineSpacing: 3.5f ];
+    sDefaultSize = NSMakeSize( 272.f, 37.f );
+
+    NSMutableParagraphStyle* paragraphStyle = [ [ NSParagraphStyle defaultParagraphStyle ] mutableCopy ];
+    [ paragraphStyle setLineSpacing: 3.5f ];
+    sDefaultTextAttributes = @{ NSParagraphStyleAttributeName : paragraphStyle
+                              , NSFontAttributeName : [ NSFont fontWithName: @"Lato" size: 14.f ]
+                              , NSForegroundColorAttributeName : [ NSColor colorWithHTMLColor: @"66757F" ]
+                              };
     }
 
 #pragma mark Dynamic Accessors
@@ -88,8 +91,6 @@ NSSize static sDefaultSize;
         ( void )[ [ NSTextView alloc ] initWithFrame: frame textContainer: textContainer ];
         [ [ self _textView ] setEditable: NO ];
         [ [ self _textView ] setSelectable: NO ];
-        [ [ self _textView ] setFont: [ [ NSFontManager sharedFontManager ] convertWeight: .5f ofFont: [ NSFont fontWithName: @"Lato" size: 14.f ] ] ];
-        [ [ self _textView ] setTextColor: [ NSColor colorWithHTMLColor: @"66757F" ] ];
 
         [ self setNeedsUpdateConstraints: YES ];
         }
@@ -97,33 +98,13 @@ NSSize static sDefaultSize;
     [ self->_tweetTextStorage replaceCharactersInRange: NSMakeRange( 0, self->_tweetTextStorage.string.length )
                                             withString: self->_tweet.tweetText ];
 
-    [ self->_tweetTextStorage addAttributes: @{ NSParagraphStyleAttributeName : self->_paragraphStyle
-                                              , NSFontAttributeName : [ NSFont fontWithName: @"Lato" size: 14.f ]
-                                              }
+    [ self->_tweetTextStorage addAttributes: [ [ self class ] defaultTextAttributes ]
                                       range: NSMakeRange( 0, self->_tweetTextStorage.string.length ) ];
     }
 
 - ( OTCTweet* ) tweet
     {
     return self->_tweet;
-    }
-
-- ( NSParagraphStyle* ) paragraphStyle
-    {
-    return [ self->_paragraphStyle copy ];
-    }
-
-- ( CGFloat ) textBlockHeight
-    {
-    NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithAttributedString: self->_tweetTextStorage ];
-    NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( NSWidth( self.bounds ), FLT_MAX ) ];
-    NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
-
-    [ layoutManager addTextContainer: textContainer ];
-    [ textStorage addLayoutManager: layoutManager ];
-
-    ( void )[ layoutManager glyphRangeForTextContainer: textContainer ];
-    return [ layoutManager usedRectForTextContainer: textContainer ].size.height;
     }
 
 #pragma mark Constraints-Based Auto Layout
@@ -143,10 +124,45 @@ NSSize static sDefaultSize;
     [ self addConstraints: verticalConstraints ];
     }
 
++ ( NSDictionary* ) defaultTextAttributes
+    {
+    return sDefaultTextAttributes;
+    }
+
++ ( CGFloat ) textBlockDynamicHeightWithText: ( NSString* )_Text blockWidth: ( CGFloat )_TextBlockWidth
+    {
+    NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithString: _Text
+                                                               attributes: [ [ self class ] defaultTextAttributes ] ];
+
+    return [ [ self class ] _textBlockDynamicHeightWithTextStorage: textStorage
+                                                        blockWidth: _TextBlockWidth ];
+    }
+
+- ( CGFloat ) textBlockDynamicHeightWithWidth: ( CGFloat )_TextBlockWidth
+    {
+    return [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
+                                                        blockWidth: _TextBlockWidth ];
+    }
+
 #pragma mark Private Interfaces
 - ( NSTextView* ) _textView
     {
     return self->_tweetTextStorage.layoutManagers.firstObject.textContainers.firstObject.textView;
+    }
+
++ ( CGFloat ) _textBlockDynamicHeightWithTextStorage: ( NSTextStorage* )_TextStorage
+                                          blockWidth: ( CGFloat )_TextBlockWidth
+    {
+    NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( _TextBlockWidth, FLT_MAX ) ];
+    NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
+
+    [ layoutManager addTextContainer: textContainer ];
+    [ _TextStorage addLayoutManager: layoutManager ];
+
+    ( void )[ layoutManager glyphRangeForTextContainer: textContainer ];
+    CGFloat dynamicHeight = NSHeight( [ layoutManager usedRectForTextContainer: textContainer ] );
+
+    return dynamicHeight;
     }
 
 @end // TWPTextView class

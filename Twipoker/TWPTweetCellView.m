@@ -48,8 +48,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 @synthesize tweetOperationsPanel;
 
-@dynamic refHeight;
-
 @dynamic tweet;
 @dynamic author;
 

@@ -59,9 +59,7 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 @property ( weak ) IBOutlet NSLayoutConstraint* spaceBetweenUserNameLabelAndTextView;
 @property ( weak ) IBOutlet NSLayoutConstraint* bottomSpaceConstraint;
 
-#pragma mark Properties
-@property ( assign, readonly ) CGFloat refHeight;
-
+#pragma mark Size
 - ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight;
 
 #pragma mark Initialization
