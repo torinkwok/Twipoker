@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTextView.h"
+#import "TWPUIConstants.h"
 #import "NSColor+Objectwitter-C.h"
 
 NSSize static sDefaultSize;
@@ -57,7 +58,7 @@ NSDictionary static* sDefaultTextAttributes;
 #pragma mark Initializations
 + ( void ) initialize
     {
-    sDefaultSize = NSMakeSize( 272.f, 37.f );
+    sDefaultSize = NSMakeSize( TWPTextViewDefaultWidth, TWPTextViewDefaultHeight );
 
     NSMutableParagraphStyle* paragraphStyle = [ [ NSParagraphStyle defaultParagraphStyle ] mutableCopy ];
     [ paragraphStyle setLineSpacing: 3.5f ];

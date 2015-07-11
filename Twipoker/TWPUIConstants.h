@@ -22,94 +22,15 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTimelineViewController.h"
-#import "TWPUIConstants.h"
-#import "TWPTweetCellView.h"
-#import "TWPTweetOperationsNotificationNames.h"
-#import "TWPTextView.h"
 
-// Private Interfaces
-@interface TWPTimelineViewController ()
-- ( CGFloat ) _calculateTweetTextBlockHeight: ( OTCTweet* )_Tweet width: ( CGFloat )_Width;
-@end // Private Interfaces
+@import Foundation;
 
-// TWPTimelineViewController class
-@implementation TWPTimelineViewController
+// TWPTextView
+CGFloat extern TWPTextViewDefaultWidth;
+CGFloat extern TWPTextViewDefaultHeight;
 
-@synthesize isLoadingOlderTweets = _isLoadingOlderTweets;
-@synthesize numberOfTweetsWillBeLoadedOnce = _numberOfTweetsWillBeLoadedOnce;
-
-- ( instancetype ) initWithNibName: ( NSString* )_NibNameOrNil
-                            bundle: ( NSBundle* )_NibBundleOrNil
-    {
-    if ( self = [ super initWithNibName: _NibNameOrNil bundle: _NibBundleOrNil ] )
-        {
-        self->_isLoadingOlderTweets = NO;
-        self->_numberOfTweetsWillBeLoadedOnce = 20;
-
-        SEL delegateSel = @selector( tweetOperationShouldBeUnretweeted: );
-        if ( [ self respondsToSelector: delegateSel ] )
-            [ [ NSNotificationCenter defaultCenter ] addObserver: self
-                                                        selector: delegateSel
-                                                            name: TWPTweetOperationShouldBeUnretweeted
-                                                          object: nil ];
-        }
-
-    return self;
-    }
-
-#pragma mark Conforms to <TWPTimelineTableViewDelegate>
-- ( NSView* ) tableView: ( NSTableView* )_TableView
-     viewForTableColumn: ( NSTableColumn* )_TableColumn
-                    row: ( NSInteger )_Row
-    {
-    TWPTweetCellView* tweetCellView =
-        ( TWPTweetCellView* )[ _TableView makeViewWithIdentifier: _TableColumn.identifier owner: self ];
-
-    OTCTweet* tweet = ( OTCTweet* )( self->_data[ _Row ] );
-    tweetCellView.tweet = tweet;
-
-    return tweetCellView;
-    }
-
-- ( CGFloat ) tableView: ( nonnull NSTableView* )_TableView
-            heightOfRow: ( NSInteger )_Row
-    {
-    TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: _TableView viewForTableColumn: _TableView.tableColumns.firstObject row: _Row ];
-    TWPTextView* tweetTextView = tweetCellView.tweetTextView;
-
-    CGFloat currentColumnWidth = _TableView.tableColumns.firstObject.width;
-    CGFloat height = [ tweetCellView dynamicHeightAccordingToTweetTextBlockHeight:
-        [ tweetTextView textBlockDynamicHeightWithWidth: currentColumnWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace ] ];
-
-    return height;
-    }
-
-- ( void ) tableViewColumnDidResize: ( nonnull NSNotification* )_Notif
-    {
-    NSMutableIndexSet* indexesChanged = [ NSMutableIndexSet indexSet ];
-
-    CGFloat columnNewWidth = [ _Notif.userInfo[ @"NSTableColumn" ] width ];
-    CGFloat columnOldWidth = [ _Notif.userInfo[ @"NSOldWidth" ] doubleValue ];
-
-    for ( int _Index = 0; _Index < self->_data.count; _Index++ )
-        {
-        CGFloat textBlockNewHeight =
-            [ TWPTextView textBlockDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
-                                              blockWidth: columnNewWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace ];
-        CGFloat textBlockOldHeight =
-            [ TWPTextView textBlockDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
-                                              blockWidth: columnOldWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace ];
-
-        if ( textBlockNewHeight != textBlockOldHeight )
-            [ indexesChanged addIndex: _Index ];
-        }
-
-    if ( indexesChanged.count > 0 )
-        [ ( ( NSTableColumn* )_Notif.userInfo[ @"NSTableColumn" ] ).tableView noteHeightOfRowsWithIndexesChanged: indexesChanged ];
-    }
-
-@end // TWPTimelineViewController class
+CGFloat extern TWPTextViewLeadingSpace;
+CGFloat extern TWPTextViewTrailingSpace;
 
 /*=============================================================================┐
 |                                                                              |
