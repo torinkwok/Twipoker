@@ -79,31 +79,20 @@
     [ self _postNotifForShowingUserProfile ];
     }
 
-- ( IBAction ) expandDMSessionButtonClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForExpandingDMSession ];
-    }
-
 #pragma mark Private Interfaces
 - ( void ) _postNotifForShowingUserProfile
     {
+    if ( [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ].superview == self )
+        [ [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ] removeFromSuperview ];
+
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.senderUserNameLabel.twitterUser } ];
     }
 
-- ( void ) _postNotifForExpandingDMSession
-    {
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldExpandDMSession
-                                                           object: self
-                                                         userInfo: @{ kDirectMessageSession : self->_session } ];
-    }
-
 #pragma mark Handling Events
 - ( void ) _showExpandDMSessionButton
     {
-    [ self removeConstraints: self.constraints ];
-
     NSButton* expandButton = [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ];
     [ expandButton setTranslatesAutoresizingMaskIntoConstraints: NO ];
     }

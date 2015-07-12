@@ -42,6 +42,19 @@ id static __strong sSingleton = nil;
     return sSingleton;
     }
 
+#pragma mark IBActions
+- ( IBAction ) expandDMSessionButtonClickedAction: ( id )_Sender
+    {
+    [ self.expandDMSessionButton removeFromSuperview ];
+    }
+
+- ( void ) _postNotifForExpandingDMSession
+    {
+//    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldExpandDMSession
+//                                                           object: self
+//                                                         userInfo: @{ kDirectMessageSession : self->_session } ];
+    }
+
 @end
 
 /*=============================================================================┐

@@ -31,6 +31,9 @@
 // Singleton Initializer
 + ( instancetype ) sharedElements;
 
+#pragma mark IBActions
+- ( IBAction ) expandDMSessionButtonClickedAction: ( id )_Sender;
+
 @end
 
 /*=============================================================================┐
