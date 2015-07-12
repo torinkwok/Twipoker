@@ -97,7 +97,7 @@
                                                         <rect key="frame" x="17" y="18" width="40" height="40"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="y46-uA-AZB"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKv-qb-6vr" userLabel="Tweet Text" customClass="TWPTweetTextField">
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKv-qb-6vr" userLabel="Tweet Text">
                                                         <rect key="frame" x="70" y="20" width="234" height="36"/>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="cCh-bP-RO2">
                                                             <font key="font" metaFont="system"/>

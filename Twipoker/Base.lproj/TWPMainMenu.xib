@@ -687,7 +687,7 @@
                 <outlet property="expandDMSessionButton" destination="NLe-zl-aHC" id="Zbn-yG-uBe"/>
             </connections>
         </customObject>
-        <button translatesAutoresizingMaskIntoConstraints="NO" id="NLe-zl-aHC">
+        <button translatesAutoresizingMaskIntoConstraints="NO" id="NLe-zl-aHC" customClass="TWPExpandDMSessionButton">
             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
             <constraints>
                 <constraint firstAttribute="height" constant="90" id="PFa-Ul-ygv"/>

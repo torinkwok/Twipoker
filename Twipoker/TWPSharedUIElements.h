@@ -22,11 +22,11 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-@import Foundation;
+#import "TWPExpandDMSessionButton.h"
 
 @interface TWPSharedUIElements : NSObject
 
-@property ( weak ) IBOutlet NSButton* expandDMSessionButton;
+@property ( weak ) IBOutlet TWPExpandDMSessionButton* expandDMSessionButton;
 
 // Singleton Initializer
 + ( instancetype ) sharedElements;

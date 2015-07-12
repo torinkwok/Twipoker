@@ -47,7 +47,6 @@
 #pragma mark IBAction
 - ( IBAction ) userNameLabelClickedAction: ( id )_Sender;
 - ( IBAction ) userAvatarClickedAction: ( id )_Sender;
-- ( IBAction ) expandDMSessionButtonClickedAction: ( id )_Sender;
 
 @end
 

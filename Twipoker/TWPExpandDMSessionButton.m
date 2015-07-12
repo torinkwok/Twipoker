@@ -22,120 +22,29 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDirectMessagePreviewCellView.h"
-#import "TWPDirectMessageSession.h"
-#import "TWPUserAvatarWell.h"
-#import "TWPTimelineUserNameButton.h"
-#import "TWPSharedUIElements.h"
+#import "TWPExpandDMSessionButton.h"
 
-@implementation TWPDirectMessagePreviewCellView
+@implementation TWPExpandDMSessionButton
 
-@synthesize senderAvatar;
-@synthesize senderUserNameLabel;
-@synthesize mostRecentDateLabel;
-@synthesize mostTweetPreview;
+@dynamic DMSession;
 
-@dynamic session;
-
-#pragma mark Accessors
-- ( TWPDirectMessageSession* ) session
+#pragma mark Custom Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    return self->_session;
+    [ super drawRect: _DirtyRect ];
+    
+    // Drawing code here.
     }
 
-- ( void ) setSession: ( TWPDirectMessageSession* )_Session
+#pragma mark Dynamic Properties
+- ( void ) setDMSession: ( TWPDirectMessageSession* )_NewDMSession
     {
-    self->_session = _Session;
-
-    [ self.senderAvatar setTwitterUser: self->_session.otherSideUser ];
-    [ self.senderUserNameLabel setTwitterUser: self->_session.otherSideUser ];
-
-    OTCDirectMessage* mostRecentDM = [ self->_session mostRecentMessage ];
-    [ mostRecentDateLabel setStringValue: mostRecentDM.dateCreated.description ];
-    [ mostTweetPreview setStringValue: mostRecentDM.tweetText ];
-
-    [ self _removeExpandDMSessionButton ];
+    self->_DMSession = _NewDMSession;
     }
 
-- ( void ) awakeFromNib
+- ( TWPDirectMessageSession* ) DMSession
     {
-    // The self->_trackingArea will be created with `NSTrackingInVisibleRect` option,
-    // in which case the Application Kit handles the re-computation of self->_trackingArea
-    self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
-                                    | NSTrackingInVisibleRect | NSTrackingAssumeInside | NSTrackingMouseMoved;
-
-    self->_trackingArea =
-        [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
-
-    [ self addTrackingArea: self->_trackingArea ];
-    }
-
-#pragma mark IBAction
-- ( IBAction ) userNameLabelClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForShowingUserProfile ];
-    }
-
-- ( IBAction ) userAvatarClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForShowingUserProfile ];
-    }
-
-#pragma mark Private Interfaces
-- ( void ) _postNotifForShowingUserProfile
-    {
-    if ( [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ].superview == self )
-        [ [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ] removeFromSuperview ];
-
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
-                                                           object: self
-                                                         userInfo: @{ kTwitterUser : self.senderUserNameLabel.twitterUser } ];
-    }
-
-#pragma mark Handling Events
-- ( void ) _showExpandDMSessionButton
-    {
-    if ( [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ].superview != self )
-        {
-        TWPExpandDMSessionButton* expandButton = [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ];
-        [ expandButton setDMSession: self->_session ];
-        [ self addSubview: expandButton ];
-        }
-    }
-
-- ( void ) _removeExpandDMSessionButton
-    {
-    if ( [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ].superview == self )
-        {
-        TWPExpandDMSessionButton* expandButton = [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ];
-        [ expandButton setDMSession: nil ];
-        [ expandButton removeFromSuperview ];
-        }
-    }
-
-- ( void ) mouseEntered: ( NSEvent* )_Event
-    {
-    [ super mouseEntered: _Event ];
-    [ self _showExpandDMSessionButton ];
-    }
-
-- ( void ) mouseExited: ( NSEvent* )_Event
-    {
-    [ super mouseExited: _Event ];
-    [ self _removeExpandDMSessionButton ];
-    }
-
-- ( void ) scrollWheel: ( NSEvent* )_Event
-    {
-    [ self _removeExpandDMSessionButton ];
-    [ super scrollWheel: _Event ];
-    }
-
-- ( void ) mouseMoved: ( nonnull NSEvent* )_TheEvent
-    {
-    [ self _showExpandDMSessionButton ];
-
-    [ super mouseMoved: _TheEvent ];
+    return self->_DMSession;
     }
 
 @end

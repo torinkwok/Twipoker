@@ -111,6 +111,7 @@
 		839B51B21B41EA99005035E6 /* TWPTwitterUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B51B11B41EA99005035E6 /* TWPTwitterUserProfileViewController.m */; };
 		839EE9BF1B51643C00B28111 /* TWPUIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EE9BE1B51643C00B28111 /* TWPUIConstants.m */; };
 		839EE9C21B5217E500B28111 /* TWPSharedUIElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EE9C11B5217E500B28111 /* TWPSharedUIElements.m */; };
+		839EE9C51B522A1100B28111 /* TWPExpandDMSessionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EE9C41B522A1100B28111 /* TWPExpandDMSessionButton.m */; };
 		83AAF6D11AECE801007A3A48 /* TWPTimelineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */; };
 		83AAF6D31AECE8C7007A3A48 /* TWPTimeline.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83AAF6D21AECE8C7007A3A48 /* TWPTimeline.xib */; };
 		83AAF6D71AECE907007A3A48 /* TWPListsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83AAF6D61AECE907007A3A48 /* TWPListsView.xib */; };
@@ -438,6 +439,8 @@
 		839EE9BE1B51643C00B28111 /* TWPUIConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPUIConstants.m; path = Twipoker/TWPUIConstants.m; sourceTree = "<group>"; };
 		839EE9C01B5217E500B28111 /* TWPSharedUIElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPSharedUIElements.h; path = Twipoker/TWPSharedUIElements.h; sourceTree = "<group>"; };
 		839EE9C11B5217E500B28111 /* TWPSharedUIElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPSharedUIElements.m; path = Twipoker/TWPSharedUIElements.m; sourceTree = "<group>"; };
+		839EE9C31B522A1100B28111 /* TWPExpandDMSessionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPExpandDMSessionButton.h; path = Twipoker/TWPExpandDMSessionButton.h; sourceTree = "<group>"; };
+		839EE9C41B522A1100B28111 /* TWPExpandDMSessionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPExpandDMSessionButton.m; path = Twipoker/TWPExpandDMSessionButton.m; sourceTree = "<group>"; };
 		83AAF6CF1AECE801007A3A48 /* TWPTimelineTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineTableView.h; path = Twipoker/TWPTimelineTableView.h; sourceTree = "<group>"; };
 		83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineTableView.m; path = Twipoker/TWPTimelineTableView.m; sourceTree = "<group>"; };
 		83AAF6D21AECE8C7007A3A48 /* TWPTimeline.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPTimeline.xib; path = Twipoker/TWPTimeline.xib; sourceTree = "<group>"; };
@@ -1043,6 +1046,8 @@
 				831732971B15CF3B00B136BF /* TWPDirectMessagesPreviewView.m */,
 				831732991B15E25C00B136BF /* TWPDirectMessagePreviewCellView.h */,
 				8317329A1B15E25C00B136BF /* TWPDirectMessagePreviewCellView.m */,
+				839EE9C31B522A1100B28111 /* TWPExpandDMSessionButton.h */,
+				839EE9C41B522A1100B28111 /* TWPExpandDMSessionButton.m */,
 			);
 			name = "d-m";
 			sourceTree = "<group>";
@@ -1779,6 +1784,7 @@
 				83CFD8701ACF1C820062D73D /* TWPTextFieldCell.m in Sources */,
 				83924DC21AE104A900C25895 /* _OTCGeneral.m in Sources */,
 				83924D951AE1030B00C25895 /* INAppStoreWindow.m in Sources */,
+				839EE9C51B522A1100B28111 /* TWPExpandDMSessionButton.m in Sources */,
 				83F231BD1AE114A600A05D1D /* FBKVOController.m in Sources */,
 				835001ED1B28DD5C0067499E /* TWPTweetOperationsNotificationNames.m in Sources */,
 				83B5550E1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.m in Sources */,
