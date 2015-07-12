@@ -46,6 +46,8 @@
 
 - ( void ) setSession: ( TWPDirectMessageSession* )_Session
     {
+    [ self.expandDMSessionButton setHidden: YES ];
+
     self->_session = _Session;
 
     [ self.senderAvatar setTwitterUser: self->_session.otherSideUser ];
