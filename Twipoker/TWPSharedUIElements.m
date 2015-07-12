@@ -22,113 +22,24 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPDirectMessagePreviewCellView.h"
-#import "TWPDirectMessageSession.h"
-#import "TWPUserAvatarWell.h"
-#import "TWPTimelineUserNameButton.h"
+#import "TWPSharedUIElements.h"
 
-@implementation TWPDirectMessagePreviewCellView
+@implementation TWPSharedUIElements
 
-@synthesize senderAvatar;
-@synthesize senderUserNameLabel;
-@synthesize mostRecentDateLabel;
-@synthesize mostTweetPreview;
-
-@synthesize expandDMSessionButton;
-
-@dynamic session;
-
-#pragma mark Accessors
-- ( TWPDirectMessageSession* ) session
+#pragma mark Singleton Initializer
++ ( instancetype ) sharedElements
     {
-    return self->_session;
+    return [ [ [ self class ] alloc ] init ];
     }
 
-- ( void ) setSession: ( TWPDirectMessageSession* )_Session
+id static __strong sSingleton = nil;
+- ( instancetype ) init
     {
-    self->_session = _Session;
+    if ( !sSingleton )
+        if ( self = [ super init ] )
+            sSingleton = self;
 
-    [ self.senderAvatar setTwitterUser: self->_session.otherSideUser ];
-    [ self.senderUserNameLabel setTwitterUser: self->_session.otherSideUser ];
-
-    OTCDirectMessage* mostRecentDM = [ self->_session mostRecentMessage ];
-    [ mostRecentDateLabel setStringValue: mostRecentDM.dateCreated.description ];
-    [ mostTweetPreview setStringValue: mostRecentDM.tweetText ];
-
-    [ self.expandDMSessionButton setHidden: YES ];
-    }
-
-- ( void ) awakeFromNib
-    {
-    // The self->_trackingArea will be created with `NSTrackingInVisibleRect` option,
-    // in which case the Application Kit handles the re-computation of self->_trackingArea
-    self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
-                                    | NSTrackingInVisibleRect | NSTrackingAssumeInside | NSTrackingMouseMoved;
-
-    self->_trackingArea =
-        [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
-
-    [ self addTrackingArea: self->_trackingArea ];
-    }
-
-#pragma mark IBAction
-- ( IBAction ) userNameLabelClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForShowingUserProfile ];
-    }
-
-- ( IBAction ) userAvatarClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForShowingUserProfile ];
-    }
-
-- ( IBAction ) expandDMSessionButtonClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForExpandingDMSession ];
-    }
-
-#pragma mark Private Interfaces
-- ( void ) _postNotifForShowingUserProfile
-    {
-    [ self.expandDMSessionButton setHidden: YES ];
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
-                                                           object: self
-                                                         userInfo: @{ kTwitterUser : self.senderUserNameLabel.twitterUser } ];
-    }
-
-- ( void ) _postNotifForExpandingDMSession
-    {
-    [ self.expandDMSessionButton setHidden: YES ];
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldExpandDMSession
-                                                           object: self
-                                                         userInfo: @{ kDirectMessageSession : self->_session } ];
-    }
-
-#pragma mark Handling Events
-- ( void ) mouseEntered: ( NSEvent* )_Event
-    {
-    [ super mouseEntered: _Event ];
-    [ self.expandDMSessionButton setHidden: NO ];
-    }
-
-- ( void ) mouseExited: ( NSEvent* )_Event
-    {
-    [ super mouseExited: _Event ];
-    [ self.expandDMSessionButton setHidden: YES ];
-    }
-
-- ( void ) scrollWheel: ( NSEvent* )_Event
-    {
-    [ self.expandDMSessionButton setHidden: YES ];
-    [ super scrollWheel: _Event ];
-    }
-
-- ( void ) mouseMoved:(nonnull NSEvent *)theEvent
-    {
-    if ( [ self.expandDMSessionButton isHidden ] )
-        [ self.expandDMSessionButton setHidden: NO ];
-
-    [ super mouseMoved: theEvent ];
+    return sSingleton;
     }
 
 @end

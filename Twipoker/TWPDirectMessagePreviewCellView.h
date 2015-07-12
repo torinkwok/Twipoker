@@ -42,8 +42,6 @@
 @property ( weak ) IBOutlet NSTextField* mostRecentDateLabel;
 @property ( weak ) IBOutlet NSTextField* mostTweetPreview;
 
-@property ( weak ) IBOutlet NSButton* expandDMSessionButton;
-
 @property ( strong, readwrite ) TWPDirectMessageSession* session;
 
 #pragma mark IBAction
