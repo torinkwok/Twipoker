@@ -26,6 +26,7 @@
 #import "TWPDirectMessageSession.h"
 #import "TWPUserAvatarWell.h"
 #import "TWPTimelineUserNameButton.h"
+#import "TWPSharedUIElements.h"
 
 @implementation TWPDirectMessagePreviewCellView
 
@@ -33,8 +34,6 @@
 @synthesize senderUserNameLabel;
 @synthesize mostRecentDateLabel;
 @synthesize mostTweetPreview;
-
-@synthesize expandDMSessionButton;
 
 @dynamic session;
 
@@ -54,8 +53,6 @@
     OTCDirectMessage* mostRecentDM = [ self->_session mostRecentMessage ];
     [ mostRecentDateLabel setStringValue: mostRecentDM.dateCreated.description ];
     [ mostTweetPreview setStringValue: mostRecentDM.tweetText ];
-
-    [ self.expandDMSessionButton setHidden: YES ];
     }
 
 - ( void ) awakeFromNib
@@ -90,7 +87,6 @@
 #pragma mark Private Interfaces
 - ( void ) _postNotifForShowingUserProfile
     {
-    [ self.expandDMSessionButton setHidden: YES ];
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.senderUserNameLabel.twitterUser } ];
@@ -98,37 +94,44 @@
 
 - ( void ) _postNotifForExpandingDMSession
     {
-    [ self.expandDMSessionButton setHidden: YES ];
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldExpandDMSession
                                                            object: self
                                                          userInfo: @{ kDirectMessageSession : self->_session } ];
     }
 
 #pragma mark Handling Events
+- ( void ) _showExpandDMSessionButton
+    {
+    [ self removeConstraints: self.constraints ];
+
+    NSButton* expandButton = [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ];
+    [ expandButton setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    }
+
 - ( void ) mouseEntered: ( NSEvent* )_Event
     {
     [ super mouseEntered: _Event ];
-    [ self.expandDMSessionButton setHidden: NO ];
+    [ self addSubview: [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ] ];
     }
 
 - ( void ) mouseExited: ( NSEvent* )_Event
     {
     [ super mouseExited: _Event ];
-    [ self.expandDMSessionButton setHidden: YES ];
+    [ [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ] removeFromSuperview ];
     }
 
 - ( void ) scrollWheel: ( NSEvent* )_Event
     {
-    [ self.expandDMSessionButton setHidden: YES ];
+    [ [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ] removeFromSuperview ];
     [ super scrollWheel: _Event ];
     }
 
-- ( void ) mouseMoved:(nonnull NSEvent *)theEvent
+- ( void ) mouseMoved: ( nonnull NSEvent* )_TheEvent
     {
-    if ( [ self.expandDMSessionButton isHidden ] )
-        [ self.expandDMSessionButton setHidden: NO ];
+    if ( [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ].superview != self )
+        [ self addSubview: [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ] ];
 
-    [ super mouseMoved: theEvent ];
+    [ super mouseMoved: _TheEvent ];
     }
 
 @end
