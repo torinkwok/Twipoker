@@ -28,6 +28,12 @@
 #import "TWPTimelineUserNameButton.h"
 #import "TWPSharedUIElements.h"
 
+// Private Interfaces
+@interface TWPDirectMessagePreviewCellView ()
+@property ( assign, readwrite, setter = setShowingExpandButton: ) BOOL isShowingExpandButton;
+@end // Private Interfaces
+
+// TWPDirectMessagePreviewCellView class
 @implementation TWPDirectMessagePreviewCellView
 
 @synthesize senderAvatar;
@@ -36,6 +42,8 @@
 @synthesize mostTweetPreview;
 
 @dynamic session;
+
+@dynamic isShowingExpandButton;
 
 #pragma mark Accessors
 - ( TWPDirectMessageSession* ) session
@@ -54,7 +62,7 @@
     [ mostRecentDateLabel setStringValue: mostRecentDM.dateCreated.description ];
     [ mostTweetPreview setStringValue: mostRecentDM.tweetText ];
 
-    [ self _removeExpandDMSessionButton ];
+    self.isShowingExpandButton = NO;
     }
 
 - ( instancetype ) initWithCoder: ( nonnull NSCoder* )_Coder
@@ -78,6 +86,18 @@
     [ self addTrackingArea: self->_trackingArea ];
     }
 
+#pragma mark Dynamic Accessors
+- ( void ) setShowingExpandButton: ( BOOL )_IsShowingExpandButton
+    {
+    self->_isShowingExpandButton = _IsShowingExpandButton;
+    [ self setNeedsUpdateConstraints: YES ];
+    }
+
+- ( BOOL ) isShowingExpandButton
+    {
+    return self->_isShowingExpandButton;
+    }
+
 #pragma mark IBAction
 - ( IBAction ) userNameLabelClickedAction: ( id )_Sender
     {
@@ -92,59 +112,64 @@
 #pragma mark Private Interfaces
 - ( void ) _postNotifForShowingUserProfile
     {
-    [ self _removeExpandDMSessionButton ];
+    self.isShowingExpandButton = NO;
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.senderUserNameLabel.twitterUser } ];
     }
 
 #pragma mark Handling Events
-- ( void ) _showExpandDMSessionButton
-    {
-    if ( [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ].superview != self )
-        {
-        TWPExpandDMSessionButton* expandButton = [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ];
-        [ expandButton setDMSession: self->_session ];
-        [ self addSubview: expandButton ];
-        }
-    }
-
-- ( void ) _removeExpandDMSessionButton
-    {
-    if ( [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ].superview == self )
-        {
-        TWPExpandDMSessionButton* expandButton = [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ];
-        [ expandButton setDMSession: nil ];
-        [ expandButton removeFromSuperview ];
-        }
-    }
 
 - ( void ) mouseEntered: ( NSEvent* )_Event
     {
     [ super mouseEntered: _Event ];
-    [ self _showExpandDMSessionButton ];
+    self.isShowingExpandButton = YES;
     }
 
 - ( void ) mouseExited: ( NSEvent* )_Event
     {
     [ super mouseExited: _Event ];
-    [ self _removeExpandDMSessionButton ];
+    self.isShowingExpandButton = NO;
     }
 
 - ( void ) scrollWheel: ( NSEvent* )_Event
     {
-    [ self _removeExpandDMSessionButton ];
     [ super scrollWheel: _Event ];
+    self.isShowingExpandButton = NO;
     }
 
 - ( void ) mouseMoved: ( nonnull NSEvent* )_TheEvent
     {
-    [ self _showExpandDMSessionButton ];
-
     [ super mouseMoved: _TheEvent ];
+    self.isShowingExpandButton = YES;
     }
 
-@end
+#pragma mark Handling Constraints-Based Auto Layout
+- ( void ) updateConstraints
+    {
+    [ super updateConstraints ];
+
+    TWPExpandDMSessionButton* expandButton = [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ];
+
+    if ( self->_isShowingExpandButton )
+        {
+        if ( expandButton.superview != self )
+            {
+            [ expandButton setDMSession: self->_session ];
+            [ self addSubview: expandButton ];
+            }
+        }
+    else
+        {
+        if ( expandButton.superview == self )
+            {
+            [ expandButton setDMSession: nil ];
+            [ expandButton removeFromSuperview ];
+            }
+        }
+    }
+
+@end // TWPDirectMessagePreviewCellView class
 
 /*=============================================================================┐
 |                                                                              |

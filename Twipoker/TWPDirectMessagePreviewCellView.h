@@ -28,6 +28,7 @@
 @class TWPTimelineUserNameButton;
 @class TWPDirectMessageSession;
 
+// TWPDirectMessagePreviewCellView class
 @interface TWPDirectMessagePreviewCellView : NSTableCellView
     {
 @private
@@ -50,7 +51,7 @@
 - ( IBAction ) userNameLabelClickedAction: ( id )_Sender;
 - ( IBAction ) userAvatarClickedAction: ( id )_Sender;
 
-@end
+@end // TWPDirectMessagePreviewCellView class
 
 /*=============================================================================┐
 |                                                                              |
