@@ -57,6 +57,14 @@
     [ self _removeExpandDMSessionButton ];
     }
 
+- ( instancetype ) initWithCoder: ( nonnull NSCoder* )_Coder
+    {
+    if ( self = [ super initWithCoder: _Coder ] )
+        self->_isShowingExpandButton = NO;
+
+    return self;
+    }
+
 - ( void ) awakeFromNib
     {
     // The self->_trackingArea will be created with `NSTrackingInVisibleRect` option,
@@ -84,9 +92,7 @@
 #pragma mark Private Interfaces
 - ( void ) _postNotifForShowingUserProfile
     {
-    if ( [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ].superview == self )
-        [ [ [ TWPSharedUIElements sharedElements ] expandDMSessionButton ] removeFromSuperview ];
-
+    [ self _removeExpandDMSessionButton ];
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.senderUserNameLabel.twitterUser } ];

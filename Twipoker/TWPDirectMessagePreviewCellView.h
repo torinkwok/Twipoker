@@ -35,6 +35,8 @@
 
     NSTrackingAreaOptions _trackingAreaOptions;
     NSTrackingArea __strong* _trackingArea;
+
+    BOOL _isShowingExpandButton;
     }
 
 @property ( weak ) IBOutlet TWPUserAvatarWell* senderAvatar;
