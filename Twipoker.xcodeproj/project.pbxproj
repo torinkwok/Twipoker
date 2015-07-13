@@ -2036,6 +2036,7 @@
 				GCC_PREFIX_HEADER = "Twipoker/Twipoker-Prefix.pch";
 				INFOPLIST_FILE = "Twipoker/Twipoker-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = home.bedroom.TongKuo.Twipoker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2059,6 +2060,7 @@
 				GCC_PREFIX_HEADER = "Twipoker/Twipoker-Prefix.pch";
 				INFOPLIST_FILE = "Twipoker/Twipoker-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = home.bedroom.TongKuo.Twipoker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

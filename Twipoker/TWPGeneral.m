@@ -25,7 +25,7 @@
 #import "TWPGeneral.h"
 #import "Objectwitter-C.h"
 
-NSString* const TwipokerAppID = @"home.bedroom.TongGuo.Twipoker";
+NSString* const TwipokerAppID = @"home.bedroom.TongKuo.Twipoker";
 
 NSString* const TWPConsumerName = @"Twipoker";
 NSString* const TWPConsumerKey = @"4BIbHVLsffbHqrWK77fHtdFA7";
@@ -44,7 +44,7 @@ static void s_init()
     }
 
 // Notification Names
-NSString* const TWPTwipokerDidFinishLoginNotification = @"home.bedroom.TongGuo.Twipoker.Notif.DidFinishLogin";
+NSString* const TWPTwipokerDidFinishLoginNotification = @"home.bedroom.TongKuo.Twipoker.Notif.DidFinishLogin";
 
 /*=============================================================================┐
 |                                                                              |

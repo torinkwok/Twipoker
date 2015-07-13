@@ -41,7 +41,7 @@
 
 - ( NSString* ) identifier
     {
-    return @"home.bedroom.TongGuo.Twipoker.UI.DebugConsole.Login";
+    return @"home.bedroom.TongKuo.Twipoker.UI.DebugConsole.Login";
     }
 
 - ( NSImage* ) toolbarItemImage

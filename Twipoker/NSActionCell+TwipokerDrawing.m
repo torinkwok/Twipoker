@@ -73,7 +73,7 @@ typedef NS_ENUM( NSUInteger, _TWPCornerPosition )
 @dynamic radiusOfTopRightCorner;
 @dynamic radiusOfBottomRightCorner;
 
-void static* kRoundedKey = @"home.bedroom.TongGuo.Twipoker.constants.kRoundedKey";
+void static* kRoundedKey = @"home.bedroom.TongKuo.Twipoker.constants.kRoundedKey";
 
 #pragma mark Accessors
 // Top Left

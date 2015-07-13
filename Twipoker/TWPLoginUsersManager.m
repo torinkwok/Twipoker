@@ -28,19 +28,19 @@
 #import "TWPLogin+TWPLoginUsersManager.h"
 
 // User Defauls Keys
-NSString* const TWPUserDefaultsKeyCurrentLoginUser = @"home.bedroom.TongGuo.Twipoker.UserDefaults.CurrentLoginUser";
-NSString* const TWPUserDefaultsKeyAllLoginUsers = @"home.bedroom.TongGuo.Twipoker.UserDefaults.AllLoginUsers";
+NSString* const TWPUserDefaultsKeyCurrentLoginUser = @"home.bedroom.TongKuo.Twipoker.UserDefaults.CurrentLoginUser";
+NSString* const TWPUserDefaultsKeyAllLoginUsers = @"home.bedroom.TongKuo.Twipoker.UserDefaults.AllLoginUsers";
 
 // Notification Names
-NSString* const TWPLoginUsersManagerDidFinishAddingNewLoginUser = @"home.bedroom.TongGuo.Twipoker.TWPLoginUsersManager.Notif.DidFinishAddingNewLoginUser";
-NSString* const TWPLoginUsersManagerDidFinishRemovingLoginUser = @"home.bedroom.TongGuo.Twipoker.TWPLoginUsersManager.Notif.DidFinishRemovingLoginUser";
-NSString* const TWPLoginUsersManagerDidFinishUpdatingCurrentLoginUser = @"home.bedroom.TongGuo.Twipoker.TWPLoginUsersManager.Notif.DidFinishUpdatingCurrentLoginUser";
-NSString* const TWPLoginUsersManagerDidFinishRemovingAllLoginUsers = @"home.bedroom.TongGuo.Twipoker.TWPLoginUsersManager.Notif.DidRemovingAllLoginUsers";
+NSString* const TWPLoginUsersManagerDidFinishAddingNewLoginUser = @"home.bedroom.TongKuo.Twipoker.TWPLoginUsersManager.Notif.DidFinishAddingNewLoginUser";
+NSString* const TWPLoginUsersManagerDidFinishRemovingLoginUser = @"home.bedroom.TongKuo.Twipoker.TWPLoginUsersManager.Notif.DidFinishRemovingLoginUser";
+NSString* const TWPLoginUsersManagerDidFinishUpdatingCurrentLoginUser = @"home.bedroom.TongKuo.Twipoker.TWPLoginUsersManager.Notif.DidFinishUpdatingCurrentLoginUser";
+NSString* const TWPLoginUsersManagerDidFinishRemovingAllLoginUsers = @"home.bedroom.TongKuo.Twipoker.TWPLoginUsersManager.Notif.DidRemovingAllLoginUsers";
 
 // Notification User Info Keys
-NSString* const TWPNewLoginUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.NewLoginUser";
-NSString* const TWPRemovedLoginUserUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.RemovedLoginUser";
-NSString* const TWPNumberOfRemainingLoginUsersUserInfoKey = @"home.bedroom.TongGuo.Twipoker.UserInfoKeys.NumberOfRemainingLoginUsersUserInfoKey";
+NSString* const TWPNewLoginUserUserInfoKey = @"home.bedroom.TongKuo.Twipoker.UserInfoKeys.NewLoginUser";
+NSString* const TWPRemovedLoginUserUserInfoKey = @"home.bedroom.TongKuo.Twipoker.UserInfoKeys.RemovedLoginUser";
+NSString* const TWPNumberOfRemainingLoginUsersUserInfoKey = @"home.bedroom.TongKuo.Twipoker.UserInfoKeys.NumberOfRemainingLoginUsersUserInfoKey";
 
 @implementation TWPLoginUsersManager
     {
