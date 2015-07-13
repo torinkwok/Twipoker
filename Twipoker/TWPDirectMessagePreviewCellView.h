@@ -38,8 +38,6 @@
     NSTrackingArea __strong* _trackingArea;
 
     BOOL _isShowingExpandButton;
-
-    NSMutableArray __strong* _alternateConstraints;
     }
 
 @property ( weak ) IBOutlet TWPUserAvatarWell* senderAvatar;
@@ -48,11 +46,6 @@
 @property ( weak ) IBOutlet NSTextField* mostTweetPreview;
 
 @property ( strong, readwrite ) TWPDirectMessageSession* session;
-
-@property ( weak ) IBOutlet NSLayoutConstraint* dmTextViewTrailing_equal_cellViewTrailing_constraint;
-@property ( weak ) IBOutlet NSLayoutConstraint* dateFormatterTrailing_equal_cellViewTrailing_constraint;
-@property ( weak ) IBOutlet NSLayoutConstraint* dateFormatterLeading_greaterThanOrEqual_senderNameLabelTrailing_constraint;
-@property ( weak ) IBOutlet NSLayoutConstraint* dmPreviewTextViewWidth_greaterThanOrEqual_constraint;
 
 #pragma mark IBAction
 - ( IBAction ) userNameLabelClickedAction: ( id )_Sender;
