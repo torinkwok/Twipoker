@@ -58,7 +58,7 @@
                                                 </connections>
                                             </button>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0f-SW-UKV" userLabel="Tweet Text">
-                                                <rect key="frame" x="103" y="16" width="278" height="20"/>
+                                                <rect key="frame" x="103" y="16" width="278.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="UHY-rh-A22"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="273" id="uGR-d2-gd9"/>
@@ -112,6 +112,10 @@
                                             <constraint firstAttribute="trailing" secondItem="BjF-zA-S3v" secondAttribute="trailing" constant="20" id="wlj-nB-GIP"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="dateFormatterLeading_greaterThanOrEqual_senderNameLabelTrailing_constraint" destination="ti6-0a-6N8" id="pv2-hR-sgQ"/>
+                                            <outlet property="dateFormatterTrailing_equal_cellViewTrailing_constraint" destination="wlj-nB-GIP" id="NV4-EL-hij"/>
+                                            <outlet property="dmPreviewTextViewWidth_greaterThanOrEqual_constraint" destination="uGR-d2-gd9" id="9Qj-bg-sbY"/>
+                                            <outlet property="dmTextViewTrailing_equal_cellViewTrailing_constraint" destination="hhS-XG-CJm" id="JNr-80-GZb"/>
                                             <outlet property="mostRecentDateLabel" destination="BjF-zA-S3v" id="Wib-8C-Bxe"/>
                                             <outlet property="mostTweetPreview" destination="C0f-SW-UKV" id="vh5-Na-NOF"/>
                                             <outlet property="senderAvatar" destination="6YJ-hB-uwB" id="TTi-RZ-qcV"/>

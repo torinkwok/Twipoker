@@ -79,11 +79,68 @@
     // in which case the Application Kit handles the re-computation of self->_trackingArea
     self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
                                     | NSTrackingInVisibleRect | NSTrackingAssumeInside | NSTrackingMouseMoved;
-
     self->_trackingArea =
         [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
 
     [ self addTrackingArea: self->_trackingArea ];
+
+    self->_alternateConstraints = [ NSMutableArray array ];
+    NSLayoutConstraint* dmTextViewTrailingConstraint =
+        [ NSLayoutConstraint constraintWithItem: self.mostTweetPreview
+                                      attribute: NSLayoutAttributeTrailing
+                                      relatedBy: NSLayoutRelationGreaterThanOrEqual
+                                         toItem: self
+                                      attribute: NSLayoutAttributeTrailing
+                                     multiplier: 1.f
+                                       constant: 20.f + NSWidth( [ TWPSharedUIElements sharedElements ].expandDMSessionButton.frame ) ];
+
+    NSLayoutConstraint* senderUserNameTrailingConstraint =
+        [ NSLayoutConstraint constraintWithItem: self.senderUserNameLabel
+                                      attribute: NSLayoutAttributeTrailing
+                                      relatedBy: NSLayoutRelationGreaterThanOrEqual
+                                         toItem: self
+                                      attribute: NSLayoutAttributeTrailing
+                                     multiplier: 1.f
+                                       constant: 20.f + NSWidth( [ TWPSharedUIElements sharedElements ].expandDMSessionButton.frame ) ];
+
+    NSLayoutConstraint* dmPreviewTextViewWidthConstraint =
+        [ NSLayoutConstraint constraintWithItem: self.mostTweetPreview
+                                      attribute: NSLayoutAttributeWidth
+                                      relatedBy: NSLayoutRelationGreaterThanOrEqual
+                                         toItem: self
+                                      attribute: NSLayoutAttributeWidth
+                                     multiplier: 1.f
+                                       constant: NSWidth( self.mostTweetPreview.frame ) ];
+
+    TWPExpandDMSessionButton* expandButton = [ TWPSharedUIElements sharedElements ].expandDMSessionButton;
+    NSLayoutConstraint* expandButtonWidthConstraints =
+        [ NSLayoutConstraint constraintWithItem: expandButton
+                                      attribute: NSLayoutAttributeWidth
+                                      relatedBy: NSLayoutRelationEqual
+                                         toItem: expandButton
+                                      attribute: NSLayoutAttributeWidth
+                                     multiplier: 1.f
+                                       constant: NSWidth( expandButton.frame ) ];
+
+    NSLayoutConstraint* expandButtonHeightConstraints =
+        [ NSLayoutConstraint constraintWithItem: expandButton
+                                      attribute: NSLayoutAttributeHeight
+                                      relatedBy: NSLayoutRelationEqual
+                                         toItem: expandButton
+                                      attribute: NSLayoutAttributeHeight
+                                     multiplier: 1.f
+                                       constant: NSHeight( expandButton.frame ) ];
+
+    [ self->_alternateConstraints addObjectsFromArray:
+        @[ dmTextViewTrailingConstraint, senderUserNameTrailingConstraint, dmPreviewTextViewWidthConstraint
+         , expandButtonWidthConstraints, expandButtonHeightConstraints
+         ] ];
+
+    for ( NSLayoutConstraint* _Constraint in self->_alternateConstraints )
+        {
+        [ self addConstraint: _Constraint ];
+        [ _Constraint setActive: NO ];
+        }
     }
 
 #pragma mark Dynamic Accessors
@@ -157,6 +214,14 @@
             {
             [ expandButton setDMSession: self->_session ];
             [ self addSubview: expandButton ];
+
+            [ self.dmTextViewTrailing_equal_cellViewTrailing_constraint setActive: NO ];
+            [ self.dateFormatterTrailing_equal_cellViewTrailing_constraint setActive: NO ];
+            [ self.dateFormatterLeading_greaterThanOrEqual_senderNameLabelTrailing_constraint setActive: NO ];
+            [ self.dmPreviewTextViewWidth_greaterThanOrEqual_constraint setActive: NO ];
+
+            for ( NSLayoutConstraint* _Constraint in self->_alternateConstraints )
+                [ _Constraint setActive: YES ];
             }
         }
     else
@@ -165,6 +230,14 @@
             {
             [ expandButton setDMSession: nil ];
             [ expandButton removeFromSuperview ];
+
+            [ self.dmTextViewTrailing_equal_cellViewTrailing_constraint setActive: YES ];
+            [ self.dateFormatterTrailing_equal_cellViewTrailing_constraint setActive: YES ];
+            [ self.dateFormatterLeading_greaterThanOrEqual_senderNameLabelTrailing_constraint setActive: YES ];
+            [ self.dmPreviewTextViewWidth_greaterThanOrEqual_constraint setActive: YES ];
+
+            for ( NSLayoutConstraint* _Constraint in self->_alternateConstraints )
+                [ _Constraint setActive: NO ];
             }
         }
     }
