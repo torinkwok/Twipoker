@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPUserAvatarWell.h"
+#import "TWPUserAvatarCell.h"
 
 @implementation TWPUserAvatarWell
 
@@ -95,12 +96,31 @@
     [ NSApp sendAction: self.action to: self.target from: self ];
     }
 
+- ( void ) mouseEntered: ( nonnull NSEvent* )_Event
+    {
+    [ super mouseEntered: _Event ];
+    [ self.cell setHighlighted: YES ];
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
+    }
+
+- ( void ) mouseExited: ( nonnull NSEvent* )_Event
+    {
+    [ super mouseMoved: _Event ];
+    [ self.cell setHighlighted: NO ];
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
+    }
+
 #pragma mark Custom Drawing
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
 
     // TODO: Custom Drawing
+    }
+
+- ( Class ) cellClass
+    {
+    return [ TWPUserAvatarCell class ];
     }
 
 @end
