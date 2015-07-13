@@ -79,6 +79,7 @@
 		83627CCF1B4492BB0032505C /* messages-tab-gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83627CCD1B4492BB0032505C /* messages-tab-gray@2x.png */; };
 		83627CD01B4492BB0032505C /* messages-tab-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 83627CCE1B4492BB0032505C /* messages-tab-gray.png */; };
 		83627CD81B44A6F50032505C /* TWPArtwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 83627CD71B44A6F50032505C /* TWPArtwork.m */; };
+		83757CD11B53E6500042347E /* TWPExpandDMSessionButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83757CD01B53E6500042347E /* TWPExpandDMSessionButtonCell.m */; };
 		837E16F81B48497C000BE509 /* TWPRetweetOperationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 837E16F71B48497C000BE509 /* TWPRetweetOperationsView.xib */; };
 		838955931B2D8F3D0039300C /* TWPQuoteRetweetBoxController.m in Sources */ = {isa = PBXBuildFile; fileRef = 838955911B2D8F3D0039300C /* TWPQuoteRetweetBoxController.m */; };
 		838955941B2D8F3D0039300C /* TWPQuoteRetweetBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 838955921B2D8F3D0039300C /* TWPQuoteRetweetBox.xib */; };
@@ -375,6 +376,8 @@
 		83627CCE1B4492BB0032505C /* messages-tab-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "messages-tab-gray.png"; path = "Twipoker/Artwork/messages-tab-gray.png"; sourceTree = SOURCE_ROOT; };
 		83627CD61B44A6F50032505C /* TWPArtwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPArtwork.h; path = Twipoker/TWPArtwork.h; sourceTree = "<group>"; };
 		83627CD71B44A6F50032505C /* TWPArtwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPArtwork.m; path = Twipoker/TWPArtwork.m; sourceTree = "<group>"; };
+		83757CCF1B53E6500042347E /* TWPExpandDMSessionButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPExpandDMSessionButtonCell.h; path = Twipoker/TWPExpandDMSessionButtonCell.h; sourceTree = "<group>"; };
+		83757CD01B53E6500042347E /* TWPExpandDMSessionButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPExpandDMSessionButtonCell.m; path = Twipoker/TWPExpandDMSessionButtonCell.m; sourceTree = "<group>"; };
 		837E16F71B48497C000BE509 /* TWPRetweetOperationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPRetweetOperationsView.xib; path = Twipoker/TWPRetweetOperationsView.xib; sourceTree = "<group>"; };
 		838955901B2D8F3D0039300C /* TWPQuoteRetweetBoxController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPQuoteRetweetBoxController.h; path = Twipoker/TWPQuoteRetweetBoxController.h; sourceTree = "<group>"; };
 		838955911B2D8F3D0039300C /* TWPQuoteRetweetBoxController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPQuoteRetweetBoxController.m; path = Twipoker/TWPQuoteRetweetBoxController.m; sourceTree = "<group>"; };
@@ -1048,6 +1051,8 @@
 				8317329A1B15E25C00B136BF /* TWPDirectMessagePreviewCellView.m */,
 				839EE9C31B522A1100B28111 /* TWPExpandDMSessionButton.h */,
 				839EE9C41B522A1100B28111 /* TWPExpandDMSessionButton.m */,
+				83757CCF1B53E6500042347E /* TWPExpandDMSessionButtonCell.h */,
+				83757CD01B53E6500042347E /* TWPExpandDMSessionButtonCell.m */,
 			);
 			name = "d-m";
 			sourceTree = "<group>";
@@ -1829,6 +1834,7 @@
 				83924DC71AE104A900C25895 /* OTCPlace.m in Sources */,
 				83D12E931AEFE33E009ECC13 /* TWPTwitterUserViewController.m in Sources */,
 				8349A64C1AD2D30100487896 /* TWPWhyNotPasswordButton.m in Sources */,
+				83757CD11B53E6500042347E /* TWPExpandDMSessionButtonCell.m in Sources */,
 				839B51B21B41EA99005035E6 /* TWPTwitterUserProfileViewController.m in Sources */,
 				83F231B61AE1147A00A05D1D /* TWPMainWindowController.m in Sources */,
 				83AB722D1B348D5C006A343B /* TWPActionNotifications.m in Sources */,

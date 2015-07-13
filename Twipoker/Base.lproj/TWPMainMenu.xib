@@ -690,7 +690,7 @@
         <button translatesAutoresizingMaskIntoConstraints="NO" id="NLe-zl-aHC" customClass="TWPExpandDMSessionButton">
             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
             <animations/>
-            <buttonCell key="cell" type="square" title="Details" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ITm-Vu-ur2">
+            <buttonCell key="cell" type="square" title="Details" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ITm-Vu-ur2" customClass="TWPExpandDMSessionButtonCell">
                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                 <font key="font" metaFont="system"/>
             </buttonCell>
