@@ -36,10 +36,10 @@
 // TWPDirectMessagePreviewCellView class
 @implementation TWPDirectMessagePreviewCellView
 
-@synthesize senderAvatar;
-@synthesize senderUserNameLabel;
-@synthesize mostRecentDateLabel;
-@synthesize mostTweetPreview;
+@synthesize senderAvatar = _senderAvatar;
+@synthesize senderUserNameLabel = _senderUserNameLabel;
+@synthesize mostRecentDateLabel = _mostRecentDateLabel;
+@synthesize mostTweetPreview = _mostTweetPreview;
 
 @dynamic session;
 
@@ -59,8 +59,8 @@
     [ self.senderUserNameLabel setTwitterUser: self->_session.otherSideUser ];
 
     OTCDirectMessage* mostRecentDM = [ self->_session mostRecentMessage ];
-    [ mostRecentDateLabel setStringValue: mostRecentDM.dateCreated.description ];
-    [ mostTweetPreview setStringValue: mostRecentDM.tweetText ];
+    [ self.mostRecentDateLabel setStringValue: mostRecentDM.dateCreated.description ];
+    [ self.mostTweetPreview setStringValue: mostRecentDM.tweetText ];
 
     self.isShowingExpandButton = NO;
     }
@@ -79,11 +79,12 @@
     // in which case the Application Kit handles the re-computation of self->_trackingArea
     self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
                                     | NSTrackingInVisibleRect | NSTrackingAssumeInside | NSTrackingMouseMoved;
-
     self->_trackingArea =
         [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
 
     [ self addTrackingArea: self->_trackingArea ];
+
+    self->_hiddenExpandButtonConstraints = self.constraints;
     }
 
 #pragma mark Dynamic Accessors
@@ -157,6 +158,83 @@
             {
             [ expandButton setDMSession: self->_session ];
             [ self addSubview: expandButton ];
+
+            [ self removeConstraints: self.constraints ];
+
+            TWPUserAvatarWell* avatar = self.senderAvatar;
+            TWPTimelineUserNameButton* senderNameLabel = self.senderUserNameLabel;
+            [ senderNameLabel removeConstraints: senderNameLabel.constraints ];
+            NSTextField* dateLabel = self.mostRecentDateLabel;
+            NSTextField* dmPreview = self.mostTweetPreview;
+            [ dmPreview removeConstraints: dmPreview.constraints ];
+            NSDictionary* viewsDict = NSDictionaryOfVariableBindings( avatar, senderNameLabel, dateLabel, dmPreview, expandButton );
+            if ( !self->_showingExpandButtonConstraints.count )
+                {
+                self->_showingExpandButtonConstraints = [ NSMutableArray array ];
+
+                NSArray* horizontalLayoutConstraints0 = [ NSLayoutConstraint
+                    constraintsWithVisualFormat: @"H:|-(==leadingSpace)"
+                                                  "-[avatar(==avatarWidth)]"
+                                                  "-(==space_avatarTrailing_senderNamelabelLeading)"
+                                                  "-[senderNameLabel(>=senderNameLabelWidth)]"
+                                                  "-(>=space_senderNameLabelTrailing_expandButtonLeading)"
+                                                  "-[expandButton(==expandButtonWidth)]|"
+                                        options: 0
+                                        metrics: @{ @"leadingSpace" : @( NSMinX( avatar.frame ) )
+                                                  , @"avatarWidth" : @( NSWidth( avatar.frame ) )
+                                                  , @"space_avatarTrailing_senderNamelabelLeading" : @( NSMinX( senderNameLabel.frame ) - NSMaxX( avatar.frame ) )
+                                                  , @"senderNameLabelWidth" : @( NSMaxX( self.frame ) - NSWidth( expandButton.frame ) - 20.f - NSMinX( senderNameLabel.frame ) )
+                                                  , @"space_senderNameLabelTrailing_expandButtonLeading" : @( NSWidth( self.frame ) - NSMaxX( senderNameLabel.frame ) - NSWidth( expandButton.frame ) )
+                                                  , @"expandButtonWidth" : @( NSWidth( expandButton.frame ) )
+                                                  }
+                                          views: viewsDict ];
+
+                NSArray* horizontalLayoutConstraints1 = [ NSLayoutConstraint
+                    constraintsWithVisualFormat: @"H:|-(==leadingSpace)"
+                                                  "-[avatar(==avatarWidth)]"
+                                                  "-(==space_avatarTrailing_dmPreviewLeading)"
+                                                  "-[dmPreview(>=dmPreviewWidth)]"
+                                                  "-(==space_dmPreviewTrailing_expandButtonLeading)"
+                                                  "-[expandButton(==expandButtonWidth)]|"
+                                        options: 0
+                                        metrics: @{ @"leadingSpace" : @( NSMinX( avatar.frame ) )
+                                                  , @"avatarWidth" : @( NSWidth( avatar.frame ) )
+                                                  , @"space_avatarTrailing_dmPreviewLeading" : @( NSMinX( dmPreview.frame ) - NSMaxX( avatar.frame ) )
+                                                  , @"dmPreviewWidth" : @( NSWidth( dmPreview.frame ) )
+                                                  , @"space_dmPreviewTrailing_expandButtonLeading" : @( NSWidth( self.frame ) - NSMaxX( dmPreview.frame ) - NSWidth( expandButton.frame ) )
+                                                  , @"expandButtonWidth" : @( NSWidth( expandButton.frame ) )
+                                                  }
+                                          views: viewsDict ];
+
+                NSArray* verticalLayoutConstraints0 = [ NSLayoutConstraint
+                    constraintsWithVisualFormat: @"V:|-(==topSpace)"
+                                                  "-[avatar(==avatarHeight)]"
+                                                  "-(>=space_avatarBottom_superViewBottom)-|"
+                                        options: 0
+                                        metrics: @{ @"topSpace" : @( NSMaxY( self.frame ) - NSMaxY( avatar.frame ) )
+                                                  , @"avatarHeight" : @( NSHeight( avatar.frame ) )
+                                                  , @"space_avatarBottom_superViewBottom" : @( NSMinY( avatar.frame ) - NSMinY( self.frame ) )
+                                                  }
+                                          views: viewsDict ];
+
+//                NSArray* verticalLayoutConstraints1 = [ NSLayoutConstraint
+//                    constraintsWithVisualFormat: @"V:|-(==topSpace)"
+//                                                  "-[senderNameLabel(==senderNameLabelHeight)]"
+//                                                  "-(>=space_senderNameLabelBottom_dmPreviewTop)"
+//                                                  "-[dmPreview(==dmPreviewHeight)]
+//                                        options: 0
+//                                        metrics: @{ @"topSpace" : @( NSMaxY( self.frame ) - NSMaxY( avatar.frame ) )
+//                                                  , @"avatarHeight" : @( NSHeight( avatar.frame ) )
+//                                                  , @"space_avatarBottom_superView" : @( NSMinY( avatar.frame ) - NSMinY( self.frame ) )
+//                                                  }
+//                                          views: viewsDict ];
+
+                [ self->_showingExpandButtonConstraints addObjectsFromArray: horizontalLayoutConstraints0 ];
+                [ self->_showingExpandButtonConstraints addObjectsFromArray: horizontalLayoutConstraints1 ];
+                [ self->_showingExpandButtonConstraints addObjectsFromArray: verticalLayoutConstraints0 ];
+                }
+
+            [ self addConstraints: self->_showingExpandButtonConstraints ];
             }
         }
     else
