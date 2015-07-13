@@ -120,7 +120,6 @@
     }
 
 #pragma mark Handling Events
-
 - ( void ) mouseEntered: ( NSEvent* )_Event
     {
     [ super mouseEntered: _Event ];
