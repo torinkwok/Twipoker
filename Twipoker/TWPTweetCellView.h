@@ -30,6 +30,7 @@
 @class TWPTimelineUserNameButton;
 @class TWPTextView;
 @class TWPTweetOperationsPanelView;
+@class TWPDateIndicatorView;
 
 // Notification Names
 NSString extern* const TWPTweetCellViewShouldDisplayDetailOfTweet;
@@ -48,6 +49,7 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 #pragma mark Outlets
 @property ( weak ) IBOutlet TWPUserAvatarWell* authorAvatarWell;
 @property ( weak ) IBOutlet TWPTimelineUserNameButton* userNameLabel;
+@property ( weak ) IBOutlet TWPDateIndicatorView* dateIndicatorView;
 @property ( weak ) IBOutlet TWPTextView* tweetTextView;
 
 @property ( weak ) IBOutlet TWPTweetOperationsPanelView* tweetOperationsPanel;

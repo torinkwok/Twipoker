@@ -22,118 +22,18 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetCellView.h"
-#import "TWPTextView.h"
-#import "TWPUserAvatarWell.h"
-#import "TWPTimelineUserNameButton.h"
-#import "TWPTweetOperationsPanelView.h"
-#import "TWPDateIndicatorView.h"
+@import Cocoa;
 
-// Notification Names
-NSString* const TWPTweetCellViewShouldDisplayDetailOfTweet = @"TweetCellView.Notif.ShouldDisplayDetailOfTweet";
-
-// User Info Keys
-NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.Tweet";
-
-// Private Interfaces
-@interface TWPTweetCellView ()
-- ( void ) _postNotifForShowingUserProfile;
-@end // Private Interfaces
-
-// TWPTweetCellView class
-@implementation TWPTweetCellView
-
-@synthesize authorAvatarWell;
-@synthesize userNameLabel;
-@synthesize dateIndicatorView;
-@synthesize tweetTextView;
-
-@synthesize tweetOperationsPanel;
-
-@dynamic tweet;
-@dynamic author;
-
-@synthesize topSpaceConstraint;
-@synthesize spaceBetweenUserNameLabelAndTextView;
-@synthesize bottomSpaceConstraint;
-
-#pragma mark Initialization
-+ ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet
+// TWPDateIndicatorView class
+@interface TWPDateIndicatorView : NSView
     {
-    return [ [ [ self class ] alloc ] initWithTweet: _Tweet ];
+@private
+    OTCTweet __strong* _tweet;
     }
 
-- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
-    {
-    if ( self = [ super init ] )
-        [ self setTweet: _Tweet ];
+@property ( strong, readwrite ) OTCTweet* tweet;
 
-    return self;
-    }
-
-#pragma mark Accessors
-- ( void ) setTweet: ( OTCTweet* )_Tweet
-    {
-    self->_tweet = _Tweet;
-
-    [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
-    [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
-    [ [ self dateIndicatorView ] setTweet: self->_tweet ];
-    [ [ self tweetTextView ] setTweet: self->_tweet ];
-
-    [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
-    }
-
-- ( OTCTweet* ) tweet
-    {
-    return self->_tweet;
-    }
-
-- ( OTCTwitterUser* ) author
-    {
-    return self.tweet.author;
-    }
-
-- ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
-    {
-    CGFloat topSpaceConstraintHeight = self.topSpaceConstraint.constant;
-    CGFloat bottomSpaceConstraintHeight = self.bottomSpaceConstraint.constant;
-    CGFloat spaceHeightBetweetUserNameLabelAndTextView = self.spaceBetweenUserNameLabelAndTextView.constant;
-
-    CGFloat tweetTextViewHeight = ( _TweetTextBlockHeight > [ TWPTextView defaultSize ].height ) ? _TweetTextBlockHeight : [ TWPTextView defaultSize ].height;
-    CGFloat userNameLabelHeight = NSHeight( self.userNameLabel.frame );
-
-    return topSpaceConstraintHeight + bottomSpaceConstraintHeight
-                + spaceHeightBetweetUserNameLabelAndTextView
-                + tweetTextViewHeight + userNameLabelHeight;
-    }
-
-#pragma mark Constraints
-- ( void ) updateConstraints
-    {
-    [ super updateConstraints ];
-    }
-
-#pragma mark IBAction
-- ( IBAction ) userNameLabelClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForShowingUserProfile ];
-    }
-
-- ( IBAction ) userAvatarClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForShowingUserProfile ];
-    }
-
-#pragma mark Private Interfaces
-- ( void ) _postNotifForShowingUserProfile
-    {
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
-                                                           object: self
-                                                         userInfo: @{ kTwitterUser : self.author } ];
-    }
-
-@end // TWPTweetCellView class
+@end // TWPDateIndicatorView class
 
 /*=============================================================================┐
 |                                                                              |

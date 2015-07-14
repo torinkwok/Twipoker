@@ -22,66 +22,28 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetCellView.h"
-#import "TWPTextView.h"
-#import "TWPUserAvatarWell.h"
-#import "TWPTimelineUserNameButton.h"
-#import "TWPTweetOperationsPanelView.h"
 #import "TWPDateIndicatorView.h"
 
-// Notification Names
-NSString* const TWPTweetCellViewShouldDisplayDetailOfTweet = @"TweetCellView.Notif.ShouldDisplayDetailOfTweet";
+NSDictionary static* sDefaultTextAttributes;
 
-// User Info Keys
-NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.Tweet";
-
-// Private Interfaces
-@interface TWPTweetCellView ()
-- ( void ) _postNotifForShowingUserProfile;
-@end // Private Interfaces
-
-// TWPTweetCellView class
-@implementation TWPTweetCellView
-
-@synthesize authorAvatarWell;
-@synthesize userNameLabel;
-@synthesize dateIndicatorView;
-@synthesize tweetTextView;
-
-@synthesize tweetOperationsPanel;
+// TWPDateIndicatorView class
+@implementation TWPDateIndicatorView
 
 @dynamic tweet;
-@dynamic author;
 
-@synthesize topSpaceConstraint;
-@synthesize spaceBetweenUserNameLabelAndTextView;
-@synthesize bottomSpaceConstraint;
-
-#pragma mark Initialization
-+ ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet
+#pragma mark Initializations
++ ( void ) initialize
     {
-    return [ [ [ self class ] alloc ] initWithTweet: _Tweet ];
+    sDefaultTextAttributes = @{ NSFontAttributeName : [ NSFont fontWithName: @"Lato" size: 12.f ]
+                              , NSForegroundColorAttributeName : [ NSColor colorWithHTMLColor: @"66757F" ]
+                              };
     }
 
-- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
-    {
-    if ( self = [ super init ] )
-        [ self setTweet: _Tweet ];
-
-    return self;
-    }
-
-#pragma mark Accessors
+#pragma mark Dynamic Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
     self->_tweet = _Tweet;
-
-    [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
-    [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
-    [ [ self dateIndicatorView ] setTweet: self->_tweet ];
-    [ [ self tweetTextView ] setTweet: self->_tweet ];
-
-    [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
+    [ self setNeedsDisplay: YES ];
     }
 
 - ( OTCTweet* ) tweet
@@ -89,51 +51,68 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     return self->_tweet;
     }
 
-- ( OTCTwitterUser* ) author
+#pragma mark Custom Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    return self.tweet.author;
+    [ super drawRect: _DirtyRect ];
+
+    NSDateComponentsFormatter* dateComponentsFormatter = [ [ NSDateComponentsFormatter alloc ] init ];
+    [ dateComponentsFormatter setUnitsStyle: NSDateComponentsFormatterUnitsStyleAbbreviated ];
+
+    NSDate* postDate = [ self->_tweet dateCreated ];
+    NSTimeInterval secInterval = [ [ NSDate date ] timeIntervalSinceDate: postDate ];
+    CGFloat minInterval = secInterval / 60;
+    CGFloat hrsInterval = minInterval / 60;
+    CGFloat dayInterval = hrsInterval / 24;
+
+    NSString* formattedString = nil;
+
+    if ( secInterval < 59 )
+        {
+        [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitSecond ];
+        formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
+        }
+    else if ( minInterval < 59 )
+        {
+        [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitMinute ];
+        formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
+        }
+    else if ( hrsInterval < 23 )
+        {
+        [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitHour | NSCalendarUnitMinute ];
+        formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
+        }
+    else if ( dayInterval < 6 )
+        {
+        [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitDay ];
+        formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
+        }
+    else
+        {
+        NSDateFormatter* dateFormatter = [ [ NSDateFormatter alloc ] init ];
+        [ dateFormatter setDateStyle: NSDateFormatterMediumStyle ];
+        formattedString = [ [ dateFormatter stringFromDate: postDate ] mutableCopy ];
+
+        NSCalendar* currentCalendar = [ NSCalendar currentCalendar ];
+        NSDateComponents* components = nil;
+
+        components = [ currentCalendar components: NSCalendarUnitYear fromDate: postDate ];
+        NSInteger postYear = components.year;
+
+        components = [ currentCalendar components: NSCalendarUnitYear fromDate: [ NSDate date ] ];
+        NSInteger thisYear = components.year;
+
+        if ( postYear == thisYear )
+            // Jul 15, 2015, delete ", 2015"
+            [ ( NSMutableString* )formattedString deleteCharactersInRange: NSMakeRange( formattedString.length - 6, 6 ) ];
+        }
+
+    NSSize stringSizeWithAttributes = [ formattedString sizeWithAttributes: sDefaultTextAttributes ];
+    [ formattedString drawAtPoint: NSMakePoint( NSWidth( self.frame ) - stringSizeWithAttributes.width, 0 )
+                   withAttributes: sDefaultTextAttributes ];
     }
 
-- ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
-    {
-    CGFloat topSpaceConstraintHeight = self.topSpaceConstraint.constant;
-    CGFloat bottomSpaceConstraintHeight = self.bottomSpaceConstraint.constant;
-    CGFloat spaceHeightBetweetUserNameLabelAndTextView = self.spaceBetweenUserNameLabelAndTextView.constant;
-
-    CGFloat tweetTextViewHeight = ( _TweetTextBlockHeight > [ TWPTextView defaultSize ].height ) ? _TweetTextBlockHeight : [ TWPTextView defaultSize ].height;
-    CGFloat userNameLabelHeight = NSHeight( self.userNameLabel.frame );
-
-    return topSpaceConstraintHeight + bottomSpaceConstraintHeight
-                + spaceHeightBetweetUserNameLabelAndTextView
-                + tweetTextViewHeight + userNameLabelHeight;
-    }
-
-#pragma mark Constraints
-- ( void ) updateConstraints
-    {
-    [ super updateConstraints ];
-    }
-
-#pragma mark IBAction
-- ( IBAction ) userNameLabelClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForShowingUserProfile ];
-    }
-
-- ( IBAction ) userAvatarClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForShowingUserProfile ];
-    }
-
-#pragma mark Private Interfaces
-- ( void ) _postNotifForShowingUserProfile
-    {
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
-                                                           object: self
-                                                         userInfo: @{ kTwitterUser : self.author } ];
-    }
-
-@end // TWPTweetCellView class
+@end // TWPDateIndicatorView class
 
 /*=============================================================================┐
 |                                                                              |
