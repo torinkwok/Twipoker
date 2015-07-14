@@ -37,9 +37,23 @@
     return self;
     }
 
+- ( void ) awakeFromNib
+    {
+    // The self->_trackingArea will be created with `NSTrackingInVisibleRect` option,
+    // in which case the Application Kit handles the re-computation of self->_trackingArea
+    self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
+                                    | NSTrackingInVisibleRect | NSTrackingAssumeInside | NSTrackingMouseMoved;
+    self->_trackingArea =
+        [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
+
+    [ self addTrackingArea: self->_trackingArea ];
+    }
+
 #pragma mark Accessors
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
+    [ self.cell setHighlighted: NO ];
+
     if ( self->_twitterUser != _TwitterUser )
         {
         [ self setImage: nil ];
@@ -96,18 +110,28 @@
     [ NSApp sendAction: self.action to: self.target from: self ];
     }
 
-- ( void ) mouseEntered: ( nonnull NSEvent* )_Event
+- ( void ) mouseEntered: ( NSEvent* )_Event
     {
     [ super mouseEntered: _Event ];
     [ self.cell setHighlighted: YES ];
-    NSLog( @"%s", __PRETTY_FUNCTION__ );
     }
 
-- ( void ) mouseExited: ( nonnull NSEvent* )_Event
+- ( void ) mouseExited: ( NSEvent* )_Event
     {
-    [ super mouseMoved: _Event ];
+    [ super mouseExited: _Event ];
     [ self.cell setHighlighted: NO ];
-    NSLog( @"%s", __PRETTY_FUNCTION__ );
+    }
+
+- ( void ) scrollWheel: ( NSEvent* )_Event
+    {
+    [ super scrollWheel: _Event ];
+    [ self.cell setHighlighted: NO ];
+    }
+
+- ( void ) mouseMoved: ( nonnull NSEvent* )_TheEvent
+    {
+    [ super mouseMoved: _TheEvent ];
+    [ self.cell setHighlighted: YES ];
     }
 
 #pragma mark Custom Drawing

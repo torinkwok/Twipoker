@@ -30,6 +30,9 @@
     OTCTwitterUser   __strong* _twitterUser;
     NSURLSession     __strong* _URLSession;
     NSURLSessionTask __strong* _dataTask;
+
+    NSTrackingAreaOptions _trackingAreaOptions;
+    NSTrackingArea __strong* _trackingArea;
     }
 
 @property ( strong, readwrite ) OTCTwitterUser* twitterUser;
