@@ -120,7 +120,7 @@
 
     NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
 
-    NSBezierPath* boundsPath = [ self.cell bezierPath ];
+    NSBezierPath* boundsPath = [ self.cell avatarOutlinePath ];
     if ( [ boundsPath containsPoint: eventLocation ] )
         [ self.cell setHighlighted: YES ];
     }
@@ -128,7 +128,9 @@
 - ( void ) mouseExited: ( NSEvent* )_Event
     {
     [ super mouseExited: _Event ];
-    [ self.cell setHighlighted: NO ];
+
+    if ( [ self.cell isHighlighted ] )
+        [ self.cell setHighlighted: NO ];
     }
 
 - ( void ) scrollWheel: ( NSEvent* )_Event
@@ -142,9 +144,11 @@
     [ super mouseMoved: _Event ];
     NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
 
-    NSBezierPath* boundsPath = [ self.cell bezierPath ];
+    NSBezierPath* boundsPath = [ self.cell avatarOutlinePath ];
     if ( [ boundsPath containsPoint: eventLocation ] )
         [ self.cell setHighlighted: YES ];
+    else
+        [ self.cell setHighlighted: NO ];
     }
 
 #pragma mark Custom Drawing

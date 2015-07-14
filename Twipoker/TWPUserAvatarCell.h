@@ -28,10 +28,13 @@
 @interface TWPUserAvatarCell : NSImageCell
     {
 @private
-    NSBezierPath __strong* _bezierPath;
+    NSBezierPath __strong* _avatarOutlinePath;
+
+    NSColor __strong* _avatarStrokeColor;
+    NSColor __strong* _avatarFillColor;
     }
 
-@property ( strong, readonly ) NSBezierPath* bezierPath;
+@property ( strong, readonly ) NSBezierPath* avatarOutlinePath;
 
 @end // TWPUserAvatarCell class
 
