@@ -106,12 +106,25 @@
     }
 
 #pragma mark Events Handling
+- ( BOOL ) _underMyControl: ( NSEvent* )_Event
+    {
+    NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
+    NSBezierPath* boundsPath = [ self.cell avatarOutlinePath ];
+    return [ boundsPath containsPoint: eventLocation ];
+    }
+
 - ( void ) mouseDown: ( NSEvent* )_Event
     {
     [ super mouseDown: _Event ];
 
-    [ self.cell setHighlighted: NO ];
-    [ NSApp sendAction: self.action to: self.target from: self ];
+    NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
+
+    NSBezierPath* boundsPath = [ self.cell avatarOutlinePath ];
+    if ( [ boundsPath containsPoint: eventLocation ] )
+        {
+        [ self.cell setHighlighted: NO ];
+        [ NSApp sendAction: self.action to: self.target from: self ];
+        }
     }
 
 - ( void ) mouseEntered: ( NSEvent* )_Event
