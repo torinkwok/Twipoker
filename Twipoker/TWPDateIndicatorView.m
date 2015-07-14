@@ -108,7 +108,8 @@ NSDictionary static* sDefaultTextAttributes;
         }
 
     NSSize stringSizeWithAttributes = [ formattedString sizeWithAttributes: sDefaultTextAttributes ];
-    [ formattedString drawAtPoint: NSMakePoint( NSWidth( self.frame ) - stringSizeWithAttributes.width, 0 )
+    [ formattedString drawAtPoint: NSMakePoint( NSWidth( self.frame ) - stringSizeWithAttributes.width
+                                              , ( NSHeight( self.frame ) - stringSizeWithAttributes.height ) / 2 + 1.5f /* magic constant*/ )
                    withAttributes: sDefaultTextAttributes ];
     }
 
