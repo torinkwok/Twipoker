@@ -39,15 +39,16 @@
 - ( void ) drawWithFrame: ( NSRect )_CellFrame
                   inView: ( nonnull NSView* )_ControlView
     {
-    NSRect drawingRect = NSInsetRect( _ControlView.bounds, 1.f, 1.f );
-
     if ( !self->_avatarOutlinePath )
-        self->_avatarOutlinePath = [ NSBezierPath bezierPathWithOvalInRect: drawingRect ];
+        {
+        self->_avatarOutlinePath = [ NSBezierPath bezierPathWithOvalInRect: NSInsetRect( _ControlView.bounds, 1.f, 1.f ) ];
+        [ self->_avatarOutlinePath setLineWidth: 1.f ];
+        }
 
     [ self->_avatarOutlinePath addClip ];
 
     NSImage* image = ( NSImage* )[ self objectValue ];
-    [ image drawInRect: NSInsetRect( _ControlView.bounds, 1.f, 1.f ) fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.f ];
+    [ image drawInRect: _ControlView.bounds fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.f ];
 
     [ self->_avatarStrokeColor setStroke ];
     [ self->_avatarOutlinePath stroke ];
