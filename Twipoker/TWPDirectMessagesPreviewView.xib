@@ -96,7 +96,7 @@
                                                     <constraint firstAttribute="height" constant="70" id="NTM-lJ-Q65"/>
                                                 </constraints>
                                                 <animations/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="vML-Wf-KEC"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="vML-Wf-KEC" customClass="TWPUserAvatarCell"/>
                                                 <connections>
                                                     <action selector="userAvatarClickedAction:" target="fXd-hM-ghn" id="f7c-9s-O6Q"/>
                                                 </connections>

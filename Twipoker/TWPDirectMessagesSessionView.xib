@@ -95,7 +95,7 @@
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tit-hB-IA0" userLabel="Avatar" customClass="TWPUserAvatarWell">
                                                         <rect key="frame" x="17" y="18" width="40" height="40"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="y46-uA-AZB"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="y46-uA-AZB" customClass="TWPUserAvatarCell"/>
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKv-qb-6vr" userLabel="Tweet Text">
                                                         <rect key="frame" x="70" y="20" width="234" height="36"/>
