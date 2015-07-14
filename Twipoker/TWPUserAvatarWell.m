@@ -25,10 +25,12 @@
 #import "TWPUserAvatarWell.h"
 #import "TWPUserAvatarCell.h"
 
+// TWPUserAvatarWell class
 @implementation TWPUserAvatarWell
 
 @dynamic twitterUser;
 
+#pragma mark Initializations
 - ( instancetype ) initWithCoder:(NSCoder *)coder
     {
     if ( self = [ super initWithCoder: coder ] )
@@ -107,13 +109,20 @@
 - ( void ) mouseDown: ( NSEvent* )_Event
     {
     [ super mouseDown: _Event ];
+
+    [ self.cell setHighlighted: NO ];
     [ NSApp sendAction: self.action to: self.target from: self ];
     }
 
 - ( void ) mouseEntered: ( NSEvent* )_Event
     {
     [ super mouseEntered: _Event ];
-    [ self.cell setHighlighted: YES ];
+
+    NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
+
+    NSBezierPath* boundsPath = [ self.cell bezierPath ];
+    if ( [ boundsPath containsPoint: eventLocation ] )
+        [ self.cell setHighlighted: YES ];
     }
 
 - ( void ) mouseExited: ( NSEvent* )_Event
@@ -128,10 +137,14 @@
     [ self.cell setHighlighted: NO ];
     }
 
-- ( void ) mouseMoved: ( nonnull NSEvent* )_TheEvent
+- ( void ) mouseMoved: ( nonnull NSEvent* )_Event
     {
-    [ super mouseMoved: _TheEvent ];
-    [ self.cell setHighlighted: YES ];
+    [ super mouseMoved: _Event ];
+    NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
+
+    NSBezierPath* boundsPath = [ self.cell bezierPath ];
+    if ( [ boundsPath containsPoint: eventLocation ] )
+        [ self.cell setHighlighted: YES ];
     }
 
 #pragma mark Custom Drawing
@@ -147,7 +160,7 @@
     return [ TWPUserAvatarCell class ];
     }
 
-@end
+@end // TWPUserAvatarWell class
 
 /*=============================================================================┐
 |                                                                              |

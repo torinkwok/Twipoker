@@ -24,7 +24,8 @@
 
 @import Cocoa;
 
-@interface TWPUserAvatarWell : NSImageView // TODO: Replace it with `NSControl` class
+// TWPUserAvatarWell class
+@interface TWPUserAvatarWell : NSImageView
     {
 @private
     OTCTwitterUser   __strong* _twitterUser;
@@ -37,7 +38,7 @@
 
 @property ( strong, readwrite ) OTCTwitterUser* twitterUser;
 
-@end
+@end // TWPUserAvatarWell class
 
 /*=============================================================================┐
 |                                                                              |

@@ -27,26 +27,35 @@
 // TWPUserAvatarCell class
 @implementation TWPUserAvatarCell
 
+@dynamic bezierPath;
+
 #pragma mark Custom Drawing
 - ( void ) drawWithFrame: ( NSRect )_CellFrame
                   inView: ( nonnull NSView* )_ControlView
     {
-    NSBezierPath* bezierPath = [ NSBezierPath bezierPathWithOvalInRect: NSInsetRect( _ControlView.bounds, 1.f, 1.f ) ];
-    [ bezierPath addClip ];
-    [ [ NSColor lightGrayColor ] setStroke ];
-    [ bezierPath stroke ];
+    NSRect drawingRect = NSInsetRect( _ControlView.bounds, 1.f, 1.f );
+
+    if ( !self->_bezierPath )
+        self->_bezierPath = [ NSBezierPath bezierPathWithOvalInRect: drawingRect ];
+
+    [ self->_bezierPath addClip ];
 
     NSImage* image = ( NSImage* )[ self objectValue ];
-    [ image drawInRect: NSInsetRect( _ControlView.bounds, 1.f, 1.f )
-              fromRect: NSZeroRect
-             operation: NSCompositeSourceOver
-              fraction: 1.f ];
+    [ image drawInRect: NSInsetRect( _ControlView.bounds, 1.f, 1.f ) fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.f ];
+
+    [ [ [ NSColor colorWithHTMLColor: @"C9C9C9" ] colorWithAlphaComponent: .5f ] setStroke ];
+    [ self->_bezierPath stroke ];
 
     if ( self.isHighlighted )
         {
         [ [ [ NSColor grayColor ] colorWithAlphaComponent: .4f ] setFill ];
-        [ bezierPath fill ];
+        [ self->_bezierPath fill ];
         }
+    }
+
+- ( NSBezierPath* ) bezierPath
+    {
+    return self->_bezierPath;
     }
 
 @end // TWPUserAvatarCell class

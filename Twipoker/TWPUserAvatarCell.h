@@ -26,6 +26,12 @@
 
 // TWPUserAvatarCell class
 @interface TWPUserAvatarCell : NSImageCell
+    {
+@private
+    NSBezierPath __strong* _bezierPath;
+    }
+
+@property ( strong, readonly ) NSBezierPath* bezierPath;
 
 @end // TWPUserAvatarCell class
 
