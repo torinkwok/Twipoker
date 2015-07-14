@@ -25,6 +25,11 @@
 #import "TWPUserAvatarWell.h"
 #import "TWPUserAvatarCell.h"
 
+// Private Interfaces
+@interface TWPUserAvatarWell ()
+- ( BOOL ) _isEventUnderMyControl: ( NSEvent* )_Event;
+@end // Private Interfaces
+
 // TWPUserAvatarWell class
 @implementation TWPUserAvatarWell
 
@@ -106,21 +111,11 @@
     }
 
 #pragma mark Events Handling
-- ( BOOL ) _underMyControl: ( NSEvent* )_Event
-    {
-    NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
-    NSBezierPath* boundsPath = [ self.cell avatarOutlinePath ];
-    return [ boundsPath containsPoint: eventLocation ];
-    }
-
 - ( void ) mouseDown: ( NSEvent* )_Event
     {
     [ super mouseDown: _Event ];
 
-    NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
-
-    NSBezierPath* boundsPath = [ self.cell avatarOutlinePath ];
-    if ( [ boundsPath containsPoint: eventLocation ] )
+    if ( [ self _isEventUnderMyControl: _Event ] )
         {
         [ self.cell setHighlighted: NO ];
         [ NSApp sendAction: self.action to: self.target from: self ];
@@ -131,10 +126,7 @@
     {
     [ super mouseEntered: _Event ];
 
-    NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
-
-    NSBezierPath* boundsPath = [ self.cell avatarOutlinePath ];
-    if ( [ boundsPath containsPoint: eventLocation ] )
+    if ( [ self _isEventUnderMyControl: _Event ] )
         [ self.cell setHighlighted: YES ];
     }
 
@@ -155,13 +147,7 @@
 - ( void ) mouseMoved: ( nonnull NSEvent* )_Event
     {
     [ super mouseMoved: _Event ];
-    NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
-
-    NSBezierPath* boundsPath = [ self.cell avatarOutlinePath ];
-    if ( [ boundsPath containsPoint: eventLocation ] )
-        [ self.cell setHighlighted: YES ];
-    else
-        [ self.cell setHighlighted: NO ];
+    [ self.cell setHighlighted: [ self _isEventUnderMyControl: _Event ] ];
     }
 
 #pragma mark Custom Drawing
@@ -175,6 +161,14 @@
 - ( Class ) cellClass
     {
     return [ TWPUserAvatarCell class ];
+    }
+
+#pragma mark Private Interfaces
+- ( BOOL ) _isEventUnderMyControl: ( NSEvent* )_Event
+    {
+    NSPoint eventLocation = [ self convertPoint: [ _Event locationInWindow ] fromView: nil ];
+    NSBezierPath* boundsPath = [ self.cell avatarOutlinePath ];
+    return [ boundsPath containsPoint: eventLocation ];
     }
 
 @end // TWPUserAvatarWell class
