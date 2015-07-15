@@ -31,7 +31,7 @@
 @interface TWPTimeServiceCenter : NSObject
     {
 @private
-    NSMutableArray __strong* _observers;
+    NSMutableSet __strong* _observers;
     }
 
 #pragma mark Initializations

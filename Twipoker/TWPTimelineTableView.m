@@ -26,6 +26,7 @@
 #import "TWPTweetCellView.h"
 #import "TWPUserAvatarWell.h"
 #import "TWPTimelineUserNameButton.h"
+#import "TWPDateIndicatorView.h"
 
 // TWPTimelineTableView class
 @implementation TWPTimelineTableView
@@ -38,6 +39,21 @@
         return YES;
     else
         return [ super validateProposedFirstResponder: _Responder forEvent: _Event ];
+    }
+
+- ( void ) awakeFromNib
+    {
+    [ [ TWPTimeServiceCenter defaultTimeServiceCenter ] addObserver: self ];
+    }
+
+#pragma mark Conforms to <TWPTimeServiceCenterObserver>
+- ( void ) updateTime
+    {
+    [ self enumerateAvailableRowViewsUsingBlock:
+        ^( NSTableRowView* _RowView, NSInteger _Row )
+            {
+            [ ( ( TWPTweetCellView* )[ _RowView viewAtColumn: 0 ] ).dateIndicatorView updateTime ];
+            } ];
     }
 
 @end // TWPTimelineTableView class

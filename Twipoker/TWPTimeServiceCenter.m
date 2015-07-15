@@ -46,7 +46,7 @@ TWPTimeServiceCenter static __strong* sSingleton;
         {
         if ( self = [ super init ] )
             {
-            self->_observers = [ NSMutableArray array ];
+            self->_observers = [ NSMutableSet set ];
 
             [ NSTimer scheduledTimerWithTimeInterval: 1.f
                                               target: self
@@ -75,7 +75,6 @@ TWPTimeServiceCenter static __strong* sSingleton;
 #pragma mark Private Interfaces
 - ( void ) _timeToUpdateDateIndicatorView: ( NSTimer* )_Timer
     {
-//    NSLog( @"%@", _Timer );
     [ self->_observers makeObjectsPerformSelector: @selector( updateTime ) ];
     }
 

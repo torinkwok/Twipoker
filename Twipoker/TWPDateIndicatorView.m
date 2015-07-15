@@ -23,7 +23,6 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDateIndicatorView.h"
-#import "TWPTimeServiceCenter.h"
 
 NSDictionary static* sDefaultTextAttributes;
 
@@ -45,11 +44,6 @@ NSDictionary static* sDefaultTextAttributes;
                               };
     }
 
-- ( void ) awakeFromNib
-    {
-    [ [ TWPTimeServiceCenter defaultTimeServiceCenter ] addObserver: self ];
-    }
-
 #pragma mark Dynamic Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
@@ -69,10 +63,8 @@ NSDictionary static* sDefaultTextAttributes;
     [ self _updateTime ];
     }
 
-#pragma mark Date
 - ( void ) updateTime
     {
-//    [ self _updateTime ];
     [ self setNeedsDisplay: YES ];
     }
 
@@ -90,22 +82,22 @@ NSDictionary static* sDefaultTextAttributes;
 
     NSString* formattedString = nil;
 
-    if ( secInterval < 59 )
+    if ( secInterval < 60 )
         {
         [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitSecond ];
         formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
         }
-    else if ( minInterval < 59 )
+    else if ( minInterval < 60 )
         {
         [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitMinute ];
         formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
         }
-    else if ( hrsInterval < 23 )
+    else if ( hrsInterval < 24 )
         {
         [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitHour | NSCalendarUnitMinute ];
         formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
         }
-    else if ( dayInterval < 6 )
+    else if ( dayInterval < 7 )
         {
         [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitDay ];
         formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];

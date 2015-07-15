@@ -22,16 +22,18 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTimeServiceCenter.h"
+@import Cocoa;
 
 // TWPDateIndicatorView class
-@interface TWPDateIndicatorView : NSView <TWPTimeServiceCenterObserver>
+@interface TWPDateIndicatorView : NSView
     {
 @private
     OTCTweet __strong* _tweet;
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;
+
+- ( void ) updateTime;
 
 @end // TWPDateIndicatorView class
 

@@ -24,11 +24,13 @@
 
 @import Cocoa;
 
+#import "TWPTimeServiceCenter.h"
+
 @protocol TWPTimelineTableViewDataSource;
 @protocol TWPTimelineTableViewDelegate;
 
 // TWPTimelineTableView class
-@interface TWPTimelineTableView : NSTableView
+@interface TWPTimelineTableView : NSTableView <TWPTimeServiceCenterObserver>
 @end // TWPTimelineTableView class
 
 #pragma mark <TWPTimelineTableViewDataSource>
