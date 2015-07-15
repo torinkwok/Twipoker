@@ -80,33 +80,26 @@ NSDictionary static* sDefaultTextAttributes;
     CGFloat hrsInterval = minInterval / 60;
     CGFloat dayInterval = hrsInterval / 24;
 
-    NSString* formattedString = nil;
+    NSString* formattedDateString = nil;
+    NSCalendarUnit allowedUnits = 0;
+    BOOL isOverYearInterval = NO;
 
-    if ( secInterval < 60 )
+    if ( secInterval < 60 )             allowedUnits = NSCalendarUnitSecond;
+        else if ( minInterval < 60 )    allowedUnits = NSCalendarUnitMinute;
+        else if ( hrsInterval < 24 )    allowedUnits = NSCalendarUnitHour | NSCalendarUnitMinute;
+        else if ( dayInterval < 7 )     allowedUnits = NSCalendarUnitDay;
+    else                                isOverYearInterval = YES;
+
+    if ( !isOverYearInterval )
         {
-        [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitSecond ];
-        formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
-        }
-    else if ( minInterval < 60 )
-        {
-        [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitMinute ];
-        formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
-        }
-    else if ( hrsInterval < 24 )
-        {
-        [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitHour | NSCalendarUnitMinute ];
-        formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
-        }
-    else if ( dayInterval < 7 )
-        {
-        [ dateComponentsFormatter setAllowedUnits: NSCalendarUnitDay ];
-        formattedString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
+        [ dateComponentsFormatter setAllowedUnits: allowedUnits ];
+        formattedDateString = [ dateComponentsFormatter stringFromTimeInterval: secInterval ];
         }
     else
         {
         NSDateFormatter* dateFormatter = [ [ NSDateFormatter alloc ] init ];
         [ dateFormatter setDateStyle: NSDateFormatterMediumStyle ];
-        formattedString = [ [ dateFormatter stringFromDate: postDate ] mutableCopy ];
+        formattedDateString = [ [ dateFormatter stringFromDate: postDate ] mutableCopy ];
 
         NSCalendar* currentCalendar = [ NSCalendar currentCalendar ];
         NSDateComponents* components = nil;
@@ -119,11 +112,11 @@ NSDictionary static* sDefaultTextAttributes;
 
         if ( postYear == thisYear )
             // Jul 15, 2015, delete ", 2015"
-            [ ( NSMutableString* )formattedString deleteCharactersInRange: NSMakeRange( formattedString.length - 6, 6 ) ];
+            [ ( NSMutableString* )formattedDateString deleteCharactersInRange: NSMakeRange( formattedDateString.length - 6, 6 ) ];
         }
 
-    NSSize stringSizeWithAttributes = [ formattedString sizeWithAttributes: sDefaultTextAttributes ];
-    [ formattedString drawAtPoint: NSMakePoint( NSWidth( self.frame ) - stringSizeWithAttributes.width
+    NSSize stringSizeWithAttributes = [ formattedDateString sizeWithAttributes: sDefaultTextAttributes ];
+    [ formattedDateString drawAtPoint: NSMakePoint( NSWidth( self.frame ) - stringSizeWithAttributes.width
                                               , ( NSHeight( self.frame ) - stringSizeWithAttributes.height ) / 2 + 1.5f /* magic constant*/ )
                    withAttributes: sDefaultTextAttributes ];
     }
