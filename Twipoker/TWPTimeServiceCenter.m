@@ -24,16 +24,62 @@
 
 #import "TWPTimeServiceCenter.h"
 
-// TWPDateIndicatorView class
-@interface TWPDateIndicatorView : NSView <TWPTimeServiceCenterObserver>
+TWPTimeServiceCenter static __strong* sSingleton;
+
+// Private Interfaces
+@interface TWPTimeServiceCenter ()
+- ( void ) _timeToUpdateDateIndicatorView: ( NSTimer* )_Timer;
+@end // Private Interfaces
+
+// TWPTimeServiceCenter class
+@implementation TWPTimeServiceCenter
+
+#pragma mark Initializations
++ ( instancetype ) defaultTimeServiceCenter
     {
-@private
-    OTCTweet __strong* _tweet;
+    return [ [ [ self class ] alloc ] init ];
     }
 
-@property ( strong, readwrite ) OTCTweet* tweet;
+- ( instancetype ) init
+    {
+    if ( !sSingleton )
+        {
+        if ( self = [ super init ] )
+            {
+            self->_observers = [ NSMutableArray array ];
 
-@end // TWPDateIndicatorView class
+            [ NSTimer scheduledTimerWithTimeInterval: 1.f
+                                              target: self
+                                            selector: @selector( _timeToUpdateDateIndicatorView: )
+                                            userInfo: nil
+                                             repeats: YES ];
+            sSingleton = self;
+            }
+        }
+
+    return sSingleton;
+    }
+
+#pragma mark Managing Observers
+- ( void ) addObserver: ( id <TWPTimeServiceCenterObserver> )_DateIndicatorView
+    {
+    if ( _DateIndicatorView )
+        [ self->_observers addObject: _DateIndicatorView ];
+    }
+
+- ( void ) removeObserver: ( id <TWPTimeServiceCenterObserver> )_DateIndicatorView
+    {
+    [ self->_observers removeObject: _DateIndicatorView ];
+    }
+
+#pragma mark Private Interfaces
+- ( void ) _timeToUpdateDateIndicatorView: ( NSTimer* )_Timer
+    {
+//    NSLog( @"%@", _Timer );
+    [ self->_observers makeObjectsPerformSelector: @selector( updateTime ) ];
+    }
+
+@end // TWPTimeServiceCenter class
 
 /*=============================================================================┐
 |                                                                              |

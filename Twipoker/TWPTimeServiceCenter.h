@@ -22,18 +22,34 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTimeServiceCenter.h"
+@import Foundation;
 
-// TWPDateIndicatorView class
-@interface TWPDateIndicatorView : NSView <TWPTimeServiceCenterObserver>
+@class TWPDateIndicatorView;
+@protocol TWPTimeServiceCenterObserver;
+
+// TWPTimeServiceCenter class
+@interface TWPTimeServiceCenter : NSObject
     {
 @private
-    OTCTweet __strong* _tweet;
+    NSMutableArray __strong* _observers;
     }
 
-@property ( strong, readwrite ) OTCTweet* tweet;
+#pragma mark Initializations
++ ( instancetype ) defaultTimeServiceCenter;
 
-@end // TWPDateIndicatorView class
+#pragma mark Managing Observers
+- ( void ) addObserver: ( id <TWPTimeServiceCenterObserver> )_DateIndicatorView;
+- ( void ) removeObserver: ( id <TWPTimeServiceCenterObserver> )_DateIndicatorView;
+
+@end // TWPTimeServiceCenter class
+
+// TWPTimeServiceCenterObserver protocol
+@protocol TWPTimeServiceCenterObserver
+
+@required
+- ( void ) updateTime;
+
+@end // TWPTimeServiceCenterObserver protocol
 
 /*=============================================================================┐
 |                                                                              |

@@ -23,8 +23,14 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPDateIndicatorView.h"
+#import "TWPTimeServiceCenter.h"
 
 NSDictionary static* sDefaultTextAttributes;
+
+// Private Interfaces
+@interface TWPDateIndicatorView ()
+- ( void ) _updateTime;
+@end // Private Interfaces
 
 // TWPDateIndicatorView class
 @implementation TWPDateIndicatorView
@@ -37,6 +43,11 @@ NSDictionary static* sDefaultTextAttributes;
     sDefaultTextAttributes = @{ NSFontAttributeName : [ NSFont fontWithName: @"Lato" size: 12.f ]
                               , NSForegroundColorAttributeName : [ NSColor colorWithHTMLColor: @"66757F" ]
                               };
+    }
+
+- ( void ) awakeFromNib
+    {
+    [ [ TWPTimeServiceCenter defaultTimeServiceCenter ] addObserver: self ];
     }
 
 #pragma mark Dynamic Accessors
@@ -55,7 +66,19 @@ NSDictionary static* sDefaultTextAttributes;
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
+    [ self _updateTime ];
+    }
 
+#pragma mark Date
+- ( void ) updateTime
+    {
+//    [ self _updateTime ];
+    [ self setNeedsDisplay: YES ];
+    }
+
+#pragma mark Private Interfaces
+- ( void ) _updateTime
+    {
     NSDateComponentsFormatter* dateComponentsFormatter = [ [ NSDateComponentsFormatter alloc ] init ];
     [ dateComponentsFormatter setUnitsStyle: NSDateComponentsFormatterUnitsStyleAbbreviated ];
 

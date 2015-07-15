@@ -742,5 +742,6 @@
                 <outlet property="retweetSwitcher" destination="gRc-ZR-CLy" id="Agf-cc-Sic"/>
             </connections>
         </customView>
+        <customObject id="4E5-eH-s1k" customClass="TWPTimeServiceCenter"/>
     </objects>
 </document>
