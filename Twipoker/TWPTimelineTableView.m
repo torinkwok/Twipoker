@@ -47,7 +47,7 @@
     }
 
 #pragma mark Conforms to <TWPTimeServiceCenterObserver>
-- ( void ) updateTime
+- ( void ) timeShouldBeUpdated
     {
     [ self enumerateAvailableRowViewsUsingBlock:
         ^( NSTableRowView* _RowView, NSInteger _Row )

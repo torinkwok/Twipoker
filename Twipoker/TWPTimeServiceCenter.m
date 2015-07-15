@@ -63,7 +63,8 @@ TWPTimeServiceCenter static __strong* sSingleton;
 #pragma mark Managing Observers
 - ( void ) addObserver: ( id <TWPTimeServiceCenterObserver> )_DateIndicatorView
     {
-    if ( _DateIndicatorView )
+    if ( [ _DateIndicatorView conformsToProtocol: @protocol( TWPTimeServiceCenterObserver ) ]
+            && [ _DateIndicatorView respondsToSelector: @selector( timeShouldBeUpdated ) ] )
         [ self->_observers addObject: _DateIndicatorView ];
     }
 
@@ -75,7 +76,7 @@ TWPTimeServiceCenter static __strong* sSingleton;
 #pragma mark Private Interfaces
 - ( void ) _timeToUpdateDateIndicatorView: ( NSTimer* )_Timer
     {
-    [ self->_observers makeObjectsPerformSelector: @selector( updateTime ) ];
+    [ self->_observers makeObjectsPerformSelector: @selector( timeShouldBeUpdated ) ];
     }
 
 @end // TWPTimeServiceCenter class

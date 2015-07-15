@@ -44,10 +44,10 @@
 @end // TWPTimeServiceCenter class
 
 // TWPTimeServiceCenterObserver protocol
-@protocol TWPTimeServiceCenterObserver
+@protocol TWPTimeServiceCenterObserver <NSObject>
 
 @required
-- ( void ) updateTime;
+- ( void ) timeShouldBeUpdated;
 
 @end // TWPTimeServiceCenterObserver protocol
 
