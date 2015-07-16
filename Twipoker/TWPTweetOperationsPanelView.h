@@ -24,6 +24,8 @@
 
 @import Cocoa;
 
+#import "TWPRetweetOperationsPopover.h"
+
 @class TWPReplyButton;
 @class TWPRetweetSwitcher;
 @class TWPFavSwitcher;
@@ -31,12 +33,14 @@
 
 @class TWPRetweetOperationsPopover;
 
-@interface TWPTweetOperationsPanelView : NSView
+@interface TWPTweetOperationsPanelView : NSView <TWPRetweetOperationsPopoverDelegate>
     {
 @private
     OTCTweet __strong* _tweet;
     TWPRetweetOperationsPopover __strong* _popover;
     TWPTweetBoxController __strong* _tweetBoxController;
+
+    BOOL _isShowingRetweetOperationsPopover;
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;
@@ -44,6 +48,8 @@
 @property ( weak ) IBOutlet TWPReplyButton* replyButton;
 @property ( weak ) IBOutlet TWPRetweetSwitcher* retweetSwitcher;
 @property ( weak ) IBOutlet TWPFavSwitcher* favSwitcher;
+
+@property ( assign, readonly ) BOOL isShowingRetweetOperationsPopover;
 
 #pragma mark Initializations
 + ( instancetype ) panelWithTweet: ( OTCTweet* )_Tweet;

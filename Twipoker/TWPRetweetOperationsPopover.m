@@ -44,11 +44,13 @@
 
 #pragma mark Initlaizations
 + ( instancetype ) popoverWithTweet: ( OTCTweet* )_Tweet
+                           delegate: ( id <TWPRetweetOperationsPopoverDelegate> )_Delegate
     {
-    return [ [ [ self class ] alloc ] initWithTweet: _Tweet ];
+    return [ [ [ self class ] alloc ] initWithTweet: _Tweet delegate: _Delegate ];
     }
 
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
+                        delegate: ( id <TWPRetweetOperationsPopoverDelegate> )_Delegate
     {
     if ( self = [ super init ] )
         {
@@ -62,6 +64,7 @@
         [ [ self _quoteRetweetButton ] setAction: @selector( quoteRetweetAction: ) ];
 
         self.behavior = NSPopoverBehaviorTransient;
+        self.delegate = _Delegate;
         }
 
     return self;
@@ -77,7 +80,7 @@
                  preferredEdge: _PreferredEdge ];
     }
 
-#pragma mark Accessors
+#pragma mark Dynmaic Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
     self->_tweet = _Tweet;

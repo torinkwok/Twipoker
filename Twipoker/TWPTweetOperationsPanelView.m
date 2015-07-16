@@ -44,6 +44,8 @@
 @synthesize retweetSwitcher;
 @synthesize favSwitcher;
 
+@dynamic isShowingRetweetOperationsPopover;
+
 #pragma mark Initializations
 + ( instancetype ) panelWithTweet: ( OTCTweet* )_Tweet
     {
@@ -57,13 +59,13 @@
         [ self setTweet: _Tweet ];
         [ self setNeedsDisplay: YES ];
 
-        self->_popover = [ TWPRetweetOperationsPopover popoverWithTweet: self->_tweet ];
+        self->_popover = [ TWPRetweetOperationsPopover popoverWithTweet: self->_tweet delegate: self ];
         }
 
     return self;
     }
 
-#pragma mark Accessors
+#pragma mark Dynamic Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
     // self->_tweet
@@ -71,18 +73,25 @@
 
     // self->_popover
     if ( !self->_popover )
-        self->_popover = [ TWPRetweetOperationsPopover popoverWithTweet: self->_tweet ];
+        self->_popover = [ TWPRetweetOperationsPopover popoverWithTweet: self->_tweet delegate: self ];
     else
         [ self->_popover setTweet: self->_tweet ];
 
     // Buttons
     [ self.retweetSwitcher setTweet: _Tweet ];
     [ self.favSwitcher setTweet: _Tweet ];
+
+    self->_isShowingRetweetOperationsPopover = NO;
     }
 
 - ( OTCTweet* ) tweet
     {
     return self->_tweet;
+    }
+
+- ( BOOL ) isShowingRetweetOperationsPopover
+    {
+    return self->_isShowingRetweetOperationsPopover;
     }
 
 #pragma mark IBActions
@@ -155,6 +164,17 @@
 
     [ [ NSColor whiteColor ] set ];
     NSRectFill( _DirtyRect );
+    }
+
+#pragma mark Conforms to <TWPRetweetOperationsPopoverDelegate>
+- ( void ) popoverWillShow: ( NSNotification* )_Notif
+    {
+    self->_isShowingRetweetOperationsPopover = YES;
+    }
+
+- ( void ) popoverWillClose: ( NSNotification* )_Notif
+    {
+    self->_isShowingRetweetOperationsPopover = NO;
     }
 
 @end

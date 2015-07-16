@@ -27,6 +27,9 @@
 @class OTCTweet;
 @class TWPQuoteRetweetBoxController;
 
+@protocol TWPRetweetOperationsPopoverDelegate;
+
+// TWPRetweetOperationsPopover class
 @interface TWPRetweetOperationsPopover : NSPopover
     {
 @private
@@ -38,14 +41,18 @@
 
 @property ( strong, readwrite ) OTCTweet* tweet;
 
-+ ( instancetype ) popoverWithTweet: ( OTCTweet* )_Tweet;
-- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
++ ( instancetype ) popoverWithTweet: ( OTCTweet* )_Tweet delegate: ( id <TWPRetweetOperationsPopoverDelegate> )_Delegate;
+- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet delegate: ( id <TWPRetweetOperationsPopoverDelegate> )_Delegate;
 
 #pragma mark IBActions
 - ( IBAction ) retweetAction: ( id )_Sender;
 - ( IBAction ) quoteRetweetAction: ( id )_Sender;
 
-@end
+@end // TWPRetweetOperationsPopover class
+
+// TWPRetweetOperationsPopoverDelegate protocol
+@protocol TWPRetweetOperationsPopoverDelegate <NSPopoverDelegate>
+@end // TWPRetweetOperationsPopoverDelegate protocol
 
 /*=============================================================================┐
 |                                                                              |

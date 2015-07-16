@@ -38,8 +38,12 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 // Private Interfaces
 @interface TWPTweetCellView ()
+
 @property ( assign, readwrite, setter = setShowingTweetOperationsPanel: ) BOOL isShowingTweetOperationsPanel;
+
 - ( void ) _postNotifForShowingUserProfile;
+- ( BOOL ) _isShowingRetweetOperationsPopover;
+
 @end // Private Interfaces
 
 // TWPTweetCellView class
@@ -206,25 +210,34 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 - ( void ) mouseEntered: ( NSEvent* )_Event
     {
     [ super mouseEntered: _Event ];
-    self.isShowingTweetOperationsPanel = YES;
+
+    if ( ![ self _isShowingRetweetOperationsPopover ] )
+        self.isShowingTweetOperationsPanel = YES;
     }
 
 - ( void ) mouseExited: ( NSEvent* )_Event
     {
     [ super mouseExited: _Event ];
-    self.isShowingTweetOperationsPanel = NO;
+
+    if ( ![ self _isShowingRetweetOperationsPopover ] )
+        self.isShowingTweetOperationsPanel = NO;
     }
 
 - ( void ) scrollWheel: ( NSEvent* )_Event
     {
-    [ super scrollWheel: _Event ];
-    self.isShowingTweetOperationsPanel = NO;
+    if ( ![ self _isShowingRetweetOperationsPopover ] )
+        {
+        [ super scrollWheel: _Event ];
+        self.isShowingTweetOperationsPanel = NO;
+        }
     }
 
 - ( void ) mouseMoved: ( nonnull NSEvent* )_TheEvent
     {
     [ super mouseMoved: _TheEvent ];
-    self.isShowingTweetOperationsPanel = YES;
+
+    if ( ![ self _isShowingRetweetOperationsPopover ] )
+        self.isShowingTweetOperationsPanel = YES;
     }
 
 #pragma mark IBAction
@@ -244,6 +257,12 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.author } ];
+    }
+
+- ( BOOL ) _isShowingRetweetOperationsPopover
+    {
+    TWPTweetOperationsPanelView* operationsPanel = [ [ TWPSharedUIElements sharedElements ] tweetOperationsPanelView ];
+    return [ operationsPanel isShowingRetweetOperationsPopover ];
     }
 
 @end // TWPTweetCellView class
