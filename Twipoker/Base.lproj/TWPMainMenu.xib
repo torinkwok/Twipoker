@@ -738,6 +738,7 @@
                 <constraint firstAttribute="width" constant="76" id="4wr-qG-TKT"/>
                 <constraint firstAttribute="height" constant="22" id="mPf-Oq-qP4"/>
             </constraints>
+            <accessibility identifier="tweet-operations-panel"/>
             <connections>
                 <outlet property="favSwitcher" destination="y4v-vq-MlL" id="Cle-r4-baT"/>
                 <outlet property="replyButton" destination="5yT-z0-vok" id="Aea-CR-Tuf"/>
