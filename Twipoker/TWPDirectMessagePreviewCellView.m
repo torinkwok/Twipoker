@@ -83,8 +83,6 @@
         [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
 
     [ self addTrackingArea: self->_trackingArea ];
-
-//    self->_hiddenExpandButtonConstraints = self.constraints;
     }
 
 #pragma mark Dynamic Accessors

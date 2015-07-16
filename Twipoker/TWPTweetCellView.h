@@ -44,6 +44,14 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 @private
     OTCTweet __strong* _tweet;
     CGFloat _refHeight;
+
+    NSTrackingAreaOptions _trackingAreaOptions;
+    NSTrackingArea __strong* _trackingArea;
+
+    BOOL _isShowingExpandButton;
+
+    NSArray __strong* _expandButtonHorizontalConstraints;
+    NSArray __strong* _expandButtonVerticalConstraints;
     }
 
 #pragma mark Outlets

@@ -28,6 +28,7 @@
 #import "TWPTimelineUserNameButton.h"
 #import "TWPTweetOperationsPanelView.h"
 #import "TWPDateIndicatorView.h"
+#import "TWPSharedUIElements.h"
 
 // Notification Names
 NSString* const TWPTweetCellViewShouldDisplayDetailOfTweet = @"TweetCellView.Notif.ShouldDisplayDetailOfTweet";
@@ -37,6 +38,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 // Private Interfaces
 @interface TWPTweetCellView ()
+@property ( assign, readwrite, setter = setShowingExpandButton: ) BOOL isShowingExpandButton;
 - ( void ) _postNotifForShowingUserProfile;
 @end // Private Interfaces
 
@@ -57,6 +59,8 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 @synthesize spaceBetweenUserNameLabelAndTextView;
 @synthesize bottomSpaceConstraint;
 
+@dynamic isShowingExpandButton;
+
 #pragma mark Initialization
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet
     {
@@ -71,7 +75,19 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     return self;
     }
 
-#pragma mark Accessors
+- ( void ) awakeFromNib
+    {
+    // The self->_trackingArea will be created with `NSTrackingInVisibleRect` option,
+    // in which case the Application Kit handles the re-computation of self->_trackingArea
+    self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
+                                    | NSTrackingInVisibleRect | NSTrackingAssumeInside | NSTrackingMouseMoved;
+    self->_trackingArea =
+        [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
+
+    [ self addTrackingArea: self->_trackingArea ];
+    }
+
+#pragma mark Dynamic Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
     self->_tweet = _Tweet;
@@ -82,6 +98,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     [ [ self tweetTextView ] setTweet: self->_tweet ];
 
     [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
+    self.isShowingExpandButton = NO;
     }
 
 - ( OTCTweet* ) tweet
@@ -108,10 +125,106 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
                 + tweetTextViewHeight + userNameLabelHeight;
     }
 
-#pragma mark Constraints
+- ( void ) setShowingExpandButton: ( BOOL )_IsShowingExpandButton
+    {
+    self->_isShowingExpandButton = _IsShowingExpandButton;
+    [ self setNeedsUpdateConstraints: YES ];
+    }
+
+- ( BOOL ) isShowingExpandButton
+    {
+    return self->_isShowingExpandButton;
+    }
+
+#pragma mark Handling Constraints-Based Auto Layout
 - ( void ) updateConstraints
     {
     [ super updateConstraints ];
+
+    TWPTweetOperationsPanelView* operationsPanel = [ [ TWPSharedUIElements sharedElements ] tweetOperationsPanelView ];
+
+    if ( self->_isShowingExpandButton )
+        {
+        if ( operationsPanel.superview != self )
+            {
+            [ operationsPanel setTweet: self->_tweet ];
+            [ self addSubview: operationsPanel ];
+
+            NSDictionary* viewsDict = NSDictionaryOfVariableBindings( operationsPanel );
+            if ( !self->_expandButtonHorizontalConstraints )
+                {
+                self->_expandButtonHorizontalConstraints =
+                    [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|-(>=leadingSpace)-[operationsPanel(==operationsPanelWidth)]-(==trailingSpace)-|"
+                                                             options: 0
+                                                             metrics: @{ @"leadingSpace" : @( NSMaxX( self.frame ) - NSWidth( operationsPanel.frame ) - 20.f - 1.f )
+                                                                       , @"operationsPanelWidth" : @( NSWidth( operationsPanel.frame ) )
+                                                                       , @"trailingSpace" : @( 20.f )
+                                                                       }
+                                                               views: viewsDict ];
+
+                [ self addConstraints: self->_expandButtonHorizontalConstraints ];
+                }
+
+            if ( !self->_expandButtonVerticalConstraints )
+                {
+                self->_expandButtonVerticalConstraints =
+                    [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|-(==topSpace)-[operationsPanel(==operationsPanelHeight)]-(>=bottomSpace)-|"
+                                                             options: 0
+                                                             metrics: @{ @"operationsPanelHeight" : @( NSHeight( operationsPanel.frame ) )
+                                                                       , @"topSpace" : @( 15.f )
+                                                                       , @"bottomSpace" : @( 62.f )
+                                                                       }
+                                                               views: viewsDict ];
+
+                [ self addConstraints: self->_expandButtonVerticalConstraints ];
+                }
+
+            for ( NSLayoutConstraint* _Constraint in self->_expandButtonHorizontalConstraints )
+                _Constraint.active = YES;
+
+            for ( NSLayoutConstraint* _Constraint in self->_expandButtonVerticalConstraints )
+                _Constraint.active = YES;
+            }
+        }
+    else
+        {
+        if ( operationsPanel.superview == self )
+            {
+            for ( NSLayoutConstraint* _Constraint in self->_expandButtonHorizontalConstraints )
+                _Constraint.active = NO;
+
+            for ( NSLayoutConstraint* _Constraint in self->_expandButtonVerticalConstraints )
+                _Constraint.active = NO;
+
+            [ operationsPanel setTweet: nil ];
+            [ operationsPanel removeFromSuperview ];
+            }
+        }
+    }
+
+#pragma mark Handling Events
+- ( void ) mouseEntered: ( NSEvent* )_Event
+    {
+    [ super mouseEntered: _Event ];
+    self.isShowingExpandButton = YES;
+    }
+
+- ( void ) mouseExited: ( NSEvent* )_Event
+    {
+    [ super mouseExited: _Event ];
+    self.isShowingExpandButton = NO;
+    }
+
+- ( void ) scrollWheel: ( NSEvent* )_Event
+    {
+    [ super scrollWheel: _Event ];
+    self.isShowingExpandButton = NO;
+    }
+
+- ( void ) mouseMoved: ( nonnull NSEvent* )_TheEvent
+    {
+    [ super mouseMoved: _TheEvent ];
+    self.isShowingExpandButton = YES;
     }
 
 #pragma mark IBAction

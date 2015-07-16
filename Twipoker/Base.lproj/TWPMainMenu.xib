@@ -685,6 +685,7 @@
         <customObject id="Y1i-TX-eqG" customClass="TWPSharedUIElements">
             <connections>
                 <outlet property="expandDMSessionButton" destination="NLe-zl-aHC" id="Zbn-yG-uBe"/>
+                <outlet property="tweetOperationsPanelView" destination="rls-fg-gOw" id="tkK-Sm-dQi"/>
             </connections>
         </customObject>
         <button translatesAutoresizingMaskIntoConstraints="NO" id="NLe-zl-aHC" customClass="TWPExpandDMSessionButton">
@@ -735,12 +736,14 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="width" constant="76" id="4wr-qG-TKT"/>
+                <constraint firstAttribute="height" constant="22" id="mPf-Oq-qP4"/>
             </constraints>
             <connections>
                 <outlet property="favSwitcher" destination="y4v-vq-MlL" id="Cle-r4-baT"/>
                 <outlet property="replyButton" destination="5yT-z0-vok" id="Aea-CR-Tuf"/>
                 <outlet property="retweetSwitcher" destination="gRc-ZR-CLy" id="Agf-cc-Sic"/>
             </connections>
+            <point key="canvasLocation" x="204" y="72"/>
         </customView>
         <customObject id="4E5-eH-s1k" customClass="TWPTimeServiceCenter"/>
     </objects>

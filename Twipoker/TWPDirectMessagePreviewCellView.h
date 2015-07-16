@@ -41,9 +41,6 @@
 
     NSArray __strong* _expandButtonHorizontalConstraints;
     NSArray __strong* _expandButtonVerticalConstraints;
-
-//    NSArray __strong* _hiddenExpandButtonConstraints;   // frozen in xib
-//    NSMutableArray __strong* _showingExpandButtonConstraints;  // create them on the fly
     }
 
 @property ( weak ) IBOutlet TWPUserAvatarWell* senderAvatar;

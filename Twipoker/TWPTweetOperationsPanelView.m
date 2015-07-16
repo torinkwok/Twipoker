@@ -148,6 +148,15 @@
             } ];
     }
 
+#pragma mark Custom Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ super drawRect: _DirtyRect ];
+
+    [ [ NSColor whiteColor ] set ];
+    NSRectFill( _DirtyRect );
+    }
+
 @end
 
 /*=============================================================================┐
