@@ -34,8 +34,7 @@
 #pragma mark Custom Drawing
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    NSColor* color = [ NSColor colorWithHTMLColor: @"52AAEE" ];
-    [ color set ];
+    [ [ NSColor whiteColor ] set ];
     NSRectFill( _DirtyRect );
     }
 

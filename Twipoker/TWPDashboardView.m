@@ -63,6 +63,12 @@
             } ];
     }
 
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+    [ [ NSColor colorWithHTMLColor: @"52AAEE" ] set ];
+    NSRectFill( _DirtyRect );
+    }
+
 @end
 
 /*=============================================================================┐
