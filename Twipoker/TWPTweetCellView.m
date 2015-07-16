@@ -38,7 +38,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 // Private Interfaces
 @interface TWPTweetCellView ()
-@property ( assign, readwrite, setter = setShowingExpandButton: ) BOOL isShowingExpandButton;
+@property ( assign, readwrite, setter = setShowingTweetOperationsPanel: ) BOOL isShowingTweetOperationsPanel;
 - ( void ) _postNotifForShowingUserProfile;
 @end // Private Interfaces
 
@@ -59,7 +59,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 @synthesize spaceBetweenUserNameLabelAndTextView;
 @synthesize bottomSpaceConstraint;
 
-@dynamic isShowingExpandButton;
+@dynamic isShowingTweetOperationsPanel;
 
 #pragma mark Initialization
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet
@@ -98,7 +98,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     [ [ self tweetTextView ] setTweet: self->_tweet ];
 
     [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
-    self.isShowingExpandButton = NO;
+    self.isShowingTweetOperationsPanel = NO;
     }
 
 - ( OTCTweet* ) tweet
@@ -125,15 +125,15 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
                 + tweetTextViewHeight + userNameLabelHeight;
     }
 
-- ( void ) setShowingExpandButton: ( BOOL )_IsShowingExpandButton
+- ( void ) setShowingTweetOperationsPanel: ( BOOL )_IsShowingExpandButton
     {
-    self->_isShowingExpandButton = _IsShowingExpandButton;
+    self->_isShowingTweetOperationsPanel = _IsShowingExpandButton;
     [ self setNeedsUpdateConstraints: YES ];
     }
 
 - ( BOOL ) isShowingExpandButton
     {
-    return self->_isShowingExpandButton;
+    return self->_isShowingTweetOperationsPanel;
     }
 
 #pragma mark Handling Constraints-Based Auto Layout
@@ -143,7 +143,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
     TWPTweetOperationsPanelView* operationsPanel = [ [ TWPSharedUIElements sharedElements ] tweetOperationsPanelView ];
 
-    if ( self->_isShowingExpandButton )
+    if ( self->_isShowingTweetOperationsPanel )
         {
         if ( operationsPanel.superview != self )
             {
@@ -206,25 +206,25 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 - ( void ) mouseEntered: ( NSEvent* )_Event
     {
     [ super mouseEntered: _Event ];
-    self.isShowingExpandButton = YES;
+    self.isShowingTweetOperationsPanel = YES;
     }
 
 - ( void ) mouseExited: ( NSEvent* )_Event
     {
     [ super mouseExited: _Event ];
-    self.isShowingExpandButton = NO;
+    self.isShowingTweetOperationsPanel = NO;
     }
 
 - ( void ) scrollWheel: ( NSEvent* )_Event
     {
     [ super scrollWheel: _Event ];
-    self.isShowingExpandButton = NO;
+    self.isShowingTweetOperationsPanel = NO;
     }
 
 - ( void ) mouseMoved: ( nonnull NSEvent* )_TheEvent
     {
     [ super mouseMoved: _TheEvent ];
-    self.isShowingExpandButton = YES;
+    self.isShowingTweetOperationsPanel = YES;
     }
 
 #pragma mark IBAction

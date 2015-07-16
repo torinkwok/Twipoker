@@ -48,7 +48,7 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
     NSTrackingAreaOptions _trackingAreaOptions;
     NSTrackingArea __strong* _trackingArea;
 
-    BOOL _isShowingExpandButton;
+    BOOL _isShowingTweetOperationsPanel;
 
     NSArray __strong* _expandButtonHorizontalConstraints;
     NSArray __strong* _expandButtonVerticalConstraints;
