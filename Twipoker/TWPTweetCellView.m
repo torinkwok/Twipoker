@@ -156,7 +156,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
                 self->_expandButtonHorizontalConstraints =
                     [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|-(>=leadingSpace)-[operationsPanel(==operationsPanelWidth)]-(==trailingSpace)-|"
                                                              options: 0
-                                                             metrics: @{ @"leadingSpace" : @( 301.f )
+                                                             metrics: @{ @"leadingSpace" : @( 397.f - NSWidth( operationsPanel.frame ) - 20.f )
                                                                        , @"operationsPanelWidth" : @( NSWidth( operationsPanel.frame ) )
                                                                        , @"trailingSpace" : @( 20.f )
                                                                        }
