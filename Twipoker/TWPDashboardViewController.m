@@ -24,12 +24,16 @@
 
 #import "TWPDashboardViewController.h"
 #import "TWPDashboardTab.h"
+#import "TWPBrain.h"
+#import "TWPCurrentUserAvatarWellController.h"
 
 @interface TWPDashboardViewController ()
 
 @end
 
 @implementation TWPDashboardViewController
+
+@synthesize currentUserAvatarWellController = _currentUserAvatarWellController;
 
 @synthesize homeTab = _homeTab;
 @synthesize favTab = _favTab;
@@ -39,6 +43,11 @@
 @synthesize dmTab = _dmTab;
 
 @synthesize composeButton = _composeButton;
+
+- ( void ) awakeFromNib
+    {
+    [ self.currentUserAvatarWellController setTwitterUser: [ [ TWPBrain wiseBrain ] currentTwitterUser ] ];
+    }
 
 - ( void ) viewDidLoad
     {

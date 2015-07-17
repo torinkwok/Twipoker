@@ -25,8 +25,11 @@
 #import <Cocoa/Cocoa.h>
 
 @class TWPDashboardTab;
+@class TWPCurrentUserAvatarWellController;
 
 @interface TWPDashboardViewController : NSViewController
+
+@property ( weak ) IBOutlet TWPCurrentUserAvatarWellController* currentUserAvatarWellController;
 
 @property ( weak ) IBOutlet TWPDashboardTab* homeTab;
 @property ( weak ) IBOutlet TWPDashboardTab* favTab;

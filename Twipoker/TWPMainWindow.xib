@@ -268,6 +268,7 @@
         <viewController id="Q6I-Hl-mD8" customClass="TWPDashboardViewController">
             <connections>
                 <outlet property="composeButton" destination="HNM-IO-3zG" id="zKv-wj-6CG"/>
+                <outlet property="currentUserAvatarWellController" destination="Mwg-Oy-Kyy" id="4eq-jb-IMM"/>
                 <outlet property="dmTab" destination="af4-QX-slZ" id="fcQ-Bu-16W"/>
                 <outlet property="favTab" destination="htO-L6-7ln" id="fLX-Bh-duT"/>
                 <outlet property="homeTab" destination="H1h-r2-oOp" id="ZNb-Ju-GaO"/>
@@ -346,6 +347,11 @@
             <point key="canvasLocation" x="225" y="-2135"/>
         </textField>
         <viewController id="A1U-WG-bIi" customClass="TWPTwitterUserProfileViewController"/>
+        <viewController id="Mwg-Oy-Kyy" customClass="TWPCurrentUserAvatarWellController">
+            <connections>
+                <outlet property="view" destination="Pmp-g4-uG3" id="SJR-KE-XkY"/>
+            </connections>
+        </viewController>
     </objects>
     <resources>
         <image name="compose-tweet" width="27" height="37"/>
