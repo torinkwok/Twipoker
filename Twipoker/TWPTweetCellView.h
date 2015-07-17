@@ -31,6 +31,7 @@
 @class TWPTweetTextView;
 @class TWPTweetOperationsPanelView;
 @class TWPDateIndicatorView;
+@class TWPTweetMediaWell;
 
 // Notification Names
 NSString extern* const TWPTweetCellViewShouldDisplayDetailOfTweet;
@@ -52,6 +53,8 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 
     NSArray __strong* _expandButtonHorizontalConstraints;
     NSArray __strong* _expandButtonVerticalConstraints;
+
+    TWPTweetMediaWell __strong* _tweetMediaWell;
     }
 
 #pragma mark Outlets
@@ -59,6 +62,7 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 @property ( weak ) IBOutlet TWPTimelineUserNameButton* userNameLabel;
 @property ( weak ) IBOutlet TWPDateIndicatorView* dateIndicatorView;
 @property ( weak ) IBOutlet TWPTweetTextView* tweetTextView;
+@property ( strong, readonly ) TWPTweetMediaWell* tweetMediaWell;
 
 @property ( strong, readwrite ) OTCTweet* tweet;
 @property ( strong, readonly ) OTCTwitterUser* author;
@@ -66,6 +70,8 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 @property ( weak ) IBOutlet NSLayoutConstraint* topSpaceConstraint;
 @property ( weak ) IBOutlet NSLayoutConstraint* spaceBetweenUserNameLabelAndTextView;
 @property ( weak ) IBOutlet NSLayoutConstraint* bottomSpaceConstraint;
+
+@property ( weak ) IBOutlet NSLayoutConstraint* cellViewBottom_equal_tweetTextViewBottom_constraint;
 
 #pragma mark Size
 - ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight;

@@ -108,6 +108,7 @@
                                         <connections>
                                             <outlet property="authorAvatarWell" destination="AUA-3k-7Zo" id="VCS-jr-VW6"/>
                                             <outlet property="bottomSpaceConstraint" destination="IPf-r3-oeU" id="q1y-BY-yDE"/>
+                                            <outlet property="cellViewBottom_equal_tweetTextViewBottom_constraint" destination="IPf-r3-oeU" id="XUz-pf-1RJ"/>
                                             <outlet property="dateIndicatorView" destination="doV-oN-7uf" id="yHN-mb-Edw"/>
                                             <outlet property="spaceBetweenUserNameLabelAndTextView" destination="lq3-cW-fjr" id="yWo-2y-9Ul"/>
                                             <outlet property="topSpaceConstraint" destination="fQl-ZK-e27" id="byN-9W-R7f"/>
