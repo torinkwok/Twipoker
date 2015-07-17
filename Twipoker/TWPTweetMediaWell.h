@@ -33,6 +33,13 @@
 
 @property ( strong, readwrite ) OTCTweet* tweet;
 
+#pragma mark Global Properties
++ ( NSSize ) defaultSize;
+
+#pragma mark Initializations
++ ( instancetype ) tweetMediaWellWithTweet: ( OTCTweet* )_Tweet;
+- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
+
 @end // TWPTweetMediaWell class
 
 /*=============================================================================┐

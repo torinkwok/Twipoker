@@ -29,6 +29,33 @@
 
 @dynamic tweet;
 
+#pragma mark Global Properties
++ ( NSSize ) defaultSize
+    {
+    return NSMakeSize( 272.f, 272.f * 0.61803398875f ); // Golden Ratio
+    }
+
+#pragma mark Initializations
++ ( instancetype ) tweetMediaWellWithTweet: ( OTCTweet* )_Tweet
+    {
+    return [ [ [ self class ] alloc ] initWithTweet: _Tweet ];
+    }
+
+- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
+    {
+    if ( !_Tweet.media.count )
+        return nil;
+
+    NSSize defaultSize = [ [ self class ] defaultSize ];
+    if ( self = [ super initWithFrame: NSMakeRect( 0, 0, defaultSize.width, defaultSize.height ) ] )
+        {
+        self->_tweet = _Tweet;
+        [ self setNeedsDisplay: YES ];
+        }
+
+    return self;
+    }
+
 #pragma mark Dynamic Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
