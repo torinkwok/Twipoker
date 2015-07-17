@@ -23,7 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTweetCellView.h"
-#import "TWPTextView.h"
+#import "TWPTweetTextView.h"
 #import "TWPUserAvatarWell.h"
 #import "TWPTimelineUserNameButton.h"
 #import "TWPTweetOperationsPanelView.h"
@@ -121,7 +121,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     CGFloat bottomSpaceConstraintHeight = self.bottomSpaceConstraint.constant;
     CGFloat spaceHeightBetweetUserNameLabelAndTextView = self.spaceBetweenUserNameLabelAndTextView.constant;
 
-    CGFloat tweetTextViewHeight = ( _TweetTextBlockHeight > [ TWPTextView defaultSize ].height ) ? _TweetTextBlockHeight : [ TWPTextView defaultSize ].height;
+    CGFloat tweetTextViewHeight = ( _TweetTextBlockHeight > [ TWPTweetTextView defaultSize ].height ) ? _TweetTextBlockHeight : [ TWPTweetTextView defaultSize ].height;
     CGFloat userNameLabelHeight = NSHeight( self.userNameLabel.frame );
 
     return topSpaceConstraintHeight + bottomSpaceConstraintHeight

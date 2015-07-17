@@ -26,7 +26,7 @@
 #import "TWPUIConstants.h"
 #import "TWPTweetCellView.h"
 #import "TWPTweetOperationsNotificationNames.h"
-#import "TWPTextView.h"
+#import "TWPTweetTextView.h"
 
 // Private Interfaces
 @interface TWPTimelineViewController ()
@@ -76,7 +76,7 @@
             heightOfRow: ( NSInteger )_Row
     {
     TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: _TableView viewForTableColumn: _TableView.tableColumns.firstObject row: _Row ];
-    TWPTextView* tweetTextView = tweetCellView.tweetTextView;
+    TWPTweetTextView* tweetTextView = tweetCellView.tweetTextView;
 
     CGFloat currentColumnWidth = _TableView.tableColumns.firstObject.width;
     CGFloat height = [ tweetCellView dynamicHeightAccordingToTweetTextBlockHeight:
@@ -95,10 +95,10 @@
     for ( int _Index = 0; _Index < self->_data.count; _Index++ )
         {
         CGFloat textBlockNewHeight =
-            [ TWPTextView textBlockDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
+            [ TWPTweetTextView textBlockDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
                                               blockWidth: columnNewWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace ];
         CGFloat textBlockOldHeight =
-            [ TWPTextView textBlockDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
+            [ TWPTweetTextView textBlockDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
                                               blockWidth: columnOldWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace ];
 
         if ( textBlockNewHeight != textBlockOldHeight )

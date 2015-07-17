@@ -25,7 +25,7 @@
 
 @import Foundation;
 
-// TWPTextView
+// TWPTweetTextView
 CGFloat extern TWPTextViewDefaultWidth;
 CGFloat extern TWPTextViewDefaultHeight;
 

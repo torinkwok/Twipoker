@@ -24,7 +24,7 @@
 
 #import "TWPUIConstants.h"
 
-// TWPTextView
+// TWPTweetTextView
 CGFloat TWPTextViewDefaultWidth = 272.f;
 CGFloat TWPTextViewDefaultHeight = 37.f;
 

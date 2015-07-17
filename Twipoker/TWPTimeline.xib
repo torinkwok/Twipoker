@@ -72,7 +72,7 @@
                                                     <action selector="userAvatarClickedAction:" target="Ivh-Fg-vDh" id="Gad-1B-Lwr"/>
                                                 </connections>
                                             </imageView>
-                                            <customView identifier="tweet-text-view" translatesAutoresizingMaskIntoConstraints="NO" id="XO7-Ab-T27" customClass="TWPTextView">
+                                            <customView identifier="tweet-text-view" translatesAutoresizingMaskIntoConstraints="NO" id="XO7-Ab-T27" customClass="TWPTweetTextView">
                                                 <rect key="frame" x="105" y="15" width="272" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="272" id="NoL-R7-E9u"/>
