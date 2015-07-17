@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83081D341B597E44007C3BB5 /* TWPTweetMediaWell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83081D331B597E44007C3BB5 /* TWPTweetMediaWell.m */; };
 		8308961E1AEA1D1D0081D227 /* TWPTimelineScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */; };
 		830896211AEA1D1D0081D227 /* TWPTweetCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */; };
 		830896241AEA1D2A0081D227 /* TWPStackContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830896231AEA1D2A0081D227 /* TWPStackContentView.m */; };
@@ -282,6 +283,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		83081D321B597E44007C3BB5 /* TWPTweetMediaWell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTweetMediaWell.h; path = Twipoker/TWPTweetMediaWell.h; sourceTree = "<group>"; };
+		83081D331B597E44007C3BB5 /* TWPTweetMediaWell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetMediaWell.m; path = Twipoker/TWPTweetMediaWell.m; sourceTree = "<group>"; };
 		830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTimelineScrollView.h; path = Twipoker/TWPTimelineScrollView.h; sourceTree = "<group>"; };
 		830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTimelineScrollView.m; path = Twipoker/TWPTimelineScrollView.m; sourceTree = "<group>"; };
 		8308961C1AEA1D1D0081D227 /* TWPTweetCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTweetCellView.h; path = Twipoker/TWPTweetCellView.h; sourceTree = "<group>"; };
@@ -775,6 +778,8 @@
 				835CBA541B53FBE70005C5BD /* TWPUserAvatarCell.m */,
 				83CAB0AF1B552217002532B5 /* TWPDateIndicatorView.h */,
 				83CAB0B01B552217002532B5 /* TWPDateIndicatorView.m */,
+				83081D321B597E44007C3BB5 /* TWPTweetMediaWell.h */,
+				83081D331B597E44007C3BB5 /* TWPTweetMediaWell.m */,
 				83CC14F51B2316FD0046B544 /* tweet-operations-panel */,
 				83D12E8D1AEFE2FD009ECC13 /* twitter-user-view */,
 				83C3DAC21B1385B5005973EE /* twitter-list-timeline */,
@@ -1847,6 +1852,7 @@
 				83F231BD1AE114A600A05D1D /* FBKVOController.m in Sources */,
 				835001ED1B28DD5C0067499E /* TWPTweetOperationsNotificationNames.m in Sources */,
 				83B5550E1B217C2200E354D0 /* TWPCompleteTweetingTextFieldCell.m in Sources */,
+				83081D341B597E44007C3BB5 /* TWPTweetMediaWell.m in Sources */,
 				83CC14F81B2317880046B544 /* TWPReplyButton.m in Sources */,
 				83DD2DB31B2EAC2F000535FF /* TWPNormalTweetBoxController.m in Sources */,
 				83CFD8761ACF1C820062D73D /* TWPLoginPanelController.m in Sources */,
