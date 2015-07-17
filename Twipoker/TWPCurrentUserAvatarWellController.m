@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPCurrentUserAvatarWellController.h"
+#import "TWPCurrentLoginUserOperationsViewController.h"
 
 // Private Interfaces
 @interface TWPCurrentUserAvatarWellController ()
@@ -33,6 +34,13 @@
 @implementation TWPCurrentUserAvatarWellController
 
 @dynamic twitterUser;
+
+#pragma mark Initializations
+- ( void ) awakeFromNib
+    {
+    TWPCurrentLoginUserOperationsViewController* operationsViewController = [ TWPCurrentLoginUserOperationsViewController operationsViewController ];
+    self->_currentLoginUserOperationsPopover = [ NSPopover 
+    }
 
 #pragma mark Dynamic Accessors
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser

@@ -56,6 +56,9 @@
 		835361511AE5635200CF1988 /* TWPDebugLoginUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 835361501AE5635200CF1988 /* TWPDebugLoginUsersView.m */; };
 		8353A55D1B58ED96002C201D /* TWPTweetTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353A55C1B58ED96002C201D /* TWPTweetTextView.m */; };
 		8353A5601B58F6B2002C201D /* TWPCurrentUserAvatarWellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353A55F1B58F6B2002C201D /* TWPCurrentUserAvatarWellController.m */; };
+		8353A5651B591755002C201D /* TWPCurrentLoginUserOperationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353A5631B591755002C201D /* TWPCurrentLoginUserOperationsViewController.m */; };
+		8353A5661B591755002C201D /* TWPCurrentLoginUserOperationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8353A5641B591755002C201D /* TWPCurrentLoginUserOperationsView.xib */; };
+		8353A5691B591A6E002C201D /* TWPCurrentLoginUserOperationsPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 8353A5681B591A6E002C201D /* TWPCurrentLoginUserOperationsPopover.m */; };
 		835CBA551B53FBE70005C5BD /* TWPUserAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 835CBA541B53FBE70005C5BD /* TWPUserAvatarCell.m */; };
 		83627C9F1B4488070032505C /* home-tab-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83627C9B1B4488070032505C /* home-tab-white@2x.png */; };
 		83627CA01B4488070032505C /* home-tab-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 83627C9C1B4488070032505C /* home-tab-white.png */; };
@@ -359,6 +362,11 @@
 		8353A55C1B58ED96002C201D /* TWPTweetTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetTextView.m; path = Twipoker/TWPTweetTextView.m; sourceTree = "<group>"; };
 		8353A55E1B58F6B2002C201D /* TWPCurrentUserAvatarWellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPCurrentUserAvatarWellController.h; path = Twipoker/TWPCurrentUserAvatarWellController.h; sourceTree = "<group>"; };
 		8353A55F1B58F6B2002C201D /* TWPCurrentUserAvatarWellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPCurrentUserAvatarWellController.m; path = Twipoker/TWPCurrentUserAvatarWellController.m; sourceTree = "<group>"; };
+		8353A5621B591755002C201D /* TWPCurrentLoginUserOperationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPCurrentLoginUserOperationsViewController.h; path = Twipoker/TWPCurrentLoginUserOperationsViewController.h; sourceTree = "<group>"; };
+		8353A5631B591755002C201D /* TWPCurrentLoginUserOperationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPCurrentLoginUserOperationsViewController.m; path = Twipoker/TWPCurrentLoginUserOperationsViewController.m; sourceTree = "<group>"; };
+		8353A5641B591755002C201D /* TWPCurrentLoginUserOperationsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TWPCurrentLoginUserOperationsView.xib; path = Twipoker/TWPCurrentLoginUserOperationsView.xib; sourceTree = "<group>"; };
+		8353A5671B591A6E002C201D /* TWPCurrentLoginUserOperationsPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPCurrentLoginUserOperationsPopover.h; path = Twipoker/TWPCurrentLoginUserOperationsPopover.h; sourceTree = "<group>"; };
+		8353A5681B591A6E002C201D /* TWPCurrentLoginUserOperationsPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPCurrentLoginUserOperationsPopover.m; path = Twipoker/TWPCurrentLoginUserOperationsPopover.m; sourceTree = "<group>"; };
 		835CBA531B53FBE70005C5BD /* TWPUserAvatarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPUserAvatarCell.h; path = Twipoker/TWPUserAvatarCell.h; sourceTree = "<group>"; };
 		835CBA541B53FBE70005C5BD /* TWPUserAvatarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPUserAvatarCell.m; path = Twipoker/TWPUserAvatarCell.m; sourceTree = "<group>"; };
 		83627C9B1B4488070032505C /* home-tab-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "home-tab-white@2x.png"; path = "Twipoker/Artwork/home-tab-white@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -780,6 +788,7 @@
 		8347B7CF1AE799FF003A49AD /* dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				8353A5611B591714002C201D /* xib */,
 				83C21D9F1B2B1AE800188BB2 /* TWPDashboardTab.h */,
 				83C21DA01B2B1AE800188BB2 /* TWPDashboardTab.m */,
 				83EB82511B397BCD005A9A35 /* TWPDashboardViewController.h */,
@@ -788,8 +797,20 @@
 				83AAF7071AED2B6D007A3A48 /* TWPDashboardView.m */,
 				8353A55E1B58F6B2002C201D /* TWPCurrentUserAvatarWellController.h */,
 				8353A55F1B58F6B2002C201D /* TWPCurrentUserAvatarWellController.m */,
+				8353A5621B591755002C201D /* TWPCurrentLoginUserOperationsViewController.h */,
+				8353A5631B591755002C201D /* TWPCurrentLoginUserOperationsViewController.m */,
+				8353A5671B591A6E002C201D /* TWPCurrentLoginUserOperationsPopover.h */,
+				8353A5681B591A6E002C201D /* TWPCurrentLoginUserOperationsPopover.m */,
 			);
 			name = dashboard;
+			sourceTree = "<group>";
+		};
+		8353A5611B591714002C201D /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				8353A5641B591755002C201D /* TWPCurrentLoginUserOperationsView.xib */,
+			);
+			name = xib;
 			sourceTree = "<group>";
 		};
 		83627CAB1B448AE00032505C /* home */ = {
@@ -1749,6 +1770,7 @@
 				834F29611B2C0348007A85D9 /* go-forward-arrow-normal.png in Resources */,
 				8351C1D61B21DB8E0019BF98 /* tweet_with_pic.png in Resources */,
 				831DF0A31B481757004476A5 /* add-attachment@2x.png in Resources */,
+				8353A5661B591755002C201D /* TWPCurrentLoginUserOperationsView.xib in Resources */,
 				83627CCF1B4492BB0032505C /* messages-tab-gray@2x.png in Resources */,
 				831DF0A41B481757004476A5 /* add-attachment.png in Resources */,
 				834F295E1B2C0348007A85D9 /* go-back-arrow-normal@2x.png in Resources */,
@@ -1826,6 +1848,7 @@
 				835CBA551B53FBE70005C5BD /* TWPUserAvatarCell.m in Sources */,
 				83E9A2E11B02721200CA5926 /* NSDateFormatter+STTwitter.m in Sources */,
 				83CFD8851ACF1F070062D73D /* NSAffineTransform+TwipokerDrawing.m in Sources */,
+				8353A5651B591755002C201D /* TWPCurrentLoginUserOperationsViewController.m in Sources */,
 				839B51AF1B41AF55005035E6 /* TWPNavBarTotemView.m in Sources */,
 				83C21DA11B2B1AE800188BB2 /* TWPDashboardTab.m in Sources */,
 				83CFD86E1ACF1C820062D73D /* TWPButtonCell.m in Sources */,
@@ -1919,6 +1942,7 @@
 				8338CD831AE3C8F900370C10 /* TWPKeychain.m in Sources */,
 				831447D51ACFF1AD00BFECE4 /* TWPDebugLoginViewController.m in Sources */,
 				83CC14F11B2316E10046B544 /* TWPRetweetSwitcherCell.m in Sources */,
+				8353A5691B591A6E002C201D /* TWPCurrentLoginUserOperationsPopover.m in Sources */,
 				835242C61B49CE90009B0FE7 /* TWPTextView.m in Sources */,
 				83BE4AA71B056160008ED545 /* OTCList.m in Sources */,
 				83E9A2EA1B02721200CA5926 /* STTwitterOSRequest.m in Sources */,

@@ -22,18 +22,47 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPUserAvatarWell.h"
+#import "TWPCurrentLoginUserOperationsPopover.h"
 
-// TWPCurrentUserAvatarWellController class
-@interface TWPCurrentUserAvatarWellController : NSViewController <NSPopoverDelegate>
+// TWPCurrentLoginUserOperationsPopover class
+@implementation TWPCurrentLoginUserOperationsPopover
+
+@dynamic twitterUser;
+
+#pragma mark Initializations
++ ( instancetype ) popoverWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+                                 delegate: ( id <TWPCurrentLoginUserOperationsPopoverDelegate> )_Delegate
     {
-@private
-    NSPopover __strong* _currentLoginUserOperationsPopover;
+    return [ [ [ self class ] alloc ] initWithTwitterUser: _TwitterUser delegate: _Delegate ];
     }
 
-@property ( strong, readwrite ) OTCTwitterUser* twitterUser;
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
+                              delegate: ( id <TWPCurrentLoginUserOperationsPopoverDelegate> )_Delegate
+    {
+    if ( !_TwitterUser )
+        return nil;
 
-@end // TWPCurrentUserAvatarWellController class
+    if ( self = [ super init ] )
+        {
+        self->_twitterUser = _TwitterUser;
+        self.delegate = _Delegate;
+        }
+
+    return self;
+    }
+
+#pragma mark Dynamic Accessors
+- ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
+    {
+    self->_twitterUser = _TwitterUser;
+    }
+
+- ( OTCTwitterUser* ) twitterUser
+    {
+    return self->_twitterUser;
+    }
+
+@end // TWPCurrentLoginUserOperationsPopover class
 
 /*=============================================================================┐
 |                                                                              |

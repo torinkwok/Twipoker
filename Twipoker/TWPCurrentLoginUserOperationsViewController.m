@@ -22,18 +22,31 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPUserAvatarWell.h"
+#import "TWPCurrentLoginUserOperationsViewController.h"
 
-// TWPCurrentUserAvatarWellController class
-@interface TWPCurrentUserAvatarWellController : NSViewController <NSPopoverDelegate>
+// Private Interfaces
+@interface TWPCurrentLoginUserOperationsViewController ()
+
+@end // Private Interfaces
+
+// TWPCurrentLoginUserOperationsViewController class
+@implementation TWPCurrentLoginUserOperationsViewController
+
+#pragma mark Initializations
++ ( instancetype ) operationsViewController
     {
-@private
-    NSPopover __strong* _currentLoginUserOperationsPopover;
+    return [ [ [ self class ] alloc ] init ] ;
     }
 
-@property ( strong, readwrite ) OTCTwitterUser* twitterUser;
+- ( instancetype ) init
+    {
+    if ( self = [ super initWithNibName: @"TWPCurrentLoginUserOperationsView" bundle: [ NSBundle mainBundle ] ] )
+        ;
 
-@end // TWPCurrentUserAvatarWellController class
+    return self;
+    }
+
+@end // TWPCurrentLoginUserOperationsViewController class
 
 /*=============================================================================┐
 |                                                                              |

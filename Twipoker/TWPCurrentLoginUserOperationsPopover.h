@@ -21,19 +21,29 @@
 └==============================================================================┘██
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
+  
+@import Cocoa;
 
-#import "TWPUserAvatarWell.h"
+@protocol TWPCurrentLoginUserOperationsPopoverDelegate;
 
-// TWPCurrentUserAvatarWellController class
-@interface TWPCurrentUserAvatarWellController : NSViewController <NSPopoverDelegate>
+// TWPCurrentLoginUserOperationsPopover class
+@interface TWPCurrentLoginUserOperationsPopover : NSPopover
     {
 @private
-    NSPopover __strong* _currentLoginUserOperationsPopover;
+    OTCTwitterUser __strong* _twitterUser;
     }
 
 @property ( strong, readwrite ) OTCTwitterUser* twitterUser;
 
-@end // TWPCurrentUserAvatarWellController class
+#pragma mark Initializations
++ ( instancetype ) popoverWithTwitterUser: ( OTCTwitterUser* )_TwitterUser delegate: ( id <TWPCurrentLoginUserOperationsPopoverDelegate> )_Delegate;
+- ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser delegate: ( id <TWPCurrentLoginUserOperationsPopoverDelegate> )_Delegate;
+
+@end // TWPCurrentLoginUserOperationsPopover class
+
+// TWPCurrentLoginUserOperationsPopoverDelegate protocol
+@protocol TWPCurrentLoginUserOperationsPopoverDelegate <NSPopoverDelegate>
+@end // TWPCurrentLoginUserOperationsPopoverDelegate protocol
 
 /*=============================================================================┐
 |                                                                              |
