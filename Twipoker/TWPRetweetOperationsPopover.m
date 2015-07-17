@@ -108,7 +108,6 @@
                             {
                             NSLog( @"%@", _Error );
                             } ];
-
     [ self close ];
     }
 

@@ -24,6 +24,16 @@
 
 #import "TWPCurrentLoginUserOperationsPopover.h"
 #import "TWPCurrentLoginUserOperationsViewController.h"
+#import "TWPCurrentLoginUserOperationsView.h"
+
+// Private Interfaces
+@interface TWPCurrentLoginUserOperationsPopover ()
+
+- ( NSButton* ) _editProfileButton;
+- ( NSButton* ) _switchAccountButton;
+- ( NSButton* ) _logoutButton;
+
+@end // Private Interfaces
 
 // TWPCurrentLoginUserOperationsPopover class
 @implementation TWPCurrentLoginUserOperationsPopover
@@ -48,6 +58,15 @@
         [ self setContentViewController: operationsViewController ];
         [ self setDelegate: _Delegate ];
         [ self setBehavior: NSPopoverBehaviorTransient ];
+
+        [ [ self _editProfileButton ] setTarget: self ];
+        [ [ self _editProfileButton ] setAction: @selector( editProfileButtonClickedAction: ) ];
+
+        [ [ self _switchAccountButton ] setTarget: self ];
+        [ [ self _switchAccountButton ] setAction: @selector( switchAccountClickedAction: ) ];
+
+        [ [ self _logoutButton ] setTarget: self ];
+        [ [ self _logoutButton ] setAction: @selector( logoutClickedAction: ) ];
         }
 
     return self;
@@ -62,6 +81,50 @@
 - ( OTCTwitterUser* ) twitterUser
     {
     return self->_twitterUser;
+    }
+
+#pragma mark IBActions
+- ( IBAction ) editProfileButtonClickedAction: ( id )_Sender
+    {
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
+    
+    // TODO:
+
+    [ self performClose: self ];
+    }
+
+- ( IBAction ) switchAccountClickedAction: ( id )_Sender
+    {
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
+
+    // TODO:
+
+    [ self performClose: self ];
+    }
+
+- ( IBAction ) logoutClickedAction: ( id )_Sender
+    {
+    NSLog( @"%s", __PRETTY_FUNCTION__ );
+
+    // TODO:
+
+    [ self performClose: self ];
+    }
+
+#pragma mark Private Interfaces
+- ( NSButton* ) _editProfileButton
+    {
+    return [ ( TWPCurrentLoginUserOperationsView* )( self.contentViewController.view ) editProfileButton ];
+    }
+
+- ( NSButton* ) _switchAccountButton
+    {
+    return [ ( TWPCurrentLoginUserOperationsView* )( self.contentViewController.view ) switchAccountButton ];
+    }
+
+- ( NSButton* ) _logoutButton
+    {
+    return [ ( TWPCurrentLoginUserOperationsView* )( self.contentViewController.view ) logoutButton ];
     }
 
 @end // TWPCurrentLoginUserOperationsPopover class

@@ -39,6 +39,11 @@
 + ( instancetype ) popoverWithTwitterUser: ( OTCTwitterUser* )_TwitterUser delegate: ( id <TWPCurrentLoginUserOperationsPopoverDelegate> )_Delegate;
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser delegate: ( id <TWPCurrentLoginUserOperationsPopoverDelegate> )_Delegate;
 
+#pragma mark IBActions
+- ( IBAction ) editProfileButtonClickedAction: ( id )_Sender;
+- ( IBAction ) switchAccountClickedAction: ( id )_Sender;
+- ( IBAction ) logoutClickedAction: ( id )_Sender;
+
 @end // TWPCurrentLoginUserOperationsPopover class
 
 // TWPCurrentLoginUserOperationsPopoverDelegate protocol

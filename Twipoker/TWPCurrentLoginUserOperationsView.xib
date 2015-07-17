@@ -6,12 +6,15 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPCurrentLoginUserOperationsViewController">
             <connections>
+                <outlet property="editProfileButton" destination="Rom-xB-AnC" id="6pS-tD-csw"/>
+                <outlet property="logoutButton" destination="YXm-NW-Tac" id="Nhz-gD-Amu"/>
+                <outlet property="switchAccountButton" destination="fwQ-t5-5AT" id="ZuH-oT-XB4"/>
                 <outlet property="view" destination="cfn-jK-nyQ" id="XWp-Tx-bTf"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="cfn-jK-nyQ" customClass="TWPRetweetOperationsView">
+        <customView id="cfn-jK-nyQ" customClass="TWPCurrentLoginUserOperationsView">
             <rect key="frame" x="0.0" y="0.0" width="138" height="78"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -37,7 +40,12 @@
                     </buttonCell>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="-388.5" y="-1290.5"/>
+            <connections>
+                <outlet property="editProfileButton" destination="Rom-xB-AnC" id="Zrr-DC-Cf8"/>
+                <outlet property="logoutButton" destination="YXm-NW-Tac" id="5YO-tF-z5m"/>
+                <outlet property="switchAccountButton" destination="fwQ-t5-5AT" id="Apd-t4-7Me"/>
+            </connections>
+            <point key="canvasLocation" x="-389" y="-1291"/>
         </customView>
     </objects>
 </document>
