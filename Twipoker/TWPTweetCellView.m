@@ -54,8 +54,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 @synthesize dateIndicatorView;
 @synthesize tweetTextView;
 
-@synthesize tweetOperationsPanel;
-
 @dynamic tweet;
 @dynamic author;
 
@@ -101,7 +99,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     [ [ self dateIndicatorView ] setTweet: self->_tweet ];
     [ [ self tweetTextView ] setTweet: self->_tweet ];
 
-    [ [ self tweetOperationsPanel ] setTweet: self->_tweet ];
     self.isShowingTweetOperationsPanel = NO;
     }
 

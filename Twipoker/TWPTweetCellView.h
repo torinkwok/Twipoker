@@ -60,8 +60,6 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 @property ( weak ) IBOutlet TWPDateIndicatorView* dateIndicatorView;
 @property ( weak ) IBOutlet TWPTweetTextView* tweetTextView;
 
-@property ( weak ) IBOutlet TWPTweetOperationsPanelView* tweetOperationsPanel;
-
 @property ( strong, readwrite ) OTCTweet* tweet;
 @property ( strong, readonly ) OTCTwitterUser* author;
 
