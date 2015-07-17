@@ -29,6 +29,7 @@
 #import "TWPTweetOperationsPanelView.h"
 #import "TWPDateIndicatorView.h"
 #import "TWPSharedUIElements.h"
+#import "TWPTweetMediaWell.h"
 
 // Notification Names
 NSString* const TWPTweetCellViewShouldDisplayDetailOfTweet = @"TweetCellView.Notif.ShouldDisplayDetailOfTweet";
@@ -101,7 +102,10 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
     if ( _Tweet.media )
         {
-        
+        if ( self->_tweetMediaWell )
+            self->_tweetMediaWell = [ TWPTweetMediaWell tweetMediaWellWithTweet: _Tweet ];
+        else
+            self->_tweetMediaWell.tweet = _Tweet;
         }
 
     self.isShowingTweetOperationsPanel = NO;
