@@ -27,8 +27,12 @@
                     <customView identifier="dashboard" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
                         <rect key="frame" x="0.0" y="0.0" width="72" height="587"/>
                         <subviews>
-                            <button identifier="home-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
+                            <button identifier="home-tab" translatesAutoresizingMaskIntoConstraints="NO" id="H1h-r2-oOp" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="391" width="72" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="HVH-Mf-THp"/>
+                                    <constraint firstAttribute="height" constant="73" id="rNb-ns-iXM"/>
+                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="home-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="emi-ef-6Ye">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -38,8 +42,12 @@
                                     <outlet property="associatedViewsStack" destination="i5X-Cg-E7K" id="bvm-Rg-7eT"/>
                                 </connections>
                             </button>
-                            <button identifier="lists-tab-white" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blT-GV-cVR" customClass="TWPDashboardTab">
+                            <button identifier="lists-tab-white" translatesAutoresizingMaskIntoConstraints="NO" id="blT-GV-cVR" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="268" width="72" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="IWL-Xl-jWx"/>
+                                    <constraint firstAttribute="width" constant="72" id="XFN-Jj-oh2"/>
+                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="lists-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OiP-5y-ZJv">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -49,8 +57,12 @@
                                     <outlet property="associatedViewsStack" destination="jhD-Ze-QK8" id="sgs-ha-hTn"/>
                                 </connections>
                             </button>
-                            <button identifier="notif-tab-white" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-j2-Kng" customClass="TWPDashboardTab">
+                            <button identifier="notif-tab-white" translatesAutoresizingMaskIntoConstraints="NO" id="MPM-j2-Kng" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="201" width="72" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="2sL-sq-BnR"/>
+                                    <constraint firstAttribute="width" constant="72" id="PH2-Ey-v2p"/>
+                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="notif-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="S7d-Nf-xIV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -60,8 +72,12 @@
                                     <outlet property="associatedViewsStack" destination="A4Q-KL-bMh" id="6qS-SL-5do"/>
                                 </connections>
                             </button>
-                            <button identifier="me-tab-white" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
+                            <button identifier="me-tab-white" translatesAutoresizingMaskIntoConstraints="NO" id="noB-a2-2cI" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="134" width="72" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="Koh-kQ-ZKq"/>
+                                    <constraint firstAttribute="width" constant="72" id="Xv9-Zi-GuP"/>
+                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="me-tab-white" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="3qq-XN-k35">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -71,8 +87,12 @@
                                     <outlet property="associatedViewsStack" destination="uTU-qJ-3dF" id="xUo-mp-Ecs"/>
                                 </connections>
                             </button>
-                            <button identifier="dm-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="af4-QX-slZ" customClass="TWPDashboardTab">
+                            <button identifier="dm-tab" translatesAutoresizingMaskIntoConstraints="NO" id="af4-QX-slZ" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="67" width="72" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="Gyj-tk-dGE"/>
+                                    <constraint firstAttribute="width" constant="72" id="q9X-wM-jTz"/>
+                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="messages-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="DaF-ie-LJX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -82,8 +102,12 @@
                                     <outlet property="associatedViewsStack" destination="4cS-D0-vD7" id="UkT-Dn-UOD"/>
                                 </connections>
                             </button>
-                            <button identifier="compose-button" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HNM-IO-3zG">
-                                <rect key="frame" x="0.0" y="0.0" width="72" height="68"/>
+                            <button identifier="compose-button" translatesAutoresizingMaskIntoConstraints="NO" id="HNM-IO-3zG">
+                                <rect key="frame" x="0.0" y="0.0" width="72" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="XVh-6S-4Tf"/>
+                                    <constraint firstAttribute="height" constant="67" id="fqZ-SR-073"/>
+                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="compose-tweet" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="222-33-2rl">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -94,8 +118,12 @@
                                     <action selector="tweetButtonClickedAction:" target="vge-3d-5qI" id="x7m-ca-qij"/>
                                 </connections>
                             </button>
-                            <button identifier="fav-tab" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htO-L6-7ln" customClass="TWPDashboardTab">
+                            <button identifier="fav-tab" translatesAutoresizingMaskIntoConstraints="NO" id="htO-L6-7ln" customClass="TWPDashboardTab">
                                 <rect key="frame" x="0.0" y="324" width="72" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="RTo-mX-BQJ"/>
+                                    <constraint firstAttribute="height" constant="68" id="ryX-aZ-xtZ"/>
+                                </constraints>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="fav-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hpB-Ks-3ZN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -105,10 +133,43 @@
                                     <outlet property="associatedViewsStack" destination="k9K-Hk-Xzb" id="vDc-Kw-S0O"/>
                                 </connections>
                             </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pmp-g4-uG3" customClass="TWPUserAvatarWell">
+                                <rect key="frame" x="8" y="481" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="M1d-dN-QPg"/>
+                                    <constraint firstAttribute="width" constant="50" id="jak-gm-bfv"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="6fS-0c-SQA" customClass="TWPUserAvatarCell"/>
+                            </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="H1h-r2-oOp" secondAttribute="trailing" id="5Cf-Ep-ZBu"/>
+                            <constraint firstAttribute="trailing" secondItem="MPM-j2-Kng" secondAttribute="trailing" id="5Sz-2f-JPy"/>
+                            <constraint firstAttribute="trailing" secondItem="Pmp-g4-uG3" secondAttribute="trailing" constant="11" id="7sh-bS-gAL"/>
+                            <constraint firstItem="MPM-j2-Kng" firstAttribute="top" secondItem="blT-GV-cVR" secondAttribute="bottom" constant="-1" id="9OF-oJ-gT6"/>
+                            <constraint firstItem="af4-QX-slZ" firstAttribute="top" secondItem="noB-a2-2cI" secondAttribute="bottom" constant="-1" id="9dG-w4-jZt"/>
+                            <constraint firstItem="blT-GV-cVR" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="9oB-hb-Fd3"/>
+                            <constraint firstItem="H1h-r2-oOp" firstAttribute="top" secondItem="Pmp-g4-uG3" secondAttribute="bottom" constant="20" id="APj-sK-Hst"/>
+                            <constraint firstAttribute="trailing" secondItem="htO-L6-7ln" secondAttribute="trailing" id="AQn-hE-pKy"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="BqR-Yn-ihP"/>
+                            <constraint firstItem="HNM-IO-3zG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="af4-QX-slZ" secondAttribute="bottom" id="IfQ-bT-X2k"/>
+                            <constraint firstAttribute="bottom" secondItem="HNM-IO-3zG" secondAttribute="bottom" id="Jez-nY-EZq"/>
+                            <constraint firstItem="H1h-r2-oOp" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="LF5-7f-d86"/>
+                            <constraint firstAttribute="trailing" secondItem="af4-QX-slZ" secondAttribute="trailing" id="MQc-BP-KNb"/>
+                            <constraint firstAttribute="trailing" secondItem="blT-GV-cVR" secondAttribute="trailing" id="NOC-85-K5M"/>
+                            <constraint firstItem="Pmp-g4-uG3" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" constant="11" id="R4g-w5-sje"/>
+                            <constraint firstItem="MPM-j2-Kng" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="XmQ-Ql-7nw"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="543" id="bBH-os-S6v"/>
+                            <constraint firstItem="htO-L6-7ln" firstAttribute="top" secondItem="H1h-r2-oOp" secondAttribute="bottom" constant="-1" id="dSb-Et-53K"/>
+                            <constraint firstItem="HNM-IO-3zG" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="eSe-3q-PXY"/>
+                            <constraint firstItem="Pmp-g4-uG3" firstAttribute="top" secondItem="vge-3d-5qI" secondAttribute="top" constant="53" id="jbP-PU-NlR"/>
                             <constraint firstAttribute="width" constant="72" id="mdb-qI-0nt"/>
+                            <constraint firstItem="htO-L6-7ln" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="qbM-mo-mPZ"/>
+                            <constraint firstItem="af4-QX-slZ" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="ryP-pC-Mwf"/>
+                            <constraint firstItem="noB-a2-2cI" firstAttribute="top" secondItem="MPM-j2-Kng" secondAttribute="bottom" constant="-1" id="sdS-Qh-r4h"/>
+                            <constraint firstAttribute="trailing" secondItem="noB-a2-2cI" secondAttribute="trailing" id="zNj-9N-tTf"/>
+                            <constraint firstAttribute="trailing" secondItem="HNM-IO-3zG" secondAttribute="trailing" id="zra-El-0aX"/>
+                            <constraint firstItem="blT-GV-cVR" firstAttribute="top" secondItem="htO-L6-7ln" secondAttribute="bottom" constant="-1" id="zxX-UQ-tsn"/>
                         </constraints>
                         <connections>
                             <outlet property="delegate" destination="HUR-ik-D4y" id="jUJ-5f-Sjq"/>
