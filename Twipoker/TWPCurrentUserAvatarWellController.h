@@ -23,15 +23,19 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPUserAvatarWell.h"
+#import "TWPCurrentLoginUserOperationsPopover.h"
 
 // TWPCurrentUserAvatarWellController class
-@interface TWPCurrentUserAvatarWellController : NSViewController <NSPopoverDelegate>
+@interface TWPCurrentUserAvatarWellController : NSViewController <TWPCurrentLoginUserOperationsPopoverDelegate>
     {
 @private
-    NSPopover __strong* _currentLoginUserOperationsPopover;
+    TWPCurrentLoginUserOperationsPopover __strong* _currentLoginUserOperationsPopover;
     }
 
 @property ( strong, readwrite ) OTCTwitterUser* twitterUser;
+
+#pragma mark IBActions
+- ( IBAction ) currentLoginUserAvatarClickedAction: ( id )_Sender;
 
 @end // TWPCurrentUserAvatarWellController class
 

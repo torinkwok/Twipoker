@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPCurrentLoginUserOperationsPopover.h"
+#import "TWPCurrentLoginUserOperationsViewController.h"
 
 // TWPCurrentLoginUserOperationsPopover class
 @implementation TWPCurrentLoginUserOperationsPopover
@@ -39,13 +40,14 @@
 - ( instancetype ) initWithTwitterUser: ( OTCTwitterUser* )_TwitterUser
                               delegate: ( id <TWPCurrentLoginUserOperationsPopoverDelegate> )_Delegate
     {
-    if ( !_TwitterUser )
-        return nil;
-
     if ( self = [ super init ] )
         {
         self->_twitterUser = _TwitterUser;
-        self.delegate = _Delegate;
+
+        TWPCurrentLoginUserOperationsViewController* operationsViewController = [ TWPCurrentLoginUserOperationsViewController operationsViewController ];
+        [ self setContentViewController: operationsViewController ];
+        [ self setDelegate: _Delegate ];
+        [ self setBehavior: NSPopoverBehaviorTransient ];
         }
 
     return self;

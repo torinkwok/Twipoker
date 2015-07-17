@@ -23,7 +23,6 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPCurrentUserAvatarWellController.h"
-#import "TWPCurrentLoginUserOperationsViewController.h"
 
 // Private Interfaces
 @interface TWPCurrentUserAvatarWellController ()
@@ -38,19 +37,30 @@
 #pragma mark Initializations
 - ( void ) awakeFromNib
     {
-    TWPCurrentLoginUserOperationsViewController* operationsViewController = [ TWPCurrentLoginUserOperationsViewController operationsViewController ];
-    self->_currentLoginUserOperationsPopover = [ NSPopover 
+    // TODO:
     }
 
 #pragma mark Dynamic Accessors
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
+    if ( !self->_currentLoginUserOperationsPopover )
+        self->_currentLoginUserOperationsPopover = [ TWPCurrentLoginUserOperationsPopover popoverWithTwitterUser: nil delegate: self ];
+
+    [ self->_currentLoginUserOperationsPopover setTwitterUser: _TwitterUser ];
     [ [ self _userAvatarWell ] setTwitterUser: _TwitterUser ];
     }
 
 - ( OTCTwitterUser* ) twitterUser
     {
     return [ [ self _userAvatarWell ] twitterUser ];
+    }
+
+#pragma mark IBActions
+- ( IBAction ) currentLoginUserAvatarClickedAction: ( id )_Sender
+    {
+    [ self->_currentLoginUserOperationsPopover showRelativeToRect: [ self _userAvatarWell ].bounds
+                                                           ofView: [ self _userAvatarWell ]
+                                                    preferredEdge: NSMaxXEdge ];
     }
 
 #pragma mark Private Interfaces
