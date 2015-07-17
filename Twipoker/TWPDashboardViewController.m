@@ -26,11 +26,9 @@
 #import "TWPDashboardTab.h"
 #import "TWPBrain.h"
 #import "TWPCurrentUserAvatarWellController.h"
+#import "TWPLoginUsersManager.h"
 
-@interface TWPDashboardViewController ()
-
-@end
-
+// TWPDashboardViewController class
 @implementation TWPDashboardViewController
 
 @synthesize currentUserAvatarWellController = _currentUserAvatarWellController;
@@ -44,9 +42,18 @@
 
 @synthesize composeButton = _composeButton;
 
+#pragma mark Initializations
 - ( void ) awakeFromNib
     {
-    [ self.currentUserAvatarWellController setTwitterUser: [ [ TWPBrain wiseBrain ] currentTwitterUser ] ];
+    [ [ TWPBrain wiseBrain ] fetchUserDetails: [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].userID
+                                 successBlock:
+        ^( OTCTwitterUser* _TwitterUser )
+            {
+            self.currentUserAvatarWellController.twitterUser = _TwitterUser;
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            NSLog( @"%@", _Error );
+                            } ];
     }
 
 - ( void ) viewDidLoad
@@ -113,7 +120,7 @@
 //    [ self.view addConstraints: horizontalConstraintsComposeButton ];
     }
 
-@end
+@end // TWPDashboardViewController class
 
 /*=============================================================================┐
 |                                                                              |

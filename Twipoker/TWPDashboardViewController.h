@@ -22,11 +22,12 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @class TWPDashboardTab;
 @class TWPCurrentUserAvatarWellController;
 
+// TWPDashboardViewController class
 @interface TWPDashboardViewController : NSViewController
 
 @property ( weak ) IBOutlet TWPCurrentUserAvatarWellController* currentUserAvatarWellController;
@@ -40,7 +41,7 @@
 
 @property ( weak ) IBOutlet NSButton* composeButton;
 
-@end
+@end // TWPDashboardViewController class
 
 /*=============================================================================┐
 |                                                                              |

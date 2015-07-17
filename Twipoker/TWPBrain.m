@@ -102,6 +102,26 @@ TWPBrain static __strong* sWiseBrain;
     return sWiseBrain;
     }
 
+#pragma mark User
+- ( void ) fetchUserDetails: ( NSString* )_UserIDString
+               successBlock: ( void (^)( OTCTwitterUser* _TwitterUser ) )_SuccessBlock
+                 errorBlock: ( void (^)( NSError* _Error ) )_ErrorBlock
+    {
+    [ [ [ TWPLoginUsersManager sharedManager ] currentLoginUser ].twitterAPI
+        getUsersShowForUserID: _UserIDString
+                 orScreenName: nil
+              includeEntities: @YES
+                 successBlock:
+        ^( NSDictionary* _UserJSON )
+            {
+            if ( _SuccessBlock ) _SuccessBlock( [ OTCTwitterUser userWithJSON: _UserJSON ] );
+            } errorBlock: ^( NSError* _Error )
+                            {
+                            if ( _ErrorBlock ) _ErrorBlock( _Error );
+                            } ];
+
+    }
+
 #pragma mark Tweet
 - ( void ) showDetailsOfTweet: ( NSString* )_TweetIDString
                  successBlock: ( void (^)( OTCTweet* _Tweet ) )_SuccessBlock
