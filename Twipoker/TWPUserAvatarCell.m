@@ -46,9 +46,13 @@
         }
 
     [ self->_avatarOutlinePath addClip ];
+    [ [ NSColor whiteColor ] set ];
 
     NSImage* image = ( NSImage* )[ self objectValue ];
-    [ image drawInRect: _ControlView.bounds fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.f ];
+    if ( image )
+        [ image drawInRect: _ControlView.bounds fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.f ];
+    else
+        NSRectFill( _CellFrame );
 
     [ self->_avatarStrokeColor setStroke ];
     [ self->_avatarOutlinePath stroke ];
