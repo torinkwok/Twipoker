@@ -31,7 +31,6 @@
 
 - ( void ) awakeFromNib
     {
-    self->_avatarStrokeColor = [ [ NSColor colorWithHTMLColor: @"C9C9C9" ] colorWithAlphaComponent: .5f ];
     self->_avatarFillColor = [ [ NSColor grayColor ] colorWithAlphaComponent: .4f ];
     }
 
@@ -53,9 +52,6 @@
         [ image drawInRect: _ControlView.bounds fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.f ];
     else
         NSRectFill( _CellFrame );
-
-    [ self->_avatarStrokeColor setStroke ];
-    [ self->_avatarOutlinePath stroke ];
 
     if ( self.isHighlighted )
         {

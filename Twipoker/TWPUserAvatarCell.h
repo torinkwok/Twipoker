@@ -29,8 +29,6 @@
     {
 @private
     NSBezierPath __strong* _avatarOutlinePath;
-
-    NSColor __strong* _avatarStrokeColor;
     NSColor __strong* _avatarFillColor;
     }
 
