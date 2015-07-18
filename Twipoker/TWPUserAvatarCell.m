@@ -40,7 +40,8 @@
     {
     if ( !self->_avatarOutlinePath )
         {
-        self->_avatarOutlinePath = [ NSBezierPath bezierPathWithOvalInRect: NSInsetRect( _ControlView.bounds, 1.f, 1.f ) ];
+//        self->_avatarOutlinePath = [ NSBezierPath bezierPathWithOvalInRect: NSInsetRect( _ControlView.bounds, 1.f, 1.f ) ];
+        self->_avatarOutlinePath = [ NSBezierPath bezierPathWithRoundedRect: NSInsetRect( _ControlView.bounds, 1.f, 1.f ) xRadius: 8.f yRadius: 8.f ];
         [ self->_avatarOutlinePath setLineWidth: 1.f ];
         }
 
