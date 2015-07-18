@@ -64,7 +64,7 @@ NSDictionary static* sDefaultTextAttributes;
     [ paragraphStyle setLineSpacing: 3.5f ];
     sDefaultTextAttributes = @{ NSParagraphStyleAttributeName : paragraphStyle
                               , NSFontAttributeName : [ NSFont fontWithName: @"Lato" size: 14.f ]
-                              , NSForegroundColorAttributeName : [ NSColor colorWithHTMLColor: @"66757F" ]
+                              , NSForegroundColorAttributeName : [ NSColor colorWithHTMLColor: @"6B6C6A" ]
                               };
     }
 

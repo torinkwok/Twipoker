@@ -26,7 +26,7 @@
 
 // TWPTweetTextView
 CGFloat TWPTextViewDefaultWidth = 301.f;
-CGFloat TWPTextViewDefaultHeight = 42.f;
+CGFloat TWPTextViewDefaultHeight = 19.f;
 
 CGFloat TWPTextViewLeadingSpace = 15.f;
 CGFloat TWPTextViewTrailingSpace = 14.f;

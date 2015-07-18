@@ -67,7 +67,7 @@
 - ( void ) _init
     {
     self->_fontOfDisplayName = [ NSFont fontWithName: @"Lato" size: 14.f ];
-    self->_colorOfDisplayName = [ NSColor colorWithHTMLColor: @"4A4A4A" ];
+    self->_colorOfDisplayName = [ NSColor colorWithHTMLColor: @"5B5C59" ];
 
     self->_fontOfScreenName = [ NSFont fontWithName: @"Lato" size: 14.f ];
     self->_colorOfScreenName = [ NSColor colorWithHTMLColor: @"A5A5A5" ];

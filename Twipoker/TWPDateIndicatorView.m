@@ -116,8 +116,7 @@ NSDictionary static* sDefaultTextAttributes;
         }
 
     NSSize stringSizeWithAttributes = [ formattedDateString sizeWithAttributes: sDefaultTextAttributes ];
-    [ formattedDateString drawAtPoint: NSMakePoint( NSWidth( self.frame ) - stringSizeWithAttributes.width
-                                              , ( NSHeight( self.frame ) - stringSizeWithAttributes.height ) / 2 + 1.5f /* magic constant*/ )
+    [ formattedDateString drawAtPoint: NSMakePoint( 0.f + 3.f , ( NSHeight( self.frame ) - stringSizeWithAttributes.height ) / 2 + 1.5f /* magic constant*/ )
                    withAttributes: sDefaultTextAttributes ];
     }
 
