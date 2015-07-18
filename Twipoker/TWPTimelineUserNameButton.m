@@ -69,7 +69,7 @@
     self->_fontOfDisplayName = [ NSFont fontWithName: @"Lato" size: 14.f ];
     self->_colorOfDisplayName = [ NSColor colorWithHTMLColor: @"5B5C59" ];
 
-    self->_fontOfScreenName = [ NSFont fontWithName: @"Lato" size: 14.f ];
+    self->_fontOfScreenName = [ NSFont fontWithName: @"Lato" size: 12.5f ];
     self->_colorOfScreenName = [ NSColor colorWithHTMLColor: @"A5A5A5" ];
     }
 
@@ -90,22 +90,16 @@
         [ self->_twitterUser.screenName sizeWithAttributes: @{ NSFontAttributeName : self->_fontOfScreenName } ];
 
     self->_displayNameStringRect = NSMakeRect( NSMinX( self.bounds )
-//                                             , ( NSHeight( self.bounds ) - displayNameStringSizeWithAttrs.height ) / 2
                                             , NSMinY( self.bounds )
                                              , displayNameStringSizeWithAttrs.width
                                              , displayNameStringSizeWithAttrs.height
                                              );
 
-    self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds ) + NSWidth( self->_displayNameStringRect ) + 3.f // Just a little tweak
-//                                            , ( NSHeight( self.bounds ) - screenNameStringSizeWithAttrs.height ) / 2
-                                            , NSMinY( self.bounds )
+    self->_screenNameStringRect = NSMakeRect( NSMinX( self.bounds )
+                                            , NSMinY( self.bounds ) + displayNameStringSizeWithAttrs.height
                                             , screenNameStringSizeWithAttrs.width
                                             , screenNameStringSizeWithAttrs.height
                                             );
-
-    self->_screenNameStringRect.origin.y += ( NSHeight( self->_displayNameStringRect ) - NSHeight( self->_screenNameStringRect ) ) / 2;
-    self->_displayNameStringRect.origin.y += ( NSHeight( self->_screenNameStringRect ) - NSHeight( self->_displayNameStringRect ) ) / 2;
-
     self->_attributedDisplayNameString =
         [ [ NSAttributedString alloc ] initWithString: self->_twitterUser.displayName
                                            attributes: @{ NSFontAttributeName : self->_fontOfDisplayName
@@ -120,6 +114,11 @@
     }
 
 #pragma mark Customize Drawing
+- ( BOOL ) isFlipped
+    {
+    return YES;
+    }
+
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];

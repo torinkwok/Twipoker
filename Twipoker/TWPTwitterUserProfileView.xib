@@ -131,7 +131,7 @@
             <point key="canvasLocation" x="142" y="550.5"/>
         </customView>
         <customView id="Oeb-Tp-b4p" customClass="TWPCuttingLineView">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="1"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="1"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <point key="canvasLocation" x="612" y="230.5"/>
         </customView>

@@ -226,9 +226,9 @@
                         </constraints>
                     </customView>
                     <customView identifier="horizontal-cuttingline" translatesAutoresizingMaskIntoConstraints="NO" id="Zv7-Nz-kW4" userLabel="Horizontal Cutting Line View" customClass="TWPCuttingLineView">
-                        <rect key="frame" x="72" y="542" width="400" height="1"/>
+                        <rect key="frame" x="72" y="542" width="300" height="1"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="WQw-bl-Cxv"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="WQw-bl-Cxv"/>
                             <constraint firstAttribute="height" constant="1" id="rN4-kt-C1X"/>
                         </constraints>
                     </customView>
@@ -240,7 +240,7 @@
                     <constraint firstItem="vge-3d-5qI" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="EVN-jq-zh5"/>
                     <constraint firstItem="9t8-W1-aLM" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="trailing" id="G0T-uh-bBe"/>
                     <constraint firstAttribute="bottom" secondItem="9t8-W1-aLM" secondAttribute="bottom" id="GMP-VS-oUQ"/>
-                    <constraint firstAttribute="trailing" secondItem="Zv7-Nz-kW4" secondAttribute="trailing" constant="-100" id="OVb-Zk-IOO"/>
+                    <constraint firstAttribute="trailing" secondItem="Zv7-Nz-kW4" secondAttribute="trailing" id="OVb-Zk-IOO"/>
                     <constraint firstItem="vge-3d-5qI" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="SAN-1i-FyL"/>
                     <constraint firstItem="9t8-W1-aLM" firstAttribute="top" secondItem="Zv7-Nz-kW4" secondAttribute="bottom" constant="-1" id="YCn-ge-gqA"/>
                     <constraint firstAttribute="trailing" secondItem="CB6-PQ-tWI" secondAttribute="trailing" id="cei-mc-GyU"/>
