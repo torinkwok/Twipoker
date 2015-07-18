@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14F6a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8121.20" systemVersion="15A216g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8121.20"/>
     </dependencies>
@@ -15,13 +15,14 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
             <rect key="contentRect" x="411" y="389" width="372" height="587"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="EiT-Mj-1SZ" userLabel="Content View" customClass="TWPMainWindowContentView">
                 <rect key="frame" x="0.0" y="0.0" width="372" height="587"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-H2-zZU">
                         <rect key="frame" x="-142" y="630" width="34" height="34"/>
+                        <animations/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="oh5-wt-igW"/>
                     </imageView>
                     <customView identifier="dashboard" translatesAutoresizingMaskIntoConstraints="NO" id="vge-3d-5qI" customClass="TWPDashboardView">
@@ -33,6 +34,7 @@
                                     <constraint firstAttribute="width" constant="72" id="HVH-Mf-THp"/>
                                     <constraint firstAttribute="height" constant="73" id="rNb-ns-iXM"/>
                                 </constraints>
+                                <animations/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="home-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="emi-ef-6Ye">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -48,6 +50,7 @@
                                     <constraint firstAttribute="height" constant="57" id="IWL-Xl-jWx"/>
                                     <constraint firstAttribute="width" constant="72" id="XFN-Jj-oh2"/>
                                 </constraints>
+                                <animations/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="lists-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="OiP-5y-ZJv">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -63,6 +66,7 @@
                                     <constraint firstAttribute="height" constant="68" id="2sL-sq-BnR"/>
                                     <constraint firstAttribute="width" constant="72" id="PH2-Ey-v2p"/>
                                 </constraints>
+                                <animations/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="notif-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="S7d-Nf-xIV">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -78,6 +82,7 @@
                                     <constraint firstAttribute="height" constant="68" id="Koh-kQ-ZKq"/>
                                     <constraint firstAttribute="width" constant="72" id="Xv9-Zi-GuP"/>
                                 </constraints>
+                                <animations/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="me-tab-white" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="3qq-XN-k35">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -93,6 +98,7 @@
                                     <constraint firstAttribute="height" constant="68" id="Gyj-tk-dGE"/>
                                     <constraint firstAttribute="width" constant="72" id="q9X-wM-jTz"/>
                                 </constraints>
+                                <animations/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="messages-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="DaF-ie-LJX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -108,6 +114,7 @@
                                     <constraint firstAttribute="width" constant="72" id="XVh-6S-4Tf"/>
                                     <constraint firstAttribute="height" constant="67" id="fqZ-SR-073"/>
                                 </constraints>
+                                <animations/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="compose-tweet" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="222-33-2rl">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -124,6 +131,7 @@
                                     <constraint firstAttribute="width" constant="72" id="RTo-mX-BQJ"/>
                                     <constraint firstAttribute="height" constant="68" id="ryX-aZ-xtZ"/>
                                 </constraints>
+                                <animations/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="fav-tab-white" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hpB-Ks-3ZN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -134,11 +142,12 @@
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pmp-g4-uG3" customClass="TWPUserAvatarWell">
-                                <rect key="frame" x="8" y="481" width="56" height="56"/>
+                                <rect key="frame" x="11" y="469" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="M1d-dN-QPg"/>
-                                    <constraint firstAttribute="width" constant="50" id="jak-gm-bfv"/>
+                                    <constraint firstAttribute="width" constant="44" id="AO5-08-Wif"/>
+                                    <constraint firstAttribute="height" constant="44" id="bML-Ge-TvP"/>
                                 </constraints>
+                                <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="6fS-0c-SQA" customClass="TWPUserAvatarCell"/>
                                 <connections>
                                     <action selector="currentLoginUserAvatarClickedAction:" target="Mwg-Oy-Kyy" id="G6h-Xw-dax"/>
@@ -148,11 +157,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="H1h-r2-oOp" secondAttribute="trailing" id="5Cf-Ep-ZBu"/>
                             <constraint firstAttribute="trailing" secondItem="MPM-j2-Kng" secondAttribute="trailing" id="5Sz-2f-JPy"/>
-                            <constraint firstAttribute="trailing" secondItem="Pmp-g4-uG3" secondAttribute="trailing" constant="11" id="7sh-bS-gAL"/>
+                            <constraint firstAttribute="trailing" secondItem="Pmp-g4-uG3" secondAttribute="trailing" constant="14" id="7sh-bS-gAL"/>
                             <constraint firstItem="MPM-j2-Kng" firstAttribute="top" secondItem="blT-GV-cVR" secondAttribute="bottom" constant="-1" id="9OF-oJ-gT6"/>
                             <constraint firstItem="af4-QX-slZ" firstAttribute="top" secondItem="noB-a2-2cI" secondAttribute="bottom" constant="-1" id="9dG-w4-jZt"/>
                             <constraint firstItem="blT-GV-cVR" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="9oB-hb-Fd3"/>
-                            <constraint firstItem="H1h-r2-oOp" firstAttribute="top" secondItem="Pmp-g4-uG3" secondAttribute="bottom" constant="20" id="APj-sK-Hst"/>
+                            <constraint firstItem="H1h-r2-oOp" firstAttribute="top" secondItem="Pmp-g4-uG3" secondAttribute="bottom" constant="8" symbolic="YES" id="APj-sK-Hst"/>
                             <constraint firstAttribute="trailing" secondItem="htO-L6-7ln" secondAttribute="trailing" id="AQn-hE-pKy"/>
                             <constraint firstItem="noB-a2-2cI" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="BqR-Yn-ihP"/>
                             <constraint firstItem="HNM-IO-3zG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="af4-QX-slZ" secondAttribute="bottom" id="IfQ-bT-X2k"/>
@@ -160,12 +169,12 @@
                             <constraint firstItem="H1h-r2-oOp" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="LF5-7f-d86"/>
                             <constraint firstAttribute="trailing" secondItem="af4-QX-slZ" secondAttribute="trailing" id="MQc-BP-KNb"/>
                             <constraint firstAttribute="trailing" secondItem="blT-GV-cVR" secondAttribute="trailing" id="NOC-85-K5M"/>
-                            <constraint firstItem="Pmp-g4-uG3" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" constant="11" id="R4g-w5-sje"/>
+                            <constraint firstItem="Pmp-g4-uG3" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" constant="14" id="R4g-w5-sje"/>
+                            <constraint firstItem="Pmp-g4-uG3" firstAttribute="top" secondItem="vge-3d-5qI" secondAttribute="top" constant="71" id="U29-y4-S4p"/>
                             <constraint firstItem="MPM-j2-Kng" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="XmQ-Ql-7nw"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="543" id="bBH-os-S6v"/>
                             <constraint firstItem="htO-L6-7ln" firstAttribute="top" secondItem="H1h-r2-oOp" secondAttribute="bottom" constant="-1" id="dSb-Et-53K"/>
                             <constraint firstItem="HNM-IO-3zG" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="eSe-3q-PXY"/>
-                            <constraint firstItem="Pmp-g4-uG3" firstAttribute="top" secondItem="vge-3d-5qI" secondAttribute="top" constant="53" id="jbP-PU-NlR"/>
                             <constraint firstAttribute="width" constant="72" id="mdb-qI-0nt"/>
                             <constraint firstItem="htO-L6-7ln" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="qbM-mo-mPZ"/>
                             <constraint firstItem="af4-QX-slZ" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="leading" id="ryP-pC-Mwf"/>
@@ -174,6 +183,7 @@
                             <constraint firstAttribute="trailing" secondItem="HNM-IO-3zG" secondAttribute="trailing" id="zra-El-0aX"/>
                             <constraint firstItem="blT-GV-cVR" firstAttribute="top" secondItem="htO-L6-7ln" secondAttribute="bottom" constant="-1" id="zxX-UQ-tsn"/>
                         </constraints>
+                        <animations/>
                         <connections>
                             <outlet property="delegate" destination="HUR-ik-D4y" id="jUJ-5f-Sjq"/>
                             <outlet property="favoriteTab" destination="htO-L6-7ln" id="Mtf-KI-3rp"/>
@@ -190,12 +200,14 @@
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="AYH-I7-foe"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="543" id="p39-HW-UYC"/>
                         </constraints>
+                        <animations/>
                     </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="CB6-PQ-tWI" customClass="TWPNavBar">
                         <rect key="frame" x="72" y="543" width="300" height="44"/>
                         <subviews>
                             <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hrj-GZ-Uas" customClass="TWPNavButton">
                                 <rect key="frame" x="16" y="8" width="48" height="28"/>
+                                <animations/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FgQ-5c-azN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -210,6 +222,7 @@
                                     <constraint firstAttribute="height" constant="44" id="0jn-hm-fdR"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="163" id="d7T-a5-1Pa"/>
                                 </constraints>
+                                <animations/>
                                 <connections>
                                     <outlet property="imageContentView" destination="F8o-AT-Tga" id="tfg-vZ-VtM"/>
                                     <outlet property="textContentView" destination="yB1-QL-W4l" id="JGY-ZP-5hw"/>
@@ -224,6 +237,7 @@
                             <constraint firstAttribute="height" constant="44" id="h9A-cd-LHS"/>
                             <constraint firstItem="T3v-QU-CeL" firstAttribute="leading" secondItem="CB6-PQ-tWI" secondAttribute="leading" constant="68" id="wKU-Tf-XrU"/>
                         </constraints>
+                        <animations/>
                     </customView>
                     <customView identifier="horizontal-cuttingline" translatesAutoresizingMaskIntoConstraints="NO" id="Zv7-Nz-kW4" userLabel="Horizontal Cutting Line View" customClass="TWPCuttingLineView">
                         <rect key="frame" x="72" y="542" width="300" height="1"/>
@@ -231,6 +245,7 @@
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="WQw-bl-Cxv"/>
                             <constraint firstAttribute="height" constant="1" id="rN4-kt-C1X"/>
                         </constraints>
+                        <animations/>
                     </customView>
                 </subviews>
                 <constraints>
@@ -248,12 +263,14 @@
                     <constraint firstItem="Zv7-Nz-kW4" firstAttribute="top" secondItem="CB6-PQ-tWI" secondAttribute="bottom" id="hZb-jm-n5P"/>
                     <constraint firstAttribute="bottom" secondItem="vge-3d-5qI" secondAttribute="bottom" id="wac-7w-qIK"/>
                 </constraints>
+                <animations/>
             </view>
             <point key="canvasLocation" x="-141" y="-1748.5"/>
         </window>
         <customView identifier="vertical-cuttingline" id="flx-KC-83G" userLabel="Vertical Cutting Line View" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="1" height="587"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <animations/>
             <point key="canvasLocation" x="401.5" y="-1732.5"/>
         </customView>
         <customObject id="HUR-ik-D4y" customClass="TWPStackContentViewController">
@@ -336,12 +353,14 @@
         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="F8o-AT-Tga">
             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <animations/>
             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="woS-29-Wzk"/>
             <point key="canvasLocation" x="61.5" y="-2141.5"/>
         </imageView>
         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yB1-QL-W4l">
             <rect key="frame" x="0.0" y="0.0" width="120" height="22"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <animations/>
             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="FHK-ma-r9E">
                 <font key="font" size="13" name="LucidaGrande"/>
                 <color key="textColor" red="0.35686274509803922" green="0.36078431372549019" blue="0.34901960784313724" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
