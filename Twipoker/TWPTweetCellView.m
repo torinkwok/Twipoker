@@ -104,18 +104,18 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 - ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
     {
-    CGFloat height0 = self.userNameLabelTop_equal_cellViewTop_constraint.constant;
-    CGFloat height1 = self.tweetTextViewTop_equal_userNameLabelBottom_constraint.constant;
-    CGFloat height2 = self.dateIndicatorTop_equal_tweetTextViewBottom_constraint.constant;
-    CGFloat height3 = self.tweetOperationsPanelViewTop_equal_dateIndicatorBottom_constraint.constant;
-    CGFloat height4 = self.cellViewBottom_equal_tweetOperationsPanelView_constraint.constant;
+    CGFloat constraintHeight0 = self.userNameLabelTop_equal_cellViewTop_constraint.constant;
+    CGFloat constraintHeight1 = self.tweetTextViewTop_equal_userNameLabelBottom_constraint.constant;
+    CGFloat constraintHeight2 = self.dateIndicatorTop_equal_tweetTextViewBottom_constraint.constant;
+    CGFloat constraintHeight3 = self.tweetOperationsPanelViewTop_equal_dateIndicatorBottom_constraint.constant;
+    CGFloat constraintHeight4 = self.cellViewBottom_equal_tweetOperationsPanelView_constraint.constant;
 
     CGFloat tweetTextViewHeight = ( _TweetTextBlockHeight > [ TWPTweetTextView defaultSize ].height ) ? _TweetTextBlockHeight : [ TWPTweetTextView defaultSize ].height;
     CGFloat userNameLabelHeight = NSHeight( self.userNameLabel.frame );
     CGFloat dateIndicatorHeight = NSHeight( self.dateIndicatorView.frame );
     CGFloat tweetOperationsPanelViewHeight = NSHeight( self.tweetOperationsPanelView.frame );
 
-    return height0 + height1 + height2 + height3 + height4
+    return constraintHeight0 + constraintHeight1 + constraintHeight2 + constraintHeight3 + constraintHeight4
                 + tweetTextViewHeight + userNameLabelHeight + dateIndicatorHeight + tweetOperationsPanelViewHeight;
     }
 

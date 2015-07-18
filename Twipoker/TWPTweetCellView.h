@@ -66,8 +66,6 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 @property ( weak ) IBOutlet NSLayoutConstraint* tweetOperationsPanelViewTop_equal_dateIndicatorBottom_constraint;
 @property ( weak ) IBOutlet NSLayoutConstraint* cellViewBottom_equal_tweetOperationsPanelView_constraint;
 
-@property ( weak ) IBOutlet NSLayoutConstraint* cellViewBottom_equal_tweetTextViewBottom_constraint;
-
 #pragma mark Size
 - ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight;
 
