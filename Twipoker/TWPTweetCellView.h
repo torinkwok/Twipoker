@@ -67,9 +67,10 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 @property ( strong, readwrite ) OTCTweet* tweet;
 @property ( strong, readonly ) OTCTwitterUser* author;
 
-@property ( weak ) IBOutlet NSLayoutConstraint* topSpaceConstraint;
-@property ( weak ) IBOutlet NSLayoutConstraint* spaceBetweenUserNameLabelAndTextView;
-@property ( weak ) IBOutlet NSLayoutConstraint* bottomSpaceConstraint;
+@property ( weak ) IBOutlet NSLayoutConstraint* userNameLabelTop_equal_cellViewTop_constraint;
+@property ( weak ) IBOutlet NSLayoutConstraint* tweetTextViewTop_equal_userNameLabelBottom_constraint;
+@property ( weak ) IBOutlet NSLayoutConstraint* dateIndicatorTop_equal_tweetTextViewBottom_constraint;
+@property ( weak ) IBOutlet NSLayoutConstraint* cellViewBottom_equal_dateIndicatorBottom_constraint;
 
 @property ( weak ) IBOutlet NSLayoutConstraint* cellViewBottom_equal_tweetTextViewBottom_constraint;
 

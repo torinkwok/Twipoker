@@ -58,10 +58,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 @dynamic tweet;
 @dynamic author;
 
-@synthesize topSpaceConstraint;
-@synthesize spaceBetweenUserNameLabelAndTextView;
-@synthesize bottomSpaceConstraint;
-
 @dynamic isShowingTweetOperationsPanel;
 
 #pragma mark Initialization
@@ -123,16 +119,17 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 - ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
     {
-    CGFloat topSpaceConstraintHeight = self.topSpaceConstraint.constant;
-    CGFloat bottomSpaceConstraintHeight = self.bottomSpaceConstraint.constant;
-    CGFloat spaceHeightBetweetUserNameLabelAndTextView = self.spaceBetweenUserNameLabelAndTextView.constant;
+    CGFloat height0 = self.userNameLabelTop_equal_cellViewTop_constraint.constant;
+    CGFloat height1 = self.tweetTextViewTop_equal_userNameLabelBottom_constraint.constant;
+    CGFloat height2 = self.dateIndicatorTop_equal_tweetTextViewBottom_constraint.constant;
+    CGFloat height3 = self.cellViewBottom_equal_dateIndicatorBottom_constraint.constant;
 
     CGFloat tweetTextViewHeight = ( _TweetTextBlockHeight > [ TWPTweetTextView defaultSize ].height ) ? _TweetTextBlockHeight : [ TWPTweetTextView defaultSize ].height;
     CGFloat userNameLabelHeight = NSHeight( self.userNameLabel.frame );
+    CGFloat dateIndicatorHeight = NSHeight( self.dateIndicatorView.frame );
 
-    return topSpaceConstraintHeight + bottomSpaceConstraintHeight
-                + spaceHeightBetweetUserNameLabelAndTextView
-                + tweetTextViewHeight + userNameLabelHeight;
+    return height0 + height1 + height2 + height3
+                + tweetTextViewHeight + userNameLabelHeight + dateIndicatorHeight;
     }
 
 - ( void ) setShowingTweetOperationsPanel: ( BOOL )_IsShowingExpandButton
@@ -147,70 +144,70 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     }
 
 #pragma mark Handling Constraints-Based Auto Layout
-- ( void ) updateConstraints
-    {
-    [ super updateConstraints ];
-
-    TWPTweetOperationsPanelView* operationsPanel = [ [ TWPSharedUIElements sharedElements ] tweetOperationsPanelView ];
-
-    if ( self->_isShowingTweetOperationsPanel )
-        {
-        if ( operationsPanel.superview != self )
-            {
-            [ operationsPanel setTweet: self->_tweet ];
-            [ self addSubview: operationsPanel ];
-
-            NSDictionary* viewsDict = NSDictionaryOfVariableBindings( operationsPanel );
-            if ( !self->_expandButtonHorizontalConstraints )
-                {
-                self->_expandButtonHorizontalConstraints =
-                    [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|-(>=leadingSpace)-[operationsPanel(==operationsPanelWidth)]-(==trailingSpace)-|"
-                                                             options: 0
-                                                             metrics: @{ @"leadingSpace" : @( 397.f - NSWidth( operationsPanel.frame ) - 20.f )
-                                                                       , @"operationsPanelWidth" : @( NSWidth( operationsPanel.frame ) )
-                                                                       , @"trailingSpace" : @( 20.f )
-                                                                       }
-                                                               views: viewsDict ];
-
-                [ self addConstraints: self->_expandButtonHorizontalConstraints ];
-                }
-
-            if ( !self->_expandButtonVerticalConstraints )
-                {
-                self->_expandButtonVerticalConstraints =
-                    [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|-(==topSpace)-[operationsPanel(==operationsPanelHeight)]-(>=bottomSpace)-|"
-                                                             options: 0
-                                                             metrics: @{ @"operationsPanelHeight" : @( NSHeight( operationsPanel.frame ) )
-                                                                       , @"topSpace" : @( 15.f )
-                                                                       , @"bottomSpace" : @( 62.f )
-                                                                       }
-                                                               views: viewsDict ];
-
-                [ self addConstraints: self->_expandButtonVerticalConstraints ];
-                }
-
-            for ( NSLayoutConstraint* _Constraint in self->_expandButtonHorizontalConstraints )
-                _Constraint.active = YES;
-
-            for ( NSLayoutConstraint* _Constraint in self->_expandButtonVerticalConstraints )
-                _Constraint.active = YES;
-            }
-        }
-    else
-        {
-        if ( operationsPanel.superview == self )
-            {
-            for ( NSLayoutConstraint* _Constraint in self->_expandButtonHorizontalConstraints )
-                _Constraint.active = NO;
-
-            for ( NSLayoutConstraint* _Constraint in self->_expandButtonVerticalConstraints )
-                _Constraint.active = NO;
-
-            [ operationsPanel setTweet: nil ];
-            [ operationsPanel removeFromSuperview ];
-            }
-        }
-    }
+//- ( void ) updateConstraints
+//    {
+//    [ super updateConstraints ];
+//
+//    TWPTweetOperationsPanelView* operationsPanel = [ [ TWPSharedUIElements sharedElements ] tweetOperationsPanelView ];
+//
+//    if ( self->_isShowingTweetOperationsPanel )
+//        {
+//        if ( operationsPanel.superview != self )
+//            {
+//            [ operationsPanel setTweet: self->_tweet ];
+//            [ self addSubview: operationsPanel ];
+//
+//            NSDictionary* viewsDict = NSDictionaryOfVariableBindings( operationsPanel );
+//            if ( !self->_expandButtonHorizontalConstraints )
+//                {
+//                self->_expandButtonHorizontalConstraints =
+//                    [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|-(>=leadingSpace)-[operationsPanel(==operationsPanelWidth)]-(==trailingSpace)-|"
+//                                                             options: 0
+//                                                             metrics: @{ @"leadingSpace" : @( 397.f - NSWidth( operationsPanel.frame ) - 20.f )
+//                                                                       , @"operationsPanelWidth" : @( NSWidth( operationsPanel.frame ) )
+//                                                                       , @"trailingSpace" : @( 20.f )
+//                                                                       }
+//                                                               views: viewsDict ];
+//
+//                [ self addConstraints: self->_expandButtonHorizontalConstraints ];
+//                }
+//
+//            if ( !self->_expandButtonVerticalConstraints )
+//                {
+//                self->_expandButtonVerticalConstraints =
+//                    [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|-(==topSpace)-[operationsPanel(==operationsPanelHeight)]-(>=bottomSpace)-|"
+//                                                             options: 0
+//                                                             metrics: @{ @"operationsPanelHeight" : @( NSHeight( operationsPanel.frame ) )
+//                                                                       , @"topSpace" : @( 15.f )
+//                                                                       , @"bottomSpace" : @( 62.f )
+//                                                                       }
+//                                                               views: viewsDict ];
+//
+//                [ self addConstraints: self->_expandButtonVerticalConstraints ];
+//                }
+//
+//            for ( NSLayoutConstraint* _Constraint in self->_expandButtonHorizontalConstraints )
+//                _Constraint.active = YES;
+//
+//            for ( NSLayoutConstraint* _Constraint in self->_expandButtonVerticalConstraints )
+//                _Constraint.active = YES;
+//            }
+//        }
+//    else
+//        {
+//        if ( operationsPanel.superview == self )
+//            {
+//            for ( NSLayoutConstraint* _Constraint in self->_expandButtonHorizontalConstraints )
+//                _Constraint.active = NO;
+//
+//            for ( NSLayoutConstraint* _Constraint in self->_expandButtonVerticalConstraints )
+//                _Constraint.active = NO;
+//
+//            [ operationsPanel setTweet: nil ];
+//            [ operationsPanel removeFromSuperview ];
+//            }
+//        }
+//    }
 
 #pragma mark Handling Events
 - ( void ) mouseEntered: ( NSEvent* )_Event
