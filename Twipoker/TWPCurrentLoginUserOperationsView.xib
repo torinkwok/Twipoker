@@ -6,9 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPCurrentLoginUserOperationsViewController">
             <connections>
-                <outlet property="editProfileButton" destination="Rom-xB-AnC" id="6pS-tD-csw"/>
-                <outlet property="logoutButton" destination="YXm-NW-Tac" id="Nhz-gD-Amu"/>
-                <outlet property="switchAccountButton" destination="fwQ-t5-5AT" id="ZuH-oT-XB4"/>
                 <outlet property="view" destination="cfn-jK-nyQ" id="XWp-Tx-bTf"/>
             </connections>
         </customObject>
