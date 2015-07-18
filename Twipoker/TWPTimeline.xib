@@ -12,14 +12,14 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <scrollView borderType="none" horizontalLineScroll="162" horizontalPageScroll="10" verticalLineScroll="162" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="aCP-oL-Lhl" customClass="TWPTimelineScrollView">
+        <scrollView borderType="none" horizontalLineScroll="139" horizontalPageScroll="10" verticalLineScroll="139" verticalPageScroll="10" hasHorizontalScroller="NO" horizontalScrollElasticity="none" id="aCP-oL-Lhl" customClass="TWPTimelineScrollView">
             <rect key="frame" x="0.0" y="0.0" width="332" height="567"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <clipView key="contentView" copiesOnScroll="NO" id="R46-ic-hek">
                 <rect key="frame" x="0.0" y="0.0" width="332" height="567"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="160" rowSizeStyle="automatic" viewBased="YES" id="d7f-2k-ALM" customClass="TWPTimelineTableView">
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="137" rowSizeStyle="automatic" viewBased="YES" id="d7f-2k-ALM" customClass="TWPTimelineTableView">
                         <rect key="frame" x="0.0" y="0.0" width="332" height="567"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
@@ -42,11 +42,11 @@
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
                                     <tableCellView id="Ivh-Fg-vDh" customClass="TWPTweetCellView">
-                                        <rect key="frame" x="1" y="1" width="330" height="160"/>
+                                        <rect key="frame" x="1" y="1" width="330" height="137"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button identifier="user-name-label" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bD2-rm-Fkf" customClass="TWPTimelineUserNameButton">
-                                                <rect key="frame" x="80" y="121" width="224" height="25"/>
+                                                <rect key="frame" x="70" y="97" width="246" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="Sm9-Ub-Rha"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="169" id="d8W-SE-LQC"/>
@@ -61,9 +61,8 @@
                                                 </connections>
                                             </button>
                                             <imageView identifier="user-avatar" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AUA-3k-7Zo" userLabel="Avatar" customClass="TWPUserAvatarWell">
-                                                <rect key="frame" x="25" y="100" width="45" height="45"/>
+                                                <rect key="frame" x="15" y="77" width="45" height="45"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="8s8-Vw-rrd"/>
                                                     <constraint firstAttribute="width" constant="45" id="WoY-xB-QVW"/>
                                                 </constraints>
                                                 <animations/>
@@ -73,15 +72,15 @@
                                                 </connections>
                                             </imageView>
                                             <customView identifier="tweet-text-view" translatesAutoresizingMaskIntoConstraints="NO" id="XO7-Ab-T27" customClass="TWPTweetTextView">
-                                                <rect key="frame" x="25" y="48" width="279" height="42"/>
+                                                <rect key="frame" x="15" y="48" width="301" height="19"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="42" id="WXX-bD-7zO"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="WXX-bD-7zO"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="279" id="lQo-Vb-s0P"/>
                                                 </constraints>
                                                 <animations/>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="doV-oN-7uf" customClass="TWPDateIndicatorView">
-                                                <rect key="frame" x="25" y="15" width="76" height="23"/>
+                                                <rect key="frame" x="15" y="15" width="76" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="JZ9-ub-Gcr"/>
                                                     <constraint firstAttribute="width" constant="76" id="gDB-Je-tmv"/>
@@ -90,18 +89,18 @@
                                             </customView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="doV-oN-7uf" firstAttribute="leading" secondItem="Ivh-Fg-vDh" secondAttribute="leading" constant="25" id="2ok-oL-vf6"/>
+                                            <constraint firstItem="doV-oN-7uf" firstAttribute="leading" secondItem="Ivh-Fg-vDh" secondAttribute="leading" constant="15" id="2ok-oL-vf6"/>
                                             <constraint firstItem="bD2-rm-Fkf" firstAttribute="leading" secondItem="AUA-3k-7Zo" secondAttribute="trailing" constant="10" id="AhJ-xJ-BMl"/>
-                                            <constraint firstItem="AUA-3k-7Zo" firstAttribute="leading" secondItem="Ivh-Fg-vDh" secondAttribute="leading" constant="25" id="C7z-gp-fra"/>
-                                            <constraint firstItem="XO7-Ab-T27" firstAttribute="top" secondItem="bD2-rm-Fkf" secondAttribute="bottom" constant="32" id="Drr-J5-8yH"/>
+                                            <constraint firstItem="AUA-3k-7Zo" firstAttribute="leading" secondItem="Ivh-Fg-vDh" secondAttribute="leading" constant="15" id="C7z-gp-fra"/>
+                                            <constraint firstItem="XO7-Ab-T27" firstAttribute="top" secondItem="bD2-rm-Fkf" secondAttribute="bottom" constant="31" id="Drr-J5-8yH"/>
                                             <constraint firstItem="AUA-3k-7Zo" firstAttribute="top" secondItem="Ivh-Fg-vDh" secondAttribute="top" constant="15" id="LQO-i5-XQY"/>
-                                            <constraint firstItem="bD2-rm-Fkf" firstAttribute="top" secondItem="Ivh-Fg-vDh" secondAttribute="top" constant="15" id="QYV-5R-3s8"/>
-                                            <constraint firstAttribute="trailing" secondItem="bD2-rm-Fkf" secondAttribute="trailing" constant="26" id="V1w-Ga-Nmz"/>
+                                            <constraint firstItem="bD2-rm-Fkf" firstAttribute="top" secondItem="Ivh-Fg-vDh" secondAttribute="top" constant="16" id="QYV-5R-3s8"/>
+                                            <constraint firstAttribute="trailing" secondItem="bD2-rm-Fkf" secondAttribute="trailing" constant="14" id="V1w-Ga-Nmz"/>
                                             <constraint firstAttribute="bottom" secondItem="doV-oN-7uf" secondAttribute="bottom" constant="15" id="YHM-4l-bhA"/>
                                             <constraint firstItem="doV-oN-7uf" firstAttribute="top" secondItem="XO7-Ab-T27" secondAttribute="bottom" constant="10" id="dTk-67-28S"/>
                                             <constraint firstItem="XO7-Ab-T27" firstAttribute="top" secondItem="AUA-3k-7Zo" secondAttribute="bottom" constant="10" id="fag-tp-10y"/>
-                                            <constraint firstItem="XO7-Ab-T27" firstAttribute="leading" secondItem="Ivh-Fg-vDh" secondAttribute="leading" constant="25" id="h6x-KM-lay"/>
-                                            <constraint firstAttribute="trailing" secondItem="XO7-Ab-T27" secondAttribute="trailing" constant="26" id="lxr-Rd-IIk"/>
+                                            <constraint firstItem="XO7-Ab-T27" firstAttribute="leading" secondItem="Ivh-Fg-vDh" secondAttribute="leading" constant="15" id="h6x-KM-lay"/>
+                                            <constraint firstAttribute="trailing" secondItem="XO7-Ab-T27" secondAttribute="trailing" constant="14" id="lxr-Rd-IIk"/>
                                         </constraints>
                                         <animations/>
                                         <connections>
