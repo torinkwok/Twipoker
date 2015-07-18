@@ -40,7 +40,7 @@ NSDictionary static* sDefaultTextAttributes;
 + ( void ) initialize
     {
     sDefaultTextAttributes = @{ NSFontAttributeName : [ NSFont fontWithName: @"Lato" size: 12.f ]
-                              , NSForegroundColorAttributeName : [ NSColor colorWithHTMLColor: @"66757F" ]
+                              , NSForegroundColorAttributeName : [ NSColor colorWithHTMLColor: @"9B9B9B" ]
                               };
     }
 
