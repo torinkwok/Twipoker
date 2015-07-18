@@ -14,10 +14,10 @@
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="TWPMainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
-            <rect key="contentRect" x="411" y="389" width="404" height="587"/>
+            <rect key="contentRect" x="411" y="389" width="372" height="587"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ" userLabel="Content View" customClass="TWPMainWindowContentView">
-                <rect key="frame" x="0.0" y="0.0" width="404" height="587"/>
+                <rect key="frame" x="0.0" y="0.0" width="372" height="587"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8e-H2-zZU">
@@ -185,14 +185,14 @@
                         </connections>
                     </customView>
                     <customView identifier="stack-content-view" appearanceType="aqua" translatesAutoresizingMaskIntoConstraints="NO" id="9t8-W1-aLM" customClass="TWPStackContentView">
-                        <rect key="frame" x="72" y="0.0" width="332" height="543"/>
+                        <rect key="frame" x="72" y="0.0" width="300" height="543"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="332" id="AYH-I7-foe"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="AYH-I7-foe"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="543" id="p39-HW-UYC"/>
                         </constraints>
                     </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="CB6-PQ-tWI" customClass="TWPNavBar">
-                        <rect key="frame" x="72" y="543" width="332" height="44"/>
+                        <rect key="frame" x="72" y="543" width="300" height="44"/>
                         <subviews>
                             <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hrj-GZ-Uas" customClass="TWPNavButton">
                                 <rect key="frame" x="16" y="8" width="48" height="28"/>
@@ -205,7 +205,7 @@
                                 </connections>
                             </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="T3v-QU-CeL" customClass="TWPNavBarTotemView">
-                                <rect key="frame" x="84" y="0.0" width="163" height="44"/>
+                                <rect key="frame" x="68" y="0.0" width="163" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0jn-hm-fdR"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="163" id="d7T-a5-1Pa"/>
@@ -218,11 +218,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="T3v-QU-CeL" secondAttribute="bottom" id="25c-OV-kvm"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="332" id="4y4-AY-K7r"/>
-                            <constraint firstAttribute="trailing" secondItem="T3v-QU-CeL" secondAttribute="trailing" constant="85" id="Olj-Gr-Tfl"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="4y4-AY-K7r"/>
+                            <constraint firstAttribute="trailing" secondItem="T3v-QU-CeL" secondAttribute="trailing" constant="69" id="Olj-Gr-Tfl"/>
                             <constraint firstItem="T3v-QU-CeL" firstAttribute="top" secondItem="CB6-PQ-tWI" secondAttribute="top" id="YoS-wj-OgG"/>
                             <constraint firstAttribute="height" constant="44" id="h9A-cd-LHS"/>
-                            <constraint firstItem="T3v-QU-CeL" firstAttribute="leading" secondItem="CB6-PQ-tWI" secondAttribute="leading" constant="84" id="wKU-Tf-XrU"/>
+                            <constraint firstItem="T3v-QU-CeL" firstAttribute="leading" secondItem="CB6-PQ-tWI" secondAttribute="leading" constant="68" id="wKU-Tf-XrU"/>
                         </constraints>
                     </customView>
                     <customView identifier="horizontal-cuttingline" translatesAutoresizingMaskIntoConstraints="NO" id="Zv7-Nz-kW4" userLabel="Horizontal Cutting Line View" customClass="TWPCuttingLineView">
@@ -240,7 +240,7 @@
                     <constraint firstItem="vge-3d-5qI" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="EVN-jq-zh5"/>
                     <constraint firstItem="9t8-W1-aLM" firstAttribute="leading" secondItem="vge-3d-5qI" secondAttribute="trailing" id="G0T-uh-bBe"/>
                     <constraint firstAttribute="bottom" secondItem="9t8-W1-aLM" secondAttribute="bottom" id="GMP-VS-oUQ"/>
-                    <constraint firstAttribute="trailing" secondItem="Zv7-Nz-kW4" secondAttribute="trailing" constant="-68" id="OVb-Zk-IOO"/>
+                    <constraint firstAttribute="trailing" secondItem="Zv7-Nz-kW4" secondAttribute="trailing" constant="-100" id="OVb-Zk-IOO"/>
                     <constraint firstItem="vge-3d-5qI" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="SAN-1i-FyL"/>
                     <constraint firstItem="9t8-W1-aLM" firstAttribute="top" secondItem="Zv7-Nz-kW4" secondAttribute="bottom" constant="-1" id="YCn-ge-gqA"/>
                     <constraint firstAttribute="trailing" secondItem="CB6-PQ-tWI" secondAttribute="trailing" id="cei-mc-GyU"/>
@@ -249,7 +249,7 @@
                     <constraint firstAttribute="bottom" secondItem="vge-3d-5qI" secondAttribute="bottom" id="wac-7w-qIK"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="-125" y="-1748.5"/>
+            <point key="canvasLocation" x="-141" y="-1748.5"/>
         </window>
         <customView identifier="vertical-cuttingline" id="flx-KC-83G" userLabel="Vertical Cutting Line View" customClass="TWPCuttingLineView">
             <rect key="frame" x="0.0" y="0.0" width="1" height="587"/>

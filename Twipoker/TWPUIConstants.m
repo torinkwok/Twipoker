@@ -25,11 +25,11 @@
 #import "TWPUIConstants.h"
 
 // TWPTweetTextView
-CGFloat TWPTextViewDefaultWidth = 301.f;
+CGFloat TWPTextViewDefaultWidth = 266.f;
 CGFloat TWPTextViewDefaultHeight = 19.f;
 
 CGFloat TWPTextViewLeadingSpace = 15.f;
-CGFloat TWPTextViewTrailingSpace = 14.f;
+CGFloat TWPTextViewTrailingSpace = 16.f;
 
 /*=============================================================================┐
 |                                                                              |
