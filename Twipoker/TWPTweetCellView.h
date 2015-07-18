@@ -60,9 +60,10 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 #pragma mark Outlets
 @property ( weak ) IBOutlet TWPUserAvatarWell* authorAvatarWell;
 @property ( weak ) IBOutlet TWPTimelineUserNameButton* userNameLabel;
-@property ( weak ) IBOutlet TWPDateIndicatorView* dateIndicatorView;
 @property ( weak ) IBOutlet TWPTweetTextView* tweetTextView;
 @property ( strong, readonly ) TWPTweetMediaWell* tweetMediaWell;
+@property ( weak ) IBOutlet TWPDateIndicatorView* dateIndicatorView;
+@property ( weak ) IBOutlet TWPTweetOperationsPanelView* tweetOperationsPanelView;
 
 @property ( strong, readwrite ) OTCTweet* tweet;
 @property ( strong, readonly ) OTCTwitterUser* author;
@@ -70,7 +71,8 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 @property ( weak ) IBOutlet NSLayoutConstraint* userNameLabelTop_equal_cellViewTop_constraint;
 @property ( weak ) IBOutlet NSLayoutConstraint* tweetTextViewTop_equal_userNameLabelBottom_constraint;
 @property ( weak ) IBOutlet NSLayoutConstraint* dateIndicatorTop_equal_tweetTextViewBottom_constraint;
-@property ( weak ) IBOutlet NSLayoutConstraint* cellViewBottom_equal_dateIndicatorBottom_constraint;
+@property ( weak ) IBOutlet NSLayoutConstraint* tweetOperationsPanelViewTop_equal_dateIndicatorBottom_constraint;
+@property ( weak ) IBOutlet NSLayoutConstraint* cellViewBottom_equal_tweetOperationsPanelView_constraint;
 
 @property ( weak ) IBOutlet NSLayoutConstraint* cellViewBottom_equal_tweetTextViewBottom_constraint;
 
