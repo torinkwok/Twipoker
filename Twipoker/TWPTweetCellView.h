@@ -46,14 +46,6 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
     OTCTweet __strong* _tweet;
     CGFloat _refHeight;
 
-    NSTrackingAreaOptions _trackingAreaOptions;
-    NSTrackingArea __strong* _trackingArea;
-
-    BOOL _isShowingTweetOperationsPanel;
-
-    NSArray __strong* _expandButtonHorizontalConstraints;
-    NSArray __strong* _expandButtonVerticalConstraints;
-
     TWPTweetMediaWell __strong* _tweetMediaWell;
     }
 

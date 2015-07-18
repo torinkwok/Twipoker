@@ -28,7 +28,6 @@
 @interface TWPSharedUIElements : NSObject
 
 @property ( weak ) IBOutlet TWPExpandDMSessionButton* expandDMSessionButton;
-@property ( weak ) IBOutlet TWPTweetOperationsPanelView* tweetOperationsPanelView;
 
 // Singleton Initializer
 + ( instancetype ) sharedElements;

@@ -41,9 +41,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 @interface TWPTweetCellView ()
 
 @property ( assign, readwrite, setter = setShowingTweetOperationsPanel: ) BOOL isShowingTweetOperationsPanel;
-
 - ( void ) _postNotifForShowingUserProfile;
-- ( BOOL ) _isShowingRetweetOperationsPopover;
 
 @end // Private Interfaces
 
@@ -58,8 +56,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 @dynamic tweet;
 @dynamic author;
 
-@dynamic isShowingTweetOperationsPanel;
-
 #pragma mark Initialization
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet
     {
@@ -72,18 +68,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
         [ self setTweet: _Tweet ];
 
     return self;
-    }
-
-- ( void ) awakeFromNib
-    {
-    // The self->_trackingArea will be created with `NSTrackingInVisibleRect` option,
-    // in which case the Application Kit handles the re-computation of self->_trackingArea
-    self->_trackingAreaOptions = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
-                                    | NSTrackingInVisibleRect | NSTrackingAssumeInside | NSTrackingMouseMoved;
-    self->_trackingArea =
-        [ [ NSTrackingArea alloc ] initWithRect: self.bounds options: self->_trackingAreaOptions owner: self userInfo: nil ];
-
-    [ self addTrackingArea: self->_trackingArea ];
     }
 
 #pragma mark Dynamic Accessors
@@ -135,117 +119,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
                 + tweetTextViewHeight + userNameLabelHeight + dateIndicatorHeight + tweetOperationsPanelViewHeight;
     }
 
-- ( void ) setShowingTweetOperationsPanel: ( BOOL )_IsShowingExpandButton
-    {
-    self->_isShowingTweetOperationsPanel = _IsShowingExpandButton;
-    [ self setNeedsUpdateConstraints: YES ];
-    }
-
-- ( BOOL ) isShowingExpandButton
-    {
-    return self->_isShowingTweetOperationsPanel;
-    }
-
-#pragma mark Handling Constraints-Based Auto Layout
-//- ( void ) updateConstraints
-//    {
-//    [ super updateConstraints ];
-//
-//    TWPTweetOperationsPanelView* operationsPanel = [ [ TWPSharedUIElements sharedElements ] tweetOperationsPanelView ];
-//
-//    if ( self->_isShowingTweetOperationsPanel )
-//        {
-//        if ( operationsPanel.superview != self )
-//            {
-//            [ operationsPanel setTweet: self->_tweet ];
-//            [ self addSubview: operationsPanel ];
-//
-//            NSDictionary* viewsDict = NSDictionaryOfVariableBindings( operationsPanel );
-//            if ( !self->_expandButtonHorizontalConstraints )
-//                {
-//                self->_expandButtonHorizontalConstraints =
-//                    [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|-(>=leadingSpace)-[operationsPanel(==operationsPanelWidth)]-(==trailingSpace)-|"
-//                                                             options: 0
-//                                                             metrics: @{ @"leadingSpace" : @( 397.f - NSWidth( operationsPanel.frame ) - 20.f )
-//                                                                       , @"operationsPanelWidth" : @( NSWidth( operationsPanel.frame ) )
-//                                                                       , @"trailingSpace" : @( 20.f )
-//                                                                       }
-//                                                               views: viewsDict ];
-//
-//                [ self addConstraints: self->_expandButtonHorizontalConstraints ];
-//                }
-//
-//            if ( !self->_expandButtonVerticalConstraints )
-//                {
-//                self->_expandButtonVerticalConstraints =
-//                    [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|-(==topSpace)-[operationsPanel(==operationsPanelHeight)]-(>=bottomSpace)-|"
-//                                                             options: 0
-//                                                             metrics: @{ @"operationsPanelHeight" : @( NSHeight( operationsPanel.frame ) )
-//                                                                       , @"topSpace" : @( 15.f )
-//                                                                       , @"bottomSpace" : @( 62.f )
-//                                                                       }
-//                                                               views: viewsDict ];
-//
-//                [ self addConstraints: self->_expandButtonVerticalConstraints ];
-//                }
-//
-//            for ( NSLayoutConstraint* _Constraint in self->_expandButtonHorizontalConstraints )
-//                _Constraint.active = YES;
-//
-//            for ( NSLayoutConstraint* _Constraint in self->_expandButtonVerticalConstraints )
-//                _Constraint.active = YES;
-//            }
-//        }
-//    else
-//        {
-//        if ( operationsPanel.superview == self )
-//            {
-//            for ( NSLayoutConstraint* _Constraint in self->_expandButtonHorizontalConstraints )
-//                _Constraint.active = NO;
-//
-//            for ( NSLayoutConstraint* _Constraint in self->_expandButtonVerticalConstraints )
-//                _Constraint.active = NO;
-//
-//            [ operationsPanel setTweet: nil ];
-//            [ operationsPanel removeFromSuperview ];
-//            }
-//        }
-//    }
-
-#pragma mark Handling Events
-- ( void ) mouseEntered: ( NSEvent* )_Event
-    {
-    [ super mouseEntered: _Event ];
-
-    if ( ![ self _isShowingRetweetOperationsPopover ] )
-        self.isShowingTweetOperationsPanel = YES;
-    }
-
-- ( void ) mouseExited: ( NSEvent* )_Event
-    {
-    [ super mouseExited: _Event ];
-
-    if ( ![ self _isShowingRetweetOperationsPopover ] )
-        self.isShowingTweetOperationsPanel = NO;
-    }
-
-- ( void ) scrollWheel: ( NSEvent* )_Event
-    {
-    if ( ![ self _isShowingRetweetOperationsPopover ] )
-        {
-        [ super scrollWheel: _Event ];
-        self.isShowingTweetOperationsPanel = NO;
-        }
-    }
-
-- ( void ) mouseMoved: ( nonnull NSEvent* )_TheEvent
-    {
-    [ super mouseMoved: _TheEvent ];
-
-    if ( ![ self _isShowingRetweetOperationsPopover ] )
-        self.isShowingTweetOperationsPanel = YES;
-    }
-
 #pragma mark IBAction
 - ( IBAction ) userNameLabelClickedAction: ( id )_Sender
     {
@@ -263,12 +136,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
                                                            object: self
                                                          userInfo: @{ kTwitterUser : self.author } ];
-    }
-
-- ( BOOL ) _isShowingRetweetOperationsPopover
-    {
-    TWPTweetOperationsPanelView* operationsPanel = [ [ TWPSharedUIElements sharedElements ] tweetOperationsPanelView ];
-    return [ operationsPanel isShowingRetweetOperationsPopover ];
     }
 
 @end // TWPTweetCellView class
