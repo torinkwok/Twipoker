@@ -14,11 +14,23 @@
 
 @implementation TWPTweetCellRepController
 
+@dynamic tweet;
+@dynamic rep;
+
 #pragma mark Dynamic Accessors
+- ( OTCTweet* ) tweet
+    {
+    return [ self rep ].tweet;
+    }
+
+- ( void ) setTweet: ( OTCTweet* )_Tweet
+    {
+    [ [ self rep ] setTweet: _Tweet ];
+    }
+
 - ( TWPTweetCellRep* ) rep
     {
-    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD_;
-    return nil;
+    return ( TWPTweetCellRep* )( self.view );
     }
 
 #pragma mark Initializations

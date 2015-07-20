@@ -88,6 +88,8 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     [ [ self dateIndicatorView ] setTweet: self->_tweet ];
     [ [ self tweetOperationsPanelView ] setTweet: self->_tweet ];
 
+    [ self->_clearRepController setTweet: self->_tweet ];
+
     if ( _Tweet.media )
         {
         if ( self->_tweetMediaWell )

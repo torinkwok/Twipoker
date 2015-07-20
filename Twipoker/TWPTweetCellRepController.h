@@ -12,6 +12,7 @@
 
 @interface TWPTweetCellRepController : NSViewController
 
+@property ( strong, readwrite ) OTCTweet* tweet;
 @property ( strong, readonly ) TWPTweetCellRep* rep;
 
 #pragma mark Initializations
