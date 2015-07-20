@@ -41,7 +41,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 // Private Interfaces
 @interface TWPTweetCellView ()
-- ( void ) _postNotifForShowingUserProfile;
 @end // Private Interfaces
 
 // TWPTweetCellView class
@@ -119,25 +118,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 - ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
     {
     return [ self.currentTweetCellRepController.rep heightWithTweetTextBlockHeight: _TweetTextBlockHeight ];
-    }
-
-#pragma mark IBAction
-- ( IBAction ) userNameLabelClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForShowingUserProfile ];
-    }
-
-- ( IBAction ) userAvatarClickedAction: ( id )_Sender
-    {
-    [ self _postNotifForShowingUserProfile ];
-    }
-
-#pragma mark Private Interfaces
-- ( void ) _postNotifForShowingUserProfile
-    {
-    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
-                                                           object: self
-                                                         userInfo: @{ kTwitterUser : self.author } ];
     }
 
 @end // TWPTweetCellView class

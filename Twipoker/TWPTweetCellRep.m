@@ -48,6 +48,11 @@
     [ [ self tweetOperationsPanelView ] setTweet: self->_tweet ];
     }
 
+- ( OTCTweet* ) tweet
+    {
+    return self->_tweet;
+    }
+
 #pragma mark Height
 - ( CGFloat ) heightWithTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
     {

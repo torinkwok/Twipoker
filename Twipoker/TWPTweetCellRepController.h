@@ -29,11 +29,16 @@
 @interface TWPTweetCellRepController : NSViewController
 
 @property ( strong, readwrite ) OTCTweet* tweet;
+@property ( strong, readonly ) OTCTwitterUser* author;
 @property ( strong, readonly ) TWPTweetCellRep* rep;
 
 #pragma mark Initializations
 + ( instancetype ) repControllerWithTweet: ( OTCTweet* )_Tweet;
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
+
+#pragma mark IBAction
+- ( IBAction ) userNameLabelClickedAction: ( id )_Sender;
+- ( IBAction ) userAvatarClickedAction: ( id )_Sender;
 
 @end
 

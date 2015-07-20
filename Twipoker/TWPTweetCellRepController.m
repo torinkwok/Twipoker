@@ -25,7 +25,7 @@
 #import "TWPTweetCellRepController.h"
 
 @interface TWPTweetCellRepController ()
-
+- ( void ) _postNotifForShowingUserProfile;
 @end
 
 @implementation TWPTweetCellRepController
@@ -42,6 +42,11 @@
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
     [ [ self rep ] setTweet: _Tweet ];
+    }
+
+- ( OTCTwitterUser* ) author
+    {
+    return self.tweet.author;
     }
 
 - ( TWPTweetCellRep* ) rep
@@ -61,6 +66,25 @@
         ;
 
     return self;
+    }
+
+#pragma mark IBAction
+- ( IBAction ) userNameLabelClickedAction: ( id )_Sender
+    {
+    [ self _postNotifForShowingUserProfile ];
+    }
+
+- ( IBAction ) userAvatarClickedAction: ( id )_Sender
+    {
+    [ self _postNotifForShowingUserProfile ];
+    }
+
+#pragma mark Private Interfaces
+- ( void ) _postNotifForShowingUserProfile
+    {
+    [ [ NSNotificationCenter defaultCenter ] postNotificationName: TWPTwipokerShouldShowUserProfile
+                                                           object: self
+                                                         userInfo: @{ kTwitterUser : self.author } ];
     }
 
 @end

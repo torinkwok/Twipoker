@@ -6,11 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TWPTweetClearCellRepController">
             <connections>
-                <outlet property="authorAvatarWell" destination="F5i-8A-QJQ" id="hQo-y5-Re7"/>
-                <outlet property="dateIndicatorView" destination="xKh-fS-LXK" id="LpQ-ka-MEz"/>
-                <outlet property="tweetOperationsPanelView" destination="DYg-Wt-aIt" id="jt8-bE-129"/>
-                <outlet property="tweetTextView" destination="wUy-Oa-kVx" id="92H-Lu-SXY"/>
-                <outlet property="userNameLabel" destination="gmp-xZ-HmO" id="znm-T9-Zy8"/>
                 <outlet property="view" destination="VS2-kT-wck" id="lSF-Ak-dQQ"/>
             </connections>
         </customObject>
@@ -30,6 +25,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="userNameLabelClickedAction:" target="-2" id="AIm-s2-KxJ"/>
+                    </connections>
                 </button>
                 <imageView identifier="user-avatar" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F5i-8A-QJQ" userLabel="Avatar" customClass="TWPUserAvatarWell">
                     <rect key="frame" x="15" y="94" width="45" height="45"/>
@@ -37,6 +35,9 @@
                         <constraint firstAttribute="width" constant="45" id="c2P-Lw-T8o"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="aTU-0A-XtP" customClass="TWPUserAvatarCell"/>
+                    <connections>
+                        <action selector="userAvatarClickedAction:" target="-2" id="hNk-6r-wqU"/>
+                    </connections>
                 </imageView>
                 <customView identifier="tweet-text-view" translatesAutoresizingMaskIntoConstraints="NO" id="wUy-Oa-kVx" customClass="TWPTweetTextView">
                     <rect key="frame" x="15" y="65" width="266" height="19"/>
