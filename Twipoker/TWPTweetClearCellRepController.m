@@ -33,6 +33,14 @@
 // TWPTweetClearCellRepController class
 @implementation TWPTweetClearCellRepController
 
+- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
+    {
+    if ( self = [ super initWithNibName: @"TWPTweetClearCellRep" bundle: [ NSBundle mainBundle ] ] )
+        ;
+
+    return self;
+    }
+
 @end // TWPTweetClearCellRepController class
 
 /*=============================================================================┐

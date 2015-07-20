@@ -35,6 +35,7 @@
 
 @class TWPTweetCellRepController;
 @class TWPTweetClearCellRepController;
+@class TWPTweetMediaCellRepController;
 
 typedef NS_ENUM( NSUInteger, TWPTweetCellViewStyle )
     { TWPTweetCellViewStyleClear            = 0
@@ -59,6 +60,7 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
     TWPTweetCellViewStyle _style;
 
     TWPTweetClearCellRepController __strong* _clearRepController;
+    TWPTweetMediaCellRepController __strong* _mediaRepController;
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;

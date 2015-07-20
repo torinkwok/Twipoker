@@ -32,6 +32,7 @@
 #import "TWPTweetMediaWell.h"
 
 #import "TWPTweetClearCellRepController.h"
+#import "TWPTweetMediaCellRepController.h"
 
 // Notification Names
 NSString* const TWPTweetCellViewShouldDisplayDetailOfTweet = @"TweetCellView.Notif.ShouldDisplayDetailOfTweet";
@@ -68,6 +69,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 - ( void ) awakeFromNib
     {
     self->_clearRepController = [ TWPTweetClearCellRepController repControllerWithTweet: self->_tweet ];
+    self->_mediaRepController = [ TWPTweetMediaCellRepController repControllerWithTweet: self->_tweet ];
     }
 
 #pragma mrak Time
@@ -89,7 +91,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
         case OTCTweetTypeDirectMessage:
         case OTCTweetTypeQuotedTweet:
             {
-            if ( self->_tweet.media )
+            if ( self->_tweet.media.count > 0 )
                 self->_style = TWPTweetCellViewStyleMedia;
             else
                 self->_style = TWPTweetCellViewStyleClear;
@@ -115,7 +117,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
         case TWPTweetCellViewStyleMedia:
             {
-            // TODO:
+            controller = self->_mediaRepController;
             } break;
 
         case TWPTweetCellViewStyleMediaRetweet:
@@ -165,7 +167,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 - ( TWPTweetCellRepController* ) currentTweetCellRepController
     {
-    return self->_clearRepController;
+    return [ self _currentCellRepController ];
     }
 
 - ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight

@@ -67,10 +67,8 @@
 
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
     {
-    if ( self = [ super initWithNibName: @"TWPTweetClearCellRep" bundle: [ NSBundle mainBundle ] ] )
-        ;
-
-    return self;
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
+    return nil;
     }
 
 #pragma mark IBAction

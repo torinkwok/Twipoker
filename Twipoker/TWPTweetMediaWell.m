@@ -32,7 +32,7 @@
 #pragma mark Global Properties
 + ( NSSize ) defaultSize
     {
-    return NSMakeSize( 272.f, 272.f * 0.61803398875f ); // Golden Ratio
+    return NSMakeSize( 266.f, 164.f ); // Golden Ratio
     }
 
 #pragma mark Initializations

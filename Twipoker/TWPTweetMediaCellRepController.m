@@ -14,9 +14,12 @@
 
 @implementation TWPTweetMediaCellRepController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do view setup here.
-}
+- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
+    {
+    if ( self = [ super initWithNibName: @"TWPTweetMediaCellRep" bundle: [ NSBundle mainBundle ] ] )
+        ;
+
+    return self;
+    }
 
 @end

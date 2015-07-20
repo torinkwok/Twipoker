@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button identifier="user-name-label" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xtw-hz-q26" customClass="TWPTimelineUserNameButton">
-                    <rect key="frame" x="68" y="262" width="213" height="47"/>
+                    <rect key="frame" x="68" y="261" width="213" height="47"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="MFO-Hi-2dY"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="169" id="dkE-Mf-ldj"/>
@@ -28,24 +28,24 @@
                     </buttonCell>
                 </button>
                 <imageView identifier="user-avatar" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v8i-WR-Ujw" userLabel="Avatar" customClass="TWPUserAvatarWell">
-                    <rect key="frame" x="15" y="263" width="45" height="45"/>
+                    <rect key="frame" x="15" y="262" width="45" height="45"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="hFW-yM-LyQ"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="3HW-Xq-b5B" customClass="TWPUserAvatarCell"/>
                 </imageView>
                 <customView identifier="tweet-text-view" translatesAutoresizingMaskIntoConstraints="NO" id="jXp-hI-YiE" customClass="TWPTweetTextView">
-                    <rect key="frame" x="15" y="234" width="266" height="19"/>
+                    <rect key="frame" x="15" y="233" width="266" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="266" id="ovG-TU-h0K"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="s3N-E9-kuh"/>
                     </constraints>
                 </customView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="mVY-wp-RdV" customClass="TWPDateIndicatorView">
-                    <rect key="frame" x="15" y="37" width="76" height="23"/>
+                    <rect key="frame" x="15" y="37" width="76" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="76" id="I8T-ze-fxc"/>
-                        <constraint firstAttribute="height" constant="23" id="gt2-yb-zQn"/>
+                        <constraint firstAttribute="height" constant="20" id="gt2-yb-zQn"/>
                     </constraints>
                 </customView>
                 <customView identifier="tweet-operations-panel" translatesAutoresizingMaskIntoConstraints="NO" id="57z-BF-NgQ" customClass="TWPTweetOperationsPanelView">
@@ -109,7 +109,7 @@
                 <constraint firstItem="k2Q-4N-bfq" firstAttribute="leading" secondItem="iPd-OG-ylb" secondAttribute="leading" constant="15" id="LHj-od-Kpe"/>
                 <constraint firstItem="57z-BF-NgQ" firstAttribute="top" secondItem="mVY-wp-RdV" secondAttribute="bottom" constant="5" id="NHI-fI-C74"/>
                 <constraint firstItem="Xtw-hz-q26" firstAttribute="leading" secondItem="v8i-WR-Ujw" secondAttribute="trailing" constant="8" id="QRD-UI-F9e"/>
-                <constraint firstItem="mVY-wp-RdV" firstAttribute="top" secondItem="k2Q-4N-bfq" secondAttribute="bottom" constant="5" id="Rbs-Qk-B6U"/>
+                <constraint firstItem="mVY-wp-RdV" firstAttribute="top" secondItem="k2Q-4N-bfq" secondAttribute="bottom" constant="8" id="Rbs-Qk-B6U"/>
                 <constraint firstItem="57z-BF-NgQ" firstAttribute="leading" secondItem="iPd-OG-ylb" secondAttribute="leading" constant="15" id="TJX-1a-9qw"/>
                 <constraint firstAttribute="trailing" secondItem="Xtw-hz-q26" secondAttribute="trailing" constant="16" id="Tkz-Fd-JJX"/>
                 <constraint firstItem="v8i-WR-Ujw" firstAttribute="top" secondItem="iPd-OG-ylb" secondAttribute="top" constant="10" id="YEU-V2-c7C"/>
@@ -123,11 +123,19 @@
             </constraints>
             <connections>
                 <outlet property="authorAvatarWell" destination="v8i-WR-Ujw" id="Icd-0c-T1C"/>
+                <outlet property="cellViewBottom_equal_tweetOperationsPanelView_constraint" destination="2nQ-hU-4gj" id="aF5-kn-TEv"/>
+                <outlet property="dateIndicatorView" destination="mVY-wp-RdV" id="5lt-cU-N6k"/>
+                <outlet property="dateIndicatorViewTop_equal_tweetMediaWellBottom_constraint" destination="Rbs-Qk-B6U" id="mFW-rq-ClS"/>
+                <outlet property="tweetMediaWell" destination="k2Q-4N-bfq" id="68G-qh-NDo"/>
+                <outlet property="tweetMediaWellTop_equal_tweetTextViewBottom_constraint" destination="DFc-2x-baq" id="Ip3-no-7pm"/>
+                <outlet property="tweetOperationsPanelView" destination="57z-BF-NgQ" id="KgQ-KT-0AY"/>
+                <outlet property="tweetOperationsPanelViewTop_equal_dateIndicatorBottom_constraint" destination="NHI-fI-C74" id="K32-OE-PAI"/>
                 <outlet property="tweetTextView" destination="jXp-hI-YiE" id="3Ev-As-Xyw"/>
+                <outlet property="tweetTextViewTop_equal_userNameLabelBottom_constraint" destination="jgE-Ux-cjl" id="Iy3-FP-GMl"/>
                 <outlet property="userNameLabel" destination="Xtw-hz-q26" id="UDl-la-9Fd"/>
                 <outlet property="userNameLabelTop_equal_cellViewTop_constraint" destination="AwS-Sy-miE" id="3Ii-BW-Umd"/>
             </connections>
-            <point key="canvasLocation" x="113.5" y="513"/>
+            <point key="canvasLocation" x="333.5" y="434"/>
         </tableCellView>
     </objects>
 </document>
