@@ -772,22 +772,12 @@
 			isa = PBXGroup;
 			children = (
 				83DD2DB41B2EE096000535FF /* xib */,
-				8389074C1B5D4267004EEC6C /* TWPTweetCellRep.h */,
-				8389074D1B5D4267004EEC6C /* TWPTweetCellRep.m */,
-				8389074F1B5D4321004EEC6C /* TWPTweetCellRepController.h */,
-				838907501B5D4321004EEC6C /* TWPTweetCellRepController.m */,
-				83D742EB1B5D2E0B00A7C4D7 /* TWPTweetClearCellRep.h */,
-				83D742EC1B5D2E0B00A7C4D7 /* TWPTweetClearCellRep.m */,
-				83D742E81B5D24A600A7C4D7 /* TWPTweetClearCellRepController.h */,
-				83D742E91B5D24A600A7C4D7 /* TWPTweetClearCellRepController.m */,
 				83C3DABC1B133AC6005973EE /* TWPTimelineViewController.h */,
 				83C3DABD1B133AC6005973EE /* TWPTimelineViewController.m */,
 				83AAF6CF1AECE801007A3A48 /* TWPTimelineTableView.h */,
 				83AAF6D01AECE801007A3A48 /* TWPTimelineTableView.m */,
 				830896161AEA1D1D0081D227 /* TWPTimelineScrollView.h */,
 				830896171AEA1D1D0081D227 /* TWPTimelineScrollView.m */,
-				8308961C1AEA1D1D0081D227 /* TWPTweetCellView.h */,
-				8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */,
 				838CC0601AF4B27300AE2E9D /* TWPTimelineUserNameButton.h */,
 				838CC0611AF4B27300AE2E9D /* TWPTimelineUserNameButton.m */,
 				835242C41B49CE90009B0FE7 /* TWPTextView.h */,
@@ -802,6 +792,7 @@
 				83CAB0B01B552217002532B5 /* TWPDateIndicatorView.m */,
 				83081D321B597E44007C3BB5 /* TWPTweetMediaWell.h */,
 				83081D331B597E44007C3BB5 /* TWPTweetMediaWell.m */,
+				838907521B5D7343004EEC6C /* tweet-cell */,
 				83CC14F51B2316FD0046B544 /* tweet-operations-panel */,
 				83D12E8D1AEFE2FD009ECC13 /* twitter-user-view */,
 				83C3DAC21B1385B5005973EE /* twitter-list-timeline */,
@@ -909,6 +900,32 @@
 				83627CCD1B4492BB0032505C /* messages-tab-gray@2x.png */,
 			);
 			name = messages;
+			sourceTree = "<group>";
+		};
+		838907521B5D7343004EEC6C /* tweet-cell */ = {
+			isa = PBXGroup;
+			children = (
+				838907531B5D7364004EEC6C /* xib */,
+				8308961C1AEA1D1D0081D227 /* TWPTweetCellView.h */,
+				8308961D1AEA1D1D0081D227 /* TWPTweetCellView.m */,
+				8389074C1B5D4267004EEC6C /* TWPTweetCellRep.h */,
+				8389074D1B5D4267004EEC6C /* TWPTweetCellRep.m */,
+				8389074F1B5D4321004EEC6C /* TWPTweetCellRepController.h */,
+				838907501B5D4321004EEC6C /* TWPTweetCellRepController.m */,
+				83D742EB1B5D2E0B00A7C4D7 /* TWPTweetClearCellRep.h */,
+				83D742EC1B5D2E0B00A7C4D7 /* TWPTweetClearCellRep.m */,
+				83D742E81B5D24A600A7C4D7 /* TWPTweetClearCellRepController.h */,
+				83D742E91B5D24A600A7C4D7 /* TWPTweetClearCellRepController.m */,
+			);
+			name = "tweet-cell";
+			sourceTree = "<group>";
+		};
+		838907531B5D7364004EEC6C /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				83D742E61B5D248B00A7C4D7 /* TWPTweetClearCellRep.xib */,
+			);
+			name = xib;
 			sourceTree = "<group>";
 		};
 		83924D271AE0FC6300C25895 /* main-window */ = {
@@ -1595,7 +1612,6 @@
 			isa = PBXGroup;
 			children = (
 				83AAF6D21AECE8C7007A3A48 /* TWPTimeline.xib */,
-				83D742E61B5D248B00A7C4D7 /* TWPTweetClearCellRep.xib */,
 			);
 			name = xib;
 			sourceTree = "<group>";

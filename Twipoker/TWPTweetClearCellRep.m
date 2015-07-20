@@ -34,6 +34,7 @@
 @implementation TWPTweetClearCellRep
 
 #pragma mark Height
+// Overrides
 - ( CGFloat ) heightWithTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
     {
     CGFloat constraintHeight0 = self.userNameLabelTop_equal_cellViewTop_constraint.constant;

@@ -54,6 +54,7 @@
     }
 
 #pragma mark Height
+// Should be overrided in subclasses
 - ( CGFloat ) heightWithTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
     {
     __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD_;
