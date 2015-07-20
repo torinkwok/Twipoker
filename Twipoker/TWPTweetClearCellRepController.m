@@ -22,17 +22,38 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-#import "TWPTweetCellRepController.h"
+#import "TWPTweetClearCellRepController.h"
+
+#import "TWPTweetTextView.h"
+#import "TWPUserAvatarWell.h"
+#import "TWPTimelineUserNameButton.h"
+#import "TWPTweetOperationsPanelView.h"
+#import "TWPDateIndicatorView.h"
+#import "TWPSharedUIElements.h"
+#import "TWPTweetMediaWell.h"
 
 // Private Interfaces
-@interface TWPTweetCellRepController ()
+@interface TWPTweetClearCellRepController ()
 
 @end // Private Interfaces
 
-// TWPTweetCellRepController class
-@implementation TWPTweetCellRepController
+// TWPTweetClearCellRepController class
+@implementation TWPTweetClearCellRepController
 
-@end // TWPTweetCellRepController class
++ ( instancetype ) repControllerWithTweet: ( OTCTweet* )_Tweet
+    {
+    return [ [ [ self class ] alloc ] initWithTweet: _Tweet ];
+    }
+
+- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
+    {
+    if ( self = [ super initWithNibName: @"TWPTweetClearCellRep" bundle: [ NSBundle mainBundle ] ] )
+        ;
+
+    return self;
+    }
+
+@end // TWPTweetClearCellRepController class
 
 /*=============================================================================┐
 |                                                                              |

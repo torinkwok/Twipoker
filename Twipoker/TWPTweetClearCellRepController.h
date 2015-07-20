@@ -24,10 +24,26 @@
 
 @import Cocoa;
 
-// TWPTweetCellRepController class
-@interface TWPTweetCellRepController : NSViewController
+@class TWPUserAvatarWell;
+@class TWPTimelineUserNameButton;
+@class TWPTweetTextView;
+@class TWPTweetOperationsPanelView;
+@class TWPDateIndicatorView;
+@class TWPTweetMediaWell;
 
-@end // TWPTweetCellRepController class
+// TWPTweetClearCellRepController class
+@interface TWPTweetClearCellRepController : NSViewController
+
+@property ( weak ) IBOutlet TWPUserAvatarWell* authorAvatarWell;
+@property ( weak ) IBOutlet TWPTimelineUserNameButton* userNameLabel;
+@property ( weak ) IBOutlet TWPTweetTextView* tweetTextView;
+@property ( weak ) IBOutlet TWPDateIndicatorView* dateIndicatorView;
+@property ( weak ) IBOutlet TWPTweetOperationsPanelView* tweetOperationsPanelView;
+
++ ( instancetype ) repControllerWithTweet: ( OTCTweet* )_Tweet;
+- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;
+
+@end // TWPTweetClearCellRepController class
 
 /*=============================================================================┐
 |                                                                              |
