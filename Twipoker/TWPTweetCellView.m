@@ -70,6 +70,12 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     self->_clearRepController = [ TWPTweetClearCellRepController repControllerWithTweet: self->_tweet ];
     }
 
+#pragma mrak Time
+- ( void ) updateTime
+    {
+    [ self.currentTweetCellRepController.rep updateTime ];
+    }
+
 #pragma mark Dynamic Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {

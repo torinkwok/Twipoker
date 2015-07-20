@@ -31,7 +31,6 @@
 
 // Private Interfaces
 @interface TWPTimelineViewController ()
-- ( CGFloat ) _calculateTweetTextBlockHeight: ( OTCTweet* )_Tweet width: ( CGFloat )_Width;
 @end // Private Interfaces
 
 // TWPTimelineViewController class

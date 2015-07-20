@@ -24,10 +24,15 @@
 
 #import "TWPTweetCellRepController.h"
 
+// Private Interfaces
 @interface TWPTweetCellRepController ()
-- ( void ) _postNotifForShowingUserProfile;
-@end
 
+- ( void ) _postNotifForShowingUserProfile;
+- ( TWPTweetCellRep* ) _rep;
+
+@end // Private Interfaces
+
+// TWPTweetCellRepController class
 @implementation TWPTweetCellRepController
 
 @dynamic tweet;
@@ -36,12 +41,12 @@
 #pragma mark Dynamic Accessors
 - ( OTCTweet* ) tweet
     {
-    return [ self rep ].tweet;
+    return [ self _rep ].tweet;
     }
 
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
-    [ [ self rep ] setTweet: _Tweet ];
+    [ [ self _rep ] setTweet: _Tweet ];
     }
 
 - ( OTCTwitterUser* ) author
@@ -51,7 +56,7 @@
 
 - ( TWPTweetCellRep* ) rep
     {
-    return ( TWPTweetCellRep* )( self.view );
+    return [ self _rep ];
     }
 
 #pragma mark Initializations
@@ -87,7 +92,12 @@
                                                          userInfo: @{ kTwitterUser : self.author } ];
     }
 
-@end
+- ( TWPTweetCellRep* ) _rep
+    {
+    return ( TWPTweetCellRep* )( self.view );
+    }
+
+@end // TWPTweetCellRepController class
 
 /*=============================================================================┐
 |                                                                              |

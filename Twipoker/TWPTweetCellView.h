@@ -59,6 +59,9 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
 #pragma mark Size
 - ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight;
 
+#pragma mrak Time
+- ( void ) updateTime;
+
 #pragma mark Initialization
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet;
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet;

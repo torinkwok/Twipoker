@@ -21,11 +21,11 @@
 └==============================================================================┘██
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
-  
-@import Cocoa;
+
 
 #import "TWPTweetCellRep.h"
 
+// TWPTweetCellRepController class
 @interface TWPTweetCellRepController : NSViewController
 
 @property ( strong, readwrite ) OTCTweet* tweet;
@@ -40,7 +40,7 @@
 - ( IBAction ) userNameLabelClickedAction: ( id )_Sender;
 - ( IBAction ) userAvatarClickedAction: ( id )_Sender;
 
-@end
+@end // TWPTweetCellRepController class
 
 /*=============================================================================┐
 |                                                                              |
