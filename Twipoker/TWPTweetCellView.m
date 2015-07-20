@@ -31,6 +31,8 @@
 #import "TWPSharedUIElements.h"
 #import "TWPTweetMediaWell.h"
 
+#import "TWPTweetClearCellRepController.h"
+
 // Notification Names
 NSString* const TWPTweetCellViewShouldDisplayDetailOfTweet = @"TweetCellView.Notif.ShouldDisplayDetailOfTweet";
 
@@ -68,6 +70,12 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
         [ self setTweet: _Tweet ];
 
     return self;
+    }
+
+- ( void ) awakeFromNib
+    {
+    self->_clearRepController = [ TWPTweetClearCellRepController repControllerWithTweet: self->_tweet ];
+    NSLog( @"%@", self->_clearRepController.authorAvatarWell );
     }
 
 #pragma mark Dynamic Accessors

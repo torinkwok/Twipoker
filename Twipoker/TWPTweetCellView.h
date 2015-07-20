@@ -33,6 +33,8 @@
 @class TWPDateIndicatorView;
 @class TWPTweetMediaWell;
 
+@class TWPTweetClearCellRepController;
+
 // Notification Names
 NSString extern* const TWPTweetCellViewShouldDisplayDetailOfTweet;
 
@@ -47,6 +49,8 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
     CGFloat _refHeight;
 
     TWPTweetMediaWell __strong* _tweetMediaWell;
+
+    TWPTweetClearCellRepController __strong* _clearRepController;
     }
 
 #pragma mark Outlets

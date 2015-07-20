@@ -48,7 +48,7 @@
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
     {
     if ( self = [ super initWithNibName: @"TWPTweetClearCellRep" bundle: [ NSBundle mainBundle ] ] )
-        ;
+        NSLog( @"%@", self.view );
 
     return self;
     }
