@@ -104,6 +104,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
     [ self addConstraints: horizontalConstraints ];
     [ self addConstraints: verticalConstraints ];
+
     }
 
 - ( OTCTweet* ) tweet
