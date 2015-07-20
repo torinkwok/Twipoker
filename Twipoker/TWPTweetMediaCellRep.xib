@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8121.20" systemVersion="14F6a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8121.20"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TWPTweetMediaCellRepController">
+            <connections>
+                <outlet property="view" destination="iPd-OG-ylb" id="QVm-M8-E2t"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <tableCellView id="iPd-OG-ylb" customClass="TWPTweetMediaCellRep">
+            <rect key="frame" x="0.0" y="0.0" width="297" height="318"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button identifier="user-name-label" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xtw-hz-q26" customClass="TWPTimelineUserNameButton">
+                    <rect key="frame" x="68" y="262" width="213" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="MFO-Hi-2dY"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="169" id="dkE-Mf-ldj"/>
+                    </constraints>
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kro-EN-aZo">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <imageView identifier="user-avatar" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v8i-WR-Ujw" userLabel="Avatar" customClass="TWPUserAvatarWell">
+                    <rect key="frame" x="15" y="263" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="hFW-yM-LyQ"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="3HW-Xq-b5B" customClass="TWPUserAvatarCell"/>
+                </imageView>
+                <customView identifier="tweet-text-view" translatesAutoresizingMaskIntoConstraints="NO" id="jXp-hI-YiE" customClass="TWPTweetTextView">
+                    <rect key="frame" x="15" y="234" width="266" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="266" id="ovG-TU-h0K"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="s3N-E9-kuh"/>
+                    </constraints>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="mVY-wp-RdV" customClass="TWPDateIndicatorView">
+                    <rect key="frame" x="15" y="37" width="76" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="76" id="I8T-ze-fxc"/>
+                        <constraint firstAttribute="height" constant="23" id="gt2-yb-zQn"/>
+                    </constraints>
+                </customView>
+                <customView identifier="tweet-operations-panel" translatesAutoresizingMaskIntoConstraints="NO" id="57z-BF-NgQ" customClass="TWPTweetOperationsPanelView">
+                    <rect key="frame" x="15" y="10" width="76" height="22"/>
+                    <subviews>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ex6-MS-Vc2" customClass="TWPReplyButton">
+                            <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="aPt-qh-Kf2" customClass="TWPReplyButtonCell">
+                                <behavior key="behavior" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="replyCurrentTweetAction:" target="57z-BF-NgQ" id="d2i-xQ-nJW"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1UP-Rr-Db3" customClass="TWPRetweetSwitcher">
+                            <rect key="frame" x="27" y="0.0" width="22" height="22"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="7cy-g1-Fzd" customClass="TWPRetweetSwitcherCell">
+                                <behavior key="behavior" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showRetweetPopoverAction:" target="57z-BF-NgQ" id="HLn-55-uq9"/>
+                            </connections>
+                        </button>
+                        <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPy-Fo-sRh" customClass="TWPFavSwitcher">
+                            <rect key="frame" x="54" y="0.0" width="22" height="22"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" borderStyle="border" focusRingType="none" inset="2" id="2Ri-GN-hfX" customClass="TWPFavSwitcherCell">
+                                <behavior key="behavior" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="favOrUnfavAction:" target="57z-BF-NgQ" id="6dF-5h-3nY"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="SKa-Bw-3ZH"/>
+                        <constraint firstAttribute="width" constant="76" id="zz3-SW-Kw0"/>
+                    </constraints>
+                    <accessibility identifier="tweet-operations-panel"/>
+                    <connections>
+                        <outlet property="favSwitcher" destination="HPy-Fo-sRh" id="HeP-6h-eVO"/>
+                        <outlet property="replyButton" destination="Ex6-MS-Vc2" id="LeP-If-3KK"/>
+                        <outlet property="retweetSwitcher" destination="1UP-Rr-Db3" id="DV2-Ar-ovj"/>
+                    </connections>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="k2Q-4N-bfq" customClass="TWPTweetMediaWell">
+                    <rect key="frame" x="15" y="65" width="266" height="164"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="k2Q-4N-bfq" secondAttribute="height" multiplier="133:82" id="MCi-uF-Czg"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="mVY-wp-RdV" firstAttribute="leading" secondItem="iPd-OG-ylb" secondAttribute="leading" constant="15" id="2Vs-n6-sKT"/>
+                <constraint firstAttribute="bottom" secondItem="57z-BF-NgQ" secondAttribute="bottom" constant="10" id="2nQ-hU-4gj"/>
+                <constraint firstItem="Xtw-hz-q26" firstAttribute="top" secondItem="iPd-OG-ylb" secondAttribute="top" constant="10" id="AwS-Sy-miE"/>
+                <constraint firstItem="jXp-hI-YiE" firstAttribute="leading" secondItem="v8i-WR-Ujw" secondAttribute="trailing" constant="-45" id="CuA-m1-mfK"/>
+                <constraint firstItem="k2Q-4N-bfq" firstAttribute="top" secondItem="jXp-hI-YiE" secondAttribute="bottom" constant="5" id="DFc-2x-baq"/>
+                <constraint firstItem="k2Q-4N-bfq" firstAttribute="leading" secondItem="iPd-OG-ylb" secondAttribute="leading" constant="15" id="LHj-od-Kpe"/>
+                <constraint firstItem="57z-BF-NgQ" firstAttribute="top" secondItem="mVY-wp-RdV" secondAttribute="bottom" constant="5" id="NHI-fI-C74"/>
+                <constraint firstItem="Xtw-hz-q26" firstAttribute="leading" secondItem="v8i-WR-Ujw" secondAttribute="trailing" constant="8" id="QRD-UI-F9e"/>
+                <constraint firstItem="mVY-wp-RdV" firstAttribute="top" secondItem="k2Q-4N-bfq" secondAttribute="bottom" constant="5" id="Rbs-Qk-B6U"/>
+                <constraint firstItem="57z-BF-NgQ" firstAttribute="leading" secondItem="iPd-OG-ylb" secondAttribute="leading" constant="15" id="TJX-1a-9qw"/>
+                <constraint firstAttribute="trailing" secondItem="Xtw-hz-q26" secondAttribute="trailing" constant="16" id="Tkz-Fd-JJX"/>
+                <constraint firstItem="v8i-WR-Ujw" firstAttribute="top" secondItem="iPd-OG-ylb" secondAttribute="top" constant="10" id="YEU-V2-c7C"/>
+                <constraint firstAttribute="trailing" secondItem="jXp-hI-YiE" secondAttribute="trailing" constant="16" id="bfT-LV-tse"/>
+                <constraint firstItem="k2Q-4N-bfq" firstAttribute="leading" secondItem="mVY-wp-RdV" secondAttribute="trailing" constant="-76" id="ckW-Aq-3Aq"/>
+                <constraint firstAttribute="trailing" secondItem="k2Q-4N-bfq" secondAttribute="trailing" constant="16" id="fkn-5Z-3Ha"/>
+                <constraint firstItem="jXp-hI-YiE" firstAttribute="top" secondItem="v8i-WR-Ujw" secondAttribute="bottom" constant="10" id="h6Z-oc-dbU"/>
+                <constraint firstItem="jXp-hI-YiE" firstAttribute="top" secondItem="Xtw-hz-q26" secondAttribute="bottom" constant="10" id="jgE-Ux-cjl"/>
+                <constraint firstItem="jXp-hI-YiE" firstAttribute="leading" secondItem="iPd-OG-ylb" secondAttribute="leading" constant="15" id="rsK-Vw-dFo"/>
+                <constraint firstItem="v8i-WR-Ujw" firstAttribute="leading" secondItem="iPd-OG-ylb" secondAttribute="leading" constant="15" id="soc-pq-eZf"/>
+            </constraints>
+            <connections>
+                <outlet property="authorAvatarWell" destination="v8i-WR-Ujw" id="Icd-0c-T1C"/>
+                <outlet property="tweetTextView" destination="jXp-hI-YiE" id="3Ev-As-Xyw"/>
+                <outlet property="userNameLabel" destination="Xtw-hz-q26" id="UDl-la-9Fd"/>
+                <outlet property="userNameLabelTop_equal_cellViewTop_constraint" destination="AwS-Sy-miE" id="3Ii-BW-Umd"/>
+            </connections>
+            <point key="canvasLocation" x="113.5" y="513"/>
+        </tableCellView>
+    </objects>
+</document>

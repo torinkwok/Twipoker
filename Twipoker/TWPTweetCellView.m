@@ -80,28 +80,75 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
     self->_tweet = _Tweet;
-    [ self->_clearRepController setTweet: self->_tweet ];
 
-    [ self setNeedsUpdateConstraints: YES ];
+    switch ( self->_tweet.type )
+        {
+        case OTCTweetTypeNormalTweet:
+        case OTCTweetTypeRetweet:
+        case OTCTweetTypeReply:
+        case OTCTweetTypeDirectMessage:
+        case OTCTweetTypeQuotedTweet:
+            {
+            if ( self->_tweet.media )
+                self->_style = TWPTweetCellViewStyleMedia;
+            else
+                self->_style = TWPTweetCellViewStyleClear;
+            }; break;
 
+        default:;
+        }
+
+    [ [ self _currentCellRepController ] setTweet: self->_tweet ];
+    [ self _updateCellRep ];
+    }
+
+- ( TWPTweetCellRepController* ) _currentCellRepController
+    {
+    TWPTweetCellRepController* controller = nil;
+
+    switch ( self->_style )
+        {
+        case TWPTweetCellViewStyleClear:
+            {
+            controller = self->_clearRepController;
+            } break;
+
+        case TWPTweetCellViewStyleMedia:
+            {
+            // TODO:
+            } break;
+
+        case TWPTweetCellViewStyleMediaRetweet:
+            {
+            // TODO:
+            } break;
+
+        case TWPTweetCellViewStyleRetweet:
+            {
+            // TODO:
+            } break;
+
+        case TWPTweetCellViewStyleQuotedRetweet:
+            {
+            // TODO:
+            } break;
+        }
+
+    return controller;
+    }
+
+- ( void ) _updateCellRep
+    {
     NSView* cellView = self;
-    NSView* cellRep = self->_clearRepController.rep;
-    [ self addSubview: cellRep ];
+    NSView* cellRep = [ self _currentCellRepController ].rep;
+
+    if ( cellRep.superview != self )
+        [ self addSubview: cellRep ];
 
     NSDictionary* viewsDict = NSDictionaryOfVariableBindings( cellView, cellRep );
 
-    NSArray* horizontalConstraints = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[cellRep(==cellView)]|"
-                            options: 0
-                            metrics: nil
-                              views: viewsDict ];
-
-    NSArray* verticalConstraints = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|[cellRep(==cellView)]|"
-                            options: 0
-                            metrics: nil
-                              views: viewsDict ];
-
+    NSArray* horizontalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[cellRep(==cellView)]|" options: 0 metrics: nil views: viewsDict ];
+    NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[cellRep(==cellView)]|" options: 0 metrics: nil views: viewsDict ];
     [ self addConstraints: horizontalConstraints ];
     [ self addConstraints: verticalConstraints ];
     }
