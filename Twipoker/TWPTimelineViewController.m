@@ -27,6 +27,7 @@
 #import "TWPTweetCellView.h"
 #import "TWPTweetOperationsNotificationNames.h"
 #import "TWPTweetTextView.h"
+#import "TWPTweetCellRepController.h"
 
 // Private Interfaces
 @interface TWPTimelineViewController ()
@@ -76,7 +77,7 @@
             heightOfRow: ( NSInteger )_Row
     {
     TWPTweetCellView* tweetCellView = ( TWPTweetCellView* )[ self tableView: _TableView viewForTableColumn: _TableView.tableColumns.firstObject row: _Row ];
-    TWPTweetTextView* tweetTextView = tweetCellView.tweetTextView;
+    TWPTweetTextView* tweetTextView = tweetCellView.currentTweetCellRepController.rep.tweetTextView;
 
     CGFloat currentColumnWidth = _TableView.tableColumns.firstObject.width;
     CGFloat height = [ tweetCellView dynamicHeightAccordingToTweetTextBlockHeight:

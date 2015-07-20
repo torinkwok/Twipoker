@@ -27,6 +27,7 @@
 #import "TWPUserAvatarWell.h"
 #import "TWPTimelineUserNameButton.h"
 #import "TWPDateIndicatorView.h"
+#import "TWPTweetCellRepController.h"
 
 // TWPTimelineTableView class
 @implementation TWPTimelineTableView
@@ -52,7 +53,7 @@
     [ self enumerateAvailableRowViewsUsingBlock:
         ^( NSTableRowView* _RowView, NSInteger _Row )
             {
-            [ ( ( TWPTweetCellView* )[ _RowView viewAtColumn: 0 ] ).dateIndicatorView updateTime ];
+            [ ( ( TWPTweetCellView* )[ _RowView viewAtColumn: 0 ] ).currentTweetCellRepController.rep updateTime ];
             } ];
     }
 

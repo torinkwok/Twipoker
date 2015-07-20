@@ -41,22 +41,16 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 // Private Interfaces
 @interface TWPTweetCellView ()
-
-@property ( assign, readwrite, setter = setShowingTweetOperationsPanel: ) BOOL isShowingTweetOperationsPanel;
 - ( void ) _postNotifForShowingUserProfile;
-
 @end // Private Interfaces
 
 // TWPTweetCellView class
 @implementation TWPTweetCellView
 
-@synthesize authorAvatarWell;
-@synthesize userNameLabel;
-@synthesize dateIndicatorView;
-@synthesize tweetTextView;
-
 @dynamic tweet;
 @dynamic author;
+
+@dynamic currentTweetCellRepController;
 
 #pragma mark Initialization
 + ( instancetype ) tweetCellViewWithTweet: ( OTCTweet* )_Tweet
@@ -81,24 +75,30 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
     self->_tweet = _Tweet;
-
-    [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
-    [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
-    [ [ self tweetTextView ] setTweet: self->_tweet ];
-    [ [ self dateIndicatorView ] setTweet: self->_tweet ];
-    [ [ self tweetOperationsPanelView ] setTweet: self->_tweet ];
-
     [ self->_clearRepController setTweet: self->_tweet ];
 
-    if ( _Tweet.media )
-        {
-        if ( self->_tweetMediaWell )
-            self->_tweetMediaWell = [ TWPTweetMediaWell tweetMediaWellWithTweet: _Tweet ];
-        else
-            self->_tweetMediaWell.tweet = _Tweet;
-        }
+    [ self setNeedsUpdateConstraints: YES ];
 
-    self.isShowingTweetOperationsPanel = NO;
+    NSView* cellView = self;
+    NSView* cellRep = self->_clearRepController.rep;
+    [ self addSubview: cellRep ];
+
+    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( cellView, cellRep );
+
+    NSArray* horizontalConstraints = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"H:|[cellRep(==cellView)]|"
+                            options: 0
+                            metrics: nil
+                              views: viewsDict ];
+
+    NSArray* verticalConstraints = [ NSLayoutConstraint
+        constraintsWithVisualFormat: @"V:|[cellRep(==cellView)]|"
+                            options: 0
+                            metrics: nil
+                              views: viewsDict ];
+
+    [ self addConstraints: horizontalConstraints ];
+    [ self addConstraints: verticalConstraints ];
     }
 
 - ( OTCTweet* ) tweet
@@ -111,21 +111,14 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
     return self.tweet.author;
     }
 
+- ( TWPTweetCellRepController* ) currentTweetCellRepController
+    {
+    return self->_clearRepController;
+    }
+
 - ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
     {
-    CGFloat constraintHeight0 = self.userNameLabelTop_equal_cellViewTop_constraint.constant;
-    CGFloat constraintHeight1 = self.tweetTextViewTop_equal_userNameLabelBottom_constraint.constant;
-    CGFloat constraintHeight2 = self.dateIndicatorTop_equal_tweetTextViewBottom_constraint.constant;
-    CGFloat constraintHeight3 = self.tweetOperationsPanelViewTop_equal_dateIndicatorBottom_constraint.constant;
-    CGFloat constraintHeight4 = self.cellViewBottom_equal_tweetOperationsPanelView_constraint.constant;
-
-    CGFloat tweetTextViewHeight = ( _TweetTextBlockHeight > [ TWPTweetTextView defaultSize ].height ) ? _TweetTextBlockHeight : [ TWPTweetTextView defaultSize ].height;
-    CGFloat userNameLabelHeight = NSHeight( self.userNameLabel.frame );
-    CGFloat dateIndicatorHeight = NSHeight( self.dateIndicatorView.frame );
-    CGFloat tweetOperationsPanelViewHeight = NSHeight( self.tweetOperationsPanelView.frame );
-
-    return constraintHeight0 + constraintHeight1 + constraintHeight2 + constraintHeight3 + constraintHeight4
-                + tweetTextViewHeight + userNameLabelHeight + dateIndicatorHeight + tweetOperationsPanelViewHeight;
+    return [ self.currentTweetCellRepController.rep heightWithTweetTextBlockHeight: _TweetTextBlockHeight ];
     }
 
 #pragma mark IBAction

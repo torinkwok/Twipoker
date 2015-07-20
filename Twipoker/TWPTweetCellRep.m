@@ -55,6 +55,12 @@
     return 0.f;
     }
 
+#pragma mark Time
+- ( void ) updateTime
+    {
+    [ [ self dateIndicatorView ] updateTime ];
+    }
+
 @end
 
 /*=============================================================================┐

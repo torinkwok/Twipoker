@@ -53,6 +53,9 @@
 #pragma mark Height
 - ( CGFloat ) heightWithTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight;
 
+#pragma mark Time
+- ( void ) updateTime;
+
 @end
 
 /*=============================================================================┐
