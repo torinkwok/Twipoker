@@ -48,6 +48,13 @@
     [ [ self tweetOperationsPanelView ] setTweet: self->_tweet ];
     }
 
+#pragma mark Height
+- ( CGFloat ) heightWithTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
+    {
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD_;
+    return 0.f;
+    }
+
 @end
 
 /*=============================================================================┐

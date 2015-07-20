@@ -43,7 +43,15 @@
 @property ( weak ) IBOutlet TWPDateIndicatorView* dateIndicatorView;
 @property ( weak ) IBOutlet TWPTweetOperationsPanelView* tweetOperationsPanelView;
 
+@property ( weak ) IBOutlet NSLayoutConstraint* userNameLabelTop_equal_cellViewTop_constraint;
+@property ( weak ) IBOutlet NSLayoutConstraint* tweetTextViewTop_equal_userNameLabelBottom_constraint;
+@property ( weak ) IBOutlet NSLayoutConstraint* tweetOperationsPanelViewTop_equal_dateIndicatorBottom_constraint;
+@property ( weak ) IBOutlet NSLayoutConstraint* cellViewBottom_equal_tweetOperationsPanelView_constraint;
+
 @property ( strong, readwrite ) OTCTweet* tweet;
+
+#pragma mark Height
+- ( CGFloat ) heightWithTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight;
 
 @end
 

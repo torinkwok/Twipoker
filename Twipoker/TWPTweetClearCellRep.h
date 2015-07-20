@@ -27,6 +27,8 @@
 // TWPTweetClearCellRep class
 @interface TWPTweetClearCellRep : TWPTweetCellRep
 
+@property ( weak ) IBOutlet NSLayoutConstraint* dateIndicatorTop_equal_tweetTextViewBottom_constraint;
+
 @end // TWPTweetClearCellRep class
 
 /*=============================================================================┐

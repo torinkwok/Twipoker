@@ -116,10 +116,15 @@
             </constraints>
             <connections>
                 <outlet property="authorAvatarWell" destination="F5i-8A-QJQ" id="kQj-9T-v5D"/>
+                <outlet property="cellViewBottom_equal_tweetOperationsPanelView_constraint" destination="pHg-Wf-hhH" id="5og-h3-GIO"/>
+                <outlet property="dateIndicatorTop_equal_tweetTextViewBottom_constraint" destination="iMc-0I-kBg" id="IOj-tx-D8P"/>
                 <outlet property="dateIndicatorView" destination="xKh-fS-LXK" id="fc7-yl-KMZ"/>
                 <outlet property="tweetOperationsPanelView" destination="DYg-Wt-aIt" id="Uf2-jL-x2N"/>
+                <outlet property="tweetOperationsPanelViewTop_equal_dateIndicatorBottom_constraint" destination="Jkd-vc-Gsi" id="YVt-yn-f8w"/>
                 <outlet property="tweetTextView" destination="wUy-Oa-kVx" id="SD5-99-pzB"/>
+                <outlet property="tweetTextViewTop_equal_userNameLabelBottom_constraint" destination="WTk-zB-TLl" id="bFP-bd-tGQ"/>
                 <outlet property="userNameLabel" destination="gmp-xZ-HmO" id="Szf-7A-uXv"/>
+                <outlet property="userNameLabelTop_equal_cellViewTop_constraint" destination="PWG-4L-L6a" id="bpa-ST-Flq"/>
             </connections>
             <point key="canvasLocation" x="575.5" y="407.5"/>
         </tableCellView>
