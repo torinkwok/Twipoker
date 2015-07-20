@@ -24,6 +24,16 @@
 
 @import Foundation;
 
+#define __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD_ \
+    @throw [ NSException exceptionWithName: NSGenericException \
+                         reason: [ NSString stringWithFormat: @"unimplemented pure virtual method `%@` in `%@` " \
+                                                               "from instance: %p" \
+                                                            , NSStringFromSelector( _cmd ) \
+                                                            , NSStringFromClass( [ self class ] ) \
+                                                            , self ] \
+                       userInfo: nil ]
+
+
 #define TWP_DEFAULT_RADIUS_CORNER 10.f
 
 #define TWP_TWITTER_STARTING_COLOR [ NSColor colorWithSRGBRed: 145.f / 255 green: 199.f / 255 blue: 240.f / 255 alpha: 1.f ]

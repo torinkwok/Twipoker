@@ -22,12 +22,33 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-@import Cocoa;
+#import "TWPTweetCellRep.h"
 
-// TWPTweetClearCellRepController class
-@interface TWPTweetClearCellRepController : NSViewController
+#import "TWPTweetTextView.h"
+#import "TWPUserAvatarWell.h"
+#import "TWPTimelineUserNameButton.h"
+#import "TWPTweetOperationsPanelView.h"
+#import "TWPDateIndicatorView.h"
+#import "TWPSharedUIElements.h"
+#import "TWPTweetMediaWell.h"
 
-@end // TWPTweetClearCellRepController class
+@implementation TWPTweetCellRep
+
+@dynamic tweet;
+
+#pragma mark Dynamic Accessors
+- ( void ) setTweet: ( OTCTweet* )_Tweet
+    {
+    self->_tweet = _Tweet;
+
+    [ [ self authorAvatarWell ] setTwitterUser: self->_tweet.author ];
+    [ [ self userNameLabel ] setTwitterUser: self->_tweet.author ];
+    [ [ self tweetTextView ] setTweet: self->_tweet ];
+    [ [ self dateIndicatorView ] setTweet: self->_tweet ];
+    [ [ self tweetOperationsPanelView ] setTweet: self->_tweet ];
+    }
+
+@end
 
 /*=============================================================================┐
 |                                                                              |

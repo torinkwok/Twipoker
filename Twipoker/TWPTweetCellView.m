@@ -75,7 +75,6 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 - ( void ) awakeFromNib
     {
     self->_clearRepController = [ TWPTweetClearCellRepController repControllerWithTweet: self->_tweet ];
-    NSLog( @"%@", self->_clearRepController.authorAvatarWell );
     }
 
 #pragma mark Dynamic Accessors

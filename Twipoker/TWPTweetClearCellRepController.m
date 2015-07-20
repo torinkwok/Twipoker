@@ -24,34 +24,14 @@
 
 #import "TWPTweetClearCellRepController.h"
 
-#import "TWPTweetTextView.h"
-#import "TWPUserAvatarWell.h"
-#import "TWPTimelineUserNameButton.h"
-#import "TWPTweetOperationsPanelView.h"
-#import "TWPDateIndicatorView.h"
-#import "TWPSharedUIElements.h"
-#import "TWPTweetMediaWell.h"
+#import "TWPTweetClearCellRep.h"
 
 // Private Interfaces
 @interface TWPTweetClearCellRepController ()
-
 @end // Private Interfaces
 
 // TWPTweetClearCellRepController class
 @implementation TWPTweetClearCellRepController
-
-+ ( instancetype ) repControllerWithTweet: ( OTCTweet* )_Tweet
-    {
-    return [ [ [ self class ] alloc ] initWithTweet: _Tweet ];
-    }
-
-- ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
-    {
-    if ( self = [ super initWithNibName: @"TWPTweetClearCellRep" bundle: [ NSBundle mainBundle ] ] )
-        NSLog( @"%@", self.view );
-
-    return self;
-    }
 
 @end // TWPTweetClearCellRepController class
 

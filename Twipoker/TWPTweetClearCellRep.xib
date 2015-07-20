@@ -16,7 +16,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <tableCellView id="VS2-kT-wck">
+        <tableCellView id="VS2-kT-wck" customClass="TWPTweetClearCellRep">
             <rect key="frame" x="0.0" y="0.0" width="297" height="149"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -114,6 +114,14 @@
                 <constraint firstAttribute="bottom" secondItem="DYg-Wt-aIt" secondAttribute="bottom" constant="10" id="pHg-Wf-hhH"/>
                 <constraint firstItem="F5i-8A-QJQ" firstAttribute="leading" secondItem="VS2-kT-wck" secondAttribute="leading" constant="15" id="vp4-Kb-PPg"/>
             </constraints>
+            <connections>
+                <outlet property="authorAvatarWell" destination="F5i-8A-QJQ" id="kQj-9T-v5D"/>
+                <outlet property="dateIndicatorView" destination="xKh-fS-LXK" id="fc7-yl-KMZ"/>
+                <outlet property="tweetOperationsPanelView" destination="DYg-Wt-aIt" id="Uf2-jL-x2N"/>
+                <outlet property="tweetTextView" destination="wUy-Oa-kVx" id="SD5-99-pzB"/>
+                <outlet property="userNameLabel" destination="gmp-xZ-HmO" id="Szf-7A-uXv"/>
+            </connections>
+            <point key="canvasLocation" x="575.5" y="407.5"/>
         </tableCellView>
     </objects>
 </document>

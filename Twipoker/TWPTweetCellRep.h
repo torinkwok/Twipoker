@@ -22,12 +22,30 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-@import Cocoa;
+#import <Cocoa/Cocoa.h>
 
-// TWPTweetClearCellRepController class
-@interface TWPTweetClearCellRepController : NSViewController
+@class TWPUserAvatarWell;
+@class TWPTimelineUserNameButton;
+@class TWPTweetTextView;
+@class TWPTweetOperationsPanelView;
+@class TWPDateIndicatorView;
+@class TWPTweetMediaWell;
 
-@end // TWPTweetClearCellRepController class
+@interface TWPTweetCellRep : NSTableCellView
+    {
+@private
+    OTCTweet __strong* _tweet;
+    }
+
+@property ( weak ) IBOutlet TWPUserAvatarWell* authorAvatarWell;
+@property ( weak ) IBOutlet TWPTimelineUserNameButton* userNameLabel;
+@property ( weak ) IBOutlet TWPTweetTextView* tweetTextView;
+@property ( weak ) IBOutlet TWPDateIndicatorView* dateIndicatorView;
+@property ( weak ) IBOutlet TWPTweetOperationsPanelView* tweetOperationsPanelView;
+
+@property ( strong, readwrite ) OTCTweet* tweet;
+
+@end
 
 /*=============================================================================┐
 |                                                                              |

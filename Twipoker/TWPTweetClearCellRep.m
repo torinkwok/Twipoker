@@ -22,12 +22,12 @@
   ████████████████████████████████████████████████████████████████████████████████
   ██████████████████████████████████████████████████████████████████████████████*/
 
-@import Cocoa;
+#import "TWPTweetClearCellRep.h"
 
-// TWPTweetClearCellRepController class
-@interface TWPTweetClearCellRepController : NSViewController
+// TWPTweetClearCellRep class
+@implementation TWPTweetClearCellRep
 
-@end // TWPTweetClearCellRepController class
+@end // TWPTweetClearCellRep class
 
 /*=============================================================================┐
 |                                                                              |
