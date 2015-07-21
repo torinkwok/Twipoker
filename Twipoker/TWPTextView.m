@@ -35,7 +35,10 @@ NSDictionary static* sDefaultTextAttributes;
 @interface TWPTextView ()
 
 - ( NSTextView* ) _textView;
+- ( void ) _updateConstraints;
+
 + ( CGFloat ) _textBlockDynamicHeightWithTextStorage: ( NSTextStorage* )_TextStorage blockWidth: ( CGFloat )_TextBlockWidth;
++ ( CGFloat ) _textBlockDynamicHeightWithTextStorage: ( NSTextStorage* )_TextStorage blockWidth: ( CGFloat )_TextBlockWidth mediaWellHeight: ( CGFloat )_MediaWellHeight;
 
 @end // Private Interfaces
 
@@ -122,7 +125,38 @@ NSDictionary static* sDefaultTextAttributes;
     return self->_tweet;
     }
 
-#pragma mark Constraints-Based Auto Layout
++ ( NSDictionary* ) defaultTextAttributes
+    {
+    return sDefaultTextAttributes;
+    }
+
++ ( CGFloat ) textBlockDynamicHeightWithText: ( NSString* )_Text blockWidth: ( CGFloat )_TextBlockWidth
+    {
+    NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithString: _Text
+                                                               attributes: [ [ self class ] defaultTextAttributes ] ];
+
+    return [ [ self class ] _textBlockDynamicHeightWithTextStorage: textStorage
+                                                        blockWidth: _TextBlockWidth ];
+    }
+
+- ( CGFloat ) textBlockDynamicHeightWithWidth: ( CGFloat )_TextBlockWidth
+    {
+    CGFloat mediaWellHeight = 0.f;
+    if ( self->_tweet.media )
+        mediaWellHeight = 149.f + 10.f;
+
+    CGFloat fsckHeight = [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
+                                                                      blockWidth: _TextBlockWidth
+                                                                 mediaWellHeight: mediaWellHeight ];
+    return fsckHeight;
+    }
+
+#pragma mark Private Interfaces
+- ( NSTextView* ) _textView
+    {
+    return self->_tweetTextStorage.layoutManagers.firstObject.textContainers.firstObject.textView;
+    }
+
 - ( void ) _updateConstraints
     {
     [ self removeConstraints: self.constraints ];
@@ -171,42 +205,6 @@ NSDictionary static* sDefaultTextAttributes;
         [ self addConstraints: horizontalConstraints ];
         [ self addConstraints: verticalConstraints ];
         }
-    }
-
-+ ( NSDictionary* ) defaultTextAttributes
-    {
-    return sDefaultTextAttributes;
-    }
-
-+ ( CGFloat ) textBlockDynamicHeightWithText: ( NSString* )_Text blockWidth: ( CGFloat )_TextBlockWidth
-    {
-    NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithString: _Text
-                                                               attributes: [ [ self class ] defaultTextAttributes ] ];
-
-    return [ [ self class ] _textBlockDynamicHeightWithTextStorage: textStorage
-                                                        blockWidth: _TextBlockWidth ];
-    }
-
-- ( CGFloat ) textBlockDynamicHeightWithWidth: ( CGFloat )_TextBlockWidth
-    {
-    CGFloat mediaWellHeight = 0.f;
-    if ( self->_tweet.media )
-        mediaWellHeight = 149.f + 10.f;
-
-    CGFloat fsckHeight = [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
-                                                                      blockWidth: _TextBlockWidth
-                                                                 mediaWellHeight: mediaWellHeight ];
-
-    if ( [ self->_tweet.author.screenName isEqualToString: @"@m13253" ] )
-        NSLog( @"%@     Height: %g", self->_tweet, fsckHeight );
-
-    return fsckHeight;
-    }
-
-#pragma mark Private Interfaces
-- ( NSTextView* ) _textView
-    {
-    return self->_tweetTextStorage.layoutManagers.firstObject.textContainers.firstObject.textView;
     }
 
 + ( CGFloat ) _textBlockDynamicHeightWithTextStorage: ( NSTextStorage* )_TextStorage
