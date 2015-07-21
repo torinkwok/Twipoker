@@ -71,7 +71,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 - ( void ) awakeFromNib
     {
-    self->_clearRepController = [ TWPTweetClearCellRepController repControllerWithTweet: self->_tweet ];
+    self->_clearCellRepController = [ TWPTweetClearCellRepController repControllerWithTweet: self->_tweet ];
     }
 
 #pragma mrak Time
@@ -133,7 +133,7 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
         {
         case TWPTweetCellViewStyleClear:
             {
-            controller = self->_clearRepController;
+            controller = self->_clearCellRepController;
             } break;
 
         default:; // TODO: Waiting for other styles
