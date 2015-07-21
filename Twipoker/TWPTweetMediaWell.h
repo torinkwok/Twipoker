@@ -29,6 +29,11 @@
     {
 @private
     OTCTweet __strong* _tweet;
+
+    NSURLSession     __strong* _URLSession;
+    NSURLSessionTask __strong* _dataTask;
+
+    NSMutableArray __strong* _images;
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;

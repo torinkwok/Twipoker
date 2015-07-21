@@ -73,7 +73,6 @@ NSDictionary static* sDefaultTextAttributes;
                               };
     }
 
-
 #pragma mark Dynamic Accessors
 - ( void ) setTweet: ( nonnull OTCTweet* )_Tweet
     {
