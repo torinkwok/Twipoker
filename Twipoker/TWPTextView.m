@@ -106,7 +106,6 @@ NSDictionary static* sDefaultTextAttributes;
         ( void )[ [ NSTextView alloc ] initWithFrame: frame textContainer: textContainer ];
         [ [ self _textView ] setEditable: NO ];
         [ [ self _textView ] setSelectable: NO ];
-        [ [ self _textView ] setBackgroundColor: [ NSColor purpleColor ] ];
         }
 
     [ self->_tweetTextStorage replaceCharactersInRange: NSMakeRange( 0, self->_tweetTextStorage.string.length )
@@ -144,9 +143,9 @@ NSDictionary static* sDefaultTextAttributes;
 
         [ viewsDict addEntriesFromDictionary: NSDictionaryOfVariableBindings( mediaWell ) ];
 
-        NSArray* horizontalConstraints0 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth)]|" options: 0 metrics: @{ @"textViewWidth" : @( NSWidth( textView.frame ) ) } views: viewsDict ];
+        NSArray* horizontalConstraints0 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth)]|" options: 0 metrics: @{ @"textViewWidth" : @( [ [ self class ] defaultSize ].width ) } views: viewsDict ];
         NSArray* horizontalConstraints1 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[mediaWell(==textView)]|" options: 0 metrics: nil views: viewsDict ];
-        NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight)]-(==space)-[mediaWell(>=mediaWellHeight@750)]|"
+        NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight)]-(==space@750)-[mediaWell(>=mediaWellHeight)]|"
                                                                                 options: 0
                                                                                 metrics: @{ @"textViewHeight" :  @( [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
                                                                                                                                                        blockWidth: NSWidth( textView.frame )
