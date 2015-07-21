@@ -55,6 +55,8 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
     OTCTweet __strong* _tweet;
 
     TWPTweetCellViewStyle _style;
+
+    // Lazy evaluation
     TWPTweetClearCellRepController __strong* _clearCellRepController;
     }
 
