@@ -148,7 +148,9 @@ NSDictionary static* sDefaultTextAttributes;
         NSArray* horizontalConstraints1 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[mediaWell(==textView)]|" options: 0 metrics: nil views: viewsDict ];
         NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight)]-(==space)-[mediaWell(>=mediaWellHeight@750)]|"
                                                                                 options: 0
-                                                                                metrics: @{ @"textViewHeight" :  @( NSHeight( textView.frame ) )
+                                                                                metrics: @{ @"textViewHeight" :  @( [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
+                                                                                                                                                       blockWidth: NSWidth( textView.frame )
+                                                                                                                                                  mediaWellHeight: 0.f ] )
                                                                                           , @"space" : @( 10.f )
                                                                                           , @"mediaWellHeight" : @( 149.f )
                                                                                           }
@@ -193,8 +195,8 @@ NSDictionary static* sDefaultTextAttributes;
         mediaWellHeight = 149.f + 10.f;
 
     CGFloat fsckHeight = [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
-                                                        blockWidth: _TextBlockWidth
-                                                   mediaWellHeight: mediaWellHeight ];
+                                                                      blockWidth: _TextBlockWidth
+                                                                 mediaWellHeight: mediaWellHeight ];
 
     if ( [ self->_tweet.author.screenName isEqualToString: @"@m13253" ] )
         NSLog( @"%@     Height: %g", self->_tweet, fsckHeight );
@@ -229,7 +231,6 @@ NSDictionary static* sDefaultTextAttributes;
     dynamicHeight += _MediaWellHeight;
 
     return dynamicHeight;
-
     }
 
 @end // TWPTextView class
