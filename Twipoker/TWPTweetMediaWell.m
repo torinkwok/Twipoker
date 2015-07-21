@@ -23,6 +23,7 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTweetMediaWell.h"
+#import "NSBezierPath+TwipokerDrawing.h"
 
 // TWPTweetMediaWell class
 @implementation TWPTweetMediaWell
@@ -74,9 +75,13 @@
     [ super drawRect: _DirtyRect ];
 
     NSBezierPath* roundedRectOulinePath =
-        [ NSBezierPath bezierPathWithRoundedRect: _DirtyRect xRadius: 15.f yRadius: 15.f ];
-
-    [ [ NSColor blackColor ] set ];
+        [ NSBezierPath bezierPathWithRoundedRect: _DirtyRect
+                       withRadiusOfTopLeftCorner: 30.f
+                                bottomLeftCorner: 30.f
+                                  topRightCorner: 30.f
+                               bottomRightCorner: 30.f
+                                       isFlipped: NO ];
+    [ [ NSColor grayColor ] set ];
     [ roundedRectOulinePath stroke ];
     [ roundedRectOulinePath fill ];
     }

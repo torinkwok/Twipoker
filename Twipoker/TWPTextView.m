@@ -26,6 +26,7 @@
 #import "NSColor+Objectwitter-C.h"
 #import "TWPUIConstants.h"
 #import "TWPTweetMediaWellController.h"
+#import "TWPTweetMediaWell.h"
 
 NSSize static sDefaultSize;
 NSDictionary static* sDefaultTextAttributes;
@@ -82,6 +83,8 @@ NSDictionary static* sDefaultTextAttributes;
         else
             self->_tweetMediaWellController.tweet = self->_tweet;
         }
+    else
+        self->_tweetMediaWellController.tweet = nil;
 
     if ( !self->_tweetTextStorage )
         {
@@ -103,8 +106,7 @@ NSDictionary static* sDefaultTextAttributes;
         ( void )[ [ NSTextView alloc ] initWithFrame: frame textContainer: textContainer ];
         [ [ self _textView ] setEditable: NO ];
         [ [ self _textView ] setSelectable: NO ];
-
-        [ self setNeedsUpdateConstraints: YES ];
+        [ [ self _textView ] setBackgroundColor: [ NSColor purpleColor ] ];
         }
 
     [ self->_tweetTextStorage replaceCharactersInRange: NSMakeRange( 0, self->_tweetTextStorage.string.length )
@@ -112,6 +114,8 @@ NSDictionary static* sDefaultTextAttributes;
 
     [ self->_tweetTextStorage addAttributes: [ [ self class ] defaultTextAttributes ]
                                       range: NSMakeRange( 0, self->_tweetTextStorage.string.length ) ];
+
+    [ self _updateConstraints ];
     }
 
 - ( OTCTweet* ) tweet
@@ -120,20 +124,52 @@ NSDictionary static* sDefaultTextAttributes;
     }
 
 #pragma mark Constraints-Based Auto Layout
-- ( void ) updateConstraints
+- ( void ) _updateConstraints
     {
-    [ super updateConstraints ];
     [ self removeConstraints: self.constraints ];
 
     NSTextView* textView = [ self _textView ];
     [ textView setTranslatesAutoresizingMaskIntoConstraints: NO ];
     [ self addSubview: textView ];
 
-    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( textView );
-    NSArray* horizontalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth@750)]|" options: 0 metrics: @{ @"textViewWidth" : @( NSWidth( textView.frame ) ) } views: viewsDict ];
-    NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight@750)]|" options: 0 metrics: @{ @"textViewHeight" :  @( NSHeight( textView.frame ) ) } views: viewsDict ];
-    [ self addConstraints: horizontalConstraints ];
-    [ self addConstraints: verticalConstraints ];
+    NSMutableDictionary* viewsDict = [ NSDictionaryOfVariableBindings( textView ) mutableCopy ];
+
+    if ( self->_tweet.media )
+        {
+        NSView* mediaWell = self->_tweetMediaWellController.mediaWell;
+        [ mediaWell setTranslatesAutoresizingMaskIntoConstraints: NO ];
+
+        if ( mediaWell.superview != self )
+            [ self addSubview: mediaWell ];
+
+        [ viewsDict addEntriesFromDictionary: NSDictionaryOfVariableBindings( mediaWell ) ];
+
+        NSArray* horizontalConstraints0 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth)]|" options: 0 metrics: @{ @"textViewWidth" : @( NSWidth( textView.frame ) ) } views: viewsDict ];
+        NSArray* horizontalConstraints1 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[mediaWell(==textView)]|" options: 0 metrics: nil views: viewsDict ];
+        NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight)]-(==space)-[mediaWell(>=mediaWellHeight@750)]|"
+                                                                                options: 0
+                                                                                metrics: @{ @"textViewHeight" :  @( NSHeight( textView.frame ) )
+                                                                                          , @"space" : @( 10.f )
+                                                                                          , @"mediaWellHeight" : @( 149.f )
+                                                                                          }
+                                                                                  views: viewsDict ];
+        [ self addConstraints: horizontalConstraints0 ];
+        [ self addConstraints: horizontalConstraints1 ];
+        [ self addConstraints: verticalConstraints ];
+        }
+    else
+        {
+        NSView* mediaWell = self->_tweetMediaWellController.mediaWell;
+        [ mediaWell setTranslatesAutoresizingMaskIntoConstraints: NO ];
+
+        if ( mediaWell.superview == self )
+            [ mediaWell removeFromSuperview ];
+
+        NSArray* horizontalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth@750)]|" options: 0 metrics: @{ @"textViewWidth" : @( NSWidth( textView.frame ) ) } views: viewsDict ];
+        NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight@750)]|" options: 0 metrics: @{ @"textViewHeight" :  @( NSHeight( textView.frame ) ) } views: viewsDict ];
+        [ self addConstraints: horizontalConstraints ];
+        [ self addConstraints: verticalConstraints ];
+        }
     }
 
 + ( NSDictionary* ) defaultTextAttributes
@@ -152,8 +188,18 @@ NSDictionary static* sDefaultTextAttributes;
 
 - ( CGFloat ) textBlockDynamicHeightWithWidth: ( CGFloat )_TextBlockWidth
     {
-    return [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
-                                                        blockWidth: _TextBlockWidth ];
+    CGFloat mediaWellHeight = 0.f;
+    if ( self->_tweet.media )
+        mediaWellHeight = 149.f + 10.f;
+
+    CGFloat fsckHeight = [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
+                                                        blockWidth: _TextBlockWidth
+                                                   mediaWellHeight: mediaWellHeight ];
+
+    if ( [ self->_tweet.author.screenName isEqualToString: @"@m13253" ] )
+        NSLog( @"%@     Height: %g", self->_tweet, fsckHeight );
+
+    return fsckHeight;
     }
 
 #pragma mark Private Interfaces
@@ -165,6 +211,13 @@ NSDictionary static* sDefaultTextAttributes;
 + ( CGFloat ) _textBlockDynamicHeightWithTextStorage: ( NSTextStorage* )_TextStorage
                                           blockWidth: ( CGFloat )_TextBlockWidth
     {
+    return [ self _textBlockDynamicHeightWithTextStorage: _TextStorage blockWidth: _TextBlockWidth mediaWellHeight: 0.f ];
+    }
+
++ ( CGFloat ) _textBlockDynamicHeightWithTextStorage: ( NSTextStorage* )_TextStorage
+                                          blockWidth: ( CGFloat )_TextBlockWidth
+                                     mediaWellHeight: ( CGFloat )_MediaWellHeight
+    {
     NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( _TextBlockWidth, FLT_MAX ) ];
     NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
 
@@ -173,8 +226,10 @@ NSDictionary static* sDefaultTextAttributes;
 
     ( void )[ layoutManager glyphRangeForTextContainer: textContainer ];
     CGFloat dynamicHeight = NSHeight( [ layoutManager usedRectForTextContainer: textContainer ] );
+    dynamicHeight += _MediaWellHeight;
 
     return dynamicHeight;
+
     }
 
 @end // TWPTextView class
