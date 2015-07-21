@@ -124,12 +124,10 @@
     {
     [ super drawRect: _DirtyRect ];
 
+    CGFloat corner = 20.f;
     NSBezierPath* roundedRectOulinePath =
         [ NSBezierPath bezierPathWithRoundedRect: _DirtyRect
-                       withRadiusOfTopLeftCorner: 20.f
-                                bottomLeftCorner: 20.f
-                                  topRightCorner: 20.f
-                               bottomRightCorner: 20.f
+                       withRadiusOfTopLeftCorner: corner bottomLeftCorner: corner topRightCorner: corner bottomRightCorner: corner
                                        isFlipped: NO ];
     [ [ NSColor whiteColor ] set ];
     [ roundedRectOulinePath stroke ];
@@ -139,29 +137,26 @@
     if ( self->_images.count > 0 )
         {
         NSImage* image = [ self->_images firstObject ];
-        NSSize currentSize = [ image size ];
+
+        NSSize originalSize = [ image size ];
         NSSize fitSize = NSZeroSize;
 
-//        if ( NSHeight( self.bounds ) <= currentSize.height )
-//            {
-            fitSize = NSMakeSize( NSWidth( self.bounds ), ( NSWidth( self.bounds ) / currentSize.width ) * currentSize.height );
-            [ image setSize: fitSize ];
+        fitSize = NSMakeSize( NSWidth( self.bounds ), ( NSWidth( self.bounds ) / originalSize.width ) * originalSize.height );
 
-            [ image drawInRect: _DirtyRect
-                      fromRect: NSMakeRect( 0, ( fitSize.height - NSHeight( self.bounds ) ) / 2, NSWidth( self.bounds ), NSHeight( self.bounds ) )
-                     operation: NSCompositeSourceOver
-                      fraction: 1.f ];
-//            }
-//        else
-//            {
-//            fitSize = NSMakeSize( ( NSHeight( self.bounds ) / currentSize.height ) * currentSize.width, NSHeight( self.bounds ) );
-//            [ image setSize: fitSize ];
-//
-//            [ image drawInRect: _DirtyRect
-//                      fromRect: NSMakeRect( 0, 0, NSWidth( self.bounds ), NSHeight( self.bounds ) )
-//                     operation: NSCompositeSourceOver
-//                      fraction: 1.f ];
-//            }
+        BOOL shouldFitHeight = NO;
+        if ( fitSize.height < NSHeight( self.bounds ) )
+            {
+            fitSize.height = NSHeight( self.bounds );
+            fitSize.width = ( NSHeight( self.bounds ) / originalSize.height ) * originalSize.width;
+            shouldFitHeight = YES;
+            }
+
+        [ image setSize: fitSize ];
+        [ image drawInRect: _DirtyRect
+                  fromRect: shouldFitHeight ? NSMakeRect( ( fitSize.width - NSWidth( self.bounds ) ) / 2, 0, NSWidth( self.bounds ), NSHeight( self.bounds ) )
+                                            : NSMakeRect( 0, ( fitSize.height - NSHeight( self.bounds ) ) / 2, NSWidth( self.bounds ), NSHeight( self.bounds ) )
+                 operation: NSCompositeSourceOver
+                  fraction: 1.f ];
         }
     }
 
