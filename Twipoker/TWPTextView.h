@@ -24,12 +24,16 @@
 
 @import Cocoa;
 
+@class TWPTweetMediaWellController;
+
 // TWPTextView class
 @interface TWPTextView : NSView
     {
 @private
     OTCTweet __strong* _tweet;
     NSTextStorage __strong* _tweetTextStorage;
+
+    TWPTweetMediaWellController __strong* _tweetMediaWellController;
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;

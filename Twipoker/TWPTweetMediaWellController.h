@@ -34,6 +34,7 @@
     }
 
 @property ( strong, readonly ) TWPTweetMediaWell* mediaWell;
+@property ( strong, readwrite ) OTCTweet* tweet;
 
 #pragma mark Initializations
 + ( instancetype ) mediaWellControllerWithTweet: ( OTCTweet* )_Tweet;

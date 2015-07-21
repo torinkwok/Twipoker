@@ -23,8 +23,9 @@
   ██████████████████████████████████████████████████████████████████████████████*/
 
 #import "TWPTextView.h"
-#import "TWPUIConstants.h"
 #import "NSColor+Objectwitter-C.h"
+#import "TWPUIConstants.h"
+#import "TWPTweetMediaWellController.h"
 
 NSSize static sDefaultSize;
 NSDictionary static* sDefaultTextAttributes;
@@ -68,10 +69,20 @@ NSDictionary static* sDefaultTextAttributes;
                               };
     }
 
+
 #pragma mark Dynamic Accessors
 - ( void ) setTweet: ( nonnull OTCTweet* )_Tweet
     {
     self->_tweet = _Tweet;
+
+    if ( _Tweet.media )
+        {
+        if ( !self->_tweetMediaWellController )
+            self->_tweetMediaWellController = [ TWPTweetMediaWellController mediaWellControllerWithTweet: self->_tweet ];
+        else
+            self->_tweetMediaWellController.tweet = self->_tweet;
+        }
+
     if ( !self->_tweetTextStorage )
         {
         self->_tweetTextStorage = [ [ NSTextStorage alloc ] initWithString: self->_tweet.tweetText ];

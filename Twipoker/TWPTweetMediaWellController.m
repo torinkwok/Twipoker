@@ -35,6 +35,9 @@
 // TWPTweetMediaWellController class
 @implementation TWPTweetMediaWellController
 
+@dynamic mediaWell;
+@dynamic tweet;
+
 #pragma mark Initializations
 + ( instancetype ) mediaWellControllerWithTweet: ( OTCTweet* )_Tweet
     {
@@ -44,15 +47,29 @@
 - ( instancetype ) initWithTweet: ( OTCTweet* )_Tweet
     {
     if ( self = [ super initWithNibName: @"TWPTweetMediaWell" bundle: [ NSBundle mainBundle ] ] )
+        {
         self->_tweet = _Tweet;
+        [ [ self _mediaWell ] setTweet: _Tweet ];
+        }
 
     return self;
     }
 
-#pragma mark Accessors
+#pragma mark Dynamic Accessors
 - ( TWPTweetMediaWell* ) mediaWell
     {
     return [ self _mediaWell ];
+    }
+
+- ( void ) setTweet: ( OTCTweet* )_Tweet
+    {
+    self->_tweet = _Tweet;
+    [ [ self _mediaWell ] setTweet: _Tweet ];
+    }
+
+- ( OTCTweet* ) tweet
+    {
+    return self->_tweet;
     }
 
 #pragma mark Private Interfaces
