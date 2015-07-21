@@ -36,6 +36,12 @@
 @class TWPTweetCellRepController;
 @class TWPTweetClearCellRepController;
 
+
+typedef NS_ENUM( NSUInteger, TWPTweetCellViewStyle )
+    { TWPTweetCellViewStyleClear = 0
+    // TODO: Waiting for other styles
+    };
+
 // Notification Names
 NSString extern* const TWPTweetCellViewShouldDisplayDetailOfTweet;
 
@@ -47,6 +53,8 @@ NSString extern* const TWPTweetCellViewTweetUserInfoKey;
     {
 @private
     OTCTweet __strong* _tweet;
+
+    TWPTweetCellViewStyle _style;
 
     TWPTweetClearCellRepController __strong* _clearRepController;
     }

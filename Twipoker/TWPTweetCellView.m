@@ -41,6 +41,10 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 // Private Interfaces
 @interface TWPTweetCellView ()
+
+- ( TWPTweetCellRepController* ) _currentCellRepController;
+- ( void ) _updateCellRep;
+
 @end // Private Interfaces
 
 // TWPTweetCellView class
@@ -80,30 +84,24 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {
     self->_tweet = _Tweet;
-    [ self->_clearRepController setTweet: self->_tweet ];
 
-    [ self setNeedsUpdateConstraints: YES ];
+    switch ( self->_tweet.type )
+        {
+        // TODO: Waiting for other styles
+        case OTCTweetTypeNormalTweet:
+        case OTCTweetTypeRetweet:
+        case OTCTweetTypeReply:
+        case OTCTweetTypeDirectMessage:
+        case OTCTweetTypeQuotedTweet:
+            {
+            self->_style = TWPTweetCellViewStyleClear;
+            }; break;
 
-    NSView* cellView = self;
-    NSView* cellRep = self->_clearRepController.rep;
-    [ self addSubview: cellRep ];
+        default:;
+        }
 
-    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( cellView, cellRep );
-
-    NSArray* horizontalConstraints = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[cellRep(==cellView)]|"
-                            options: 0
-                            metrics: nil
-                              views: viewsDict ];
-
-    NSArray* verticalConstraints = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|[cellRep(==cellView)]|"
-                            options: 0
-                            metrics: nil
-                              views: viewsDict ];
-
-    [ self addConstraints: horizontalConstraints ];
-    [ self addConstraints: verticalConstraints ];
+    [ [ self _currentCellRepController ] setTweet: self->_tweet ];
+    [ self _updateCellRep ];
     }
 
 - ( OTCTweet* ) tweet
@@ -118,12 +116,46 @@ NSString* const TWPTweetCellViewTweetUserInfoKey = @"TweetCellView.UserInfoKey.T
 
 - ( TWPTweetCellRepController* ) currentTweetCellRepController
     {
-    return self->_clearRepController;
+    return [ self _currentCellRepController ];
     }
 
 - ( CGFloat ) dynamicHeightAccordingToTweetTextBlockHeight: ( CGFloat )_TweetTextBlockHeight
     {
     return [ self.currentTweetCellRepController.rep heightWithTweetTextBlockHeight: _TweetTextBlockHeight ];
+    }
+
+#pragma mark Private Interfaces
+- ( TWPTweetCellRepController* ) _currentCellRepController
+    {
+    TWPTweetCellRepController* controller = nil;
+
+    switch ( self->_style )
+        {
+        case TWPTweetCellViewStyleClear:
+            {
+            controller = self->_clearRepController;
+            } break;
+
+        default:; // TODO: Waiting for other styles
+        }
+
+    return controller;
+    }
+
+- ( void ) _updateCellRep
+    {
+    NSView* cellView = self;
+    NSView* cellRep = [ self _currentCellRepController ].rep;
+
+    if ( cellRep.superview != self )
+        [ self addSubview: cellRep ];
+
+    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( cellView, cellRep );
+
+    NSArray* horizontalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[cellRep(==cellView)]|" options: 0 metrics: nil views: viewsDict ];
+    NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[cellRep(==cellView)]|" options: 0 metrics: nil views: viewsDict ];
+    [ self addConstraints: horizontalConstraints ];
+    [ self addConstraints: verticalConstraints ];
     }
 
 @end // TWPTweetCellView class
