@@ -32,7 +32,11 @@
     OTCTweet __strong* _tweet;
 
     NSURLSession     __strong* _URLSession;
-    NSURLSessionTask __strong* _dataTask;
+
+    NSURLSessionTask __strong* _imageDataTask0;
+    NSURLSessionTask __strong* _imageDataTask1;
+    NSURLSessionTask __strong* _imageDataTask2;
+    NSURLSessionTask __strong* _imageDataTask3;
 
     NSMutableArray __strong* _images;
     }

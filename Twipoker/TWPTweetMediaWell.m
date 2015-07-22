@@ -76,11 +76,6 @@
     [ self->_images removeAllObjects ];
     [ self setNeedsDisplay: YES ];
 
-    NSURL* mediaURLOverSSL = [ ( OTCMedia* )( self->_tweet.media.firstObject ) mediaURLOverSSL ];
-
-    NSURLRequest* mediaRequest = [ NSURLRequest requestWithURL: mediaURLOverSSL ];
-    NSCachedURLResponse* cachedRequest = [ [ NSURLCache sharedURLCache ] cachedResponseForRequest: mediaRequest ];
-
     void (^handleImageData)( NSData*, NSURLResponse*, NSError* ) =
         ^( NSData* _ImageData, NSURLResponse* _Response, NSError* _Error )
             {
@@ -89,29 +84,46 @@
             [ self performSelectorOnMainThread: @selector( setNeedsDisplay: ) withObject: @YES waitUntilDone: NO ];
             };
 
-    if ( cachedRequest )
-        handleImageData( cachedRequest.data, cachedRequest.response, nil );
-    else
+    for ( int _Index = 0; _Index < self->_tweet.media.count; _Index++ )
         {
-        self->_dataTask = [ self->_URLSession dataTaskWithURL: mediaURLOverSSL
-                                            completionHandler:
-            ^( NSData* _ImageData, NSURLResponse* _Response, NSError* _Error )
-                {
-                if ( _ImageData && _Response )
+        OTCMedia* tweetMedia = self->_tweet.media[ _Index ];
+        NSURL* mediaURLOverSSL = tweetMedia.mediaURLOverSSL;
+
+        NSURLRequest* mediaRequest = [ NSURLRequest requestWithURL: mediaURLOverSSL ];
+        NSCachedURLResponse* cachedRequest = [ [ NSURLCache sharedURLCache ] cachedResponseForRequest: mediaRequest ];
+
+        if ( cachedRequest )
+            handleImageData( cachedRequest.data, cachedRequest.response, nil );
+        else
+            {
+            NSURLSessionTask* dataTask = [ self->_URLSession dataTaskWithURL: mediaURLOverSSL
+                                                           completionHandler:
+                ^( NSData* _ImageData, NSURLResponse* _Response, NSError* _Error )
                     {
-                    handleImageData( _ImageData, _Response, _Error );
+                    if ( _ImageData && _Response )
+                        {
+                        handleImageData( _ImageData, _Response, _Error );
 
-                    NSCachedURLResponse* cache =
-                        [ [ NSCachedURLResponse alloc ] initWithResponse: _Response
-                                                                    data: _ImageData
-                                                                userInfo: nil
-                                                           storagePolicy: NSURLCacheStorageAllowed ];
+                        NSCachedURLResponse* cache =
+                            [ [ NSCachedURLResponse alloc ] initWithResponse: _Response
+                                                                        data: _ImageData
+                                                                    userInfo: nil
+                                                               storagePolicy: NSURLCacheStorageAllowed ];
 
-                    [ [ NSURLCache sharedURLCache ] storeCachedResponse: cache forRequest: mediaRequest ];
-                    }
-                } ];
+                        [ [ NSURLCache sharedURLCache ] storeCachedResponse: cache forRequest: mediaRequest ];
+                        }
+                    } ];
 
-        [ self->_dataTask resume ];
+            [ dataTask resume ];
+
+            switch ( _Index )
+                {
+                case 0: dataTask = self->_imageDataTask0 = dataTask; break;
+                case 1: dataTask = self->_imageDataTask1 = dataTask; break;
+                case 2: dataTask = self->_imageDataTask2 = dataTask; break;
+                case 3: dataTask = self->_imageDataTask3 = dataTask; break;
+                }
+            }
         }
     }
 
@@ -121,8 +133,10 @@
     }
 
 #pragma mark Custom Drawing
+
 #define Hor_Gap 5.f
 #define Ver_Gap 5.f
+
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
@@ -137,45 +151,119 @@
     [ roundedRectOulinePath fill ];
     [ roundedRectOulinePath addClip ];
 
-    if ( self->_images.count > 0 )
+    for ( int _Index = 0; _Index < self->_images.count; _Index++ )
         {
-        NSLog( @"Index 0: %g", [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: 1 ] );
-        NSLog( @"\n" );
-
-        NSLog( @"Index 0 Image: %g", [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: 2 ] );
-        NSLog( @"Index 1 Image: %g", [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: 2 ] );
-        NSLog( @"\n" );
-
-        NSLog( @"Index 0 Image: %g", [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: 3 ] );
-        NSLog( @"Index 1 Image: %g", [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: 3 ] );
-        NSLog( @"Index 2 Image: %g", [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: 3 ] );
-        NSLog( @"\n" );
-
-        NSLog( @"Index 0 Image: %g", [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: 4 ] );
-        NSLog( @"Index 1 Image: %g", [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: 4 ] );
-        NSLog( @"Index 2 Image: %g", [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: 4 ] );
-        NSLog( @"Index 3 Image: %g", [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: 4 ] );
-        NSLog( @"========" );
-
-        NSImage* image = [ self->_images firstObject ];
+        NSImage* image = self->_images[ _Index ];
 
         NSSize originalSize = [ image size ];
-        NSSize fitSize = NSMakeSize( [ self _fitWidthOfImageAtIndex: 0 basedOnNumOfImages: self->_images.count ]
+        NSSize fitSize = NSMakeSize( [ self _fitWidthOfImageAtIndex: _Index basedOnNumOfImages: self->_images.count ]
                                    , ( NSWidth( self.bounds ) / originalSize.width ) * originalSize.height );
         BOOL shouldFitHeight = NO;
         if ( fitSize.height < NSHeight( self.bounds ) )
             {
-            fitSize.height = [ self _fitHeightOfImageAtIndex: 0 basedOnNumOfImages: self->_images.count ];
+            fitSize.height = [ self _fitHeightOfImageAtIndex: _Index basedOnNumOfImages: self->_images.count ];
             fitSize.width = ( fitSize.height / originalSize.height ) * originalSize.width;
             shouldFitHeight = YES;
             }
 
         [ image setSize: fitSize ];
-        [ image drawInRect: _DirtyRect
-                  fromRect: shouldFitHeight ? NSMakeRect( ( fitSize.width - NSWidth( self.bounds ) ) / 2, 0, NSWidth( self.bounds ), NSHeight( self.bounds ) )
-                                            : NSMakeRect( 0, ( fitSize.height - NSHeight( self.bounds ) ) / 2, NSWidth( self.bounds ), NSHeight( self.bounds ) )
-                 operation: NSCompositeSourceOver
-                  fraction: 1.f ];
+
+        switch ( _Index )
+            {
+            case 0:
+                {
+                if ( self->_tweet.media.count == 1 )
+                    {
+                    [ image drawInRect: self.frame
+                              fromRect: shouldFitHeight ? NSMakeRect( ( fitSize.width - NSWidth( self.bounds ) ) / 2, 0, NSWidth( self.bounds ), NSHeight( self.bounds ) )
+                                                        : NSMakeRect( 0, ( fitSize.height - NSHeight( self.bounds ) ) / 2, NSWidth( self.bounds ), NSHeight( self.bounds ) )
+                             operation: NSCompositeSourceOver
+                              fraction: 1.f ];
+                    }
+                else if ( self->_tweet.media.count == 2 || self->_tweet.media.count == 3 )
+                    {
+                    [ image drawInRect: NSMakeRect( NSMinX( self.bounds ), NSMinY( self.bounds ), ( NSWidth( self.frame ) - Hor_Gap ) / 2, NSHeight( self.frame ) )
+                              fromRect: NSZeroRect
+                             operation: NSCompositeSourceOver
+                              fraction: 1.f ];
+                    }
+                else if ( self->_tweet.media.count > 3 )
+                    {
+                    [ image drawInRect: NSMakeRect( NSMinX( self.bounds )
+                                                  , ( NSHeight( self.bounds ) - Ver_Gap ) / 2 + Ver_Gap
+                                                  , ( NSWidth( self.frame ) - Hor_Gap ) / 2
+                                                  , ( NSHeight( self.frame ) - Hor_Gap ) / 2
+                                                  )
+                              fromRect: NSZeroRect
+                             operation: NSCompositeSourceOver
+                              fraction: 1.f ];
+                    }
+                } break;
+
+
+            case 1:
+                {
+                if ( self->_tweet.media.count == 2 )
+                    {
+                    [ image drawInRect: NSMakeRect( ( NSWidth( self.bounds ) - Hor_Gap ) / 2 + Hor_Gap, NSMinY( self.frame )
+                                                  , ( NSWidth( self.frame ) - Hor_Gap ) / 2
+                                                  , NSHeight( self.frame )
+                                                  )
+                              fromRect: NSZeroRect
+                             operation: NSCompositeSourceOver
+                              fraction: 1.f ];
+                    }
+                else if ( self->_tweet.media.count > 2 )
+                    {
+                    [ image drawInRect: NSMakeRect( ( NSWidth( self.bounds ) - Hor_Gap ) / 2 + Hor_Gap
+                                                  , ( NSHeight( self.bounds ) - Ver_Gap ) / 2 + Ver_Gap
+                                                  , ( NSWidth( self.frame ) - Hor_Gap ) / 2
+                                                  , ( NSHeight( self.frame ) - Ver_Gap ) / 2
+                                                  )
+                              fromRect: NSZeroRect
+                             operation: NSCompositeSourceOver
+                              fraction: 1.f ];
+                    }
+                } break;
+
+            case 2:
+                {
+                if ( self->_tweet.media.count == 3 )
+                    {
+                    [ image drawInRect: NSMakeRect( ( NSWidth( self.bounds ) - Hor_Gap ) / 2 + Hor_Gap
+                                                  , NSMinY( self.bounds )
+                                                  , ( NSWidth( self.frame ) - Hor_Gap ) / 2
+                                                  , ( NSHeight( self.bounds ) - Ver_Gap ) / 2
+                                                  )
+                              fromRect: NSZeroRect
+                             operation: NSCompositeSourceOver
+                              fraction: 1.f ];
+                    }
+                else if ( self->_tweet.media.count > 3 )
+                    {
+                    [ image drawInRect: NSMakeRect( NSMinX( self.bounds )
+                                                  , NSMinY( self.bounds )
+                                                  , ( NSWidth( self.frame ) - Hor_Gap ) / 2
+                                                  , ( NSHeight( self.bounds ) - Ver_Gap ) / 2
+                                                  )
+                              fromRect: NSZeroRect
+                             operation: NSCompositeSourceOver
+                              fraction: 1.f ];
+                    }
+                } break;
+
+            case 3:
+                {
+                [ image drawInRect: NSMakeRect( ( NSWidth( self.bounds ) - Hor_Gap ) / 2 + Hor_Gap
+                                              , NSMinY( self.bounds )
+                                              , ( NSWidth( self.frame ) - Hor_Gap ) / 2
+                                              , ( NSHeight( self.bounds ) - Ver_Gap ) / 2
+                                              )
+                          fromRect: NSZeroRect
+                         operation: NSCompositeSourceOver
+                          fraction: 1.f ];
+                } break;
+            }
         }
     }
 
@@ -188,23 +276,6 @@
 
     if ( _NumOfImages > 1 )
         fitWidth = ( fitWidth - Hor_Gap ) / 2.f;
-
-//    if ( _NumOfImages <= self->_maxNumOfImages )
-//        {
-//        switch ( _ImageIndex )
-//            {
-//            case 0:
-//                {
-//                if ( _NumOfImages != 1 )
-//                    fitWidth = ( NSWidth( self.bounds ) - Hor_Gap ) / 2.f;
-//                } break;
-//
-//            default:
-//                {
-//                fitWidth = ( NSWidth( self.bounds ) - Hor_Gap ) / 2.f;
-//                } break;
-//            }
-//        }
 
     return fitWidth;
     }
