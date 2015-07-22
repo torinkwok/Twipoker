@@ -171,127 +171,190 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
     [ roundedRectOulinePath fill ];
     [ roundedRectOulinePath addClip ];
 
-    for ( int _Index = 0; _Index < self->_images.count; _Index++ )
+    for ( int _ImageIndex = 0; _ImageIndex < self->_images.count; _ImageIndex++ )
         {
-        NSImage* image = self->_images[ _Index ];
+        NSImage* image = self->_images[ _ImageIndex ];
 
-        NSSize originalSize = [ image size ];
-        NSSize fitSize = NSMakeSize( [ self _fitWidthOfImageAtIndex: _Index basedOnNumOfImages: self->_images.count ]
-                                   , ( NSWidth( self.bounds ) / originalSize.width ) * originalSize.height );
-        BOOL shouldFitHeight = NO;
-        if ( fitSize.height < [ self _fitHeightOfImageAtIndex: _Index basedOnNumOfImages: self->_images.count ] )
-            {
-            fitSize.height = [ self _fitHeightOfImageAtIndex: _Index basedOnNumOfImages: self->_images.count ];
-            fitSize.width = ( fitSize.height / originalSize.height ) * originalSize.width;
-            shouldFitHeight = YES;
-            }
-
+        BOOL fittedHeight = NO;
+        NSSize fitSize = [ self _fitSizeOfImageAtIndex: _ImageIndex basedOnNumOfImages: self->_tweet.media.count fittedHeight: &fittedHeight ];
         [ image setSize: fitSize ];
 
-        switch ( _Index )
-            {
-            case 0:
-                {
-                if ( self->_tweet.media.count == 1 )
-                    {
-                    [ image drawInRect: self.frame
-                              fromRect: shouldFitHeight ? NSMakeRect( ( fitSize.width - NSWidth( self.bounds ) ) / 2, 0, NSWidth( self.bounds ), NSHeight( self.bounds ) )
-                                                        : NSMakeRect( 0, ( fitSize.height - NSHeight( self.bounds ) ) / 2, NSWidth( self.bounds ), NSHeight( self.bounds ) )
-                             operation: NSCompositeSourceOver
-                              fraction: 1.f ];
-                    }
-                else if ( self->_tweet.media.count == 2 || self->_tweet.media.count == 3 )
-                    {
-                    [ image drawInRect: NSMakeRect( NSMinX( self.bounds ), NSMinY( self.bounds ), ( NSWidth( self.frame ) - Hor_Gap ) / 2, NSHeight( self.frame ) )
-                              fromRect: NSZeroRect
-                             operation: NSCompositeSourceOver
-                              fraction: 1.f ];
-                    }
-                else if ( self->_tweet.media.count > 3 )
-                    {
-                    [ image drawInRect: NSMakeRect( NSMinX( self.bounds )
-                                                  , kMidYTakeAccountOfGap( self.bounds )
-                                                  , kHalfOfWidthTakeAccountOfGap( self.bounds )
-                                                  , kHalfOfHeightTakeAccountOfGap( self.bounds )
-                                                  )
-                              fromRect: NSZeroRect
-                             operation: NSCompositeSourceOver
-                              fraction: 1.f ];
-                    }
-                } break;
-
-
-            case 1:
-                {
-                if ( self->_tweet.media.count == 2 )
-                    {
-                    [ image drawInRect: NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
-                                                  , NSMinY( self.frame )
-                                                  , kHalfOfWidthTakeAccountOfGap( self.bounds )
-                                                  , NSHeight( self.frame )
-                                                  )
-                              fromRect: NSZeroRect
-                             operation: NSCompositeSourceOver
-                              fraction: 1.f ];
-                    }
-                else if ( self->_tweet.media.count > 2 )
-                    {
-                    [ image drawInRect: NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
-                                                  , kMidYTakeAccountOfGap( self.bounds )
-                                                  , kHalfOfWidthTakeAccountOfGap( self.bounds )
-                                                  , kHalfOfHeightTakeAccountOfGap( self.bounds )
-                                                  )
-                              fromRect: NSZeroRect
-                             operation: NSCompositeSourceOver
-                              fraction: 1.f ];
-                    }
-                } break;
-
-            case 2:
-                {
-                if ( self->_tweet.media.count == 3 )
-                    {
-                    [ image drawInRect: NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
-                                                  , NSMinY( self.bounds )
-                                                  , kHalfOfWidthTakeAccountOfGap( self.bounds )
-                                                  , kHalfOfHeightTakeAccountOfGap( self.bounds )
-                                                  )
-                              fromRect: NSZeroRect
-                             operation: NSCompositeSourceOver
-                              fraction: 1.f ];
-                    }
-                else if ( self->_tweet.media.count > 3 )
-                    {
-                    [ image drawInRect: NSMakeRect( NSMinX( self.bounds )
-                                                  , NSMinY( self.bounds )
-                                                  , kHalfOfWidthTakeAccountOfGap( self.bounds )
-                                                  , kHalfOfHeightTakeAccountOfGap( self.bounds )
-                                                  )
-                              fromRect: NSZeroRect
-                             operation: NSCompositeSourceOver
-                              fraction: 1.f ];
-                    }
-                } break;
-
-            case 3:
-                {
-                [ image drawInRect: NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
-                                              , NSMinY( self.bounds )
-                                              , kHalfOfWidthTakeAccountOfGap( self.bounds )
-                                              , kHalfOfHeightTakeAccountOfGap( self.bounds )
-                                              )
-                          fromRect: NSZeroRect
-                         operation: NSCompositeSourceOver
-                          fraction: 1.f ];
-                } break;
-            }
+        NSRect dstRect = [ self _destRectInWhichToDrawImageAtIndex: _ImageIndex basedOnNumOfImages: self->_tweet.media.count ];
+        [ image drawInRect: dstRect
+                  fromRect: fittedHeight ? NSMakeRect( ( fitSize.width - NSWidth( dstRect ) ) / 2, 0, NSWidth( dstRect ), NSHeight( dstRect ) )
+                                           : NSMakeRect( 0, ( fitSize.height - NSHeight( dstRect ) ) / 2, NSWidth( dstRect ), NSHeight( dstRect ) )
+                 operation: NSCompositeSourceOver
+                  fraction: 1.f ];
         }
+    }
+
+- ( NSSize ) _fitSizeOfImageAtIndex: ( NSUInteger )_ImageIndex
+                 basedOnNumOfImages: ( NSUInteger )_NumOfImages
+                       fittedHeight: ( BOOL* )_FittedHeight
+    {
+    BOOL fittedHeight = NO;
+    NSRect dstRect = [ self _destRectInWhichToDrawImageAtIndex: _ImageIndex basedOnNumOfImages: _NumOfImages ];
+
+    NSSize originalImageSize = [ self->_images[ _ImageIndex ] size ];
+    NSSize fitImageSize = NSMakeSize( NSWidth( dstRect ), ( NSWidth( dstRect ) / originalImageSize.width ) * originalImageSize.height );
+
+    if ( fitImageSize.height < [ self _fitHeightOfImageAtIndex: _ImageIndex basedOnNumOfImages: self->_images.count ] )
+        {
+        fitImageSize.height = [ self _fitHeightOfImageAtIndex: _ImageIndex basedOnNumOfImages: self->_images.count ];
+        fitImageSize.width = ( fitImageSize.height / originalImageSize.height ) * originalImageSize.width;
+
+        fittedHeight = YES;
+        }
+
+    *_FittedHeight = fittedHeight;
+    return fitImageSize;
+    }
+
+// Calculate the source rectangle specifying the portion of the image you want to draw.
+// The coordinates of this rectangle must be specified using the image's own coordinate system.
+// If this method returns NSZeroRect, the entire image is drawn.
+- ( NSRect ) _srcRectOfPortionOfImageAtIndex: ( NSUInteger )_ImageIndex
+                          basedOnNumOfImages: ( NSUInteger )_NumOfImages
+                                imageFitSize: ( NSSize )_FitSize
+                                fittedHeight: ( BOOL )_FittedHeight
+    {
+//    NSParameterAssert( _ImageIndex < _NumOfImages );
+
+    NSRect srcRect = NSZeroRect;
+    NSRect dstRect = [ self _destRectInWhichToDrawImageAtIndex: _ImageIndex basedOnNumOfImages: _NumOfImages ];
+
+    switch ( _ImageIndex )
+        {
+        case 0:
+            {
+            if ( _NumOfImages == 1 )
+                {
+                srcRect = _FittedHeight ? NSMakeRect( ( _FitSize.width - NSWidth( dstRect ) ) / 2, 0, NSWidth( self.bounds ), NSHeight( self.bounds ) )
+                                           : NSMakeRect( 0, ( _FitSize.height - NSHeight( self.bounds ) ) / 2, NSWidth( self.bounds ), NSHeight( self.bounds ) );
+                }
+            else if ( _NumOfImages == 2 || _NumOfImages == 3 )
+                {
+                srcRect = _FittedHeight ? NSMakeRect( ( _FitSize.width - NSWidth( dstRect ) ) / 2, 0, NSWidth( dstRect ), NSHeight( dstRect ) )
+                                           : NSMakeRect( 0, ( _FitSize.height - NSHeight( dstRect ) ) / 2, NSWidth( dstRect ), NSHeight( dstRect ) );
+                }
+            else if ( _NumOfImages == 4 )
+                {
+                srcRect = _FittedHeight ? NSMakeRect( ( _FitSize.width - NSWidth( dstRect ) ) / 2, 0, NSWidth( dstRect ), NSHeight( dstRect ) )
+                                           : NSMakeRect( 0, ( _FitSize.height - NSHeight( dstRect ) ) / 2, NSWidth( dstRect ), NSHeight( dstRect ) );
+                }
+            } break;
+
+        case 1:
+            {
+            // TODO:
+            } break;
+
+        case 2:
+            {
+            // TODO:
+            } break;
+
+        case 3:
+            {
+            // TODO:
+            } break;
+        }
+
+    return srcRect;
+    }
+
+// Calculate the rectangle in which to draw the image, specified in the current coordinate system.
+- ( NSRect ) _destRectInWhichToDrawImageAtIndex: ( NSUInteger )_ImageIndex
+                             basedOnNumOfImages: ( NSUInteger )_NumOfImages
+    {
+//    NSParameterAssert( _ImageIndex < _NumOfImages );
+
+    NSRect dstRect = self.bounds;
+
+    switch ( _ImageIndex )
+        {
+        case 0:
+            {
+            if ( _NumOfImages == 1 )
+                {
+                ;
+                }
+            else if ( _NumOfImages == 2 || _NumOfImages == 3 )
+                {
+                dstRect = NSMakeRect( NSMinX( self.bounds )
+                                    , NSMinY( self.bounds )
+                                    , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                    , NSHeight( self.frame )
+                                    );
+                }
+            else if ( _NumOfImages > 3 )
+                {
+                dstRect = NSMakeRect( NSMinX( self.bounds )
+                                    , kMidYTakeAccountOfGap( self.bounds )
+                                    , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                    , kHalfOfHeightTakeAccountOfGap( self.bounds )
+                                    );
+                }
+            } break;
+
+
+        case 1:
+            {
+            if ( _NumOfImages == 2 )
+                {
+                dstRect = NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
+                                    , NSMinY( self.frame )
+                                    , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                    , NSHeight( self.frame )
+                                    );
+                }
+            else if ( _NumOfImages > 2 )
+                {
+                dstRect = NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
+                                    , kMidYTakeAccountOfGap( self.bounds )
+                                    , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                    , kHalfOfHeightTakeAccountOfGap( self.bounds )
+                                    );
+                }
+            } break;
+
+        case 2:
+            {
+            if ( _NumOfImages == 3 )
+                {
+                dstRect = NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
+                                    , NSMinY( self.bounds )
+                                    , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                    , kHalfOfHeightTakeAccountOfGap( self.bounds )
+                                    );
+                }
+            else if ( _NumOfImages > 3 )
+                {
+                dstRect = NSMakeRect( NSMinX( self.bounds )
+                                    , NSMinY( self.bounds )
+                                    , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                    , kHalfOfHeightTakeAccountOfGap( self.bounds )
+                                    );
+                }
+            } break;
+
+        case 3:
+            {
+            dstRect = NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
+                                , NSMinY( self.bounds )
+                                , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                , kHalfOfHeightTakeAccountOfGap( self.bounds )
+                                );
+            } break;
+        }
+
+    return dstRect;
     }
 
 - ( CGFloat ) _fitWidthOfImageAtIndex: ( NSUInteger )_ImageIndex
                    basedOnNumOfImages: ( NSUInteger )_NumOfImages
     {
-    NSParameterAssert( _ImageIndex < _NumOfImages );
+//    NSParameterAssert( _ImageIndex < _NumOfImages );
 
     CGFloat fitWidth = NSWidth( self.bounds );
 
@@ -304,7 +367,7 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
 - ( CGFloat ) _fitHeightOfImageAtIndex: ( NSUInteger )_ImageIndex
                     basedOnNumOfImages: ( NSUInteger )_NumOfImages
     {
-    NSParameterAssert( _ImageIndex < _NumOfImages );
+//    NSParameterAssert( _ImageIndex < _NumOfImages );
 
     CGFloat fitHeight = NSHeight( self.bounds );
     if ( _NumOfImages <= self->_maxNumOfImages )
