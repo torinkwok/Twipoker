@@ -25,6 +25,29 @@
 #import "TWPTweetMediaWell.h"
 #import "NSBezierPath+TwipokerDrawing.h"
 
+#define Hor_Gap 5.f
+#define Ver_Gap 5.f
+
+static inline CGFloat kHalfOfWidthTakeAccountOfGap( NSRect _Rect )
+    {
+    return ( NSWidth( _Rect ) - Hor_Gap ) / 2;
+    }
+
+static inline CGFloat kHalfOfHeightTakeAccountOfGap( NSRect _Rect )
+    {
+    return ( NSHeight( _Rect ) - Ver_Gap ) / 2;
+    }
+
+static inline CGFloat kMidXTakeAccountOfGap( NSRect _Rect )
+    {
+    return kHalfOfWidthTakeAccountOfGap( _Rect ) + Hor_Gap;
+    }
+
+static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
+    {
+    return kHalfOfHeightTakeAccountOfGap( _Rect ) + Ver_Gap;
+    }
+
 // TWPTweetMediaWell class
 @implementation TWPTweetMediaWell
 
@@ -134,9 +157,6 @@
 
 #pragma mark Custom Drawing
 
-#define Hor_Gap 5.f
-#define Ver_Gap 5.f
-
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
@@ -159,7 +179,7 @@
         NSSize fitSize = NSMakeSize( [ self _fitWidthOfImageAtIndex: _Index basedOnNumOfImages: self->_images.count ]
                                    , ( NSWidth( self.bounds ) / originalSize.width ) * originalSize.height );
         BOOL shouldFitHeight = NO;
-        if ( fitSize.height < NSHeight( self.bounds ) )
+        if ( fitSize.height < [ self _fitHeightOfImageAtIndex: _Index basedOnNumOfImages: self->_images.count ] )
             {
             fitSize.height = [ self _fitHeightOfImageAtIndex: _Index basedOnNumOfImages: self->_images.count ];
             fitSize.width = ( fitSize.height / originalSize.height ) * originalSize.width;
@@ -190,9 +210,9 @@
                 else if ( self->_tweet.media.count > 3 )
                     {
                     [ image drawInRect: NSMakeRect( NSMinX( self.bounds )
-                                                  , ( NSHeight( self.bounds ) - Ver_Gap ) / 2 + Ver_Gap
-                                                  , ( NSWidth( self.frame ) - Hor_Gap ) / 2
-                                                  , ( NSHeight( self.frame ) - Hor_Gap ) / 2
+                                                  , kMidYTakeAccountOfGap( self.bounds )
+                                                  , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                                  , kHalfOfHeightTakeAccountOfGap( self.bounds )
                                                   )
                               fromRect: NSZeroRect
                              operation: NSCompositeSourceOver
@@ -205,8 +225,9 @@
                 {
                 if ( self->_tweet.media.count == 2 )
                     {
-                    [ image drawInRect: NSMakeRect( ( NSWidth( self.bounds ) - Hor_Gap ) / 2 + Hor_Gap, NSMinY( self.frame )
-                                                  , ( NSWidth( self.frame ) - Hor_Gap ) / 2
+                    [ image drawInRect: NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
+                                                  , NSMinY( self.frame )
+                                                  , kHalfOfWidthTakeAccountOfGap( self.bounds )
                                                   , NSHeight( self.frame )
                                                   )
                               fromRect: NSZeroRect
@@ -215,10 +236,10 @@
                     }
                 else if ( self->_tweet.media.count > 2 )
                     {
-                    [ image drawInRect: NSMakeRect( ( NSWidth( self.bounds ) - Hor_Gap ) / 2 + Hor_Gap
-                                                  , ( NSHeight( self.bounds ) - Ver_Gap ) / 2 + Ver_Gap
-                                                  , ( NSWidth( self.frame ) - Hor_Gap ) / 2
-                                                  , ( NSHeight( self.frame ) - Ver_Gap ) / 2
+                    [ image drawInRect: NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
+                                                  , kMidYTakeAccountOfGap( self.bounds )
+                                                  , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                                  , kHalfOfHeightTakeAccountOfGap( self.bounds )
                                                   )
                               fromRect: NSZeroRect
                              operation: NSCompositeSourceOver
@@ -230,10 +251,10 @@
                 {
                 if ( self->_tweet.media.count == 3 )
                     {
-                    [ image drawInRect: NSMakeRect( ( NSWidth( self.bounds ) - Hor_Gap ) / 2 + Hor_Gap
+                    [ image drawInRect: NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
                                                   , NSMinY( self.bounds )
-                                                  , ( NSWidth( self.frame ) - Hor_Gap ) / 2
-                                                  , ( NSHeight( self.bounds ) - Ver_Gap ) / 2
+                                                  , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                                  , kHalfOfHeightTakeAccountOfGap( self.bounds )
                                                   )
                               fromRect: NSZeroRect
                              operation: NSCompositeSourceOver
@@ -243,8 +264,8 @@
                     {
                     [ image drawInRect: NSMakeRect( NSMinX( self.bounds )
                                                   , NSMinY( self.bounds )
-                                                  , ( NSWidth( self.frame ) - Hor_Gap ) / 2
-                                                  , ( NSHeight( self.bounds ) - Ver_Gap ) / 2
+                                                  , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                                  , kHalfOfHeightTakeAccountOfGap( self.bounds )
                                                   )
                               fromRect: NSZeroRect
                              operation: NSCompositeSourceOver
@@ -254,10 +275,10 @@
 
             case 3:
                 {
-                [ image drawInRect: NSMakeRect( ( NSWidth( self.bounds ) - Hor_Gap ) / 2 + Hor_Gap
+                [ image drawInRect: NSMakeRect( kMidXTakeAccountOfGap( self.bounds )
                                               , NSMinY( self.bounds )
-                                              , ( NSWidth( self.frame ) - Hor_Gap ) / 2
-                                              , ( NSHeight( self.bounds ) - Ver_Gap ) / 2
+                                              , kHalfOfWidthTakeAccountOfGap( self.bounds )
+                                              , kHalfOfHeightTakeAccountOfGap( self.bounds )
                                               )
                           fromRect: NSZeroRect
                          operation: NSCompositeSourceOver
