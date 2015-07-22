@@ -28,6 +28,19 @@
 #define Hor_Gap 5.f
 #define Ver_Gap 5.f
 
+// Private Interfaces
+@interface TWPTweetMediaWell ()
+
+- ( NSSize ) _fitSizeOfImageAtIndex: ( NSUInteger )_ImageIndex
+                 basedOnNumOfImages: ( NSUInteger )_NumOfImages
+                       fittedHeight: ( BOOL* )_FittedHeight;
+
+// Calculate the rectangle in which to draw the image, specified in the current coordinate system.
+- ( NSRect ) _destRectInWhichToDrawImageAtIndex: ( NSUInteger )_ImageIndex
+                             basedOnNumOfImages: ( NSUInteger )_NumOfImages;
+
+@end // Private Interfaces
+
 static inline CGFloat kHalfOfWidthTakeAccountOfGap( NSRect _Rect )
     {
     return ( NSWidth( _Rect ) - Hor_Gap ) / 2;
@@ -156,7 +169,6 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
     }
 
 #pragma mark Custom Drawing
-
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
@@ -188,6 +200,7 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
         }
     }
 
+#pragma mark Private Interfaces
 - ( NSSize ) _fitSizeOfImageAtIndex: ( NSUInteger )_ImageIndex
                  basedOnNumOfImages: ( NSUInteger )_NumOfImages
                        fittedHeight: ( BOOL* )_FittedHeight
@@ -198,9 +211,9 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
     NSSize originalImageSize = [ self->_images[ _ImageIndex ] size ];
     NSSize fitImageSize = NSMakeSize( NSWidth( dstRect ), ( NSWidth( dstRect ) / originalImageSize.width ) * originalImageSize.height );
 
-    if ( fitImageSize.height < [ self _fitHeightOfImageAtIndex: _ImageIndex basedOnNumOfImages: self->_images.count ] )
+    if ( fitImageSize.height < NSHeight( dstRect ) )
         {
-        fitImageSize.height = [ self _fitHeightOfImageAtIndex: _ImageIndex basedOnNumOfImages: self->_images.count ];
+        fitImageSize.height = NSHeight( dstRect );
         fitImageSize.width = ( fitImageSize.height / originalImageSize.height ) * originalImageSize.width;
 
         fittedHeight = YES;
@@ -210,65 +223,11 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
     return fitImageSize;
     }
 
-// Calculate the source rectangle specifying the portion of the image you want to draw.
-// The coordinates of this rectangle must be specified using the image's own coordinate system.
-// If this method returns NSZeroRect, the entire image is drawn.
-- ( NSRect ) _srcRectOfPortionOfImageAtIndex: ( NSUInteger )_ImageIndex
-                          basedOnNumOfImages: ( NSUInteger )_NumOfImages
-                                imageFitSize: ( NSSize )_FitSize
-                                fittedHeight: ( BOOL )_FittedHeight
-    {
-//    NSParameterAssert( _ImageIndex < _NumOfImages );
-
-    NSRect srcRect = NSZeroRect;
-    NSRect dstRect = [ self _destRectInWhichToDrawImageAtIndex: _ImageIndex basedOnNumOfImages: _NumOfImages ];
-
-    switch ( _ImageIndex )
-        {
-        case 0:
-            {
-            if ( _NumOfImages == 1 )
-                {
-                srcRect = _FittedHeight ? NSMakeRect( ( _FitSize.width - NSWidth( dstRect ) ) / 2, 0, NSWidth( self.bounds ), NSHeight( self.bounds ) )
-                                           : NSMakeRect( 0, ( _FitSize.height - NSHeight( self.bounds ) ) / 2, NSWidth( self.bounds ), NSHeight( self.bounds ) );
-                }
-            else if ( _NumOfImages == 2 || _NumOfImages == 3 )
-                {
-                srcRect = _FittedHeight ? NSMakeRect( ( _FitSize.width - NSWidth( dstRect ) ) / 2, 0, NSWidth( dstRect ), NSHeight( dstRect ) )
-                                           : NSMakeRect( 0, ( _FitSize.height - NSHeight( dstRect ) ) / 2, NSWidth( dstRect ), NSHeight( dstRect ) );
-                }
-            else if ( _NumOfImages == 4 )
-                {
-                srcRect = _FittedHeight ? NSMakeRect( ( _FitSize.width - NSWidth( dstRect ) ) / 2, 0, NSWidth( dstRect ), NSHeight( dstRect ) )
-                                           : NSMakeRect( 0, ( _FitSize.height - NSHeight( dstRect ) ) / 2, NSWidth( dstRect ), NSHeight( dstRect ) );
-                }
-            } break;
-
-        case 1:
-            {
-            // TODO:
-            } break;
-
-        case 2:
-            {
-            // TODO:
-            } break;
-
-        case 3:
-            {
-            // TODO:
-            } break;
-        }
-
-    return srcRect;
-    }
 
 // Calculate the rectangle in which to draw the image, specified in the current coordinate system.
 - ( NSRect ) _destRectInWhichToDrawImageAtIndex: ( NSUInteger )_ImageIndex
                              basedOnNumOfImages: ( NSUInteger )_NumOfImages
     {
-//    NSParameterAssert( _ImageIndex < _NumOfImages );
-
     NSRect dstRect = self.bounds;
 
     switch ( _ImageIndex )
@@ -277,7 +236,7 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
             {
             if ( _NumOfImages == 1 )
                 {
-                ;
+                ; // Do nothing
                 }
             else if ( _NumOfImages == 2 || _NumOfImages == 3 )
                 {
@@ -349,51 +308,6 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
         }
 
     return dstRect;
-    }
-
-- ( CGFloat ) _fitWidthOfImageAtIndex: ( NSUInteger )_ImageIndex
-                   basedOnNumOfImages: ( NSUInteger )_NumOfImages
-    {
-//    NSParameterAssert( _ImageIndex < _NumOfImages );
-
-    CGFloat fitWidth = NSWidth( self.bounds );
-
-    if ( _NumOfImages > 1 )
-        fitWidth = ( fitWidth - Hor_Gap ) / 2.f;
-
-    return fitWidth;
-    }
-
-- ( CGFloat ) _fitHeightOfImageAtIndex: ( NSUInteger )_ImageIndex
-                    basedOnNumOfImages: ( NSUInteger )_NumOfImages
-    {
-//    NSParameterAssert( _ImageIndex < _NumOfImages );
-
-    CGFloat fitHeight = NSHeight( self.bounds );
-    if ( _NumOfImages <= self->_maxNumOfImages )
-        {
-        switch ( _ImageIndex )
-            {
-            case 0:
-                {
-                if ( _NumOfImages == self->_maxNumOfImages )
-                    fitHeight = ( NSHeight( self.bounds ) - Ver_Gap ) / 2.f;
-                } break;
-
-            case 1:
-                {
-                if ( _NumOfImages >= 3 )
-                    fitHeight = ( NSHeight( self.bounds ) - Ver_Gap ) / 2.f;
-                } break;
-
-            default:
-                {
-                fitHeight = ( NSHeight( self.bounds ) - Ver_Gap ) / 2.f;
-                } break;
-            }
-        }
-
-    return fitHeight;
     }
 
 @end // TWPTweetMediaWell class
