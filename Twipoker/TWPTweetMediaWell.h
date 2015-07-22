@@ -28,6 +28,7 @@
 @interface TWPTweetMediaWell : NSView
     {
 @private
+    NSUInteger _maxNumOfImages;
     OTCTweet __strong* _tweet;
 
     NSURLSession     __strong* _URLSession;
