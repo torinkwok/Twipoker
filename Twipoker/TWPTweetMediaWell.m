@@ -140,7 +140,6 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
     {
     if ( self = [ super initWithCoder: _Coder ] )
         {
-        self->_maxNumOfImages = 4;
         self->_URLSession = [ NSURLSession sessionWithConfiguration: [ NSURLSessionConfiguration defaultSessionConfiguration ] ];
 
         self->_imageDataUpperLeft = [ [ _TWPTweetMediaData alloc ] init ];
@@ -264,6 +263,9 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
 #pragma mark Private Interfaces
 - ( NSArray* ) _tweetMediaData
     {
+    // Init with "imageData0, imageData1, nil, imageData2, nil"
+    // =>
+    // @[ imageData0, imageData1 ]
     NSArray* tweetMediaData = [ NSArray arrayWithObjects: self->_imageDataUpperLeft
                                                         , self->_imageDataUpperRight
                                                         , self->_imageDataBottomLeft
@@ -293,7 +295,6 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
     *_FittedHeight = fittedHeight;
     return fitImageSize;
     }
-
 
 // Calculate the rectangle in which to draw the image, specified in the current coordinate system.
 - ( NSRect ) _destRectInWhichToDrawImageAtIndex: ( NSUInteger )_ImageIndex
