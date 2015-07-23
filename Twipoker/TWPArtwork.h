@@ -14,7 +14,7 @@
 |                   |_|\___/|_|  __/ \___/|_| \_)_____)_|   |_|                |██
 |                             |_|                                              |██
 |                                                                              |██
-|                         Copyright (c) 2015 Tong Guo                          |██
+|                         Copyright (c) 2015 Tong Kuo                          |██
 |                                                                              |██
 |                             ALL RIGHTS RESERVED.                             |██
 |                                                                              |██
