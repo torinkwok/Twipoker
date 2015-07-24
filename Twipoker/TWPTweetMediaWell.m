@@ -90,6 +90,8 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
                  basedOnNumOfImages: ( NSUInteger )_NumOfImages
                        fittedHeight: ( BOOL* )_FittedHeight;
 
+- ( NSInteger ) _fetchCorrespondingMedia: ( NSURL* )_MediaURL;
+
 // Calculate the rectangle in which to draw the image, specified in the current coordinate system.
 - ( NSRect ) _destRectInWhichToDrawImageAtIndex: ( NSUInteger )_ImageIndex
                              basedOnNumOfImages: ( NSUInteger )_NumOfImages;
@@ -156,21 +158,14 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
     {
     self->_tweet = _Tweet;
 
-    [ self setNeedsDisplay: YES ];
-
     void (^handleMediaData)( NSData*, NSURLResponse*, NSError* ) =
         ^( NSData* _ImageData, NSURLResponse* _Response, NSError* _Error )
             {
             NSImage* image = [ [ NSImage alloc ] initWithData: _ImageData ];
+            NSInteger mediaIndex = [ self _fetchCorrespondingMedia: _Response.URL ];
 
-            NSUInteger URLIndex = 0U;
-            for ( int _Index = 0; _Index < self.media.count; _Index++ )
-                if ( [ ( ( OTCMedia* )self.media[ _Index ] ).mediaURLOverSSL.absoluteString
-                        isEqualToString: _Response.URL.absoluteString ] )
-                    URLIndex = _Index;
-
-            if ( URLIndex < self._tweetMediaData.count )
-                [ self._tweetMediaData[ URLIndex ] setMediaData: image ];
+            if ( mediaIndex != NSNotFound )
+                [ self._tweetMediaData[ mediaIndex ] setMediaData: image ];
 
             [ self performSelectorOnMainThread: @selector( setNeedsDisplay: ) withObject: @YES waitUntilDone: NO ];
             };
@@ -216,6 +211,8 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
             [ dataTask resume ];
             }
         }
+
+    [ self setNeedsDisplay: YES ];
     }
 
 - ( OTCTweet* ) tweet
@@ -294,6 +291,19 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
 
     *_FittedHeight = fittedHeight;
     return fitImageSize;
+    }
+
+- ( NSInteger ) _fetchCorrespondingMedia: ( NSURL* )_MediaURL
+    {
+    NSInteger index = NSNotFound;
+
+    // Fetch the corresponding media data in self._tweetMediaData
+    for ( int _Index = 0; _Index < self.media.count; _Index++ )
+        if ( [ ( ( OTCMedia* )self.media[ _Index ] ).mediaURLOverSSL.absoluteString
+                isEqualToString: _MediaURL.absoluteString ] )
+            index = _Index;
+
+    return index;
     }
 
 // Calculate the rectangle in which to draw the image, specified in the current coordinate system.
