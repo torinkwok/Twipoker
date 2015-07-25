@@ -80,7 +80,7 @@
 
     CGFloat currentColumnWidth = _TableView.tableColumns.firstObject.width;
     CGFloat height = [ tweetCellView dynamicHeightAccordingToTweetTextBlockHeight:
-        [ tweetTextView textBlockDynamicHeightWithWidth: currentColumnWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace ] ];
+        [ tweetTextView textViewDynamicHeightWithWidth: currentColumnWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace ] ];
 
     return height;
     }
@@ -95,11 +95,11 @@
     for ( int _Index = 0; _Index < self->_data.count; _Index++ )
         {
         CGFloat textBlockNewHeight =
-            [ TWPTweetTextView textBlockDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
+            [ TWPTweetTextView textViewDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
                                                    blockWidth: columnNewWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace
                                             displaysMediaWell: ( BOOL )( ( ( OTCTweet* )self->_data[ _Index ] ).media ) ];
         CGFloat textBlockOldHeight =
-            [ TWPTweetTextView textBlockDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
+            [ TWPTweetTextView textViewDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
                                                    blockWidth: columnOldWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace
                                             displaysMediaWell: ( BOOL )( ( ( OTCTweet* )self->_data[ _Index ] ).media ) ];
 
