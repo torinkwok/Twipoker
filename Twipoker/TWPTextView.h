@@ -34,6 +34,8 @@
     NSTextStorage __strong* _tweetTextStorage;
 
     TWPTweetMediaWellController __strong* _tweetMediaWellController;
+
+    NSLayoutConstraint* _aspectRatioConstraint;
     }
 
 @property ( strong, readwrite ) OTCTweet* tweet;

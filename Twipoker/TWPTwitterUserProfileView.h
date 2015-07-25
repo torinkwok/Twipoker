@@ -28,6 +28,7 @@
 @class TWPCuttingLineView;
 @class TWPUserProfileCountButton;
 
+// TWPTwitterUserProfileView class
 @interface TWPTwitterUserProfileView : NSView
     {
 @private
@@ -56,7 +57,7 @@
 
 @property ( strong, readwrite ) OTCTwitterUser* twitterUser;
 
-@end
+@end // TWPTwitterUserProfileView class
 
 /*=============================================================================┐
 |                                                                              |

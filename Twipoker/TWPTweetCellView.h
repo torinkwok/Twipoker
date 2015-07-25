@@ -36,7 +36,6 @@
 @class TWPTweetCellRepController;
 @class TWPTweetClearCellRepController;
 
-
 typedef NS_ENUM( NSUInteger, TWPTweetCellViewStyle )
     { TWPTweetCellViewStyleClear = 0
     // TODO: Waiting for other styles

@@ -30,6 +30,7 @@
 
 #import "NSView+TwipokerAutoLayout.h"
 
+// TWPTwitterUserProfileView class
 @implementation TWPTwitterUserProfileView
 
 @synthesize hideButton;
@@ -54,6 +55,7 @@
 
 @dynamic twitterUser;
 
+#pragma mark Initializations
 - ( void ) awakeFromNib
     {
     [ self.tweetsCountButton setCountButtonType: TWPUserProfileCountButtonTypeTweets ];
@@ -64,6 +66,7 @@
     [ self setTranslatesAutoresizingMaskIntoConstraints: NO ];
     }
 
+#pragma mark Dynamic Accessors
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
     {
     self->_twitterUser = _TwitterUser;
@@ -104,7 +107,7 @@
     return YES;
     }
 
-@end
+@end // TWPTwitterUserProfileView class
 
 /*=============================================================================┐
 |                                                                              |
