@@ -108,6 +108,7 @@ NSDictionary static* sDefaultTextAttributes;
         ( void )[ [ NSTextView alloc ] initWithFrame: frame textContainer: textContainer ];
         [ [ self _textView ] setEditable: NO ];
         [ [ self _textView ] setSelectable: NO ];
+        [ [ self _textView ] setTranslatesAutoresizingMaskIntoConstraints: NO ];
         }
 
     [ self->_tweetTextStorage replaceCharactersInRange: NSMakeRange( 0, self->_tweetTextStorage.string.length )
@@ -143,13 +144,14 @@ NSDictionary static* sDefaultTextAttributes;
 
 - ( CGFloat ) textViewDynamicHeightWithWidth: ( CGFloat )_TextBlockWidth
     {
-    CGFloat mediaWellHeight = 0.f;
-    if ( self->_tweet.media )
-        mediaWellHeight = _TextBlockWidth * ( 1.f / self->_aspectRatioConstraint.multiplier ) + 10.f;
+//    CGFloat mediaWellHeight = 0.f;
+//
+//    if ( self->_tweet.media )
+//        mediaWellHeight = _TextBlockWidth * ( 1.f / [ TWPTweetMediaWell defaultAspectRatio ] ) + 10.f;
 
     CGFloat fsckHeight = [ [ self class ] _textViewDynamicHeightWithTextStorage: self->_tweetTextStorage
-                                                                      blockWidth: _TextBlockWidth
-                                                                 mediaWellHeight: mediaWellHeight ];
+                                                                     blockWidth: _TextBlockWidth
+                                                              displaysMediaWell: YES ];
     return fsckHeight;
     }
 
@@ -164,7 +166,7 @@ NSDictionary static* sDefaultTextAttributes;
     [ self removeConstraints: self.constraints ];
 
     NSTextView* textView = [ self _textView ];
-    [ textView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+
     [ self addSubview: textView ];
 
     NSMutableDictionary* viewsDict = [ NSDictionaryOfVariableBindings( textView ) mutableCopy ];
@@ -178,27 +180,32 @@ NSDictionary static* sDefaultTextAttributes;
 
         [ viewsDict addEntriesFromDictionary: NSDictionaryOfVariableBindings( mediaWell ) ];
 
+//        if ( !self->_aspectRatioConstraint )
+//            {
+//            self->_aspectRatioConstraint = [ NSLayoutConstraint
+//                constraintWithItem: mediaWell
+//                         attribute: NSLayoutAttributeWidth
+//                         relatedBy: NSLayoutRelationEqual
+//                            toItem: mediaWell
+//                         attribute: NSLayoutAttributeHeight
+//                        multiplier: [ TWPTweetMediaWell defaultAspectRatio ]
+//                          constant: 0 ];
+//            }
+
         NSArray* horizontalConstraints0 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth)]|" options: 0 metrics: @{ @"textViewWidth" : @( [ [ self class ] defaultSize ].width ) } views: viewsDict ];
         NSArray* horizontalConstraints1 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[mediaWell(==textView)]|" options: 0 metrics: nil views: viewsDict ];
 
-        self->_aspectRatioConstraint = [ NSLayoutConstraint
-            constraintWithItem: mediaWell
-                     attribute: NSLayoutAttributeWidth
-                     relatedBy: NSLayoutRelationEqual
-                        toItem: mediaWell
-                     attribute: NSLayoutAttributeHeight
-                    multiplier: 8.f / 5.f
-                      constant: 0 ];
-
-        [ self addConstraint: self->_aspectRatioConstraint ];
-        NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(==textViewHeight)]-(==space@750)-[mediaWell]|"
-                                                                                options: 0
-                                                                                metrics: @{ @"textViewHeight" :  @( [ [ self class ] _textViewDynamicHeightWithTextStorage: self->_tweetTextStorage
-                                                                                                                                                       blockWidth: NSWidth( textView.frame )
-                                                                                                                                                  mediaWellHeight: 0.f ] )
-                                                                                          , @"space" : @( 10.f )
-                                                                                          }
-                                                                                  views: viewsDict ];
+        NSArray* verticalConstraints =
+            [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(==textViewHeight)]-(==space@750)-[mediaWell(==mediaWellHeight)]|"
+                                                     options: 0
+                                                     metrics: @{ @"textViewHeight" : @( [ [ self class ] _textViewDynamicHeightWithTextStorage: self->_tweetTextStorage
+                                                                                                                                    blockWidth: NSWidth( textView.frame )
+                                                                                                                               mediaWellHeight: 0.f ] )
+                                                               , @"space" : @( 10.f )
+                                                               , @"mediaWellHeight" : @( [ TWPTweetMediaWell defaultHeight ] )
+                                                               }
+                                                       views: viewsDict ];
+//        [ self addConstraint: self->_aspectRatioConstraint ];
         [ self addConstraints: horizontalConstraints0 ];
 
         [ self addConstraints: horizontalConstraints1 ];
@@ -225,7 +232,8 @@ NSDictionary static* sDefaultTextAttributes;
     {
     CGFloat mediaWellHeight = 0.f;
     if ( _DisplaysMediaWell )
-        mediaWellHeight = _TextBlockWidth * ( 5.f / 8.f ) + 10.f;
+//        mediaWellHeight = _TextBlockWidth * ( 1.f / [ TWPTweetMediaWell defaultAspectRatio ] ) + 10.f;
+        mediaWellHeight = [ TWPTweetMediaWell defaultHeight ] + 10.f;
 
     return [ self _textViewDynamicHeightWithTextStorage: _TextStorage
                                              blockWidth: _TextBlockWidth

@@ -92,12 +92,19 @@ TWPDirectMessagesCoordinator static __strong* sDefaultCoordinator = nil;
             };
 
     // Fetch 20 most recent direct messages sent by current authenticating user
-    [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue page: nil includeEntities: @YES
+    [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil
+                                           count: @( 200 ).stringValue
+                                        fullText: @0
+                                            page: nil includeEntities: @YES
                                     successBlock: fetchDirectMessagesSuccessBlock
                                       errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
 
     // Fetch 20 most recent direct messages sent to current authenticating user
-    [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil count: @( 200 ).stringValue includeEntities: @YES skipStatus: @YES
+    [ self->_twitterAPI getDirectMessagesSinceID: nil maxID: nil
+                                           count: @( 200 ).stringValue
+                                        fullText: @0
+                                 includeEntities: @YES
+                                      skipStatus: @YES
                                     successBlock: fetchDirectMessagesSuccessBlock
                                       errorBlock: ^( NSError* _Error ) { NSLog( @"%@", _Error ); } ];
 

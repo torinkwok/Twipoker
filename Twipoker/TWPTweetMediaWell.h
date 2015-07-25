@@ -37,7 +37,8 @@
 @property ( strong, readonly ) NSArray* media;
 
 #pragma mark Global Properties
-+ ( NSSize ) defaultSize;
++ ( CGFloat ) defaultHeight;
++ ( CGFloat ) defaultAspectRatio;
 
 #pragma mark Initializations
 + ( instancetype ) tweetMediaWellWithTweet: ( OTCTweet* )_Tweet;

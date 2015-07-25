@@ -112,9 +112,14 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
 @dynamic media;
 
 #pragma mark Global Properties
-+ ( NSSize ) defaultSize
++ ( CGFloat ) defaultHeight
     {
-    return NSMakeSize( 272.f, 272.f * 0.61803398875f ); // Golden Ratio
+    return 150.f;
+    }
+
++ ( CGFloat ) defaultAspectRatio
+    {
+    return 8.f / 5.f;
     }
 
 #pragma mark Initializations
@@ -133,8 +138,7 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
     if ( !_Tweet.media.count )
         return nil;
 
-    NSSize defaultSize = [ [ self class ] defaultSize ];
-    if ( self = [ super initWithFrame: NSMakeRect( 0, 0, defaultSize.width, defaultSize.height ) ] )
+    if ( self = [ super initWithFrame: NSZeroRect ] )
         {
         self->_tweet = _Tweet;
         [ self setNeedsDisplay: YES ];
