@@ -46,7 +46,7 @@
 + ( NSSize ) defaultSize;
 
 + ( NSDictionary* ) defaultTextAttributes;
-+ ( CGFloat ) textBlockDynamicHeightWithText: ( NSString* )_Text blockWidth: ( CGFloat )_TextBlockWidth;
++ ( CGFloat ) textBlockDynamicHeightWithText: ( NSString* )_Text blockWidth: ( CGFloat )_TextBlockWidth displaysMediaWell: ( BOOL )_DisplaysMediaWell;
 - ( CGFloat ) textBlockDynamicHeightWithWidth: ( CGFloat )_TextBlockWidth;
 
 @end // TWPTextView class

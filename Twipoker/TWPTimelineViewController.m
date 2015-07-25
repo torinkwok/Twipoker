@@ -96,10 +96,12 @@
         {
         CGFloat textBlockNewHeight =
             [ TWPTweetTextView textBlockDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
-                                                   blockWidth: columnNewWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace ];
+                                                   blockWidth: columnNewWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace
+                                            displaysMediaWell: ( BOOL )( ( ( OTCTweet* )self->_data[ _Index ] ).media ) ];
         CGFloat textBlockOldHeight =
             [ TWPTweetTextView textBlockDynamicHeightWithText: ( ( OTCTweet* )self->_data[ _Index ] ).tweetText
-                                                   blockWidth: columnOldWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace ];
+                                                   blockWidth: columnOldWidth - TWPTextViewLeadingSpace - TWPTextViewTrailingSpace
+                                            displaysMediaWell: ( BOOL )( ( ( OTCTweet* )self->_data[ _Index ] ).media ) ];
 
         if ( textBlockNewHeight != textBlockOldHeight )
             [ indexesChanged addIndex: _Index ];
