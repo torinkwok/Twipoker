@@ -61,6 +61,7 @@
     [ self.followingCountButton setCountButtonType: TWPUserProfileCountButtonTypeFollowing ];
 
     [ self setMinimumSizeInNib: self.frame.size ];
+    [ self setTranslatesAutoresizingMaskIntoConstraints: NO ];
     }
 
 - ( void ) setTwitterUser: ( OTCTwitterUser* )_TwitterUser
