@@ -142,8 +142,7 @@ NSDictionary static* sDefaultTextAttributes;
     {
     CGFloat mediaWellHeight = 0.f;
     if ( self->_tweet.media )
-//        mediaWellHeight = 95.f + 10.f;
-        mediaWellHeight = NSHeight( self->_tweetMediaWellController.mediaWell.frame ) + 10.f;
+        mediaWellHeight = _TextBlockWidth * ( 1.f / self->_aspectRatioConstraint.multiplier ) + 10.f;
 
     CGFloat fsckHeight = [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
                                                                       blockWidth: _TextBlockWidth
@@ -155,14 +154,6 @@ NSDictionary static* sDefaultTextAttributes;
 - ( NSTextView* ) _textView
     {
     return self->_tweetTextStorage.layoutManagers.firstObject.textContainers.firstObject.textView;
-    }
-
-- ( void ) drawRect: ( NSRect )_DirtyRect
-    {
-    [ super drawRect: _DirtyRect ];
-    [ [ NSColor blackColor ] set ];
-
-    NSRectFill( _DirtyRect );
     }
 
 - ( void ) _updateConstraints
@@ -193,26 +184,16 @@ NSDictionary static* sDefaultTextAttributes;
                      relatedBy: NSLayoutRelationEqual
                         toItem: mediaWell
                      attribute: NSLayoutAttributeHeight
-                    multiplier: 16 / 9
+                    multiplier: 8.f / 5.f
                       constant: 0 ];
 
-//        NSLayoutConstraint* textViewHeightConstraint = [ NSLayoutConstraint
-//            constraintWithItem: self
-//                     attribute: NSLayoutAttributeHeight
-//                     relatedBy: NSLayoutRelationEqual
-//                        toItem: self
-//                     attribute: NSLayoutAttributeWidth
-//                    multiplier: 9 / 16
-//                      constant: 0 ];
-
         [ self addConstraint: self->_aspectRatioConstraint ];
-        NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight)]-(==space@750)-[mediaWell]|"
+        NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(==textViewHeight)]-(==space)-[mediaWell]|"
                                                                                 options: 0
                                                                                 metrics: @{ @"textViewHeight" :  @( [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
                                                                                                                                                        blockWidth: NSWidth( textView.frame )
                                                                                                                                                   mediaWellHeight: 0.f ] )
                                                                                           , @"space" : @( 10.f )
-                                                                                          , @"mediaWellHeight" : @( 95.f )
                                                                                           }
                                                                                   views: viewsDict ];
         [ self addConstraints: horizontalConstraints0 ];
