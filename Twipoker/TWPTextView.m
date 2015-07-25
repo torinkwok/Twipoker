@@ -142,7 +142,7 @@ NSDictionary static* sDefaultTextAttributes;
     {
     CGFloat mediaWellHeight = 0.f;
     if ( self->_tweet.media )
-        mediaWellHeight = 149.f + 10.f;
+        mediaWellHeight = 95.f + 10.f;
 
     CGFloat fsckHeight = [ [ self class ] _textBlockDynamicHeightWithTextStorage: self->_tweetTextStorage
                                                                       blockWidth: _TextBlockWidth
@@ -169,7 +169,6 @@ NSDictionary static* sDefaultTextAttributes;
     if ( self->_tweet.media )
         {
         NSView* mediaWell = self->_tweetMediaWellController.mediaWell;
-        [ mediaWell setTranslatesAutoresizingMaskIntoConstraints: NO ];
 
         if ( mediaWell.superview != self )
             [ self addSubview: mediaWell ];
@@ -184,7 +183,7 @@ NSDictionary static* sDefaultTextAttributes;
                                                                                                                                                        blockWidth: NSWidth( textView.frame )
                                                                                                                                                   mediaWellHeight: 0.f ] )
                                                                                           , @"space" : @( 10.f )
-                                                                                          , @"mediaWellHeight" : @( 149.f )
+                                                                                          , @"mediaWellHeight" : @( 95.f )
                                                                                           }
                                                                                   views: viewsDict ];
         [ self addConstraints: horizontalConstraints0 ];

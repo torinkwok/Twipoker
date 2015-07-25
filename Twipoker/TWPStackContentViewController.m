@@ -114,7 +114,6 @@
     [ self.view setSubviews: @[] ];
 
     TWPTimelineScrollView* docView = ( TWPTimelineScrollView* )( self->_currentDashboardStack.currentView.view );
-    [ docView setTranslatesAutoresizingMaskIntoConstraints: NO ];
     [ self.view addSubview: docView ];
 
     NSDictionary* viewsDict = NSDictionaryOfVariableBindings( docView );

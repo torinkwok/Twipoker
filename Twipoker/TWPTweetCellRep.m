@@ -36,6 +36,11 @@
 
 @dynamic tweet;
 
+- ( void ) awakeFromNib
+    {
+    [ self setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    }
+
 #pragma mark Dynamic Accessors
 - ( void ) setTweet: ( OTCTweet* )_Tweet
     {

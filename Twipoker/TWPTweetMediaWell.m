@@ -118,6 +118,11 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
     }
 
 #pragma mark Initializations
+- ( void ) awakeFromNib
+    {
+    [ self setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    }
+
 + ( instancetype ) tweetMediaWellWithTweet: ( OTCTweet* )_Tweet
     {
     return [ [ [ self class ] alloc ] initWithTweet: _Tweet ];
