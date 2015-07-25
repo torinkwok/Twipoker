@@ -130,15 +130,15 @@ NSDictionary static* sDefaultTextAttributes;
     }
 
 + ( CGFloat ) textViewDynamicHeightWithText: ( NSString* )_Text
-                                  blockWidth: ( CGFloat )_TextBlockWidth
-                           displaysMediaWell: ( BOOL )_DisplaysMediaWell
+                                 blockWidth: ( CGFloat )_TextBlockWidth
+                          displaysMediaWell: ( BOOL )_DisplaysMediaWell
     {
     NSTextStorage* textStorage = [ [ NSTextStorage alloc ] initWithString: _Text
                                                                attributes: [ [ self class ] defaultTextAttributes ] ];
 
     return [ [ self class ] _textViewDynamicHeightWithTextStorage: textStorage
-                                                        blockWidth: _TextBlockWidth
-                                                 displaysMediaWell: _DisplaysMediaWell ];
+                                                       blockWidth: _TextBlockWidth
+                                                displaysMediaWell: _DisplaysMediaWell ];
     }
 
 - ( CGFloat ) textViewDynamicHeightWithWidth: ( CGFloat )_TextBlockWidth
@@ -220,21 +220,21 @@ NSDictionary static* sDefaultTextAttributes;
     }
 
 + ( CGFloat ) _textViewDynamicHeightWithTextStorage: ( NSTextStorage* )_TextStorage
-                                          blockWidth: ( CGFloat )_TextBlockWidth
-                                   displaysMediaWell: ( BOOL )_DisplaysMediaWell
+                                         blockWidth: ( CGFloat )_TextBlockWidth
+                                  displaysMediaWell: ( BOOL )_DisplaysMediaWell
     {
     CGFloat mediaWellHeight = 0.f;
     if ( _DisplaysMediaWell )
         mediaWellHeight = _TextBlockWidth * ( 5.f / 8.f ) + 10.f;
 
     return [ self _textViewDynamicHeightWithTextStorage: _TextStorage
-                                              blockWidth: _TextBlockWidth
-                                         mediaWellHeight: mediaWellHeight ];
+                                             blockWidth: _TextBlockWidth
+                                        mediaWellHeight: mediaWellHeight ];
     }
 
 + ( CGFloat ) _textViewDynamicHeightWithTextStorage: ( NSTextStorage* )_TextStorage
-                                          blockWidth: ( CGFloat )_TextBlockWidth
-                                     mediaWellHeight: ( CGFloat )_MediaWellHeight
+                                         blockWidth: ( CGFloat )_TextBlockWidth
+                                    mediaWellHeight: ( CGFloat )_MediaWellHeight
     {
     NSTextContainer* textContainer = [ [ NSTextContainer alloc ] initWithContainerSize: NSMakeSize( _TextBlockWidth, FLT_MAX ) ];
     NSLayoutManager* layoutManager = [ [ NSLayoutManager alloc ] init ];
