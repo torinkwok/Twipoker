@@ -166,7 +166,6 @@ NSDictionary static* sDefaultTextAttributes;
     [ self removeConstraints: self.constraints ];
 
     NSTextView* textView = [ self _textView ];
-
     [ self addSubview: textView ];
 
     NSMutableDictionary* viewsDict = [ NSDictionaryOfVariableBindings( textView ) mutableCopy ];
@@ -196,7 +195,7 @@ NSDictionary static* sDefaultTextAttributes;
         NSArray* horizontalConstraints1 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[mediaWell(==textView)]|" options: 0 metrics: nil views: viewsDict ];
 
         NSArray* verticalConstraints =
-            [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(==textViewHeight)]-(==space@750)-[mediaWell]|"
+            [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(==textViewHeight@750)]-(==space@750)-[mediaWell]|"
                                                      options: 0
                                                      metrics: @{ @"textViewHeight" : @( [ [ self class ] _textViewDynamicHeightWithTextStorage: self->_tweetTextStorage
                                                                                                                                     blockWidth: NSWidth( textView.frame )

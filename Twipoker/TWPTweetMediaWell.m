@@ -241,7 +241,7 @@ static inline CGFloat kMidYTakeAccountOfGap( NSRect _Rect )
 
     CGFloat corner = 20.f;
     NSBezierPath* roundedRectOulinePath =
-        [ NSBezierPath bezierPathWithRoundedRect: _DirtyRect
+        [ NSBezierPath bezierPathWithRoundedRect: self.bounds
                        withRadiusOfTopLeftCorner: corner bottomLeftCorner: corner topRightCorner: corner bottomRightCorner: corner
                                        isFlipped: NO ];
     [ [ NSColor whiteColor ] set ];
