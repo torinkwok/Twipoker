@@ -32,6 +32,12 @@
 @synthesize imageContentView = _imageContentView;
 @synthesize textContentView = _textContentView;
 
+- ( void ) awakeFromNib
+    {
+    [ self.imageContentView configureForAutoLayout ];
+    [ self.textContentView configureForAutoLayout ];
+    }
+
 #pragma mark Dynamic Accessors
 - ( void ) setContent: ( id )_Content
     {
@@ -40,7 +46,7 @@
         self->_content = _Content;
 
         [ self setSubviews: @[] ];
-        [ self removeConstraints: self.constraints ];
+        [ self removeAllConstraints ];
 
         NSView* contentView = nil;
         if ( [ self->_content isKindOfClass: [ NSImage class ] ] )
@@ -68,28 +74,14 @@
             self->_typeStatus = TWPNavBarTotemViewTypeStatusText;
             }
 
-        NSDictionary* viewsDict = NSDictionaryOfVariableBindings( contentView );
-        [ contentView setTranslatesAutoresizingMaskIntoConstraints: NO ];
+        [ contentView removeAllConstraints ];
+        [ contentView autoSetDimension: ALDimensionWidth toSize: NSWidth( contentView.frame ) relation: NSLayoutRelationEqual ];
+        [ contentView autoSetDimension: ALDimensionHeight toSize: NSHeight( contentView.frame ) relation: NSLayoutRelationEqual ];
+        [ contentView autoAlignAxis: ALAxisVertical toSameAxisOfView: self ];
 
-        NSLayoutConstraint* centerHorizontallyConstraint = [ NSLayoutConstraint
-            constraintWithItem: self
-                     attribute: NSLayoutAttributeCenterX
-                     relatedBy: NSLayoutRelationEqual
-                        toItem: contentView
-                     attribute: NSLayoutAttributeCenterX
-                    multiplier: 1.f
-                      constant: 0.f ];
-
-        NSArray* centerVerticallyConstraints = [ NSLayoutConstraint
-            constraintsWithVisualFormat: @"V:|-(>=space)-[contentView(==contentViewHeight)]-(>=space)-|"
-                                options: 0
-                                metrics: @{ @"space" : @( ( NSHeight( self.frame ) - NSHeight( contentView.frame ) ) / 2 )
-                                          , @"contentViewHeight" : @( NSHeight( contentView.frame ) )
-                                          }
-                                  views: viewsDict ];
-
-        [ self addConstraint: centerHorizontallyConstraint ];
-        [ self addConstraints: centerVerticallyConstraints ];
+        CGFloat pinInset = ( NSHeight( self.frame ) - NSHeight( contentView.frame ) ) / 2;
+        [ contentView autoPinEdgeToSuperviewEdge: ALEdgeTop withInset: pinInset relation: NSLayoutRelationGreaterThanOrEqual ];
+        [ contentView autoPinEdgeToSuperviewEdge: ALEdgeBottom withInset: pinInset relation: NSLayoutRelationGreaterThanOrEqual ];
         }
     }
 
