@@ -36,7 +36,7 @@
 - ( void ) awakeFromNib
     {
     [ self setMinimumSizeInNib: self.frame.size ];
-    [ self setTranslatesAutoresizingMaskIntoConstraints: NO ];
+    [ self configureForAutoLayout ];
     }
 
 - ( TWPTimelineTableView* ) timelineTableView

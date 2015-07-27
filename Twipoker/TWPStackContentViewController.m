@@ -110,27 +110,13 @@
     {
     self->_currentDashboardStack = _CurrentDashboardStack;
 
-    [ self.view removeConstraints: self.view.constraints ];
+    [ self.view removeAllConstraints ];
     [ self.view setSubviews: @[] ];
 
     TWPTimelineScrollView* docView = ( TWPTimelineScrollView* )( self->_currentDashboardStack.currentView.view );
     [ self.view addSubview: docView ];
 
-    NSDictionary* viewsDict = NSDictionaryOfVariableBindings( docView );
-    NSArray* horizontalConstraints = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"H:|[docView(>=docViewWidth)]|"
-                            options: 0
-                            metrics: @{ @"docViewWidth" : @( docView.minimumSizeInNib.width ) }
-                              views: viewsDict ];
-
-    NSArray* verticalConstraints = [ NSLayoutConstraint
-        constraintsWithVisualFormat: @"V:|[docView(>=currentViewHeight)]|"
-                            options: 0
-                            metrics: @{ @"currentViewHeight" : @( docView.minimumSizeInNib.height ) }
-                              views: viewsDict ];
-
-    [ self.view addConstraints: horizontalConstraints ];
-    [ self.view addConstraints: verticalConstraints ];
+    [ docView autoPinEdgesToSuperviewEdgesWithInsets: NSEdgeInsetsZero ];
 
     [ self.navBarController reload ];
     }

@@ -28,6 +28,7 @@
     #import "TWPArtwork.h"
     #import "TWPActionNotifications.h"
     #import "Objectwitter-C.h"
+    #import "PureLayout.h"
     #import "FBKVOController.h"
 #endif
 
