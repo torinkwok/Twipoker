@@ -138,6 +138,9 @@
 		83AAF7041AED0CEF007A3A48 /* TWPViewsStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF7031AED0CEF007A3A48 /* TWPViewsStack.m */; };
 		83AAF7081AED2B6D007A3A48 /* TWPDashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AAF7071AED2B6D007A3A48 /* TWPDashboardView.m */; };
 		83AB722D1B348D5C006A343B /* TWPActionNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB722C1B348D5C006A343B /* TWPActionNotifications.m */; };
+		83AB9B3A1B6631D30085637F /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB9B321B6631D30085637F /* ALView+PureLayout.m */; };
+		83AB9B3B1B6631D30085637F /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB9B341B6631D30085637F /* NSArray+PureLayout.m */; };
+		83AB9B3C1B6631D30085637F /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB9B361B6631D30085637F /* NSLayoutConstraint+PureLayout.m */; };
 		83ADA83D1B1F090D000F7222 /* TWPTweetingCompleteBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADA83C1B1F090D000F7222 /* TWPTweetingCompleteBox.m */; };
 		83ADA8401B1F27DB000F7222 /* TWPCuttingLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADA83F1B1F27DB000F7222 /* TWPCuttingLineView.m */; };
 		83B0C06C1B08E4060093E53E /* _TWPMonitoringUserID.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0C06B1B08E4060093E53E /* _TWPMonitoringUserID.m */; };
@@ -506,6 +509,15 @@
 		83AAF7071AED2B6D007A3A48 /* TWPDashboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPDashboardView.m; path = Twipoker/TWPDashboardView.m; sourceTree = "<group>"; };
 		83AB722B1B348D5C006A343B /* TWPActionNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPActionNotifications.h; path = Twipoker/TWPActionNotifications.h; sourceTree = "<group>"; };
 		83AB722C1B348D5C006A343B /* TWPActionNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPActionNotifications.m; path = Twipoker/TWPActionNotifications.m; sourceTree = "<group>"; };
+		83AB9B311B6631D30085637F /* ALView+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALView+PureLayout.h"; sourceTree = "<group>"; };
+		83AB9B321B6631D30085637F /* ALView+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ALView+PureLayout.m"; sourceTree = "<group>"; };
+		83AB9B331B6631D30085637F /* NSArray+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+PureLayout.h"; sourceTree = "<group>"; };
+		83AB9B341B6631D30085637F /* NSArray+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PureLayout.m"; sourceTree = "<group>"; };
+		83AB9B351B6631D30085637F /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
+		83AB9B361B6631D30085637F /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
+		83AB9B371B6631D30085637F /* PureLayout+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PureLayout+Internal.h"; sourceTree = "<group>"; };
+		83AB9B381B6631D30085637F /* PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayout.h; sourceTree = "<group>"; };
+		83AB9B391B6631D30085637F /* PureLayoutDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PureLayoutDefines.h; sourceTree = "<group>"; };
 		83ADA83B1B1F090D000F7222 /* TWPTweetingCompleteBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPTweetingCompleteBox.h; path = Twipoker/TWPTweetingCompleteBox.h; sourceTree = "<group>"; };
 		83ADA83C1B1F090D000F7222 /* TWPTweetingCompleteBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWPTweetingCompleteBox.m; path = Twipoker/TWPTweetingCompleteBox.m; sourceTree = "<group>"; };
 		83ADA83E1B1F27DB000F7222 /* TWPCuttingLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWPCuttingLineView.h; path = Twipoker/TWPCuttingLineView.h; sourceTree = "<group>"; };
@@ -1157,6 +1169,23 @@
 			name = "d-m";
 			sourceTree = "<group>";
 		};
+		83AB9B301B6631D30085637F /* PureLayout */ = {
+			isa = PBXGroup;
+			children = (
+				83AB9B311B6631D30085637F /* ALView+PureLayout.h */,
+				83AB9B321B6631D30085637F /* ALView+PureLayout.m */,
+				83AB9B331B6631D30085637F /* NSArray+PureLayout.h */,
+				83AB9B341B6631D30085637F /* NSArray+PureLayout.m */,
+				83AB9B351B6631D30085637F /* NSLayoutConstraint+PureLayout.h */,
+				83AB9B361B6631D30085637F /* NSLayoutConstraint+PureLayout.m */,
+				83AB9B371B6631D30085637F /* PureLayout+Internal.h */,
+				83AB9B381B6631D30085637F /* PureLayout.h */,
+				83AB9B391B6631D30085637F /* PureLayoutDefines.h */,
+			);
+			name = PureLayout;
+			path = PureLayout/PureLayout/PureLayout;
+			sourceTree = "<group>";
+		};
 		83ADA82F1B1F04F3000F7222 /* tweeting-box */ = {
 			isa = PBXGroup;
 			children = (
@@ -1598,6 +1627,7 @@
 		83D749D81ACF265D00788683 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				83AB9B301B6631D30085637F /* PureLayout */,
 				83F231B71AE114A600A05D1D /* FBKVOController */,
 				83924DAC1AE104A900C25895 /* Objectwitter-C */,
 				83924D9D1AE1033700C25895 /* TGForkedMASPreferences */,
@@ -1866,6 +1896,7 @@
 				83924DC61AE104A900C25895 /* OTCMedia.m in Sources */,
 				83C21DAB1B2B421900188BB2 /* TWPTweetBoxController.m in Sources */,
 				83F231B41AE1147A00A05D1D /* TWPMainWindow.m in Sources */,
+				83AB9B3C1B6631D30085637F /* NSLayoutConstraint+PureLayout.m in Sources */,
 				83CFD8861ACF1F070062D73D /* NSBezierPath+TwipokerDrawing.m in Sources */,
 				83924DC81AE104A900C25895 /* OTCResolvedObject.m in Sources */,
 				83D8FFD61B245A7C00D1F825 /* TWPRetweetOperationsViewController.m in Sources */,
@@ -1894,6 +1925,7 @@
 				8351C1DA1B21EAF20019BF98 /* TWPTweetUpdateObject.m in Sources */,
 				8308961E1AEA1D1D0081D227 /* TWPTimelineScrollView.m in Sources */,
 				83CFD8751ACF1C820062D73D /* TWPLoginPanelContentView.m in Sources */,
+				83AB9B3A1B6631D30085637F /* ALView+PureLayout.m in Sources */,
 				83CFD8701ACF1C820062D73D /* TWPTextFieldCell.m in Sources */,
 				83924DC21AE104A900C25895 /* _OTCGeneral.m in Sources */,
 				83924D951AE1030B00C25895 /* INAppStoreWindow.m in Sources */,
@@ -1978,6 +2010,7 @@
 				83CCEDCC1AF7B35200DC364C /* TWPRepliesTimelineViewController.m in Sources */,
 				83CFD8731ACF1C820062D73D /* TWPLoginPanel.m in Sources */,
 				83924D961AE1030B00C25895 /* INWindowButton.m in Sources */,
+				83AB9B3B1B6631D30085637F /* NSArray+PureLayout.m in Sources */,
 				83924DCA1AE104A900C25895 /* OTCTwitterUser.m in Sources */,
 				8317329B1B15E25C00B136BF /* TWPDirectMessagePreviewCellView.m in Sources */,
 				839EE9C21B5217E500B28111 /* TWPSharedUIElements.m in Sources */,

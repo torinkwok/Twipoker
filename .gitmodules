@@ -10,3 +10,6 @@
 [submodule "Twipoker/Vendor/TGForkedMASPreferences"]
 	path = Twipoker/Vendor/TGForkedMASPreferences
 	url = https://github.com/Twipoker-Project/TGForkedMASPreferences
+[submodule "Twipoker/Vendor/PureLayout"]
+	path = Twipoker/Vendor/PureLayout
+	url = https://github.com/TongG/PureLayout.git
