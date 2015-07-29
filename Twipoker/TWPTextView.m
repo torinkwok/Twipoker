@@ -163,64 +163,55 @@ NSDictionary static* sDefaultTextAttributes;
 
 - ( void ) _updateConstraints
     {
-    [ self removeConstraints: self.constraints ];
+    [ self removeAllConstraints ];
 
     NSTextView* textView = [ self _textView ];
+    NSView* mediaWell = self->_tweetMediaWellController.mediaWell;
     [ self addSubview: textView ];
 
-    NSMutableDictionary* viewsDict = [ NSDictionaryOfVariableBindings( textView ) mutableCopy ];
+//    NSMutableDictionary* viewsDict = [ NSDictionaryOfVariableBindings( textView ) mutableCopy ];
 
     if ( self->_tweet.media )
         {
-        NSView* mediaWell = self->_tweetMediaWellController.mediaWell;
-
         if ( mediaWell.superview != self )
             [ self addSubview: mediaWell ];
 
-        [ viewsDict addEntriesFromDictionary: NSDictionaryOfVariableBindings( mediaWell ) ];
+        [ textView autoMatchDimension: ALDimensionWidth toDimension: ALDimensionWidth ofView: self ];
+        [ textView autoSetDimension: ALDimensionHeight toSize: 19.f relation: NSLayoutRelationGreaterThanOrEqual ];
+        [ textView autoPinEdgesToSuperviewEdgesWithInsets: ALEdgeInsetsZero excludingEdge: ALEdgeBottom ];
+        [ mediaWell autoPinEdgesToSuperviewEdgesWithInsets: ALEdgeInsetsZero excludingEdge: ALEdgeTop ];
+        [ textView autoPinEdge: ALEdgeBottom toEdge: ALEdgeTop ofView: mediaWell withOffset: 10.f relation: NSLayoutRelationEqual ];
+        [ mediaWell autoPinEdge: ALEdgeTop toEdge: ALEdgeBottom ofView: textView withOffset: -10.f relation: NSLayoutRelationEqual ];
 
-        if ( !self->_aspectRatioConstraint )
-            {
-            self->_aspectRatioConstraint = [ NSLayoutConstraint
-                constraintWithItem: mediaWell
-                         attribute: NSLayoutAttributeWidth
-                         relatedBy: NSLayoutRelationEqual
-                            toItem: mediaWell
-                         attribute: NSLayoutAttributeHeight
-                        multiplier: [ TWPTweetMediaWell defaultAspectRatio ]
-                          constant: 0 ];
-            }
-
-        NSArray* horizontalConstraints0 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth)]|" options: 0 metrics: @{ @"textViewWidth" : @( [ [ self class ] defaultSize ].width ) } views: viewsDict ];
-        NSArray* horizontalConstraints1 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[mediaWell(==textView)]|" options: 0 metrics: nil views: viewsDict ];
-
-        NSArray* verticalConstraints =
-            [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(==textViewHeight@750)]-(==space@750)-[mediaWell]|"
-                                                     options: 0
-                                                     metrics: @{ @"textViewHeight" : @( [ [ self class ] _textViewDynamicHeightWithTextStorage: self->_tweetTextStorage
-                                                                                                                                    blockWidth: NSWidth( textView.frame )
-                                                                                                                               mediaWellHeight: 0.f ] )
-                                                               , @"space" : @( 10.f )
-                                                               }
-                                                       views: viewsDict ];
-        [ self addConstraint: self->_aspectRatioConstraint ];
-        [ self addConstraints: horizontalConstraints0 ];
-
-        [ self addConstraints: horizontalConstraints1 ];
-        [ self addConstraints: verticalConstraints ];
+//        [ viewsDict addEntriesFromDictionary: NSDictionaryOfVariableBindings( mediaWell ) ];
+//
+//        NSArray* horizontalConstraints0 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth)]|" options: 0 metrics: @{ @"textViewWidth" : @( [ [ self class ] defaultSize ].width ) } views: viewsDict ];
+//        NSArray* horizontalConstraints1 = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[mediaWell(==textView)]|" options: 0 metrics: nil views: viewsDict ];
+//
+//        NSArray* verticalConstraints =
+//            [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(==textViewHeight@750)]-(==space@750)-[mediaWell]|"
+//                                                     options: 0
+//                                                     metrics: @{ @"textViewHeight" : @( [ [ self class ] _textViewDynamicHeightWithTextStorage: self->_tweetTextStorage
+//                                                                                                                                    blockWidth: NSWidth( textView.frame )
+//                                                                                                                               mediaWellHeight: 0.f ] )
+//                                                               , @"space" : @( 10.f )
+//                                                               }
+//                                                       views: viewsDict ];
+//        [ self addConstraints: horizontalConstraints0 ];
+//
+//        [ self addConstraints: horizontalConstraints1 ];
+//        [ self addConstraints: verticalConstraints ];
         }
     else
         {
-        NSView* mediaWell = self->_tweetMediaWellController.mediaWell;
-        [ mediaWell setTranslatesAutoresizingMaskIntoConstraints: NO ];
-
         if ( mediaWell.superview == self )
             [ mediaWell removeFromSuperview ];
 
-        NSArray* horizontalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth@750)]|" options: 0 metrics: @{ @"textViewWidth" : @( NSWidth( textView.frame ) ) } views: viewsDict ];
-        NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight@750)]|" options: 0 metrics: @{ @"textViewHeight" :  @( NSHeight( textView.frame ) ) } views: viewsDict ];
-        [ self addConstraints: horizontalConstraints ];
-        [ self addConstraints: verticalConstraints ];
+//        NSArray* horizontalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"H:|[textView(>=textViewWidth@750)]|" options: 0 metrics: @{ @"textViewWidth" : @( NSWidth( textView.frame ) ) } views: viewsDict ];
+//        NSArray* verticalConstraints = [ NSLayoutConstraint constraintsWithVisualFormat: @"V:|[textView(>=textViewHeight@750)]|" options: 0 metrics: @{ @"textViewHeight" :  @( NSHeight( textView.frame ) ) } views: viewsDict ];
+//        [ self addConstraints: horizontalConstraints ];
+//        [ self addConstraints: verticalConstraints ];
+        [ textView autoPinEdgesToSuperviewEdgesWithInsets: NSEdgeInsetsZero ];
         }
     }
 
